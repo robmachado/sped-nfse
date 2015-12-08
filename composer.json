@@ -14,10 +14,10 @@
     ],
     "authors": [
         {
-          "name": "Thiago Colares",
-          "email": "thicolares@gmail.com>",
-          "homepage": "http://www.nfephp.org",
-          "role": "Developer"
+            "name": "Roberto L. Machado",
+            "email": "linux.rlm@gmail.com.br",
+            "homepage": "http://www.nfephp.org",
+            "role": "Developer"
         },
         {
             "name": "Comunidade NFePHP",
@@ -39,20 +39,19 @@
     },
     "autoload": {
         "psr-4": {
-          "Sped\\NFSe\\": "src/" 
+          "NFePHP\\NFSe\\": "src/"
         } 
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "2.0-dev",
-            "dev-develop": "2.1-dev"
+            "dev-master": "0.1.x-dev"
         }
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
     "autoload-dev": {
         "psr-4": {
-            "SpedTest\\NFSe\\": "test"
+            "NFePHP\\NFSe\\": "test"
         }
     }
 }
