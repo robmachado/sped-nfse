@@ -6,11 +6,23 @@
  * Time: 18:55
  */
 
-namespace NFePHP\NFSe\Template\Ginfes;
+namespace NFePHP\NFSe\Webservice\Ginfes;
 
 
-class Webservice
+use NFePHP\NFSe\Webservice\AbstractWebservice;
+
+class Webservice extends AbstractWebservice
 {
+    public function envioRPS()
+    {
+        $this->recepcaLoteRPS();
+    }
+
+    public function envioLoteRPS()
+    {
+        $this->recepcaLoteRPS();
+    }
+
     public function recepcaLoteRPS()
     {
 

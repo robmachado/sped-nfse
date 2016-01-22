@@ -6,10 +6,11 @@
  * Time: 18:50
  */
 
-namespace NFePHP\NFSe\Template\Prodam;
+namespace NFePHP\NFSe\Webservice\Prodam;
 
+use NFePHP\NFSe\Webservice\AbstractWebservice;
 
-class Webservice
+class Webservice extends AbstractWebservice
 {
     public function enviaRPS()
     {
