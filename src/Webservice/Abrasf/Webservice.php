@@ -6,11 +6,19 @@
  * Time: 18:42
  */
 
-namespace NFePHP\NFSe\Template\Abrasf;
+namespace NFePHP\NFSe\Webservice\Abrasf;
 
 
-class Webservice
+use NFePHP\NFSe\Webservice\AbstractWebservice;
+
+class Webservice extends AbstractWebservice
 {
+
+        public function envioRPS()
+        {
+            $this->recepcaoLoteRPS();
+        }
+
         public function recepcaoLoteRPS()
         {
 

@@ -3,7 +3,7 @@
 namespace NFePHP\NFSe\Webservice;
 
 
-interface WebserviceInterface
+interface InterfaceWebservice
 {
     public function envioRPS();
 
