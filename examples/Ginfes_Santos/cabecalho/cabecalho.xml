@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ns1:cabecalho xmlns:ns1="http://www.ginfes.com.br/cabecalho_v03.xsd" versao="3">
+  <versaoDados>3</versaoDados>
+</ns1:cabecalho>
