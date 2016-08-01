@@ -20,6 +20,7 @@ A emissão de NFSe depende de prévio cadastramento do emissor e da disponibilid
 Existem muitos "padrões" diferentes para a emissão de NFSe, além disso, cada prefeitura pode fazer alterações no "padrão" escolhido, por isso, cada Prefeitura autorizadora deverá ser claramente identificada para que os códigos corretos sejam utilizados nas chamadas do framework. Isso eleva muito a complexidade desta API, e consequentemente sua manutenção.
 
 - Ábaco
+- ABRASF
 - Ágili
 - ArrecadaNet
 - Assessor Público
@@ -89,9 +90,9 @@ Existem muitos "padrões" diferentes para a emissão de NFSe, além disso, cada 
 - NFSeNET
 - NFWEB
 - Nota Blu
-- Nota Carioca
+- Nota Carioca (derivação ABRASF)
 - Nota Natalense
-- Nota Salvador
+- Nota Salvador (derivação ABRASF)
 - PMJP
 - PortalFacil
 - Prescon
