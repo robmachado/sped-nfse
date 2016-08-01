@@ -11,7 +11,7 @@ Com a Nota Fiscal Eletrônica de Serviços você terá os seguintes benefícios:
 - Maior gerenciamento de notas emitidas e recebidas
 - Economia de tempo e segurança com documentos de arrecadação
 
-A emissão de NFSe depende de prévio cadastramento do emisso e da disponibilidade de certificado digital do tipo A1 (PKCS#12), emitido por certificadora no Brasil pertencente ao ICP-Brasil.
+A emissão de NFSe depende de prévio cadastramento do emissor e da disponibilidade de certificado digital do tipo A1 (PKCS#12), emitido por certificadora no Brasil pertencente ao ICP-Brasil.
 
 ##EM DESENVOLVIMENTO !!
 
@@ -19,26 +19,107 @@ A emissão de NFSe depende de prévio cadastramento do emisso e da disponibilida
 
 Existem muitos "padrões" diferentes para a emissão de NFSe, além disso, cada prefeitura pode fazer alterações no "padrão" escolhido, por isso, cada Prefeitura autorizadora deverá ser claramente identificada para que os códigos corretos sejam utilizados nas chamadas do framework. Isso eleva muito a complexidade desta API, e consequentemente sua manutenção.
 
-- ABRASF
--- Curitiba (derivação ABRASF)
--- Rio de Janeiro (derivação ABRASF)
--- Belo Horizonte (derivação ABRASF)
--- Salvador (derivação ABRASF)
-
-
-- WebISS
-- Betha
-- ISSintel
-- GINFES
-- IPM
+- Ábaco
+- Ágili
+- ArrecadaNet
+- Assessor Público
+- AWATAR
+- BETHA
+- BOANF
+- BSIT-BR
+- Cecam
+- CENTI
+- Comunix
+- CONAM
+- Consist
+- COPLAN
+- DB NFSE
+- DEISS
+- DigiFred
 - DSFNET
-- ISS.Net
-- Simpliss/GDN
-- E-Governe
-- Tiplan
-- Governo Digital
-- ISISS
+- Dueto
+- DUETO 2.0
+- E-Caucaia
+- e-Governe ISS
+- E-Nota Portal Público
+- e-Receita
+- E&L
+- eISS
+- Elotech
 - Equiplano
-- Abaco
-- ISS Web
-- Prodam (São Paulo)
+- FacilitaISS
+- FGMAISS
+- FINTELISS
+- FISS-LEX
+- Freire
+- GENERATIVA
+- GINFES
+- GLC Consultoria (Sumaré e Monte Mor)
+- Goiânia
+- Governa
+- Governa TXT
+- Governo Digital
+- Governo Eletrônico
+- INFISC
+- INFISC – Santiago
+- INFISC – Sapucaia
+- INFISC Farroupilha
+- IPM
+- ISISS
+- ISS Intel
+- ISS On-line Supernova
+- ISS Online AEG
+- ISS Simples SPCONSIG
+- ISS4R
+- ISSE
+- ISSNET
+- ISSNFe On-line
+- ISSWEB Camaçari
+- ISSWEB Fiorilli
+- JFISS Digital
+- JGBAIAO
+- Lençóis Paulista
+- Lexsom
+- Memory
+- Metrópolis
+- NF-Eletronica
+- NF-em
+- NFPSe
+- NFSE-ECIDADES 
+- NFSeNET
+- NFWEB
+- Nota Blu
+- Nota Carioca
+- Nota Natalense
+- Nota Salvador
+- PMJP
+- PortalFacil
+- Prescon
+- Primax Online
+- Prodam (NF Paulistana)
+- PRODATA
+- Pública
+- RLZ
+- SAATRI
+- SEMFAZ
+- SH3
+- SIAM
+- SIGCORP – TXT
+- SIGCORP BAURU
+- SIGCORP Ivaipora
+- SIGCORP Londrina
+- SIGCORP Rio Grande
+- SIGCORP São Gonçalo
+- SimplISS
+- SJP
+- SMARAPD SIL Tecnologia
+- SMARAPD SIL Tecnologia WS
+- Solução Pública
+- System
+- Tecnos
+- Thema
+- Tinus
+- Tinus Upload
+- TIPLAN
+- Tributos Municipais
+- WEB ISS
