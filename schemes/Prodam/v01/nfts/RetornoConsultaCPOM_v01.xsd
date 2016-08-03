@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="RetornoConsultaCPOM_v01"
+    targetNamespace="http://www.prefeitura.sp.gov.br/nfts"
+    xmlns:tipos="http://www.prefeitura.sp.gov.br/nfts/tipos"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+  <xs:import namespace="http://www.prefeitura.sp.gov.br/nfts/tipos" schemaLocation="TiposNFTS_v01.xsd" />
+  <xs:import namespace="http://www.w3.org/2000/09/xmldsig#" schemaLocation="..\1\xmldsig-core-schema_v01.xsd" />
+
+  <xs:element name="RetornoConsultaCPOM">
+    <xs:annotation>
+      <xs:documentation>Schema utilizado para RETORNO de consultas ao CPOM.</xs:documentation>
+      <xs:documentation>Este Schema XML é utilizado pelo Web Service para informar aos tomadores/intermediários de serviços</xs:documentation>
+      <xs:documentation>o resultado do pedido de consulta de inscrição no CPOM.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Cabecalho" type="tipos:tpCabecalhoRetorno" minOccurs="1" maxOccurs="1" />
+        <xs:element name="RetornoCPOM" type="tipos:tpRetornoCPOM" minOccurs="1" maxOccurs="1" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

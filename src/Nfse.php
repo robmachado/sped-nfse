@@ -1,17 +1,9 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: administrador
- * Date: 11/12/15
- * Time: 14:17
- */
 
 namespace NFePHP\NFSe;
 
-
-class NFSe
+class NFSe implements NfseInferface
 {
-
 
     public function __construct()
     {
@@ -24,10 +16,42 @@ class NFSe
 
     }
 
-    public function assinaRPS()
+    public function envioRPS()
     {
-
+        //unico ou em lote
     }
-
-
+    
+    public function testeEnvioRPS()
+    {
+        
+    }
+    
+    public function consultaNFSe()
+    {
+        
+    }
+    public function consultaNFSeRecebidas()
+    {
+        
+    }
+    public function consultaNFSeEmitidas()
+    {
+        
+    }
+    public function consultaLote()
+    {
+        
+    }
+    public function consultaInformacoesLote()
+    {
+        
+    }
+    public function cancelamentoNFSe()
+    {
+        
+    }
+    public function consultaCNPJ()
+    {
+        
+    }
 }
