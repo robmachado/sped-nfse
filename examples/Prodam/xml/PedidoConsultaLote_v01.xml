@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<p:PedidoConsultaLote xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:p="http://www.prefeitura.sp.gov.br/nfe" xmlns:tipos="http://www.prefeitura.sp.gov.br/nfe/tipos" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.prefeitura.sp.gov.br/nfe ../../../schemes/Prodam/v01/nfse/PedidoConsultaLote_v01.xsd ">
+  <Cabecalho Versao="1">
+    <CPFCNPJRemetente>
+      <CPF>CPF</CPF>
+    </CPFCNPJRemetente>
+    <NumeroLote>0</NumeroLote>
+  </Cabecalho>
+  <ds:Signature>
+    <ds:SignedInfo>
+      <ds:CanonicalizationMethod Algorithm="http://tempuri.org"/>
+      <ds:SignatureMethod Algorithm="http://tempuri.org"/>
+      <ds:Reference>
+        <ds:Transforms>
+          <ds:Transform Algorithm="http://tempuri.org"/>
+        </ds:Transforms>
+        <ds:DigestMethod Algorithm="http://tempuri.org"/>
+        <ds:DigestValue>MA==</ds:DigestValue>
+      </ds:Reference>
+    </ds:SignedInfo>
+    <ds:SignatureValue>MA==</ds:SignatureValue>
+    <ds:KeyInfo>
+      <ds:X509Data>
+        <ds:X509Certificate>MA==</ds:X509Certificate>
+      </ds:X509Data>
+    </ds:KeyInfo>
+  </ds:Signature>
+</p:PedidoConsultaLote>

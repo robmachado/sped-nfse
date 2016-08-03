@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="PedidoConsultaCPOM_v01"
+    targetNamespace="http://www.prefeitura.sp.gov.br/nfts"
+    xmlns:tipos="http://www.prefeitura.sp.gov.br/nfts/tipos"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+  <xs:import namespace="http://www.prefeitura.sp.gov.br/nfts/tipos" schemaLocation="TiposNFTS_v01.xsd" />
+  <xs:import namespace="http://www.w3.org/2000/09/xmldsig#" schemaLocation="..\1\xmldsig-core-schema_v01.xsd" />
+
+  <xs:element name="PedidoConsultaCPOM">
+    <xs:annotation>
+      <xs:documentation>Schema utilizado para PEDIDO de consultas ao CPOM.</xs:documentation>
+      <xs:documentation>Este Schema XML é utilizado para os tomadores/intermediários consultarem</xs:documentation>
+      <xs:documentation>se um CNPJ de um prestador de serviços tem inscrição no CPOM.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Cabecalho" minOccurs="1" maxOccurs="1">
+          <xs:annotation>
+            <xs:documentation>Cabeçalho do pedido de consulta ao CPOM.</xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Remetente" type="tipos:tpRemetente" minOccurs="1" maxOccurs="1" >
+                <xs:annotation>
+                  <xs:documentation>Informe o CPF/CNPJ do Remetente autorizado a transmitir a mensagem XML.</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+            </xs:sequence>
+            <xs:attribute name="Versao" type="tipos:tpVersao" use="required" fixed="1">
+              <xs:annotation>
+                <xs:documentation>Informe a Versão do Schema XML utilizado.</xs:documentation>
+              </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="id" type="tipos:tpIdTag" />
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="DetalheCPOM" minOccurs="1" maxOccurs="1">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="CPFCNPJPrestador" type="tipos:tpCPFCNPJ" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                  <xs:documentation>Informe o CPF/CNPJ do prestador de serviço.</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element ref="ds:Signature" minOccurs="1" maxOccurs="1">
+          <xs:annotation>
+            <xs:documentation>Assinatura digital do contribuinte que gerou a consulta ao CPOM.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  </xs:schema>

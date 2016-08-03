@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema targetNamespace="http://www.prefeitura.sp.gov.br/nfts"
+           xmlns:tipos="http://www.prefeitura.sp.gov.br/nfts/tipos"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+           xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+  <xs:import namespace="http://www.prefeitura.sp.gov.br/nfts/tipos" schemaLocation="TiposNFTS_v01.xsd" />
+  <xs:import namespace="http://www.w3.org/2000/09/xmldsig#" schemaLocation="..\1\xmldsig-core-schema_v01.xsd" />
+  
+  <xs:element name="PedidoEnvioLoteNFTS">
+    <xs:annotation>
+      <xs:documentation>Schema utilizado para PEDIDO de envio de lote de NFTS.</xs:documentation>
+      <xs:documentation>Este Schema XML é utilizado pelos tomadores/intermediários de serviços para emissão de NFTS.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Cabecalho" minOccurs="1" maxOccurs="1">
+          <xs:annotation>
+            <xs:documentation>Cabeçalho do pedido NFTS.</xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Remetente" type="tipos:tpRemetente" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                  <xs:documentation>Informe os dados do Remetente autorizado a transmitir a mensagem XML.</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="transacao" type="xs:boolean" minOccurs="0" maxOccurs="1" default="true">
+                <xs:annotation>
+                  <xs:documentation>Informe se as NFTS a serem emitidas farão parte de uma mesma transação. True - As NFTS só serão emitidas se não ocorrer nenhum evento de erro durante o processamento de todo o lote; False - As NFTS válidos serão emitidas, mesmo que ocorram eventos de erro durante processamento de outras NFTS deste lote.</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="dtInicio" type="xs:date" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                  <xs:documentation>Informe a data de início do período transmitido (AAAA-MM-DD).</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="dtFim" type="xs:date" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                  <xs:documentation>Informe a data final do período transmitido (AAAA-MM-DD).</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="QtdNFTS"  type="tipos:tpQuantidade" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                  <xs:documentation>Informe o total de NFTS contidos na mensagem XML.</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="ValorTotalServicos" type="tipos:tpValor" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                  <xs:documentation>Informe o valor total dos serviços das NFTS contidos na mensagem XML.</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="ValorTotalDeducoes" type="tipos:tpValor" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                  <xs:documentation>Informe o valor total das deduções das NFTS contidos na mensagem XML.</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+            </xs:sequence>
+            <xs:attribute name="Versao" type="tipos:tpVersao" use="required" fixed="1">
+              <xs:annotation>
+                <xs:documentation>Informe a Versão do Schema XML utilizado.</xs:documentation>
+              </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="id" type="tipos:tpIdTag" />
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="NFTS" type="tipos:tpNFTS" minOccurs="1" maxOccurs="50">
+          <xs:annotation>
+            <xs:documentation>Informe as NFTS a serem emitidas.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element ref="ds:Signature" minOccurs="1" maxOccurs="1">
+          <xs:annotation>
+            <xs:documentation>Assinatura digital do contribuinte que gerou as NFTS contidos na mensagem XML.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
