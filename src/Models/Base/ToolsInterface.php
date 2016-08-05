@@ -1,8 +1,8 @@
 <?php
 
-namespace NFePHP\NFSe;
+namespace NFePHP\NFSe\Models\Base;
 
-interface NfseInferface
+interface ToolsInferface
 {
     public function assina();
     

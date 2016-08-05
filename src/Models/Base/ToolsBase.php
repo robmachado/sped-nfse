@@ -1,10 +1,11 @@
 <?php
 
-namespace NFePHP\NFSe;
+namespace NFePHP\NFSe\Models\Base;
 
-class NFSe implements NfseInferface
+use NFePHP\NFSe\Models\Base\ToolsInferface;
+
+class ToolsBase implements ToolsInferface
 {
-
     public function __construct()
     {
         //passar os parametros de configuração
@@ -13,7 +14,6 @@ class NFSe implements NfseInferface
 
     public function assina()
     {
-
     }
 
     public function envioRPS()
@@ -23,35 +23,27 @@ class NFSe implements NfseInferface
     
     public function testeEnvioRPS()
     {
-        
     }
     
     public function consultaNFSe()
     {
-        
     }
     public function consultaNFSeRecebidas()
     {
-        
     }
     public function consultaNFSeEmitidas()
     {
-        
     }
     public function consultaLote()
     {
-        
     }
     public function consultaInformacoesLote()
     {
-        
     }
     public function cancelamentoNFSe()
     {
-        
     }
     public function consultaCNPJ()
     {
-        
     }
 }
