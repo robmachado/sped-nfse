@@ -26,7 +26,7 @@ class County
      * para um municipio em particular
      *
      * @param string $config
-     * @return \NFePHP\NFSe\Class
+     * @return \NFePHP\NFSe\className
      */
     public static function rps($config = '')
     {
@@ -39,7 +39,7 @@ class County
      * para um municipio em particular
      *
      * @param string $config
-     * @return \NFePHP\NFSe\Class
+     * @return \NFePHP\NFSe\className
      */
     public static function tools($config = '')
     {
