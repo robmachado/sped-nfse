@@ -4,6 +4,8 @@ namespace NFePHP\NFSe\Models\Base;
 
 interface ToolsInferface
 {
+    public function setSaveLogs();
+    
     public function assina();
     
     public function envioRPS();
