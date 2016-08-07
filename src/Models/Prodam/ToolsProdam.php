@@ -7,5 +7,7 @@ use NFePHP\NFSe\Models\Base\ToolsInterface;
 
 class ToolsProdam extends ToolsBase implements ToolsInferface
 {
-    
+    protected function cabecalho()
+    {
+    }
 }

@@ -27,14 +27,6 @@ class RpsBase
         $this->remetenteCertPass = $conf->certPass;
         $this->remetenteCertPhrase = $conf->certPhrase;
         $this->versao = $conf->versao;
-        $mark = $conf->cnpj;
-        if ($conf->cnpj == '') {
-            $mark = $conf->cpf;
-        }
-        $priKeyFile = $conf->certPath . $mark . '_priKEY.pem';
-        if (is_file($priKeyFile)) {
-            $this->priKey = file_get_contents($priKeyFile);
-        }
     }
     
     protected function zValidData($array, $data)

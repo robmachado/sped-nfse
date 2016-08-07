@@ -2,16 +2,23 @@
 
 namespace NFePHP\NFSe\Models\Base;
 
+/**
+ *
+ */
 use NFePHP\NFSe\Models\Base\ToolsInferface;
+use NFePHP\Common\Base\BaseTools;
+use NFePHP\Common\Files;
 
-class ToolsBase implements ToolsInferface
+class ToolsBase extends BaseTools implements ToolsInferface
 {
-    public function __construct()
+  
+    protected $saveLog = true;
+    
+    public function __construct($config)
     {
-        //passar os parametros de configuração
-        //com as configurações carregar o certificado
+        parent::__construct($config);
     }
-
+    
     public function assina()
     {
     }
@@ -28,21 +35,27 @@ class ToolsBase implements ToolsInferface
     public function consultaNFSe()
     {
     }
+    
     public function consultaNFSeRecebidas()
     {
     }
+    
     public function consultaNFSeEmitidas()
     {
     }
+    
     public function consultaLote()
     {
     }
+    
     public function consultaInformacoesLote()
     {
     }
+    
     public function cancelamentoNFSe()
     {
     }
+    
     public function consultaCNPJ()
     {
     }

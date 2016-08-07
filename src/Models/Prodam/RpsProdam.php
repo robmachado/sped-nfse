@@ -8,7 +8,6 @@ use NFePHP\NFSe\Models\Base\RpsBase;
 
 class RpsProdam extends RpsBase
 {
-    
     public $remetenteRazao;
     public $remetenteCNPJ;
     public $remetenteCPF;
@@ -92,14 +91,11 @@ class RpsProdam extends RpsBase
     {
     }
     
-    public function assinaRPS()
-    {
-        $this->assinaturaRPS = $this->zAssinatura();
-    }
-    
+  
     public function prestador($im)
     {
         $this->prestadorIM = $im;
+        $this->zAssinatura();
     }
     
     public function tomador($razao, $cnpj = '', $cpf = '', $ie = '', $im = '', $email = '')
@@ -110,6 +106,7 @@ class RpsProdam extends RpsBase
         $this->tomadorIE = $ie;
         $this->tomadorIM = $im;
         $this->tomadorEmail = $email;
+        $this->zAssinatura();
     }
     
     public function tomadorEndereco(
@@ -141,12 +138,14 @@ class RpsProdam extends RpsBase
         $this->intermediarioEmail = $email;
         if ($cnpj != '' || $cpf != '' || $im != '' || $issRetido != '' || $email != '') {
             $this->intermediarioExists = true;
+            $this->zAssinatura();
         }
     }
 
     public function serie($serie = '')
     {
         $this->serieRPS = $serie;
+        $this->zAssinatura();
     }
     
     public function numero($numero = 0)
@@ -156,12 +155,13 @@ class RpsProdam extends RpsBase
             throw new InvalidArgumentException($msg);
         }
         $this->numeroRPS = $numero;
+        $this->zAssinatura();
     }
     
     public function data($data)
     {
-        
         $this->dtEmiRPS = $data;
+        $this->zAssinatura();
     }
     
     public function status($status = 'N')
@@ -171,6 +171,7 @@ class RpsProdam extends RpsBase
             throw new InvalidArgumentException($msg);
         }
         $this->statusRPS = $status;
+        $this->zAssinatura();
     }
     
     /**
@@ -211,6 +212,7 @@ class RpsProdam extends RpsBase
             throw new InvalidArgumentException($msg);
         }
         $this->tributacaoRPS = $tributacao;
+        $this->zAssinatura();
     }
     
     public function codigoServico($cod)
@@ -221,6 +223,13 @@ class RpsProdam extends RpsBase
     public function valorServicos($valor)
     {
         $this->valorServicosRPS = $valor;
+        $this->zAssinatura();
+    }
+    
+    public function valorDeducoes($valor)
+    {
+        $this->valorDeducoesRPS = $valor;
+        $this->zAssinatura();
     }
     
     public function aliquotaServico($valor)
@@ -235,16 +244,12 @@ class RpsProdam extends RpsBase
             throw new InvalidArgumentException($msg);
         }
         $this->issRetidoRPS = $valor;
+        $this->zAssinatura();
     }
     
     public function discriminacao($desc)
     {
         $this->discriminacaoRPS = Strings::cleanString($desc);
-    }
-    
-    public function valorDeducoes($valor)
-    {
-        $this->valorDeducoesRPS = $valor;
     }
     
     public function valorCargaTributaria($valor)
@@ -301,6 +306,9 @@ class RpsProdam extends RpsBase
         $this->municipioPrestacaoRPS = $cmun;
     }
     
+    /**
+     * Constroi a astring que será a assinatura do RPS
+     */
     protected function zAssinatura()
     {
         $content = sprintf('%08s', $this->prestadorIM) .
@@ -332,13 +340,6 @@ class RpsProdam extends RpsBase
             }
             $content .= $this->intermediarioISSRetido;
         }
-        
-        $signatureValue = '';
-        if ($this->priKey) {
-            $oPrikey = openssl_get_privatekey($this->priKey);
-            openssl_sign($content, $signatureValue, $oPrikey, OPENSSL_ALGO_SHA1);
-            openssl_free_key($oPrikey);
-        }
-        return base64_encode($signatureValue);
+        $this->assinaturaRPS = $content;
     }
 }
