@@ -4,7 +4,7 @@ namespace NFePHP\NFSe\Models\Base;
 
 /**
  * Classe base para a renderização dos RPS em XML
- * 
+ *
  * @category  NFePHP
  * @package   NFePHP\NFSe\Base\RenderBase
  * @copyright NFePHP Copyright (c) 2016
