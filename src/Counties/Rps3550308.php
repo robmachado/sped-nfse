@@ -16,9 +16,10 @@ namespace NFePHP\NFSe\Counties;
  * @link      http://github.com/nfephp-org/sped-nfse for the canonical source repository
  */
 
-use NFePHP\NFSe\Models\Prodam\RpsProdam;
+use NFePHP\NFSe\Models\Prodam\Rps;
 
-class Rps3550308 extends RpsProdam
+class Rps3550308 extends Rps
 {
-    
+    //como a classe Prodam é especifica apenas para a cidade de São Paulo
+    //não há a necessidade de estender realmente a classe Prodam
 }

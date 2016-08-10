@@ -7,7 +7,7 @@ namespace NFePHP\NFSe;
  * atendido pela API
  *
  * @category  NFePHP
- * @package   NFePHP\NFSe\County
+ * @package   NFePHP\NFSe\NFSe
  * @copyright NFePHP Copyright (c) 2016
  * @license   http://www.gnu.org/licenses/lgpl.txt LGPLv3+
  * @license   https://opensource.org/licenses/MIT MIT
@@ -19,7 +19,7 @@ namespace NFePHP\NFSe;
 use NFePHP\NFSe\Counties;
 use RuntimeException;
 
-class County
+class NFSe
 {
     /**
      * Instancia a classe usada na construção do RPS
@@ -43,7 +43,7 @@ class County
      */
     public static function tools($config = '')
     {
-        $className = self::getClassName($config, 'T');
+        $className = self::getClassName($config, 'Tools');
         return self::classCheck($className, $config);
     }
     
