@@ -51,7 +51,7 @@ class Tools extends ToolsBase implements ToolsInferface
             $this->cabecalho .= "<CPF>$cpf</CPF>";
         }
         $this->cabecalho .= "</CPFCNPJRemetente>";
-        if ($this->transacao) {        
+        if ($this->transacao) {
             $this->cabecalho .= "<transacao>true</transacao>"
                 . "<dtInicio>$this->dtInicio</dtInicio>"
                 . "<dtFim>$this->dtFim</dtFim>"

@@ -4,7 +4,7 @@ namespace NFePHP\NFSe\Models\Base;
 
 /**
  * Classe base para a conversão do TXT dos RPS em XML
- * 
+ *
  * @category  NFePHP
  * @package   NFePHP\NFSe\Base\ConvertBase
  * @copyright NFePHP Copyright (c) 2016

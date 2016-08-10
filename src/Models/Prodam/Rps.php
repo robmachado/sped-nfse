@@ -22,60 +22,55 @@ use NFePHP\NFSe\Models\Base\RpsBase;
 
 class Rps extends RpsBase
 {
-    public $remetenteRazao;
-    public $remetenteCNPJ;
-    public $remetenteCPF;
-    public $remetenteIM;
-    public $remetenteCMun;
-    public $remetenteCertPath;
-    public $remetenteCertPfx;
-    public $remetenteCertPass;
-    public $remetenteCertPhrase;
-    public $prestadorIM;
-    public $serieRPS;
-    public $numeroRPS;
-    public $dtEmiRPS;
-    public $tipoRPS;
-    public $statusRPS;
-    public $tributacaoRPS;
-    public $valorServicosRPS;
-    public $valorDeducoesRPS;
-    public $valorPISRPS;
-    public $valorCOFINSRPS;
-    public $valorINSSRPS;
-    public $valorIRRPS;
-    public $valorCSLLRPS;
-    public $valorCargaTributariaRPS;
-    public $percentualCargaTributariaRPS;
-    public $fonteCargaTributariaRPS;
-    public $codigoCEIRPS;
-    public $matriculaObraRPS;
-    public $municipioPrestacaoRPS;
-    public $codigoServicoRPS;
-    public $aliquotaServicosRPS;
-    public $issRetidoRPS;
-    public $discriminacaoRPS;
-    public $tomadorCPF;
-    public $tomadorCNPJ;
-    public $tomadorIE;
-    public $tomadorIM;
-    public $tomadorRazao;
-    public $tomadorTipoLogradouro;
-    public $tomadorLogradouro;
-    public $tomadorNumeroEndereco;
-    public $tomadorComplementoEndereco;
-    public $tomadorBairro;
-    public $tomadorCodCidade;
-    public $tomadorSiglaUF;
-    public $tomadorCEP;
-    public $tomadorEmail;
+    public $remetenteRazao = '';
+    public $remetenteCNPJ = '';
+    public $remetenteCPF = '';
+    public $remetenteIM = '';
+    public $remetenteCMun = '';
+    public $prestadorIM = '';
+    public $serieRPS = '';
+    public $numeroRPS = '';
+    public $dtEmiRPS = '';
+    public $tipoRPS = '';
+    public $statusRPS = '';
+    public $tributacaoRPS = '';
+    public $valorServicosRPS = '';
+    public $valorDeducoesRPS = '';
+    public $valorPISRPS = '';
+    public $valorCOFINSRPS = '';
+    public $valorINSSRPS = '';
+    public $valorIRRPS = '';
+    public $valorCSLLRPS = '';
+    public $valorCargaTributariaRPS = '';
+    public $percentualCargaTributariaRPS = '';
+    public $fonteCargaTributariaRPS = '';
+    public $codigoCEIRPS = '';
+    public $matriculaObraRPS = '';
+    public $municipioPrestacaoRPS = '';
+    public $codigoServicoRPS = '';
+    public $aliquotaServicosRPS = '';
+    public $issRetidoRPS = '';
+    public $discriminacaoRPS = '';
+    public $tomadorCPF = '';
+    public $tomadorCNPJ = '';
+    public $tomadorIE = '';
+    public $tomadorIM = '';
+    public $tomadorRazao  = '';
+    public $tomadorTipoLogradouro = '';
+    public $tomadorLogradouro = '';
+    public $tomadorNumeroEndereco = '';
+    public $tomadorComplementoEndereco = '';
+    public $tomadorBairro = '';
+    public $tomadorCodCidade = '';
+    public $tomadorSiglaUF = '';
+    public $tomadorCEP = '';
+    public $tomadorEmail = '';
     public $intermediarioCNPJ = '';
     public $intermediarioCPF = '';
     public $intermediarioIM = '';
     public $intermediarioISSRetido = 'N';
     public $intermediarioEmail = '';
     public $intermediarioExists = false;
-    
     public $assinaturaRPS = '';
     
     private $aTp = [
@@ -96,11 +91,6 @@ class Rps extends RpsBase
         'P' => 'Exportação de Serviços'
     ];
     
-    public function __construct($config)
-    {
-        parent::__construct($config);
-    }
-    
     public function render()
     {
     }
@@ -111,8 +101,14 @@ class Rps extends RpsBase
         $this->zAssinatura();
     }
     
-    public function tomador($razao, $cnpj = '', $cpf = '', $ie = '', $im = '', $email = '')
-    {
+    public function tomador(
+        $razao,
+        $cnpj = '',
+        $cpf = '',
+        $ie = '',
+        $im = '',
+        $email = ''
+    ) {
         $this->tomadorRazao = Strings::cleanString($razao);
         $this->tomadorCPF = $cpf;
         $this->tomadorCNPJ = $cnpj;
@@ -123,14 +119,14 @@ class Rps extends RpsBase
     }
     
     public function tomadorEndereco(
-        $tipo,
-        $logradouro,
-        $numero,
-        $complemento,
-        $bairro,
-        $cmun,
-        $uf,
-        $cep
+        $tipo = '',
+        $logradouro = '',
+        $numero = '',
+        $complemento = '',
+        $bairro = '',
+        $cmun = '',
+        $uf = '',
+        $cep = ''
     ) {
         $this->tomadorTipoLogradouro = $tipo;
         $this->tomadorLogradouro = Strings::cleanString($logradouro);
@@ -142,8 +138,13 @@ class Rps extends RpsBase
         $this->tomadorCEP = $cep;
     }
     
-    public function intermediario($cnpj = '', $cpf = '', $im = '', $issRetido = '', $email = '')
-    {
+    public function intermediario(
+        $cnpj = '',
+        $cpf = '',
+        $im = '',
+        $issRetido = '',
+        $email = ''
+    ) {
         $this->intermediarioCNPJ = $cnpj;
         $this->intermediarioCPF = $cpf;
         $this->intermediarioIM = $im;
@@ -342,7 +343,6 @@ class Rps extends RpsBase
         } else {
             $content .= '3' . sprintf('%014s', '0');
         }
-            
         if ($this->intermediarioExists) {
             if ($this->intermediarioCNPJ != '') {
                 $content .= '1' . sprintf('%014s', $this->intermediarioCNPJ);
