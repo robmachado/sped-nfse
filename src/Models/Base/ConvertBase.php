@@ -3,10 +3,10 @@
 namespace NFePHP\NFSe\Models\Base;
 
 /**
- * Classe base para a renderização dos RPS em XML
+ * Classe base para a conversão do TXT dos RPS em XML
  * 
  * @category  NFePHP
- * @package   NFePHP\NFSe\Base\RenderBase
+ * @package   NFePHP\NFSe\Base\ConvertBase
  * @copyright NFePHP Copyright (c) 2016
  * @license   http://www.gnu.org/licenses/lgpl.txt LGPLv3+
  * @license   https://opensource.org/licenses/MIT MIT
@@ -15,7 +15,7 @@ namespace NFePHP\NFSe\Models\Base;
  * @link      http://github.com/nfephp-org/sped-nfse for the canonical source repository
  */
 
-class RenderBase
+class ConvertBase
 {
-    
+    //put your code here
 }
