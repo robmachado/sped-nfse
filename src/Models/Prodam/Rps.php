@@ -104,8 +104,7 @@ class Rps extends RpsBase
     public function render()
     {
     }
-    
-  
+      
     public function prestador($im)
     {
         $this->prestadorIM = $im;

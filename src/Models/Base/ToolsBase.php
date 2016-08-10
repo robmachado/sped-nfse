@@ -27,6 +27,7 @@ class ToolsBase extends BaseTools implements ToolsInferface
     public function __construct($config)
     {
         parent::__construct($config);
+        
     }
     
     public function setSaveLogs()

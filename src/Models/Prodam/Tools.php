@@ -21,7 +21,44 @@ use NFePHP\NFSe\Models\Base\ToolsInterface;
 
 class Tools extends ToolsBase implements ToolsInferface
 {
-    protected function cabecalho()
+    /**
+     * Cabeçalho do RPS
+     * @var string
+     */
+    protected $cabecalho;
+    
+    //quando mais de um RPS for carregado
+    //as variaveis abaixo devem ser carregadas
+    protected $transacao = false;
+    protected $dtInicio;
+    protected $dtFim;
+    protected $qtdRPS;
+    protected $valorTotalServicos = 0.0;
+    protected $valorTotalDeducoes = 0.0;
+    
+    /**
+     * Construtor no cabeçalho
+     */
+    protected function cabecalho($numRPS = 1)
     {
+        $versao = $this->aConfig['versao'];
+        $cpf = $this->aConfig['cpf'];
+        $cnpj = $this->aConfig['cnpj'];
+        $this->cabecalho = "<Cabecalho Versao=\"$versao\"><CPFCNPJRemetente>";
+        if ($cnpj != '') {
+            $this->cabecalho .= "<CNPJ>$cnpj</CNPJ>";
+        } else {
+            $this->cabecalho .= "<CPF>$cpf</CPF>";
+        }
+        $this->cabecalho .= "</CPFCNPJRemetente>";
+        if ($this->transacao) {        
+            $this->cabecalho .= "<transacao>true</transacao>"
+                . "<dtInicio>$this->dtInicio</dtInicio>"
+                . "<dtFim>$this->dtFim</dtFim>"
+                . "<QtdRPS>$this->qtdRPS</QtdRPS>"
+                . "<ValorTotalServicos>$this->valorTotalServicos</ValorTotalServicos>"
+                . "<ValorTotalDeducoes>$this->valorTotalDeducoes</ValorTotalDeducoes>";
+        }
+        $this->cabecalho .= "</Cabecalho>";
     }
 }
