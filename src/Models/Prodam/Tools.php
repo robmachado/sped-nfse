@@ -1,13 +1,13 @@
 <?php
 
-namespace NFePHP\NFSe\Counties;
+namespace NFePHP\NFSe\Models\Prodam;
 
 /**
  * Classe para a comunicação com os webservices da Cidade de São Paulo
  * conforme o modelo Prodam
  *
  * @category  NFePHP
- * @package   NFePHP\NFSe\Counties\T3550308
+ * @package   NFePHP\NFSe\Prodam\Tools
  * @copyright NFePHP Copyright (c) 2016
  * @license   http://www.gnu.org/licenses/lgpl.txt LGPLv3+
  * @license   https://opensource.org/licenses/MIT MIT
@@ -16,9 +16,12 @@ namespace NFePHP\NFSe\Counties;
  * @link      http://github.com/nfephp-org/sped-nfse for the canonical source repository
  */
 
-use NFePHP\NFSe\Models\Prodam\ToolsProdam;
+use NFePHP\NFSe\Models\Base\ToolsBase;
+use NFePHP\NFSe\Models\Base\ToolsInterface;
 
-class T3550308 extends ToolsProdam
+class Tools extends ToolsBase implements ToolsInferface
 {
-    
+    protected function cabecalho()
+    {
+    }
 }

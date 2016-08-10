@@ -2,11 +2,25 @@
 
 namespace NFePHP\NFSe\Models\Prodam;
 
+/**
+ * Classe a construção do xml da NFSe para a Cidade de São Paulo
+ * conforme o modelo Prodam
+ *
+ * @category  NFePHP
+ * @package   NFePHP\NFSe\Prodam\Rps
+ * @copyright NFePHP Copyright (c) 2016
+ * @license   http://www.gnu.org/licenses/lgpl.txt LGPLv3+
+ * @license   https://opensource.org/licenses/MIT MIT
+ * @license   http://www.gnu.org/licenses/gpl.txt GPLv3+
+ * @author    Roberto L. Machado <linux.rlm at gmail dot com>
+ * @link      http://github.com/nfephp-org/sped-nfse for the canonical source repository
+ */
+
 use InvalidArgumentException;
 use NFePHP\Common\Strings\Strings;
 use NFePHP\NFSe\Models\Base\RpsBase;
 
-class RpsProdam extends RpsBase
+class Rps extends RpsBase
 {
     public $remetenteRazao;
     public $remetenteCNPJ;
@@ -307,7 +321,7 @@ class RpsProdam extends RpsBase
     }
     
     /**
-     * Constroi a astring que será a assinatura do RPS
+     * Constroi a string que será a assinatura do RPS
      */
     protected function zAssinatura()
     {

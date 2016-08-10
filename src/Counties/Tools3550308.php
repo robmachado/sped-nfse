@@ -1,12 +1,13 @@
 <?php
 
-namespace NFePHP\NFSe\Models\Base;
+namespace NFePHP\NFSe\Counties;
 
 /**
- * Classe base para a renderização dos RPS em XML
- * 
+ * Classe para a comunicação com os webservices da Cidade de São Paulo
+ * conforme o modelo Prodam
+ *
  * @category  NFePHP
- * @package   NFePHP\NFSe\Base\RnderBase
+ * @package   NFePHP\NFSe\Counties\Tools3550308
  * @copyright NFePHP Copyright (c) 2016
  * @license   http://www.gnu.org/licenses/lgpl.txt LGPLv3+
  * @license   https://opensource.org/licenses/MIT MIT
@@ -15,7 +16,9 @@ namespace NFePHP\NFSe\Models\Base;
  * @link      http://github.com/nfephp-org/sped-nfse for the canonical source repository
  */
 
-class RenderBase
+use NFePHP\NFSe\Models\Prodam\Tools;
+
+class Tools3550308 extends Tools
 {
     
 }
