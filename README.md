@@ -1,6 +1,7 @@
 # SPED-NFSE
 
 **API para a integração com os sistemas de Notas Fiscais Eletrônicas de Serviços das Prefeituras Municipais**
+
 *sped-nfse* é um framework para geração dos RPS e comunicação das NFSe com as Prefeituras Municipais.
 
 [![Build Status][ico-travis]][link-travis]
@@ -102,9 +103,9 @@ Existem muitos "padrões" diferentes para a emissão de NFSe, além disso, cada 
 - NFSeNET
 - NFWEB
 - Nota Blu
-- Nota Carioca (derivação ABRASF)
+- **Nota Carioca (derivação ABRASF) - em desenvolvimento**
 - Nota Natalense
-- Nota Salvador (derivação ABRASF)
+- **Nota Salvador (derivação ABRASF) - em desenvolvimento**
 - PMJP
 - PortalFacil
 - Prescon
