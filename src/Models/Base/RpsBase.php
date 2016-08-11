@@ -16,12 +16,11 @@ namespace NFePHP\NFSe\Models\Base;
  */
 
 use InvalidArgumentException;
-use NFePHP\Common\Strings\Strings;
+use NFePHP\Common\Files\FilesFolders;
 
 class RpsBase
 {
     public $versao = '';
-    
     
     public function setVersao($versao)
     {

@@ -22,11 +22,8 @@ use NFePHP\NFSe\Models\Base\RpsBase;
 
 class Rps extends RpsBase
 {
-    public $remetenteRazao = '';
-    public $remetenteCNPJ = '';
-    public $remetenteCPF = '';
-    public $remetenteIM = '';
-    public $remetenteCMun = '';
+    
+    //dados submetidos
     public $prestadorIM = '';
     public $serieRPS = '';
     public $numeroRPS = '';
