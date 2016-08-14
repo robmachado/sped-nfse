@@ -15,7 +15,14 @@ namespace NFePHP\NFSe\Models\Base;
  * @link      http://github.com/nfephp-org/sped-nfse for the canonical source repository
  */
 
+use NFePHP\Common\Dom\Dom;
+
 class RenderBase
 {
+    protected $dom;
     
+    public function __construct()
+    {
+        $this->dom = new Dom();
+    }
 }

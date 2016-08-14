@@ -27,7 +27,6 @@ class Convert extends ConvertBase
     // e validação
     protected static $contTipos = [1=>0,2=>0,3=>0,5=>0,6=>0,9=>0];
     protected static $numRps = 0;
-    
     protected static $f1 = [];
     protected static $f2 = [];
     protected static $f3 = [];
@@ -36,22 +35,22 @@ class Convert extends ConvertBase
     protected static $f9 = [];
     
     protected static $bF = [
-        ['tipo',1,'N'],//1
-        ['tpRPS',5,'C'],//2
-        ['serie',5,'C'],//3
-        ['numero',12,'N'],//4
-        ['dtEmi',8,'N'],//5
-        ['situacao',1,'C'],//6
-        ['valor',15,'N'],//7
-        ['deducoes',15,'N'],//8
-        ['codigo',5,'N'],//9
-        ['aliquota',4,'N'],//10
-        ['issRetido',1,'N'],//11
-        ['indTomador',1,'N'],//12
-        ['cnpjcpfTomador',14,'N']
+        ['tipo',1,'N', 0],//1
+        ['tpRPS',5,'C', ''],//2
+        ['serie',5,'N', 0],//3
+        ['numero',12,'N', 0],//4
+        ['dtEmi',8,'D', 'Y-m-d'],//5
+        ['situacao',1,'C', ''],//6
+        ['valor',15,'N', 2],//7
+        ['deducoes',15,'N', 2],//8
+        ['codigo',5,'N', 0],//9
+        ['aliquota',4,'N', 4],//10
+        ['issRetido',1,'C', ''],//11
+        ['indTomador',1,'N', 0],//12
+        ['cnpjcpfTomador',14,'N', 0]
     ];
 
-    public static function get($txt = '')
+    public static function toRps($txt = '')
     {
         if (empty($txt)) {
             throw new InvalidArgumentException('Algum dado deve ser passado para converter.');
@@ -85,8 +84,8 @@ class Convert extends ConvertBase
             self::$aRps[] = new Rps();
         }
         self::zArray2Rps($aDados);
-        
-        return self::$f2;
+        self::loadRPS();
+        return self::$aRps;
     }
     
     protected static function validTipos()
@@ -106,9 +105,12 @@ class Convert extends ConvertBase
         }
         if (!empty($msg)) {
             throw new InvalidArgumentException($msg);
-        }    
+        }
     }
-
+    
+    /**
+     * Carrega os RPS contidos no txt
+     */
     protected static function loadRPS()
     {
         if (count(self::$f2) > 0) {
@@ -119,7 +121,8 @@ class Convert extends ConvertBase
             $fData = self::$f6;
         }
         $x = 0;
-        foreach(self::$aRps as $rps) {
+        //return $fData[$x]['tpRPS'];
+        foreach (self::$aRps as $rps) {
             $rps->tipo($fData[$x]['tpRPS']);
             $rps->serie($fData[$x]['serie']);
             $rps->data($fData[$x]['dtEmi']);
@@ -138,7 +141,7 @@ class Convert extends ConvertBase
                 $cpf,
                 $fData[$x]['ieTomador'],
                 $fData[$x]['imTomador'],
-                $fData[$x]['emailTomador']     
+                $fData[$x]['emailTomador']
             );
             $rps->tomadorEndereco(
                 $fData[$x]['tpEndTomador'],
@@ -167,11 +170,11 @@ class Convert extends ConvertBase
     {
         //5 campos
         $aFields = [
-            ['tipo',1,'N'],
-            ['versao',3,'N'],
-            ['prestadorIM',8,'N'],
-            ['dtIni',8,'N'],
-            ['dtFim',8,'N']
+            ['tipo',1,'N', 0],
+            ['versao',3, 'N', 0],
+            ['prestadorIM',8,'N', 0],
+            ['dtIni',8,'D', 'Y-m-d'],
+            ['dtFim',8,'D', 'Y-m-d']
         ];
         self::$f1 = self::extract($dado, $aFields);
     }
@@ -179,26 +182,26 @@ class Convert extends ConvertBase
     /**
      * REGISTRO TIPO 2 – DETALHE
      * Versão 001
-     * @param type $dados
+     * @param string $dado
      */
     protected static function f2Entity($dado)
     {
         //26 campos
         $aFields = self::$bF;
         $aadFields = [
-            ['imTomador',8,'N'],//14
-            ['ieTomador',12,'N'],//15
-            ['razaoTomador',75,'C'],//16
-            ['tpEndTomador',3,'C'],//17
-            ['logradouroTomador',50,'C'],//18
-            ['numTomador',10,'C'],//19
-            ['cplTomador',30,'C'],//20
-            ['bairroTomador',30,'C'],//21
-            ['cidadeTomador',50,'C'],//22
-            ['ufTomador',2,'C'],//23
-            ['cepTomador',8,'N'],//24
-            ['emailTomador',75,'C'],//25
-            ['discriminacao',1000,'C']//26
+            ['imTomador',8,'N', 0],//14
+            ['ieTomador',12,'N', 0],//15
+            ['razaoTomador',75,'C', ''],//16
+            ['tpEndTomador',3,'C', ''],//17
+            ['logradouroTomador',50,'C', ''],//18
+            ['numTomador',10,'C', ''],//19
+            ['cplTomador',30,'C', ''],//20
+            ['bairroTomador',30,'C', ''],//21
+            ['cidadeTomador',50,'C', ''],//22
+            ['ufTomador',2,'C', ''],//23
+            ['cepTomador',8,'N', 0],//24
+            ['emailTomador',75,'C', ''],//25
+            ['discriminacao',1000,'C', '']//26
         ];
         $aFields = array_merge($aFields, $aadFields);
         self::$f2[] = self::extract($dado, $aFields);
@@ -207,13 +210,13 @@ class Convert extends ConvertBase
     /**
      * REGISTRO TIPO 3 - DETALHE (EXCLUSIVO PARA CUPONS)
      * Versão 001 e 002
-     * @param string $dados
+     * @param string $dado
      */
     protected static function f3Entity($dado)
     {
         //14 campos
         $aFields = self::$bF;
-        $aFields[] = ['discriminacao',1000,'C'];//14
+        $aFields[] = ['discriminacao',1000,'C', ''];//14
         self::$f3[] = self::extract($dado, $aFields);
     }
     
@@ -226,11 +229,11 @@ class Convert extends ConvertBase
     {
         //5 campos
         $aFields = [
-            ['tipo',1,'N'],
-            ['indicador',1,'N'],
-            ['intermediarioCNPJ',14,'N'],
-            ['intermediarioIM',8,'N'],
-            ['intermediarioEmail',75,'C']
+            ['tipo',1,'N', 0],
+            ['indicador',1,'N', 0],
+            ['intermediarioCNPJ',14,'N', 0],
+            ['intermediarioIM',8,'N', 0],
+            ['intermediarioEmail',75,'C', '']
         ];
         self::$f5[] = self::extract($dado, $aFields);
     }
@@ -245,31 +248,31 @@ class Convert extends ConvertBase
         //38 campos
         $aFields = self::$bF;
         $aadFields = [
-            ['imTomador',8,'N'],//14
-            ['ieTomador',12,'N'],//15
-            ['razaoTomador',75,'C'],//16
-            ['tpEndTomador',3,'C'],//17
-            ['logradouroTomador',50,'C'],//18
-            ['numTomador',10,'C'],//19
-            ['cplTomador',30,'C'],//20
-            ['bairroTomador',30,'C'],//21
-            ['cidadeTomador',50,'C'],//22
-            ['ufTomador',2,'C'],//23
-            ['cepTomador',8,'N'],//24
-            ['emailTomador',75,'C'],//25            
-            ['pis',15,'N'],//26
-            ['cofins',15,'N'],//27
-            ['inss',15,'N'],//28
-            ['ir',15,'N'],//29
-            ['cssl',15,'N'],//30
-            ['cargaTribValor',15,'N'],//31
-            ['cargaTribPerc',5,''],//32
-            ['cargaTribFonte',10,'C'],//33
-            ['cei',12,'N'],//34
-            ['matriculaObra',12,'N'],//35
-            ['cMunPrestacao',7,'N'],//36
-            ['reservado',200,'C'],//37
-            ['discriminacao',1000,'C']//38
+            ['imTomador',8,'N', 0],//14
+            ['ieTomador',12,'N', 0],//15
+            ['razaoTomador',75,'C', ''],//16
+            ['tpEndTomador',3,'C', ''],//17
+            ['logradouroTomador',50,'C', ''],//18
+            ['numTomador',10,'C', ''],//19
+            ['cplTomador',30,'C', ''],//20
+            ['bairroTomador',30,'C', ''],//21
+            ['cidadeTomador',50,'C', ''],//22
+            ['ufTomador',2,'C', ''],//23
+            ['cepTomador',8,'N', 0],//24
+            ['emailTomador',75,'C', ''],//25
+            ['pis',15,'N', 2],//26
+            ['cofins',15,'N', 2],//27
+            ['inss',15,'N', 2],//28
+            ['ir',15,'N', 2],//29
+            ['cssl',15,'N', 2],//30
+            ['cargaTribValor',15,'N', 2],//31
+            ['cargaTribPerc',5,'N', 4],//32
+            ['cargaTribFonte',10,'C', ''],//33
+            ['cei',12,'N', 0],//34
+            ['matriculaObra',12,'N', 0],//35
+            ['cMunPrestacao',7,'N', 0],//36
+            ['reservado',200,'C', ''],//37
+            ['discriminacao',1000, 'C', '']//38
         ];
         $aFields = array_merge($aFields, $aadFields);
         self::$f6[] = self::extract($dado, $aFields);
@@ -284,10 +287,10 @@ class Convert extends ConvertBase
     {
         //4 campos
         $aFields = [
-            ['tipo',1,'N'],
-            ['num',7,'N'],
-            ['valorTotalServicos',15,'N'],
-            ['valorTotalDeducoes',15,'N']
+            ['tipo',1,'N', 0],
+            ['num',7,'N', 0],
+            ['valorTotalServicos',15,'N', 2],
+            ['valorTotalDeducoes',15,'N', 2]
         ];
         self::$f9 = self::extract($dado, $aFields);
     }
@@ -313,7 +316,7 @@ class Convert extends ConvertBase
     }
     
     /**
-     * Extrai os dados formatados em campos de array
+     * Extrai os dados da string em campos de array
      * @param string $dado
      * @param array $aFields
      * @return array
@@ -329,8 +332,24 @@ class Convert extends ConvertBase
             if ($pos >= $len) {
                 $aData[$field[0]] = '';
             } else {
-                $aData[$field[0]] = substr($dado, $pos, $field[1]);
-            }   
+                $tipo = $field[2];
+                $df = substr($dado, $pos, $field[1]);
+                if ($tipo == 'N') {
+                    //converter representação
+                    $df = $df/(10**$field[3]);
+                    //formatar dado numerico
+                    $df = number_format($df, $field[3], '.', '');
+                } elseif ($tipo == 'C') {
+                    //formatar dado string
+                    if ($field[3] != '') {
+                        $df = preg_replace($field[3], '', $df);
+                    }
+                } elseif ($tipo == 'D') {
+                    //formatar dado data
+                    $df = substr($df, 0, 4) . '-' . substr($df, 4, 2) . '-' . substr($df, 6, 2);
+                }
+                $aData[$field[0]] = $df;
+            }
             $x++;
             $pos += $field[1];
         }
