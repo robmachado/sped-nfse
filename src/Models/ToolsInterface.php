@@ -1,14 +1,16 @@
 <?php
 
-namespace NFePHP\NFSe\Models\Base;
+namespace NFePHP\NFSe\Models;
 
-interface ToolsInferface
+interface ToolsInterface
 {
     public function setSaveLogs();
     
     public function assina();
     
     public function envioRPS();
+    
+    public function envioLoteRPS();
     
     public function testeEnvioRPS();
     

@@ -19,7 +19,7 @@ use NFePHP\NFSe\Models\Base\ToolsInferface;
 use NFePHP\Common\Base\BaseTools;
 use NFePHP\Common\Files;
 
-class ToolsBase extends BaseTools implements ToolsInferface
+class ToolsBase extends BaseTools
 {
   
     protected $saveLog = true;
@@ -30,47 +30,6 @@ class ToolsBase extends BaseTools implements ToolsInferface
     }
     
     public function setSaveLogs()
-    {
-    }
-    
-    public function assina()
-    {
-    }
-
-    public function envioRPS()
-    {
-        //unico ou em lote
-    }
-    
-    public function testeEnvioRPS()
-    {
-    }
-    
-    public function consultaNFSe()
-    {
-    }
-    
-    public function consultaNFSeRecebidas()
-    {
-    }
-    
-    public function consultaNFSeEmitidas()
-    {
-    }
-    
-    public function consultaLote()
-    {
-    }
-    
-    public function consultaInformacoesLote()
-    {
-    }
-    
-    public function cancelamentoNFSe()
-    {
-    }
-    
-    public function consultaCNPJ()
     {
     }
 }

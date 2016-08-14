@@ -1,12 +1,13 @@
 <?php
 
-namespace NFePHP\NFSe\Models\Base;
+namespace NFePHP\NFSe\Counties;
 
 /**
- * Classe base para a construção do xml da NFSe e RPS
+ * Classe a construção do xml da NFSe para a Cidade de São Paulo
+ * conforme o modelo Prodam
  *
  * @category  NFePHP
- * @package   NFePHP\NFSe\Base\RpsBase
+ * @package   NFePHP\NFSe\Counties\C3550308
  * @copyright NFePHP Copyright (c) 2016
  * @license   http://www.gnu.org/licenses/lgpl.txt LGPLv3+
  * @license   https://opensource.org/licenses/MIT MIT
@@ -15,14 +16,9 @@ namespace NFePHP\NFSe\Models\Base;
  * @link      http://github.com/nfephp-org/sped-nfse for the canonical source repository
  */
 
-use InvalidArgumentException;
-use NFePHP\Common\Files\FilesFolders;
+use NFePHP\NFSe\Models\Prodam\Convert;
 
-class RpsBase
+class Convert3550308 extends Convert
 {
-    protected function zValidData($matriz, $key)
-    {
-        $flag = array_key_exists($key, $matriz);
-        return true;
-    }
+    
 }

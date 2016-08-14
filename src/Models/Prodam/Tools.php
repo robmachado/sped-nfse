@@ -17,9 +17,10 @@ namespace NFePHP\NFSe\Models\Prodam;
  */
 
 use NFePHP\NFSe\Models\Base\ToolsBase;
-use NFePHP\NFSe\Models\Base\ToolsInterface;
+use NFePHP\NFSe\Models\Prodam\Rps;
+use NFePHP\NFSe\Models\ToolsInterface;
 
-class Tools extends ToolsBase implements ToolsInferface
+class Tools extends ToolsBase
 {
     /**
      * Cabeçalho do RPS
@@ -35,6 +36,11 @@ class Tools extends ToolsBase implements ToolsInferface
     protected $qtdRPS;
     protected $valorTotalServicos = 0.0;
     protected $valorTotalDeducoes = 0.0;
+    
+    public function __construct($config)
+    {
+        parent::__construct($config);
+    }
     
     /**
      * Construtor no cabeçalho
@@ -60,5 +66,95 @@ class Tools extends ToolsBase implements ToolsInferface
                 . "<ValorTotalDeducoes>$this->valorTotalDeducoes</ValorTotalDeducoes>";
         }
         $this->cabecalho .= "</Cabecalho>";
+    }
+    
+    public function envioRPS(RPS $rps)
+    {
+    }
+    
+    public function envioLoteRPS($rpss = array())
+    {
+        foreach($rpss as $rps) {
+            echo '<pre>';
+            print_r($rps);
+            echo '</pre><BR>';
+        }    
+        //um array de objetos Prodam\Rps paqra formar um lote de envio
+    }
+    
+    public function assina()
+    {
+    }
+    
+    
+    public function testeEnvioRPS()
+    {
+    }
+    
+    public function consultaNFSe()
+    {
+    }
+    
+    public function consultaNFSeRecebidas()
+    {
+    }
+    
+    public function consultaNFSeEmitidas()
+    {
+    }
+    
+    public function consultaLote()
+    {
+    }
+    
+    public function consultaInformacoesLote()
+    {
+    }
+    
+    public function cancelamentoNFSe()
+    {
+    }
+
+    public function consultaCNPJ()
+    {
+    }
+    /**
+     * Constroi a string que será a assinatura do RPS
+     */
+    protected function zSignRps(Rps $rps)
+    {
+        $content = sprintf('%08s', $rps->prestadorIM) .
+            sprintf('%-5s', $rps->serieRPS) .
+            sprintf('%012s', $rps->numeroRPS) .
+            str_replace("-", "", $rps->dtEmiRPS) .
+            $rps->tributacaoRPS .
+            $rps->statusRPS .
+            $rps->issRetidoRPS .
+            sprintf('%015s', str_replace(array('.', ','), '', number_format($rps->valorServicosRPS, 2))) .
+            sprintf('%015s', str_replace(array('.', ','), '', number_format($rps->valorDeducoesRPS, 2))) .
+            sprintf('%05s', $rps->codigoServicoRPS);
+            
+        if ($rps->tomadorCNPJ != '') {
+            $content .= '1' . sprintf('%014s', $rps->tomadorCNPJ);
+        } elseif ($rps->tomadorCPF != '') {
+            $content .= '2' . sprintf('%014s', $rps->tomadorCPF);
+        } else {
+            $content .= '3' . sprintf('%014s', '0');
+        }
+        if ($rps->intermediarioExists) {
+            if ($rps->intermediarioCNPJ != '') {
+                $content .= '1' . sprintf('%014s', $rps->intermediarioCNPJ);
+            } elseif ($this->intermediarioCPF != '') {
+                $content .= '2' . sprintf('%014s', $rps->intermediarioCPF);
+            } else {
+                $content .= '3' . sprintf('%014s', '0');
+            }
+            $content .= $rps->intermediarioISSRetido;
+        }
+        $pkeyId = openssl_get_privatekey(file_get_contents($this->privateKey));
+        openssl_sign($content, $signatureValue, $pkeyId, OPENSSL_ALGO_SHA1);
+        openssl_free_key($pkeyId);
+        return base64_encode($signatureValue);
+        //$dom->getElementsByTagName('Assinatura')->item(0)->nodeValue = 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAA';
     }
 }

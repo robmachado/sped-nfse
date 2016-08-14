@@ -22,8 +22,7 @@ use NFePHP\NFSe\Models\Base\RpsBase;
 
 class Rps extends RpsBase
 {
-    
-    //dados submetidos
+    public $versaoRPS = '';
     public $prestadorIM = '';
     public $serieRPS = '';
     public $numeroRPS = '';
@@ -48,8 +47,8 @@ class Rps extends RpsBase
     public $aliquotaServicosRPS = '';
     public $issRetidoRPS = '';
     public $discriminacaoRPS = '';
-    public $tomadorCPF = '';
-    public $tomadorCNPJ = '';
+    public $tomadorTipoDoc = '2';
+    public $tomadorCNPJCPF = '';
     public $tomadorIE = '';
     public $tomadorIM = '';
     public $tomadorRazao  = '';
@@ -62,12 +61,10 @@ class Rps extends RpsBase
     public $tomadorSiglaUF = '';
     public $tomadorCEP = '';
     public $tomadorEmail = '';
-    public $intermediarioCNPJ = '';
-    public $intermediarioCPF = '';
+    public $intermediarioCNPJCPF = '';
     public $intermediarioIM = '';
-    public $intermediarioISSRetido = 'N';
+    public $intermediarioISSRetido = '';
     public $intermediarioEmail = '';
-    public $intermediarioExists = false;
     public $assinaturaRPS = '';
     
     private $aTp = [
@@ -95,24 +92,22 @@ class Rps extends RpsBase
     public function prestador($im)
     {
         $this->prestadorIM = $im;
-        $this->zAssinatura();
     }
     
     public function tomador(
         $razao,
-        $cnpj = '',
-        $cpf = '',
+        $tipo = '2',
+        $cnpjcpf = '',
         $ie = '',
         $im = '',
         $email = ''
     ) {
         $this->tomadorRazao = Strings::cleanString($razao);
-        $this->tomadorCPF = $cpf;
-        $this->tomadorCNPJ = $cnpj;
+        $this->tomadorTipoDoc = $tipo;
+        $this->tomadorCNPJCPF = $cnpjcpf;
         $this->tomadorIE = $ie;
         $this->tomadorIM = $im;
         $this->tomadorEmail = $email;
-        $this->zAssinatura();
     }
     
     public function tomadorEndereco(
@@ -137,42 +132,41 @@ class Rps extends RpsBase
     
     public function intermediario(
         $cnpj = '',
-        $cpf = '',
         $im = '',
         $issRetido = '',
         $email = ''
     ) {
-        $this->intermediarioCNPJ = $cnpj;
-        $this->intermediarioCPF = $cpf;
+        $this->intermediarioCNPJCPF = $cnpj;
         $this->intermediarioIM = $im;
         $this->intermediarioISSRetido = $issRetido;
         $this->intermediarioEmail = $email;
-        if ($cnpj != '' || $cpf != '' || $im != '' || $issRetido != '' || $email != '') {
-            $this->intermediarioExists = true;
-            $this->zAssinatura();
-        }
     }
 
+    public function versao($versao)
+    {
+        $versao = preg_replace('/[^0-9]/', '', $versao);
+        $this->versaoRPS = $versao;
+    }
+    
     public function serie($serie = '')
     {
+        $serie = substr(trim($serie), 0, 5);
         $this->serieRPS = $serie;
-        $this->zAssinatura();
     }
     
     public function numero($numero = 0)
     {
         if (!is_numeric($numero) || $numero <= 0) {
-            $msg = 'O numero deve ser maior ou igual a 1';
+            $msg = 'O numero do RPS deve ser maior ou igual a 1';
             throw new InvalidArgumentException($msg);
         }
         $this->numeroRPS = $numero;
-        $this->zAssinatura();
     }
     
     public function data($data)
     {
+        
         $this->dtEmiRPS = $data;
-        $this->zAssinatura();
     }
     
     public function status($status = 'N')
@@ -182,7 +176,6 @@ class Rps extends RpsBase
             throw new InvalidArgumentException($msg);
         }
         $this->statusRPS = $status;
-        $this->zAssinatura();
     }
     
     /**
@@ -223,133 +216,90 @@ class Rps extends RpsBase
             throw new InvalidArgumentException($msg);
         }
         $this->tributacaoRPS = $tributacao;
-        $this->zAssinatura();
     }
     
-    public function codigoServico($cod)
+    public function codigoServico($cod = '')
     {
         $this->codigoServicoRPS =  $cod;
     }
             
-    public function valorServicos($valor)
+    public function valorServicos($valor = 0.00)
     {
-        $this->valorServicosRPS = $valor;
-        $this->zAssinatura();
+        $this->valorServicosRPS = number_format($valor, 2, '.', '');
     }
     
-    public function valorDeducoes($valor)
+    public function valorDeducoes($valor = 0.00)
     {
-        $this->valorDeducoesRPS = $valor;
-        $this->zAssinatura();
+        $this->valorDeducoesRPS = number_format($valor, 2, '.', '');
     }
     
-    public function aliquotaServico($valor)
+    public function aliquotaServico($valor = 0.0000)
     {
-        $this->aliquotaServicosRPS = $valor;
+        if ($valor > 1 || $valor < 0) {
+            $msg = 'Voce deve indicar uma aliquota em fração ex. 0.12.';
+            throw new InvalidArgumentException($msg);
+        }
+        $this->aliquotaServicosRPS = number_format($valor, 4, '.', '');
     }
     
-    public function issRetido($valor = 'N')
+    public function issRetido($flag = 'N')
     {
-        if (!$this->zValidData(['S' => 0, 'N' => 1], $valor)) {
+        if (!$this->zValidData(['S' => 0, 'N' => 1], $flag)) {
             $msg = 'Voce deve indicar S ou N para informar se existe retenção de ISS.';
             throw new InvalidArgumentException($msg);
         }
-        $this->issRetidoRPS = $valor;
-        $this->zAssinatura();
+        $this->issRetidoRPS = $flag;
     }
     
-    public function discriminacao($desc)
+    public function discriminacao($desc = '')
     {
-        $this->discriminacaoRPS = Strings::cleanString($desc);
+        $this->discriminacaoRPS = Strings::cleanString(trim($desc));
     }
     
-    public function valorCargaTributaria($valor)
+    public function cargaTributaria($valor = 0.00, $percentual = 0.0000, $fonte = '')
     {
-        $this->valorCargaTributariaRPS = $valor;
+        $this->valorCargaTributariaRPS = number_format($valor, 2, '.', '');
+        $this->percentualCargaTributariaRPS = number_format($valor, 4, '.', '');
+        $this->fonteCargaTributariaRPS = substr(Strings::cleanString($fonte), 0, 10);
     }
     
-    public function percentualCargaTributaria($valor)
+    public function valorPIS($valor = 0.00)
     {
-        $this->percentualCargaTributariaRPS = $valor;
+        $this->valorPISRPS = number_format($valor, 2, '.', '');
     }
     
-    public function fonteCargaTributaria($fonte)
+    public function valorCOFINS($valor = 0.00)
     {
-        $this->fonteCargaTributariaRPS = $fonte;
+        $this->valorCOFINSRPS = number_format($valor, 2, '.', '');
     }
     
-    public function valorPIS($valor)
+    public function valorINSS($valor = 0.00)
     {
-        $this->valorPISRPS = $valor;
+        $this->valorINSSRPS = number_format($valor, 2, '.', '');
     }
     
-    public function valorCOFINS($valor)
+    public function valorIR($valor = 0.00)
     {
-        $this->valorCOFINSRPS = $valor;
-    }
-    public function valorINSS($valor)
-    {
-        $this->valorINSSRPS = $valor;
+        $this->valorIRRPS = number_format($valor, 2, '.', '');
     }
     
-    public function valorIR($valor)
+    public function valorCSLL($valor = 0.00)
     {
-        $this->valorIRRPS = $valor;
+        $this->valorCSLLRPS = number_format($valor, 2, '.', '');
     }
     
-    public function valorCSLL($valor)
-    {
-        $this->valorCSLLRPS = $valor;
-    }
-    
-    public function codigoCEI($cod)
+    public function codigoCEI($cod = '')
     {
         $this->codigoCEIRPS = $cod;
     }
     
-    public function matriculaObra($matricula)
+    public function matriculaObra($matricula = '')
     {
         $this->matriculaObraRPS = $matricula;
     }
     
-    public function municipioPrestacao($cmun)
+    public function municipioPrestacao($cmun = '')
     {
         $this->municipioPrestacaoRPS = $cmun;
-    }
-    
-    /**
-     * Constroi a string que será a assinatura do RPS
-     */
-    protected function zAssinatura()
-    {
-        $content = sprintf('%08s', $this->prestadorIM) .
-            sprintf('%-5s', $this->serieRPS) .
-            sprintf('%012s', $this->numeroRPS) .
-            str_replace("-", "", $this->dtEmiRPS) .
-            $this->tributacaoRPS .
-            $this->statusRPS .
-            $this->issRetidoRPS .
-            sprintf('%015s', str_replace(array('.', ','), '', number_format($this->valorServicosRPS, 2))) .
-            sprintf('%015s', str_replace(array('.', ','), '', number_format($this->valorDeducoesRPS, 2))) .
-            sprintf('%05s', $this->codigoServicoRPS);
-            
-        if ($this->tomadorCNPJ != '') {
-            $content .= '1' . sprintf('%014s', $this->tomadorCNPJ);
-        } elseif ($this->tomadorCPF != '') {
-            $content .= '2' . sprintf('%014s', $this->tomadorCPF);
-        } else {
-            $content .= '3' . sprintf('%014s', '0');
-        }
-        if ($this->intermediarioExists) {
-            if ($this->intermediarioCNPJ != '') {
-                $content .= '1' . sprintf('%014s', $this->intermediarioCNPJ);
-            } elseif ($this->intermediarioCPF != '') {
-                $content .= '2' . sprintf('%014s', $this->intermediarioCPF);
-            } else {
-                $content .= '3' . sprintf('%014s', '0');
-            }
-            $content .= $this->intermediarioISSRetido;
-        }
-        $this->assinaturaRPS = $content;
     }
 }

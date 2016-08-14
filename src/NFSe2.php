@@ -1,5 +1,4 @@
 <?php
-
 namespace NFePHP\NFSe;
 
 /**
@@ -19,17 +18,37 @@ namespace NFePHP\NFSe;
 use NFePHP\NFSe\Counties;
 use RuntimeException;
 
-class NFSe
+class NFSe2
 {
+    
+    protected $configJson;
+    public $cMun;
+    public $rps;
+    public $convert;
+    public $tools;
+    
+    public function __construct($config)
+    {
+        $configJson = $config;
+        if (is_file($config)) {
+            $this->configJson = file_get_contents($config);
+        }
+        $conf = json_decode($this->configJson);
+        $this->cMun = $conf->cmun;
+        $this->convert = $this->convertClass();
+        $this->rps = $this->rpsClass();
+        $this->tools = $this->toolsClass();
+    }
+    
     /**
      * Instancia a classe usada na conversão dos arquivos txt em RPS
      * @param string $config
      * @return \NFePHP\NFSe\className
      */
-    public static function convert($config = '')
+    public function convertClass()
     {
-        $className = self::getClassName($config, 'Convert');
-        return self::classCheck($className, $config);
+        $className = $this->getClassName('Convert');
+        return $this->classCheck($className, '');
     }
     
     /**
@@ -39,10 +58,10 @@ class NFSe
      * @param string $config
      * @return \NFePHP\NFSe\className
      */
-    public static function rps($config = '')
+    public function rpsClass()
     {
-        $className = self::getClassName($config, 'Rps');
-        return self::classCheck($className, $config);
+        $className = $this->getClassName('Rps');
+        return $this->classCheck($className, '');
     }
 
     /**
@@ -52,27 +71,21 @@ class NFSe
      * @param string $config
      * @return \NFePHP\NFSe\className
      */
-    public static function tools($config = '')
+    public function toolsClass()
     {
-        $className = self::getClassName($config, 'Tools');
-        return self::classCheck($className, $config);
+        $className = $this->getClassName('Tools');
+        return $this->classCheck($className, $this->configJson);
     }
     
     /**
      * Monta o nome das classes referentes a determinado municipio
      *
-     * @param string $config
      * @param string $complement
      * @return string
      */
-    private static function getClassName($config, $complement)
+    private function getClassName($complement)
     {
-        $configJson = $config;
-        if (is_file($config)) {
-            $configJson = file_get_contents($config);
-        }
-        $conf = json_decode($configJson);
-        return "\NFePHP\NFSe\Counties\\$complement".$conf->cmun;
+        return "\NFePHP\NFSe\Counties\\$complement". $this->cMun;
     }
     
     /**
@@ -83,9 +96,10 @@ class NFSe
      * @return \NFePHP\NFSe\className
      * @throws RuntimeException
      */
-    private static function classCheck($className, $config)
+    private function classCheck($className, $config = '')
     {
-        if (class_exists($className)) {
+        $flag = class_exists($className);
+        if ($flag) {
             return new $className($config);
         } else {
             $msg = 'Este municipio não é atendido pela API.';
