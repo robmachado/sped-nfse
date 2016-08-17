@@ -1,5 +1,7 @@
 # SPED-NFSE
 
+[![Join the chat at https://gitter.im/nfephp-org/sped-nfse](https://badges.gitter.im/nfephp-org/sped-nfse.svg)](https://gitter.im/nfephp-org/sped-nfse?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 **API para a integração com os sistemas de Notas Fiscais Eletrônicas de Serviços das Prefeituras Municipais**
 
 *sped-nfse* é um framework para geração dos RPS e comunicação das NFSe com as Prefeituras Municipais.
