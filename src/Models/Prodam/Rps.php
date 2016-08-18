@@ -45,7 +45,7 @@ class Rps extends RpsBase
     public $municipioPrestacaoRPS = '';
     public $codigoServicoRPS = '';
     public $aliquotaServicosRPS = '';
-    public $issRetidoRPS = '';
+    public $issRetidoRPS = false;
     public $discriminacaoRPS = '';
     public $tomadorTipoDoc = '2';
     public $tomadorCNPJCPF = '';
@@ -61,9 +61,10 @@ class Rps extends RpsBase
     public $tomadorSiglaUF = '';
     public $tomadorCEP = '';
     public $tomadorEmail = '';
+    public $intermediarioTipoDoc = '2';
     public $intermediarioCNPJCPF = '';
     public $intermediarioIM = '';
-    public $intermediarioISSRetido = '';
+    public $intermediarioISSRetido = 'N';
     public $intermediarioEmail = '';
     public $assinaturaRPS = '';
     
@@ -85,15 +86,24 @@ class Rps extends RpsBase
         'P' => 'Exportação de Serviços'
     ];
     
-    public function render()
-    {
-    }
-      
+    /**
+     * Inscrição Municipal do Prestador do Serviço
+     * @param type $im
+     */  
     public function prestador($im)
     {
         $this->prestadorIM = $im;
     }
     
+    /**
+     * Dados do Tomador do Serviço
+     * @param string $razao
+     * @param int $tipo
+     * @param string $cnpjcpf
+     * @param string $ie
+     * @param string $im
+     * @param string $email
+     */
     public function tomador(
         $razao,
         $tipo = '2',
@@ -110,6 +120,17 @@ class Rps extends RpsBase
         $this->tomadorEmail = $email;
     }
     
+    /**
+     * Endereço do Tomador do serviço
+     * @param string $tipo
+     * @param string $logradouro
+     * @param string $numero
+     * @param string $complemento
+     * @param string $bairro
+     * @param int $cmun
+     * @param string $uf
+     * @param string $cep
+     */
     public function tomadorEndereco(
         $tipo = '',
         $logradouro = '',
@@ -130,30 +151,50 @@ class Rps extends RpsBase
         $this->tomadorCEP = $cep;
     }
     
+    /**
+     * Dados do intermediário
+     * @param int $tipo
+     * @param string $cnpj
+     * @param string $im
+     * @param string $email
+     */
     public function intermediario(
+        $tipo = '',
         $cnpj = '',
         $im = '',
-        $issRetido = '',
         $email = ''
     ) {
+        $this->intermediarioTipoDoc = $tipo;
         $this->intermediarioCNPJCPF = $cnpj;
         $this->intermediarioIM = $im;
-        $this->intermediarioISSRetido = $issRetido;
         $this->intermediarioEmail = $email;
     }
-
+    
+    /**
+     * Versão do layout usado 1 ou 2
+     * @param int $versao
+     */
     public function versao($versao)
     {
         $versao = preg_replace('/[^0-9]/', '', $versao);
         $this->versaoRPS = $versao;
     }
     
+    /**
+     * Série do RPS
+     * @param string $serie
+     */
     public function serie($serie = '')
     {
         $serie = substr(trim($serie), 0, 5);
         $this->serieRPS = $serie;
     }
     
+    /**
+     * Numero do RPS
+     * @param int $numero
+     * @throws InvalidArgumentException
+     */
     public function numero($numero = 0)
     {
         if (!is_numeric($numero) || $numero <= 0) {
@@ -163,12 +204,20 @@ class Rps extends RpsBase
         $this->numeroRPS = $numero;
     }
     
+    /**
+     * Data do RPS
+     * @param type $data
+     */
     public function data($data)
     {
-        
         $this->dtEmiRPS = $data;
     }
     
+    /**
+     * Status do RPS Normal ou Cancelado
+     * @param string $status
+     * @throws InvalidArgumentException
+     */
     public function status($status = 'N')
     {
         if (!$this->zValidData(['N' => 0, 'C' => 1], $status)) {
@@ -218,21 +267,38 @@ class Rps extends RpsBase
         $this->tributacaoRPS = $tributacao;
     }
     
+    /**
+     * Código do serviço prestado
+     * @param string $cod
+     */
     public function codigoServico($cod = '')
     {
         $this->codigoServicoRPS =  $cod;
     }
-            
+    
+    /**
+     * Valor dos Serviços prestados
+     * @param float $valor
+     */        
     public function valorServicos($valor = 0.00)
     {
         $this->valorServicosRPS = number_format($valor, 2, '.', '');
     }
     
+    /**
+     * Valor das deduções aplicáveis ao serviço
+     * @param float $valor
+     */
     public function valorDeducoes($valor = 0.00)
     {
         $this->valorDeducoesRPS = number_format($valor, 2, '.', '');
     }
     
+    /**
+     * Aliquota do ISS do serviço
+     * @param float $valor
+     * @throws InvalidArgumentException
+     */
     public function aliquotaServico($valor = 0.0000)
     {
         if ($valor > 1 || $valor < 0) {
@@ -242,20 +308,41 @@ class Rps extends RpsBase
         $this->aliquotaServicosRPS = number_format($valor, 4, '.', '');
     }
     
-    public function issRetido($flag = 'N')
+    /**
+     * Indicador de retenção de ISS
+     * 1 - iss retido pelo tomador
+     * 2 - sem retenção
+     * 3 - iss retido pelo intermediário
+     * @param type $flag
+     */
+    public function issRetido($flag = '2')
     {
-        if (!$this->zValidData(['S' => 0, 'N' => 1], $flag)) {
-            $msg = 'Voce deve indicar S ou N para informar se existe retenção de ISS.';
-            throw new InvalidArgumentException($msg);
+        $this->issRetidoRPS = false;
+        $this->intermediarioISSRetido = 'N';
+        if ($flag == 1) {
+            $this->issRetidoRPS = true;
         }
-        $this->issRetidoRPS = $flag;
+        if ($flag == 3) {
+            $this->intermediarioISSRetido = 'S';
+        }
     }
     
+    /**
+     * Discriminação do serviço prestado
+     * @param string $desc
+     */
     public function discriminacao($desc = '')
     {
         $this->discriminacaoRPS = Strings::cleanString(trim($desc));
     }
     
+    /**
+     * Carga tributária total estimada
+     * Daods normalmente obtidos no IBPT
+     * @param float $valor
+     * @param float $percentual
+     * @param string $fonte
+     */
     public function cargaTributaria($valor = 0.00, $percentual = 0.0000, $fonte = '')
     {
         $this->valorCargaTributariaRPS = number_format($valor, 2, '.', '');
@@ -263,41 +350,74 @@ class Rps extends RpsBase
         $this->fonteCargaTributariaRPS = substr(Strings::cleanString($fonte), 0, 10);
     }
     
+    /**
+     * Valor referente ao recolhimento do PIS
+     * @param type $valor
+     */
     public function valorPIS($valor = 0.00)
     {
         $this->valorPISRPS = number_format($valor, 2, '.', '');
     }
     
+    /**
+     * Valor referente ao recolhimento da COFINS
+     * @param float $valor
+     */
     public function valorCOFINS($valor = 0.00)
     {
         $this->valorCOFINSRPS = number_format($valor, 2, '.', '');
     }
     
+    /**
+     * Valor referente ao recolhimento da contribuição ao INSS
+     * @param float $valor
+     */
     public function valorINSS($valor = 0.00)
     {
         $this->valorINSSRPS = number_format($valor, 2, '.', '');
     }
     
+    /**
+     * Valor refenrente ao IR (Imposto de Renda)
+     * @param float $valor
+     */
     public function valorIR($valor = 0.00)
     {
         $this->valorIRRPS = number_format($valor, 2, '.', '');
     }
     
+    /**
+     * Valor referente a CSLL (contribuição Sobre o Lucro Líquido)
+     * @param float $valor
+     */
     public function valorCSLL($valor = 0.00)
     {
         $this->valorCSLLRPS = number_format($valor, 2, '.', '');
     }
     
+    /**
+     * Código Matricula no CEI (Cadastro Especifico do INSS)
+     * @param string $cod
+     */
     public function codigoCEI($cod = '')
     {
         $this->codigoCEIRPS = $cod;
     }
     
+    /**
+     * Identificaçao ou número de matricula da Obra Civil
+     * @param string $matricula
+     */
     public function matriculaObra($matricula = '')
     {
         $this->matriculaObraRPS = $matricula;
     }
     
+    /**
+     * Código IBGE para o municio onde o serviço
+     * foi prestado
+     * @param int $cmun
+     */
     public function municipioPrestacao($cmun = '')
     {
         $this->municipioPrestacaoRPS = $cmun;

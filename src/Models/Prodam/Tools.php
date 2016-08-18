@@ -23,6 +23,15 @@ use NFePHP\NFSe\Models\ToolsInterface;
 class Tools extends ToolsBase
 {
     /**
+     * Endereços dos webservices
+     * @var array
+     */
+    protected $url = [
+        '2' => 'https://testenfe.prefeitura.sp.gov.br/ws/lotenfe.asmx',
+        '1' => 'https://nfe.prefeitura.sp.gov.br/ws/lotenfe.asmx'
+    ];
+    
+    /**
      * Cabeçalho do RPS
      * @var string
      */
@@ -74,11 +83,11 @@ class Tools extends ToolsBase
     
     public function envioLoteRPS($rpss = array())
     {
-        foreach($rpss as $rps) {
+        foreach ($rpss as $rps) {
             echo '<pre>';
             print_r($rps);
             echo '</pre><BR>';
-        }    
+        }
         //um array de objetos Prodam\Rps paqra formar um lote de envio
     }
     

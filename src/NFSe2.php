@@ -2,7 +2,7 @@
 namespace NFePHP\NFSe;
 
 /**
- * Classe para a instanciação das classes espcificas de cada municipio
+ * Classe para a instanciação das classes especificas de cada municipio
  * atendido pela API
  *
  * @category  NFePHP
@@ -42,6 +42,7 @@ class NFSe2
     
     /**
      * Instancia a classe usada na conversão dos arquivos txt em RPS
+     * com base no codigo do municipio estabelecido pelo IBGE
      * @param string $config
      * @return \NFePHP\NFSe\className
      */
@@ -54,7 +55,7 @@ class NFSe2
     /**
      * Instancia a classe usada na construção do RPS
      * para um municipio em particular
-     *
+     * com base no codigo do municipio estabelecido pelo IBGE
      * @param string $config
      * @return \NFePHP\NFSe\className
      */
@@ -67,7 +68,7 @@ class NFSe2
     /**
      * Instancia a classe usada na comunicação com o webservice
      * para um municipio em particular
-     *
+     * com base no codigo do municipio estabelecido pelo IBGE
      * @param string $config
      * @return \NFePHP\NFSe\className
      */
@@ -79,7 +80,8 @@ class NFSe2
     
     /**
      * Monta o nome das classes referentes a determinado municipio
-     *
+     * com base no codigo do municipio estabelecido pelo IBGE e contido
+     * no config.json
      * @param string $complement
      * @return string
      */
@@ -90,7 +92,6 @@ class NFSe2
     
     /**
      * Instancia e retorna a classe desejada
-     *
      * @param string $className
      * @param string $config
      * @return \NFePHP\NFSe\className
