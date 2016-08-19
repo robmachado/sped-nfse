@@ -28,7 +28,7 @@ class Render
         self::$dom = new Dom();
         $root = self::$dom->createElement('RPS');
         //tag Assinatura
-        self::$dom->addChild($root, 'Assinatura', '', true, 'Tag assinatura do RPS vazia', true);
+        self::$dom->addChild($root, 'Assinatura', self::stringToSign($rps), true, 'Tag assinatura do RPS vazia', true);
         //tag ChaveRPS
         $chaveRps = self::$dom->createElement('ChaveRPS');
         self::$dom->addChild($chaveRps, 'InscricaoPrestador', $rps->prestadorIM, true, "IM do prestador", true);
@@ -41,24 +41,26 @@ class Render
         self::$dom->addChild($root, 'TributacaoRPS', $rps->tributacaoRPS, true, 'Tributação do RPS', false);
         self::$dom->addChild($root, 'ValorServicos', $rps->valorServicosRPS, true, 'Valor dos serviços', false);
         self::$dom->addChild($root, 'ValorDeducoes', $rps->valorDeducoesRPS, true, 'Valor das Deduções', false);
-        self::$dom->addChild($root, 'ValorPis', $rps->valorPISRPS, true, 'Valor do PIS', false);
-        self::$dom->addChild($root, 'ValorCOFINS', $rps->valorCOFINSRPS, true, 'Valor do COFINS', false);
-        self::$dom->addChild($root, 'ValorINSS', $rps->valorINSSRPS, true, 'Valor do INSS', false);
-        self::$dom->addChild($root, 'ValorIR', $rps->valorIRRPS, true, 'Valor do IR', false);
-        self::$dom->addChild($root, 'ValorCSLL', $rps->valorCSLLRPS, true, 'Valor do CSLL', false);
+        self::$dom->addChild($root, 'ValorPis', $rps->valorPISRPS, false, 'Valor do PIS', false);
+        self::$dom->addChild($root, 'ValorCOFINS', $rps->valorCOFINSRPS, false, 'Valor do COFINS', false);
+        self::$dom->addChild($root, 'ValorINSS', $rps->valorINSSRPS, false, 'Valor do INSS', false);
+        self::$dom->addChild($root, 'ValorIR', $rps->valorIRRPS, false, 'Valor do IR', false);
+        self::$dom->addChild($root, 'ValorCSLL', $rps->valorCSLLRPS, false, 'Valor do CSLL', false);
         self::$dom->addChild($root, 'CodigoServico', $rps->codigoServicoRPS, true, 'Código do serviço', false);
         self::$dom->addChild($root, 'AliquotaServicos', $rps->aliquotaServicosRPS, true, 'Aliquota do serviço', false);
-        self::$dom->addChild($root, 'ISSRetido', $rps->issRetidoRPS, true, 'ISS Retido', false);
-        //tag CPFCNPJTomador
-        $tomador = self::$dom->createElement('CPFCNPJTomador');
-        if ($rps->tomadorTipoDoc == '2') {
-            self::$dom->addChild($tomador, 'CNPJ', $rps->tomadorCNPJCPF, true, "CNPJ do tomador", false);
-        } elseif ($rps->tomadorTipoDoc == '1') {
-            self::$dom->addChild($tomador, 'CPF', $rps->tomadorCNPJCPF, true, "CPF do tomador", false);
-        } else {
-            //e se não informado ??? o que fazer ???
+        if ($rps->issRetidoRPS == '1') {
+            self::$dom->addChild($root, 'ISSRetido', 'true', true, 'ISS Retido', false);
         }
-        self::$dom->appChild($root, $tomador, 'Adicionando tag CPFCNPJTomador');
+        //tag CPFCNPJTomador
+        if ($rps->tomadorTipoDoc != '3') {
+            $tomador = self::$dom->createElement('CPFCNPJTomador');
+            if ($rps->tomadorTipoDoc == '2') {
+                self::$dom->addChild($tomador, 'CNPJ', $rps->tomadorCNPJCPF, true, "CNPJ do tomador", false);
+            } elseif ($rps->tomadorTipoDoc == '1') {
+                self::$dom->addChild($tomador, 'CPF', $rps->tomadorCNPJCPF, true, "CPF do tomador", false);
+            }
+            self::$dom->appChild($root, $tomador, 'Adicionando tag CPFCNPJTomador');
+        }
         //outras tags
         self::$dom->addChild($root, 'RazaoSocialTomador', $rps->tomadorRazao, true, 'Razão Social do tomador', false);
         //tag EnderecoTomador
@@ -93,5 +95,30 @@ class Render
         self::$dom->appendChild($root);
         //retorna o xml em uma string
         return self::$dom->saveXML();
+    }
+    
+    /**
+     * Monata a string que será assinada com o ceriticado digital
+     * @param \NFePHP\NFSe\Models\Prodam\RPS $rps
+     * @return string
+     */
+    protected static function stringToSign(RPS $rps)
+    {
+        $content = sprintf('%08s', $rps->prestadorIM) .
+            sprintf('%-5s', $rps->serieRPS) .
+            sprintf('%012s', $rps->numeroRPS) .
+            str_replace("-", "", $rps->dtEmiRPS) .
+            $rps->tributacaoRPS .
+            $rps->statusRPS .
+            $rps->issRetidoRPS .
+            sprintf('%015s', str_replace(array('.', ','), '', number_format($rps->valorServicosRPS, 2))) .
+            sprintf('%015s', str_replace(array('.', ','), '', number_format($rps->valorDeducoesRPS, 2))) .
+            sprintf('%05s', $rps->codigoServicoRPS);
+            $content .= $rps->tomadorTipoDoc . sprintf('%014s', $rps->tomadorCNPJCPF);
+        if ($rps->intermediarioCNPJCPF != '') {
+            $content .= $rps->intermediarioTipoDoc . sprintf('%014s', $rps->intermediarioCNPJ);
+            $content .= $rps->intermediarioISSRetido;
+        }
+        return $content;
     }
 }
