@@ -22,7 +22,7 @@ class CancelamentoNFSe
         $content .= "</CPFCNPJRemetente>";
         $content .= "<transacao>true</transacao>";
         $content .= "</Cabecalho>";
-        $content .= "<Detalhe xmlns=\"\">";
+        $content .= "<Detalhe>";
         $content .= "<ChaveNFe>";
         $content .= "<InscricaoPrestador>$im</InscricaoPrestador>";
         $content .= "<NumeroNFe>$numero</NumeroNFe>";
