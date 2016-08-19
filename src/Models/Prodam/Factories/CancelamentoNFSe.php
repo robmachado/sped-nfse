@@ -8,24 +8,22 @@ class CancelamentoNFSe
 {
     public static function render(
         $versao,
-        $cnpj,
-        $im,
-        $numero,
-        $priKey
+        $remetenteTipoDoc,
+        $remetenteCNPJCPF,
+        $transacao = true,
+        $prestadorIM = '',
+        $numeroNFSe = '',
+        $priKey = ''
     ) {
-        $signString = str_pad($im, 8, '0', STR_PAD_LEFT)
-            . str_pad($numero, 12, '0', STR_PAD_LEFT);    
-        $content = "<PedidoCancelamentoNFe xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns=\"http://www.prefeitura.sp.gov.br/nfe\">";
-        $content .= "<Cabecalho Versao=\"$versao\">";
-        $content .= "<CPFCNPJRemetente>";
-        $content .= "<CNPJ>$cnpj</CNPJ>";
-        $content .= "</CPFCNPJRemetente>";
-        $content .= "<transacao>true</transacao>";
-        $content .= "</Cabecalho>";
+        $signString = str_pad($prestadorIM, 8, '0', STR_PAD_LEFT)
+            . str_pad($numeroNFSe, 12, '0', STR_PAD_LEFT);
+        $content = "<PedidoCancelamentoNFe "
+            . "xmlns=\"http://www.prefeitura.sp.gov.br/nfe\">";
+        $content .= Header::render($versao, $remetenteTipoDoc, $remetenteCNPJCPF, $transacao);
         $content .= "<Detalhe>";
         $content .= "<ChaveNFe>";
-        $content .= "<InscricaoPrestador>$im</InscricaoPrestador>";
-        $content .= "<NumeroNFe>$numero</NumeroNFe>";
+        $content .= "<InscricaoPrestador>$prestadorIM</InscricaoPrestador>";
+        $content .= "<NumeroNFe>$numeroNFSe</NumeroNFe>";
         $content .= "</ChaveNFe>";
         $content .= "<AssinaturaCancelamento>";
         $content .= Signner::sign($signString, $priKey);

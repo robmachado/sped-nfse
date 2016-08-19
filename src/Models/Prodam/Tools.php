@@ -79,10 +79,13 @@ class Tools extends ToolsBase
     
     public function envioRPS(RPS $rps)
     {
+        $method = 'EnvioRPS';
     }
     
     public function envioLoteRPS($rpss = array())
     {
+        $method = '';
+        
         foreach ($rpss as $rps) {
             echo '<pre>';
             print_r($rps);
