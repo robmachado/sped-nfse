@@ -1,4 +1,4 @@
-# SPED-NFSE
+# SPED-NFSE **EM DESENVOLVIMENTO NÃO USÁVEL**
 
 **API para a integração com os sistemas de Notas Fiscais Eletrônicas de Serviços das Prefeituras Municipais**
 
