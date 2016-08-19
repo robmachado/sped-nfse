@@ -47,7 +47,7 @@ class Convert extends ConvertBase
         ['deducoes',15,'N',2],//8
         ['codigo',5,'N',0],//9
         ['aliquota',4,'N',4],//10
-        ['issRetido',1,'C',''],//11 1 para ISS Retido pelo Tomador. 2 para Nota Fiscal sem ISS Retido. 3 para ISS Retido pelo Intermediário
+        ['issRetido',1,'C',''],//11
         ['indTomador',1,'N',0],//12
         ['cnpjcpfTomador',14,'N',0]
     ];

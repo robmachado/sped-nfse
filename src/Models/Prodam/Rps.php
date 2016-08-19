@@ -61,12 +61,11 @@ class Rps extends RpsBase
     public $tomadorSiglaUF = '';
     public $tomadorCEP = '';
     public $tomadorEmail = '';
-    public $intermediarioTipoDoc = '2';
+    public $intermediarioTipoDoc = '3';
     public $intermediarioCNPJCPF = '';
     public $intermediarioIM = '';
     public $intermediarioISSRetido = 'N';
     public $intermediarioEmail = '';
-    public $assinaturaRPS = '';
     
     private $aTp = [
         'RPS' => 'Recibo Provisório de Serviços',
@@ -89,7 +88,7 @@ class Rps extends RpsBase
     /**
      * Inscrição Municipal do Prestador do Serviço
      * @param type $im
-     */  
+     */
     public function prestador($im)
     {
         $this->prestadorIM = $im;
@@ -279,7 +278,7 @@ class Rps extends RpsBase
     /**
      * Valor dos Serviços prestados
      * @param float $valor
-     */        
+     */
     public function valorServicos($valor = 0.00)
     {
         $this->valorServicosRPS = number_format($valor, 2, '.', '');
@@ -323,6 +322,7 @@ class Rps extends RpsBase
             $this->issRetidoRPS = true;
         }
         if ($flag == 3) {
+            $this->issRetidoRPS = true;
             $this->intermediarioISSRetido = 'S';
         }
     }

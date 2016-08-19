@@ -2,7 +2,6 @@
 
 namespace NFePHP\NFSe\Models\Prodam;
 
-
 class ConsultaPeriodo
 {
     public static function render(
@@ -14,7 +13,9 @@ class ConsultaPeriodo
         $dtFim,
         $pagina
     ) {
-        $content = "<PedidoConsultaNFePeriodo xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://www.prefeitura.sp.gov.br/nfe\">";
+        $content = "<PedidoConsultaNFePeriodo ";
+        $content .= "xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" ";
+        $content .= "xmlns=\"http://www.prefeitura.sp.gov.br/nfe\">";
         $content .= "<Cabecalho Versao=\"$versao\">";
         $content .= "<CPFCNPJRemetente>";
         $content .= "<CPF>$remetenteCNPJCPF</CPF>";

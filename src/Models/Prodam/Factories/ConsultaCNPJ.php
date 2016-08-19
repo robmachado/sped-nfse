@@ -2,23 +2,24 @@
 
 namespace NFePHP\NFSe\Models\Prodam\Factories;
 
+use NFePHP\NFSe\Models\Prodam\Factories\Header;
+
 class ConsultaCNPJ
 {
     public static function render(
         $versao,
-        $cnpjRemetente,
-        $cnpjContribuinte   
+        $remetenteTipoDoc,
+        $remetenteCNPJCPF,
+        $cnpjContribuinte,
+        $transacao = true
     ) {
-        $content = "<PedidoConsultaCNPJ xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://www.prefeitura.sp.gov.br/nfe\">";
-        $content .= "<Cabecalho Versao=\"$versao\">";
-        $content .= "<CPFCNPJRemetente>";
-        $content .= "<CNPJ>$cnpjRemetente</CNPJ>";
-        $content .= "</CPFCNPJRemetente>";
-        $content .= "</Cabecalho>";
+        $content = "<PedidoConsultaCNPJ "
+                 . "xmlns=\"http://www.prefeitura.sp.gov.br/nfe\">";
+        $content .= Header::render($versao, $remetenteTipoDoc, $remetenteCNPJCPF, $transacao);
         $content .= "<CNPJContribuinte>";
         $content .= "<CNPJ>$cnpjContribuinte</CNPJ>";
         $content .= "</CNPJContribuinte>";
-        $content .= "<PedidoConsultaCNPJ>";
+        $content .= "</PedidoConsultaCNPJ>";
         return $content;
     }
 }
