@@ -29,6 +29,11 @@ class ToolsBase extends BaseTools
         parent::__construct($config);
     }
     
+    public function assina()
+    {
+    }
+
+    
     public function setSaveLogs()
     {
     }

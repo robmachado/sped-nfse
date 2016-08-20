@@ -23,24 +23,31 @@ use NFePHP\NFSe\Models\Prodam\Factories\Signner;
 class RenderRPS
 {
     protected static $dom;
+    protected static $priKey = '';
     
     public static function toXml($data = '', $priKey = '')
     {
         if ($data == '') {
             return '';
         }
+        self::$priKey = $priKey;
         if (is_object($data)) {
-            return self::render($data, $priKey);
+            return self::render($data);
         } elseif (is_array($data)) {
             $xml = '';
             foreach ($data as $rps) {
-                $xml .= self::render($rps, $priKey);
+                $xml .= self::render($rps);
             }
         }
         return $xml;
     }
     
-    private static function render(Rps $rps = null, $priKey = '')
+    /**
+     * Monta o xml com base no objeto Rps
+     * @param Rps $rps
+     * @return string
+     */
+    private static function render(Rps $rps = null)
     {
         self::$dom = new Dom();
         $root = self::$dom->createElement('RPS');
@@ -48,45 +55,178 @@ class RenderRPS
         self::$dom->addChild(
             $root,
             'Assinatura',
-            self::signstr($rps, $priKey),
+            self::signstr($rps, self::$priKey),
             true,
             'Tag assinatura do RPS vazia',
             true
         );
         //tag ChaveRPS
         $chaveRps = self::$dom->createElement('ChaveRPS');
-        self::$dom->addChild($chaveRps, 'InscricaoPrestador', $rps->prestadorIM, true, "IM do prestador", true);
-        self::$dom->addChild($chaveRps, 'NumeroRPS', $rps->numeroRPS, true, "Numero do RPS", true);
+        self::$dom->addChild(
+            $chaveRps,
+            'InscricaoPrestador',
+            $rps->prestadorIM,
+            true,
+            "IM do prestador",
+            true
+        );
+        self::$dom->addChild(
+            $chaveRps,
+            'NumeroRPS',
+            $rps->numeroRPS,
+            true,
+            "Numero do RPS",
+            true
+        );
         self::$dom->appChild($root, $chaveRps, 'Adicionando tag ChaveRPS');
         //outras tags
-        self::$dom->addChild($root, 'TipoRPS', $rps->tipoRPS, true, 'Tipo de RPS', false);
-        self::$dom->addChild($root, 'DataEmissao', $rps->dtEmiRPS, true, 'Data de emissão', false);
-        self::$dom->addChild($root, 'StatusRPS', $rps->statusRPS, true, 'Status do RPS', false);
-        self::$dom->addChild($root, 'TributacaoRPS', $rps->tributacaoRPS, true, 'Tributação do RPS', false);
-        self::$dom->addChild($root, 'ValorServicos', $rps->valorServicosRPS, true, 'Valor dos serviços', false);
-        self::$dom->addChild($root, 'ValorDeducoes', $rps->valorDeducoesRPS, true, 'Valor das Deduções', false);
-        self::$dom->addChild($root, 'ValorPis', $rps->valorPISRPS, false, 'Valor do PIS', false);
-        self::$dom->addChild($root, 'ValorCOFINS', $rps->valorCOFINSRPS, false, 'Valor do COFINS', false);
-        self::$dom->addChild($root, 'ValorINSS', $rps->valorINSSRPS, false, 'Valor do INSS', false);
-        self::$dom->addChild($root, 'ValorIR', $rps->valorIRRPS, false, 'Valor do IR', false);
-        self::$dom->addChild($root, 'ValorCSLL', $rps->valorCSLLRPS, false, 'Valor do CSLL', false);
-        self::$dom->addChild($root, 'CodigoServico', $rps->codigoServicoRPS, true, 'Código do serviço', false);
-        self::$dom->addChild($root, 'AliquotaServicos', $rps->aliquotaServicosRPS, true, 'Aliquota do serviço', false);
-        if ($rps->issRetidoRPS == '1') {
-            self::$dom->addChild($root, 'ISSRetido', 'true', true, 'ISS Retido', false);
+        self::$dom->addChild(
+            $root,
+            'TipoRPS',
+            $rps->tipoRPS,
+            true,
+            'Tipo de RPS',
+            false
+        );
+        self::$dom->addChild(
+            $root,
+            'DataEmissao',
+            $rps->dtEmiRPS,
+            true,
+            'Data de emissão',
+            false
+        );
+        self::$dom->addChild(
+            $root,
+            'StatusRPS',
+            $rps->statusRPS,
+            true,
+            'Status do RPS',
+            false
+        );
+        self::$dom->addChild(
+            $root,
+            'TributacaoRPS',
+            $rps->tributacaoRPS,
+            true,
+            'Tributação do RPS',
+            false
+        );
+        self::$dom->addChild(
+            $root,
+            'ValorServicos',
+            $rps->valorServicosRPS,
+            true,
+            'Valor dos serviços',
+            false
+        );
+        self::$dom->addChild(
+            $root,
+            'ValorDeducoes',
+            $rps->valorDeducoesRPS,
+            true,
+            'Valor das Deduções',
+            true
+        );
+        self::$dom->addChild(
+            $root,
+            'ValorPis',
+            $rps->valorPISRPS,
+            false,
+            'Valor do PIS',
+            false
+        );
+        self::$dom->addChild(
+            $root,
+            'ValorCOFINS',
+            $rps->valorCOFINSRPS,
+            false,
+            'Valor do COFINS',
+            false
+        );
+        self::$dom->addChild(
+            $root,
+            'ValorINSS',
+            $rps->valorINSSRPS,
+            false,
+            'Valor do INSS',
+            false
+        );
+        self::$dom->addChild(
+            $root,
+            'ValorIR',
+            $rps->valorIRRPS,
+            false,
+            'Valor do IR',
+            false
+        );
+        self::$dom->addChild(
+            $root,
+            'ValorCSLL',
+            $rps->valorCSLLRPS,
+            false,
+            'Valor do CSLL',
+            false
+        );
+        self::$dom->addChild(
+            $root,
+            'CodigoServico',
+            $rps->codigoServicoRPS,
+            true,
+            'Código do serviço',
+            false
+        );
+        self::$dom->addChild(
+            $root,
+            'AliquotaServicos',
+            $rps->aliquotaServicosRPS,
+            true,
+            'Aliquota do serviço',
+            false
+        );
+        if ($rps->issRetidoRPS) {
+            self::$dom->addChild(
+                $root,
+                'ISSRetido',
+                'true',
+                true,
+                'ISS Retido',
+                false
+            );
         }
         //tag CPFCNPJTomador
         if ($rps->tomadorTipoDoc != '3') {
             $tomador = self::$dom->createElement('CPFCNPJTomador');
             if ($rps->tomadorTipoDoc == '2') {
-                self::$dom->addChild($tomador, 'CNPJ', $rps->tomadorCNPJCPF, true, "CNPJ do tomador", false);
+                self::$dom->addChild(
+                    $tomador,
+                    'CNPJ',
+                    $rps->tomadorCNPJCPF,
+                    true,
+                    "CNPJ do tomador",
+                    false
+                );
             } elseif ($rps->tomadorTipoDoc == '1') {
-                self::$dom->addChild($tomador, 'CPF', $rps->tomadorCNPJCPF, true, "CPF do tomador", false);
+                self::$dom->addChild(
+                    $tomador,
+                    'CPF',
+                    $rps->tomadorCNPJCPF,
+                    true,
+                    "CPF do tomador",
+                    false
+                );
             }
             self::$dom->appChild($root, $tomador, 'Adicionando tag CPFCNPJTomador');
         }
         //outras tags
-        self::$dom->addChild($root, 'RazaoSocialTomador', $rps->tomadorRazao, true, 'Razão Social do tomador', false);
+        self::$dom->addChild(
+            $root,
+            'RazaoSocialTomador',
+            $rps->tomadorRazao,
+            true,
+            'Razão Social do tomador',
+            false
+        );
         //tag EnderecoTomador
         $endtomador = self::$dom->createElement('EnderecoTomador');
         self::$dom->addChild(
@@ -155,7 +295,14 @@ class RenderRPS
         );
         self::$dom->appChild($root, $endtomador, 'Adicionando tag EnderecoTomador');
         //outras tags
-        self::$dom->addChild($root, 'EmailTomador', $rps->tomadorEmail, false, 'Email do tomador', false);
+        self::$dom->addChild(
+            $root,
+            'EmailTomador',
+            $rps->tomadorEmail,
+            false,
+            'Email do tomador',
+            false
+        );
         //tag intermediario
         //se existir incluir dados do intermediário
         if ($rps->intermediarioCNPJCPF) {
@@ -201,6 +348,12 @@ class RenderRPS
         return $xml;
     }
     
+    /**
+     * Cria a assinatura do RPS
+     * @param Rps $rps
+     * @param string $priKey
+     * @return string
+     */
     private static function signstr(Rps $rps, $priKey = '')
     {
         $content = str_pad($rps->prestadorIM, 8, '0', STR_PAD_LEFT);

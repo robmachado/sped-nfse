@@ -10,8 +10,8 @@ class ConsultaCNPJ
         $versao,
         $remetenteTipoDoc,
         $remetenteCNPJCPF,
-        $cnpjContribuinte,
-        $transacao = true
+        $transacao = true,
+        $cnpjContribuinte = ''
     ) {
         $content = "<PedidoConsultaCNPJ "
                  . "xmlns=\"http://www.prefeitura.sp.gov.br/nfe\">";

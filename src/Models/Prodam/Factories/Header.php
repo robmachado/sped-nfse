@@ -18,7 +18,7 @@ class Header
     ) {
         $content = "<Cabecalho Versao=\"$versao\">";
         $content .= "<CPFCNPJRemetente>";
-        if ($remetenteTipoDoc == '1') {
+        if ($remetenteTipoDoc == '2') {
             $content .= "<CNPJ>$remetenteCNPJCPF</CNPJ>";
         } else {
             $content .= "<CPF>$remetenteCNPJCPF</CPF>";
@@ -42,8 +42,8 @@ class Header
             $content .= "<QtdRPS>$qtdRPS</QtdRPS>";
         }
         if ($valorTotalServicos != 0) {
-            $content .= "<ValorTotalServicos>$valorTotalServicos</ValorTotalServicos>";
-            $content .= "<ValorTotalDeducoes>$valorTotalDeducoes</ValorTotalDeducoes>";
+            $content .= "<ValorTotalServicos>".number_format($valorTotalServicos, 2, '.', '')."</ValorTotalServicos>";
+            $content .= "<ValorTotalDeducoes>".number_format($valorTotalDeducoes, 2, '.', '')."</ValorTotalDeducoes>";
         }
         $content .= "</Cabecalho>";
         return $content;
