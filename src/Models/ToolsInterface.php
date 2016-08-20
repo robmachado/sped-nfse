@@ -12,7 +12,7 @@ interface ToolsInterface
     
     public function envioLoteRPS();
     
-    public function testeEnvioRPS();
+    public function testeEnvioLoteRPS();
     
     public function consultaNFSe();
     

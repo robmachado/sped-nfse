@@ -22,6 +22,11 @@ use NFePHP\NFSe\Models\ToolsInterface;
 
 class Tools extends ToolsBase
 {
+    
+    protected $versao = '1';
+    protected $remetenteTipoDoc = '2';
+    protected $remetenteCNPJCPF = '';
+
     /**
      * Endereços dos webservices
      * @var array
@@ -31,142 +36,152 @@ class Tools extends ToolsBase
         '1' => 'https://nfe.prefeitura.sp.gov.br/ws/lotenfe.asmx'
     ];
     
-    /**
-     * Cabeçalho do RPS
-     * @var string
-     */
-    protected $cabecalho;
-    
-    //quando mais de um RPS for carregado
-    //as variaveis abaixo devem ser carregadas
-    protected $transacao = false;
-    protected $dtInicio;
-    protected $dtFim;
-    protected $qtdRPS;
-    protected $valorTotalServicos = 0.0;
-    protected $valorTotalDeducoes = 0.0;
     
     public function __construct($config)
     {
         parent::__construct($config);
+        $this->versao = $this->aConfig['versao'];
+        $this->remetenteCNPJCPF = $this->aConfig['cnpj'];
+        if ($this->aConfig['cpf'] != '') {
+            $this->remetenteTipoDoc = '1';
+            $this->remetenteCNPJCPF = $this->aConfig['cpf'];
+        }
     }
     
-    /**
-     * Construtor no cabeçalho
-     */
-    protected function cabecalho($numRPS = 1)
-    {
-        $versao = $this->aConfig['versao'];
-        $cpf = $this->aConfig['cpf'];
-        $cnpj = $this->aConfig['cnpj'];
-        $this->cabecalho = "<Cabecalho Versao=\"$versao\"><CPFCNPJRemetente>";
-        if ($cnpj != '') {
-            $this->cabecalho .= "<CNPJ>$cnpj</CNPJ>";
-        } else {
-            $this->cabecalho .= "<CPF>$cpf</CPF>";
-        }
-        $this->cabecalho .= "</CPFCNPJRemetente>";
-        if ($this->transacao) {
-            $this->cabecalho .= "<transacao>true</transacao>"
-                . "<dtInicio>$this->dtInicio</dtInicio>"
-                . "<dtFim>$this->dtFim</dtFim>"
-                . "<QtdRPS>$this->qtdRPS</QtdRPS>"
-                . "<ValorTotalServicos>$this->valorTotalServicos</ValorTotalServicos>"
-                . "<ValorTotalDeducoes>$this->valorTotalDeducoes</ValorTotalDeducoes>";
-        }
-        $this->cabecalho .= "</Cabecalho>";
-    }
-    
+  
     public function envioRPS(RPS $rps)
     {
+        $xml = Factories\EnvioRPS::render(
+            $this->versao,
+            $this->remetenteTipoDoc,
+            $this->remetenteCNPJCPF,
+            true,
+            $rps,
+            $this->oCertificate->priKey
+        );
+        $body = "<EnvioRPSRequest>";
+        $body .= " <VersaoSchema>$this->versao</VersaoSchema>";
+        $body .= " <MensagemXML>$xml</MensagemXML>";
+        $body .= "</EnvioRPSRequest>";
         $method = 'EnvioRPS';
+        $response = $this->envia($body, $method);
+        
     }
     
     public function envioLoteRPS($rpss = array())
     {
-        $method = '';
-        
-        foreach ($rpss as $rps) {
-            echo '<pre>';
-            print_r($rps);
-            echo '</pre><BR>';
-        }
-        //um array de objetos Prodam\Rps paqra formar um lote de envio
+        $xml = Factories\EnvioRPS::render(
+            $this->versao,
+            $this->remetenteTipoDoc,
+            $this->remetenteCNPJCPF,
+            true,
+            $rpss,
+            $this->oCertificate->priKey
+        );
+        $body = "<EnvioLoteRPSRequest>";
+        $body .= " <VersaoSchema>$this->versao</VersaoSchema>";
+        $body .= " <MensagemXML>$xml</MensagemXML>";
+        $body .= "</EnvioLoteRPSRequest>";
+        $method = 'EnvioLoteRPS';
+        $response = $this->envia($body, $method);
     }
     
-    public function assina()
+    public function testeEnvioLoteRPS()
     {
+        $method = 'TesteEnvioLoteRPS';
     }
     
-    
-    public function testeEnvioRPS()
+    public function consultaNFSe($chavesNFSe = [],$chavesRPS = [])
     {
-    }
-    
-    public function consultaNFSe()
-    {
+        $xml = Factories\ConsultaNFSe::render(
+            $this->versao,
+            $this->remetenteTipoDoc,
+            $this->remetenteCNPJCPF,
+            true,
+            $chavesNFSe,
+            $chavesRPS
+        );
+        $body = "<ConsultaNFeRequest>";
+        $body .= "<VersaoSchema>$this->versao</VersaoSchema>";
+        $body .= "<MensagemXML>$xml</MensagemXML>";
+        $body .= "</ConsultaNFeRequest>";
+        $method = 'ConsultaNFe';
+        $response = $this->envia($body, $method);
     }
     
     public function consultaNFSeRecebidas()
     {
+        $method = 'ConsultaNFeRecebidas';
     }
     
     public function consultaNFSeEmitidas()
     {
+        $method = 'ConsultaNFeEmitidas';
     }
     
     public function consultaLote()
     {
+        $method = 'ConsultaLote';
     }
     
     public function consultaInformacoesLote()
     {
+        $method = 'ConsultaInformacoesLote';
     }
     
-    public function cancelamentoNFSe()
+    public function cancelamentoNFSe($prestadorIM = '', $numeroNFSe = '')
     {
+        if ($prestadorIM == '' || $numeroNFSe == '') {
+            return '';
+        }
+        $xml = Factories\CancelamentoNFSe::render(
+            $this->versao,
+            $this->remetenteTipoDoc,
+            $this->remetenteCNPJCPF,
+            true,
+            $prestadorIM,
+            $numeroNFSe,
+            $this->oCertificate->priKey
+        );
+        $body = "<CancelamentoNFeRequest>";
+        $body .= "<VersaoSchema>$this->versao</VersaoSchema>";
+        $body .= "<MensagemXML>$xml</MensagemXML>";
+        $body .= "</CancelamentoNFeRequest>";
+        
+        $method = 'CancelamentoNFe';
+        $response = $this->envia($body, $method);
     }
 
-    public function consultaCNPJ()
+    public function consultaCNPJ($cnpjContribuinte = '')
     {
+        if ($cnpjContribuinte == '') {
+            return '';
+        }
+        //monta a mensagem basica
+        $xml = Factories\ConsultaCNPJ::render(
+            $this->versao,
+            $this->remetenteTipoDoc,
+            $this->remetenteCNPJCPF,
+            true,    
+            $cnpjContribuinte
+        );
+        $body = "<ConsultaCNPJRequest xmlns=\"http://www.prefeitura.sp.gov.br/nfe\">";
+        $body .= "<VersaoSchema>$this->versao</VersaoSchema>";
+        $body .= "<MensagemXML>$xml</MensagemXML>";
+        $body .= "</ConsultaCNPJRequest>";
+        
+        $method = 'ConsultaCNPJ';
+        $response = $this->envia($body, $method);
     }
-    /**
-     * Constroi a string que será a assinatura do RPS
-     */
-    protected function zSignRps(Rps $rps)
+    
+    protected function envia($body, $method)
     {
-        $content = sprintf('%08s', $rps->prestadorIM) .
-            sprintf('%-5s', $rps->serieRPS) .
-            sprintf('%012s', $rps->numeroRPS) .
-            str_replace("-", "", $rps->dtEmiRPS) .
-            $rps->tributacaoRPS .
-            $rps->statusRPS .
-            $rps->issRetidoRPS .
-            sprintf('%015s', str_replace(array('.', ','), '', number_format($rps->valorServicosRPS, 2))) .
-            sprintf('%015s', str_replace(array('.', ','), '', number_format($rps->valorDeducoesRPS, 2))) .
-            sprintf('%05s', $rps->codigoServicoRPS);
-            
-        if ($rps->tomadorCNPJ != '') {
-            $content .= '1' . sprintf('%014s', $rps->tomadorCNPJ);
-        } elseif ($rps->tomadorCPF != '') {
-            $content .= '2' . sprintf('%014s', $rps->tomadorCPF);
-        } else {
-            $content .= '3' . sprintf('%014s', '0');
+        $url = $this->url[$this->aConfig['tpAmb']];
+        try {
+            $this->setSSLProtocol('TLSv1');
+            //$response = $this->oSoap->send($url, '', '', $body, $method);
+        } catch (Exception $ex) {
+            echo $ex;
         }
-        if ($rps->intermediarioExists) {
-            if ($rps->intermediarioCNPJ != '') {
-                $content .= '1' . sprintf('%014s', $rps->intermediarioCNPJ);
-            } elseif ($this->intermediarioCPF != '') {
-                $content .= '2' . sprintf('%014s', $rps->intermediarioCPF);
-            } else {
-                $content .= '3' . sprintf('%014s', '0');
-            }
-            $content .= $rps->intermediarioISSRetido;
-        }
-        $pkeyId = openssl_get_privatekey(file_get_contents($this->privateKey));
-        openssl_sign($content, $signatureValue, $pkeyId, OPENSSL_ALGO_SHA1);
-        openssl_free_key($pkeyId);
-        return base64_encode($signatureValue);
-        //$dom->getElementsByTagName('Assinatura')->item(0)->nodeValue = 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAA';
     }
 }
