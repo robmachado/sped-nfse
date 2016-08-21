@@ -19,7 +19,6 @@ namespace NFePHP\NFSe\Models\Prodam;
 use NFePHP\NFSe\Models\Base\ToolsBase;
 use NFePHP\NFSe\Models\Prodam\Rps;
 use NFePHP\NFSe\Models\ToolsInterface;
-use NFePHP\NFSe\Models\Prodam\Factories\Signner;
 
 class Tools extends ToolsBase
 {
@@ -37,7 +36,10 @@ class Tools extends ToolsBase
         '1' => 'https://nfe.prefeitura.sp.gov.br/ws/lotenfe.asmx'
     ];
     
-    
+    /**
+     * Construtor da classe Tools
+     * @param string $config
+     */
     public function __construct($config)
     {
         parent::__construct($config);
@@ -49,7 +51,10 @@ class Tools extends ToolsBase
         }
     }
     
-  
+    /**
+     * Envo de um RPS
+     * @param \NFePHP\NFSe\Models\Prodam\RPS $rps
+     */
     public function envioRPS(RPS $rps)
     {
         $xml = Factories\EnvioRPS::render(
@@ -68,6 +73,10 @@ class Tools extends ToolsBase
         $response = $this->envia($body, $method);
     }
     
+    /**
+     * Envo de lote de RPS
+     * @param array $rpss
+     */
     public function envioLoteRPS($rpss = array())
     {
         $xml = Factories\EnvioRPS::render(
@@ -170,14 +179,12 @@ class Tools extends ToolsBase
         $body .= "<VersaoSchema>$this->versao</VersaoSchema>";
         $body .= "<MensagemXML>$xml</MensagemXML>";
         $body .= "</ConsultaCNPJRequest>";
-        $body = $this->oCertificate->signXML($body, "Pedido$method", '', $algorithm = 'SHA1');
-        
         $response = $this->envia($body, $method);
     }
     
     protected function envia($body, $method)
     {
-        
+        $body = $this->oCertificate->signXML($body, "Pedido$method", '', $algorithm = 'SHA1');
         header("Content-type: text/xml");
         echo $body;
         die;
