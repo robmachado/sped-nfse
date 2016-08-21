@@ -19,6 +19,7 @@ namespace NFePHP\NFSe\Models\Prodam;
 use NFePHP\NFSe\Models\Base\ToolsBase;
 use NFePHP\NFSe\Models\Prodam\Rps;
 use NFePHP\NFSe\Models\ToolsInterface;
+use NFePHP\NFSe\Models\Prodam\Factories\Signner;
 
 class Tools extends ToolsBase
 {
@@ -157,6 +158,7 @@ class Tools extends ToolsBase
         if ($cnpjContribuinte == '') {
             return '';
         }
+        $method = 'ConsultaCNPJ';
         //monta a mensagem basica
         $xml = Factories\ConsultaCNPJ::render(
             $this->versao,
@@ -169,13 +171,17 @@ class Tools extends ToolsBase
         $body .= "<VersaoSchema>$this->versao</VersaoSchema>";
         $body .= "<MensagemXML>$xml</MensagemXML>";
         $body .= "</ConsultaCNPJRequest>";
+        $body = $this->oCertificate->signXML($body, "Pedido$method", '', $algorithm = 'SHA1');
         
-        $method = 'ConsultaCNPJ';
         $response = $this->envia($body, $method);
     }
     
     protected function envia($body, $method)
     {
+        
+        header("Content-type: text/xml");
+        echo $body;
+        die;
         $url = $this->url[$this->aConfig['tpAmb']];
         try {
             $this->setSSLProtocol('TLSv1');
@@ -184,4 +190,5 @@ class Tools extends ToolsBase
             echo $ex;
         }
     }
+    
 }
