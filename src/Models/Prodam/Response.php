@@ -1,19 +1,27 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 namespace NFePHP\NFSe\Models\Prodam;
 
 /**
- * Description of Response
+ * Classe para extração dos dados retornados pelos webservices da Cidade de São Paulo
+ * conforme o modelo Prodam
  *
- * @author administrador
+ * @category  NFePHP
+ * @package   NFePHP\NFSe\Prodam\Response
+ * @copyright NFePHP Copyright (c) 2016
+ * @license   http://www.gnu.org/licenses/lgpl.txt LGPLv3+
+ * @license   https://opensource.org/licenses/MIT MIT
+ * @license   http://www.gnu.org/licenses/gpl.txt GPLv3+
+ * @author    Roberto L. Machado <linux.rlm at gmail dot com>
+ * @link      http://github.com/nfephp-org/sped-nfse for the canonical source repository
  */
+
+use NFePHP\NFSe\Models\Base\ResponseBase;
+
 class Response
 {
-    //put your code here
+    public static function readReturn($tag = '', $xmlResp = '')
+    {
+        return ResponseBase::readReturn($tag, $xmlResp);
+    }
 }

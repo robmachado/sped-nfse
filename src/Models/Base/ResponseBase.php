@@ -1,12 +1,12 @@
 <?php
 
-namespace NFePHP\NFSe\Base;
+namespace NFePHP\NFSe\Models\Base;
 
 /**
  * Classe base para tratar os retornos das consultas aos webservices
  *
  * @category  NFePHP
- * @package   NFePHP\NFSe\Base\ResponseBase
+ * @package   NFePHP\NFSe\Models\Base\ResponseBase
  * @copyright NFePHP Copyright (c) 2016
  * @license   http://www.gnu.org/licenses/lgpl.txt LGPLv3+
  * @license   https://opensource.org/licenses/MIT MIT
@@ -59,6 +59,8 @@ class ResponseBase
      */
     protected static function readRespStd($std)
     {
+        return $std;
+        /*
         if ($std->return->status == 'ERRO') {
             return [
                 'bStat' => false,
@@ -92,6 +94,7 @@ class ResponseBase
             }
         }
         return $aResp;
+        */
     }
     
     /**
@@ -102,7 +105,7 @@ class ResponseBase
      */
     protected static function xml2Obj($dom, $tag)
     {
-        $node = $dom->getElementsByTagName($tag.'Response')->item(0);
+        $node = $dom->getElementsByTagName($tag)->item(0);
         $newdoc = new DOMDocument('1.0', 'utf-8');
         $newdoc->appendChild($newdoc->importNode($node, true));
         $xml = $newdoc->saveXML();
