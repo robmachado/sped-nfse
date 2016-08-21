@@ -66,7 +66,6 @@ class Tools extends ToolsBase
         $body .= "</EnvioRPSRequest>";
         $method = 'EnvioRPS';
         $response = $this->envia($body, $method);
-        
     }
     
     public function envioLoteRPS($rpss = array())
@@ -92,7 +91,7 @@ class Tools extends ToolsBase
         $method = 'TesteEnvioLoteRPS';
     }
     
-    public function consultaNFSe($chavesNFSe = [],$chavesRPS = [])
+    public function consultaNFSe($chavesNFSe = [], $chavesRPS = [])
     {
         $xml = Factories\ConsultaNFSe::render(
             $this->versao,
@@ -164,7 +163,7 @@ class Tools extends ToolsBase
             $this->versao,
             $this->remetenteTipoDoc,
             $this->remetenteCNPJCPF,
-            true,    
+            true,
             $cnpjContribuinte
         );
         $body = "<ConsultaCNPJRequest xmlns=\"http://www.prefeitura.sp.gov.br/nfe\">";
@@ -190,5 +189,4 @@ class Tools extends ToolsBase
             echo $ex;
         }
     }
-    
 }

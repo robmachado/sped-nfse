@@ -2,7 +2,6 @@
 
 namespace NFePHP\NFSe\Models\Prodam\Factories;
 
-
 class Signner
 {
     public static function sign($data = '', $priKey = '', $algorithm = OPENSSL_ALGO_SHA1)
