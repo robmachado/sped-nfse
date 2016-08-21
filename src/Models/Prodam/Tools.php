@@ -19,6 +19,7 @@ namespace NFePHP\NFSe\Models\Prodam;
 use NFePHP\NFSe\Models\Base\ToolsBase;
 use NFePHP\NFSe\Models\Prodam\Rps;
 use NFePHP\NFSe\Models\ToolsInterface;
+use NFePHP\NFSe\Models\Prodam\Factories\Signner;
 
 class Tools extends ToolsBase
 {
@@ -65,7 +66,6 @@ class Tools extends ToolsBase
         $body .= "</EnvioRPSRequest>";
         $method = 'EnvioRPS';
         $response = $this->envia($body, $method);
-        
     }
     
     public function envioLoteRPS($rpss = array())
@@ -91,7 +91,7 @@ class Tools extends ToolsBase
         $method = 'TesteEnvioLoteRPS';
     }
     
-    public function consultaNFSe($chavesNFSe = [],$chavesRPS = [])
+    public function consultaNFSe($chavesNFSe = [], $chavesRPS = [])
     {
         $xml = Factories\ConsultaNFSe::render(
             $this->versao,
@@ -157,25 +157,30 @@ class Tools extends ToolsBase
         if ($cnpjContribuinte == '') {
             return '';
         }
+        $method = 'ConsultaCNPJ';
         //monta a mensagem basica
         $xml = Factories\ConsultaCNPJ::render(
             $this->versao,
             $this->remetenteTipoDoc,
             $this->remetenteCNPJCPF,
-            true,    
+            true,
             $cnpjContribuinte
         );
         $body = "<ConsultaCNPJRequest xmlns=\"http://www.prefeitura.sp.gov.br/nfe\">";
         $body .= "<VersaoSchema>$this->versao</VersaoSchema>";
         $body .= "<MensagemXML>$xml</MensagemXML>";
         $body .= "</ConsultaCNPJRequest>";
+        $body = $this->oCertificate->signXML($body, "Pedido$method", '', $algorithm = 'SHA1');
         
-        $method = 'ConsultaCNPJ';
         $response = $this->envia($body, $method);
     }
     
     protected function envia($body, $method)
     {
+        
+        header("Content-type: text/xml");
+        echo $body;
+        die;
         $url = $this->url[$this->aConfig['tpAmb']];
         try {
             $this->setSSLProtocol('TLSv1');
