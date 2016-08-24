@@ -3,37 +3,54 @@
 namespace NFePHP\NFSe\Models\Prodam\Factories;
 
 use NFePHP\NFSe\Models\Prodam\Rps;
+use NFePHP\NFSe\Models\Prodam\Factories\Factory;
 use NFePHP\NFSe\Models\Prodam\Factories\RenderRPS;
 
-class EnvioRPS
+class EnvioRPS extends Factory
 {
-    private static $dtIni = '';
-    private static $dtFim = '';
-    private static $qtdRPS = 0;
-    private static $valorTotalServicos = 0;
-    private static $valorTotalDeducoes = 0;
+    private $dtIni = '';
+    private $dtFim = '';
+    private $qtdRPS = 0;
+    private $valorTotalServicos = 0;
+    private $valorTotalDeducoes = 0;
     
-    public static function render(
+    public function render(
         $versao,
         $remetenteTipoDoc,
         $remetenteCNPJCPF,
-        $transacao = true,
-        $data = '',
-        $priKey = ''
+        $transacao = 'true',
+        $data = ''
     ) {
         if ($data == '') {
             return '';
         }
         $xmlRPS = '';
-        $content = '';
+        $method = "PedidoEnvioRPS";
+        $content = "<$method "
+            . "xmlns:xsd=\""
+            . $this->xmlnsxsd
+            . "\" xmlns=\""
+            . $this->xmlns
+            . "\" xmlns:xsi=\""
+            . $this->xmlnsxsi
+            . "\">";
+        
         if (is_object($data)) {
-            //foi passado um unico RPS
-            $xmlRPS .= self::individual($content, $data, $priKey);
+            $xmlRPS .= $this->individual($content, $data);
         } elseif (is_array($data)) {
             if (count($data) == 1) {
-                $xmlRPS .= self::individual($content, $data, $priKey);
+                $xmlRPS .= $this->individual($content, $data);
             } else {
-                $xmlRPS .= self::lote($content, $data, $priKey);
+                $method = "PedidoEnvioLoteRPS";
+                $content = "<$method "
+                    . "xmlns:xsd=\""
+                    . $this->xmlnsxsd
+                    . "\" xmlns=\""
+                    . $this->xmlns
+                    . "\" xmlns:xsi=\""
+                    . $this->xmlnsxsi
+                    . "\">";
+                $xmlRPS .= $this->lote($content, $data);
             }
         }
         $content .= Header::render(
@@ -42,56 +59,71 @@ class EnvioRPS
             $remetenteCNPJCPF,
             $transacao,
             '',
-            self::$dtIni,
-            self::$dtFim,
-            self::$qtdRPS,
-            self::$valorTotalServicos,
-            self::$valorTotalDeducoes
+            '',
+            '',
+            $this->dtIni,
+            $this->dtFim,
+            '',
+            $this->qtdRPS,
+            $this->valorTotalServicos,
+            $this->valorTotalDeducoes
         );
-        $content .= $xmlRPS;
-        return $content;
+        $content .= $xmlRPS."</$method>";
+        $body = $this->oCertificate->signXML($content, $method, '', $algorithm = 'SHA1');
+        $body = $this->clear($body);
+        $this->validar($versao, $body, $method);
+        return $body;
     }
     
-    private static function individual(&$content, $data, $priKey = '')
+    /**
+     * Processa quando temos apenas um RPS
+     * @param string $content
+     * @param Rps $data
+     * @return string
+     */
+    private function individual(&$content, $data)
     {
-        $xmlRPS = '';
-        //foi passado um unico RPS
-        $content .= "<PedidoEnvioRPS "
-            . "xmlns=\"http://www.prefeitura.sp.gov.br/nfe\">";
-        $xmlRPS .= RenderRPS::toXml($data, $priKey);
-        return $xmlRPS."</PedidoEnvioRPS>";
+        return RenderRPS::toXml($data, $this->oCertificate->priKey);
     }
-
-    private static function lote(&$content, $data, $priKey = '')
+    
+    /**
+     * Processa vários Rps dentro de um array
+     * @param string $content
+     * @param array $data
+     * @return string
+     */
+    private function lote(&$content, $data)
     {
         $xmlRPS = '';
-        //foi passado um lote de RPS
-        self::totalizeRps($data);
-        $content .= "<PedidoEnvioLoteRPS "
-            . "xmlns=\"http://www.prefeitura.sp.gov.br/nfe\">";
+        $this->totalizeRps($data);
         foreach ($data as $rps) {
-            $xmlRPS .= RenderRPS::toXml($data, $priKey);
+            $xmlRPS .= RenderRPS::toXml($data, $this->oCertificate->priKey);
         }
-        return $xmlRPS."</PedidoEnvioLoteRPS>";
+        return $xmlRPS;
     }
     
-    private static function totalizeRps($data)
+    /**
+     * Totaliza os campos necessários para a montagem do cabeçalho
+     * quando envio de Lote de RPS
+     * @param array $data
+     */
+    private function totalizeRps($data)
     {
         foreach ($data as $rps) {
-            self::$valorTotalServicos += $rps->valorServicosRPS;
-            self::$valorTotalDeducoes += $rps->valorDeducoesRPS;
-            self::$qtdRPS++;
-            if (self::$dtIni == '') {
-                self::$dtIni = $rps->dtEmiRPS;
+            $this->valorTotalServicos += $rps->valorServicosRPS;
+            $this->valorTotalDeducoes += $rps->valorDeducoesRPS;
+            $this->qtdRPS++;
+            if ($this->dtIni == '') {
+                $this->dtIni = $rps->dtEmiRPS;
             }
-            if (self::$dtFim == '') {
-                self::$dtFim = $rps->dtEmiRPS;
+            if ($this->dtFim == '') {
+                $this->dtFim = $rps->dtEmiRPS;
             }
-            if ($rps->dtEmiRPS <= self::$dtIni) {
-                self::$dtIni = $rps->dtEmiRPS;
+            if ($rps->dtEmiRPS <= $this->dtIni) {
+                $this->dtIni = $rps->dtEmiRPS;
             }
-            if ($rps->dtEmiRPS >= self::$dtFim) {
-                self::$dtFim = $rps->dtEmiRPS;
+            if ($rps->dtEmiRPS >= $this->dtFim) {
+                $this->dtFim = $rps->dtEmiRPS;
             }
         }
     }

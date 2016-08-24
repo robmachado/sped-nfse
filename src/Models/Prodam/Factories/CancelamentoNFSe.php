@@ -2,34 +2,86 @@
 
 namespace NFePHP\NFSe\Models\Prodam\Factories;
 
-use NFePHP\NFSe\Models\Prodam\Factories\Signner;
+/**
+ * Classe para a construção do XML relativo ao serviço de
+ * Pedido de Cnacelamento de NFSe dos webservices da
+ * Cidade de São Paulo conforme o modelo Prodam
+ *
+ * @category  NFePHP
+ * @package   NFePHP\NFSe\Models\Prodam\Factories\CancelamentoNFSe
+ * @copyright NFePHP Copyright (c) 2016
+ * @license   http://www.gnu.org/licenses/lgpl.txt LGPLv3+
+ * @license   https://opensource.org/licenses/MIT MIT
+ * @license   http://www.gnu.org/licenses/gpl.txt GPLv3+
+ * @author    Roberto L. Machado <linux.rlm at gmail dot com>
+ * @link      http://github.com/nfephp-org/sped-nfse for the canonical source repository
+ */
 
-class CancelamentoNFSe
+use InvalidArgumentException;
+use NFePHP\NFSe\Models\Prodam\Factories\Signner;
+use NFePHP\NFSe\Models\Prodam\Factories\Factory;
+
+class CancelamentoNFSe extends Factory
 {
-    public static function render(
+    /**
+     * Renderiza o xml do Pedido de Cancelamento de NFSe
+     * @param string $versao
+     * @param int $remetenteTipoDoc
+     * @param string $remetenteCNPJCPF
+     * @param string $transacao '', 'true' ou 'false' como string
+     * @param string $prestadorIM
+     * @param string $numeroNFSe
+     * @param string $priKey chave privada em uma string
+     * @return string
+     */
+    public function render(
         $versao,
         $remetenteTipoDoc,
         $remetenteCNPJCPF,
-        $transacao = true,
+        $transacao = '',
         $prestadorIM = '',
-        $numeroNFSe = '',
-        $priKey = ''
+        $numeroNFSe = ''
     ) {
+        $method = "PedidoCancelamentoNFe";
+        $content = "<$method "
+            . "xmlns:xsd=\""
+            . $this->xmlnsxsd
+            . "\" xmlns=\""
+            . $this->xmlns
+            . "\" xmlns:xsi=\""
+            . $this->xmlnsxsi
+            . "\">";
+        $content .= Header::render($versao, $remetenteTipoDoc, $remetenteCNPJCPF, $transacao);
+        if (is_array($numeroNFSe)) {
+            if (count($numeroNFSe) > 50) {
+                throw InvalidArgumentException("No máximo pode ser solicitado o cancelamento de 50 NFSe por vez.");
+            }
+            foreach ($numeroNFSe as $num) {
+                $content .= $this->detalhe($prestadorIM, $num);
+            }
+        } else {
+            $content .= $this->detalhe($prestadorIM, $numeroNFSe);
+        }
+        $content .= "</$method>";
+        $body = $this->oCertificate->signXML($content, $method, '', $algorithm = 'SHA1');
+        $body = $this->clear($body);
+        $this->validar($versao, $body, $method);
+        return $body;
+    }
+    
+    private function detalhe($prestadorIM, $numeroNFSe)
+    {
         $signString = str_pad($prestadorIM, 8, '0', STR_PAD_LEFT)
             . str_pad($numeroNFSe, 12, '0', STR_PAD_LEFT);
-        $content = "<PedidoCancelamentoNFe "
-            . "xmlns=\"http://www.prefeitura.sp.gov.br/nfe\">";
-        $content .= Header::render($versao, $remetenteTipoDoc, $remetenteCNPJCPF, $transacao);
-        $content .= "<Detalhe>";
-        $content .= "<ChaveNFe>";
-        $content .= "<InscricaoPrestador>$prestadorIM</InscricaoPrestador>";
-        $content .= "<NumeroNFe>$numeroNFSe</NumeroNFe>";
-        $content .= "</ChaveNFe>";
-        $content .= "<AssinaturaCancelamento>";
-        $content .= Signner::sign($signString, $priKey);
-        $content .= "</AssinaturaCancelamento>";
-        $content .= "</Detalhe>";
-        $content .= "</PedidoCancelamentoNFe>";
-        return $content;
+        $detalhe = "<Detalhe xmlns=\"\">";
+        $detalhe .= "<ChaveNFe>";
+        $detalhe .= "<InscricaoPrestador>$prestadorIM</InscricaoPrestador>";
+        $detalhe .= "<NumeroNFe>$numeroNFSe</NumeroNFe>";
+        $detalhe .= "</ChaveNFe>";
+        $detalhe .= "<AssinaturaCancelamento>";
+        $detalhe .= Signner::sign($signString, $this->oCertificate->priKey);
+        $detalhe .= "</AssinaturaCancelamento>";
+        $detalhe .= "</Detalhe>";
+        return $detalhe;
     }
 }

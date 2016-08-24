@@ -8,15 +8,18 @@ class Header
         $versao,
         $remetenteTipoDoc,
         $remetenteCNPJCPF,
-        $transacao = true,
+        $transacao = '',
+        $cnpj = '',
+        $cpf = '',
         $im = '',
         $dtIni = '',
         $dtFim = '',
+        $pagina = '',
         $qtdRPS = 0,
         $valorTotalServicos = 0,
         $valorTotalDeducoes = 0
     ) {
-        $content = "<Cabecalho Versao=\"$versao\">";
+        $content = "<Cabecalho xmlns=\"\" Versao=\"$versao\">";
         $content .= "<CPFCNPJRemetente>";
         if ($remetenteTipoDoc == '2') {
             $content .= "<CNPJ>$remetenteCNPJCPF</CNPJ>";
@@ -24,11 +27,14 @@ class Header
             $content .= "<CPF>$remetenteCNPJCPF</CPF>";
         }
         $content .= "</CPFCNPJRemetente>";
-        $txtTrans = 'true';
-        if ($transacao || $transacao == 'true') {
-            $txtTrans = 'true';
+        if ($transacao != '') {
+            $content .= "<transacao>$transacao</transacao>";
         }
-        $content .= "<transacao>$txtTrans</transacao>";
+        if ($cnpj != '') {
+            $content .= "<CPFCNPJ><CNPJ>$cnpj</CNPJ></CPFCNPJ>";
+        } elseif ($cpf != '') {
+            $content .= "<CPFCNPJ><CPF>$cpf</CPF></CPFCNPJ>";
+        }
         if ($im != '') {
             $content .= "<Inscricao>$im</Inscricao>";
         }
@@ -37,6 +43,9 @@ class Header
         }
         if ($dtFim != '') {
             $content .= "<dtFim>$dtFim</dtFim>";
+        }
+        if ($pagina != '') {
+            $content .= "<NumeroPagina>$pagina</NumeroPagina>";
         }
         if ($qtdRPS != 0) {
             $content .= "<QtdRPS>$qtdRPS</QtdRPS>";
