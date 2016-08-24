@@ -60,10 +60,10 @@ class EnvioRPS extends Factory
             $transacao,
             '',
             '',
-            '',    
+            '',
             $this->dtIni,
             $this->dtFim,
-            '',    
+            '',
             $this->qtdRPS,
             $this->valorTotalServicos,
             $this->valorTotalDeducoes

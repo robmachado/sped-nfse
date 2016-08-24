@@ -3,8 +3,8 @@
 namespace NFePHP\NFSe\Models\Prodam\Factories;
 
 /**
- * Classe para a construção do XML relativo ao serviço de 
- * Pedido de Cnacelamento de NFSe dos webservices da 
+ * Classe para a construção do XML relativo ao serviço de
+ * Pedido de Cnacelamento de NFSe dos webservices da
  * Cidade de São Paulo conforme o modelo Prodam
  *
  * @category  NFePHP
@@ -56,7 +56,7 @@ class CancelamentoNFSe extends Factory
             if (count($numeroNFSe) > 50) {
                 throw InvalidArgumentException("No máximo pode ser solicitado o cancelamento de 50 NFSe por vez.");
             }
-            foreach($numeroNFSe as $num) {
+            foreach ($numeroNFSe as $num) {
                 $content .= $this->detalhe($prestadorIM, $num);
             }
         } else {
@@ -84,5 +84,4 @@ class CancelamentoNFSe extends Factory
         $detalhe .= "</Detalhe>";
         return $detalhe;
     }
-    
 }

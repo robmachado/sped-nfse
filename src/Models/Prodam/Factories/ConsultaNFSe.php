@@ -3,8 +3,8 @@
 namespace NFePHP\NFSe\Models\Prodam\Factories;
 
 /**
- * Classe para a construção do XML relativo ao serviço de 
- * Pedido de Consulta de NFSe para os webservices da 
+ * Classe para a construção do XML relativo ao serviço de
+ * Pedido de Consulta de NFSe para os webservices da
  * Cidade de São Paulo conforme o modelo Prodam
  *
  * @category  NFePHP
@@ -24,7 +24,7 @@ use NFePHP\NFSe\Models\Prodam\Factories\Factory;
 class ConsultaNFSe extends Factory
 {
     /**
-     * 
+     *
      * @param type $versao
      * @param type $remetenteTipoDoc
      * @param type $remetenteCNPJCPF

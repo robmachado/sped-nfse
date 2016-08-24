@@ -10,11 +10,11 @@ class Header
         $remetenteCNPJCPF,
         $transacao = '',
         $cnpj = '',
-        $cpf = '',    
+        $cpf = '',
         $im = '',
         $dtIni = '',
         $dtFim = '',
-        $pagina = '',    
+        $pagina = '',
         $qtdRPS = 0,
         $valorTotalServicos = 0,
         $valorTotalDeducoes = 0
@@ -34,7 +34,7 @@ class Header
             $content .= "<CPFCNPJ><CNPJ>$cnpj</CNPJ></CPFCNPJ>";
         } elseif ($cpf != '') {
             $content .= "<CPFCNPJ><CPF>$cpf</CPF></CPFCNPJ>";
-        }       
+        }
         if ($im != '') {
             $content .= "<Inscricao>$im</Inscricao>";
         }

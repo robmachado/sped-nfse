@@ -3,8 +3,8 @@
 namespace NFePHP\NFSe\Models\Prodam\Factories;
 
 /**
- * Classe para a construção do XML relativo ao serviço de 
- * Pedido de Consulta do CNPJ do contribuinte para 
+ * Classe para a construção do XML relativo ao serviço de
+ * Pedido de Consulta do CNPJ do contribuinte para
  * os webservices da Cidade de São Paulo conforme o modelo Prodam
  *
  * @category  NFePHP

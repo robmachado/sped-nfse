@@ -140,7 +140,7 @@ class Tools extends ToolsBase
      */
     public function consultaNFSeRecebidas(
         $cnpjTomador,
-        $cpfTomador,    
+        $cpfTomador,
         $imTomador,
         $dtInicio,
         $dtFim,
@@ -154,7 +154,7 @@ class Tools extends ToolsBase
             $this->remetenteCNPJCPF,
             '',
             $cnpjTomador,
-            $cpfTomador,    
+            $cpfTomador,
             $imTomador,
             $dtInicio,
             $dtFim,
@@ -178,7 +178,7 @@ class Tools extends ToolsBase
      */
     public function consultaNFSeEmitidas(
         $cnpjPrestador,
-        $cpfPrestador,    
+        $cpfPrestador,
         $imPrestador,
         $dtInicio,
         $dtFim,
@@ -192,7 +192,7 @@ class Tools extends ToolsBase
             $this->remetenteCNPJCPF,
             '',
             $cnpjPrestador,
-            $cpfPrestador,    
+            $cpfPrestador,
             $imPrestador,
             $dtInicio,
             $dtFim,

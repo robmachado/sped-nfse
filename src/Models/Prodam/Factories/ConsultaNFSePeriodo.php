@@ -36,7 +36,7 @@ class ConsultaNFSePeriodo extends Factory
             $remetenteCNPJCPF,
             $transacao,
             $cnpj,
-            $cpf,    
+            $cpf,
             $im,
             $dtInicio,
             $dtFim,

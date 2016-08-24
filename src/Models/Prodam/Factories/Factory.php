@@ -30,9 +30,9 @@ class Factory
      */
     public function clear($body)
     {
-        $body = str_replace('<?xml version="1.0"?>', '',$body);
-        $body = str_replace('<?xml version="1.0" encoding="utf-8"?>', '',$body);
-        $body = str_replace('<?xml version="1.0"  encoding="UTF-8"?>', '',$body);
+        $body = str_replace('<?xml version="1.0"?>', '', $body);
+        $body = str_replace('<?xml version="1.0" encoding="utf-8"?>', '', $body);
+        $body = str_replace('<?xml version="1.0"  encoding="UTF-8"?>', '', $body);
         return $body;
     }
     
@@ -54,7 +54,7 @@ class Factory
         );
         if (!$flag) {
             $msg = "O XML falhou ao ser validado:\n";
-            foreach(ValidXsd::$errors as $error) {
+            foreach (ValidXsd::$errors as $error) {
                 $msg .= $error."\n";
             }
             throw new InvalidArgumentException($msg);
