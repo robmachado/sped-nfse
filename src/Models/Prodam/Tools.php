@@ -19,6 +19,7 @@ namespace NFePHP\NFSe\Models\Prodam;
 use NFePHP\NFSe\Models\Base\ToolsBase;
 use NFePHP\NFSe\Models\Prodam\Rps;
 use NFePHP\NFSe\Models\ToolsInterface;
+use NFePHP\NFSe\Models\Prodam\Factories;
 
 class Tools extends ToolsBase
 {
@@ -36,6 +37,10 @@ class Tools extends ToolsBase
         '1' => 'https://nfe.prefeitura.sp.gov.br/ws/lotenfe.asmx'
     ];
     
+    protected $xmlnsxsd="http://www.w3.org/2001/XMLSchema";
+    protected $xmlnsxsi="http://www.w3.org/2001/XMLSchema-instance";
+    protected $xmlns= "http://www.prefeitura.sp.gov.br/nfe";
+    
     /**
      * Construtor da classe Tools
      * @param string $config
@@ -52,7 +57,7 @@ class Tools extends ToolsBase
     }
     
     /**
-     * Envo de um RPS
+     * Envio de apenas um RPS
      * @param \NFePHP\NFSe\Models\Prodam\RPS $rps
      */
     public function envioRPS(RPS $rps)
@@ -74,18 +79,18 @@ class Tools extends ToolsBase
     }
     
     /**
-     * Envo de lote de RPS
+     * Envio de lote de RPS
      * @param array $rpss
      */
     public function envioLoteRPS($rpss = array())
     {
-        $xml = Factories\EnvioRPS::render(
+        $fact = new Factories\EnvioRPS($this->oCertificate);
+        $xml = $fact->render(
             $this->versao,
             $this->remetenteTipoDoc,
             $this->remetenteCNPJCPF,
-            true,
-            $rpss,
-            $this->oCertificate->priKey
+            'true',
+            $rpss
         );
         $body = "<EnvioLoteRPSRequest>";
         $body .= " <VersaoSchema>$this->versao</VersaoSchema>";
@@ -100,13 +105,19 @@ class Tools extends ToolsBase
         $method = 'TesteEnvioLoteRPS';
     }
     
+    /**
+     * Consulta as NFSe e/ou RPS
+     * @param array $chavesNFSe array(array('prestadorIM'=>'', 'numeroNFSe'=>''))
+     * @param array $chavesRPS array(array('prestadorIM'=>'', 'serieRPS'=>'', 'numeroRPS'=>''))
+     */
     public function consultaNFSe($chavesNFSe = [], $chavesRPS = [])
     {
-        $xml = Factories\ConsultaNFSe::render(
+        $fact = new Factories\ConsultaNFSe($this->oCertificate);
+        $xml = $fact->render(
             $this->versao,
             $this->remetenteTipoDoc,
             $this->remetenteCNPJCPF,
-            true,
+            '',
             $chavesNFSe,
             $chavesRPS
         );
@@ -118,14 +129,80 @@ class Tools extends ToolsBase
         $response = $this->envia($body, $method);
     }
     
-    public function consultaNFSeRecebidas()
-    {
+    /**
+     * Consulta as NFSe Recebidas pelo Tomador no periodo
+     * @param string $cnpjTomador
+     * @param string $cpfTomador
+     * @param string $imTomador
+     * @param string $dtInicio
+     * @param string $dtFim
+     * @param string $pagina
+     */
+    public function consultaNFSeRecebidas(
+        $cnpjTomador,
+        $cpfTomador,    
+        $imTomador,
+        $dtInicio,
+        $dtFim,
+        $pagina
+    ) {
         $method = 'ConsultaNFeRecebidas';
+        $fact = new Factories\ConsultaNFSePeriodo($this->oCertificate);
+        $xml = $fact->render(
+            $this->versao,
+            $this->remetenteTipoDoc,
+            $this->remetenteCNPJCPF,
+            '',
+            $cnpjTomador,
+            $cpfTomador,    
+            $imTomador,
+            $dtInicio,
+            $dtFim,
+            $pagina
+        );
+        $body = "<ConsultaNFeRecebidasRequest>";
+        $body .= "<VersaoSchema>$this->versao</VersaoSchema>";
+        $body .= "<MensagemXML>$xml</MensagemXML>";
+        $body .= "</ConsultaNFeRecebidasRequest>";
+        $response = $this->envia($body, $method);
     }
     
-    public function consultaNFSeEmitidas()
-    {
+    /**
+     * Consulta das NFSe emitidas pelo prestador no período
+     * @param string $cnpjPrestador
+     * @param string $cpfPrestador
+     * @param string $imPrestador
+     * @param string $dtInicio
+     * @param string $dtFim
+     * @param string $pagina
+     */
+    public function consultaNFSeEmitidas(
+        $cnpjPrestador,
+        $cpfPrestador,    
+        $imPrestador,
+        $dtInicio,
+        $dtFim,
+        $pagina
+    ) {
         $method = 'ConsultaNFeEmitidas';
+        $fact = new Factories\ConsultaNFSePeriodo($this->oCertificate);
+        $xml = $fact->render(
+            $this->versao,
+            $this->remetenteTipoDoc,
+            $this->remetenteCNPJCPF,
+            '',
+            $cnpjPrestador,
+            $cpfPrestador,    
+            $imPrestador,
+            $dtInicio,
+            $dtFim,
+            $pagina
+        );
+        $body = "<ConsultaNFeEmitidasRequest>";
+        $body .= "<VersaoSchema>$this->versao</VersaoSchema>";
+        $body .= "<MensagemXML>$xml</MensagemXML>";
+        $body .= "</ConsultaNFeEmitidasRequest>";
+        $response = $this->envia($body, $method);
     }
     
     public function consultaLote()
@@ -140,23 +217,19 @@ class Tools extends ToolsBase
     
     public function cancelamentoNFSe($prestadorIM = '', $numeroNFSe = '')
     {
-        if ($prestadorIM == '' || $numeroNFSe == '') {
-            return '';
-        }
-        $xml = Factories\CancelamentoNFSe::render(
+        $fact = new Factories\CancelamentoNFSe($this->oCertificate);
+        $xml = $fact->render(
             $this->versao,
             $this->remetenteTipoDoc,
             $this->remetenteCNPJCPF,
-            true,
+            'true',
             $prestadorIM,
-            $numeroNFSe,
-            $this->oCertificate->priKey
+            $numeroNFSe
         );
         $body = "<CancelamentoNFeRequest>";
         $body .= "<VersaoSchema>$this->versao</VersaoSchema>";
         $body .= "<MensagemXML>$xml</MensagemXML>";
         $body .= "</CancelamentoNFeRequest>";
-        
         $method = 'CancelamentoNFe';
         $response = $this->envia($body, $method);
     }
@@ -167,15 +240,15 @@ class Tools extends ToolsBase
             return '';
         }
         $method = 'ConsultaCNPJ';
-        //monta a mensagem basica
-        $xml = Factories\ConsultaCNPJ::render(
+        $fact = new Factories\ConsultaCNPJ($this->oCertificate);
+        $xml = $fact->render(
             $this->versao,
             $this->remetenteTipoDoc,
             $this->remetenteCNPJCPF,
-            true,
+            '',
             $cnpjContribuinte
         );
-        $body = "<ConsultaCNPJRequest xmlns=\"http://www.prefeitura.sp.gov.br/nfe\">";
+        $body = "<ConsultaCNPJRequest>";
         $body .= "<VersaoSchema>$this->versao</VersaoSchema>";
         $body .= "<MensagemXML>$xml</MensagemXML>";
         $body .= "</ConsultaCNPJRequest>";
@@ -184,7 +257,6 @@ class Tools extends ToolsBase
     
     protected function envia($body, $method)
     {
-        $body = $this->oCertificate->signXML($body, "Pedido$method", '', $algorithm = 'SHA1');
         header("Content-type: text/xml");
         echo $body;
         die;

@@ -51,6 +51,10 @@ class RenderRPS
     {
         self::$dom = new Dom();
         $root = self::$dom->createElement('RPS');
+        //$root->createAttributeNS('','');
+        $xmlnsAttribute = self::$dom->createAttribute('xmlns');
+        $xmlnsAttribute->value = '';
+        $root->appendChild($xmlnsAttribute);
         //tag Assinatura
         self::$dom->addChild(
             $root,
