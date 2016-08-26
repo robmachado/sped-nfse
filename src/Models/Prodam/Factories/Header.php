@@ -62,7 +62,7 @@ class Header
             $content .= self::check('CPF', $remetenteCNPJCPF);
         }
         $content .= "</CPFCNPJRemetente>";
-        $content .= self::check('transacao',$transacao);
+        $content .= self::check('transacao', $transacao);
         if ($cnpj != '') {
             $content .= "<CPFCNPJ><CNPJ>$cnpj</CNPJ></CPFCNPJ>";
         } elseif ($cpf != '') {
