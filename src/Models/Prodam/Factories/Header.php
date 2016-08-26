@@ -57,45 +57,37 @@ class Header
         $content = "<Cabecalho xmlns=\"\" Versao=\"$versao\">";
         $content .= "<CPFCNPJRemetente>";
         if ($remetenteTipoDoc == '2') {
-            $content .= "<CNPJ>$remetenteCNPJCPF</CNPJ>";
+            $content .= self::check('CNPJ', $remetenteCNPJCPF);
         } else {
-            $content .= "<CPF>$remetenteCNPJCPF</CPF>";
+            $content .= self::check('CPF', $remetenteCNPJCPF);
         }
         $content .= "</CPFCNPJRemetente>";
-        if ($transacao != '') {
-            $content .= "<transacao>$transacao</transacao>";
-        }
+        $content .= self::check('transacao',$transacao);
         if ($cnpj != '') {
             $content .= "<CPFCNPJ><CNPJ>$cnpj</CNPJ></CPFCNPJ>";
         } elseif ($cpf != '') {
             $content .= "<CPFCNPJ><CPF>$cpf</CPF></CPFCNPJ>";
         }
-        if ($im != '') {
-            $content .= "<Inscricao>$im</Inscricao>";
-        }
-        if ($dtIni != '') {
-            $content .= "<dtInicio>$dtIni</dtInicio>";
-        }
-        if ($dtFim != '') {
-            $content .= "<dtFim>$dtFim</dtFim>";
-        }
-        if ($pagina != '') {
-            $content .= "<NumeroPagina>$pagina</NumeroPagina>";
-        }
-        if ($qtdRPS != 0) {
-            $content .= "<QtdRPS>$qtdRPS</QtdRPS>";
-        }
+        $content .= self::check('Inscricao', $im);
+        $content .= self::check('dtInicio', $dtIni);
+        $content .= self::check('dtFim', $dtFim);
+        $content .= self::check('NumeroPagina', $pagina);
+        $content .= self::check('QtdRPS', $qtdRPS);
         if ($valorTotalServicos != 0) {
             $content .= "<ValorTotalServicos>".number_format($valorTotalServicos, 2, '.', '')."</ValorTotalServicos>";
             $content .= "<ValorTotalDeducoes>".number_format($valorTotalDeducoes, 2, '.', '')."</ValorTotalDeducoes>";
         }
-        if ($numeroLote != '') {
-            $content .= "<NumeroLote>$numeroLote</NumeroLote>";
-        }
-        if ($prestadorIM != '') {
-            $content .= "<InscricaoPrestador>$prestadorIM</InscricaoPrestador>";
-        }
+        $content .= self::check('NumeroLote', $numeroLote);
+        $content .= self::check('InscricaoPrestador', $prestadorIM);
         $content .= "</Cabecalho>";
         return $content;
+    }
+    
+    private static function check($tag, $info)
+    {
+        if (!$empty($info) || $info != 0) {
+            return "<$tag>$info</$tag>";
+        }
+        return '';
     }
 }
