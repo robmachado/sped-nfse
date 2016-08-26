@@ -71,7 +71,7 @@ class Tools extends ToolsBase
             '',
             $rps
         );
-        $response = $this->envia($xml, $method);
+        return $this->buildRequest($xml, $method);
     }
     
     /**
@@ -89,7 +89,7 @@ class Tools extends ToolsBase
             'true',
             $rpss
         );
-        $response = $this->envia($xml, $method);
+        return $this->buildRequest($xml, $method);
     }
     
     /**
@@ -107,7 +107,7 @@ class Tools extends ToolsBase
             'true',
             $rpss
         );
-        $response = $this->envia($xml, $method);
+        return $this->buildRequest($xml, $method);
     }
     
     /**
@@ -127,7 +127,7 @@ class Tools extends ToolsBase
             $chavesNFSe,
             $chavesRPS
         );
-        $response = $this->envia($xml, $method);
+        return $this->buildRequest($xml, $method);
     }
     
     /**
@@ -161,7 +161,7 @@ class Tools extends ToolsBase
             $dtFim,
             $pagina
         );
-        $response = $this->envia($xml, $method);
+        return $this->buildRequest($xml, $method);
     }
     
     /**
@@ -195,7 +195,7 @@ class Tools extends ToolsBase
             $dtFim,
             $pagina
         );
-        $response = $this->envia($xml, $method);
+        return $this->buildRequest($xml, $method);
     }
     
     /**
@@ -213,7 +213,7 @@ class Tools extends ToolsBase
             '',
             $numeroLote
         );
-        $response = $this->envia($xml, $method);
+        return $this->buildRequest($xml, $method);
     }
     
     /**
@@ -233,7 +233,7 @@ class Tools extends ToolsBase
             $prestadorIM,
             $numeroLote
         );
-        $response = $this->envia($xml, $method);
+        return $this->buildRequest($xml, $method);
     }
     
     /**
@@ -253,7 +253,7 @@ class Tools extends ToolsBase
             $prestadorIM,
             $numeroNFSe
         );
-        $response = $this->envia($xml, $method);
+        return $this->buildRequest($xml, $method);
     }
     
     /**
@@ -275,21 +275,34 @@ class Tools extends ToolsBase
             '',
             str_pad($cnpjContribuinte, 14, '0', STR_PAD_LEFT)
         );
-        $response = $this->envia($xml, $method);
+        return $this->buildRequest($xml, $method);
     }
     
     /**
-     * Envia mensagem por SOAP
+     * Monta o request da mansagem SOAP
      * @param string $body
      * @param string $method
+     * @return string
      */
-    protected function envia($body, $method)
+    protected function buildRequest($body, $method)
     {
         $tag = $method."Request";
         $request = "<$tag>";
         $request .= "<VersaoSchema>$this->versao</VersaoSchema>";
         $request .= "<MensagemXML>$body</MensagemXML>";
         $request .= "</$tag>";
+        return $request;
+    }
+
+
+    /**
+     * Envia mensagem por SOAP
+     * @param string $body
+     * @param string $method
+     */
+    public function envia($request, $method)
+    {
+       
         
         header("Content-type: text/xml");
         echo $request;

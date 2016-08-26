@@ -1,0 +1,87 @@
+SimpleXMLElement Object
+(
+    [Cabecalho] => SimpleXMLElement Object
+        (
+            [@attributes] => Array
+                (
+                    [Versao] => 1
+                )
+
+            [Sucesso] => true
+        )
+
+    [NFe] => SimpleXMLElement Object
+        (
+            [Assinatura] => Vh8DUD/SUIJyEWDA79eF810uEXwhj2au4/o6jlCIqRyUGYoySshrFkPdjPWUiaBSPQw0Es7890XaRI3fu3d4QqcQZUQuwbemfZIkJneM06lk6n502mQGVO1Gj0DX95xPRZlwqsx7VyGxjLjzIB3LSySnbzchxscxRjo1TjHtFjXKQpBH2aedHK5i4rTsO7BnsARMLjPanHuEwOW+uC7+4kPKBVbIi5pGaSKLMInGFew53xCAMkaK4ucBGUElgXxMiC7rqAh8/uDdn+We18AVe1UAgFplEr9aff0a14NpNm/Thrba2rqCOjoljjek0jpK+9UBtEfk33nwHQGMqE2Tjw==
+            [ChaveNFe] => SimpleXMLElement Object
+                (
+                    [InscricaoPrestador] => 40670945
+                    [NumeroNFe] => 2212
+                    [CodigoVerificacao] => APIEFBRY
+                )
+
+            [DataEmissaoNFe] => 2016-08-26T14:16:28
+            [NumeroLote] => 265215931
+            [ChaveRPS] => SimpleXMLElement Object
+                (
+                    [InscricaoPrestador] => 40670945
+                    [SerieRPS] => 1
+                    [NumeroRPS] => 1193
+                )
+
+            [TipoRPS] => RPS
+            [DataEmissaoRPS] => 2016-08-26
+            [CPFCNPJPrestador] => SimpleXMLElement Object
+                (
+                    [CNPJ] => 11907192000130
+                )
+
+            [RazaoSocialPrestador] => UP SERVICE SERVICOS DE MODELAGEM LTDA
+            [EnderecoPrestador] => SimpleXMLElement Object
+                (
+                    [TipoLogradouro] => R
+                    [Logradouro] => NEWTON PRADO
+                    [NumeroEndereco] => 00457
+                    [ComplementoEndereco] => SALA 31
+                    [Bairro] => BOM RETIRO
+                    [Cidade] => 3550308
+                    [UF] => SP
+                    [CEP] => 1127000
+                )
+
+            [EmailPrestador] => monica@plotag.com.br
+            [StatusNFe] => N
+            [TributacaoNFe] => T
+            [OpcaoSimples] => 4
+            [ValorServicos] => 5.29
+            [CodigoServico] => 6815
+            [AliquotaServicos] => 0
+            [ValorISS] => 0
+            [ValorCredito] => 0.04
+            [ISSRetido] => false
+            [CPFCNPJTomador] => SimpleXMLElement Object
+                (
+                    [CPF] => 34932789858
+                )
+
+            [RazaoSocialTomador] => Keila Silva De Oliveira
+            [EnderecoTomador] => SimpleXMLElement Object
+                (
+                    [TipoLogradouro] => Rua
+                    [Logradouro] => Itaguaje
+                    [NumeroEndereco] => 02
+                    [Bairro] => Cidade Parque São Luiz
+                    [Cidade] => 3518800
+                    [UF] => SP
+                    [CEP] => 7170520
+                )
+
+            [EmailTomador] => Keila.so1987@gmail.com
+            [Discriminacao] => Plotagem
+            [FonteCargaTributaria] => SimpleXMLElement Object
+                (
+                )
+
+        )
+
+)
