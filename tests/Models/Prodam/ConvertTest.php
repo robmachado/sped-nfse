@@ -1,17 +1,43 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+namespace NFePHP\NFSe\Tests\Prodam;
 
-/**
- * Description of ConvertTest
- *
- * @author administrador
- */
-class ConvertTest
+use NFePHP\NFSe\Tests\NFSeTestCase;
+use NFePHP\NFSe\Models\Prodam\Convert;
+
+class ConvertTest extends NFSeTestCase
 {
-    //put your code here
+    /**
+     * @covers NFePHP\NFSe\Models\Prodam\Convert::toRps
+     * @covers NFePHP\NFSe\Models\Prodam\Convert::validTipos
+     * @covers NFePHP\NFSe\Models\Prodam\Convert::loadRPS
+     * @covers NFePHP\NFSe\Models\Prodam\Convert::loadTipo2
+     * @covers NFePHP\NFSe\Models\Prodam\Convert::f1Entity
+     * @covers NFePHP\NFSe\Models\Prodam\Convert::f2Entity
+     * @covers NFePHP\NFSe\Models\Prodam\Convert::f9Entity
+     * @covers NFePHP\NFSe\Models\Prodam\Convert::zArray2Rps
+     * @covers NFePHP\NFSe\Models\Prodam\Convert::extract
+     */
+    public function testToRps()
+    {
+        $rpss = Convert::toRps($this->fixturesPath . '/Prodam/LoteRPS2.txt');
+        $this->assertInstanceOf('\NFePHP\NFSe\Models\Prodam\Rps', $rpss[0]);
+    }
+    
+    /**
+     * @covers NFePHP\NFSe\Models\Prodam\Convert::toRps
+     * @covers NFePHP\NFSe\Models\Prodam\Convert::validTipos
+     * @covers NFePHP\NFSe\Models\Prodam\Convert::loadRPS
+     * @covers NFePHP\NFSe\Models\Prodam\Convert::loadTipo2
+     * @covers NFePHP\NFSe\Models\Prodam\Convert::f1Entity
+     * @covers NFePHP\NFSe\Models\Prodam\Convert::f2Entity
+     * @covers NFePHP\NFSe\Models\Prodam\Convert::f9Entity
+     * @covers NFePHP\NFSe\Models\Prodam\Convert::zArray2Rps
+     * @covers NFePHP\NFSe\Models\Prodam\Convert::extract
+     * @expectedException InvalidArgumentException
+     */
+    public function testToRpsFail2And6Types()
+    {
+        $rpss = Convert::toRps($this->fixturesPath . '/Prodam/LoteRPS26_fail.txt');
+    }
 }
