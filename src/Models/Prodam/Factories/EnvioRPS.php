@@ -2,6 +2,21 @@
 
 namespace NFePHP\NFSe\Models\Prodam\Factories;
 
+/**
+ * Classe para a construção do XML relativo ao serviço de
+ * Pedido de Envio de NFSe dos webservices da
+ * Cidade de São Paulo conforme o modelo Prodam
+ *
+ * @category  NFePHP
+ * @package   NFePHP\NFSe\Models\Prodam\Factories\EnvioRPS
+ * @copyright NFePHP Copyright (c) 2016
+ * @license   http://www.gnu.org/licenses/lgpl.txt LGPLv3+
+ * @license   https://opensource.org/licenses/MIT MIT
+ * @license   http://www.gnu.org/licenses/gpl.txt GPLv3+
+ * @author    Roberto L. Machado <linux.rlm at gmail dot com>
+ * @link      http://github.com/nfephp-org/sped-nfse for the canonical source repository
+ */
+
 use NFePHP\NFSe\Models\Prodam\Rps;
 use NFePHP\NFSe\Models\Prodam\Factories\Factory;
 use NFePHP\NFSe\Models\Prodam\Factories\RenderRPS;
@@ -14,6 +29,16 @@ class EnvioRPS extends Factory
     private $valorTotalServicos = 0;
     private $valorTotalDeducoes = 0;
     
+    /**
+     * Renderiza o pedido em seu respectivo xml e faz
+     * a validação com o xsd
+     * @param int $versao
+     * @param int $remetenteTipoDoc
+     * @param string $remetenteCNPJCPF
+     * @param string $transacao
+     * @param Rps | array $data
+     * @return string
+     */
     public function render(
         $versao,
         $remetenteTipoDoc,

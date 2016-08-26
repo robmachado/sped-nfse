@@ -4,7 +4,7 @@ namespace NFePHP\NFSe\Models\Prodam\Factories;
 
 /**
  * Classe para a construção do XML relativo ao serviço de
- * Pedido de Cnacelamento de NFSe dos webservices da
+ * Pedido de Cancelamento de NFSe dos webservices da
  * Cidade de São Paulo conforme o modelo Prodam
  *
  * @category  NFePHP
@@ -25,6 +25,7 @@ class CancelamentoNFSe extends Factory
 {
     /**
      * Renderiza o xml do Pedido de Cancelamento de NFSe
+     * e faz a validação com o xsd
      * @param string $versao
      * @param int $remetenteTipoDoc
      * @param string $remetenteCNPJCPF

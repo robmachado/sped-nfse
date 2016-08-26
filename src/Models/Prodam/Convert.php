@@ -23,8 +23,6 @@ use NFePHP\NFSe\Models\Prodam\Rps;
 class Convert extends ConvertBase
 {
     protected static $aRps = array();
-    //os campos abaixo são usados basicamente para controle
-    // e validação
     protected static $tipo = 0;
     protected static $item = 0;
     protected static $contTipos = [1=>0,2=>0,3=>0,5=>0,6=>0,9=>0];

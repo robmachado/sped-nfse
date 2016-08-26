@@ -21,19 +21,13 @@ use NFePHP\Common\Files;
 
 class ToolsBase extends BaseTools
 {
-  
     protected $saveLog = true;
     
     public function __construct($config)
     {
         parent::__construct($config);
     }
-    
-    public function assina()
-    {
-    }
-
-    
+ 
     public function setSaveLogs()
     {
     }

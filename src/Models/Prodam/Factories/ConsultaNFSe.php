@@ -24,13 +24,13 @@ use NFePHP\NFSe\Models\Prodam\Factories\Factory;
 class ConsultaNFSe extends Factory
 {
     /**
-     *
-     * @param type $versao
-     * @param type $remetenteTipoDoc
-     * @param type $remetenteCNPJCPF
-     * @param type $transacao
-     * @param type $chavesNFSe
-     * @param type $chavesRPS
+     * Renderiza o pedido em seu respectivo xml
+     * @param int $versao
+     * @param int $remetenteTipoDoc
+     * @param string $remetenteCNPJCPF
+     * @param string $transacao
+     * @param array $chavesNFSe
+     * @param array $chavesRPS
      * @return string
      * @throws InvalidArgumentException
      */

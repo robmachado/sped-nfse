@@ -191,7 +191,7 @@ class RenderRPS
         $issRet = 'false';
         if ($rps->issRetidoRPS) {
             $issRet = 'true';
-        }    
+        }
         self::$dom->addChild(
             $root,
             'ISSRetido',
