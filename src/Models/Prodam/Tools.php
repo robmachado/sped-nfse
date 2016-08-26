@@ -202,7 +202,7 @@ class Tools extends ToolsBase
      * Consulta Lote
      * @param string $numeroLote
      */
-    public function consultaLote($numeroLote= '')
+    public function consultaLote($numeroLote = '')
     {
         $method = 'ConsultaLote';
         $fact = new Factories\ConsultaLote($this->oCertificate);
@@ -211,7 +211,7 @@ class Tools extends ToolsBase
             $this->remetenteTipoDoc,
             $this->remetenteCNPJCPF,
             '',
-            $numeroLote    
+            $numeroLote
         );
         $response = $this->envia($xml, $method);
     }
@@ -221,7 +221,7 @@ class Tools extends ToolsBase
      * @param string $prestadorIM
      * @param string $numeroLote
      */
-    public function consultaInformacoesLote($prestadorIM = '', $numeroLote= '')
+    public function consultaInformacoesLote($prestadorIM = '', $numeroLote = '')
     {
         $method = 'ConsultaInformacoesLote';
         $fact = new Factories\ConsultaInformacoesLote($this->oCertificate);
@@ -230,8 +230,8 @@ class Tools extends ToolsBase
             $this->remetenteTipoDoc,
             $this->remetenteCNPJCPF,
             '',
-            $prestadorIM,    
-            $numeroLote    
+            $prestadorIM,
+            $numeroLote
         );
         $response = $this->envia($xml, $method);
     }
@@ -290,6 +290,7 @@ class Tools extends ToolsBase
         $request .= "<VersaoSchema>$this->versao</VersaoSchema>";
         $request .= "<MensagemXML>$body</MensagemXML>";
         $request .= "</$tag>";
+        
         header("Content-type: text/xml");
         echo $request;
         die;

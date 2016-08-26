@@ -24,6 +24,7 @@ class ConsultaCNPJ extends Factory
 {
     /**
      * Renderiza o Pedido de Consulta do CNPJ do contribuinte
+     * e faz a validação com o xsd
      * @param int $versao
      * @param string $remetenteTipoDoc
      * @param string $remetenteCNPJCPF

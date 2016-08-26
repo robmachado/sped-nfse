@@ -3,7 +3,7 @@
 namespace NFePHP\NFSe\Models\Prodam;
 
 /**
- * Classe a construção do xml da NFSe para a Cidade de São Paulo
+ * Classe a montagem do RPS para a Cidade de São Paulo
  * conforme o modelo Prodam
  *
  * @category  NFePHP
