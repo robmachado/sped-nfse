@@ -1,12 +1,9 @@
 filter:
-    excluded_paths: [
-        certs/*,
-        config/*,
-        examples/*,
-        manuals/*,
-        schemes/*,
-        tests/*
-    ]
+    excluded_paths:
+        - config/*
+        - certs/*
+        - examples/*
+        - tests/*
 
 checks:
     php:
