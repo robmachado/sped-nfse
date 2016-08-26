@@ -71,7 +71,7 @@ class EnvioRPS extends Factory
         $content .= $xmlRPS."</$method>";
         $body = $this->oCertificate->signXML($content, $method, '', $algorithm = 'SHA1');
         $body = $this->clear($body);
-        $this->validar($versao, $body, $method);
+        //$this->validar($versao, $body, $method);
         return $body;
     }
     

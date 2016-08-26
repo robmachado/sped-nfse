@@ -1,0 +1,633 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="6b240563-2007-4820-af48-b5c24c6a28b1" activeEnvironment="Default" name="Prodam" resourceRoot="" soapui-version="5.2.1" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="e081b5e7-bafd-4c1f-b46f-c7e29d9d1d22" wsaVersion="NONE" name="LoteNFeSoap12" type="wsdl" bindingName="{http://www.prefeitura.sp.gov.br/nfe}LoteNFeSoap12" soapVersion="1_2" anonymous="optional" definition="file:/var/www/sped/sped-nfse/manuals/Prodam/lotenfe.asmx" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache/><con:endpoints><con:endpoint>https://nfe.prefeitura.sp.gov.br/ws/lotenfe.asmx</con:endpoint></con:endpoints><con:operation id="30c05994-9d14-49f6-9072-d0a41b0dbcd3" isOneWay="false" action="http://www.prefeitura.sp.gov.br/nfe/ws/cancelamentoNFe" name="CancelamentoNFe" bindingOperationName="CancelamentoNFe" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="c9ba2a23-2d72-4e91-b9af-a8f41f86278b" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://nfe.prefeitura.sp.gov.br/ws/lotenfe.asmx</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:nfe="http://www.prefeitura.sp.gov.br/nfe">
+   <soap:Header/>
+   <soap:Body>
+      <nfe:CancelamentoNFeRequest>
+         <nfe:VersaoSchema>?</nfe:VersaoSchema>
+         <!--Optional:-->
+         <nfe:MensagemXML>?</nfe:MensagemXML>
+      </nfe:CancelamentoNFeRequest>
+   </soap:Body>
+</soap:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.prefeitura.sp.gov.br/nfe/LoteNFeSoap/CancelamentoNFeRequest"/></con:call></con:operation><con:operation id="1ab1a1c5-c6d9-4f9f-8210-3f135a795954" isOneWay="false" action="http://www.prefeitura.sp.gov.br/nfe/ws/consultaCNPJ" name="ConsultaCNPJ" bindingOperationName="ConsultaCNPJ" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="8c24196c-de26-43f1-adab-87a37a004204" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://nfe.prefeitura.sp.gov.br/ws/lotenfe.asmx</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:nfe="http://www.prefeitura.sp.gov.br/nfe">
+   <soap:Header/>
+   <soap:Body>
+      <nfe:ConsultaCNPJRequest>
+         <nfe:VersaoSchema>?</nfe:VersaoSchema>
+         <!--Optional:-->
+         <nfe:MensagemXML>?</nfe:MensagemXML>
+      </nfe:ConsultaCNPJRequest>
+   </soap:Body>
+</soap:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.prefeitura.sp.gov.br/nfe/LoteNFeSoap/ConsultaCNPJRequest"/></con:call></con:operation><con:operation id="cbc0b8d5-980c-4c80-b2dc-2b2ac75bbdc0" isOneWay="false" action="http://www.prefeitura.sp.gov.br/nfe/ws/consultaInformacoesLote" name="ConsultaInformacoesLote" bindingOperationName="ConsultaInformacoesLote" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="bd5bd6f7-a0c7-40c3-9f58-32bb4f0d9a7c" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://nfe.prefeitura.sp.gov.br/ws/lotenfe.asmx</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:nfe="http://www.prefeitura.sp.gov.br/nfe">
+   <soap:Header/>
+   <soap:Body>
+      <nfe:ConsultaInformacoesLoteRequest>
+         <nfe:VersaoSchema>?</nfe:VersaoSchema>
+         <!--Optional:-->
+         <nfe:MensagemXML>?</nfe:MensagemXML>
+      </nfe:ConsultaInformacoesLoteRequest>
+   </soap:Body>
+</soap:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.prefeitura.sp.gov.br/nfe/LoteNFeSoap/ConsultaInformacoesLoteRequest"/></con:call></con:operation><con:operation id="e2572e7e-352a-4420-971f-3f689e54a7fd" isOneWay="false" action="http://www.prefeitura.sp.gov.br/nfe/ws/consultaLote" name="ConsultaLote" bindingOperationName="ConsultaLote" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="9a40ed6c-aeab-4a32-8ebb-650e38a21633" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://nfe.prefeitura.sp.gov.br/ws/lotenfe.asmx</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:nfe="http://www.prefeitura.sp.gov.br/nfe">
+   <soap:Header/>
+   <soap:Body>
+      <nfe:ConsultaLoteRequest>
+         <nfe:VersaoSchema>?</nfe:VersaoSchema>
+         <!--Optional:-->
+         <nfe:MensagemXML>?</nfe:MensagemXML>
+      </nfe:ConsultaLoteRequest>
+   </soap:Body>
+</soap:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.prefeitura.sp.gov.br/nfe/LoteNFeSoap/ConsultaLoteRequest"/></con:call></con:operation><con:operation id="3fdef99b-87e7-489c-8de6-f38b91aaa4c2" isOneWay="false" action="http://www.prefeitura.sp.gov.br/nfe/ws/consultaNFe" name="ConsultaNFe" bindingOperationName="ConsultaNFe" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="caa214c6-4f8c-4b2a-b48b-dca81809d12e" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://nfe.prefeitura.sp.gov.br/ws/lotenfe.asmx</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:nfe="http://www.prefeitura.sp.gov.br/nfe">
+   <soap:Header/>
+   <soap:Body>
+      <nfe:ConsultaNFeRequest>
+         <nfe:VersaoSchema>?</nfe:VersaoSchema>
+         <!--Optional:-->
+         <nfe:MensagemXML>?</nfe:MensagemXML>
+      </nfe:ConsultaNFeRequest>
+   </soap:Body>
+</soap:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.prefeitura.sp.gov.br/nfe/LoteNFeSoap/ConsultaNFeRequest"/></con:call></con:operation><con:operation id="2c84b4b4-b81e-440c-a4f6-a6a253c9075c" isOneWay="false" action="http://www.prefeitura.sp.gov.br/nfe/ws/consultaNFeEmitidas" name="ConsultaNFeEmitidas" bindingOperationName="ConsultaNFeEmitidas" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="82e1a80e-842b-4904-97b8-45e5f04a013e" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://nfe.prefeitura.sp.gov.br/ws/lotenfe.asmx</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:nfe="http://www.prefeitura.sp.gov.br/nfe">
+   <soap:Header/>
+   <soap:Body>
+      <nfe:ConsultaNFeEmitidasRequest>
+         <nfe:VersaoSchema>?</nfe:VersaoSchema>
+         <!--Optional:-->
+         <nfe:MensagemXML>?</nfe:MensagemXML>
+      </nfe:ConsultaNFeEmitidasRequest>
+   </soap:Body>
+</soap:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.prefeitura.sp.gov.br/nfe/LoteNFeSoap/ConsultaNFeEmitidasRequest"/></con:call></con:operation><con:operation id="635d8d6c-8bef-49e9-86b2-6b734805dda2" isOneWay="false" action="http://www.prefeitura.sp.gov.br/nfe/ws/consultaNFeRecebidas" name="ConsultaNFeRecebidas" bindingOperationName="ConsultaNFeRecebidas" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="a71e6092-946d-479f-b3a4-52c96a4530ff" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://nfe.prefeitura.sp.gov.br/ws/lotenfe.asmx</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:nfe="http://www.prefeitura.sp.gov.br/nfe">
+   <soap:Header/>
+   <soap:Body>
+      <nfe:ConsultaNFeRecebidasRequest>
+         <nfe:VersaoSchema>?</nfe:VersaoSchema>
+         <!--Optional:-->
+         <nfe:MensagemXML>?</nfe:MensagemXML>
+      </nfe:ConsultaNFeRecebidasRequest>
+   </soap:Body>
+</soap:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.prefeitura.sp.gov.br/nfe/LoteNFeSoap/ConsultaNFeRecebidasRequest"/></con:call></con:operation><con:operation id="dd73da65-bdba-40f4-b21b-774dd462137e" isOneWay="false" action="http://www.prefeitura.sp.gov.br/nfe/ws/envioLoteRPS" name="EnvioLoteRPS" bindingOperationName="EnvioLoteRPS" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="5e20fa66-4216-47bd-b65f-37e9ee1d8234" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://nfe.prefeitura.sp.gov.br/ws/lotenfe.asmx</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:nfe="http://www.prefeitura.sp.gov.br/nfe">
+   <soap:Header/>
+   <soap:Body>
+      <nfe:EnvioLoteRPSRequest>
+         <nfe:VersaoSchema>?</nfe:VersaoSchema>
+         <!--Optional:-->
+         <nfe:MensagemXML>?</nfe:MensagemXML>
+      </nfe:EnvioLoteRPSRequest>
+   </soap:Body>
+</soap:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.prefeitura.sp.gov.br/nfe/LoteNFeSoap/EnvioLoteRPSRequest"/></con:call></con:operation><con:operation id="59e690d4-6a18-4469-99c4-06898e472a5f" isOneWay="false" action="http://www.prefeitura.sp.gov.br/nfe/ws/envioRPS" name="EnvioRPS" bindingOperationName="EnvioRPS" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="b7b26b3d-2e5d-4588-a63e-870a9b10de66" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://nfe.prefeitura.sp.gov.br/ws/lotenfe.asmx</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:nfe="http://www.prefeitura.sp.gov.br/nfe">
+   <soap:Header/>
+   <soap:Body>
+      <nfe:EnvioRPSRequest>
+         <nfe:VersaoSchema>?</nfe:VersaoSchema>
+         <!--Optional:-->
+         <nfe:MensagemXML>?</nfe:MensagemXML>
+      </nfe:EnvioRPSRequest>
+   </soap:Body>
+</soap:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.prefeitura.sp.gov.br/nfe/LoteNFeSoap/EnvioRPSRequest"/></con:call></con:operation><con:operation id="c459e900-fc73-48ca-98bf-702ba51ecf1c" isOneWay="false" action="http://www.prefeitura.sp.gov.br/nfe/ws/testeenvio" name="TesteEnvioLoteRPS" bindingOperationName="TesteEnvioLoteRPS" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="5d0559a7-2a02-4687-aae3-6f1a1424e086" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://nfe.prefeitura.sp.gov.br/ws/lotenfe.asmx</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:nfe="http://www.prefeitura.sp.gov.br/nfe">
+   <soap:Header/>
+   <soap:Body>
+      <nfe:TesteEnvioLoteRPSRequest>
+         <nfe:VersaoSchema>?</nfe:VersaoSchema>
+         <!--Optional:-->
+         <nfe:MensagemXML>?</nfe:MensagemXML>
+      </nfe:TesteEnvioLoteRPSRequest>
+   </soap:Body>
+</soap:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.prefeitura.sp.gov.br/nfe/LoteNFeSoap/TesteEnvioLoteRPSRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:interface xsi:type="con:WsdlInterface" id="48163d8d-80c1-4a5a-b20b-77887742805e" wsaVersion="NONE" name="LoteNFeSoap" type="wsdl" bindingName="{http://www.prefeitura.sp.gov.br/nfe}LoteNFeSoap" soapVersion="1_1" anonymous="optional" definition="file:/var/www/sped/sped-nfse/manuals/Prodam/lotenfe.asmx" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="file:/var/www/sped/sped-nfse/manuals/Prodam/lotenfe.asmx"><con:part><con:url>file:/var/www/sped/sped-nfse/manuals/Prodam/lotenfe.asmx</con:url><con:content><![CDATA[<wsdl:definitions targetNamespace="http://www.prefeitura.sp.gov.br/nfe" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://www.prefeitura.sp.gov.br/nfe" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.prefeitura.sp.gov.br/nfe">
+      <s:element name="EnvioRPSRequest">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="VersaoSchema" type="s:int"/>
+            <s:element minOccurs="0" maxOccurs="1" name="MensagemXML" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EnvioRPSResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RetornoXML" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EnvioLoteRPSRequest">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="VersaoSchema" type="s:int"/>
+            <s:element minOccurs="0" maxOccurs="1" name="MensagemXML" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EnvioLoteRPSResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RetornoXML" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TesteEnvioLoteRPSRequest">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="VersaoSchema" type="s:int"/>
+            <s:element minOccurs="0" maxOccurs="1" name="MensagemXML" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TesteEnvioLoteRPSResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RetornoXML" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CancelamentoNFeRequest">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="VersaoSchema" type="s:int"/>
+            <s:element minOccurs="0" maxOccurs="1" name="MensagemXML" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CancelamentoNFeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RetornoXML" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConsultaNFeRequest">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="VersaoSchema" type="s:int"/>
+            <s:element minOccurs="0" maxOccurs="1" name="MensagemXML" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConsultaNFeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RetornoXML" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConsultaNFeRecebidasRequest">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="VersaoSchema" type="s:int"/>
+            <s:element minOccurs="0" maxOccurs="1" name="MensagemXML" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConsultaNFeRecebidasResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RetornoXML" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConsultaNFeEmitidasRequest">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="VersaoSchema" type="s:int"/>
+            <s:element minOccurs="0" maxOccurs="1" name="MensagemXML" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConsultaNFeEmitidasResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RetornoXML" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConsultaLoteRequest">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="VersaoSchema" type="s:int"/>
+            <s:element minOccurs="0" maxOccurs="1" name="MensagemXML" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConsultaLoteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RetornoXML" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConsultaInformacoesLoteRequest">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="VersaoSchema" type="s:int"/>
+            <s:element minOccurs="0" maxOccurs="1" name="MensagemXML" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConsultaInformacoesLoteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RetornoXML" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConsultaCNPJRequest">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="VersaoSchema" type="s:int"/>
+            <s:element minOccurs="0" maxOccurs="1" name="MensagemXML" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConsultaCNPJResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RetornoXML" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="EnvioRPSSoapIn">
+    <wsdl:part name="parameters" element="tns:EnvioRPSRequest"/>
+  </wsdl:message>
+  <wsdl:message name="EnvioRPSSoapOut">
+    <wsdl:part name="parameters" element="tns:EnvioRPSResponse"/>
+  </wsdl:message>
+  <wsdl:message name="EnvioLoteRPSSoapIn">
+    <wsdl:part name="parameters" element="tns:EnvioLoteRPSRequest"/>
+  </wsdl:message>
+  <wsdl:message name="EnvioLoteRPSSoapOut">
+    <wsdl:part name="parameters" element="tns:EnvioLoteRPSResponse"/>
+  </wsdl:message>
+  <wsdl:message name="TesteEnvioLoteRPSSoapIn">
+    <wsdl:part name="parameters" element="tns:TesteEnvioLoteRPSRequest"/>
+  </wsdl:message>
+  <wsdl:message name="TesteEnvioLoteRPSSoapOut">
+    <wsdl:part name="parameters" element="tns:TesteEnvioLoteRPSResponse"/>
+  </wsdl:message>
+  <wsdl:message name="CancelamentoNFeSoapIn">
+    <wsdl:part name="parameters" element="tns:CancelamentoNFeRequest"/>
+  </wsdl:message>
+  <wsdl:message name="CancelamentoNFeSoapOut">
+    <wsdl:part name="parameters" element="tns:CancelamentoNFeResponse"/>
+  </wsdl:message>
+  <wsdl:message name="ConsultaNFeSoapIn">
+    <wsdl:part name="parameters" element="tns:ConsultaNFeRequest"/>
+  </wsdl:message>
+  <wsdl:message name="ConsultaNFeSoapOut">
+    <wsdl:part name="parameters" element="tns:ConsultaNFeResponse"/>
+  </wsdl:message>
+  <wsdl:message name="ConsultaNFeRecebidasSoapIn">
+    <wsdl:part name="parameters" element="tns:ConsultaNFeRecebidasRequest"/>
+  </wsdl:message>
+  <wsdl:message name="ConsultaNFeRecebidasSoapOut">
+    <wsdl:part name="parameters" element="tns:ConsultaNFeRecebidasResponse"/>
+  </wsdl:message>
+  <wsdl:message name="ConsultaNFeEmitidasSoapIn">
+    <wsdl:part name="parameters" element="tns:ConsultaNFeEmitidasRequest"/>
+  </wsdl:message>
+  <wsdl:message name="ConsultaNFeEmitidasSoapOut">
+    <wsdl:part name="parameters" element="tns:ConsultaNFeEmitidasResponse"/>
+  </wsdl:message>
+  <wsdl:message name="ConsultaLoteSoapIn">
+    <wsdl:part name="parameters" element="tns:ConsultaLoteRequest"/>
+  </wsdl:message>
+  <wsdl:message name="ConsultaLoteSoapOut">
+    <wsdl:part name="parameters" element="tns:ConsultaLoteResponse"/>
+  </wsdl:message>
+  <wsdl:message name="ConsultaInformacoesLoteSoapIn">
+    <wsdl:part name="parameters" element="tns:ConsultaInformacoesLoteRequest"/>
+  </wsdl:message>
+  <wsdl:message name="ConsultaInformacoesLoteSoapOut">
+    <wsdl:part name="parameters" element="tns:ConsultaInformacoesLoteResponse"/>
+  </wsdl:message>
+  <wsdl:message name="ConsultaCNPJSoapIn">
+    <wsdl:part name="parameters" element="tns:ConsultaCNPJRequest"/>
+  </wsdl:message>
+  <wsdl:message name="ConsultaCNPJSoapOut">
+    <wsdl:part name="parameters" element="tns:ConsultaCNPJResponse"/>
+  </wsdl:message>
+  <wsdl:portType name="LoteNFeSoap">
+    <wsdl:operation name="EnvioRPS">
+      <wsdl:input message="tns:EnvioRPSSoapIn"/>
+      <wsdl:output message="tns:EnvioRPSSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="EnvioLoteRPS">
+      <wsdl:input message="tns:EnvioLoteRPSSoapIn"/>
+      <wsdl:output message="tns:EnvioLoteRPSSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="TesteEnvioLoteRPS">
+      <wsdl:input message="tns:TesteEnvioLoteRPSSoapIn"/>
+      <wsdl:output message="tns:TesteEnvioLoteRPSSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="CancelamentoNFe">
+      <wsdl:input message="tns:CancelamentoNFeSoapIn"/>
+      <wsdl:output message="tns:CancelamentoNFeSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaNFe">
+      <wsdl:input message="tns:ConsultaNFeSoapIn"/>
+      <wsdl:output message="tns:ConsultaNFeSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaNFeRecebidas">
+      <wsdl:input message="tns:ConsultaNFeRecebidasSoapIn"/>
+      <wsdl:output message="tns:ConsultaNFeRecebidasSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaNFeEmitidas">
+      <wsdl:input message="tns:ConsultaNFeEmitidasSoapIn"/>
+      <wsdl:output message="tns:ConsultaNFeEmitidasSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaLote">
+      <wsdl:input message="tns:ConsultaLoteSoapIn"/>
+      <wsdl:output message="tns:ConsultaLoteSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaInformacoesLote">
+      <wsdl:input message="tns:ConsultaInformacoesLoteSoapIn"/>
+      <wsdl:output message="tns:ConsultaInformacoesLoteSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaCNPJ">
+      <wsdl:input message="tns:ConsultaCNPJSoapIn"/>
+      <wsdl:output message="tns:ConsultaCNPJSoapOut"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="LoteNFeSoap" type="tns:LoteNFeSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="EnvioRPS">
+      <soap:operation soapAction="http://www.prefeitura.sp.gov.br/nfe/ws/envioRPS" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EnvioLoteRPS">
+      <soap:operation soapAction="http://www.prefeitura.sp.gov.br/nfe/ws/envioLoteRPS" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TesteEnvioLoteRPS">
+      <soap:operation soapAction="http://www.prefeitura.sp.gov.br/nfe/ws/testeenvio" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CancelamentoNFe">
+      <soap:operation soapAction="http://www.prefeitura.sp.gov.br/nfe/ws/cancelamentoNFe" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaNFe">
+      <soap:operation soapAction="http://www.prefeitura.sp.gov.br/nfe/ws/consultaNFe" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaNFeRecebidas">
+      <soap:operation soapAction="http://www.prefeitura.sp.gov.br/nfe/ws/consultaNFeRecebidas" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaNFeEmitidas">
+      <soap:operation soapAction="http://www.prefeitura.sp.gov.br/nfe/ws/consultaNFeEmitidas" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaLote">
+      <soap:operation soapAction="http://www.prefeitura.sp.gov.br/nfe/ws/consultaLote" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaInformacoesLote">
+      <soap:operation soapAction="http://www.prefeitura.sp.gov.br/nfe/ws/consultaInformacoesLote" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaCNPJ">
+      <soap:operation soapAction="http://www.prefeitura.sp.gov.br/nfe/ws/consultaCNPJ" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="LoteNFeSoap12" type="tns:LoteNFeSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="EnvioRPS">
+      <soap12:operation soapAction="http://www.prefeitura.sp.gov.br/nfe/ws/envioRPS" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EnvioLoteRPS">
+      <soap12:operation soapAction="http://www.prefeitura.sp.gov.br/nfe/ws/envioLoteRPS" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TesteEnvioLoteRPS">
+      <soap12:operation soapAction="http://www.prefeitura.sp.gov.br/nfe/ws/testeenvio" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CancelamentoNFe">
+      <soap12:operation soapAction="http://www.prefeitura.sp.gov.br/nfe/ws/cancelamentoNFe" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaNFe">
+      <soap12:operation soapAction="http://www.prefeitura.sp.gov.br/nfe/ws/consultaNFe" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaNFeRecebidas">
+      <soap12:operation soapAction="http://www.prefeitura.sp.gov.br/nfe/ws/consultaNFeRecebidas" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaNFeEmitidas">
+      <soap12:operation soapAction="http://www.prefeitura.sp.gov.br/nfe/ws/consultaNFeEmitidas" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaLote">
+      <soap12:operation soapAction="http://www.prefeitura.sp.gov.br/nfe/ws/consultaLote" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaInformacoesLote">
+      <soap12:operation soapAction="http://www.prefeitura.sp.gov.br/nfe/ws/consultaInformacoesLote" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaCNPJ">
+      <soap12:operation soapAction="http://www.prefeitura.sp.gov.br/nfe/ws/consultaCNPJ" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="LoteNFe">
+    <wsdl:port name="LoteNFeSoap" binding="tns:LoteNFeSoap">
+      <soap:address location="https://nfe.prefeitura.sp.gov.br/ws/lotenfe.asmx"/>
+    </wsdl:port>
+    <wsdl:port name="LoteNFeSoap12" binding="tns:LoteNFeSoap12">
+      <soap12:address location="https://nfe.prefeitura.sp.gov.br/ws/lotenfe.asmx"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>https://nfe.prefeitura.sp.gov.br/ws/lotenfe.asmx</con:endpoint></con:endpoints><con:operation id="c676b70c-dcde-4f1e-9794-acdd3376abb6" isOneWay="false" action="http://www.prefeitura.sp.gov.br/nfe/ws/cancelamentoNFe" name="CancelamentoNFe" bindingOperationName="CancelamentoNFe" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="5d335a8a-fb95-4ddd-9dea-afc705a77401" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://nfe.prefeitura.sp.gov.br/ws/lotenfe.asmx</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfe="http://www.prefeitura.sp.gov.br/nfe">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <nfe:CancelamentoNFeRequest>
+         <nfe:VersaoSchema>?</nfe:VersaoSchema>
+         <!--Optional:-->
+         <nfe:MensagemXML>?</nfe:MensagemXML>
+      </nfe:CancelamentoNFeRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.prefeitura.sp.gov.br/nfe/ws/cancelamentoNFe"/></con:call></con:operation><con:operation id="faf18769-53ab-4231-989b-dfd0bfdcc5b9" isOneWay="false" action="http://www.prefeitura.sp.gov.br/nfe/ws/consultaCNPJ" name="ConsultaCNPJ" bindingOperationName="ConsultaCNPJ" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="6f90e92f-4174-4b60-8bde-cf1a9a29246a" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://nfe.prefeitura.sp.gov.br/ws/lotenfe.asmx</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfe="http://www.prefeitura.sp.gov.br/nfe">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <nfe:ConsultaCNPJRequest>
+         <nfe:VersaoSchema>?</nfe:VersaoSchema>
+         <!--Optional:-->
+         <nfe:MensagemXML>?</nfe:MensagemXML>
+      </nfe:ConsultaCNPJRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.prefeitura.sp.gov.br/nfe/ws/consultaCNPJ"/></con:call></con:operation><con:operation id="10a64ab6-8ae6-48e6-a2f9-f440bf83abbc" isOneWay="false" action="http://www.prefeitura.sp.gov.br/nfe/ws/consultaInformacoesLote" name="ConsultaInformacoesLote" bindingOperationName="ConsultaInformacoesLote" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="35a59b7b-127a-4705-85ed-eade0ef3ee25" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://nfe.prefeitura.sp.gov.br/ws/lotenfe.asmx</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfe="http://www.prefeitura.sp.gov.br/nfe">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <nfe:ConsultaInformacoesLoteRequest>
+         <nfe:VersaoSchema>?</nfe:VersaoSchema>
+         <!--Optional:-->
+         <nfe:MensagemXML>?</nfe:MensagemXML>
+      </nfe:ConsultaInformacoesLoteRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.prefeitura.sp.gov.br/nfe/ws/consultaInformacoesLote"/></con:call></con:operation><con:operation id="4db398ea-8640-4d27-ba64-a3a8b2c4fbcf" isOneWay="false" action="http://www.prefeitura.sp.gov.br/nfe/ws/consultaLote" name="ConsultaLote" bindingOperationName="ConsultaLote" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="73c6114a-653e-40cf-ac38-96d3fe6594f4" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://nfe.prefeitura.sp.gov.br/ws/lotenfe.asmx</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfe="http://www.prefeitura.sp.gov.br/nfe">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <nfe:ConsultaLoteRequest>
+         <nfe:VersaoSchema>?</nfe:VersaoSchema>
+         <!--Optional:-->
+         <nfe:MensagemXML>?</nfe:MensagemXML>
+      </nfe:ConsultaLoteRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.prefeitura.sp.gov.br/nfe/ws/consultaLote"/></con:call></con:operation><con:operation id="66d93140-c74e-4fae-bb82-ee6c36bc70ca" isOneWay="false" action="http://www.prefeitura.sp.gov.br/nfe/ws/consultaNFe" name="ConsultaNFe" bindingOperationName="ConsultaNFe" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="b0da59bf-27a7-46d1-859c-5bf36a389d40" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://nfe.prefeitura.sp.gov.br/ws/lotenfe.asmx</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfe="http://www.prefeitura.sp.gov.br/nfe">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <nfe:ConsultaNFeRequest>
+         <nfe:VersaoSchema>?</nfe:VersaoSchema>
+         <!--Optional:-->
+         <nfe:MensagemXML>?</nfe:MensagemXML>
+      </nfe:ConsultaNFeRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.prefeitura.sp.gov.br/nfe/ws/consultaNFe"/></con:call></con:operation><con:operation id="692728f7-0591-4736-89c0-78510eec443a" isOneWay="false" action="http://www.prefeitura.sp.gov.br/nfe/ws/consultaNFeEmitidas" name="ConsultaNFeEmitidas" bindingOperationName="ConsultaNFeEmitidas" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="9efa4ac4-2fc3-4361-ae5f-e21b95fc4754" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://nfe.prefeitura.sp.gov.br/ws/lotenfe.asmx</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfe="http://www.prefeitura.sp.gov.br/nfe">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <nfe:ConsultaNFeEmitidasRequest>
+         <nfe:VersaoSchema>?</nfe:VersaoSchema>
+         <!--Optional:-->
+         <nfe:MensagemXML>?</nfe:MensagemXML>
+      </nfe:ConsultaNFeEmitidasRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.prefeitura.sp.gov.br/nfe/ws/consultaNFeEmitidas"/></con:call></con:operation><con:operation id="e62df645-ba31-497e-8d1c-4c3f2e178d4d" isOneWay="false" action="http://www.prefeitura.sp.gov.br/nfe/ws/consultaNFeRecebidas" name="ConsultaNFeRecebidas" bindingOperationName="ConsultaNFeRecebidas" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="b20297e5-6040-4fd2-9082-624340d3a5cc" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://nfe.prefeitura.sp.gov.br/ws/lotenfe.asmx</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfe="http://www.prefeitura.sp.gov.br/nfe">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <nfe:ConsultaNFeRecebidasRequest>
+         <nfe:VersaoSchema>?</nfe:VersaoSchema>
+         <!--Optional:-->
+         <nfe:MensagemXML>?</nfe:MensagemXML>
+      </nfe:ConsultaNFeRecebidasRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.prefeitura.sp.gov.br/nfe/ws/consultaNFeRecebidas"/></con:call></con:operation><con:operation id="e3107a32-2127-4e8e-a683-e5ca2a3cebf9" isOneWay="false" action="http://www.prefeitura.sp.gov.br/nfe/ws/envioLoteRPS" name="EnvioLoteRPS" bindingOperationName="EnvioLoteRPS" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="73089d00-7814-45b6-af39-681ae7aa2d49" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://nfe.prefeitura.sp.gov.br/ws/lotenfe.asmx</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfe="http://www.prefeitura.sp.gov.br/nfe">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <nfe:EnvioLoteRPSRequest>
+         <nfe:VersaoSchema>?</nfe:VersaoSchema>
+         <!--Optional:-->
+         <nfe:MensagemXML>?</nfe:MensagemXML>
+      </nfe:EnvioLoteRPSRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.prefeitura.sp.gov.br/nfe/ws/envioLoteRPS"/></con:call></con:operation><con:operation id="59d39e32-49f2-4090-bea3-c7b3515d62cd" isOneWay="false" action="http://www.prefeitura.sp.gov.br/nfe/ws/envioRPS" name="EnvioRPS" bindingOperationName="EnvioRPS" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="4cc6a708-d407-48fa-84ca-1a180393d92f" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://nfe.prefeitura.sp.gov.br/ws/lotenfe.asmx</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfe="http://www.prefeitura.sp.gov.br/nfe">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <nfe:EnvioRPSRequest>
+         <nfe:VersaoSchema>?</nfe:VersaoSchema>
+         <!--Optional:-->
+         <nfe:MensagemXML>?</nfe:MensagemXML>
+      </nfe:EnvioRPSRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.prefeitura.sp.gov.br/nfe/ws/envioRPS"/></con:call></con:operation><con:operation id="e9503ce4-3003-4449-8d4a-f49d02297390" isOneWay="false" action="http://www.prefeitura.sp.gov.br/nfe/ws/testeenvio" name="TesteEnvioLoteRPS" bindingOperationName="TesteEnvioLoteRPS" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="c66044b6-f16f-4889-9bab-c536c88c8cec" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://nfe.prefeitura.sp.gov.br/ws/lotenfe.asmx</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nfe="http://www.prefeitura.sp.gov.br/nfe">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <nfe:TesteEnvioLoteRPSRequest>
+         <nfe:VersaoSchema>?</nfe:VersaoSchema>
+         <!--Optional:-->
+         <nfe:MensagemXML>?</nfe:MensagemXML>
+      </nfe:TesteEnvioLoteRPSRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.prefeitura.sp.gov.br/nfe/ws/testeenvio"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/></con:soapui-project>

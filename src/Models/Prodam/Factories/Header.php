@@ -17,7 +17,9 @@ class Header
         $pagina = '',
         $qtdRPS = 0,
         $valorTotalServicos = 0,
-        $valorTotalDeducoes = 0
+        $valorTotalDeducoes = 0,
+        $numeroLote = '',
+        $prestadorIM = ''    
     ) {
         $content = "<Cabecalho xmlns=\"\" Versao=\"$versao\">";
         $content .= "<CPFCNPJRemetente>";
@@ -53,6 +55,12 @@ class Header
         if ($valorTotalServicos != 0) {
             $content .= "<ValorTotalServicos>".number_format($valorTotalServicos, 2, '.', '')."</ValorTotalServicos>";
             $content .= "<ValorTotalDeducoes>".number_format($valorTotalDeducoes, 2, '.', '')."</ValorTotalDeducoes>";
+        }
+        if ($numeroLote != '') {
+            $content .= "<NumeroLote>$numeroLote</NumeroLote>";
+        }
+        if ($prestadorIM != '') {
+            $content .= "<InscricaoPrestador>$prestadorIM</InscricaoPrestador>";
         }
         $content .= "</Cabecalho>";
         return $content;

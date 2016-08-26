@@ -188,16 +188,18 @@ class RenderRPS
             'Aliquota do serviço',
             false
         );
+        $issRet = 'false';
         if ($rps->issRetidoRPS) {
-            self::$dom->addChild(
-                $root,
-                'ISSRetido',
-                'true',
-                true,
-                'ISS Retido',
-                false
-            );
-        }
+            $issRet = 'true';
+        }    
+        self::$dom->addChild(
+            $root,
+            'ISSRetido',
+            'true',
+            true,
+            'ISS Retido',
+            false
+        );
         //tag CPFCNPJTomador
         if ($rps->tomadorTipoDoc != '3') {
             $tomador = self::$dom->createElement('CPFCNPJTomador');
