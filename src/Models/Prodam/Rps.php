@@ -113,6 +113,9 @@ class Rps extends RpsBase
     ) {
         $this->tomadorRazao = Strings::cleanString($razao);
         $this->tomadorTipoDoc = $tipo;
+        if ($tipo == '2') {
+            $cnpjcpf = str_pad($cnpjcpf, 14, '0', STR_PAD_LEFT);
+        }
         $this->tomadorCNPJCPF = $cnpjcpf;
         $this->tomadorIE = $ie;
         $this->tomadorIM = $im;
@@ -166,7 +169,7 @@ class Rps extends RpsBase
         $this->intermediarioTipoDoc = $tipo;
         $this->intermediarioCNPJCPF = $cnpj;
         $this->intermediarioIM = $im;
-        $this->intermediarioEmail = $email;
+        $this->intermediarioEmail = strtolower($email);
     }
     
     /**
