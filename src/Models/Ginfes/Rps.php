@@ -3,7 +3,8 @@
 namespace NFePHP\NFSe\Models\Ginfes;
 
 /**
- * Classe a construção do xml dos RPS para o modelo GINFES
+ * Classe a construção do xml dos RPS
+ * para o modelo GINFES
  *
  * @category  NFePHP
  * @package   NFePHP\NFSe\Ginfes\Rps

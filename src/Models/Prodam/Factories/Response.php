@@ -1,6 +1,6 @@
 <?php
 
-namespace NFePHP\NFSe\Models\Prodam;
+namespace NFePHP\NFSe\Models\Prodam\Factories;
 
 /**
  * Classe para extração dos dados retornados pelos webservices da Cidade de São Paulo

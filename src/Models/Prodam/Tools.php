@@ -3,8 +3,8 @@
 namespace NFePHP\NFSe\Models\Prodam;
 
 /**
- * Classe para a comunicação com os webservices da Cidade de São Paulo
- * conforme o modelo Prodam
+ * Classe para a comunicação com os webservices
+ * conforme o modelo PRODAM
  *
  * @category  NFePHP
  * @package   NFePHP\NFSe\Prodam\Tools
@@ -16,9 +16,9 @@ namespace NFePHP\NFSe\Models\Prodam;
  * @link      http://github.com/nfephp-org/sped-nfse for the canonical source repository
  */
 
+use NFePHP\Common\Certificate\Pkcs12;
 use NFePHP\NFSe\Models\Base\ToolsBase;
 use NFePHP\NFSe\Models\Prodam\Rps;
-use NFePHP\NFSe\Models\ToolsInterface;
 use NFePHP\NFSe\Models\Prodam\Factories;
 
 class Tools extends ToolsBase
@@ -27,6 +27,7 @@ class Tools extends ToolsBase
     protected $versao = '1';
     protected $remetenteTipoDoc = '2';
     protected $remetenteCNPJCPF = '';
+    protected $method = '';
 
     /**
      * Endereços dos webservices
@@ -45,9 +46,9 @@ class Tools extends ToolsBase
      * Construtor da classe Tools
      * @param string $config
      */
-    public function __construct($config)
+    public function __construct($config, Pkcs12 $pkcs = null)
     {
-        parent::__construct($config);
+        parent::__construct($config, $pkcs);
         $this->versao = $this->aConfig['versao'];
         $this->remetenteCNPJCPF = $this->aConfig['cnpj'];
         if ($this->aConfig['cpf'] != '') {
@@ -62,7 +63,7 @@ class Tools extends ToolsBase
      */
     public function envioRPS(RPS $rps)
     {
-        $method = 'EnvioRPS';
+        $this->method = 'EnvioRPS';
         $fact = new Factories\EnvioRPS($this->oCertificate);
         $xml = $fact->render(
             $this->versao,
@@ -71,7 +72,7 @@ class Tools extends ToolsBase
             '',
             $rps
         );
-        return $this->buildRequest($xml, $method);
+        return $this->buildRequest($xml);
     }
     
     /**
@@ -80,7 +81,7 @@ class Tools extends ToolsBase
      */
     public function envioLoteRPS($rpss = array())
     {
-        $method = 'EnvioLoteRPS';
+        $this->method = 'EnvioLoteRPS';
         $fact = new Factories\EnvioRPS($this->oCertificate);
         $xml = $fact->render(
             $this->versao,
@@ -89,7 +90,7 @@ class Tools extends ToolsBase
             'true',
             $rpss
         );
-        return $this->buildRequest($xml, $method);
+        return $this->buildRequest($xml);
     }
     
     /**
@@ -98,7 +99,7 @@ class Tools extends ToolsBase
      */
     public function testeEnvioLoteRPS($rpss = array())
     {
-        $method = 'TesteEnvioLoteRPS';
+        $this->method = 'TesteEnvioLoteRPS';
         $fact = new Factories\EnvioRPS($this->oCertificate);
         $xml = $fact->render(
             $this->versao,
@@ -107,7 +108,7 @@ class Tools extends ToolsBase
             'true',
             $rpss
         );
-        return $this->buildRequest($xml, $method);
+        return $this->buildRequest($xml);
     }
     
     /**
@@ -117,7 +118,7 @@ class Tools extends ToolsBase
      */
     public function consultaNFSe($chavesNFSe = [], $chavesRPS = [])
     {
-        $method = 'ConsultaNFe';
+        $this->method = 'ConsultaNFe';
         $fact = new Factories\ConsultaNFSe($this->oCertificate);
         $xml = $fact->render(
             $this->versao,
@@ -127,7 +128,7 @@ class Tools extends ToolsBase
             $chavesNFSe,
             $chavesRPS
         );
-        return $this->buildRequest($xml, $method);
+        return $this->buildRequest($xml);
     }
     
     /**
@@ -147,7 +148,7 @@ class Tools extends ToolsBase
         $dtFim,
         $pagina
     ) {
-        $method = 'ConsultaNFeRecebidas';
+        $this->method = 'ConsultaNFeRecebidas';
         $fact = new Factories\ConsultaNFSePeriodo($this->oCertificate);
         $xml = $fact->render(
             $this->versao,
@@ -161,7 +162,7 @@ class Tools extends ToolsBase
             $dtFim,
             $pagina
         );
-        return $this->buildRequest($xml, $method);
+        return $this->buildRequest($xml);
     }
     
     /**
@@ -181,7 +182,7 @@ class Tools extends ToolsBase
         $dtFim,
         $pagina
     ) {
-        $method = 'ConsultaNFeEmitidas';
+        $this->method = 'ConsultaNFeEmitidas';
         $fact = new Factories\ConsultaNFSePeriodo($this->oCertificate);
         $xml = $fact->render(
             $this->versao,
@@ -195,7 +196,7 @@ class Tools extends ToolsBase
             $dtFim,
             $pagina
         );
-        return $this->buildRequest($xml, $method);
+        return $this->buildRequest($xml);
     }
     
     /**
@@ -204,7 +205,7 @@ class Tools extends ToolsBase
      */
     public function consultaLote($numeroLote = '')
     {
-        $method = 'ConsultaLote';
+        $this->method = 'ConsultaLote';
         $fact = new Factories\ConsultaLote($this->oCertificate);
         $xml = $fact->render(
             $this->versao,
@@ -213,7 +214,7 @@ class Tools extends ToolsBase
             '',
             $numeroLote
         );
-        return $this->buildRequest($xml, $method);
+        return $this->buildRequest($xml);
     }
     
     /**
@@ -223,7 +224,7 @@ class Tools extends ToolsBase
      */
     public function consultaInformacoesLote($prestadorIM = '', $numeroLote = '')
     {
-        $method = 'ConsultaInformacoesLote';
+        $this->method = 'ConsultaInformacoesLote';
         $fact = new Factories\ConsultaInformacoesLote($this->oCertificate);
         $xml = $fact->render(
             $this->versao,
@@ -233,7 +234,7 @@ class Tools extends ToolsBase
             $prestadorIM,
             $numeroLote
         );
-        return $this->buildRequest($xml, $method);
+        return $this->buildRequest($xml);
     }
     
     /**
@@ -243,7 +244,7 @@ class Tools extends ToolsBase
      */
     public function cancelamentoNFSe($prestadorIM = '', $numeroNFSe = '')
     {
-        $method = 'CancelamentoNFe';
+        $this->method = 'CancelamentoNFe';
         $fact = new Factories\CancelamentoNFSe($this->oCertificate);
         $xml = $fact->render(
             $this->versao,
@@ -253,7 +254,7 @@ class Tools extends ToolsBase
             $prestadorIM,
             $numeroNFSe
         );
-        return $this->buildRequest($xml, $method);
+        return $this->buildRequest($xml);
     }
     
     /**
@@ -266,7 +267,7 @@ class Tools extends ToolsBase
         if ($cnpjContribuinte == '') {
             return '';
         }
-        $method = 'ConsultaCNPJ';
+        $this->method = 'ConsultaCNPJ';
         $fact = new Factories\ConsultaCNPJ($this->oCertificate);
         $xml = $fact->render(
             $this->versao,
@@ -275,7 +276,7 @@ class Tools extends ToolsBase
             '',
             str_pad($cnpjContribuinte, 14, '0', STR_PAD_LEFT)
         );
-        return $this->buildRequest($xml, $method);
+        return $this->buildRequest($xml);
     }
     
     /**
@@ -284,9 +285,9 @@ class Tools extends ToolsBase
      * @param string $method
      * @return string
      */
-    protected function buildRequest($body, $method)
+    protected function buildRequest($body)
     {
-        $tag = $method."Request";
+        $tag = $this->method."Request";
         $request = "<$tag>";
         $request .= "<VersaoSchema>$this->versao</VersaoSchema>";
         $request .= "<MensagemXML>$body</MensagemXML>";
@@ -294,13 +295,12 @@ class Tools extends ToolsBase
         return $request;
     }
 
-
     /**
      * Envia mensagem por SOAP
      * @param string $body
      * @param string $method
      */
-    public function envia($request, $method)
+    public function envia($request)
     {
        
         
@@ -311,7 +311,7 @@ class Tools extends ToolsBase
         $url = $this->url[$this->aConfig['tpAmb']];
         try {
             $this->setSSLProtocol('TLSv1');
-            //$response = $this->oSoap->send($url, '', '', $body, $method);
+            //$response = $this->oSoap->send($url, '', '', $body, $this->method);
         } catch (Exception $ex) {
             echo $ex;
         }

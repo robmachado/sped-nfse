@@ -1,13 +1,14 @@
 <?php
 
-namespace NFePHP\NFSe\Counties;
+namespace NFePHP\NFSe\Counties\M3304557;
 
 /**
- * Classe a construção do xml da NFSe para a Cidade de São Paulo
- * conforme o modelo Prodam
+ * Classe a construção do xml da NFSe
+ * para a Cidade do Rio de Janeiro RJ
+ * conforme o modelo ABRASF
  *
  * @category  NFePHP
- * @package   NFePHP\NFSe\Counties\C3550308
+ * @package   NFePHP\NFSe\Counties\M3304557\Convert
  * @copyright NFePHP Copyright (c) 2016
  * @license   http://www.gnu.org/licenses/lgpl.txt LGPLv3+
  * @license   https://opensource.org/licenses/MIT MIT
@@ -16,10 +17,8 @@ namespace NFePHP\NFSe\Counties;
  * @link      http://github.com/nfephp-org/sped-nfse for the canonical source repository
  */
 
-use NFePHP\NFSe\Models\Prodam\Rps;
+use NFePHP\NFSe\Models\Abrasf\Convert as ConvertAbrasf;
 
-class Rps3550308 extends Rps
+class Convert extends ConvertAbrasf
 {
-    //como a classe Prodam é especifica apenas para a cidade de São Paulo
-    //não há a necessidade de estender realmente a classe Prodam
 }

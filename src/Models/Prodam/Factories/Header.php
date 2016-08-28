@@ -85,7 +85,7 @@ class Header
     
     private static function check($tag, $info)
     {
-        if (!$empty($info) || $info != 0) {
+        if (!empty($info) || $info != 0) {
             return "<$tag>$info</$tag>";
         }
         return '';
