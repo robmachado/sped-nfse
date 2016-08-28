@@ -1,13 +1,14 @@
 <?php
 
-namespace NFePHP\NFSe\Models\Ginfes;
+namespace NFePHP\NFSe\Counties\M3304557;
 
 /**
- * Classe para a comunicação com os webservices
- * conforme o modelo GINFES
+ * Classe para a comunicação com os webservices da
+ * Cidade do Rio de Janeiro RJ
+ * conforme o modelo ABRASF
  *
  * @category  NFePHP
- * @package   NFePHP\NFSe\Ginfes\Tools
+ * @package   NFePHP\NFSe\Counties\M3304557\Tools
  * @copyright NFePHP Copyright (c) 2016
  * @license   http://www.gnu.org/licenses/lgpl.txt LGPLv3+
  * @license   https://opensource.org/licenses/MIT MIT
@@ -16,11 +17,8 @@ namespace NFePHP\NFSe\Models\Ginfes;
  * @link      http://github.com/nfephp-org/sped-nfse for the canonical source repository
  */
 
-use NFePHP\NFSe\Models\Base\ToolsBase;
-use NFePHP\NFSe\Models\Ginfes\Rps;
-use NFePHP\NFSe\Models\Ginfes\Factories;
+use NFePHP\NFSe\Models\Abrasf\Tools as ToolsAbrasf;
 
-class Tools extends ToolsBase
+class Tools extends ToolsAbrasf
 {
-    
 }

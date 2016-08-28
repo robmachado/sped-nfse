@@ -1,13 +1,12 @@
 <?php
-
-namespace NFePHP\NFSe\Models\Ginfes;
+namespace NFePHP\NFSe\Models\Abrasf;
 
 /**
- * Classe para a comunicação com os webservices
- * conforme o modelo GINFES
+ * Classe para a conversão do TXT dos RPS
+ * para o Objeto RPS no modelo ABRASF
  *
  * @category  NFePHP
- * @package   NFePHP\NFSe\Ginfes\Tools
+ * @package   NFePHP\NFSe\Abrasf\Convert
  * @copyright NFePHP Copyright (c) 2016
  * @license   http://www.gnu.org/licenses/lgpl.txt LGPLv3+
  * @license   https://opensource.org/licenses/MIT MIT
@@ -16,11 +15,11 @@ namespace NFePHP\NFSe\Models\Ginfes;
  * @link      http://github.com/nfephp-org/sped-nfse for the canonical source repository
  */
 
-use NFePHP\NFSe\Models\Base\ToolsBase;
-use NFePHP\NFSe\Models\Ginfes\Rps;
-use NFePHP\NFSe\Models\Ginfes\Factories;
+use InvalidArgumentException;
+use NFePHP\Common\Strings\Strings;
+use NFePHP\NFSe\Models\Abrasf\Rps;
 
-class Tools extends ToolsBase
+class Convert
 {
     
 }

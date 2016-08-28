@@ -1,13 +1,12 @@
 <?php
-
-namespace NFePHP\NFSe\Counties;
+namespace NFePHP\NFSe\Models\Ginfes;
 
 /**
- * Classe a construção do xml da NFSe para a Cidade de São Paulo
- * conforme o modelo Prodam
+ * Classe para a conversão do TXT dos RPS
+ * para o Objeto RPS no modelo GINFES
  *
  * @category  NFePHP
- * @package   NFePHP\NFSe\Counties\C3550308
+ * @package   NFePHP\NFSe\Ginfes\Convert
  * @copyright NFePHP Copyright (c) 2016
  * @license   http://www.gnu.org/licenses/lgpl.txt LGPLv3+
  * @license   https://opensource.org/licenses/MIT MIT
@@ -16,9 +15,11 @@ namespace NFePHP\NFSe\Counties;
  * @link      http://github.com/nfephp-org/sped-nfse for the canonical source repository
  */
 
-use NFePHP\NFSe\Models\Prodam\Convert;
+use InvalidArgumentException;
+use NFePHP\Common\Strings\Strings;
+use NFePHP\NFSe\Models\Ginfes\Rps;
 
-class Convert3550308 extends Convert
+class Convert
 {
     
 }

@@ -1,13 +1,14 @@
 <?php
 
-namespace NFePHP\NFSe\Models\Ginfes;
+namespace NFePHP\NFSe\Counties\M2927408;
 
 /**
- * Classe para a comunicação com os webservices
- * conforme o modelo GINFES
+ * Classe a construção do xml da NFSe
+ * para a Cidade de Salvador BA
+ * conforme o modelo ABRASF
  *
  * @category  NFePHP
- * @package   NFePHP\NFSe\Ginfes\Tools
+ * @package   NFePHP\NFSe\Counties\M2927408\Convert
  * @copyright NFePHP Copyright (c) 2016
  * @license   http://www.gnu.org/licenses/lgpl.txt LGPLv3+
  * @license   https://opensource.org/licenses/MIT MIT
@@ -16,11 +17,8 @@ namespace NFePHP\NFSe\Models\Ginfes;
  * @link      http://github.com/nfephp-org/sped-nfse for the canonical source repository
  */
 
-use NFePHP\NFSe\Models\Base\ToolsBase;
-use NFePHP\NFSe\Models\Ginfes\Rps;
-use NFePHP\NFSe\Models\Ginfes\Factories;
+use NFePHP\NFSe\Models\Abrasf\Convert as ConvertAbrasf;
 
-class Tools extends ToolsBase
+class Convert extends ConvertAbrasf
 {
-    
 }

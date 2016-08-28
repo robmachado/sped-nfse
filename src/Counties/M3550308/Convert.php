@@ -1,13 +1,13 @@
 <?php
 
-namespace NFePHP\NFSe\Models\Ginfes;
+namespace NFePHP\NFSe\Counties\M3550308;
 
 /**
- * Classe para a comunicação com os webservices
- * conforme o modelo GINFES
+ * Classe a construção do xml da NFSe para a Cidade de São Paulo
+ * conforme o modelo PRODAM
  *
  * @category  NFePHP
- * @package   NFePHP\NFSe\Ginfes\Tools
+ * @package   NFePHP\NFSe\Counties\M3550308\Convert
  * @copyright NFePHP Copyright (c) 2016
  * @license   http://www.gnu.org/licenses/lgpl.txt LGPLv3+
  * @license   https://opensource.org/licenses/MIT MIT
@@ -16,11 +16,8 @@ namespace NFePHP\NFSe\Models\Ginfes;
  * @link      http://github.com/nfephp-org/sped-nfse for the canonical source repository
  */
 
-use NFePHP\NFSe\Models\Base\ToolsBase;
-use NFePHP\NFSe\Models\Ginfes\Rps;
-use NFePHP\NFSe\Models\Ginfes\Factories;
+use NFePHP\NFSe\Models\Prodam\Convert as ConvertProdam;
 
-class Tools extends ToolsBase
+class Convert extends ConvertProdam
 {
-    
 }

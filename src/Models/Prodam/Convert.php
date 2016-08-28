@@ -3,7 +3,8 @@
 namespace NFePHP\NFSe\Models\Prodam;
 
 /**
- * Classe para a conversão do TXT dos RPS para o Objeto RPS
+ * Classe para a conversão do TXT dos RPS
+ * para o Objeto RPS no modelo PRODAM
  *
  * @category  NFePHP
  * @package   NFePHP\NFSe\Prodam\Convert
