@@ -17,9 +17,9 @@ namespace NFePHP\NFSe\Counties\M2111300;
  * @link      http://github.com/nfephp-org/sped-nfse for the canonical source repository
  */
 
-use NFePHP\NFSe\Models\Dsfnet\Tools as ToolsDfsnet;
+use NFePHP\NFSe\Models\Dsfnet\Tools as ToolsDsfnet;
 
-class Tools extends ToolsDfsnet
+class Tools extends ToolsDsfnet
 {
     
 }
