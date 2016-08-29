@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ns1:RetornoConsultaNotas xmlns:ns1="http://sistemas.semfaz.saoluis.ma.gov.br/WsNFe2/lote" 
+						  xmlns:tipos="http://sistemas.semfaz.saoluis.ma.gov.br/WsNFe2/tp" 
+						  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+						  xsi:schemaLocation="http://sistemas.semfaz.saoluis.ma.gov.br/WsNFe2/xsd/RetornoConsultaNotas.xsd ">
+  <Cabecalho>
+    <CodCidade>921</CodCidade>
+    <CPFCNPJRemetente>#CPFCNPJREMETENTE</CPFCNPJRemetente>
+    <InscricaoMunicipalPrestador>#INSCRICAOMUNICIPALPRESTADOR</InscricaoMunicipalPrestador>
+    <dtInicio>#DATAINICIO</dtInicio>
+    <dtFim>#DATAFINAL</dtFim>
+    <Versao>1</Versao>
+  </Cabecalho>
+  #LISTANOTAS
+  #ERROS
+</ns1:RetornoConsultaNotas>

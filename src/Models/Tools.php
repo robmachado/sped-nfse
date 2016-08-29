@@ -1,12 +1,12 @@
 <?php
 
-namespace NFePHP\NFSe\Models\Base;
+namespace NFePHP\NFSe\Models;
 
 /**
  * Classe para base para a comunicação com os webservices
  *
  * @category  NFePHP
- * @package   NFePHP\NFSe\Base\ToolsBase
+ * @package   NFePHP\NFSe\Models\Tools
  * @copyright NFePHP Copyright (c) 2016
  * @license   http://www.gnu.org/licenses/lgpl.txt LGPLv3+
  * @license   https://opensource.org/licenses/MIT MIT
@@ -15,11 +15,10 @@ namespace NFePHP\NFSe\Models\Base;
  * @link      http://github.com/nfephp-org/sped-nfse for the canonical source repository
  */
 
-use NFePHP\NFSe\Models\Base\ToolsInferface;
 use NFePHP\Common\Base\BaseTools;
 use NFePHP\Common\Files;
 
-class ToolsBase extends BaseTools
+class Tools extends BaseTools
 {
     protected $saveLog = true;
     

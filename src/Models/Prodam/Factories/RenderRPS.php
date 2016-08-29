@@ -18,7 +18,7 @@ namespace NFePHP\NFSe\Models\Prodam\Factories;
 
 use NFePHP\Common\Dom\Dom;
 use NFePHP\NFSe\Models\Prodam\Rps;
-use NFePHP\NFSe\Models\Prodam\Factories\Signner;
+use NFePHP\NFSe\Models\Signner;
 
 class RenderRPS
 {

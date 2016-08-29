@@ -1,12 +1,12 @@
 <?php
 
-namespace NFePHP\NFSe\Models\Prodam\Factories;
+namespace NFePHP\NFSe\Models;
 
 /**
- * Classe para a assinar uma string conforme o modelo Prodam
+ * Classe para a assinar uma string
  *
  * @category  NFePHP
- * @package   NFePHP\NFSe\Models\Prodam\Factories\Signner
+ * @package   NFePHP\NFSe\Models\Signner
  * @copyright NFePHP Copyright (c) 2016
  * @license   http://www.gnu.org/licenses/lgpl.txt LGPLv3+
  * @license   https://opensource.org/licenses/MIT MIT

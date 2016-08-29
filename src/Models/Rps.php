@@ -1,12 +1,12 @@
 <?php
 
-namespace NFePHP\NFSe\Models\Base;
+namespace NFePHP\NFSe\Models;
 
 /**
  * Classe base para a construção do xml da NFSe e RPS
  *
  * @category  NFePHP
- * @package   NFePHP\NFSe\Base\RpsBase
+ * @package   NFePHP\NFSe\Models\Rps
  * @copyright NFePHP Copyright (c) 2016
  * @license   http://www.gnu.org/licenses/lgpl.txt LGPLv3+
  * @license   https://opensource.org/licenses/MIT MIT
@@ -18,7 +18,7 @@ namespace NFePHP\NFSe\Models\Base;
 use InvalidArgumentException;
 use NFePHP\Common\Files\FilesFolders;
 
-class RpsBase
+class Rps
 {
     protected function zValidData($matriz, $key)
     {

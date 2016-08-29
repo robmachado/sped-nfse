@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ns1:RetornoEnvioLoteRPS xmlns:ns1="http://sistemas.semfaz.saoluis.ma.gov.br/WsNFe2/lote" 
+						 xmlns:tipos="http://sistemas.semfaz.saoluis.ma.gov.br/WsNFe2/tp" 
+						 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+						 xsi:schemaLocation="http://sistemas.semfaz.saoluis.ma.gov.br/WsNFe2/xsd/RetornoEnvioLoteRPS.xsd ">
+  <Cabecalho>
+    <CodCidade>921</CodCidade>
+    <Sucesso>#SUCESSOBOLEANO</Sucesso>
+    <NumeroLote>#NUMEROLOTE</NumeroLote>
+    <CPFCNPJRemetente>#CPFCNPJREMETENTE</CPFCNPJRemetente>
+    <DataEnvioLote>#DATAENVIOLOTE</DataEnvioLote>
+    <QtdNotasProcessadas>#QUANTIDADENOTASPROCESSADAS</QtdNotasProcessadas>
+    <TempoProcessamento>#TEMPOPROCESSAMENTO</TempoProcessamento>
+    <ValorTotalServicos>#VALORTOTALSERVICOS</ValorTotalServicos>
+    <ValorTotalDeducoes>#VALORTOTALDEDUCOES</ValorTotalDeducoes>
+    <Versao>1</Versao>
+    <Assincrono>#ASSINCRONO</Assincrono>
+  </Cabecalho>
+  #ALERTAS
+  #ERROS
+  #CHAVESENVIORPS
+</ns1:RetornoEnvioLoteRPS>

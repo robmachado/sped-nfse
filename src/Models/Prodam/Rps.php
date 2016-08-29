@@ -18,7 +18,7 @@ namespace NFePHP\NFSe\Models\Prodam;
 
 use InvalidArgumentException;
 use NFePHP\Common\Strings\Strings;
-use NFePHP\NFSe\Models\Base\RpsBase;
+use NFePHP\NFSe\Models\Rps as RpsBase;
 
 class Rps extends RpsBase
 {

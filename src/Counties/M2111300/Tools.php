@@ -1,12 +1,14 @@
 <?php
 
-namespace NFePHP\NFSe\Models\Base;
+namespace NFePHP\NFSe\Counties\M2111300;
 
 /**
- * Classe base para a renderização dos RPS em XML
+ * Classe para a comunicação com os webservices da
+ * Cidade de São Luis MA
+ * conforme o modelo DSFNET
  *
  * @category  NFePHP
- * @package   NFePHP\NFSe\Base\RenderBase
+ * @package   NFePHP\NFSe\Counties\M2111300\Tools
  * @copyright NFePHP Copyright (c) 2016
  * @license   http://www.gnu.org/licenses/lgpl.txt LGPLv3+
  * @license   https://opensource.org/licenses/MIT MIT
@@ -15,14 +17,9 @@ namespace NFePHP\NFSe\Models\Base;
  * @link      http://github.com/nfephp-org/sped-nfse for the canonical source repository
  */
 
-use NFePHP\Common\Dom\Dom;
+use NFePHP\NFSe\Models\Dsfnet\Tools as ToolsDfsnet;
 
-class RenderBase
+class Tools extends ToolsDfsnet
 {
-    protected $dom;
     
-    public function __construct()
-    {
-        $this->dom = new Dom();
-    }
 }
