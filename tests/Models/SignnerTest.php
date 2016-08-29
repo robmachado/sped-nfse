@@ -1,8 +1,8 @@
 <?php
 
-namespace NFePHP\NFSe\Tests\Models\Prodam\Factories;
+namespace NFePHP\NFSe\Tests\Models;
 
-use NFePHP\NFSe\Models\Prodam\Factories\Signner;
+use NFePHP\NFSe\Models\Signner;
 use NFePHP\NFSe\Tests\NFSeTestCase;
 
 class SignnerTest extends NFSeTestCase

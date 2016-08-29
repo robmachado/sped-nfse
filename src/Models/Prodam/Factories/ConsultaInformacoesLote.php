@@ -17,7 +17,6 @@ namespace NFePHP\NFSe\Models\Prodam\Factories;
  * @link      http://github.com/nfephp-org/sped-nfse for the canonical source repository
  */
 
-use InvalidArgumentException;
 use NFePHP\NFSe\Models\Prodam\Factories\Header;
 use NFePHP\NFSe\Models\Prodam\Factories\Factory;
 

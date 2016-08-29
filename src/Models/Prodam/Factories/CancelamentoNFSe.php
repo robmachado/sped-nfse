@@ -18,7 +18,7 @@ namespace NFePHP\NFSe\Models\Prodam\Factories;
  */
 
 use InvalidArgumentException;
-use NFePHP\NFSe\Models\Prodam\Factories\Signner;
+use NFePHP\NFSe\Models\Signner;
 use NFePHP\NFSe\Models\Prodam\Factories\Factory;
 
 class CancelamentoNFSe extends Factory

@@ -17,9 +17,9 @@ namespace NFePHP\NFSe\Models\Prodam;
  */
 
 use NFePHP\Common\Certificate\Pkcs12;
-use NFePHP\NFSe\Models\Base\ToolsBase;
 use NFePHP\NFSe\Models\Prodam\Rps;
 use NFePHP\NFSe\Models\Prodam\Factories;
+use NFePHP\NFSe\Models\Tools as ToolsBase;
 
 class Tools extends ToolsBase
 {
@@ -46,9 +46,9 @@ class Tools extends ToolsBase
      * Construtor da classe Tools
      * @param string $config
      */
-    public function __construct($config, Pkcs12 $pkcs = null)
+    public function __construct($config)
     {
-        parent::__construct($config, $pkcs);
+        parent::__construct($config);
         $this->versao = $this->aConfig['versao'];
         $this->remetenteCNPJCPF = $this->aConfig['cnpj'];
         if ($this->aConfig['cpf'] != '') {

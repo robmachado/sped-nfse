@@ -1,12 +1,12 @@
 <?php
 
-namespace NFePHP\NFSe\Models\Base;
+namespace NFePHP\NFSe\Models;
 
 /**
  * Classe base para tratar os retornos das consultas aos webservices
  *
  * @category  NFePHP
- * @package   NFePHP\NFSe\Models\Base\ResponseBase
+ * @package   NFePHP\NFSe\Models\Response
  * @copyright NFePHP Copyright (c) 2016
  * @license   http://www.gnu.org/licenses/lgpl.txt LGPLv3+
  * @license   https://opensource.org/licenses/MIT MIT
@@ -17,7 +17,7 @@ namespace NFePHP\NFSe\Models\Base;
 
 use DOMDocument;
 
-class ResponseBase
+class Response
 {
     public static function readReturn($tag = '', $xmlResp = '')
     {

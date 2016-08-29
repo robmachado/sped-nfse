@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ns1:RetornoCancelamentoNFSe xmlns:ns1="http://sistemas.semfaz.saoluis.ma.gov.br/WsNFe2/lote" 
+							 xmlns:tipos="http://sistemas.semfaz.saoluis.ma.gov.br/WsNFe2/tp" 
+							 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+							 xsi:schemaLocation="http://sistemas.semfaz.saoluis.ma.gov.br/WsNFe2/xsd/RetornoCancelamentoNFSe.xsd ">
+  <Cabecalho>
+    <CodCidade>921</CodCidade>
+    <Sucesso>#SUCESSO</Sucesso>
+    <CPFCNPJRemetente>#CPFCNPJREMETENTE</CPFCNPJRemetente>
+    <Versao>1</Versao>
+  </Cabecalho>
+  #LISTANOTAS
+  #ALERTAS
+  #ERROS
+</ns1:RetornoCancelamentoNFSe>

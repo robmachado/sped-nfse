@@ -15,9 +15,7 @@ namespace NFePHP\NFSe;
  * @link      http://github.com/nfephp-org/sped-nfse for the canonical source repository
  */
 
-use NFePHP\NFSe\Counties;
 use NFePHP\NFSe\NFSeStatic;
-use RuntimeException;
 
 class NFSe
 {

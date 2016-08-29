@@ -1,13 +1,13 @@
 <?php
 
-namespace NFePHP\NFSe\Models\Prodam\Factories;
+namespace NFePHP\NFSe\Models\Dsfnet;
 
 /**
- * Classe para a construção dos cabaçalhos XML relativo aos serviços
- * dos webservices da Cidade de São Paulo conforme o modelo Prodam
+ * Classe a construção do xml da NFSe
+ * conforme o modelo DSFNET
  *
  * @category  NFePHP
- * @package   NFePHP\NFSe\Models\Prodam\Factories\Header
+ * @package   NFePHP\NFSe\Models\Dsfnet\Rps
  * @copyright NFePHP Copyright (c) 2016
  * @license   http://www.gnu.org/licenses/lgpl.txt LGPLv3+
  * @license   https://opensource.org/licenses/MIT MIT
@@ -16,9 +16,12 @@ namespace NFePHP\NFSe\Models\Prodam\Factories;
  * @link      http://github.com/nfephp-org/sped-nfse for the canonical source repository
  */
 
-use NFePHP\NFSe\Models\Header as HeaderBase;
+use InvalidArgumentException;
+use NFePHP\Common\Strings\Strings;
+use NFePHP\NFSe\Models\Rps as RpsBase;
 
-class Header extends HeaderBase
+class Rps extends RpsBase
 {
     
+    private $cMunSiafi = '0921';
 }

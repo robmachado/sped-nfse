@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ns1:RetornoConsultaNFSeRPS xmlns:ns1="http://sistemas.semfaz.saoluis.ma.gov.br/WsNFe2/lote" 
+							xmlns:tipos="http://sistemas.semfaz.saoluis.ma.gov.br/WsNFe2/tp" 
+							xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+							xsi:schemaLocation="http://sistemas.semfaz.saoluis.ma.gov.br/WsNFe2/xsd/RetornoConsultaNFSeRPS.xsd ">
+  <Cabecalho>
+    <CodCidade>921</CodCidade>
+    <CPFCNPJRemetente>#CPFCNPJREMETENTE</CPFCNPJRemetente>
+    <transacao>#TRANSACAORETORNO</transacao>
+    <Versao>1</Versao>
+  </Cabecalho>
+  #LISTANOTAS
+  #ERROS
+</ns1:RetornoConsultaNFSeRPS>

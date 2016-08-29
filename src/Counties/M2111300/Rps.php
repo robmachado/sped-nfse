@@ -1,13 +1,14 @@
 <?php
 
-namespace NFePHP\NFSe\Models\Prodam\Factories;
+namespace NFePHP\NFSe\Counties\M2111300;
 
 /**
- * Classe para a construção dos cabaçalhos XML relativo aos serviços
- * dos webservices da Cidade de São Paulo conforme o modelo Prodam
+ * Classe a construção do xml da NFSe para a
+ * Cidade de São Luis MA
+ * conforme o modelo DSFNET
  *
  * @category  NFePHP
- * @package   NFePHP\NFSe\Models\Prodam\Factories\Header
+ * @package   NFePHP\NFSe\Counties\M2111300\Rps
  * @copyright NFePHP Copyright (c) 2016
  * @license   http://www.gnu.org/licenses/lgpl.txt LGPLv3+
  * @license   https://opensource.org/licenses/MIT MIT
@@ -16,9 +17,10 @@ namespace NFePHP\NFSe\Models\Prodam\Factories;
  * @link      http://github.com/nfephp-org/sped-nfse for the canonical source repository
  */
 
-use NFePHP\NFSe\Models\Header as HeaderBase;
+use NFePHP\NFSe\Models\Dsfnet\Rps as RpsDsfnet;
 
-class Header extends HeaderBase
+class Rps extends RpsDsfnet
 {
-    
+
+    private $cMunSiafi = '0921';
 }
