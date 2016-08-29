@@ -21,6 +21,5 @@ use NFePHP\NFSe\Models\Dsfnet\Rps as RpsDsfnet;
 
 class Rps extends RpsDsfnet
 {
-
     private $cMunSiafi = '0921';
 }
