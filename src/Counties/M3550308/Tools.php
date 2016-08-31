@@ -34,5 +34,4 @@ class Tools extends ToolsProdam
      * @var string
      */
     protected $xmlns= "http://www.prefeitura.sp.gov.br/nfe";
-    
 }
