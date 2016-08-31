@@ -28,20 +28,6 @@ class Tools extends ToolsBase
     protected $remetenteTipoDoc = '2';
     protected $remetenteCNPJCPF = '';
     protected $method = '';
-
-    /**
-     * Endereços dos webservices
-     * @var array
-     */
-    protected $url = [
-        '2' => 'https://testenfe.prefeitura.sp.gov.br/ws/lotenfe.asmx',
-        '1' => 'https://nfe.prefeitura.sp.gov.br/ws/lotenfe.asmx'
-    ];
-    /**
-     * County Namespace
-     * @var string
-     */
-    protected $xmlns= "http://www.prefeitura.sp.gov.br/nfe";
     
     /**
      * Construtor da classe Tools
