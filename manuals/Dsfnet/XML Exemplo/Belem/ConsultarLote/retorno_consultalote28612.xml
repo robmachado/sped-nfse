@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<ns1:RetornoConsultaLote xmlns:ns1="http://localhost/WsNFe" xmlns:p="http://www.w3.org/2000/09/xmldsig#" xmlns:tipos="http://localhost/WsNFe/xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://localhost/WsNFe RetornoConsultaLote_v01.xsd http://localhost/WsNFe/xsd xsd/Tipos_v01.xsd http://www.w3.org/2000/09/xmldsig# xsd/xmldsig-core-schema_v01.xsd ">
+  <Cabecalho>
+    <CodCidade>427</CodCidade>
+    <Sucesso>false</Sucesso>
+    <NumeroLote>28612</NumeroLote>
+    <CPFCNPJRemetente>00023096098620</CPFCNPJRemetente>
+    <RazaoSocialRemetente>CELIO ALVES FERREIRA</RazaoSocialRemetente>
+    <DataEnvioLote>2010-02-25T00:00:00</DataEnvioLote>
+    <QtdNotasProcessadas>0</QtdNotasProcessadas>
+    <TempoProcessamento>0</TempoProcessamento>
+    <ValorTotalServicos>0</ValorTotalServicos>
+    <ValorTotalDeducoes>0</ValorTotalDeducoes>
+    <Versao>1</Versao>
+  </Cabecalho>
+  <Alertas />
+  <Erros>
+    <Erro>
+      <Codigo>1405</Codigo>
+      <Descricao>Assinatura Digital InvalidaAssinatura Invalida.</Descricao>
+    </Erro>
+    <Erro>
+      <Codigo>1103</Codigo>
+      <Descricao>O CPF/CNPJ do Remetente nao possui permissao para o servico solicitado.Contribuinte IM 0729931 nao vinculado ao remetente do lote de CPF ou CNPF 00023096098620.</Descricao>
+      <ChaveRPS>
+        <InscricaoPrestador>0729931</InscricaoPrestador>
+        <SerieRPS>NF</SerieRPS>
+        <NumeroRPS>1</NumeroRPS>
+        <DataEmissaoRPS>2010-01-04T00:00:00</DataEmissaoRPS>
+        <RazaoSocialPrestador>SUPERMIX CONCRETO S A</RazaoSocialPrestador>
+      </ChaveRPS>
+    </Erro>    
+  </Erros>
+  <ListaNFSe />
+</ns1:RetornoConsultaLote>
+

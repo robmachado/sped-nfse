@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ns1:RetornoCancelamentoNFSe xmlns:ns1="http://localhost:8080/WsNFe2/lote" xmlns:tipos="http://localhost:8080/WsNFe2/tp" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://localhost:8080/WsNFe2/lote http://localhost:8080/WsNFe2/xsd/RetornoCancelamentoNFSe.xsd">
+  <Cabecalho>
+    <CodCidade>5403</CodCidade>
+    <Sucesso>true</Sucesso>
+    <CPFCNPJRemetente>08035967000110</CPFCNPJRemetente>
+    <Versao>1</Versao>
+  </Cabecalho>
+  <NotasCanceladas>
+    <Nota>
+      <InscricaoMunicipalPrestador>17904300</InscricaoMunicipalPrestador>
+      <NumeroNota>5</NumeroNota>
+      <CodigoVerificacao>8aa3144cc0749769dd668858320c5064bae843b4</CodigoVerificacao>
+    </Nota>
+    <Nota>
+      <InscricaoMunicipalPrestador>17904300</InscricaoMunicipalPrestador>
+      <NumeroNota>5</NumeroNota>
+      <CodigoVerificacao>8aa3144cc0749769dd668858320c5064bae843b4</CodigoVerificacao>
+    </Nota>
+    <Nota>
+      <InscricaoMunicipalPrestador>17904300</InscricaoMunicipalPrestador>
+      <NumeroNota>5</NumeroNota>
+      <CodigoVerificacao>8aa3144cc0749769dd668858320c5064bae843b4</CodigoVerificacao>
+    </Nota>
+    <Nota>
+      <InscricaoMunicipalPrestador>17904300</InscricaoMunicipalPrestador>
+      <NumeroNota>5</NumeroNota>
+      <CodigoVerificacao>8aa3144cc0749769dd668858320c5064bae843b4</CodigoVerificacao>
+    </Nota>
+    <Nota>
+      <InscricaoMunicipalPrestador>17904300</InscricaoMunicipalPrestador>
+      <NumeroNota>5</NumeroNota>
+      <CodigoVerificacao>8aa3144cc0749769dd668858320c5064bae843b4</CodigoVerificacao>
+    </Nota>
+  </NotasCanceladas>
+  <Alertas />
+  <Erros />
+</ns1:RetornoCancelamentoNFSe>
+

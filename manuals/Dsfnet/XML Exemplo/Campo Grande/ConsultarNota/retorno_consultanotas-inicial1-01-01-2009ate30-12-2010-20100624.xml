@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ns1:RetornoConsultaNotas xmlns:ns1="http://localhost:8080/WsNFe2/lote" xmlns:tipos="http://localhost:8080/WsNFe2/tp" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://localhost:8080/WsNFe2/lote http://localhost:8080/WsNFe2/xsd/RetornoConsultaNotas.xsd">
+  <Cabecalho>
+    <CodCidade>9051</CodCidade>
+    <CPFCNPJRemetente>00000000226750</CPFCNPJRemetente>
+    <InscricaoMunicipalPrestador>00002836068</InscricaoMunicipalPrestador>
+    <dtInicio>2009-01-01</dtInicio>
+    <dtFim>2010-12-30</dtFim>
+    <Versao>1</Versao>
+  </Cabecalho>
+  <Notas>
+    <Nota>
+      <NumeroNota>1</NumeroNota>
+      <DataProcessamento>2009-12-01T00:00:00</DataProcessamento>
+      <NumeroLote>16000</NumeroLote>
+      <CodigoVerificacao>beceac73</CodigoVerificacao>
+      <Assinatura>dcfb23710f740bf5f2fe8df27b4e8b3ce0ec6487</Assinatura>
+      <InscricaoMunicipalPrestador>00002836068</InscricaoMunicipalPrestador>
+      <RazaoSocialPrestador>EMPRESA TOMADORA</RazaoSocialPrestador>
+      <TipoRPS>RPS</TipoRPS>
+      <SerieRPS>NF</SerieRPS>
+      <NumeroRPS>1</NumeroRPS>
+      <DataEmissaoRPS>2009-12-01T00:00:00</DataEmissaoRPS>
+      <SituacaoRPS>N</SituacaoRPS>
+      <SerieRPSSubstituido />
+      <NumeroRPSSubstituido>0</NumeroRPSSubstituido>
+      <NumeroNFSeSubstituida>0</NumeroNFSeSubstituida>
+      <DataEmissaoNFSeSubstituida>1900-01-01T00:00:00</DataEmissaoNFSeSubstituida>
+      <SeriePrestacao>99</SeriePrestacao>
+      <InscricaoMunicipalTomador />
+      <CPFCNPJTomador>00000000191</CPFCNPJTomador>
+      <RazaoSocialTomador>EMPRESA DE TESTES</RazaoSocialTomador>
+      <TipoLogradouroTomador>Rua</TipoLogradouroTomador>
+      <LogradouroTomador>SETE DE SETEMBRO</LogradouroTomador>
+      <NumeroEnderecoTomador>335</NumeroEnderecoTomador>
+      <ComplementoEnderecoTomador />
+      <TipoBairroTomador>Bairro</TipoBairroTomador>
+      <BairroTomador>Centro</BairroTomador>
+      <CidadeTomador>9051</CidadeTomador>
+      <CidadeTomadorDescricao>CAMPO GRANDE</CidadeTomadorDescricao>
+      <CEPTomador>64001210</CEPTomador>
+      <EmailTomador>res@bol.com.br</EmailTomador>
+      <CodigoAtividade>642120000</CodigoAtividade>
+      <AliquotaAtividade>5</AliquotaAtividade>
+      <TipoRecolhimento>A</TipoRecolhimento>
+      <MunicipioPrestacao>9051</MunicipioPrestacao>
+      <MunicipioPrestacaoDescricao>CAMPO GRANDE</MunicipioPrestacaoDescricao>
+      <Operacao>A</Operacao>
+      <Tributacao>T</Tributacao>
+      <ValorPIS>0</ValorPIS>
+      <ValorCOFINS>0</ValorCOFINS>
+      <ValorINSS>0</ValorINSS>
+      <ValorIR>0</ValorIR>
+      <ValorCSLL>0</ValorCSLL>
+      <AliquotaPIS>0</AliquotaPIS>
+      <AliquotaCOFINS>0</AliquotaCOFINS>
+      <AliquotaINSS>0</AliquotaINSS>
+      <AliquotaIR>0</AliquotaIR>
+      <AliquotaCSLL>0</AliquotaCSLL>
+      <DescricaoRPS>RPS enviado em teste</DescricaoRPS>
+      <DDDPrestador>011</DDDPrestador>
+      <TelefonePrestador>80804040</TelefonePrestador>
+      <DDDTomador>011</DDDTomador>
+      <TelefoneTomador>20203030</TelefoneTomador>
+      <MotCancelamento />
+      <CPFCNPJIntermediario />
+      <Deducoes />
+      <Itens>
+        <Item>
+          <DiscriminacaoServico>Descricao do Servico ...</DiscriminacaoServico>
+          <Quantidade>1</Quantidade>
+          <ValorUnitario>12000.12</ValorUnitario>
+          <ValorTotal>12000.12</ValorTotal>
+          <Tributavel>S</Tributavel>
+        </Item>
+      </Itens>
+    </Nota>
+  </Notas>
+</ns1:RetornoConsultaNotas>
+

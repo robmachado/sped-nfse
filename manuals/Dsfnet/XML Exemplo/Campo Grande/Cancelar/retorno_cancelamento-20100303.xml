@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ns1:RetornoCancelamentoNFSe xmlns:ns1="http://localhost:8080/WsNFe2/lote" xmlns:tipos="http://localhost:8080/WsNFe2/tp" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://localhost:8080/WsNFe2/lote http://localhost:8080/WsNFe2/xsd/RetornoCancelamentoNFSe.xsd">
+  <Cabecalho>
+    <CodCidade>9051</CodCidade>
+    <Sucesso>true</Sucesso>
+    <CPFCNPJRemetente>01577956000113</CPFCNPJRemetente>
+    <Versao>1</Versao>
+  </Cabecalho>
+  <NotasCanceladas />
+  <Alertas>
+    <Alerta>
+      <Codigo>1301</Codigo>
+      <Descricao>NFSe ja cancelada.</Descricao>
+      <ChaveNFe>
+        <InscricaoPrestador>00042643009</InscricaoPrestador>
+        <NumeroNFe>5</NumeroNFe>
+        <CodigoVerificacao>ee4a34a2221b4ff9a3bef68eaaea892f390f02c5</CodigoVerificacao>
+        <RazaoSocialPrestador>FINANCIAL INFORMATICA LTDA</RazaoSocialPrestador>
+      </ChaveNFe>
+    </Alerta>
+    <Alerta>
+      <Codigo>1301</Codigo>
+      <Descricao>NFSe ja cancelada.</Descricao>
+      <ChaveNFe>
+        <InscricaoPrestador>00042643009</InscricaoPrestador>
+        <NumeroNFe>5</NumeroNFe>
+        <CodigoVerificacao>ee4a34a2221b4ff9a3bef68eaaea892f390f02c5</CodigoVerificacao>
+        <RazaoSocialPrestador>FINANCIAL INFORMATICA LTDA</RazaoSocialPrestador>
+      </ChaveNFe>
+    </Alerta>
+    <Alerta>
+      <Codigo>1301</Codigo>
+      <Descricao>NFSe ja cancelada.</Descricao>
+      <ChaveNFe>
+        <InscricaoPrestador>00042643009</InscricaoPrestador>
+        <NumeroNFe>5</NumeroNFe>
+        <CodigoVerificacao>ee4a34a2221b4ff9a3bef68eaaea892f390f02c5</CodigoVerificacao>
+        <RazaoSocialPrestador>FINANCIAL INFORMATICA LTDA</RazaoSocialPrestador>
+      </ChaveNFe>
+    </Alerta>
+    <Alerta>
+      <Codigo>1301</Codigo>
+      <Descricao>NFSe ja cancelada.</Descricao>
+      <ChaveNFe>
+        <InscricaoPrestador>00042643009</InscricaoPrestador>
+        <NumeroNFe>5</NumeroNFe>
+        <CodigoVerificacao>ee4a34a2221b4ff9a3bef68eaaea892f390f02c5</CodigoVerificacao>
+        <RazaoSocialPrestador>FINANCIAL INFORMATICA LTDA</RazaoSocialPrestador>
+      </ChaveNFe>
+    </Alerta>
+    <Alerta>
+      <Codigo>1301</Codigo>
+      <Descricao>NFSe ja cancelada.</Descricao>
+      <ChaveNFe>
+        <InscricaoPrestador>00042643009</InscricaoPrestador>
+        <NumeroNFe>5</NumeroNFe>
+        <CodigoVerificacao>ee4a34a2221b4ff9a3bef68eaaea892f390f02c5</CodigoVerificacao>
+        <RazaoSocialPrestador>FINANCIAL INFORMATICA LTDA</RazaoSocialPrestador>
+      </ChaveNFe>
+    </Alerta>
+  </Alertas>
+  <Erros />
+</ns1:RetornoCancelamentoNFSe>
+

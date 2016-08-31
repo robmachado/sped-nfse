@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ns1:RetornoConsultaNotas xmlns:ns1="http://localhost:8080/WsNFe2/lote" xmlns:tipos="http://localhost:8080/WsNFe2/tp" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://localhost:8080/WsNFe2/lote http://localhost:8080/WsNFe2/xsd/RetornoConsultaNotas.xsd">
+  <Cabecalho>
+    <CodCidade>921</CodCidade>
+    <CPFCNPJRemetente>41795326387</CPFCNPJRemetente>
+    <InscricaoMunicipalPrestador>00045781003</InscricaoMunicipalPrestador>
+    <dtInicio>2009-01-01</dtInicio>
+    <dtFim>2010-12-30</dtFim>
+    <Versao>1</Versao>
+  </Cabecalho>
+  <Erros>
+    <Erro>
+      <Codigo>1428</Codigo>
+      <Descricao>Certificado Digital utilizado na assinatura do lote deve ser o mesmo do remetente do lote. CPF/CNPJ do Certificado diferente do remetente. Certificado Invalido. Certificado Digital registrado para o CPF/CNPJ 22693291801 sendo que o xml de consulta de nota foi enviado pelo remetente CPF/CNPJ</Descricao>
+    </Erro>
+  </Erros>
+</ns1:RetornoConsultaNotas>
+
