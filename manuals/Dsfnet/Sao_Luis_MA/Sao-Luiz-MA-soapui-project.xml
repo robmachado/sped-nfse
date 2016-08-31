@@ -221,4 +221,4 @@
          <mensagemXml>?</mensagemXml>
       </lot:testeEnviar>
    </soapenv:Body>
-</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://sistemas.semfaz.saoluis.ma.gov.br/WsNFe2/LoteRps.jws/LoteRps/testeEnviarRequest"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:sensitiveInformation/></con:soapui-project>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://sistemas.semfaz.saoluis.ma.gov.br/WsNFe2/LoteRps.jws/LoteRps/testeEnviarRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:sensitiveInformation/></con:soapui-project>

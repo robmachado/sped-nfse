@@ -21,4 +21,18 @@ use NFePHP\NFSe\Models\Prodam\Tools as ToolsProdam;
 
 class Tools extends ToolsProdam
 {
+    /**
+     * Endereços dos webservices
+     * @var array
+     */
+    protected $url = [
+        '2' => 'https://testenfe.prefeitura.sp.gov.br/ws/lotenfe.asmx',
+        '1' => 'https://nfe.prefeitura.sp.gov.br/ws/lotenfe.asmx'
+    ];
+    /**
+     * County Namespace
+     * @var string
+     */
+    protected $xmlns= "http://www.prefeitura.sp.gov.br/nfe";
+    
 }
