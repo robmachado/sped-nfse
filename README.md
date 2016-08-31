@@ -52,7 +52,7 @@ Existem muitos "padrões" diferentes para a emissão de NFSe, além disso, cada 
 - DB NFSE
 - DEISS
 - DigiFred
-- DSFNET
+- **DSFNET - em desenvolvimento**
 - Dueto
 - DUETO 2.0
 - E-Caucaia
@@ -142,9 +142,17 @@ Existem muitos "padrões" diferentes para a emissão de NFSe, além disso, cada 
 
 ## Municipios atendidos pelo Framework
 
-- São Paulo (SP) - em desenvolvimento
-- Salvador (BA) - em desenvolvimento
-- Rio de Janeiro - em desenvolvimento
+- São Paulo (SP) PRODAM - em desenvolvimento
+- Salvador (BA) ABRASF - em desenvolvimento
+- Rio de Janeiro (RJ) ABRASF - em desenvolvimento
+- Campinas (SP) DSFNET - em desenvolvimento
+- São Luis (MA) DSFNET - em desenvolvimento
+- Belem (PA) DSFNET - em desenvolvimento
+- Campo Grande (MS) DSFNET - em desenvolvimento
+- Sorocaba (SP) DSFNET - em desenvolvimento
+- Teresina (PI) DSFNET - em desenvolvimento
+- Uberlandia (MG) DSFNET - em desenvolvimento
+- Nova Iguaçu (RJ) DSFNET - em desenvolvimento
 
 ## Install
 
