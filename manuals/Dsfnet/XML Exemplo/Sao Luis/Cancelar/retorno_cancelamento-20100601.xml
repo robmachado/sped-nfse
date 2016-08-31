@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ns1:RetornoCancelamentoNFSe xmlns:ns1="http://localhost:8080/WsNFe2/lote" xmlns:tipos="http://localhost:8080/WsNFe2/tp" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://localhost:8080/WsNFe2/lote http://localhost:8080/WsNFe2/xsd/RetornoCancelamentoNFSe.xsd">
+  <Cabecalho>
+    <CodCidade>921</CodCidade>
+    <Sucesso>true</Sucesso>
+    <CPFCNPJRemetente>41795326387</CPFCNPJRemetente>
+    <Versao>1</Versao>
+  </Cabecalho>
+  <NotasCanceladas>
+    <Nota>
+      <InscricaoMunicipalPrestador>00045781003</InscricaoMunicipalPrestador>
+      <NumeroNota>1</NumeroNota>
+      <CodigoVerificacao>c2039c94c19eee5d3fe02f804e224cd9117f9d27</CodigoVerificacao>
+      <MotivoCancelamento>teste de cancelamento</MotivoCancelamento>
+    </Nota>
+  </NotasCanceladas>
+  <Alertas />
+  <Erros />
+</ns1:RetornoCancelamentoNFSe>
+

@@ -1,0 +1,729 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ns1:RetornoConsultaNotas xmlns:ns1="http://localhost:8080/WsNFe2/lote" xmlns:tipos="http://localhost:8080/WsNFe2/tp" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://localhost:8080/WsNFe2/lote http://localhost:8080/WsNFe2/xsd/RetornoConsultaNotas.xsd">
+  <Cabecalho>
+    <CodCidade>5403</CodCidade>
+    <CPFCNPJRemetente>08035967000110</CPFCNPJRemetente>
+    <InscricaoMunicipalPrestador>17904300</InscricaoMunicipalPrestador>
+    <dtInicio>1900-01-01</dtInicio>
+    <dtFim>2010-12-30</dtFim>
+    <Versao>1</Versao>
+  </Cabecalho>
+  <Notas>
+    <Nota>
+      <NumeroNota>2</NumeroNota>
+      <DataProcessamento>2010-02-23T00:00:00</DataProcessamento>
+      <NumeroLote>28235</NumeroLote>
+      <CodigoVerificacao>2753fda5</CodigoVerificacao>
+      <Assinatura>1534180c17fc755bae7197861c39d3dfad18dca8</Assinatura>
+      <InscricaoMunicipalPrestador>17904300</InscricaoMunicipalPrestador>
+      <RazaoSocialPrestador>EXPLEND SISTEMAS DE COMPUTADORES LTDA</RazaoSocialPrestador>
+      <TipoRPS>RPS</TipoRPS>
+      <SerieRPS>NF</SerieRPS>
+      <NumeroRPS>2</NumeroRPS>
+      <DataEmissaoRPS>2010-02-23T00:00:00</DataEmissaoRPS>
+      <SituacaoRPS>N</SituacaoRPS>
+      <SerieRPSSubstituido />
+      <NumeroRPSSubstituido>0</NumeroRPSSubstituido>
+      <NumeroNFSeSubstituida>0</NumeroNFSeSubstituida>
+      <DataEmissaoNFSeSubstituida>1900-01-01T00:00:00</DataEmissaoNFSeSubstituida>
+      <SeriePrestacao>99</SeriePrestacao>
+      <InscricaoMunicipalTomador />
+      <CPFCNPJTomador>04471372637</CPFCNPJTomador>
+      <RazaoSocialTomador>EMILIA ABADIA PEREIRA</RazaoSocialTomador>
+      <TipoLogradouroTomador />
+      <LogradouroTomador>RUA ALAGOAS N 101</LogradouroTomador>
+      <NumeroEnderecoTomador />
+      <ComplementoEnderecoTomador />
+      <TipoBairroTomador />
+      <BairroTomador>BOSQUE</BairroTomador>
+      <CidadeTomador>4069</CidadeTomador>
+      <CidadeTomadorDescricao>ARAGUARI</CidadeTomadorDescricao>
+      <CEPTomador>38440000</CEPTomador>
+      <EmailTomador>cristiane@explend.com.br</EmailTomador>
+      <CodigoAtividade>620230000</CodigoAtividade>
+      <AliquotaAtividade>2</AliquotaAtividade>
+      <TipoRecolhimento>A</TipoRecolhimento>
+      <MunicipioPrestacao>4069</MunicipioPrestacao>
+      <MunicipioPrestacaoDescricao>ARAGUARI</MunicipioPrestacaoDescricao>
+      <Operacao>A</Operacao>
+      <Tributacao>T</Tributacao>
+      <ValorPIS>0</ValorPIS>
+      <ValorCOFINS>0</ValorCOFINS>
+      <ValorINSS>0</ValorINSS>
+      <ValorIR>0</ValorIR>
+      <ValorCSLL>0</ValorCSLL>
+      <AliquotaPIS>0</AliquotaPIS>
+      <AliquotaCOFINS>0</AliquotaCOFINS>
+      <AliquotaINSS>0</AliquotaINSS>
+      <AliquotaIR>0</AliquotaIR>
+      <AliquotaCSLL>0</AliquotaCSLL>
+      <DescricaoRPS />
+      <DDDPrestador>32</DDDPrestador>
+      <TelefonePrestador>417267</TelefonePrestador>
+      <DDDTomador>34</DDDTomador>
+      <TelefoneTomador>00321698</TelefoneTomador>
+      <MotCancelamento />
+      <Deducoes />
+      <Itens>
+        <Item>
+          <DiscriminacaoServico>VENDA DE LICENCA DE SOFTWARE</DiscriminacaoServico>
+          <Quantidade>1</Quantidade>
+          <ValorUnitario>150</ValorUnitario>
+          <ValorTotal>150</ValorTotal>
+          <Tributavel>S</Tributavel>
+        </Item>
+      </Itens>
+    </Nota>
+    <Nota>
+      <NumeroNota>4</NumeroNota>
+      <DataProcessamento>2010-02-23T00:00:00</DataProcessamento>
+      <NumeroLote>28263</NumeroLote>
+      <CodigoVerificacao>28ded6fc</CodigoVerificacao>
+      <Assinatura>ee8a411497aaf82c315ac222ce78a4b0b4cf2f78</Assinatura>
+      <InscricaoMunicipalPrestador>17904300</InscricaoMunicipalPrestador>
+      <RazaoSocialPrestador>EXPLEND SISTEMAS DE COMPUTADORES LTDA</RazaoSocialPrestador>
+      <TipoRPS>RPS</TipoRPS>
+      <SerieRPS>NF</SerieRPS>
+      <NumeroRPS>4</NumeroRPS>
+      <DataEmissaoRPS>2010-02-23T00:00:00</DataEmissaoRPS>
+      <SituacaoRPS>N</SituacaoRPS>
+      <SerieRPSSubstituido />
+      <NumeroRPSSubstituido>0</NumeroRPSSubstituido>
+      <NumeroNFSeSubstituida>0</NumeroNFSeSubstituida>
+      <DataEmissaoNFSeSubstituida>1900-01-01T00:00:00</DataEmissaoNFSeSubstituida>
+      <SeriePrestacao>99</SeriePrestacao>
+      <InscricaoMunicipalTomador />
+      <CPFCNPJTomador>04471372637</CPFCNPJTomador>
+      <RazaoSocialTomador>EMILIA ABADIA PEREIRA</RazaoSocialTomador>
+      <TipoLogradouroTomador />
+      <LogradouroTomador>RUA ALAGOAS N 101</LogradouroTomador>
+      <NumeroEnderecoTomador />
+      <ComplementoEnderecoTomador />
+      <TipoBairroTomador />
+      <BairroTomador>BOSQUE</BairroTomador>
+      <CidadeTomador>4069</CidadeTomador>
+      <CidadeTomadorDescricao>ARAGUARI</CidadeTomadorDescricao>
+      <CEPTomador>38440000</CEPTomador>
+      <EmailTomador>cristiane@explend.com.br</EmailTomador>
+      <CodigoAtividade>620230000</CodigoAtividade>
+      <AliquotaAtividade>2</AliquotaAtividade>
+      <TipoRecolhimento>A</TipoRecolhimento>
+      <MunicipioPrestacao>4069</MunicipioPrestacao>
+      <MunicipioPrestacaoDescricao>ARAGUARI</MunicipioPrestacaoDescricao>
+      <Operacao>A</Operacao>
+      <Tributacao>T</Tributacao>
+      <ValorPIS>0</ValorPIS>
+      <ValorCOFINS>0</ValorCOFINS>
+      <ValorINSS>0</ValorINSS>
+      <ValorIR>0</ValorIR>
+      <ValorCSLL>0</ValorCSLL>
+      <AliquotaPIS>0</AliquotaPIS>
+      <AliquotaCOFINS>0</AliquotaCOFINS>
+      <AliquotaINSS>0</AliquotaINSS>
+      <AliquotaIR>0</AliquotaIR>
+      <AliquotaCSLL>0</AliquotaCSLL>
+      <DescricaoRPS />
+      <DDDPrestador>32</DDDPrestador>
+      <TelefonePrestador>417267</TelefonePrestador>
+      <DDDTomador>34</DDDTomador>
+      <TelefoneTomador>00321698</TelefoneTomador>
+      <MotCancelamento />
+      <Deducoes />
+      <Itens>
+        <Item>
+          <DiscriminacaoServico>VENDA DE LICENCA DE SOFTWARE</DiscriminacaoServico>
+          <Quantidade>1</Quantidade>
+          <ValorUnitario>150</ValorUnitario>
+          <ValorTotal>150</ValorTotal>
+          <Tributavel>S</Tributavel>
+        </Item>
+      </Itens>
+    </Nota>
+    <Nota>
+      <NumeroNota>1</NumeroNota>
+      <DataProcessamento>2010-02-23T00:00:00</DataProcessamento>
+      <NumeroLote>28111</NumeroLote>
+      <CodigoVerificacao>2b2a315e</CodigoVerificacao>
+      <Assinatura>d197d1f27c57afd44ccff0d98125698005c57d79</Assinatura>
+      <InscricaoMunicipalPrestador>17904300</InscricaoMunicipalPrestador>
+      <RazaoSocialPrestador>EXPLEND SISTEMAS DE COMPUTADORES LTDA</RazaoSocialPrestador>
+      <TipoRPS>RPS</TipoRPS>
+      <SerieRPS>NF</SerieRPS>
+      <NumeroRPS>1</NumeroRPS>
+      <DataEmissaoRPS>2010-02-23T00:00:00</DataEmissaoRPS>
+      <SituacaoRPS>N</SituacaoRPS>
+      <SerieRPSSubstituido />
+      <NumeroRPSSubstituido>0</NumeroRPSSubstituido>
+      <NumeroNFSeSubstituida>0</NumeroNFSeSubstituida>
+      <DataEmissaoNFSeSubstituida>1900-01-01T00:00:00</DataEmissaoNFSeSubstituida>
+      <SeriePrestacao>99</SeriePrestacao>
+      <InscricaoMunicipalTomador />
+      <CPFCNPJTomador>04471372637</CPFCNPJTomador>
+      <RazaoSocialTomador>EMILIA ABADIA PEREIRA</RazaoSocialTomador>
+      <TipoLogradouroTomador />
+      <LogradouroTomador>RUA ALAGOAS N 101</LogradouroTomador>
+      <NumeroEnderecoTomador />
+      <ComplementoEnderecoTomador />
+      <TipoBairroTomador />
+      <BairroTomador>BOSQUE</BairroTomador>
+      <CidadeTomador>4069</CidadeTomador>
+      <CidadeTomadorDescricao>ARAGUARI</CidadeTomadorDescricao>
+      <CEPTomador>38440000</CEPTomador>
+      <EmailTomador>cristiane@explend.com.br</EmailTomador>
+      <CodigoAtividade>620230000</CodigoAtividade>
+      <AliquotaAtividade>2</AliquotaAtividade>
+      <TipoRecolhimento>A</TipoRecolhimento>
+      <MunicipioPrestacao>4069</MunicipioPrestacao>
+      <MunicipioPrestacaoDescricao>ARAGUARI</MunicipioPrestacaoDescricao>
+      <Operacao>A</Operacao>
+      <Tributacao>T</Tributacao>
+      <ValorPIS>0</ValorPIS>
+      <ValorCOFINS>0</ValorCOFINS>
+      <ValorINSS>0</ValorINSS>
+      <ValorIR>0</ValorIR>
+      <ValorCSLL>0</ValorCSLL>
+      <AliquotaPIS>0</AliquotaPIS>
+      <AliquotaCOFINS>0</AliquotaCOFINS>
+      <AliquotaINSS>0</AliquotaINSS>
+      <AliquotaIR>0</AliquotaIR>
+      <AliquotaCSLL>0</AliquotaCSLL>
+      <DescricaoRPS />
+      <DDDPrestador>32</DDDPrestador>
+      <TelefonePrestador>417267</TelefonePrestador>
+      <DDDTomador>34</DDDTomador>
+      <TelefoneTomador>00321698</TelefoneTomador>
+      <MotCancelamento />
+      <Deducoes />
+      <Itens>
+        <Item>
+          <DiscriminacaoServico>VENDA DE LICENCA DE SOFTWARE</DiscriminacaoServico>
+          <Quantidade>1</Quantidade>
+          <ValorUnitario>150</ValorUnitario>
+          <ValorTotal>150</ValorTotal>
+          <Tributavel>S</Tributavel>
+        </Item>
+      </Itens>
+    </Nota>
+    <Nota>
+      <NumeroNota>3</NumeroNota>
+      <DataProcessamento>2010-02-23T00:00:00</DataProcessamento>
+      <NumeroLote>28246</NumeroLote>
+      <CodigoVerificacao>7945e07b</CodigoVerificacao>
+      <Assinatura>b14f5a42600b06f6dcb4160602d526c602d5b538</Assinatura>
+      <InscricaoMunicipalPrestador>17904300</InscricaoMunicipalPrestador>
+      <RazaoSocialPrestador>EXPLEND SISTEMAS DE COMPUTADORES LTDA</RazaoSocialPrestador>
+      <TipoRPS>RPS</TipoRPS>
+      <SerieRPS>NF</SerieRPS>
+      <NumeroRPS>3</NumeroRPS>
+      <DataEmissaoRPS>2010-02-23T00:00:00</DataEmissaoRPS>
+      <SituacaoRPS>N</SituacaoRPS>
+      <SerieRPSSubstituido />
+      <NumeroRPSSubstituido>0</NumeroRPSSubstituido>
+      <NumeroNFSeSubstituida>0</NumeroNFSeSubstituida>
+      <DataEmissaoNFSeSubstituida>1900-01-01T00:00:00</DataEmissaoNFSeSubstituida>
+      <SeriePrestacao>99</SeriePrestacao>
+      <InscricaoMunicipalTomador />
+      <CPFCNPJTomador>04471372637</CPFCNPJTomador>
+      <RazaoSocialTomador>EMILIA ABADIA PEREIRA</RazaoSocialTomador>
+      <TipoLogradouroTomador />
+      <LogradouroTomador>RUA ALAGOAS N 101</LogradouroTomador>
+      <NumeroEnderecoTomador />
+      <ComplementoEnderecoTomador />
+      <TipoBairroTomador />
+      <BairroTomador>BOSQUE</BairroTomador>
+      <CidadeTomador>4069</CidadeTomador>
+      <CidadeTomadorDescricao>ARAGUARI</CidadeTomadorDescricao>
+      <CEPTomador>38440000</CEPTomador>
+      <EmailTomador>cristiane@explend.com.br</EmailTomador>
+      <CodigoAtividade>620230000</CodigoAtividade>
+      <AliquotaAtividade>2</AliquotaAtividade>
+      <TipoRecolhimento>A</TipoRecolhimento>
+      <MunicipioPrestacao>4069</MunicipioPrestacao>
+      <MunicipioPrestacaoDescricao>ARAGUARI</MunicipioPrestacaoDescricao>
+      <Operacao>A</Operacao>
+      <Tributacao>T</Tributacao>
+      <ValorPIS>0</ValorPIS>
+      <ValorCOFINS>0</ValorCOFINS>
+      <ValorINSS>0</ValorINSS>
+      <ValorIR>0</ValorIR>
+      <ValorCSLL>0</ValorCSLL>
+      <AliquotaPIS>0</AliquotaPIS>
+      <AliquotaCOFINS>0</AliquotaCOFINS>
+      <AliquotaINSS>0</AliquotaINSS>
+      <AliquotaIR>0</AliquotaIR>
+      <AliquotaCSLL>0</AliquotaCSLL>
+      <DescricaoRPS />
+      <DDDPrestador>32</DDDPrestador>
+      <TelefonePrestador>417267</TelefonePrestador>
+      <DDDTomador>34</DDDTomador>
+      <TelefoneTomador>00321698</TelefoneTomador>
+      <MotCancelamento />
+      <Deducoes />
+      <Itens>
+        <Item>
+          <DiscriminacaoServico>VENDA DE LICENCA DE SOFTWARE</DiscriminacaoServico>
+          <Quantidade>1</Quantidade>
+          <ValorUnitario>150</ValorUnitario>
+          <ValorTotal>150</ValorTotal>
+          <Tributavel>S</Tributavel>
+        </Item>
+      </Itens>
+    </Nota>
+    <Nota>
+      <NumeroNota>6</NumeroNota>
+      <DataProcessamento>2010-02-23T00:00:00</DataProcessamento>
+      <NumeroLote>28314</NumeroLote>
+      <CodigoVerificacao>e84f390a</CodigoVerificacao>
+      <Assinatura>e29feced0a99d5d87b755de328ccaee17249f62a</Assinatura>
+      <InscricaoMunicipalPrestador>17904300</InscricaoMunicipalPrestador>
+      <RazaoSocialPrestador>EXPLEND SISTEMAS DE COMPUTADORES LTDA</RazaoSocialPrestador>
+      <TipoRPS>RPS</TipoRPS>
+      <SerieRPS>NF</SerieRPS>
+      <NumeroRPS>6</NumeroRPS>
+      <DataEmissaoRPS>2010-02-23T00:00:00</DataEmissaoRPS>
+      <SituacaoRPS>N</SituacaoRPS>
+      <SerieRPSSubstituido />
+      <NumeroRPSSubstituido>0</NumeroRPSSubstituido>
+      <NumeroNFSeSubstituida>0</NumeroNFSeSubstituida>
+      <DataEmissaoNFSeSubstituida>1900-01-01T00:00:00</DataEmissaoNFSeSubstituida>
+      <SeriePrestacao>99</SeriePrestacao>
+      <InscricaoMunicipalTomador />
+      <CPFCNPJTomador>04471372637</CPFCNPJTomador>
+      <RazaoSocialTomador>EMILIA ABADIA PEREIRA</RazaoSocialTomador>
+      <TipoLogradouroTomador />
+      <LogradouroTomador>RUA ALAGOAS N 101</LogradouroTomador>
+      <NumeroEnderecoTomador />
+      <ComplementoEnderecoTomador />
+      <TipoBairroTomador />
+      <BairroTomador>BOSQUE</BairroTomador>
+      <CidadeTomador>4069</CidadeTomador>
+      <CidadeTomadorDescricao>ARAGUARI</CidadeTomadorDescricao>
+      <CEPTomador>38440000</CEPTomador>
+      <EmailTomador>cristiane@explend.com.br</EmailTomador>
+      <CodigoAtividade>620230000</CodigoAtividade>
+      <AliquotaAtividade>2</AliquotaAtividade>
+      <TipoRecolhimento>A</TipoRecolhimento>
+      <MunicipioPrestacao>4069</MunicipioPrestacao>
+      <MunicipioPrestacaoDescricao>ARAGUARI</MunicipioPrestacaoDescricao>
+      <Operacao>A</Operacao>
+      <Tributacao>T</Tributacao>
+      <ValorPIS>0</ValorPIS>
+      <ValorCOFINS>0</ValorCOFINS>
+      <ValorINSS>0</ValorINSS>
+      <ValorIR>0</ValorIR>
+      <ValorCSLL>0</ValorCSLL>
+      <AliquotaPIS>0</AliquotaPIS>
+      <AliquotaCOFINS>0</AliquotaCOFINS>
+      <AliquotaINSS>0</AliquotaINSS>
+      <AliquotaIR>0</AliquotaIR>
+      <AliquotaCSLL>0</AliquotaCSLL>
+      <DescricaoRPS />
+      <DDDPrestador>32</DDDPrestador>
+      <TelefonePrestador>417267</TelefonePrestador>
+      <DDDTomador>34</DDDTomador>
+      <TelefoneTomador>00321698</TelefoneTomador>
+      <MotCancelamento />
+      <Deducoes />
+      <Itens>
+        <Item>
+          <DiscriminacaoServico>VENDA DE LICENCA DE SOFTWARE</DiscriminacaoServico>
+          <Quantidade>1</Quantidade>
+          <ValorUnitario>150</ValorUnitario>
+          <ValorTotal>150</ValorTotal>
+          <Tributavel>S</Tributavel>
+        </Item>
+      </Itens>
+    </Nota>
+    <Nota>
+      <NumeroNota>8</NumeroNota>
+      <DataProcessamento>2010-02-25T00:00:00</DataProcessamento>
+      <NumeroLote>28719</NumeroLote>
+      <CodigoVerificacao>36c1ee90</CodigoVerificacao>
+      <Assinatura>c7be32568e52f12a18712a9850894c42b51cafe4</Assinatura>
+      <InscricaoMunicipalPrestador>17904300</InscricaoMunicipalPrestador>
+      <RazaoSocialPrestador>EXPLEND SISTEMAS DE COMPUTADORES LTDA</RazaoSocialPrestador>
+      <TipoRPS>RPS</TipoRPS>
+      <SerieRPS>NF</SerieRPS>
+      <NumeroRPS>8</NumeroRPS>
+      <DataEmissaoRPS>2010-02-25T00:00:00</DataEmissaoRPS>
+      <SituacaoRPS>N</SituacaoRPS>
+      <SerieRPSSubstituido />
+      <NumeroRPSSubstituido>0</NumeroRPSSubstituido>
+      <NumeroNFSeSubstituida>0</NumeroNFSeSubstituida>
+      <DataEmissaoNFSeSubstituida>1900-01-01T00:00:00</DataEmissaoNFSeSubstituida>
+      <SeriePrestacao>99</SeriePrestacao>
+      <InscricaoMunicipalTomador />
+      <CPFCNPJTomador>07286635891</CPFCNPJTomador>
+      <RazaoSocialTomador>ABEL REBOLLO GARCIA</RazaoSocialTomador>
+      <TipoLogradouroTomador />
+      <LogradouroTomador>FAZENDA OSVALDO CRUZ</LogradouroTomador>
+      <NumeroEnderecoTomador />
+      <ComplementoEnderecoTomador />
+      <TipoBairroTomador />
+      <BairroTomador>CENTRO</BairroTomador>
+      <CidadeTomador>4069</CidadeTomador>
+      <CidadeTomadorDescricao>ARAGUARI</CidadeTomadorDescricao>
+      <CEPTomador>00000000</CEPTomador>
+      <EmailTomador>cristiane@explend.com.br</EmailTomador>
+      <CodigoAtividade>620230000</CodigoAtividade>
+      <AliquotaAtividade>2</AliquotaAtividade>
+      <TipoRecolhimento>A</TipoRecolhimento>
+      <MunicipioPrestacao>4069</MunicipioPrestacao>
+      <MunicipioPrestacaoDescricao>ARAGUARI</MunicipioPrestacaoDescricao>
+      <Operacao>A</Operacao>
+      <Tributacao>T</Tributacao>
+      <ValorPIS>0</ValorPIS>
+      <ValorCOFINS>0</ValorCOFINS>
+      <ValorINSS>0</ValorINSS>
+      <ValorIR>0</ValorIR>
+      <ValorCSLL>0</ValorCSLL>
+      <AliquotaPIS>0</AliquotaPIS>
+      <AliquotaCOFINS>0</AliquotaCOFINS>
+      <AliquotaINSS>0</AliquotaINSS>
+      <AliquotaIR>0</AliquotaIR>
+      <AliquotaCSLL>0</AliquotaCSLL>
+      <DescricaoRPS />
+      <DDDPrestador>34</DDDPrestador>
+      <TelefonePrestador>32410452</TelefonePrestador>
+      <DDDTomador>34</DDDTomador>
+      <TelefoneTomador>00321698</TelefoneTomador>
+      <MotCancelamento />
+      <Deducoes />
+      <Itens>
+        <Item>
+          <DiscriminacaoServico>VENDA DE LICENCA DE SOFTWARE</DiscriminacaoServico>
+          <Quantidade>2</Quantidade>
+          <ValorUnitario>150</ValorUnitario>
+          <ValorTotal>300</ValorTotal>
+          <Tributavel>S</Tributavel>
+        </Item>
+      </Itens>
+    </Nota>
+    <Nota>
+      <NumeroNota>9</NumeroNota>
+      <DataProcessamento>2010-02-25T00:00:00</DataProcessamento>
+      <NumeroLote>28719</NumeroLote>
+      <CodigoVerificacao>e1c406b5</CodigoVerificacao>
+      <Assinatura>dcd9cb97ba2cafe15c27a5cdf09b2d3412cf032e</Assinatura>
+      <InscricaoMunicipalPrestador>17904300</InscricaoMunicipalPrestador>
+      <RazaoSocialPrestador>EXPLEND SISTEMAS DE COMPUTADORES LTDA</RazaoSocialPrestador>
+      <TipoRPS>RPS</TipoRPS>
+      <SerieRPS>NF</SerieRPS>
+      <NumeroRPS>9</NumeroRPS>
+      <DataEmissaoRPS>2010-02-25T00:00:00</DataEmissaoRPS>
+      <SituacaoRPS>N</SituacaoRPS>
+      <SerieRPSSubstituido />
+      <NumeroRPSSubstituido>0</NumeroRPSSubstituido>
+      <NumeroNFSeSubstituida>0</NumeroNFSeSubstituida>
+      <DataEmissaoNFSeSubstituida>1900-01-01T00:00:00</DataEmissaoNFSeSubstituida>
+      <SeriePrestacao>99</SeriePrestacao>
+      <InscricaoMunicipalTomador />
+      <CPFCNPJTomador>14229649819</CPFCNPJTomador>
+      <RazaoSocialTomador>JOSE EDUARDO VIEIRA ASSUNCAO</RazaoSocialTomador>
+      <TipoLogradouroTomador>RUA</TipoLogradouroTomador>
+      <LogradouroTomador>JOSE DO PATROCINIO</LogradouroTomador>
+      <NumeroEnderecoTomador>276</NumeroEnderecoTomador>
+      <ComplementoEnderecoTomador />
+      <TipoBairroTomador />
+      <BairroTomador>CENTRO</BairroTomador>
+      <CidadeTomador>4069</CidadeTomador>
+      <CidadeTomadorDescricao>ARAGUARI</CidadeTomadorDescricao>
+      <CEPTomador>38440000</CEPTomador>
+      <EmailTomador>cristiane@explend.com.br</EmailTomador>
+      <CodigoAtividade>620230000</CodigoAtividade>
+      <AliquotaAtividade>2</AliquotaAtividade>
+      <TipoRecolhimento>A</TipoRecolhimento>
+      <MunicipioPrestacao>4069</MunicipioPrestacao>
+      <MunicipioPrestacaoDescricao>ARAGUARI</MunicipioPrestacaoDescricao>
+      <Operacao>A</Operacao>
+      <Tributacao>T</Tributacao>
+      <ValorPIS>0</ValorPIS>
+      <ValorCOFINS>0</ValorCOFINS>
+      <ValorINSS>0</ValorINSS>
+      <ValorIR>0</ValorIR>
+      <ValorCSLL>0</ValorCSLL>
+      <AliquotaPIS>0</AliquotaPIS>
+      <AliquotaCOFINS>0</AliquotaCOFINS>
+      <AliquotaINSS>0</AliquotaINSS>
+      <AliquotaIR>0</AliquotaIR>
+      <AliquotaCSLL>0</AliquotaCSLL>
+      <DescricaoRPS />
+      <DDDPrestador>34</DDDPrestador>
+      <TelefonePrestador>32419868</TelefonePrestador>
+      <DDDTomador>34</DDDTomador>
+      <TelefoneTomador>00321698</TelefoneTomador>
+      <MotCancelamento />
+      <Deducoes />
+      <Itens>
+        <Item>
+          <DiscriminacaoServico>VENDA DE LICENCA DE SOFTWARE</DiscriminacaoServico>
+          <Quantidade>1</Quantidade>
+          <ValorUnitario>180</ValorUnitario>
+          <ValorTotal>180</ValorTotal>
+          <Tributavel>S</Tributavel>
+        </Item>
+      </Itens>
+    </Nota>
+    <Nota>
+      <NumeroNota>5</NumeroNota>
+      <DataProcessamento>2010-02-23T00:00:00</DataProcessamento>
+      <NumeroLote>28283</NumeroLote>
+      <CodigoVerificacao>8aa3144c</CodigoVerificacao>
+      <Assinatura>2d5674651ace553e76bbd961f67fa9306c03a1de</Assinatura>
+      <InscricaoMunicipalPrestador>17904300</InscricaoMunicipalPrestador>
+      <RazaoSocialPrestador>EXPLEND SISTEMAS DE COMPUTADORES LTDA</RazaoSocialPrestador>
+      <TipoRPS>RPS</TipoRPS>
+      <SerieRPS>NF</SerieRPS>
+      <NumeroRPS>5</NumeroRPS>
+      <DataEmissaoRPS>2010-02-23T00:00:00</DataEmissaoRPS>
+      <SituacaoRPS>C</SituacaoRPS>
+      <SerieRPSSubstituido />
+      <NumeroRPSSubstituido>0</NumeroRPSSubstituido>
+      <NumeroNFSeSubstituida>0</NumeroNFSeSubstituida>
+      <DataEmissaoNFSeSubstituida>1900-01-01T00:00:00</DataEmissaoNFSeSubstituida>
+      <SeriePrestacao>99</SeriePrestacao>
+      <InscricaoMunicipalTomador />
+      <CPFCNPJTomador>04471372637</CPFCNPJTomador>
+      <RazaoSocialTomador>EMILIA ABADIA PEREIRA</RazaoSocialTomador>
+      <TipoLogradouroTomador />
+      <LogradouroTomador>RUA ALAGOAS N 101</LogradouroTomador>
+      <NumeroEnderecoTomador />
+      <ComplementoEnderecoTomador />
+      <TipoBairroTomador />
+      <BairroTomador>BOSQUE</BairroTomador>
+      <CidadeTomador>4069</CidadeTomador>
+      <CidadeTomadorDescricao>ARAGUARI</CidadeTomadorDescricao>
+      <CEPTomador>38440000</CEPTomador>
+      <EmailTomador>cristiane@explend.com.br</EmailTomador>
+      <CodigoAtividade>620230000</CodigoAtividade>
+      <AliquotaAtividade>2</AliquotaAtividade>
+      <TipoRecolhimento>A</TipoRecolhimento>
+      <MunicipioPrestacao>4069</MunicipioPrestacao>
+      <MunicipioPrestacaoDescricao>ARAGUARI</MunicipioPrestacaoDescricao>
+      <Operacao>A</Operacao>
+      <Tributacao>T</Tributacao>
+      <ValorPIS>0</ValorPIS>
+      <ValorCOFINS>0</ValorCOFINS>
+      <ValorINSS>0</ValorINSS>
+      <ValorIR>0</ValorIR>
+      <ValorCSLL>0</ValorCSLL>
+      <AliquotaPIS>0</AliquotaPIS>
+      <AliquotaCOFINS>0</AliquotaCOFINS>
+      <AliquotaINSS>0</AliquotaINSS>
+      <AliquotaIR>0</AliquotaIR>
+      <AliquotaCSLL>0</AliquotaCSLL>
+      <DescricaoRPS />
+      <DDDPrestador>32</DDDPrestador>
+      <TelefonePrestador>417267</TelefonePrestador>
+      <DDDTomador>34</DDDTomador>
+      <TelefoneTomador>00321698</TelefoneTomador>
+      <MotCancelamento />
+      <Deducoes />
+      <Itens>
+        <Item>
+          <DiscriminacaoServico>VENDA DE LICENCA DE SOFTWARE</DiscriminacaoServico>
+          <Quantidade>1</Quantidade>
+          <ValorUnitario>150</ValorUnitario>
+          <ValorTotal>150</ValorTotal>
+          <Tributavel>S</Tributavel>
+        </Item>
+      </Itens>
+    </Nota>
+    <Nota>
+      <NumeroNota>7</NumeroNota>
+      <DataProcessamento>2010-02-23T00:00:00</DataProcessamento>
+      <NumeroLote>28515</NumeroLote>
+      <CodigoVerificacao>e950ec50</CodigoVerificacao>
+      <Assinatura>0e592b53522cef478d6e237495c50b731b80d1a0</Assinatura>
+      <InscricaoMunicipalPrestador>17904300</InscricaoMunicipalPrestador>
+      <RazaoSocialPrestador>EXPLEND SISTEMAS DE COMPUTADORES LTDA</RazaoSocialPrestador>
+      <TipoRPS>RPS</TipoRPS>
+      <SerieRPS>NF</SerieRPS>
+      <NumeroRPS>7</NumeroRPS>
+      <DataEmissaoRPS>2010-02-23T00:00:00</DataEmissaoRPS>
+      <SituacaoRPS>N</SituacaoRPS>
+      <SerieRPSSubstituido />
+      <NumeroRPSSubstituido>0</NumeroRPSSubstituido>
+      <NumeroNFSeSubstituida>0</NumeroNFSeSubstituida>
+      <DataEmissaoNFSeSubstituida>1900-01-01T00:00:00</DataEmissaoNFSeSubstituida>
+      <SeriePrestacao>99</SeriePrestacao>
+      <InscricaoMunicipalTomador />
+      <CPFCNPJTomador>04471372637</CPFCNPJTomador>
+      <RazaoSocialTomador>EMILIA ABADIA PEREIRA</RazaoSocialTomador>
+      <TipoLogradouroTomador />
+      <LogradouroTomador>RUA ALAGOAS N 101</LogradouroTomador>
+      <NumeroEnderecoTomador />
+      <ComplementoEnderecoTomador />
+      <TipoBairroTomador />
+      <BairroTomador>BOSQUE</BairroTomador>
+      <CidadeTomador>4069</CidadeTomador>
+      <CidadeTomadorDescricao>ARAGUARI</CidadeTomadorDescricao>
+      <CEPTomador>38440000</CEPTomador>
+      <EmailTomador>cristiane@explend.com.br</EmailTomador>
+      <CodigoAtividade>620230000</CodigoAtividade>
+      <AliquotaAtividade>2</AliquotaAtividade>
+      <TipoRecolhimento>A</TipoRecolhimento>
+      <MunicipioPrestacao>4069</MunicipioPrestacao>
+      <MunicipioPrestacaoDescricao>ARAGUARI</MunicipioPrestacaoDescricao>
+      <Operacao>A</Operacao>
+      <Tributacao>T</Tributacao>
+      <ValorPIS>0</ValorPIS>
+      <ValorCOFINS>0</ValorCOFINS>
+      <ValorINSS>0</ValorINSS>
+      <ValorIR>0</ValorIR>
+      <ValorCSLL>0</ValorCSLL>
+      <AliquotaPIS>0</AliquotaPIS>
+      <AliquotaCOFINS>0</AliquotaCOFINS>
+      <AliquotaINSS>0</AliquotaINSS>
+      <AliquotaIR>0</AliquotaIR>
+      <AliquotaCSLL>0</AliquotaCSLL>
+      <DescricaoRPS />
+      <DDDPrestador>32</DDDPrestador>
+      <TelefonePrestador>417267</TelefonePrestador>
+      <DDDTomador>34</DDDTomador>
+      <TelefoneTomador>00321698</TelefoneTomador>
+      <MotCancelamento />
+      <Deducoes />
+      <Itens>
+        <Item>
+          <DiscriminacaoServico>VENDA DE LICENCA DE SOFTWARE</DiscriminacaoServico>
+          <Quantidade>1</Quantidade>
+          <ValorUnitario>150</ValorUnitario>
+          <ValorTotal>150</ValorTotal>
+          <Tributavel>S</Tributavel>
+        </Item>
+      </Itens>
+    </Nota>
+    <Nota>
+      <NumeroNota>10</NumeroNota>
+      <DataProcessamento>2010-02-25T00:00:00</DataProcessamento>
+      <NumeroLote>28732</NumeroLote>
+      <CodigoVerificacao>12939dad</CodigoVerificacao>
+      <Assinatura>e1af8c76b88fa975df1381bfe66bb2e45fca2a30</Assinatura>
+      <InscricaoMunicipalPrestador>17904300</InscricaoMunicipalPrestador>
+      <RazaoSocialPrestador>EXPLEND SISTEMAS DE COMPUTADORES LTDA</RazaoSocialPrestador>
+      <TipoRPS>RPS</TipoRPS>
+      <SerieRPS>NF</SerieRPS>
+      <NumeroRPS>10</NumeroRPS>
+      <DataEmissaoRPS>2010-02-25T00:00:00</DataEmissaoRPS>
+      <SituacaoRPS>N</SituacaoRPS>
+      <SerieRPSSubstituido />
+      <NumeroRPSSubstituido>0</NumeroRPSSubstituido>
+      <NumeroNFSeSubstituida>0</NumeroNFSeSubstituida>
+      <DataEmissaoNFSeSubstituida>1900-01-01T00:00:00</DataEmissaoNFSeSubstituida>
+      <SeriePrestacao>99</SeriePrestacao>
+      <InscricaoMunicipalTomador />
+      <CPFCNPJTomador>14229649819</CPFCNPJTomador>
+      <RazaoSocialTomador>JOSE EDUARDO VIEIRA ASSUNCAO</RazaoSocialTomador>
+      <TipoLogradouroTomador>RUA</TipoLogradouroTomador>
+      <LogradouroTomador>JOSE DO PATROCINIO</LogradouroTomador>
+      <NumeroEnderecoTomador>276</NumeroEnderecoTomador>
+      <ComplementoEnderecoTomador />
+      <TipoBairroTomador />
+      <BairroTomador>CENTRO</BairroTomador>
+      <CidadeTomador>4069</CidadeTomador>
+      <CidadeTomadorDescricao>ARAGUARI</CidadeTomadorDescricao>
+      <CEPTomador>38440000</CEPTomador>
+      <EmailTomador>cristiane@explend.com.br</EmailTomador>
+      <CodigoAtividade>620230000</CodigoAtividade>
+      <AliquotaAtividade>2</AliquotaAtividade>
+      <TipoRecolhimento>A</TipoRecolhimento>
+      <MunicipioPrestacao>4069</MunicipioPrestacao>
+      <MunicipioPrestacaoDescricao>ARAGUARI</MunicipioPrestacaoDescricao>
+      <Operacao>A</Operacao>
+      <Tributacao>T</Tributacao>
+      <ValorPIS>0</ValorPIS>
+      <ValorCOFINS>0</ValorCOFINS>
+      <ValorINSS>0</ValorINSS>
+      <ValorIR>0</ValorIR>
+      <ValorCSLL>0</ValorCSLL>
+      <AliquotaPIS>0</AliquotaPIS>
+      <AliquotaCOFINS>0</AliquotaCOFINS>
+      <AliquotaINSS>0</AliquotaINSS>
+      <AliquotaIR>0</AliquotaIR>
+      <AliquotaCSLL>0</AliquotaCSLL>
+      <DescricaoRPS />
+      <DDDPrestador>34</DDDPrestador>
+      <TelefonePrestador>32419868</TelefonePrestador>
+      <DDDTomador>34</DDDTomador>
+      <TelefoneTomador>00321698</TelefoneTomador>
+      <MotCancelamento />
+      <Deducoes />
+      <Itens>
+        <Item>
+          <DiscriminacaoServico>VENDA DE LICENCA DE SOFTWARE</DiscriminacaoServico>
+          <Quantidade>1</Quantidade>
+          <ValorUnitario>180</ValorUnitario>
+          <ValorTotal>180</ValorTotal>
+          <Tributavel>S</Tributavel>
+        </Item>
+      </Itens>
+    </Nota>
+    <Nota>
+      <NumeroNota>11</NumeroNota>
+      <DataProcessamento>2010-02-25T00:00:00</DataProcessamento>
+      <NumeroLote>28743</NumeroLote>
+      <CodigoVerificacao>01db45f5</CodigoVerificacao>
+      <Assinatura>a0cd35ce202dcaef714caeacf79b87c064063327</Assinatura>
+      <InscricaoMunicipalPrestador>17904300</InscricaoMunicipalPrestador>
+      <RazaoSocialPrestador>EXPLEND SISTEMAS DE COMPUTADORES LTDA</RazaoSocialPrestador>
+      <TipoRPS>RPS</TipoRPS>
+      <SerieRPS>NF</SerieRPS>
+      <NumeroRPS>11</NumeroRPS>
+      <DataEmissaoRPS>2010-02-25T00:00:00</DataEmissaoRPS>
+      <SituacaoRPS>N</SituacaoRPS>
+      <SerieRPSSubstituido />
+      <NumeroRPSSubstituido>0</NumeroRPSSubstituido>
+      <NumeroNFSeSubstituida>0</NumeroNFSeSubstituida>
+      <DataEmissaoNFSeSubstituida>1900-01-01T00:00:00</DataEmissaoNFSeSubstituida>
+      <SeriePrestacao>99</SeriePrestacao>
+      <InscricaoMunicipalTomador />
+      <CPFCNPJTomador>14229649819</CPFCNPJTomador>
+      <RazaoSocialTomador>JOSE EDUARDO VIEIRA ASSUNCAO</RazaoSocialTomador>
+      <TipoLogradouroTomador>RUA</TipoLogradouroTomador>
+      <LogradouroTomador>JOSE DO PATROCINIO</LogradouroTomador>
+      <NumeroEnderecoTomador>276</NumeroEnderecoTomador>
+      <ComplementoEnderecoTomador />
+      <TipoBairroTomador />
+      <BairroTomador>CENTRO</BairroTomador>
+      <CidadeTomador>4069</CidadeTomador>
+      <CidadeTomadorDescricao>ARAGUARI</CidadeTomadorDescricao>
+      <CEPTomador>38440000</CEPTomador>
+      <EmailTomador>cristiane@explend.com.br</EmailTomador>
+      <CodigoAtividade>620230000</CodigoAtividade>
+      <AliquotaAtividade>2</AliquotaAtividade>
+      <TipoRecolhimento>A</TipoRecolhimento>
+      <MunicipioPrestacao>4069</MunicipioPrestacao>
+      <MunicipioPrestacaoDescricao>ARAGUARI</MunicipioPrestacaoDescricao>
+      <Operacao>A</Operacao>
+      <Tributacao>T</Tributacao>
+      <ValorPIS>0</ValorPIS>
+      <ValorCOFINS>0</ValorCOFINS>
+      <ValorINSS>0</ValorINSS>
+      <ValorIR>0</ValorIR>
+      <ValorCSLL>0</ValorCSLL>
+      <AliquotaPIS>0</AliquotaPIS>
+      <AliquotaCOFINS>0</AliquotaCOFINS>
+      <AliquotaINSS>0</AliquotaINSS>
+      <AliquotaIR>0</AliquotaIR>
+      <AliquotaCSLL>0</AliquotaCSLL>
+      <DescricaoRPS />
+      <DDDPrestador>34</DDDPrestador>
+      <TelefonePrestador>32419868</TelefonePrestador>
+      <DDDTomador>34</DDDTomador>
+      <TelefoneTomador>00321698</TelefoneTomador>
+      <MotCancelamento />
+      <Deducoes />
+      <Itens>
+        <Item>
+          <DiscriminacaoServico>VENDA DE LICENCA DE SOFTWARE</DiscriminacaoServico>
+          <Quantidade>1</Quantidade>
+          <ValorUnitario>150</ValorUnitario>
+          <ValorTotal>150</ValorTotal>
+          <Tributavel>S</Tributavel>
+        </Item>
+      </Itens>
+    </Nota>
+  </Notas>
+</ns1:RetornoConsultaNotas>
+

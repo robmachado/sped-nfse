@@ -1,0 +1,428 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ns1:RetornoConsultaLote  xmlns:ns1="http://localhost:8080/WsNFe2/lote" xmlns:tipos="http://localhost:8080/WsNFe2/tp" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://localhost:8080/WsNFe2/lote http://localhost:8080/WsNFe2/xsd/RetornoConsultaLote.xsd">
+  <Cabecalho>
+    <CodCidade>5403</CodCidade>
+    <Sucesso>false</Sucesso>
+    <NumeroLote>28933</NumeroLote>
+    <CPFCNPJRemetente>00604122000197</CPFCNPJRemetente>
+    <RazaoSocialRemetente>TRIVALE ADMINISTRACAO LTDA</RazaoSocialRemetente>
+    <DataEnvioLote>2010-02-26T00:00:00</DataEnvioLote>
+    <QtdNotasProcessadas>0</QtdNotasProcessadas>
+    <TempoProcessamento>0</TempoProcessamento>
+    <ValorTotalServicos>0</ValorTotalServicos>
+    <ValorTotalDeducoes>0</ValorTotalDeducoes>
+    <Versao>1</Versao>
+  </Cabecalho>
+  <Alertas />
+  <Erros>
+    <Erro>
+      <Codigo>310</Codigo>
+      <Descricao>Código da Atividade não permitida para o Prestador. A atividade de código 731900400 não pertence ao prestador.</Descricao>
+      <ChaveRPS>
+        <InscricaoPrestador>10517900</InscricaoPrestador>
+        <SerieRPS>NF</SerieRPS>
+        <NumeroRPS>1</NumeroRPS>
+        <DataEmissaoRPS>2010-02-26T09:40:13</DataEmissaoRPS>
+        <RazaoSocialPrestador>TRIVALE ADMINISTRACAO LTDA</RazaoSocialPrestador>
+      </ChaveRPS>
+    </Erro>
+    <Erro>
+      <Codigo>310</Codigo>
+      <Descricao>Código da Atividade não permitida para o Prestador. A atividade de código 731900400 não pertence ao prestador.</Descricao>
+      <ChaveRPS>
+        <InscricaoPrestador>10517900</InscricaoPrestador>
+        <SerieRPS>NF</SerieRPS>
+        <NumeroRPS>2</NumeroRPS>
+        <DataEmissaoRPS>2010-02-26T09:40:13</DataEmissaoRPS>
+        <RazaoSocialPrestador>TRIVALE ADMINISTRACAO LTDA</RazaoSocialPrestador>
+      </ChaveRPS>
+    </Erro>
+    <Erro>
+      <Codigo>310</Codigo>
+      <Descricao>Código da Atividade não permitida para o Prestador. A atividade de código 731900400 não pertence ao prestador.</Descricao>
+      <ChaveRPS>
+        <InscricaoPrestador>10517900</InscricaoPrestador>
+        <SerieRPS>NF</SerieRPS>
+        <NumeroRPS>3</NumeroRPS>
+        <DataEmissaoRPS>2010-02-26T09:40:13</DataEmissaoRPS>
+        <RazaoSocialPrestador>TRIVALE ADMINISTRACAO LTDA</RazaoSocialPrestador>
+      </ChaveRPS>
+    </Erro>
+    <Erro>
+      <Codigo>310</Codigo>
+      <Descricao>Código da Atividade não permitida para o Prestador. A atividade de código 731900400 não pertence ao prestador.</Descricao>
+      <ChaveRPS>
+        <InscricaoPrestador>10517900</InscricaoPrestador>
+        <SerieRPS>NF</SerieRPS>
+        <NumeroRPS>4</NumeroRPS>
+        <DataEmissaoRPS>2010-02-26T09:40:13</DataEmissaoRPS>
+        <RazaoSocialPrestador>TRIVALE ADMINISTRACAO LTDA</RazaoSocialPrestador>
+      </ChaveRPS>
+    </Erro>
+    <Erro>
+      <Codigo>310</Codigo>
+      <Descricao>Código da Atividade não permitida para o Prestador. A atividade de código 731900400 não pertence ao prestador.</Descricao>
+      <ChaveRPS>
+        <InscricaoPrestador>10517900</InscricaoPrestador>
+        <SerieRPS>NF</SerieRPS>
+        <NumeroRPS>5</NumeroRPS>
+        <DataEmissaoRPS>2010-02-26T09:40:13</DataEmissaoRPS>
+        <RazaoSocialPrestador>TRIVALE ADMINISTRACAO LTDA</RazaoSocialPrestador>
+      </ChaveRPS>
+    </Erro>
+    <Erro>
+      <Codigo>310</Codigo>
+      <Descricao>Código da Atividade não permitida para o Prestador. A atividade de código 731900400 não pertence ao prestador.</Descricao>
+      <ChaveRPS>
+        <InscricaoPrestador>10517900</InscricaoPrestador>
+        <SerieRPS>NF</SerieRPS>
+        <NumeroRPS>6</NumeroRPS>
+        <DataEmissaoRPS>2010-02-26T09:40:13</DataEmissaoRPS>
+        <RazaoSocialPrestador>TRIVALE ADMINISTRACAO LTDA</RazaoSocialPrestador>
+      </ChaveRPS>
+    </Erro>
+    <Erro>
+      <Codigo>310</Codigo>
+      <Descricao>Código da Atividade não permitida para o Prestador. A atividade de código 731900400 não pertence ao prestador.</Descricao>
+      <ChaveRPS>
+        <InscricaoPrestador>10517900</InscricaoPrestador>
+        <SerieRPS>NF</SerieRPS>
+        <NumeroRPS>7</NumeroRPS>
+        <DataEmissaoRPS>2010-02-26T09:40:13</DataEmissaoRPS>
+        <RazaoSocialPrestador>TRIVALE ADMINISTRACAO LTDA</RazaoSocialPrestador>
+      </ChaveRPS>
+    </Erro>
+    <Erro>
+      <Codigo>310</Codigo>
+      <Descricao>Código da Atividade não permitida para o Prestador. A atividade de código 731900400 não pertence ao prestador.</Descricao>
+      <ChaveRPS>
+        <InscricaoPrestador>10517900</InscricaoPrestador>
+        <SerieRPS>NF</SerieRPS>
+        <NumeroRPS>8</NumeroRPS>
+        <DataEmissaoRPS>2010-02-26T09:40:13</DataEmissaoRPS>
+        <RazaoSocialPrestador>TRIVALE ADMINISTRACAO LTDA</RazaoSocialPrestador>
+      </ChaveRPS>
+    </Erro>
+    <Erro>
+      <Codigo>310</Codigo>
+      <Descricao>Código da Atividade não permitida para o Prestador. A atividade de código 731900400 não pertence ao prestador.</Descricao>
+      <ChaveRPS>
+        <InscricaoPrestador>10517900</InscricaoPrestador>
+        <SerieRPS>NF</SerieRPS>
+        <NumeroRPS>9</NumeroRPS>
+        <DataEmissaoRPS>2010-02-26T09:40:13</DataEmissaoRPS>
+        <RazaoSocialPrestador>TRIVALE ADMINISTRACAO LTDA</RazaoSocialPrestador>
+      </ChaveRPS>
+    </Erro>
+    <Erro>
+      <Codigo>310</Codigo>
+      <Descricao>Código da Atividade não permitida para o Prestador. A atividade de código 731900400 não pertence ao prestador.</Descricao>
+      <ChaveRPS>
+        <InscricaoPrestador>10517900</InscricaoPrestador>
+        <SerieRPS>NF</SerieRPS>
+        <NumeroRPS>10</NumeroRPS>
+        <DataEmissaoRPS>2010-02-26T09:40:13</DataEmissaoRPS>
+        <RazaoSocialPrestador>TRIVALE ADMINISTRACAO LTDA</RazaoSocialPrestador>
+      </ChaveRPS>
+    </Erro>
+    <Erro>
+      <Codigo>310</Codigo>
+      <Descricao>Código da Atividade não permitida para o Prestador. A atividade de código 731900400 não pertence ao prestador.</Descricao>
+      <ChaveRPS>
+        <InscricaoPrestador>10517900</InscricaoPrestador>
+        <SerieRPS>NF</SerieRPS>
+        <NumeroRPS>11</NumeroRPS>
+        <DataEmissaoRPS>2010-02-26T09:40:13</DataEmissaoRPS>
+        <RazaoSocialPrestador>TRIVALE ADMINISTRACAO LTDA</RazaoSocialPrestador>
+      </ChaveRPS>
+    </Erro>
+    <Erro>
+      <Codigo>310</Codigo>
+      <Descricao>Código da Atividade não permitida para o Prestador. A atividade de código 731900400 não pertence ao prestador.</Descricao>
+      <ChaveRPS>
+        <InscricaoPrestador>10517900</InscricaoPrestador>
+        <SerieRPS>NF</SerieRPS>
+        <NumeroRPS>12</NumeroRPS>
+        <DataEmissaoRPS>2010-02-26T09:40:13</DataEmissaoRPS>
+        <RazaoSocialPrestador>TRIVALE ADMINISTRACAO LTDA</RazaoSocialPrestador>
+      </ChaveRPS>
+    </Erro>
+    <Erro>
+      <Codigo>310</Codigo>
+      <Descricao>Código da Atividade não permitida para o Prestador. A atividade de código 731900400 não pertence ao prestador.</Descricao>
+      <ChaveRPS>
+        <InscricaoPrestador>10517900</InscricaoPrestador>
+        <SerieRPS>NF</SerieRPS>
+        <NumeroRPS>13</NumeroRPS>
+        <DataEmissaoRPS>2010-02-26T09:40:13</DataEmissaoRPS>
+        <RazaoSocialPrestador>TRIVALE ADMINISTRACAO LTDA</RazaoSocialPrestador>
+      </ChaveRPS>
+    </Erro>
+    <Erro>
+      <Codigo>310</Codigo>
+      <Descricao>Código da Atividade não permitida para o Prestador. A atividade de código 731900400 não pertence ao prestador.</Descricao>
+      <ChaveRPS>
+        <InscricaoPrestador>10517900</InscricaoPrestador>
+        <SerieRPS>NF</SerieRPS>
+        <NumeroRPS>14</NumeroRPS>
+        <DataEmissaoRPS>2010-02-26T09:40:13</DataEmissaoRPS>
+        <RazaoSocialPrestador>TRIVALE ADMINISTRACAO LTDA</RazaoSocialPrestador>
+      </ChaveRPS>
+    </Erro>
+    <Erro>
+      <Codigo>310</Codigo>
+      <Descricao>Código da Atividade não permitida para o Prestador. A atividade de código 731900400 não pertence ao prestador.</Descricao>
+      <ChaveRPS>
+        <InscricaoPrestador>10517900</InscricaoPrestador>
+        <SerieRPS>NF</SerieRPS>
+        <NumeroRPS>15</NumeroRPS>
+        <DataEmissaoRPS>2010-02-26T09:40:13</DataEmissaoRPS>
+        <RazaoSocialPrestador>TRIVALE ADMINISTRACAO LTDA</RazaoSocialPrestador>
+      </ChaveRPS>
+    </Erro>
+    <Erro>
+      <Codigo>310</Codigo>
+      <Descricao>Código da Atividade não permitida para o Prestador. A atividade de código 731900400 não pertence ao prestador.</Descricao>
+      <ChaveRPS>
+        <InscricaoPrestador>10517900</InscricaoPrestador>
+        <SerieRPS>NF</SerieRPS>
+        <NumeroRPS>16</NumeroRPS>
+        <DataEmissaoRPS>2010-02-26T09:40:13</DataEmissaoRPS>
+        <RazaoSocialPrestador>TRIVALE ADMINISTRACAO LTDA</RazaoSocialPrestador>
+      </ChaveRPS>
+    </Erro>
+    <Erro>
+      <Codigo>310</Codigo>
+      <Descricao>Código da Atividade não permitida para o Prestador. A atividade de código 731900400 não pertence ao prestador.</Descricao>
+      <ChaveRPS>
+        <InscricaoPrestador>10517900</InscricaoPrestador>
+        <SerieRPS>NF</SerieRPS>
+        <NumeroRPS>17</NumeroRPS>
+        <DataEmissaoRPS>2010-02-26T09:40:13</DataEmissaoRPS>
+        <RazaoSocialPrestador>TRIVALE ADMINISTRACAO LTDA</RazaoSocialPrestador>
+      </ChaveRPS>
+    </Erro>
+    <Erro>
+      <Codigo>310</Codigo>
+      <Descricao>Código da Atividade não permitida para o Prestador. A atividade de código 731900400 não pertence ao prestador.</Descricao>
+      <ChaveRPS>
+        <InscricaoPrestador>10517900</InscricaoPrestador>
+        <SerieRPS>NF</SerieRPS>
+        <NumeroRPS>18</NumeroRPS>
+        <DataEmissaoRPS>2010-02-26T09:40:13</DataEmissaoRPS>
+        <RazaoSocialPrestador>TRIVALE ADMINISTRACAO LTDA</RazaoSocialPrestador>
+      </ChaveRPS>
+    </Erro>
+    <Erro>
+      <Codigo>310</Codigo>
+      <Descricao>Código da Atividade não permitida para o Prestador. A atividade de código 731900400 não pertence ao prestador.</Descricao>
+      <ChaveRPS>
+        <InscricaoPrestador>10517900</InscricaoPrestador>
+        <SerieRPS>NF</SerieRPS>
+        <NumeroRPS>19</NumeroRPS>
+        <DataEmissaoRPS>2010-02-26T09:40:13</DataEmissaoRPS>
+        <RazaoSocialPrestador>TRIVALE ADMINISTRACAO LTDA</RazaoSocialPrestador>
+      </ChaveRPS>
+    </Erro>
+    <Erro>
+      <Codigo>310</Codigo>
+      <Descricao>Código da Atividade não permitida para o Prestador. A atividade de código 731900400 não pertence ao prestador.</Descricao>
+      <ChaveRPS>
+        <InscricaoPrestador>10517900</InscricaoPrestador>
+        <SerieRPS>NF</SerieRPS>
+        <NumeroRPS>20</NumeroRPS>
+        <DataEmissaoRPS>2010-02-26T09:40:13</DataEmissaoRPS>
+        <RazaoSocialPrestador>TRIVALE ADMINISTRACAO LTDA</RazaoSocialPrestador>
+      </ChaveRPS>
+    </Erro>
+    <Erro>
+      <Codigo>310</Codigo>
+      <Descricao>Código da Atividade não permitida para o Prestador. A atividade de código 731900400 não pertence ao prestador.</Descricao>
+      <ChaveRPS>
+        <InscricaoPrestador>10517900</InscricaoPrestador>
+        <SerieRPS>NF</SerieRPS>
+        <NumeroRPS>21</NumeroRPS>
+        <DataEmissaoRPS>2010-02-26T09:40:13</DataEmissaoRPS>
+        <RazaoSocialPrestador>TRIVALE ADMINISTRACAO LTDA</RazaoSocialPrestador>
+      </ChaveRPS>
+    </Erro>
+    <Erro>
+      <Codigo>310</Codigo>
+      <Descricao>Código da Atividade não permitida para o Prestador. A atividade de código 731900400 não pertence ao prestador.</Descricao>
+      <ChaveRPS>
+        <InscricaoPrestador>10517900</InscricaoPrestador>
+        <SerieRPS>NF</SerieRPS>
+        <NumeroRPS>22</NumeroRPS>
+        <DataEmissaoRPS>2010-02-26T09:40:13</DataEmissaoRPS>
+        <RazaoSocialPrestador>TRIVALE ADMINISTRACAO LTDA</RazaoSocialPrestador>
+      </ChaveRPS>
+    </Erro>
+    <Erro>
+      <Codigo>310</Codigo>
+      <Descricao>Código da Atividade não permitida para o Prestador. A atividade de código 731900400 não pertence ao prestador.</Descricao>
+      <ChaveRPS>
+        <InscricaoPrestador>10517900</InscricaoPrestador>
+        <SerieRPS>NF</SerieRPS>
+        <NumeroRPS>23</NumeroRPS>
+        <DataEmissaoRPS>2010-02-26T09:40:13</DataEmissaoRPS>
+        <RazaoSocialPrestador>TRIVALE ADMINISTRACAO LTDA</RazaoSocialPrestador>
+      </ChaveRPS>
+    </Erro>
+    <Erro>
+      <Codigo>301</Codigo>
+      <Descricao>O tomador de serviços informado é o próprio prestador.CPF ou CNPJ do tomador igual ao do prestador.</Descricao>
+      <ChaveRPS>
+        <InscricaoPrestador>10517900</InscricaoPrestador>
+        <SerieRPS>NF</SerieRPS>
+        <NumeroRPS>24</NumeroRPS>
+        <DataEmissaoRPS>2010-02-26T09:40:13</DataEmissaoRPS>
+        <RazaoSocialPrestador>TRIVALE ADMINISTRACAO LTDA</RazaoSocialPrestador>
+      </ChaveRPS>
+    </Erro>
+    <Erro>
+      <Codigo>310</Codigo>
+      <Descricao>Código da Atividade não permitida para o Prestador. A atividade de código 731900400 não pertence ao prestador.</Descricao>
+      <ChaveRPS>
+        <InscricaoPrestador>10517900</InscricaoPrestador>
+        <SerieRPS>NF</SerieRPS>
+        <NumeroRPS>24</NumeroRPS>
+        <DataEmissaoRPS>2010-02-26T09:40:13</DataEmissaoRPS>
+        <RazaoSocialPrestador>TRIVALE ADMINISTRACAO LTDA</RazaoSocialPrestador>
+      </ChaveRPS>
+    </Erro>
+    <Erro>
+      <Codigo>301</Codigo>
+      <Descricao>O tomador de serviços informado é o próprio prestador.CPF ou CNPJ do tomador igual ao do prestador.</Descricao>
+      <ChaveRPS>
+        <InscricaoPrestador>10517900</InscricaoPrestador>
+        <SerieRPS>NF</SerieRPS>
+        <NumeroRPS>25</NumeroRPS>
+        <DataEmissaoRPS>2010-02-26T09:40:13</DataEmissaoRPS>
+        <RazaoSocialPrestador>TRIVALE ADMINISTRACAO LTDA</RazaoSocialPrestador>
+      </ChaveRPS>
+    </Erro>
+    <Erro>
+      <Codigo>310</Codigo>
+      <Descricao>Código da Atividade não permitida para o Prestador. A atividade de código 731900400 não pertence ao prestador.</Descricao>
+      <ChaveRPS>
+        <InscricaoPrestador>10517900</InscricaoPrestador>
+        <SerieRPS>NF</SerieRPS>
+        <NumeroRPS>25</NumeroRPS>
+        <DataEmissaoRPS>2010-02-26T09:40:13</DataEmissaoRPS>
+        <RazaoSocialPrestador>TRIVALE ADMINISTRACAO LTDA</RazaoSocialPrestador>
+      </ChaveRPS>
+    </Erro>
+    <Erro>
+      <Codigo>310</Codigo>
+      <Descricao>Código da Atividade não permitida para o Prestador. A atividade de código 731900400 não pertence ao prestador.</Descricao>
+      <ChaveRPS>
+        <InscricaoPrestador>10517900</InscricaoPrestador>
+        <SerieRPS>NF</SerieRPS>
+        <NumeroRPS>26</NumeroRPS>
+        <DataEmissaoRPS>2010-02-26T09:40:13</DataEmissaoRPS>
+        <RazaoSocialPrestador>TRIVALE ADMINISTRACAO LTDA</RazaoSocialPrestador>
+      </ChaveRPS>
+    </Erro>
+    <Erro>
+      <Codigo>310</Codigo>
+      <Descricao>Código da Atividade não permitida para o Prestador. A atividade de código 731900400 não pertence ao prestador.</Descricao>
+      <ChaveRPS>
+        <InscricaoPrestador>10517900</InscricaoPrestador>
+        <SerieRPS>NF</SerieRPS>
+        <NumeroRPS>27</NumeroRPS>
+        <DataEmissaoRPS>2010-02-26T09:40:13</DataEmissaoRPS>
+        <RazaoSocialPrestador>TRIVALE ADMINISTRACAO LTDA</RazaoSocialPrestador>
+      </ChaveRPS>
+    </Erro>
+    <Erro>
+      <Codigo>310</Codigo>
+      <Descricao>Código da Atividade não permitida para o Prestador. A atividade de código 731900400 não pertence ao prestador.</Descricao>
+      <ChaveRPS>
+        <InscricaoPrestador>10517900</InscricaoPrestador>
+        <SerieRPS>NF</SerieRPS>
+        <NumeroRPS>28</NumeroRPS>
+        <DataEmissaoRPS>2010-02-26T09:40:13</DataEmissaoRPS>
+        <RazaoSocialPrestador>TRIVALE ADMINISTRACAO LTDA</RazaoSocialPrestador>
+      </ChaveRPS>
+    </Erro>
+    <Erro>
+      <Codigo>310</Codigo>
+      <Descricao>Código da Atividade não permitida para o Prestador. A atividade de código 731900400 não pertence ao prestador.</Descricao>
+      <ChaveRPS>
+        <InscricaoPrestador>10517900</InscricaoPrestador>
+        <SerieRPS>NF</SerieRPS>
+        <NumeroRPS>29</NumeroRPS>
+        <DataEmissaoRPS>2010-02-26T09:40:13</DataEmissaoRPS>
+        <RazaoSocialPrestador>TRIVALE ADMINISTRACAO LTDA</RazaoSocialPrestador>
+      </ChaveRPS>
+    </Erro>
+    <Erro>
+      <Codigo>310</Codigo>
+      <Descricao>Código da Atividade não permitida para o Prestador. A atividade de código 731900400 não pertence ao prestador.</Descricao>
+      <ChaveRPS>
+        <InscricaoPrestador>10517900</InscricaoPrestador>
+        <SerieRPS>NF</SerieRPS>
+        <NumeroRPS>30</NumeroRPS>
+        <DataEmissaoRPS>2010-02-26T09:40:13</DataEmissaoRPS>
+        <RazaoSocialPrestador>TRIVALE ADMINISTRACAO LTDA</RazaoSocialPrestador>
+      </ChaveRPS>
+    </Erro>
+    <Erro>
+      <Codigo>310</Codigo>
+      <Descricao>Código da Atividade não permitida para o Prestador. A atividade de código 731900400 não pertence ao prestador.</Descricao>
+      <ChaveRPS>
+        <InscricaoPrestador>10517900</InscricaoPrestador>
+        <SerieRPS>NF</SerieRPS>
+        <NumeroRPS>31</NumeroRPS>
+        <DataEmissaoRPS>2010-02-26T09:40:13</DataEmissaoRPS>
+        <RazaoSocialPrestador>TRIVALE ADMINISTRACAO LTDA</RazaoSocialPrestador>
+      </ChaveRPS>
+    </Erro>
+    <Erro>
+      <Codigo>310</Codigo>
+      <Descricao>Código da Atividade não permitida para o Prestador. A atividade de código 731900400 não pertence ao prestador.</Descricao>
+      <ChaveRPS>
+        <InscricaoPrestador>10517900</InscricaoPrestador>
+        <SerieRPS>NF</SerieRPS>
+        <NumeroRPS>32</NumeroRPS>
+        <DataEmissaoRPS>2010-02-26T09:40:13</DataEmissaoRPS>
+        <RazaoSocialPrestador>TRIVALE ADMINISTRACAO LTDA</RazaoSocialPrestador>
+      </ChaveRPS>
+    </Erro>
+    <Erro>
+      <Codigo>310</Codigo>
+      <Descricao>Código da Atividade não permitida para o Prestador. A atividade de código 731900400 não pertence ao prestador.</Descricao>
+      <ChaveRPS>
+        <InscricaoPrestador>10517900</InscricaoPrestador>
+        <SerieRPS>NF</SerieRPS>
+        <NumeroRPS>33</NumeroRPS>
+        <DataEmissaoRPS>2010-02-26T09:40:13</DataEmissaoRPS>
+        <RazaoSocialPrestador>TRIVALE ADMINISTRACAO LTDA</RazaoSocialPrestador>
+      </ChaveRPS>
+    </Erro>
+    <Erro>
+      <Codigo>310</Codigo>
+      <Descricao>Código da Atividade não permitida para o Prestador. A atividade de código 731900400 não pertence ao prestador.</Descricao>
+      <ChaveRPS>
+        <InscricaoPrestador>10517900</InscricaoPrestador>
+        <SerieRPS>NF</SerieRPS>
+        <NumeroRPS>34</NumeroRPS>
+        <DataEmissaoRPS>2010-02-26T09:40:13</DataEmissaoRPS>
+        <RazaoSocialPrestador>TRIVALE ADMINISTRACAO LTDA</RazaoSocialPrestador>
+      </ChaveRPS>
+    </Erro>
+    <Erro>
+      <Codigo>310</Codigo>
+      <Descricao>Código da Atividade não permitida para o Prestador. A atividade de código 731900400 não pertence ao prestador.</Descricao>
+      <ChaveRPS>
+        <InscricaoPrestador>10517900</InscricaoPrestador>
+        <SerieRPS>NF</SerieRPS>
+        <NumeroRPS>35</NumeroRPS>
+        <DataEmissaoRPS>2010-02-26T09:40:13</DataEmissaoRPS>
+        <RazaoSocialPrestador>TRIVALE ADMINISTRACAO LTDA</RazaoSocialPrestador>
+      </ChaveRPS>
+    </Erro>
+  </Erros>
+  <ListaNFSe />
+</ns1:RetornoConsultaLote>
+

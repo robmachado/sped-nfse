@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ns1:ReqEnvioLoteRPS xmlns:ns1="http://localhost:8080/WsNFe2/lote" xmlns:tipos="http://localhost:8080/WsNFe2/tp" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://localhost:8080/WsNFe2/lote http://localhost:8080/WsNFe2/xsd/ReqEnvioLoteRPS.xsd">
+<Cabecalho>
+<CodCidade>9051</CodCidade>
+<CPFCNPJRemetente>02080470000138</CPFCNPJRemetente>
+<RazaoSocialRemetente>ADARA &amp; DISTRIBUIDORA DE VEICULOS LTDA</RazaoSocialRemetente>
+<transacao/>
+<dtInicio>2009-12-01</dtInicio>
+<dtFim>2009-12-01</dtFim>
+<QtdRPS>1</QtdRPS>
+<ValorTotalServicos>40.00</ValorTotalServicos>
+<ValorTotalDeducoes>0.00</ValorTotalDeducoes>
+<Versao>1</Versao>
+<MetodoEnvio>WS</MetodoEnvio>
+</Cabecalho>
+<Lote>
+<RPS>
+<Assinatura>87f592bb7d8a10bcf91c6e1a93f1adcaa2d762fa</Assinatura>
+<InscricaoMunicipalPrestador>0568023</InscricaoMunicipalPrestador>
+<RazaoSocialPrestador>FABIO &amp; JOSE DE OLIVEIRA SANTOS</RazaoSocialPrestador>
+<TipoRPS>RPS</TipoRPS>
+<SerieRPS>NF</SerieRPS>
+<NumeroRPS>1</NumeroRPS>
+<DataEmissaoRPS>2009-12-01T15:41:00</DataEmissaoRPS>
+<SituacaoRPS>N</SituacaoRPS>
+<SerieRPSSubstituido/>
+<NumeroRPSSubstituido>0</NumeroRPSSubstituido>
+<NumeroNFSeSubstituida>0</NumeroNFSeSubstituida>
+<DataEmissaoNFSeSubstituida>1900-01-01</DataEmissaoNFSeSubstituida>
+<SeriePrestacao>99</SeriePrestacao>
+<InscricaoMunicipalTomador>0000000</InscricaoMunicipalTomador>
+<CPFCNPJTomador>25560744859</CPFCNPJTomador>
+<RazaoSocialTomador>FABIO JOSE DE OLIVEIRA SANTOS</RazaoSocialTomador>
+<TipoLogradouroTomador>R</TipoLogradouroTomador>
+<LogradouroTomador>R   ANGELO RICCI                        </LogradouroTomador>
+<NumeroEnderecoTomador>25</NumeroEnderecoTomador>
+<TipoBairroTomador>Bairro</TipoBairroTomador>
+<BairroTomador>VL SAO JOSE</BairroTomador>
+<CidadeTomador>0006843</CidadeTomador>
+<CidadeTomadorDescricao>PEDREIRA</CidadeTomadorDescricao>
+<CEPTomador>13920001</CEPTomador>
+<EmailTomador/>
+<CodigoAtividade>452000200</CodigoAtividade>
+<AliquotaAtividade>5.00</AliquotaAtividade>
+<TipoRecolhimento>A</TipoRecolhimento>
+<MunicipioPrestacao>0009051</MunicipioPrestacao>
+<MunicipioPrestacaoDescricao>CAMPO GRANDE</MunicipioPrestacaoDescricao>
+<Operacao>A</Operacao>
+<Tributacao>T</Tributacao>
+<ValorPIS>0.00</ValorPIS>
+<ValorCOFINS>0.00</ValorCOFINS>
+<ValorINSS>0.00</ValorINSS>
+<ValorIR>0.00</ValorIR>
+<ValorCSLL>0.00</ValorCSLL>
+<AliquotaPIS>0.00</AliquotaPIS>
+<AliquotaCOFINS>0.00</AliquotaCOFINS>
+<AliquotaINSS>0.00</AliquotaINSS>
+<AliquotaIR>0.00</AliquotaIR>
+<AliquotaCSLL>0.00</AliquotaCSLL>
+<DescricaoRPS/>
+<DDDPrestador>00</DDDPrestador>
+<TelefonePrestador>00000000</TelefonePrestador>
+<DDDTomador>00</DDDTomador>
+<TelefoneTomador>00000000</TelefoneTomador>
+<MotCancelamento/>
+<Deducoes>
+</Deducoes>
+<Itens>
+<Item>
+<DiscriminacaoServico>KIT INSTALADOS</DiscriminacaoServico>
+<Quantidade>1</Quantidade>
+<ValorUnitario>40.00</ValorUnitario>
+<ValorTotal>40.00</ValorTotal>
+</Item>
+</Itens>
+</RPS>
+</Lote>
+<Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+<SignedInfo>
+<CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+<SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/>
+<Reference URI="">
+<Transforms>
+<Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
+<Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315#WithComments"/>
+</Transforms>
+<DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/>
+<DigestValue>VihZPMwx3S9m6uPoUknB7yxn3Jg=</DigestValue>
+</Reference>
+</SignedInfo>
+<SignatureValue>JbwBeKTSieoo+xh4Gh5ZXl99mK3lwsMBFBcMjtfaittfR1Xh52GjjzKxbiZteNGt
+lhIL1gevMPsTqk6O1eEx9FphLwwO9rcnXEIaOWPguysvMop58VWkCZh5HMAeLw4t
+VjkgBkO1W2z+uTk9OLcUIllf6h/DUqq6SeUr9V1PeDU=</SignatureValue>
+<KeyInfo>
+<X509Data>
+<X509Certificate>MIIGNzCCBR+gAwIBAgIIFW9Es27R0D0wDQYJKoZIhvcNAQEFBQAwTDELMAkGA1UE
+BhMCQlIxEzARBgNVBAoTCklDUC1CcmFzaWwxKDAmBgNVBAMTH1NFUkFTQSBDZXJ0
+aWZpY2Fkb3JhIERpZ2l0YWwgdjEwHhcNMDkwNjI5MTUwMDAwWhcNMTAwNjI5MTUw
+MDAwWjCB7zELMAkGA1UEBhMCQlIxEzARBgNVBAoTCklDUC1CcmFzaWwxFDASBgNV
+BAsTCyhFTSBCUkFOQ08pMRgwFgYDVQQLEw8wMDAwMDEwMDA2MTEzOTkxFDASBgNV
+BAsTCyhFTSBCUkFOQ08pMRQwEgYDVQQLEwsoRU0gQlJBTkNPKTEUMBIGA1UECxML
+KEVNIEJSQU5DTykxFDASBgNVBAsTCyhFTSBCUkFOQ08pMRQwEgYDVQQLEwsoRU0g
+QlJBTkNPKTEtMCsGA1UEAxMkQURBUkEgRElTVFJJQlVJRE9SQSBERSBWRUlDVUxP
+UyBMVERBMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDcGoZ+47/V/DQUE7sj
+BnldnQEmanPii5Sg+psKGY1wXmaSdayF+oQ5HNIX8tL27RyzmnHGuz64AZWQhivk
+YFQ+R58BoROy5koT+rce5tly5JHAbVXHkaW+H8Ksc0u/0BJlY0CUSK4YopAIxgTH
+AIAIt6fPW41CduyhblZ8zyoDZQIDAQABo4IC+zCCAvcwDgYDVR0PAQH/BAQDAgXg
+MB0GA1UdJQQWMBQGCCsGAQUFBwMCBggrBgEFBQcDBDAfBgNVHSMEGDAWgBS3YKhb
++bKmrgDtdOvVSsmWaGb1XDCBvgYDVR0RBIG2MIGzgRtST0dFUklPQEdSVVBPQU5E
+UkVUQS5DT00uQlKgOAYFYEwBAwSgLxMtMjkwNjE5NjcwNjY0OTkyMTg4MjAwMDAw
+MDAwMDAwMDAwMDAwMDAwMDAwMDAwoCYGBWBMAQMCoB0TG1JPR0VSSU8gTU9SRUlS
+QSBERSBPTElWRUlSQaAZBgVgTAEDA6AQEw4wMjA4MDQ3MDAwMDEzOKAXBgVgTAED
+B6AOEwwwMDAwMDAwMDAwMDAwVwYDVR0gBFAwTjBMBgZgTAECAQYwQjBABggrBgEF
+BQcCARY0aHR0cDovL3d3dy5jZXJ0aWZpY2Fkb2RpZ2l0YWwuY29tLmJyL3JlcG9z
+aXRvcmlvL2RwYzCB8AYDVR0fBIHoMIHlMEmgR6BFhkNodHRwOi8vd3d3LmNlcnRp
+ZmljYWRvZGlnaXRhbC5jb20uYnIvcmVwb3NpdG9yaW8vbGNyL3NlcmFzYWNkdjEu
+Y3JsMEOgQaA/hj1odHRwOi8vbGNyLmNlcnRpZmljYWRvcy5jb20uYnIvcmVwb3Np
+dG9yaW8vbGNyL3NlcmFzYWNkdjEuY3JsMFOgUaBPhk1odHRwOi8vcmVwb3NpdG9y
+aW8uaWNwYnJhc2lsLmdvdi5ici9sY3IvU2VyYXNhL3JlcG9zaXRvcmlvL2xjci9z
+ZXJhc2FjZHYxLmNybDCBlwYIKwYBBQUHAQEEgYowgYcwPAYIKwYBBQUHMAGGMGh0
+dHA6Ly9vY3NwLmNlcnRpZmljYWRvZGlnaXRhbC5jb20uYnIvc2VyYXNhY2R2MTBH
+BggrBgEFBQcwAoY7aHR0cDovL3d3dy5jZXJ0aWZpY2Fkb2RpZ2l0YWwuY29tLmJy
+L2NhZGVpYXMvc2VyYXNhY2R2MS5wN2IwDQYJKoZIhvcNAQEFBQADggEBAKO1wIl2
+im9gZJn9I16QATRttf8CnCXHribHewx9QTI6AiJjKQU7EMmvBcm24DU+wD5Y1d3L
+ZsACDdeGuCA8zX1s+VbdvwfWQgGywYB0LDHepl1Wyr0P1TOqF99NgQJvodG5iIZG
++ToIXkCNNk3qF8Bp8uPVyFgdesDTFO7sNnwmfO4IjXmu33SbC6r5RcbCmXbrhr2J
+lpM5sBfnyBUwDafIXlb03OHgDiAL+7455Eg4L+RkZdPgQ1bxYxDN5K5M+KLHX9j2
+f6+OfqgOjWz3hVxruz0NvLavpvZ0iMKR0beE3LIVRdQW8DmyWsv9kpg8kL64swRn
+jcWNJC/9iwAPPg8=</X509Certificate>
+</X509Data>
+</KeyInfo>
+</Signature></ns1:ReqEnvioLoteRPS>

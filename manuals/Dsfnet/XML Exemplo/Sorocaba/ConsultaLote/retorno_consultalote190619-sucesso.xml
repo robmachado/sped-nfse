@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ns1:RetornoConsultaLote  xmlns:ns1="http://localhost:8080/WsNFe2/lote" xmlns:tipos="http://localhost:8080/WsNFe2/tp" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://localhost:8080/WsNFe2/lote http://localhost:8080/WsNFe2/xsd/RetornoConsultaLote.xsd">
+  <Cabecalho>
+    <CodCidade>7145</CodCidade>
+    <Sucesso>true</Sucesso>
+    <NumeroLote>190619</NumeroLote>
+    <CPFCNPJRemetente>02852715000106</CPFCNPJRemetente>
+    <RazaoSocialRemetente>A DE ARO ASSESSORIA EM RECURSOS HUMANOS E SERVICOS LTDA</RazaoSocialRemetente>
+    <DataEnvioLote>2010-12-29T00:00:00</DataEnvioLote>
+    <QtdNotasProcessadas>4</QtdNotasProcessadas>
+    <TempoProcessamento>0</TempoProcessamento>
+    <ValorTotalServicos>47000.52</ValorTotalServicos>
+    <ValorTotalDeducoes>0</ValorTotalDeducoes>
+    <Versao>1</Versao>
+  </Cabecalho>
+  <Alertas />
+  <Erros />
+  <ListaNFSe>
+    <ConsultaNFSe>
+      <InscricaoPrestador>000132683</InscricaoPrestador>
+      <NumeroNFe>3</NumeroNFe>
+      <CodigoVerificacao>c3afc848</CodigoVerificacao>
+      <SerieRPS>NF</SerieRPS>
+      <NumeroRPS>1</NumeroRPS>
+      <DataEmissaoRPS>2010-12-29T00:00:00</DataEmissaoRPS>
+      <RazaoSocialPrestador>A DE ARO ASSESSORIA EM RECURSOS HUMANOS E SERVICOS LTDA</RazaoSocialPrestador>
+      <TipoRecolhimento>R</TipoRecolhimento>
+      <ValorDeduzir>0</ValorDeduzir>
+      <ValorTotal>1000</ValorTotal>
+      <Aliquota>2</Aliquota>
+    </ConsultaNFSe>
+    <ConsultaNFSe>
+      <InscricaoPrestador>000132683</InscricaoPrestador>
+      <NumeroNFe>4</NumeroNFe>
+      <CodigoVerificacao>534ceb53</CodigoVerificacao>
+      <SerieRPS>NF</SerieRPS>
+      <NumeroRPS>2</NumeroRPS>
+      <DataEmissaoRPS>2010-12-29T00:00:00</DataEmissaoRPS>
+      <RazaoSocialPrestador>A DE ARO ASSESSORIA EM RECURSOS HUMANOS E SERVICOS LTDA</RazaoSocialPrestador>
+      <TipoRecolhimento>R</TipoRecolhimento>
+      <ValorDeduzir>0</ValorDeduzir>
+      <ValorTotal>10000.01</ValorTotal>
+      <Aliquota>3</Aliquota>
+    </ConsultaNFSe>
+    <ConsultaNFSe>
+      <InscricaoPrestador>000132683</InscricaoPrestador>
+      <NumeroNFe>5</NumeroNFe>
+      <CodigoVerificacao>c7136dde</CodigoVerificacao>
+      <SerieRPS>NF</SerieRPS>
+      <NumeroRPS>3</NumeroRPS>
+      <DataEmissaoRPS>2010-12-29T00:00:00</DataEmissaoRPS>
+      <RazaoSocialPrestador>A DE ARO ASSESSORIA EM RECURSOS HUMANOS E SERVICOS LTDA</RazaoSocialPrestador>
+      <TipoRecolhimento>R</TipoRecolhimento>
+      <ValorDeduzir>0</ValorDeduzir>
+      <ValorTotal>15000.01</ValorTotal>
+      <Aliquota>4</Aliquota>
+    </ConsultaNFSe>
+    <ConsultaNFSe>
+      <InscricaoPrestador>000132683</InscricaoPrestador>
+      <NumeroNFe>6</NumeroNFe>
+      <CodigoVerificacao>0e825fa4</CodigoVerificacao>
+      <SerieRPS>NF</SerieRPS>
+      <NumeroRPS>4</NumeroRPS>
+      <DataEmissaoRPS>2010-12-29T00:00:00</DataEmissaoRPS>
+      <RazaoSocialPrestador>A DE ARO ASSESSORIA EM RECURSOS HUMANOS E SERVICOS LTDA</RazaoSocialPrestador>
+      <TipoRecolhimento>R</TipoRecolhimento>
+      <ValorDeduzir>0</ValorDeduzir>
+      <ValorTotal>21000.5</ValorTotal>
+      <Aliquota>5</Aliquota>
+    </ConsultaNFSe>
+  </ListaNFSe>
+</ns1:RetornoConsultaLote>
+

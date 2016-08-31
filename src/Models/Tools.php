@@ -20,14 +20,19 @@ use NFePHP\Common\Files;
 
 class Tools extends BaseTools
 {
-    protected $saveLog = true;
-    
+    /**
+     * Namespace for XMLSchema
+     * @var string
+     */
+    protected $xmlnsxsd="http://www.w3.org/2001/XMLSchema";
+    /**
+     * Namespace for XMLSchema-instance
+     * @var string
+     */
+    protected $xmlnsxsi="http://www.w3.org/2001/XMLSchema-instance";
+
     public function __construct($config)
     {
         parent::__construct($config);
-    }
- 
-    public function setSaveLogs()
-    {
     }
 }

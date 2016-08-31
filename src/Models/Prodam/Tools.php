@@ -37,9 +37,10 @@ class Tools extends ToolsBase
         '2' => 'https://testenfe.prefeitura.sp.gov.br/ws/lotenfe.asmx',
         '1' => 'https://nfe.prefeitura.sp.gov.br/ws/lotenfe.asmx'
     ];
-    
-    protected $xmlnsxsd="http://www.w3.org/2001/XMLSchema";
-    protected $xmlnsxsi="http://www.w3.org/2001/XMLSchema-instance";
+    /**
+     * County Namespace
+     * @var string
+     */
     protected $xmlns= "http://www.prefeitura.sp.gov.br/nfe";
     
     /**

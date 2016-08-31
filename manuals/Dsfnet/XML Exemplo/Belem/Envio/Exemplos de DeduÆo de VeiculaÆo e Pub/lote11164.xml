@@ -1,0 +1,91 @@
+<?xml version="1.0"?>
+<ns1:ReqEnvioLoteRPS xmlns:ns1="http://localhost:8080/WsNFe2/lote"
+	xmlns:tipos="http://localhost:8080/WsNFe2/tp" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation=" http://localhost:8080/WsNFe2/lote http://localhost:8080/WsNFe2/xsd/ReqEnvioLoteRPS.xsd">
+	<Cabecalho>
+		<CodCidade>427</CodCidade>
+		<CPFCNPJRemetente>08283320297</CPFCNPJRemetente>
+		<RazaoSocialRemetente>CARLOS LIMAO</RazaoSocialRemetente>
+		<transacao>true</transacao>
+		<dtInicio>2009-10-01</dtInicio>
+		<dtFim>2009-10-01</dtFim>
+		<QtdRPS>1</QtdRPS>
+		<ValorTotalServicos>144.80</ValorTotalServicos>
+		<ValorTotalDeducoes>10.00</ValorTotalDeducoes>
+		<Versao>1</Versao>
+		<MetodoEnvio>WS</MetodoEnvio>
+	</Cabecalho>
+	<Lote>
+		<RPS>
+			<Assinatura>a6d5e6bee926d93fbb0cbac5965f1e3a719aed4b</Assinatura>
+			<InscricaoMunicipalPrestador>0784113</InscricaoMunicipalPrestador>
+			<RazaoSocialPrestador>SUPERMERCADO AMAZONIA LTDA</RazaoSocialPrestador>
+			<TipoRPS>RPS</TipoRPS>
+			<SerieRPS>NF</SerieRPS>
+			<NumeroRPS>1</NumeroRPS>
+			<DataEmissaoRPS>2009-10-01T17:25:53</DataEmissaoRPS>
+			<SituacaoRPS>N</SituacaoRPS>
+			<SerieRPSSubstituido> </SerieRPSSubstituido>
+			<NumeroRPSSubstituido>0</NumeroRPSSubstituido>
+			<NumeroNFSeSubstituida>0</NumeroNFSeSubstituida>
+			<DataEmissaoNFSeSubstituida>1900-01-01</DataEmissaoNFSeSubstituida>
+			<SeriePrestacao>99</SeriePrestacao>
+			<InscricaoMunicipalTomador>0000000</InscricaoMunicipalTomador>
+			<CPFCNPJTomador>34040360265</CPFCNPJTomador>
+			<RazaoSocialTomador>TOMADOR TESTES</RazaoSocialTomador>
+			<TipoLogradouroTomador>Rodovia</TipoLogradouroTomador>
+			<LogradouroTomador>DOM PEDRO II</LogradouroTomador>
+			<NumeroEnderecoTomador>1000</NumeroEnderecoTomador>
+			<TipoBairroTomador>Bairro</TipoBairroTomador>
+			<BairroTomador>Cidade Velha</BairroTomador>
+			<CidadeTomador>0000427</CidadeTomador>
+			<CidadeTomadorDescricao> </CidadeTomadorDescricao>
+			<CEPTomador>66020240</CEPTomador>
+			<EmailTomador>rogerio.pinho@dsfnet.com.br</EmailTomador>
+			<CodigoAtividade>731900200</CodigoAtividade>
+			<AliquotaAtividade>5.00</AliquotaAtividade>
+			<TipoRecolhimento>A</TipoRecolhimento>
+			<MunicipioPrestacao>0000427</MunicipioPrestacao>
+			<MunicipioPrestacaoDescricao>
+			</MunicipioPrestacaoDescricao>
+			<Operacao>B</Operacao>
+			<Tributacao>T</Tributacao>
+			<ValorPIS>0.00</ValorPIS>
+			<ValorCOFINS>0.00</ValorCOFINS>
+			<ValorINSS>0.00</ValorINSS>
+			<ValorIR>0.00</ValorIR>
+			<ValorCSLL>0.00</ValorCSLL>
+			<AliquotaPIS>0.00</AliquotaPIS>
+			<AliquotaCOFINS>0.00</AliquotaCOFINS>
+			<AliquotaINSS>0.00</AliquotaINSS>
+			<AliquotaIR>0.00</AliquotaIR>
+			<AliquotaCSLL>0.00</AliquotaCSLL>
+			<DescricaoRPS>PRESTACAO DE SERVICOS</DescricaoRPS>
+			<DDDPrestador>91</DDDPrestador>
+			<TelefonePrestador>32121210</TelefonePrestador>
+			<DDDTomador>11</DDDTomador>
+			<TelefoneTomador>88888888</TelefoneTomador>
+			<MotCancelamento></MotCancelamento>
+			<Deducoes>
+				<Deducao>
+					<DeducaoPor>Valor</DeducaoPor>
+					<TipoDeducao>Servicos de Veiculacao e Divulgacao</TipoDeducao>
+					<CPFCNPJReferencia>00000000191</CPFCNPJReferencia>
+					<NumeroNFReferencia>10</NumeroNFReferencia>
+					<ValorTotalReferencia>100.00</ValorTotalReferencia>
+					<PercentualDeduzir>0.00</PercentualDeduzir>
+					<ValorDeduzir>10.00</ValorDeduzir>
+				</Deducao>
+			</Deducoes>
+			<Itens>
+				<Item>
+					<DiscriminacaoServico>item 1</DiscriminacaoServico>
+					<Quantidade>12</Quantidade>
+					<ValorUnitario>12.90</ValorUnitario>
+					<ValorTotal>154.80</ValorTotal>
+				</Item>
+			</Itens>
+		</RPS>
+	</Lote>
+</ns1:ReqEnvioLoteRPS>
+

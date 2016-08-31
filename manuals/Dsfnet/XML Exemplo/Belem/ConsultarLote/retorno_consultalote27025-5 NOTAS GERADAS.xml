@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<ns1:RetornoConsultaLote xmlns:ns1="http://localhost/WsNFe" xmlns:p="http://www.w3.org/2000/09/xmldsig#" xmlns:tipos="http://localhost/WsNFe/xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://localhost/WsNFe RetornoConsultaLote_v01.xsd http://localhost/WsNFe/xsd xsd/Tipos_v01.xsd http://www.w3.org/2000/09/xmldsig# xsd/xmldsig-core-schema_v01.xsd ">
+  <Cabecalho>
+    <CodCidade>427</CodCidade>
+    <Sucesso>true</Sucesso>
+    <NumeroLote>27025</NumeroLote>
+    <CPFCNPJRemetente>33372251010380</CPFCNPJRemetente>
+    <RazaoSocialRemetente>IBM BRASIL</RazaoSocialRemetente>
+    <DataEnvioLote>2010-02-16T00:00:00</DataEnvioLote>
+    <QtdNotasProcessadas>5</QtdNotasProcessadas>
+    <TempoProcessamento>0</TempoProcessamento>
+    <ValorTotalServicos>16056.05</ValorTotalServicos>
+    <ValorTotalDeducoes>0</ValorTotalDeducoes>
+    <Versao>1</Versao>
+  </Cabecalho>
+  <Alertas />
+  <Erros />
+  <ListaNFSe>
+    <ConsultaNFSe>
+      <InscricaoPrestador>0159057</InscricaoPrestador>
+      <NumeroNFe>20</NumeroNFe>
+      <CodigoVerificacao>4029c1dd</CodigoVerificacao>
+      <SerieRPS>NF</SerieRPS>
+      <NumeroRPS>20</NumeroRPS>
+      <DataEmissaoRPS>2010-02-15 00:00:00.0</DataEmissaoRPS>
+      <RazaoSocialPrestador>IBM BRASIL</RazaoSocialPrestador>
+      <TipoRecolhimento>R</TipoRecolhimento>
+      <ValorDeduzir>0</ValorDeduzir>
+      <ValorTotal>1544.28</ValorTotal>
+      <Aliquota>5</Aliquota>
+    </ConsultaNFSe>
+    <ConsultaNFSe>
+      <InscricaoPrestador>0159057</InscricaoPrestador>
+      <NumeroNFe>21</NumeroNFe>
+      <CodigoVerificacao>4492993e</CodigoVerificacao>
+      <SerieRPS>NF</SerieRPS>
+      <NumeroRPS>21</NumeroRPS>
+      <DataEmissaoRPS>2010-02-15 00:00:00.0</DataEmissaoRPS>
+      <RazaoSocialPrestador>IBM BRASIL</RazaoSocialPrestador>
+      <TipoRecolhimento>R</TipoRecolhimento>
+      <ValorDeduzir>0</ValorDeduzir>
+      <ValorTotal>2231.56</ValorTotal>
+      <Aliquota>5</Aliquota>
+    </ConsultaNFSe>
+    <ConsultaNFSe>
+      <InscricaoPrestador>0159057</InscricaoPrestador>
+      <NumeroNFe>22</NumeroNFe>
+      <CodigoVerificacao>b384892b</CodigoVerificacao>
+      <SerieRPS>NF</SerieRPS>
+      <NumeroRPS>22</NumeroRPS>
+      <DataEmissaoRPS>2010-02-15 00:00:00.0</DataEmissaoRPS>
+      <RazaoSocialPrestador>IBM BRASIL</RazaoSocialPrestador>
+      <TipoRecolhimento>R</TipoRecolhimento>
+      <ValorDeduzir>0</ValorDeduzir>
+      <ValorTotal>5123.98</ValorTotal>
+      <Aliquota>5</Aliquota>
+    </ConsultaNFSe>
+    <ConsultaNFSe>
+      <InscricaoPrestador>0159057</InscricaoPrestador>
+      <NumeroNFe>23</NumeroNFe>
+      <CodigoVerificacao>5d5b5ab6</CodigoVerificacao>
+      <SerieRPS>NF</SerieRPS>
+      <NumeroRPS>23</NumeroRPS>
+      <DataEmissaoRPS>2010-02-15 00:00:00.0</DataEmissaoRPS>
+      <RazaoSocialPrestador>IBM BRASIL</RazaoSocialPrestador>
+      <TipoRecolhimento>R</TipoRecolhimento>
+      <ValorDeduzir>0</ValorDeduzir>
+      <ValorTotal>2726.97</ValorTotal>
+      <Aliquota>5</Aliquota>
+    </ConsultaNFSe>
+    <ConsultaNFSe>
+      <InscricaoPrestador>0159057</InscricaoPrestador>
+      <NumeroNFe>24</NumeroNFe>
+      <CodigoVerificacao>e2183d81</CodigoVerificacao>
+      <SerieRPS>NF</SerieRPS>
+      <NumeroRPS>24</NumeroRPS>
+      <DataEmissaoRPS>2010-02-15 00:00:00.0</DataEmissaoRPS>
+      <RazaoSocialPrestador>IBM BRASIL</RazaoSocialPrestador>
+      <TipoRecolhimento>R</TipoRecolhimento>
+      <ValorDeduzir>0</ValorDeduzir>
+      <ValorTotal>4429.26</ValorTotal>
+      <Aliquota>5</Aliquota>
+    </ConsultaNFSe>
+  </ListaNFSe>
+</ns1:RetornoConsultaLote>
+

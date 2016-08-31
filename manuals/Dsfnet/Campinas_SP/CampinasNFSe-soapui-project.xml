@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="ab955ce0-2305-4d97-9fd0-a14def8a4093" activeEnvironment="Default" name="CampinasNFSe" resourceRoot="" soapui-version="5.2.1" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="1c283274-b94c-4033-a911-c416a40cdf6e" wsaVersion="NONE" name="LoteRpsSoapBinding" type="wsdl" bindingName="{http://issdigital.campinas.sp.gov.br/WsNFe2/LoteRps.jws}LoteRpsSoapBinding" soapVersion="1_1" anonymous="optional" definition="http://issdigital.campinas.sp.gov.br/WsNFe2/LoteRps.jws?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://issdigital.campinas.sp.gov.br/WsNFe2/LoteRps.jws?wsdl"><con:part><con:url>http://issdigital.campinas.sp.gov.br/WsNFe2/LoteRps.jws?wsdl</con:url><con:content><![CDATA[<wsdl:definitions targetNamespace="http://issdigital.campinas.sp.gov.br/WsNFe2/LoteRps.jws" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://issdigital.campinas.sp.gov.br/WsNFe2/LoteRps.jws" xmlns:intf="http://issdigital.campinas.sp.gov.br/WsNFe2/LoteRps.jws" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <!--WSDL created by Apache Axis version: 1.3
+Built on Oct 05, 2005 (05:23:37 EDT)-->
+  <wsdl:message name="enviarResponse">
+    <wsdl:part name="enviarReturn" type="xsd:string"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="testeEnviarResponse">
+    <wsdl:part name="testeEnviarReturn" type="xsd:string"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="testeEnviarRequest">
+    <wsdl:part name="mensagemXml" type="xsd:string"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="cancelarResponse">
+    <wsdl:part name="cancelarReturn" type="xsd:string"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="consultarLoteResponse">
+    <wsdl:part name="consultarLoteReturn" type="xsd:string"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="consultarLoteRequest">
+    <wsdl:part name="mensagemXml" type="xsd:string"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="consultarNFSeRpsResponse">
+    <wsdl:part name="consultarNFSeRpsReturn" type="xsd:string"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="consultarNFSeRpsRequest">
+    <wsdl:part name="mensagemXml" type="xsd:string"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="consultarNotaRequest">
+    <wsdl:part name="mensagemXml" type="xsd:string"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="cancelarRequest">
+    <wsdl:part name="mensagemXml" type="xsd:string"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="enviarSincronoRequest">
+    <wsdl:part name="mensagemXml" type="xsd:string"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="enviarRequest">
+    <wsdl:part name="mensagemXml" type="xsd:string"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="consultarSequencialRpsResponse">
+    <wsdl:part name="consultarSequencialRpsReturn" type="xsd:string"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="enviarSincronoResponse">
+    <wsdl:part name="enviarSincronoReturn" type="xsd:string"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="consultarSequencialRpsRequest">
+    <wsdl:part name="mensagemXml" type="xsd:string"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="consultarNotaResponse">
+    <wsdl:part name="consultarNotaReturn" type="xsd:string"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="LoteRps">
+    <wsdl:operation name="consultarSequencialRps" parameterOrder="mensagemXml">
+      <wsdl:input message="impl:consultarSequencialRpsRequest" name="consultarSequencialRpsRequest"></wsdl:input>
+      <wsdl:output message="impl:consultarSequencialRpsResponse" name="consultarSequencialRpsResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="enviarSincrono" parameterOrder="mensagemXml">
+      <wsdl:input message="impl:enviarSincronoRequest" name="enviarSincronoRequest"></wsdl:input>
+      <wsdl:output message="impl:enviarSincronoResponse" name="enviarSincronoResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="testeEnviar" parameterOrder="mensagemXml">
+      <wsdl:input message="impl:testeEnviarRequest" name="testeEnviarRequest"></wsdl:input>
+      <wsdl:output message="impl:testeEnviarResponse" name="testeEnviarResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="enviar" parameterOrder="mensagemXml">
+      <wsdl:input message="impl:enviarRequest" name="enviarRequest"></wsdl:input>
+      <wsdl:output message="impl:enviarResponse" name="enviarResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="consultarLote" parameterOrder="mensagemXml">
+      <wsdl:input message="impl:consultarLoteRequest" name="consultarLoteRequest"></wsdl:input>
+      <wsdl:output message="impl:consultarLoteResponse" name="consultarLoteResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="consultarNota" parameterOrder="mensagemXml">
+      <wsdl:input message="impl:consultarNotaRequest" name="consultarNotaRequest"></wsdl:input>
+      <wsdl:output message="impl:consultarNotaResponse" name="consultarNotaResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cancelar" parameterOrder="mensagemXml">
+      <wsdl:input message="impl:cancelarRequest" name="cancelarRequest"></wsdl:input>
+      <wsdl:output message="impl:cancelarResponse" name="cancelarResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="consultarNFSeRps" parameterOrder="mensagemXml">
+      <wsdl:input message="impl:consultarNFSeRpsRequest" name="consultarNFSeRpsRequest"></wsdl:input>
+      <wsdl:output message="impl:consultarNFSeRpsResponse" name="consultarNFSeRpsResponse"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="LoteRpsSoapBinding" type="impl:LoteRps">
+    <wsdlsoap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="consultarSequencialRps">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="consultarSequencialRpsRequest">
+        <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://proces.wsnfe2.dsfnet.com.br" use="encoded"/>
+      </wsdl:input>
+      <wsdl:output name="consultarSequencialRpsResponse">
+        <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://issdigital.campinas.sp.gov.br/WsNFe2/LoteRps.jws" use="encoded"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="enviarSincrono">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="enviarSincronoRequest">
+        <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://proces.wsnfe2.dsfnet.com.br" use="encoded"/>
+      </wsdl:input>
+      <wsdl:output name="enviarSincronoResponse">
+        <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://issdigital.campinas.sp.gov.br/WsNFe2/LoteRps.jws" use="encoded"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="testeEnviar">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="testeEnviarRequest">
+        <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://proces.wsnfe2.dsfnet.com.br" use="encoded"/>
+      </wsdl:input>
+      <wsdl:output name="testeEnviarResponse">
+        <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://issdigital.campinas.sp.gov.br/WsNFe2/LoteRps.jws" use="encoded"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="enviar">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="enviarRequest">
+        <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://proces.wsnfe2.dsfnet.com.br" use="encoded"/>
+      </wsdl:input>
+      <wsdl:output name="enviarResponse">
+        <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://issdigital.campinas.sp.gov.br/WsNFe2/LoteRps.jws" use="encoded"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="consultarLote">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="consultarLoteRequest">
+        <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://proces.wsnfe2.dsfnet.com.br" use="encoded"/>
+      </wsdl:input>
+      <wsdl:output name="consultarLoteResponse">
+        <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://issdigital.campinas.sp.gov.br/WsNFe2/LoteRps.jws" use="encoded"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="consultarNota">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="consultarNotaRequest">
+        <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://proces.wsnfe2.dsfnet.com.br" use="encoded"/>
+      </wsdl:input>
+      <wsdl:output name="consultarNotaResponse">
+        <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://issdigital.campinas.sp.gov.br/WsNFe2/LoteRps.jws" use="encoded"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cancelar">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="cancelarRequest">
+        <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://proces.wsnfe2.dsfnet.com.br" use="encoded"/>
+      </wsdl:input>
+      <wsdl:output name="cancelarResponse">
+        <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://issdigital.campinas.sp.gov.br/WsNFe2/LoteRps.jws" use="encoded"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="consultarNFSeRps">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="consultarNFSeRpsRequest">
+        <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://proces.wsnfe2.dsfnet.com.br" use="encoded"/>
+      </wsdl:input>
+      <wsdl:output name="consultarNFSeRpsResponse">
+        <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://issdigital.campinas.sp.gov.br/WsNFe2/LoteRps.jws" use="encoded"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="LoteRpsService">
+    <wsdl:port binding="impl:LoteRpsSoapBinding" name="LoteRps">
+      <wsdlsoap:address location="http://issdigital.campinas.sp.gov.br/WsNFe2/LoteRps.jws"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://issdigital.campinas.sp.gov.br/WsNFe2/LoteRps.jws</con:endpoint></con:endpoints><con:operation id="a7722a54-b892-41b5-b235-39250b69ae1b" isOneWay="false" action="" name="cancelar" bindingOperationName="cancelar" type="Request-Response" outputName="cancelarResponse" inputName="cancelarRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="e07dcee9-a2cc-442c-804d-10aa8174144f" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://issdigital.campinas.sp.gov.br/WsNFe2/LoteRps.jws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:proc="http://proces.wsnfe2.dsfnet.com.br">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <proc:cancelar soapenv:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+         <mensagemXml xsi:type="xsd:string">?</mensagemXml>
+      </proc:cancelar>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://issdigital.campinas.sp.gov.br/WsNFe2/LoteRps.jws/LoteRps/cancelarRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="6724aa9a-e7df-4dfc-b2cd-cc814a6ae5c8" isOneWay="false" action="" name="consultarLote" bindingOperationName="consultarLote" type="Request-Response" outputName="consultarLoteResponse" inputName="consultarLoteRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="c9dcdd26-0d7d-479e-af9c-11b50774b4bc" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://issdigital.campinas.sp.gov.br/WsNFe2/LoteRps.jws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:proc="http://proces.wsnfe2.dsfnet.com.br">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <proc:consultarLote soapenv:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+         <mensagemXml xsi:type="xsd:string">?</mensagemXml>
+      </proc:consultarLote>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://issdigital.campinas.sp.gov.br/WsNFe2/LoteRps.jws/LoteRps/consultarLoteRequest"/></con:call></con:operation><con:operation id="63041e3a-ed74-404d-84db-421fcfb21932" isOneWay="false" action="" name="consultarNFSeRps" bindingOperationName="consultarNFSeRps" type="Request-Response" outputName="consultarNFSeRpsResponse" inputName="consultarNFSeRpsRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="53efa2fb-4fc5-4543-b0ee-bdcdfe0c5a36" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://issdigital.campinas.sp.gov.br/WsNFe2/LoteRps.jws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:proc="http://proces.wsnfe2.dsfnet.com.br">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <proc:consultarNFSeRps soapenv:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+         <mensagemXml xsi:type="xsd:string">?</mensagemXml>
+      </proc:consultarNFSeRps>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://issdigital.campinas.sp.gov.br/WsNFe2/LoteRps.jws/LoteRps/consultarNFSeRpsRequest"/></con:call></con:operation><con:operation id="e90014e9-02aa-41d4-b3e2-088d3a53cb53" isOneWay="false" action="" name="consultarNota" bindingOperationName="consultarNota" type="Request-Response" outputName="consultarNotaResponse" inputName="consultarNotaRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="dcf41050-333a-4fcf-a25b-9a083ac10295" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://issdigital.campinas.sp.gov.br/WsNFe2/LoteRps.jws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:proc="http://proces.wsnfe2.dsfnet.com.br">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <proc:consultarNota soapenv:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+         <mensagemXml xsi:type="xsd:string">?</mensagemXml>
+      </proc:consultarNota>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://issdigital.campinas.sp.gov.br/WsNFe2/LoteRps.jws/LoteRps/consultarNotaRequest"/></con:call></con:operation><con:operation id="6e78e3c2-e3b4-4c10-84b3-2f85c2ec3866" isOneWay="false" action="" name="consultarSequencialRps" bindingOperationName="consultarSequencialRps" type="Request-Response" outputName="consultarSequencialRpsResponse" inputName="consultarSequencialRpsRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="5e135a10-028e-40c0-9d72-0288641780cc" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://issdigital.campinas.sp.gov.br/WsNFe2/LoteRps.jws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:proc="http://proces.wsnfe2.dsfnet.com.br">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <proc:consultarSequencialRps soapenv:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+         <mensagemXml xsi:type="xsd:string">?</mensagemXml>
+      </proc:consultarSequencialRps>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://issdigital.campinas.sp.gov.br/WsNFe2/LoteRps.jws/LoteRps/consultarSequencialRpsRequest"/></con:call></con:operation><con:operation id="4bcebfb7-78ed-4dbc-bb02-7d9fc3625336" isOneWay="false" action="" name="enviar" bindingOperationName="enviar" type="Request-Response" outputName="enviarResponse" inputName="enviarRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="e6e4fad5-b5ac-48d2-b3b8-f678a6961383" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://issdigital.campinas.sp.gov.br/WsNFe2/LoteRps.jws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:proc="http://proces.wsnfe2.dsfnet.com.br">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <proc:enviar soapenv:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+         <mensagemXml xsi:type="xsd:string">?</mensagemXml>
+      </proc:enviar>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://issdigital.campinas.sp.gov.br/WsNFe2/LoteRps.jws/LoteRps/enviarRequest"/></con:call></con:operation><con:operation id="1124ef79-192d-4f57-9285-8381592b0d7c" isOneWay="false" action="" name="enviarSincrono" bindingOperationName="enviarSincrono" type="Request-Response" outputName="enviarSincronoResponse" inputName="enviarSincronoRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="ea5bd39d-d1ca-4efc-a937-81fefbfceb89" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://issdigital.campinas.sp.gov.br/WsNFe2/LoteRps.jws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:proc="http://proces.wsnfe2.dsfnet.com.br">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <proc:enviarSincrono soapenv:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+         <mensagemXml xsi:type="xsd:string">?</mensagemXml>
+      </proc:enviarSincrono>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://issdigital.campinas.sp.gov.br/WsNFe2/LoteRps.jws/LoteRps/enviarSincronoRequest"/></con:call></con:operation><con:operation id="d09d9329-20a5-4ba7-b39b-59901737ee0f" isOneWay="false" action="" name="testeEnviar" bindingOperationName="testeEnviar" type="Request-Response" outputName="testeEnviarResponse" inputName="testeEnviarRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="ba880c5e-769a-48aa-b3e7-6c0dc773f5a2" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://issdigital.campinas.sp.gov.br/WsNFe2/LoteRps.jws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:proc="http://proces.wsnfe2.dsfnet.com.br">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <proc:testeEnviar soapenv:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+         <mensagemXml xsi:type="xsd:string">?</mensagemXml>
+      </proc:testeEnviar>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://issdigital.campinas.sp.gov.br/WsNFe2/LoteRps.jws/LoteRps/testeEnviarRequest"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/></con:soapui-project>

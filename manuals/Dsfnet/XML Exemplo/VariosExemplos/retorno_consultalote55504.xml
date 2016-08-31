@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ns1:RetornoConsultaLote  xmlns:ns1="http://localhost:8080/WsNFe2/lote" xmlns:tipos="http://localhost:8080/WsNFe2/tp" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://localhost:8080/WsNFe2/lote http://localhost:8080/WsNFe2/xsd/RetornoConsultaLote.xsd">
+  <Cabecalho>
+    <CodCidade>1219</CodCidade>
+    <Sucesso>false</Sucesso>
+    <NumeroLote>55504</NumeroLote>
+    <CPFCNPJRemetente>02646676000182</CPFCNPJRemetente>
+    <RazaoSocialRemetente />
+    <DataEnvioLote />
+    <QtdNotasProcessadas>0</QtdNotasProcessadas>
+    <TempoProcessamento>0</TempoProcessamento>
+    <ValorTotalServicos>0</ValorTotalServicos>
+    <ValorTotalDeducoes>0</ValorTotalDeducoes>
+    <Versao>1</Versao>
+  </Cabecalho>
+  <Alertas />
+  <Erros>
+    <Erro>
+      <Codigo>1103</Codigo>
+      <Descricao>O CPF/CNPJ do Remetente nao possui permissao para o servico solicitado.O Remetente 02646676000182 nao e o mesmo remetente do lote 55504.</Descricao>
+    </Erro>
+  </Erros>
+  <ListaNFSe />
+</ns1:RetornoConsultaLote>
+

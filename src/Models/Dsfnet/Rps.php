@@ -23,5 +23,5 @@ use NFePHP\NFSe\Models\Rps as RpsBase;
 class Rps extends RpsBase
 {
     
-    private $cMunSiafi = '0921';
+    protected $cMunSiafi = '0921';
 }

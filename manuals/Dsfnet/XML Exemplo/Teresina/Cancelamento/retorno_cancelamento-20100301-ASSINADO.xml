@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<ns1:RetornoCancelamentoNFSe xmlns:ns1="http://localhost/WsNFe" xmlns:p="http://www.w3.org/2000/09/xmldsig#" xmlns:tipos="http://localhost/WsNFe/xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://localhost/WsNFe RetornoCancelamentoNFSe_v01.xsd http://localhost/WsNFe/xsd xsd/Tipos_v01.xsd http://www.w3.org/2000/09/xmldsig# xsd/xmldsig-core-schema_v01.xsd ">
+  <Cabecalho>
+    <Sucesso>true</Sucesso>
+    <Versao>1</Versao>
+  </Cabecalho>
+  <NotasCanceladas />
+  <Alertas>
+    <Alerta>
+      <Codigo>1301</Codigo>
+      <Descricao>NFSe ja cancelada.</Descricao>
+      <ChaveNFe>
+        <InscricaoPrestador>0370835</InscricaoPrestador>
+        <NumeroNFe>1</NumeroNFe>
+        <CodigoVerificacao>98d0e61d9396b60e5a847a361cb9264e4b6d0c9f</CodigoVerificacao>
+      </ChaveNFe>
+    </Alerta>
+  </Alertas>
+  <Erros />
+</ns1:RetornoCancelamentoNFSe>
+

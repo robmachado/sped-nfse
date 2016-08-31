@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ns1:RetornoCancelamentoNFSe xmlns:ns1="http://localhost:8080/WsNFe2/lote" xmlns:tipos="http://localhost:8080/WsNFe2/tp" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://localhost:8080/WsNFe2/lote http://localhost:8080/WsNFe2/xsd/RetornoCancelamentoNFSe.xsd">
+  <Cabecalho>
+    <CodCidade>427</CodCidade>
+    <Sucesso>true</Sucesso>
+    <CPFCNPJRemetente>22934020000172</CPFCNPJRemetente>
+    <Versao>1</Versao>
+  </Cabecalho>
+  <NotasCanceladas />
+  <Alertas>
+    <Alerta>
+      <Codigo>1301</Codigo>
+      <Descricao>NFSe ja cancelada.</Descricao>
+      <ChaveNFe>
+        <InscricaoPrestador>0984309</InscricaoPrestador>
+        <NumeroNFe>5</NumeroNFe>
+        <CodigoVerificacao>5990c2695795a86907e3e6c9e01028046b922d5d</CodigoVerificacao>
+        <RazaoSocialPrestador>MARIS ENSINO SUPERIO</RazaoSocialPrestador>
+      </ChaveNFe>
+    </Alerta>
+    <Alerta>
+      <Codigo>1301</Codigo>
+      <Descricao>NFSe ja cancelada.</Descricao>
+      <ChaveNFe>
+        <InscricaoPrestador>0984309</InscricaoPrestador>
+        <NumeroNFe>6</NumeroNFe>
+        <CodigoVerificacao>5990c2695795a86907e3e6c9e01028046b922d5d</CodigoVerificacao>
+        <RazaoSocialPrestador>MARIS ENSINO SUPERIO</RazaoSocialPrestador>
+      </ChaveNFe>
+    </Alerta>
+    <Alerta>
+      <Codigo>1301</Codigo>
+      <Descricao>NFSe ja cancelada.</Descricao>
+      <ChaveNFe>
+        <InscricaoPrestador>0984309</InscricaoPrestador>
+        <NumeroNFe>7</NumeroNFe>
+        <CodigoVerificacao>5990c2695795a86907e3e6c9e01028046b922d5d</CodigoVerificacao>
+        <RazaoSocialPrestador>MARIS ENSINO SUPERIO</RazaoSocialPrestador>
+      </ChaveNFe>
+    </Alerta>
+    <Alerta>
+      <Codigo>1301</Codigo>
+      <Descricao>NFSe ja cancelada.</Descricao>
+      <ChaveNFe>
+        <InscricaoPrestador>0984309</InscricaoPrestador>
+        <NumeroNFe>8</NumeroNFe>
+        <CodigoVerificacao>5990c2695795a86907e3e6c9e01028046b922d5d</CodigoVerificacao>
+        <RazaoSocialPrestador>MARIS ENSINO SUPERIO</RazaoSocialPrestador>
+      </ChaveNFe>
+    </Alerta>
+    <Alerta>
+      <Codigo>1301</Codigo>
+      <Descricao>NFSe ja cancelada.</Descricao>
+      <ChaveNFe>
+        <InscricaoPrestador>0984309</InscricaoPrestador>
+        <NumeroNFe>9</NumeroNFe>
+        <CodigoVerificacao>5990c2695795a86907e3e6c9e01028046b922d5d</CodigoVerificacao>
+        <RazaoSocialPrestador>MARIS ENSINO SUPERIO</RazaoSocialPrestador>
+      </ChaveNFe>
+    </Alerta>
+  </Alertas>
+  <Erros />
+</ns1:RetornoCancelamentoNFSe>
+
