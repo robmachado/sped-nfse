@@ -44,7 +44,7 @@ class SoapClient
             'xmlns:soap'=>"http://www.w3.org/2003/05/soap-envelope",
             'xmlns:xsi'=>"http://www.w3.org/2001/XMLSchema-instance",
             'xmlns:xsd'=>"http://www.w3.org/2001/XMLSchema"
-        ]    
+        ]
     ];
     
     protected $envelope = [
@@ -60,7 +60,6 @@ class SoapClient
         $this->pubfile = tempnam($this->tempdir, 'Pub').'.pem';
         $this->certfile = tempnam($this->tempdir, 'Cert').'.pem';
         $this->saveTemporaryKeyFiles($pkcs);
-        
     }
     
     public function __destruct()
@@ -86,7 +85,7 @@ class SoapClient
         $this->proxyIP = $ip;
         $this->proxyPort = $port;
         $this->proxyUser = $user;
-        $this->proxyPass = $password;        
+        $this->proxyPass = $password;
     }
     
     public function soapEnvelopeUsingCDATA($cdata = false)
@@ -102,9 +101,11 @@ class SoapClient
     public function soapEnvelope($header, $body)
     {
         if ($this->soapver == 1) {
-            $envelope = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\"><soapenv:Header/><soapenv:Body>$body</soapenv:Body></soapenv:Envelope>";
+            $envelope = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\">"
+                . "<soapenv:Header/><soapenv:Body>$body</soapenv:Body></soapenv:Envelope>";
         } else {
-            $envelope = "<soap:Envelope xmlns:soap=\"http://www.w3.org/2003/05/soap-envelope\"><soap:Header/><soap:Body>$body</soap:Body></soap:Envelope>";
+            $envelope = "<soap:Envelope xmlns:soap=\"http://www.w3.org/2003/05/soap-envelope\">"
+                . "<soap:Header/><soap:Body>$body</soap:Body></soap:Envelope>";
         }
         $dom = new Dom('1.0', 'utf-8');
         $dom->loadXMLString($envelope);
@@ -173,13 +174,13 @@ class SoapClient
             file_put_contents($this->prifile, $pkcs->priKey);
             file_put_contents($this->pubfile, $pkcs->pubKey);
             file_put_contents($this->certfile, $pkcs->certKey);
-        }    
+        }
     }
 
     private function removeTemporaryKeyFiles()
     {
         $files = glob($this->tempdir.'*.pem');
-        foreach($files as $file) {
+        foreach ($files as $file) {
             unlink($file);
         }
     }
