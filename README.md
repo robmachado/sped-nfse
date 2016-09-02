@@ -34,7 +34,8 @@ evidentemente faremos o possível para adequar, mas não temos como garantir que
 
 ## RECOMENDAÇÃO
 
-Apenas use esse framework se tiver conhecimentos suficientes para corrigir as falhas encontradas, caso contrario DESISTA e não INSISTA NISSO.
+Apenas use esse framework se tiver conhecimentos suficientes para corrigir as falhas encontradas,
+caso contrario DESISTA e não INSISTA NISSO, pois provavelmente NÂO HAVERÁ NENHUM TIPO DE SUPURTE.
 
 
 ## DEFINIÇÃO
