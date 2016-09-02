@@ -16,11 +16,15 @@
 [![Stars][ico-stars]][link-stars]
 
 ## NOTA IMPORTANTE
-As prefeituras mudam de modelo de NFSe e alteram seu layout livremente, isso é um FATO!!
-Não existe nenhum padrão nacional na definição dos WebServices, as cidades podem alterar o leiaute 
-do XML ou do provedor sem qualquer critério e isto pode causar sérios problemas de acesso e validação, 
+As prefeituras **mudam de modelo de NFSe e alteram seu layout livremente**, isso é um FATO !!
+
+Isso torna esse pacote IMENSAMENTE COMPLEXO, se comparado a outros similares.
+
+Não existe nenhum padrão nacional na definição dos WebServices, e os municipios podem alterar o leiaute 
+do XML ou o provedor sem qualquer critério e isto pode causar sérios problemas de acesso e validação, 
 pois podemos não ter condições de adequação desse framework, seja por devido a alterações técnicas,
 seja pela imposição de prazos.
+
 **Os usuários desse framework devem avaliar quais os riscos e quais são as responsabilidades que está
 assumindo ao oferecer o produto ao usuário final que pode parar de funcionar no futuro, pois como 
 dito anteriormente NÃO TEMOS COMO GARANTIR O FUNCIONAMENTO CASO ACONTEÇA ALGUMA ALTERAÇÃO NO LEIAUTE DO XML
