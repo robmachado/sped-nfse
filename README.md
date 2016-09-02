@@ -15,7 +15,7 @@
 [![Forks][ico-forks]][link-forks]
 [![Stars][ico-stars]][link-stars]
 
-## NOTA IMPORTANTE
+## NOTA IMPORTANTE - LEIA COM MUITA ATENÇÃO
 As prefeituras **mudam de modelo de NFSe e alteram seu layout livremente**, isso é um FATO !!
 
 Isso torna esse pacote IMENSAMENTE COMPLEXO, se comparado a outros similares.
