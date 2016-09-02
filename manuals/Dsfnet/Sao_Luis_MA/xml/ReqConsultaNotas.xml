@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ns1:ReqConsultaNotas xmlns:ns1="http://localhost:8080/WsNFe2/lote" xmlns:tipos="http://localhost:8080/WsNFe2/tp" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://localhost:8080/WsNFe2/lote ../xsd/ReqConsultaNotas.xsd ">
+  <Cabecalho>
+    <TokenEnvio>TokenEnvio</TokenEnvio>
+    <CodCidade>0</CodCidade>
+    <CPFCNPJRemetente>CPFCNPJRemetente</CPFCNPJRemetente>
+    <InscricaoMunicipalPrestador>0</InscricaoMunicipalPrestador>
+    <dtInicio>2001-01-01</dtInicio>
+    <dtFim>2001-01-01</dtFim>
+    <Versao>0</Versao>
+  </Cabecalho>
+</ns1:ReqConsultaNotas>

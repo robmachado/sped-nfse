@@ -64,7 +64,7 @@ class CancelamentoNFSe extends Factory
             $content .= $this->detalhe($prestadorIM, $numeroNFSe);
         }
         $content .= "</$method>";
-        $body = $this->oCertificate->signXML($content, $method, '', $algorithm = 'SHA1');
+        $body = $this->oCertificate->signXML($content, $method, '', 'SHA1');
         $body = $this->clear($body);
         $this->validar($versao, $body, $method);
         return $body;

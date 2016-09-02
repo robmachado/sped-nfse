@@ -16,18 +16,12 @@ namespace NFePHP\NFSe\Models\Prodam;
  * @link      http://github.com/nfephp-org/sped-nfse for the canonical source repository
  */
 
-use NFePHP\Common\Certificate\Pkcs12;
 use NFePHP\NFSe\Models\Prodam\Rps;
 use NFePHP\NFSe\Models\Prodam\Factories;
 use NFePHP\NFSe\Models\Tools as ToolsBase;
 
 class Tools extends ToolsBase
 {
-    
-    protected $versao = '1';
-    protected $remetenteTipoDoc = '2';
-    protected $remetenteCNPJCPF = '';
-    protected $method = '';
     
     /**
      * Construtor da classe Tools
@@ -36,12 +30,6 @@ class Tools extends ToolsBase
     public function __construct($config)
     {
         parent::__construct($config);
-        $this->versao = $this->aConfig['versao'];
-        $this->remetenteCNPJCPF = $this->aConfig['cnpj'];
-        if ($this->aConfig['cpf'] != '') {
-            $this->remetenteTipoDoc = '1';
-            $this->remetenteCNPJCPF = $this->aConfig['cpf'];
-        }
     }
     
     /**
@@ -56,7 +44,7 @@ class Tools extends ToolsBase
             $this->versao,
             $this->remetenteTipoDoc,
             $this->remetenteCNPJCPF,
-            '',
+            null,
             $rps
         );
         return $this->buildRequest($xml);
@@ -111,7 +99,7 @@ class Tools extends ToolsBase
             $this->versao,
             $this->remetenteTipoDoc,
             $this->remetenteCNPJCPF,
-            '',
+            null,
             $chavesNFSe,
             $chavesRPS
         );
@@ -141,7 +129,7 @@ class Tools extends ToolsBase
             $this->versao,
             $this->remetenteTipoDoc,
             $this->remetenteCNPJCPF,
-            '',
+            null,
             $cnpjTomador,
             $cpfTomador,
             $imTomador,
@@ -175,7 +163,7 @@ class Tools extends ToolsBase
             $this->versao,
             $this->remetenteTipoDoc,
             $this->remetenteCNPJCPF,
-            '',
+            null,
             $cnpjPrestador,
             $cpfPrestador,
             $imPrestador,
@@ -198,7 +186,7 @@ class Tools extends ToolsBase
             $this->versao,
             $this->remetenteTipoDoc,
             $this->remetenteCNPJCPF,
-            '',
+            null,
             $numeroLote
         );
         return $this->buildRequest($xml);
@@ -217,7 +205,7 @@ class Tools extends ToolsBase
             $this->versao,
             $this->remetenteTipoDoc,
             $this->remetenteCNPJCPF,
-            '',
+            null,
             $prestadorIM,
             $numeroLote
         );
@@ -260,7 +248,7 @@ class Tools extends ToolsBase
             $this->versao,
             $this->remetenteTipoDoc,
             $this->remetenteCNPJCPF,
-            '',
+            null,
             str_pad($cnpjContribuinte, 14, '0', STR_PAD_LEFT)
         );
         return $this->buildRequest($xml);
@@ -279,6 +267,9 @@ class Tools extends ToolsBase
         $request .= "<VersaoSchema>$this->versao</VersaoSchema>";
         $request .= "<MensagemXML>$body</MensagemXML>";
         $request .= "</$tag>";
+        if ($this->withCData) {
+            $request = $this->replaceNodeWithCdata($request, 'MensagemXML', $body);
+        }
         return $request;
     }
 

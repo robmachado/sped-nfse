@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ns1:ReqConsultaNFSeRPS xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:ns1="http://localhost:8080/WsNFe2/lote" xmlns:tipos="http://localhost:8080/WsNFe2/tp" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://localhost:8080/WsNFe2/lote ../xsd/ReqConsultaNFSeRPS.xsd ">
+  <Cabecalho>
+    <TokenEnvio>TokenEnvio</TokenEnvio>
+    <CodCidade>0</CodCidade>
+    <CPFCNPJRemetente>CPFCNPJRemetente</CPFCNPJRemetente>
+    <transacao>true</transacao>
+    <Versao>1</Versao>
+  </Cabecalho>
+  <Lote Id="">
+    <NotaConsulta>
+      <Nota Id="">
+        <InscricaoMunicipalPrestador>0</InscricaoMunicipalPrestador>
+        <NumeroNota>0</NumeroNota>
+        <CodigoVerificacao>CodigoVerificacao</CodigoVerificacao>
+      </Nota>
+    </NotaConsulta>
+    <RPSConsulta>
+      <RPS Id="">
+        <InscricaoMunicipalPrestador>0</InscricaoMunicipalPrestador>
+        <NumeroRPS>0</NumeroRPS>
+        <SeriePrestacao>99</SeriePrestacao>
+      </RPS>
+    </RPSConsulta>
+  </Lote>
+  <ds:Signature Id="idvalue0">
+    <ds:SignedInfo Id="idvalue1">
+      <ds:CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+      <ds:SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/>
+      <ds:Reference Id="idvalue2" Type="http://tempuri.org" URI="http://tempuri.org">
+        <ds:Transforms>
+          <ds:Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
+          <ds:Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
+        </ds:Transforms>
+        <ds:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/>
+        <ds:DigestValue>MA==</ds:DigestValue>
+      </ds:Reference>
+    </ds:SignedInfo>
+    <ds:SignatureValue Id="idvalue3">MA==</ds:SignatureValue>
+    <ds:KeyInfo Id="idvalue4">
+      <ds:X509Data>
+        <ds:X509Certificate>MA==</ds:X509Certificate>
+      </ds:X509Data>
+    </ds:KeyInfo>
+  </ds:Signature>
+</ns1:ReqConsultaNFSeRPS>

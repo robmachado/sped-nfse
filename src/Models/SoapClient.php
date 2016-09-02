@@ -15,15 +15,11 @@ class SoapClient
     const SSL_TLSV1_0 = 4; //TLSv1.0
     const SSL_TLSV1_1 = 5; //TLSv1.1
     const SSL_TLSV1_2 = 6; //TLSv1.2
-    const SOAP_VERSION_1_1 = 1;
-    const SOAP_VERSION_1_2 = 2;
     
     protected $soapinfo = [];
     protected $soaperrors = '';
     protected $soaptimeout = 20;
-    protected $soapver = 2;
-    protected $soapprotocol = 0;
-    protected $usecdata = false;
+    protected $soapprotocol = self::SSL_DEFAULT;
     protected $logger;
     
     protected $proxyIP = '';
@@ -47,11 +43,6 @@ class SoapClient
         ]
     ];
     
-    protected $envelope = [
-        1 => "soapenv",
-        2 => "soap"
-    ];
-
     public function __construct(Pkcs12 $pkcs = null, LoggerInterface $logger = null)
     {
         $this->logger = $logger;
@@ -67,14 +58,6 @@ class SoapClient
         $this->removeTemporaryKeyFiles();
     }
     
-    public function soapVersion($version = self::SOAP_VERSION_1_2)
-    {
-        if ($version != 2) {
-            $version = 1;
-        }
-        $this->soapver = $version;
-    }
-    
     public function soapTimeout($timesecs)
     {
         $this->soaptimeout = $timesecs;
@@ -88,45 +71,11 @@ class SoapClient
         $this->proxyPass = $password;
     }
     
-    public function soapEnvelopeUsingCDATA($cdata = false)
-    {
-        $this->usecdata = $cdata;
-    }
-    
     public function soapSecurityProtocol($protocol = self::SSL_DEFAULT)
     {
         $this->soapprotocol = $protocol;
     }
     
-    public function soapEnvelope($header, $body)
-    {
-        if ($this->soapver == 1) {
-            $envelope = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\">"
-                . "<soapenv:Header/><soapenv:Body>$body</soapenv:Body></soapenv:Envelope>";
-        } else {
-            $envelope = "<soap:Envelope xmlns:soap=\"http://www.w3.org/2003/05/soap-envelope\">"
-                . "<soap:Header/><soap:Body>$body</soap:Body></soap:Envelope>";
-        }
-        $dom = new Dom('1.0', 'utf-8');
-        $dom->loadXMLString($envelope);
-        if ($this->usecdata) {
-            $this->addCdata($dom, $body);
-        }
-        return $dom->saveXML();
-    }
-    
-    private function addCdata(Dom &$dom, $body)
-    {
-        $root = $dom->documentElement;
-        $oldnode = $root->getElementsByTagName('Body')->item(0);
-        $tag = $oldnode->tagName;
-        $root->removeChild($oldnode);
-        $newnode = $dom->createElement($tag);
-        $cdatanode = $dom->createCDATASection($body);
-        $newnode->appendChild($cdatanode);
-        $root->appendChild($newnode);
-    }
-
     public function soapSend($url, $port, $envelope, $params)
     {
         $oCurl = curl_init();
@@ -139,7 +88,7 @@ class SoapClient
         curl_setopt($oCurl, CURLOPT_SSLVERSION, $this->soapprotocol);
         curl_setopt($oCurl, CURLOPT_SSL_VERIFYHOST, 2);
         curl_setopt($oCurl, CURLOPT_SSL_VERIFYPEER, 0);
-        curl_setopt($oCurl, CURLOPT_PORT, 443);
+        curl_setopt($oCurl, CURLOPT_PORT, $port);
         curl_setopt($oCurl, CURLOPT_SSLCERT, $this->certfile);
         curl_setopt($oCurl, CURLOPT_SSLKEY, $this->prifile);
         curl_setopt($oCurl, CURLOPT_RETURNTRANSFER, 1);

@@ -17,6 +17,32 @@
 [![Forks][ico-forks]][link-forks]
 [![Stars][ico-stars]][link-stars]
 
+# NOTA IMPORTANTE - LEIA COM MUITA ATENÇÃO
+###As prefeituras **mudam de modelo de NFSe e alteram seu layout livremente**, isso é um FATO !!
+
+###Isso torna esse pacote IMENSAMENTE COMPLEXO, se comparado a outros similares.
+
+Não existe nenhum padrão nacional na definição dos WebServices, e os municipios podem alterar o layout 
+do XML ou o provedor sem qualquer critério e isto pode causar sérios problemas de acesso e validação, 
+pois podemos não ter condições de adequação desse framework, seja devido a alterações técnicas,
+seja pela imposição de prazos.
+
+Os usuários desse framework devem avaliar quais os riscos e quais são as responsabilidades que está
+assumindo ao oferecer o produto ao usuário final, que pode **PARAR DE FUNCIONAR A QUALQUER MOMENTO**,
+pois como dito anteriormente: 
+
+**"NÃO TEMOS COMO GARANTIR O FUNCIONAMENTO CASO ACONTEÇA ALGUMA ALTERAÇÃO NO LEIAUTE DO XML OU NO WEBSERVICE DE RECEPÇÃO DO RPS",
+evidentemente faremos o possível para adequar, mas não temos como garantir que teremos sucesso no caso da NFSe** 
+
+## RECOMENDAÇÃO
+
+Apenas use esse framework se tiver conhecimentos suficientes para corrigir as falhas encontradas,
+caso contrario DESISTA e não INSISTA NISSO, pois provavelmente NÂO HAVERÁ NENHUM TIPO DE SUPORTE,
+gratuito ou mesmo PAGO. 
+Você assume a responsabilidade por sua própria conta e risco.
+
+## DEFINIÇÃO
+
 A Nota Fiscal de Serviços Eletrônica - NFS-e é o documento fiscal de existência apenas digital que substituirá as tradicionais notas fiscais de serviços impressas.
 A NFSe, implantada pelas Secretarias Municipais de Finanças, será emitida e armazenada eletronicamente em programa de computador, com o objetivo de materializar os fatos geradores do ISSQN – Imposto Sobre Serviços de Qualquer Natureza, por meio do registro eletrônico das prestações de serviços sujeitas à tributação do ISSQN.
 Com a Nota Fiscal Eletrônica de Serviços você terá os seguintes benefícios:

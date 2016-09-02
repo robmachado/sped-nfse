@@ -23,64 +23,70 @@ class Header extends HeaderModel
     /**
      * Renderiza as tag do cabecalho
      * @param int $versao
-     * @param int $remetenteTipoDoc
      * @param string $remetenteCNPJCPF
      * @param string $transacao
-     * @param string $cnpj
-     * @param string $cpf
-     * @param string $im
-     * @param date $dtIni
+     * @param int $codcidade
+     * @param int $codcid
+     * @param string $token
+     * @param string $prestadorIM
+     * @param string $seriePrestacao
+     * @param string $numeroLote
+     * @param date $dtInicio
      * @param date $dtFim
-     * @param int $pagina
      * @param int $qtdRPS
      * @param float $valorTotalServicos
      * @param float $valorTotalDeducoes
-     * @param string $numeroLote
-     * @param string $prestadorIM
+     * @param string $metodoEnvio
+     * @param string $versaoComponente
      * @return string
      */
     public static function render(
         $versao,
-        $remetenteTipoDoc,
-        $remetenteCNPJCPF,
+        $remetenteCNPJCPF = '',
         $transacao = '',
-        $cnpj = '',
-        $cpf = '',
-        $im = '',
-        $dtIni = '',
+        $codcidade = '',
+        $codcid = '',
+        $token = '',
+        $prestadorIM = '',
+        $seriePrestacao = '',
+        $numeroLote = '',
+        $dtInicio = '',
         $dtFim = '',
-        $pagina = '',
         $qtdRPS = 0,
         $valorTotalServicos = 0,
         $valorTotalDeducoes = 0,
-        $numeroLote = '',
-        $prestadorIM = ''
+        $metodoEnvio = '',
+        $versaoComponente = ''
     ) {
-        $content = "<Cabecalho xmlns=\"\" Versao=\"$versao\">";
-        $content .= "<CPFCNPJRemetente>";
-        if ($remetenteTipoDoc == '2') {
-            $content .= self::check('CNPJ', $remetenteCNPJCPF);
+        $content = "<Cabecalho>";
+        if ($codcid != '') {
+            $content .= self::check('CodCid', $codcid);
+            $content .= self::check('IMPrestador', $prestadorIM);
+            $content .= self::check('CPFCNPJRemetente', $remetenteCNPJCPF);
+            $content .= self::check('SeriePrestacao', $seriePrestacao);
+            $content .= self::check('Versao', $versao);
         } else {
-            $content .= self::check('CPF', $remetenteCNPJCPF);
+            $content .= self::check('TokenEnvio', $token);
+            $content .= self::check('CodCidade', $codcidade);
+            $content .= self::check('CPFCNPJRemetente', $remetenteCNPJCPF);
+            $content .= self::check('InscricaoMunicipalPrestador', $prestadorIM);
+            $content .= self::check('transacao', $transacao);
+            $content .= self::check('dtInicio', $dtInicio);
+            $content .= self::check('dtFim', $dtFim);
+            if ($valorTotalServicos != 0) {
+                $content .= self::check('QtdRPS', $qtdRPS);
+                $content .= "<ValorTotalServicos>"
+                    . number_format($valorTotalServicos, 2, '.', '')
+                    . "</ValorTotalServicos>";
+                $content .= "<ValorTotalDeducoes>"
+                    . number_format($valorTotalDeducoes, 2, '.', '')
+                    . "</ValorTotalDeducoes>";
+            }
+            $content .= self::check('Versao', $versao);
+            $content .= self::check('NumeroLote', $numeroLote);
+            $content .= self::check('MetodoEnvio', $metodoEnvio);
+            $content .= self::check('VersaoComponente', $versaoComponente);
         }
-        $content .= "</CPFCNPJRemetente>";
-        $content .= self::check('transacao', $transacao);
-        if ($cnpj != '') {
-            $content .= "<CPFCNPJ><CNPJ>$cnpj</CNPJ></CPFCNPJ>";
-        } elseif ($cpf != '') {
-            $content .= "<CPFCNPJ><CPF>$cpf</CPF></CPFCNPJ>";
-        }
-        $content .= self::check('Inscricao', $im);
-        $content .= self::check('dtInicio', $dtIni);
-        $content .= self::check('dtFim', $dtFim);
-        $content .= self::check('NumeroPagina', $pagina);
-        $content .= self::check('QtdRPS', $qtdRPS);
-        if ($valorTotalServicos != 0) {
-            $content .= "<ValorTotalServicos>".number_format($valorTotalServicos, 2, '.', '')."</ValorTotalServicos>";
-            $content .= "<ValorTotalDeducoes>".number_format($valorTotalDeducoes, 2, '.', '')."</ValorTotalDeducoes>";
-        }
-        $content .= self::check('NumeroLote', $numeroLote);
-        $content .= self::check('InscricaoPrestador', $prestadorIM);
         $content .= "</Cabecalho>";
         return $content;
     }
