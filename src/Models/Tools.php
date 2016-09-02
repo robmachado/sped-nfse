@@ -49,8 +49,9 @@ class Tools extends BaseTools
      * @var int
      */
     protected $codcidade = 0;
-    protected $withCData = false;
-    protected $signatureMethod = 'SHA1';
+    protected $withcdata = false;
+    protected $signaturealgo= 'SHA1';
+    
     /**
      * Namespace for XMLSchema
      * @var string

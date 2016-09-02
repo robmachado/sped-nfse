@@ -40,6 +40,7 @@ class Tools extends ToolsBase
     {
         $this->method = 'EnvioRPS';
         $fact = new Factories\EnvioRPS($this->oCertificate);
+        $fact->setSignAlgorithm($this->signaturealgo);
         $xml = $fact->render(
             $this->versao,
             $this->remetenteTipoDoc,
@@ -58,6 +59,7 @@ class Tools extends ToolsBase
     {
         $this->method = 'EnvioLoteRPS';
         $fact = new Factories\EnvioRPS($this->oCertificate);
+        $fact->setSignAlgorithm($this->signaturealgo);
         $xml = $fact->render(
             $this->versao,
             $this->remetenteTipoDoc,
@@ -76,6 +78,7 @@ class Tools extends ToolsBase
     {
         $this->method = 'TesteEnvioLoteRPS';
         $fact = new Factories\EnvioRPS($this->oCertificate);
+        $fact->setSignAlgorithm($this->signaturealgo);
         $xml = $fact->render(
             $this->versao,
             $this->remetenteTipoDoc,
@@ -95,6 +98,7 @@ class Tools extends ToolsBase
     {
         $this->method = 'ConsultaNFe';
         $fact = new Factories\ConsultaNFSe($this->oCertificate);
+        $fact->setSignAlgorithm($this->signaturealgo);
         $xml = $fact->render(
             $this->versao,
             $this->remetenteTipoDoc,
@@ -125,6 +129,7 @@ class Tools extends ToolsBase
     ) {
         $this->method = 'ConsultaNFeRecebidas';
         $fact = new Factories\ConsultaNFSePeriodo($this->oCertificate);
+        $fact->setSignAlgorithm($this->signaturealgo);
         $xml = $fact->render(
             $this->versao,
             $this->remetenteTipoDoc,
@@ -159,6 +164,7 @@ class Tools extends ToolsBase
     ) {
         $this->method = 'ConsultaNFeEmitidas';
         $fact = new Factories\ConsultaNFSePeriodo($this->oCertificate);
+        $fact->setSignAlgorithm($this->signaturealgo);
         $xml = $fact->render(
             $this->versao,
             $this->remetenteTipoDoc,
@@ -182,6 +188,7 @@ class Tools extends ToolsBase
     {
         $this->method = 'ConsultaLote';
         $fact = new Factories\ConsultaLote($this->oCertificate);
+        $fact->setSignAlgorithm($this->signaturealgo);
         $xml = $fact->render(
             $this->versao,
             $this->remetenteTipoDoc,
@@ -201,6 +208,7 @@ class Tools extends ToolsBase
     {
         $this->method = 'ConsultaInformacoesLote';
         $fact = new Factories\ConsultaInformacoesLote($this->oCertificate);
+        $fact->setSignAlgorithm($this->signaturealgo);
         $xml = $fact->render(
             $this->versao,
             $this->remetenteTipoDoc,
@@ -221,6 +229,7 @@ class Tools extends ToolsBase
     {
         $this->method = 'CancelamentoNFe';
         $fact = new Factories\CancelamentoNFSe($this->oCertificate);
+        $fact->setSignAlgorithm($this->signaturealgo);
         $xml = $fact->render(
             $this->versao,
             $this->remetenteTipoDoc,
@@ -244,6 +253,7 @@ class Tools extends ToolsBase
         }
         $this->method = 'ConsultaCNPJ';
         $fact = new Factories\ConsultaCNPJ($this->oCertificate);
+        $fact->setSignAlgorithm($this->signaturealgo);
         $xml = $fact->render(
             $this->versao,
             $this->remetenteTipoDoc,
@@ -267,7 +277,7 @@ class Tools extends ToolsBase
         $request .= "<VersaoSchema>$this->versao</VersaoSchema>";
         $request .= "<MensagemXML>$body</MensagemXML>";
         $request .= "</$tag>";
-        if ($this->withCData) {
+        if ($this->withcdata) {
             $request = $this->replaceNodeWithCdata($request, 'MensagemXML', $body);
         }
         return $request;

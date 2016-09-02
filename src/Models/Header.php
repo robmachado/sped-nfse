@@ -83,9 +83,9 @@ class Header
         return $content;
     }
     
-    protected static function check($tag, $info = '', $force = false)
+    protected static function check($tag, $info = '')
     {
-        if (($info == '' || $info == 0) && !$force) {
+        if ($info == '' || $info == '0') {
             return '';
         }
         return "<$tag>$info</$tag>";

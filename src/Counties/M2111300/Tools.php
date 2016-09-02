@@ -45,7 +45,7 @@ class Tools extends ToolsDsfnet
      */
     protected $codcidade = 921;
     
-    protected $withCData = true;
+    protected $withcdata = false;
     
-    protected $signatureMethod = 'SHA1';
+    protected $signaturealgo = 'SHA1';
 }
