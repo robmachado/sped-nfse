@@ -6,9 +6,9 @@ namespace NFePHP\NFSe\Models\Dsfnet\Factories;
  * Classe para a construção do XML relativo ao serviço de
  * Pedido de Cancelamento de NFSe dos webservices da
  * conforme o modelo DSFNET
- * 
+ *
  * NOTA: Este processo está limitado a apneas uma NFSe por vez!!
- * 
+ *
  * @category  NFePHP
  * @package   NFePHP\NFSe\Models\Dsfnet\Factories\Cancelar
  * @copyright NFePHP Copyright (c) 2016
@@ -28,7 +28,7 @@ class Cancelar extends Factory
         $versao,
         $remetenteCNPJCPF,
         $transacao = '',
-        $codcidade = '',    
+        $codcidade = '',
         $prestadorIM = '',
         $tokenEnvio = '',
         $lote = '',
@@ -49,7 +49,7 @@ class Cancelar extends Factory
             $remetenteCNPJCPF,
             $transacao,
             $codcidade,
-            '',    
+            '',
             $tokenEnvio
         );
         $content .= "<Lote Id=\"lote:$lote\">";

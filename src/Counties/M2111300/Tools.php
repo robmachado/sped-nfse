@@ -40,8 +40,8 @@ class Tools extends ToolsDsfnet
      */
     protected $soapversion = 1;
     /**
-     * SIAFI County Cod 
-     * @var int 
+     * SIAFI County Cod
+     * @var int
      */
     protected $codcidade = 921;
     /*

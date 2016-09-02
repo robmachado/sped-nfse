@@ -45,18 +45,18 @@ class Header extends HeaderModel
         $remetenteCNPJCPF = '',
         $transacao = '',
         $codcidade = '',
-        $codcid = '',    
-        $token = '',    
+        $codcid = '',
+        $token = '',
         $prestadorIM = '',
         $seriePrestacao = '',
-        $numeroLote = '',   
+        $numeroLote = '',
         $dtInicio = '',
         $dtFim = '',
         $qtdRPS = 0,
         $valorTotalServicos = 0,
         $valorTotalDeducoes = 0,
         $metodoEnvio = '',
-        $versaoComponente = ''   
+        $versaoComponente = ''
     ) {
         $content = "<Cabecalho>";
         if ($codcid != '') {
@@ -74,9 +74,13 @@ class Header extends HeaderModel
             $content .= self::check('dtInicio', $dtInicio);
             $content .= self::check('dtFim', $dtFim);
             if ($valorTotalServicos != 0) {
-                $content .= self::check('QtdRPS', $qtdRPS);    
-                $content .= "<ValorTotalServicos>".number_format($valorTotalServicos, 2, '.', '')."</ValorTotalServicos>";
-                $content .= "<ValorTotalDeducoes>".number_format($valorTotalDeducoes, 2, '.', '')."</ValorTotalDeducoes>";
+                $content .= self::check('QtdRPS', $qtdRPS);
+                $content .= "<ValorTotalServicos>"
+                    . number_format($valorTotalServicos, 2, '.', '')
+                    . "</ValorTotalServicos>";
+                $content .= "<ValorTotalDeducoes>"
+                    . number_format($valorTotalDeducoes, 2, '.', '')
+                    . "</ValorTotalDeducoes>";
             }
             $content .= self::check('Versao', $versao);
             $content .= self::check('NumeroLote', $numeroLote);

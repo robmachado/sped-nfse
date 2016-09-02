@@ -39,5 +39,4 @@ class Tools extends ToolsProdam
      * @var int
      */
     protected $soapversion = 2;
-    
 }

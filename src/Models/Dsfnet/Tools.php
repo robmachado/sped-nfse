@@ -41,8 +41,8 @@ class Tools extends ToolsBase
      */
     protected $soapversion = 1;
     /**
-     * SIAFI County Cod 
-     * @var int 
+     * SIAFI County Cod
+     * @var int
      */
     protected $codcidade = 0;
     
@@ -68,7 +68,7 @@ class Tools extends ToolsBase
             $this->versao,
             $this->remetenteCNPJCPF,
             $transacao = 'true',
-            $this->codcidade,    
+            $this->codcidade,
             $prestadorIM,
             $tokenEnvio,
             $numeroLote,
@@ -184,5 +184,4 @@ class Tools extends ToolsBase
             echo $ex;
         }
     }
-    
 }

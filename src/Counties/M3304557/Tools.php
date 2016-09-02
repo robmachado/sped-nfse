@@ -52,5 +52,4 @@ class Tools extends ToolsAbrasf
      * @var int
      */
     protected $soapversion = 2;
-
 }
