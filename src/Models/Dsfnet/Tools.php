@@ -23,30 +23,6 @@ use NFePHP\NFSe\Models\Tools as ToolsBase;
 class Tools extends ToolsBase
 {
     /**
-     * Webservices URL
-     * @var array
-     */
-    protected $url = [
-        1 => '',
-        2 => ''
-    ];
-    /**
-     * County Namespace
-     * @var string
-     */
-    protected $xmlns = '';
-    /**
-     * Soap Version
-     * @var int
-     */
-    protected $soapversion = 1;
-    /**
-     * SIAFI County Cod
-     * @var int
-     */
-    protected $codcidade = 0;
-    
-    /**
      * Construtor da classe Tools
      * @param string $config
      */
@@ -160,6 +136,9 @@ class Tools extends ToolsBase
         $request = "<$tag>";
         $request .= "<mensagemXML>$body</mensagemXML>";
         $request .= "</$tag>";
+        if ($this->withCData) {
+            $request = $this->replaceNodeWithCdata($request, 'mensagemXML', $body);
+        }
         return $request;
     }
     

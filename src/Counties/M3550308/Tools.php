@@ -39,4 +39,8 @@ class Tools extends ToolsProdam
      * @var int
      */
     protected $soapversion = 2;
+
+    protected $withCData = false;
+    
+    protected $signatureMethod = 'SHA1';
 }

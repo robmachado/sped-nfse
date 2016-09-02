@@ -26,7 +26,31 @@ class Tools extends BaseTools
     protected $remetenteTipoDoc = '2';
     protected $remetenteCNPJCPF = '';
     protected $method = '';
-    
+    /**
+     * Webservices URL
+     * @var array
+     */
+    protected $url = [
+        1 => '',
+        2 => ''
+    ];
+   /**
+     * County Namespace
+     * @var string
+     */
+    protected $xmlns = '';
+    /**
+     * Soap Version
+     * @var int
+     */
+    protected $soapversion = 1;
+    /**
+     * SIAFI County Cod
+     * @var int
+     */
+    protected $codcidade = 0;
+    protected $withCData = false;
+    protected $signatureMethod = 'SHA1';
     /**
      * Namespace for XMLSchema
      * @var string

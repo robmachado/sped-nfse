@@ -44,9 +44,8 @@ class Tools extends ToolsDsfnet
      * @var int
      */
     protected $codcidade = 921;
-    /*
-     * SOAP Version: 1.1
-Signature Method: SHA1
-Using CData: true ??
-     */
+    
+    protected $withCData = true;
+    
+    protected $signatureMethod = 'SHA1';
 }
