@@ -18,7 +18,7 @@ namespace NFePHP\NFSe\Models\Dsfnet\Factories;
  * @author    Roberto L. Machado <linux.rlm at gmail dot com>
  * @link      http://github.com/nfephp-org/sped-nfse for the canonical source repository
  */
-use InvalidArgumentException;
+
 use NFePHP\NFSe\Models\Dsfnet\Factories\Factory;
 use NFePHP\NFSe\Models\Dsfnet\Factories\Header;
 
@@ -42,7 +42,7 @@ class Cancelar extends Factory
             . "xmlns:tipos=\"http://localhost:8080/WsNFe2/tp\" "
             . "xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" "
             . "xsi:schemaLocation=\"http://localhost:8080/WsNFe2/lote "
-            . "http://localhost:8080/WsNFe2/xsd/ReqCancelamentoNFSe.xsd\""
+            . "http://localhost:8080/WsNFe2/xsd/$method.xsd\""
             . ">";
         $content .= Header::render(
             $versao,
@@ -61,9 +61,9 @@ class Cancelar extends Factory
         $content .= "</Nota>";
         $content .= "</Lote>";
         $content .= "</ns1:$method>";
-        $body = $this->oCertificate->signXML($content, 'Lote', 'Id', 'SHA1');
+        $body = $this->oCertificate->signXML($content, 'Lote', 'Id', $this->signAlgorithm);
         $body = $this->clear($body);
-        //$this->validar($versao, $body, $method);
+        $this->validar($versao, $body, $method, '');
         return $body;
     }
 }

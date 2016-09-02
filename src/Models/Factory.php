@@ -27,6 +27,8 @@ class Factory
     protected $xmlns= "";
     protected $oCertificate;
     protected $pathSchemes = '../../schemes/';
+    protected $xml = '';
+    protected $signAlgorithm = 'SHA1';
     
     /**
      * Construtor recebe a classe de certificados
@@ -50,6 +52,11 @@ class Factory
         return $body;
     }
     
+    public function setSignAlgorithm($algo = 'SHA1')
+    {
+        $this->signAlgorithm = $algo;
+    }
+    
     /**
      * Executa a validação da mensagem XML com base no XSD
      * @param int $versao
@@ -58,13 +65,17 @@ class Factory
      * @return boolean
      * @throws InvalidArgumentException
      */
-    public function validar($versao, $body, $method = '')
+    public function validar($versao, $body, $method = '', $suffix = 'v')
     {
         $ver = str_pad($versao, 2, '0', STR_PAD_LEFT);
         $flag = false;
+        $schema = $this->pathSchemes."v$ver".DIRECTORY_SEPARATOR.$method.".xsd";
+        if ($suffix) {
+            $schema = $this->pathSchemes."v$ver".DIRECTORY_SEPARATOR.$method."_v$ver.xsd";
+        }
         $flag = ValidXsd::validar(
             $body,
-            $this->pathSchemes."v$ver".DIRECTORY_SEPARATOR.$method."_v$ver.xsd"
+            $schema
         );
         if (!$flag) {
             $msg = "O XML falhou ao ser validado:\n";

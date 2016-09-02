@@ -40,10 +40,11 @@ class Tools extends ToolsBase
     {
         $this->method = 'cancelar';
         $fact = new Factories\Cancelar($this->oCertificate);
+        $fact->setSignAlgorithm($this->signaturealgo);
         $xml = $fact->render(
             $this->versao,
             $this->remetenteCNPJCPF,
-            $transacao = 'true',
+            'true',
             $this->codcidade,
             $prestadorIM,
             $tokenEnvio,
@@ -57,26 +58,40 @@ class Tools extends ToolsBase
     
     public function consultarLote($numeroLote)
     {
-        /*
-         * <lot:consultarLote>
-         <mensagemXml>?</mensagemXml>
-      </lot:consultarLote>
-         */
+        $this->method = 'consultarLote';
+        $fact = new Factories\ConsultarLote($this->oCertificate);
+        $fact->setSignAlgorithm($this->signaturealgo);
+        $xml = $fact->render(
+            $this->versao,
+            $this->remetenteCNPJCPF,
+            $this->codcidade,
+            $numeroLote
+        );
+        return $this->buildRequest($xml);
     }
     
     /**
      *
      * @param type $prestadorIM
-     * @param type $nfse ['numero', 'codigoVerificacao']
-     * @param type $rps  ['numero', 'serie']
+     * @param type $nfse [0 => ['numero', 'codigoVerificacao']]
+     * @param type $rps  [0 => ['numero', 'serie']]
      */
-    public function consultarNFSeRps($prestadorIM, $nfse = [], $rps = [])
+    public function consultarNFSeRps($prestadorIM, $lote, $nfse = [], $rps = [])
     {
-        /*
-         *  <lot:consultarNFSeRps>
-         <mensagemXml>?</mensagemXml>
-      </lot:consultarNFSeRps>
-         */
+        $this->method = 'consultarNFSeRps';
+        $fact = new Factories\ConsultarNFSeRps($this->oCertificate);
+        $fact->setSignAlgorithm($this->signaturealgo);
+        $xml = $fact->render(
+            $this->versao,
+            $this->remetenteCNPJCPF,
+            $this->codcidade,
+            'true', //transacao
+            $prestadorIM,
+            $lote,
+            $nfse,
+            $rps
+        );
+        return $this->buildRequest($xml);
     }
     
     public function consultarNota($prestadorIM, $dtInicio, $dtFim, $notaInicial)
@@ -136,7 +151,7 @@ class Tools extends ToolsBase
         $request = "<$tag>";
         $request .= "<mensagemXML>$body</mensagemXML>";
         $request .= "</$tag>";
-        if ($this->withCData) {
+        if ($this->withcdata) {
             $request = $this->replaceNodeWithCdata($request, 'mensagemXML', $body);
         }
         return $request;
