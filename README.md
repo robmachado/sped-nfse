@@ -32,6 +32,10 @@ pois como dito anteriormente:
 **"NÃO TEMOS COMO GARANTIR O FUNCIONAMENTO CASO ACONTEÇA ALGUMA ALTERAÇÃO NO LEIAUTE DO XML OU NO WEBSERVICE DE RECEPÇÃO DO RPS",
 evidentemente faremos o possível para adequar, mas não temos como garantir que teremos sucesso no caso da NFSe** 
 
+## RECOMENDAÇÃO
+
+Apenas use esse framework se tiver conhecimentos suficientes para corrigir as falhas encontradas, caso contrario DESISTA e não INSISTA NISSO.
+
 
 ## DEFINIÇÃO
 
