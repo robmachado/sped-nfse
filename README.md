@@ -37,7 +37,7 @@ evidentemente faremos o possível para adequar, mas não temos como garantir que
 Apenas use esse framework se tiver conhecimentos suficientes para corrigir as falhas encontradas,
 caso contrario DESISTA e não INSISTA NISSO, pois provavelmente NÂO HAVERÁ NENHUM TIPO DE SUPORTE,
 gratuito ou mesmo PAGO. 
-Você assume a responsábilidade por sua própria conta e risco.
+Você assume a responsabilidade por sua própria conta e risco.
 
 ## DEFINIÇÃO
 
