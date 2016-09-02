@@ -22,7 +22,7 @@ use NFePHP\NFSe\Models\Prodam\Tools as ToolsProdam;
 class Tools extends ToolsProdam
 {
     /**
-     * Endereços dos webservices
+     * Webservices URL
      * @var array
      */
     protected $url = [
@@ -34,4 +34,10 @@ class Tools extends ToolsProdam
      * @var string
      */
     protected $xmlns= "http://www.prefeitura.sp.gov.br/nfe";
+    /**
+     * Soap Version
+     * @var int
+     */
+    protected $soapversion = 2;
+    
 }

@@ -1,3 +1,8 @@
-Padrão: DSFNET 
+Padrão: DSFNET
+Codigo Municipio IBGE: 2111300
+Codigo Cidade SIAFI: 921
+SOAP Version: 1.1
+Signature Method: SHA1
+Using CData: true ??
 URL: http://sistemas.semfaz.saoluis.ma.gov.br:80/WsNFe2/LoteRps
 xmlns: http://sistemas.semfaz.saoluis.ma.gov.br/WsNFe2/LoteRps.jws

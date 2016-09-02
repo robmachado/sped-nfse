@@ -72,8 +72,8 @@ class Header
         $content .= self::check('dtInicio', $dtIni);
         $content .= self::check('dtFim', $dtFim);
         $content .= self::check('NumeroPagina', $pagina);
-        $content .= self::check('QtdRPS', $qtdRPS);
         if ($valorTotalServicos != 0) {
+            $content .= self::check('QtdRPS', $qtdRPS);
             $content .= "<ValorTotalServicos>".number_format($valorTotalServicos, 2, '.', '')."</ValorTotalServicos>";
             $content .= "<ValorTotalDeducoes>".number_format($valorTotalDeducoes, 2, '.', '')."</ValorTotalDeducoes>";
         }
@@ -83,11 +83,11 @@ class Header
         return $content;
     }
     
-    private static function check($tag, $info)
+    protected static function check($tag, $info = '', $force = false)
     {
-        if (!empty($info) || $info != 0) {
-            return "<$tag>$info</$tag>";
+        if (($info == '' || $info == 0) && !$force) {
+            return '';
         }
-        return '';
+        return "<$tag>$info</$tag>";
     }
 }

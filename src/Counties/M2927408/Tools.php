@@ -21,6 +21,10 @@ use NFePHP\NFSe\Models\Abrasf\Tools as ToolsAbrasf;
 
 class Tools extends ToolsAbrasf
 {
+    /**
+     * Webservices URL
+     * @var array
+     */
     protected $url = [
         1 => [
             'EnvioLoteRPS'=>"https://nfse.salvador.ba.gov.br/rps/ENVIOLOTERPS/EnvioLoteRPS.svc",
@@ -39,4 +43,15 @@ class Tools extends ToolsAbrasf
             'ConsultaNFse'=>"https://notahml.salvador.ba.gov.br/rps/CONSULTANFSE/ConsultaNfse.svc"
         ]
     ];
+    
+     /**
+     * County Namespace
+     * @var string
+     */
+    protected $xmlns= "";
+    /**
+     * Soap Version
+     * @var int
+     */
+    protected $soapversion = 2;
 }

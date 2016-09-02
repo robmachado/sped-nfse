@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ns1:ReqConsultaLote xmlns:ns1="http://localhost:8080/WsNFe2/lote" xmlns:tipos="http://localhost:8080/WsNFe2/tp" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://localhost:8080/WsNFe2/lote ../xsd/ReqConsultaLote.xsd ">
+  <Cabecalho>
+    <TokenEnvio>TokenEnvio</TokenEnvio>
+    <CodCidade>0</CodCidade>
+    <CPFCNPJRemetente>CPFCNPJRemetente</CPFCNPJRemetente>
+    <Versao>1</Versao>
+    <NumeroLote>0</NumeroLote>
+  </Cabecalho>
+</ns1:ReqConsultaLote>
