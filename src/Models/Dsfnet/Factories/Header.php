@@ -52,7 +52,7 @@ class Header extends HeaderModel
         $numeroLote = '',
         $dtInicio = '',
         $dtFim = '',
-        $notaInicial = '',    
+        $notaInicial = '',
         $qtdRPS = 0,
         $valorTotalServicos = 0,
         $valorTotalDeducoes = 0,

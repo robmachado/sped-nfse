@@ -22,42 +22,42 @@ use NFePHP\NFSe\Models\Dsfnet\Factories\Header;
 
 class ConsultarNota extends Factory
 {
-        public function render(
+    public function render(
+        $versao,
+        $remetenteCNPJCPF,
+        $codcidade = '',
+        $prestadorIM = '',
+        $dtInicio = '',
+        $dtFim = '',
+        $notaInicial = ''
+    ) {
+        $method = "ReqConsultaNotas";
+        $content = "<ns1:$method "
+        . "xmlns:ns1=\"http://localhost:8080/WsNFe2/lote\" "
+        . "xmlns:tipos=\"http://localhost:8080/WsNFe2/tp\" "
+        . "xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" "
+        . "xsi:schemaLocation=\"http://localhost:8080/WsNFe2/lote "
+        . "http://localhost:8080/WsNFe2/xsd/$method.xsd\""
+        . ">";
+        $content .= Header::render(
             $versao,
             $remetenteCNPJCPF,
-            $codcidade = '',
-            $prestadorIM = '',
-            $dtInicio = '',
-            $dtFim = '',
-            $notaInicial = ''
-        ) {
-            $method = "ReqConsultaNotas";
-            $content = "<ns1:$method "
-                . "xmlns:ns1=\"http://localhost:8080/WsNFe2/lote\" "
-                . "xmlns:tipos=\"http://localhost:8080/WsNFe2/tp\" "
-                . "xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" "
-                . "xsi:schemaLocation=\"http://localhost:8080/WsNFe2/lote "
-                . "http://localhost:8080/WsNFe2/xsd/$method.xsd\""
-                . ">";
-            $content .= Header::render(
-                $versao,
-                $remetenteCNPJCPF,
-                '',
-                $codcidade,
-                '',
-                '',
-                $prestadorIM,
-                '',
-                '',
-                $dtInicio,
-                $dtFim,
-                $notaInicial
-            );
-            $content .= "</ns1:$method>";
-            //$body = $content;
-            $body = $this->oCertificate->signXML($content, $method, 'Consulta:notas', $this->signAlgorithm);
-            $body = $this->clear($body);
-            //$this->validar($versao, $body, $method, '');
-            return $body;
-        }        
+            '',
+            $codcidade,
+            '',
+            '',
+            $prestadorIM,
+            '',
+            '',
+            $dtInicio,
+            $dtFim,
+            $notaInicial
+        );
+        $content .= "</ns1:$method>";
+        //$body = $content;
+        $body = $this->oCertificate->signXML($content, $method, 'Consulta:notas', $this->signAlgorithm);
+        $body = $this->clear($body);
+        //$this->validar($versao, $body, $method, '');
+        return $body;
+    }
 }
