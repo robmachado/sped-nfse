@@ -56,6 +56,11 @@ class Tools extends ToolsBase
         return $this->buildRequest($xml);
     }
     
+    /**
+     * Consulta Lote
+     * @param string $numeroLote
+     * @return string
+     */
     public function consultarLote($numeroLote)
     {
         $this->method = 'consultarLote';
@@ -71,7 +76,7 @@ class Tools extends ToolsBase
     }
     
     /**
-     *
+     * Consulta Lote de NFSe e/ou RPS
      * @param type $prestadorIM
      * @param type $nfse [0 => ['numero', 'codigoVerificacao']]
      * @param type $rps  [0 => ['numero', 'serie']]
@@ -94,17 +99,27 @@ class Tools extends ToolsBase
         return $this->buildRequest($xml);
     }
     
+    
     public function consultarNota($prestadorIM, $dtInicio, $dtFim, $notaInicial)
     {
-        /*
-         * <lot:consultarNota>
-         <mensagemXml>?</mensagemXml>
-      </lot:consultarNota>
-         */
+        $this->method = 'consultarNota';
+        $fact = new Factories\ConsultarNota($this->oCertificate);
+        $fact->setSignAlgorithm($this->signaturealgo);
+        $xml = $fact->render(
+            $this->versao,
+            $this->remetenteCNPJCPF,
+            $this->codcidade,
+            $prestadorIM,
+            $dtInicio,
+            $dtFim,
+            $notaInicial
+        );
+        return $this->buildRequest($xml);
     }
     
     public function consultarSequencialRps($prestadorIM, $serieRPS)
     {
+        $this->method = 'consultarSequencialRps';
         /*
          * <lot:consultarSequencialRps>
          <mensagemXml>?</mensagemXml>
@@ -114,6 +129,7 @@ class Tools extends ToolsBase
     
     public function enviar($rpss, $numeroLote)
     {
+        $this->method = 'enviar';
         /*
          * <lot:enviar>
          <mensagemXml>?</mensagemXml>
@@ -123,6 +139,7 @@ class Tools extends ToolsBase
     
     public function enviarSincrono($rpss, $numeroLote)
     {
+        $this->method = 'enviarSincrono';
         /*
          * <lot:enviarSincrono>
          <mensagemXml>?</mensagemXml>
@@ -132,6 +149,7 @@ class Tools extends ToolsBase
     
     public function testeEnviar($rpss, $numeroLote)
     {
+        $this->method = 'testeEnviar';
         /*
          * <lot:testeEnviar>
          <mensagemXml>?</mensagemXml>

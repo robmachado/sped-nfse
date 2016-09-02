@@ -52,6 +52,7 @@ class Header extends HeaderModel
         $numeroLote = '',
         $dtInicio = '',
         $dtFim = '',
+        $notaInicial = '',    
         $qtdRPS = 0,
         $valorTotalServicos = 0,
         $valorTotalDeducoes = 0,
@@ -73,6 +74,7 @@ class Header extends HeaderModel
             $content .= self::check('transacao', $transacao);
             $content .= self::check('dtInicio', $dtInicio);
             $content .= self::check('dtFim', $dtFim);
+            $content .= self::check('NotaInicial', $notaInicial);
             if ($valorTotalServicos != 0) {
                 $content .= self::check('QtdRPS', $qtdRPS);
                 $content .= "<ValorTotalServicos>"
