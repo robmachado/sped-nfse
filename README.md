@@ -22,7 +22,7 @@ Isso torna esse pacote IMENSAMENTE COMPLEXO, se comparado a outros similares.
 
 Não existe nenhum padrão nacional na definição dos WebServices, e os municipios podem alterar o leiaute 
 do XML ou o provedor sem qualquer critério e isto pode causar sérios problemas de acesso e validação, 
-pois podemos não ter condições de adequação desse framework, seja por devido a alterações técnicas,
+pois podemos não ter condições de adequação desse framework, seja devido a alterações técnicas,
 seja pela imposição de prazos.
 
 **Os usuários desse framework devem avaliar quais os riscos e quais são as responsabilidades que está
