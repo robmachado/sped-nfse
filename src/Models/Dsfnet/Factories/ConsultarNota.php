@@ -4,7 +4,7 @@ namespace NFePHP\NFSe\Models\Dsfnet\Factories;
 
 /**
  * Classe para a construção do XML relativo ao serviço de
- * Pedido de Consulta de Notas dos webservices da
+ * Pedido de Consulta de Notas dos webservices
  * conforme o modelo DSFNET
  *
  * @category  NFePHP
@@ -54,10 +54,9 @@ class ConsultarNota extends Factory
             $notaInicial
         );
         $content .= "</ns1:$method>";
-        //$body = $content;
         $body = $this->oCertificate->signXML($content, $method, 'Consulta:notas', $this->signAlgorithm);
         $body = $this->clear($body);
-        //$this->validar($versao, $body, $method, '');
+        $this->validar($versao, $body, $method, '');
         return $body;
     }
 }

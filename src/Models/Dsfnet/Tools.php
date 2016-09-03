@@ -120,11 +120,16 @@ class Tools extends ToolsBase
     public function consultarSequencialRps($prestadorIM, $serieRPS)
     {
         $this->method = 'consultarSequencialRps';
-        /*
-         * <lot:consultarSequencialRps>
-         <mensagemXml>?</mensagemXml>
-      </lot:consultarSequencialRps>
-         */
+        $fact = new Factories\ConsultarSequencialRps($this->oCertificate);
+        $fact->setSignAlgorithm($this->signaturealgo);
+        $xml = $fact->render(
+            $this->versao,
+            $this->remetenteCNPJCPF,
+            $this->codcidade,
+            $prestadorIM,
+            $serieRPS
+        );
+        return $this->buildRequest($xml);
     }
     
     public function enviar($rpss, $numeroLote)

@@ -4,70 +4,75 @@
 	targetNamespace="http://localhost:8080/WsNFe2/lote">
 	<xs:import namespace="http://localhost:8080/WsNFe2/tp"
 		schemaLocation="Tipos.xsd" />
-	<xs:element name="RetornoConsultaSeqRps">
+	<xs:element name="RetornoConsultaNFSeRPS">
 		<xs:annotation>
-			<xs:documentation>Schema utilizado para RETORNO da Consulta
-				Sequêncial de RPS.</xs:documentation>
-
+			<xs:documentation>Schema utilizado para Retrono de consulta de
+				notas.</xs:documentation>
+			<xs:documentation>Este Schema XML é utilizado pelos prestadores
+				de serviços o retorno da consulta de Notas fiscais emitidas por RPS.
+			</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:sequence>
 				<xs:element name="Cabecalho">
 					<xs:annotation>
-						<xs:documentation>Cabeçalho do retorno.
+						<xs:documentation>Cabeçalho da Consulta.
 						</xs:documentation>
 					</xs:annotation>
 					<xs:complexType>
 						<xs:sequence>
-							<xs:element name="CodCid" type="tipos:tpCodCidade"
+							<xs:element name="CodCidade" type="tipos:tpCodCidade"
 								minOccurs="1" maxOccurs="1">
 								<xs:annotation>
-									<xs:documentation>Código da Cidade</xs:documentation>
+									<xs:documentation>Informe o Codigo da Cidade.
+									</xs:documentation>
 								</xs:annotation>
 							</xs:element>
 							<xs:element name="CPFCNPJRemetente" type="tipos:tpCPFCNPJ"
 								minOccurs="1" maxOccurs="1">
 								<xs:annotation>
-									<xs:documentation>CNPJ do remetente autorizado a transmitir
-										a mensagem XML.</xs:documentation>
+									<xs:documentation>Informe o CPF/CNPJ do Remetente
+										autorizado a transmitir a mensagem XML.</xs:documentation>
 								</xs:annotation>
 							</xs:element>
-							<xs:element name="IMPrestador" type="tipos:tpInscricaoMunicipal"
-								minOccurs="1" maxOccurs="1">
+							<xs:element name="transacao" type="xs:boolean"
+								default="true" minOccurs="1" maxOccurs="1">
 								<xs:annotation>
-									<xs:documentation>Inscrição Municipal do Prestador.
+									<xs:documentation>Informe se as NF-e a serem consultadas
+										farão parte de uma mesma transação. Informe sempre True.
 									</xs:documentation>
 								</xs:annotation>
 							</xs:element>
-							<xs:element name="NroUltimoRps" type="tipos:tpNumero"
-								minOccurs="1" maxOccurs="1">
-								<xs:annotation>
-									<xs:documentation>Informe o Número do RPS emitido.
-									</xs:documentation>
-								</xs:annotation>
-							</xs:element>
-							<xs:element name="SeriePrestacao" type="tipos:tpSeriePrestacao"
-								minOccurs="0" maxOccurs="1" />
 							<xs:element name="Versao" type="tipos:tpVersao" fixed="1"
 								minOccurs="1" maxOccurs="1">
 								<xs:annotation>
-									<xs:documentation>Versão do Schema XML utilizado.
-									</xs:documentation>
+									<xs:documentation>Informe a Versão do Schema XML
+										utilizado.</xs:documentation>
 								</xs:annotation>
 							</xs:element>
 						</xs:sequence>
 					</xs:complexType>
 				</xs:element>
+
+				<xs:element name="NotasConsultadas" type="tipos:tpListaNFSeConsultaNota"
+					minOccurs="0" maxOccurs="1">
+					<xs:annotation>
+						<xs:documentation>Informe os RPS a serem consultados por
+							NF-e.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+
 				<xs:element name="Alertas" type="tipos:tpListaAlertas"
-					minOccurs="0">
+					minOccurs="0" maxOccurs="1">
 					<xs:annotation>
 						<xs:documentation>Elemento que representa a ocorrência de
-							eventos de alerta durante o processamento da mensagem XML.
+							eventos de alertas o durante o processamento da mensagem XML.
 						</xs:documentation>
 					</xs:annotation>
 				</xs:element>
+
 				<xs:element name="Erros" type="tipos:tpListaErros"
-					minOccurs="0">
+					minOccurs="0" maxOccurs="1">
 					<xs:annotation>
 						<xs:documentation>Elemento que representa a ocorrência de
 							eventos de erro durante o processamento da mensagem XML.
