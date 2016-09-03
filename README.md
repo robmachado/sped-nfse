@@ -193,7 +193,7 @@ Existem muitos "padrões" diferentes para a emissão de NFSe, além disso, cada 
 Via Composer
 
 ``` bash
-$ composer require nfephp-org/sped-esfinge
+$ composer require nfephp-org/sped-nfse
 ```
 
 ## Usage
@@ -212,6 +212,8 @@ $ composer test
 ## Contributing
 
 Para contribuir por favor observe o [CONTRIBUTING](CONTRIBUTING.md) e o  [Código de Conduta](CONDUCT.md) parea detalhes.
+
+E entre em contato comigo pelo [Gitter](https://gitter.im/nfephp-org/sped-nfse), pelo [Forum](https://groups.google.com/forum/#!forum/nfephp), por email ou pelo Hangout do Google, este projeto é muito complexo e requer muita ajuda EXPERIENTE e dedicada para poder se tornar realmente util e ser mantido.
 
 ## Security
 
