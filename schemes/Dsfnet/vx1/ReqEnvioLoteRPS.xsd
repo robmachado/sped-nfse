@@ -20,6 +20,11 @@
 					</xs:annotation>
 					<xs:complexType>
 						<xs:sequence>
+							<xs:element name="TokenEnvio" type="tipos:tpTokenEnvioRPS" minOccurs="0" maxOccurs="1">
+								<xs:annotation>
+									<xs:documentation>Token de envio do lote.</xs:documentation>
+								</xs:annotation>
+							</xs:element>
 							<xs:element name="CodCidade" type="tipos:tpCodCidade" minOccurs="1" maxOccurs="1">
 								<xs:annotation>
 									<xs:documentation>Informe o Codigo da Cidade no Padrão SIAFI.
@@ -82,12 +87,12 @@
 									</xs:documentation>
 								</xs:annotation>
 							</xs:element>
-							<xs:element name="QtdRPS" type="tipos:tpQtdRpsLote" minOccurs="1" maxOccurs="1">
+							<xs:element name="QtdRPS" type="tipos:tpQuantidade" minOccurs="1" maxOccurs="1">
 								<xs:annotation>
 									<xs:documentation>
 										Informe o total de RPS contidos
 										na mensagem
-										XML. OBS: O xml não pode ultrapassar o tamanho maximo de 500kb.
+										XML.
 									</xs:documentation>
 								</xs:annotation>
 							</xs:element>

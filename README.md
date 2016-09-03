@@ -22,6 +22,15 @@
 
 ###Isso torna esse pacote IMENSAMENTE COMPLEXO, se comparado a outros similares.
 
+###Outro detalhe muito importante que afeta pricipalmente o APLICATIVO, são procedimentos diferenciados
+de cada Prefeitura em relação ao padrão, como:
+- campos diferentes (tamanho e estrutura)
+- operações não existentes
+- critérios de aceitabilidade dos dados diferentes
+- etc.
+###Pois bem, isso significa que o SEU aplicativo deverá lidar com cada uma dessas particularidades municipio por
+municipio, e não apenas modelo a modelo.   
+
 Não existe nenhum padrão nacional na definição dos WebServices, e os municipios podem alterar o layout 
 do XML ou o provedor sem qualquer critério e isto pode causar sérios problemas de acesso e validação, 
 pois podemos não ter condições de adequação desse framework, seja devido a alterações técnicas,

@@ -7,10 +7,10 @@
 		schemaLocation="Tipos.xsd" />
 	<xs:import namespace="http://www.w3.org/2000/09/xmldsig#"
 		schemaLocation="xmldsig-core-schema_v1.01.xsd" />
-	<xs:element name="ReqCancelamentoNFSe">
+	<xs:element name="ReqConsultaNFSeRPS">
 		<xs:annotation>
-			<xs:documentation>Schema utilizado para  Cancelamento de NFSe.</xs:documentation>
-			<xs:documentation>Este Schema XML é utilizado pelos Prestadores de serviços cancelarem NFSe emitidas por eles.</xs:documentation>
+			<xs:documentation>Schema utilizado para  Consulta de NFSe.</xs:documentation>
+			<xs:documentation>Este Schema XML é utilizado pelos Prestadores de serviços consultarem NFSe emitidas por eles.</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:sequence>
@@ -20,6 +20,11 @@
 					</xs:annotation>
 					<xs:complexType>
 						<xs:sequence>
+							<xs:element name="TokenEnvio" type="tipos:tpTokenEnvioRPS" minOccurs="0" maxOccurs="1">
+								<xs:annotation>
+									<xs:documentation>Token de envio do lote.</xs:documentation>
+								</xs:annotation>
+							</xs:element>
 							<xs:element name="CodCidade"  type="tipos:tpCodCidade" minOccurs="1" maxOccurs="1">
 								<xs:annotation>
 									<xs:documentation>Informe o Codigo da Cidade.</xs:documentation>
@@ -32,7 +37,7 @@
 							</xs:element>
 							<xs:element name="transacao" type="xs:boolean" default="true" minOccurs="1" maxOccurs="1">
 								<xs:annotation>
-									<xs:documentation>Informe se as NF-e a serem canceladas farão parte de uma mesma transação. True - As NF-e só serão canceladas se não ocorrer nenhum evento de erro durante o processamento de todo o lote; False - As NF-e aptas a serem canceladas serão canceladas, mesmo que ocorram eventos de erro durante processamento do cancelamento de outras NF-e deste lote.</xs:documentation>
+									<xs:documentation>Informe se as NF-e a serem consultadas farão parte de uma mesma transação. Informe sempre True.</xs:documentation>
 								</xs:annotation>
 							</xs:element>
 							<xs:element name="Versao" type="tipos:tpVersao" fixed="1" minOccurs="1" maxOccurs="1">
@@ -43,9 +48,9 @@
 						</xs:sequence>
 					</xs:complexType>
 				</xs:element>
-				<xs:element name="Lote" type="tipos:tpLoteCancelamentoNFSe">
+				<xs:element name="Lote" type="tipos:tpLoteConsultaNFSe" minOccurs="1" maxOccurs="1">
 					<xs:annotation>
-						<xs:documentation>Detalhe do pedido de cancelamento de NFSe. Cada detalhe deverá conter a Chave de uma NFSe e sua respectiva assinatura de cancelamento.</xs:documentation>
+						<xs:documentation>Detalhe do pedido de consulta de NFSe. Cada detalhe deverá conter a Chave de uma NFSe e sua respectiva assinatura de consulta.</xs:documentation>
 					</xs:annotation>
 				</xs:element>
                 <xs:element ref="ds:Signature" minOccurs="0" maxOccurs="1" />
