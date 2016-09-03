@@ -22,7 +22,7 @@
 
 ###Isso torna esse pacote IMENSAMENTE COMPLEXO, se comparado a outros similares.
 
->###Outro detalhe muito importante que afeta pricipalmente o APLICATIVO, são os procedimentos diferenciados de cada Prefeitura em relação ao padrão adotado, como:
+>###Outro detalhe muito importante que afeta pricipalmente o SEU APLICATIVO, que fará uso desse pacote, são os procedimentos diferenciados de cada Prefeitura em relação ao padrão adotado, como:
 - campos diferentes (tamanho e estrutura)
 - operações não existentes, ou com funcionamento diferente
 - critérios de aceitabilidade dos dados diversos do padrão
