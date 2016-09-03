@@ -18,7 +18,7 @@
 [![Stars][ico-stars]][link-stars]
 
 # NOTA IMPORTANTE - LEIA COM MUITA ATENÇÃO
-###As prefeituras **mudam de modelo de NFSe e alteram seu layout livremente**, isso é um FATO !!
+###As prefeituras **mudam de modelo de NFSe e alteram seu layout livremente e até a forma de acesso aos webservices**, isso é um FATO !!
 
 ###Isso torna esse pacote IMENSAMENTE COMPLEXO, se comparado a outros similares.
 
@@ -30,24 +30,17 @@
 
 >***Pois bem, isso significa que o SEU aplicativo deverá lidar com cada uma dessas particularidades municipio por municipio, e não apenas modelo a modelo.***
 
-Não existe nenhum padrão nacional na definição dos WebServices, e os municipios podem alterar o layout 
-do XML ou o provedor sem qualquer critério e isto pode causar sérios problemas de acesso e validação, 
-pois podemos não ter condições de adequação desse framework, seja devido a alterações técnicas,
-seja pela imposição de prazos.
+Não existe nenhum padrão nacional na definição dos WebServices, e os municipios podem alterar o layout do XML ou o provedor sem qualquer critério e isto pode causar sérios problemas de acesso e validação, pois podemos não ter condições de adequação desse framework, seja devido a alterações técnicas, seja pela imposição de prazos.
 
-Os usuários desse framework devem avaliar quais os riscos e quais são as responsabilidades que está
-assumindo ao oferecer o produto ao usuário final, que pode **PARAR DE FUNCIONAR A QUALQUER MOMENTO**,
-pois como dito anteriormente: 
+Os usuários desse framework devem avaliar quais os riscos e quais são as responsabilidades que está assumindo ao oferecer o produto ao usuário final, que pode **PARAR DE FUNCIONAR A QUALQUER MOMENTO**, pois como dito anteriormente:
 
-**"NÃO TEMOS COMO GARANTIR O FUNCIONAMENTO CASO ACONTEÇA ALGUMA ALTERAÇÃO NO LEIAUTE DO XML OU NO WEBSERVICE DE RECEPÇÃO DO RPS",
-evidentemente faremos o possível para adequar, mas não temos como garantir que teremos sucesso no caso da NFSe** 
+**"NÃO TEMOS COMO GARANTIR O FUNCIONAMENTO CASO ACONTEÇA ALGUMA ALTERAÇÃO NO LEIAUTE DO XML OU NO WEBSERVICE DE RECEPÇÃO DO RPS", evidentemente faremos o possível para adequar, mas não temos como garantir que teremos sucesso no caso da NFSe**
 
 ## RECOMENDAÇÃO
 
-Apenas use esse framework se tiver conhecimentos suficientes para corrigir as falhas encontradas,
-caso contrario DESISTA e não INSISTA NISSO, pois provavelmente NÂO HAVERÁ NENHUM TIPO DE SUPORTE,
-gratuito ou mesmo PAGO. 
-Você assume a responsabilidade por sua própria conta e risco.
+Apenas use esse framework se tiver conhecimentos suficientes para corrigir as falhas encontradas, caso contrario DESISTA e não INSISTA NISSO, pois provavelmente NÂO HAVERÁ NENHUM TIPO DE SUPORTE, gratuito ou mesmo PAGO.
+
+***Você assume a responsabilidade por sua própria conta e risco.***
 
 ## DEFINIÇÃO
 
@@ -135,7 +128,7 @@ Existem muitos "padrões" diferentes para a emissão de NFSe, além disso, cada 
 - NF-Eletronica
 - NF-em
 - NFPSe
-- NFSE-ECIDADES 
+- NFSE-ECIDADES
 - NFSeNET
 - NFWEB
 - Nota Blu
@@ -177,8 +170,8 @@ Existem muitos "padrões" diferentes para a emissão de NFSe, além disso, cada 
 ## Municipios atendidos pelo Framework
 
 - São Paulo (SP) PRODAM - em desenvolvimento
-- Salvador (BA) ABRASF - em desenvolvimento
-- Rio de Janeiro (RJ) ABRASF - em desenvolvimento
+- Salvador (BA) ABRASF (modificado) - em desenvolvimento
+- Rio de Janeiro (RJ) ABRASF (modificado) - em desenvolvimento
 - Campinas (SP) DSFNET - em desenvolvimento
 - São Luis (MA) DSFNET - em desenvolvimento
 - Belem (PA) DSFNET - em desenvolvimento
@@ -211,7 +204,7 @@ $ composer test
 
 ## Contributing
 
-Para contribuir por favor observe o [CONTRIBUTING](CONTRIBUTING.md) e o  [Código de Conduta](CONDUCT.md) parea detalhes.
+Para contribuir por favor observe o [CONTRIBUTING](CONTRIBUTING.md) e o  [Código de Conduta](CONDUCT.md) para detalhes.
 
 E entre em contato comigo pelo [Gitter](https://gitter.im/nfephp-org/sped-nfse), pelo [Forum](https://groups.google.com/forum/#!forum/nfephp), por email ou pelo Hangout do Google, este projeto é muito complexo e requer muita ajuda EXPERIENTE e dedicada para poder se tornar realmente util e ser mantido.
 
