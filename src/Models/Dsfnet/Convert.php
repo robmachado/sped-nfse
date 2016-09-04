@@ -21,7 +21,7 @@ class Convert
     /**
      * Leiaute do registro tipo RPS
      * Tipo 'R'
-     * @var array 
+     * @var array
      */
     protected static $tpR = [
         ['Tipo',1,'C',''],
@@ -130,6 +130,5 @@ class Convert
      */
     public static function toRps($txt = '')
     {
-        
     }
 }

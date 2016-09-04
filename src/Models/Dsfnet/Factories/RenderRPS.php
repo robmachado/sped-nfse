@@ -476,11 +476,11 @@ class RenderRPS
     private function calcValor()
     {
         $valorItens = 0;
-        foreach($rps->itens as $item) {
-            $valorItens += $rps->item['valorTotal'];    
+        foreach ($rps->itens as $item) {
+            $valorItens += $rps->item['valorTotal'];
         }
         $valorDeducao = 0;
-        foreach($rps->deducoes as $deducao) {
+        foreach ($rps->deducoes as $deducao) {
             $valorDeducao += $deducao['valorDeduzir'];
         }
         $valor = ($valorItens - $valorDeducao);

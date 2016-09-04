@@ -39,7 +39,7 @@ class Rps extends RpsBase
     public $numeroNFSeSubstituida;
     public $dataEmissaoNFSeSubstituida; //Preencher com "1900-01-01"
     
-    public $seriePrestacao; //preencha o campo com o valor '99' 
+    public $seriePrestacao; //preencha o campo com o valor '99'
     
     public $inscricaoMunicipalTomador;
     public $cPFCNPJTomador;
@@ -319,7 +319,7 @@ class Rps extends RpsBase
     public function intermediario($cpfcnpj)
     {
         $this->cpfCnpjIntermediario = $cpfcnpj;
-    }    
+    }
 
     public function deducao(
         $deducaoPor,
