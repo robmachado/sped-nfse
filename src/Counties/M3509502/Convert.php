@@ -1,14 +1,14 @@
 <?php
 
-namespace NFePHP\NFSe\Counties\M2111300;
+namespace NFePHP\NFSe\Counties\M3509502;
 
 /**
  * Classe a construção do xml da NFSe
- * para a Cidade de São Luis MA
+ * para a Cidade de Campinas SP
  * conforme o modelo DSFNET
  *
  * @category  NFePHP
- * @package   NFePHP\NFSe\Counties\M2111300\Convert
+ * @package   NFePHP\NFSe\Counties\M3509502\Convert
  * @copyright NFePHP Copyright (c) 2016
  * @license   http://www.gnu.org/licenses/lgpl.txt LGPLv3+
  * @license   https://opensource.org/licenses/MIT MIT
