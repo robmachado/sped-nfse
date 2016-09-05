@@ -250,11 +250,11 @@ class Rps extends RpsBase
         $tributavel
     ) {
         $this->itens[] = [
-            'discriminacao' => $discriminacao,
-            'quantidade' => $quantidade,
-            'valorUnitario' => $valorUnitario,
-            'valorTotal' => $valorTotal,
-            'tributavel' => $tributavel
+            'DiscriminacaoServico' => $discriminacao,
+            'Quantidade' => $quantidade,
+            'ValorUnitario' => $valorUnitario,
+            'ValorTotal' => $valorTotal,
+            'Tributavel' => $tributavel
         ];
     }
     
@@ -331,13 +331,13 @@ class Rps extends RpsBase
         $valorDeduzir
     ) {
         $this->deducoes[] = [
-            'deducaoPor' => $deducaoPor,
-            'tipoDeducao' => $tipoDeducao,
-            'cpfcnpjReferencia' => $cpfcnpjReferencia,
-            'numeroNFReferencia' => $numeroNFReferencia,
-            'valorTotalReferencia' => $valorTotalReferencia,
-            'percentualDeduzir' => $percentualDeduzir,
-            'valorDeduzir' => $valorDeduzir
+            'DeducaoPor' => $deducaoPor,
+            'TipoDeducao' => $tipoDeducao,
+            'CPFCNPJReferencia' => $cpfcnpjReferencia,
+            'NumeroNFReferencia' => $numeroNFReferencia,
+            'ValorTotalReferencia' => $valorTotalReferencia,
+            'PercentualDeduzir' => $percentualDeduzir,
+            'ValorDeduzir' => $valorDeduzir
         ];
     }
 }

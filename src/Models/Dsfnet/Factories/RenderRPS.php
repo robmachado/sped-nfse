@@ -67,7 +67,7 @@ class RenderRPS
             'InscricaoMunicipalPrestador',
             $rps->inscricaoMunicipalPrestador,
             true,
-            'Tag InscricaoMunicipalPrestador',
+            'Tag InscricaoMunicipalPrestador to RPS',
             false
         );
         self::$dom->addChild(
@@ -75,7 +75,7 @@ class RenderRPS
             'RazaoSocialPrestador',
             $rps->razaoSocialPrestador,
             true,
-            'Tag RazaoSocialPrestador',
+            'Tag RazaoSocialPrestador to RPS',
             false
         );
         self::$dom->addChild(
@@ -83,7 +83,7 @@ class RenderRPS
             'TipoRPS',
             $rps->tipoRPS,
             true,
-            'Tag TipoRPS',
+            'Tag TipoRPS to RPS',
             false
         );
         self::$dom->addChild(
@@ -91,7 +91,7 @@ class RenderRPS
             'SerieRPS',
             $rps->serieRPS,
             true,
-            'Tag SerieRPS',
+            'Tag SerieRPS to RPS',
             false
         );
         self::$dom->addChild(
@@ -99,7 +99,7 @@ class RenderRPS
             'NumeroRPS',
             $rps->numeroRPS,
             true,
-            'Tag NumeroRPS',
+            'Tag NumeroRPS to RPS',
             false
         );
         self::$dom->addChild(
@@ -107,7 +107,7 @@ class RenderRPS
             'DataEmissaoRPS',
             $rps->dataEmissaoRPS,
             true,
-            'Tag DataEmissaoRPS',
+            'Tag DataEmissaoRPS to RPS',
             false
         );
         self::$dom->addChild(
@@ -115,7 +115,7 @@ class RenderRPS
             'SituacaoRPS',
             $rps->situacaoRPS,
             true,
-            'Tag SituacaoRPS',
+            'Tag SituacaoRPS to RPS',
             false
         );
         self::$dom->addChild(
@@ -123,7 +123,7 @@ class RenderRPS
             'SerieRPSSubstituido',
             $rps->serieRPSSubstituido,
             true,
-            'Tag SerieRPSSubstituido',
+            'Tag SerieRPSSubstituido to RPS',
             true
         );
         self::$dom->addChild(
@@ -131,7 +131,7 @@ class RenderRPS
             'NumeroRPSSubstituido',
             $rps->numeroRPSSubstituido,
             true,
-            'Tag NumeroRPSSubstituido',
+            'Tag NumeroRPSSubstituido to RPS',
             true
         );
         self::$dom->addChild(
@@ -139,7 +139,7 @@ class RenderRPS
             'NumeroNFSeSubstituida',
             $rps->numeroNFSeSubstituida,
             true,
-            'Tag NumeroNFSeSubstituida',
+            'Tag NumeroNFSeSubstituida to RPS',
             true
         );
         self::$dom->addChild(
@@ -147,7 +147,7 @@ class RenderRPS
             'DataEmissaoNFSeSubstituida',
             $rps->dataEmissaoNFSeSubstituida,
             true,
-            'Tag DataEmissaoNFSeSubstituida',
+            'Tag DataEmissaoNFSeSubstituida to RPS',
             true
         );
         self::$dom->addChild(
@@ -155,7 +155,7 @@ class RenderRPS
             'SeriePrestacao',
             $rps->seriePrestacao,
             true,
-            'Tag SeriePrestacao',
+            'Tag SeriePrestacao to RPS',
             false
         );
         self::$dom->addChild(
@@ -163,7 +163,7 @@ class RenderRPS
             'InscricaoMunicipalTomador',
             $rps->inscricaoMunicipalTomador,
             true,
-            'Tag InscricaoMunicipalTomador',
+            'Tag InscricaoMunicipalTomador to RPS',
             false
         );
         self::$dom->addChild(
@@ -171,7 +171,7 @@ class RenderRPS
             'CPFCNPJTomador',
             $rps->cPFCNPJTomador,
             true,
-            'Tag CPFCNPJTomador',
+            'Tag CPFCNPJTomador to RPS',
             false
         );
         self::$dom->addChild(
@@ -179,7 +179,7 @@ class RenderRPS
             'RazaoSocialTomador',
             $rps->razaoSocialTomador,
             true,
-            'Tag RazaoSocialTomador',
+            'Tag RazaoSocialTomador to RPS',
             false
         );
         self::$dom->addChild(
@@ -187,7 +187,7 @@ class RenderRPS
             'TipoLogradouroTomador',
             $rps->tipoLogradouroTomador,
             true,
-            'Tag TipoLogradouroTomador',
+            'Tag TipoLogradouroTomador to RPS',
             false
         );
         self::$dom->addChild(
@@ -195,7 +195,7 @@ class RenderRPS
             'LogradouroTomador',
             $rps->logradouroTomador,
             true,
-            'Tag LogradouroTomador',
+            'Tag LogradouroTomador to RPS',
             false
         );
         self::$dom->addChild(
@@ -203,7 +203,7 @@ class RenderRPS
             'NumeroEnderecoTomador',
             $rps->numeroEnderecoTomador,
             true,
-            'Tag NumeroEnderecoTomador',
+            'Tag NumeroEnderecoTomador to RPS',
             false
         );
         self::$dom->addChild(
@@ -211,7 +211,7 @@ class RenderRPS
             'ComplementoEnderecoTomador',
             $rps->complementoTomador,
             true,
-            'Tag ComplementoEnderecoTomador',
+            'Tag ComplementoEnderecoTomador to RPS',
             true
         );
         self::$dom->addChild(
@@ -219,7 +219,7 @@ class RenderRPS
             'TipoBairroTomador',
             $rps->tipoBairroTomador,
             true,
-            'Tag TipoBairroTomador',
+            'Tag TipoBairroTomador to RPS',
             true
         );
         self::$dom->addChild(
@@ -227,7 +227,7 @@ class RenderRPS
             'BairroTomador',
             $rps->bairroTomador,
             true,
-            'Tag BairroTomador',
+            'Tag BairroTomador to RPS',
             true
         );
         self::$dom->addChild(
@@ -235,7 +235,7 @@ class RenderRPS
             'CidadeTomador',
             $rps->cidadeTomador,
             true,
-            'Tag CidadeTomador',
+            'Tag CidadeTomador to RPS',
             true
         );
         self::$dom->addChild(
@@ -243,7 +243,7 @@ class RenderRPS
             'CidadeTomadorDescricao',
             $rps->cidadeTomadorDescricao,
             true,
-            'Tag CidadeTomadorDescricao',
+            'Tag CidadeTomadorDescricao to RPS',
             true
         );
         self::$dom->addChild(
@@ -251,7 +251,7 @@ class RenderRPS
             'CEPTomador',
             $rps->cEPTomador,
             true,
-            'Tag CEPTomador',
+            'Tag CEPTomador to RPS',
             true
         );
         self::$dom->addChild(
@@ -259,7 +259,7 @@ class RenderRPS
             'EmailTomador',
             $rps->emailTomador,
             true,
-            'Tag EmailTomador',
+            'Tag EmailTomador to RPS',
             true
         );
         self::$dom->addChild(
@@ -267,7 +267,7 @@ class RenderRPS
             'CodigoAtividade',
             $rps->codigoAtividade,
             true,
-            'Tag CodigoAtividade',
+            'Tag CodigoAtividade to RPS',
             false
         );
         self::$dom->addChild(
@@ -275,7 +275,7 @@ class RenderRPS
             'AliquotaAtividade',
             $rps->aliquotaAtividade,
             true,
-            'Tag AliquotaAtividade',
+            'Tag AliquotaAtividade to RPS',
             false
         );
         self::$dom->addChild(
@@ -283,7 +283,7 @@ class RenderRPS
             'TipoRecolhimento',
             $rps->tipoRecolhimento,
             true,
-            'Tag TipoRecolhimento',
+            'Tag TipoRecolhimento to RPS',
             false
         );
         self::$dom->addChild(
@@ -291,7 +291,7 @@ class RenderRPS
             'MunicipioPrestacao',
             $rps->municipioPrestacao,
             true,
-            'Tag MunicipioPrestacao',
+            'Tag MunicipioPrestacao to RPS',
             false
         );
         self::$dom->addChild(
@@ -299,7 +299,7 @@ class RenderRPS
             'MunicipioPrestacaoDescricao',
             $rps->municipioPrestacaoDescricao,
             true,
-            'Tag MunicipioPrestacaoDescricao',
+            'Tag MunicipioPrestacaoDescricao to RPS',
             false
         );
         self::$dom->addChild(
@@ -307,7 +307,7 @@ class RenderRPS
             'Operacao',
             $rps->operacao,
             true,
-            'Tag Operacao',
+            'Tag Operacao to RPS',
             false
         );
         self::$dom->addChild(
@@ -315,7 +315,7 @@ class RenderRPS
             'Tributacao',
             $rps->tributacao,
             true,
-            'Tag Tributacao',
+            'Tag Tributacao to RPS',
             false
         );
         self::$dom->addChild(
@@ -323,7 +323,7 @@ class RenderRPS
             'ValorPIS',
             $rps->valorPIS,
             true,
-            'Tag ValorPIS',
+            'Tag ValorPIS to RPS',
             false
         );
         self::$dom->addChild(
@@ -331,7 +331,7 @@ class RenderRPS
             'ValorCOFINS',
             $rps->valorCOFINS,
             true,
-            'Tag ValorCOFINS',
+            'Tag ValorCOFINS to RPS',
             false
         );
         self::$dom->addChild(
@@ -339,7 +339,7 @@ class RenderRPS
             'ValorINSS',
             $rps->valorINSS,
             true,
-            'Tag ValorINSS',
+            'Tag ValorINSS to RPS',
             false
         );
         self::$dom->addChild(
@@ -347,7 +347,7 @@ class RenderRPS
             'ValorIR',
             $rps->valorIR,
             true,
-            'Tag ValorIR',
+            'Tag ValorIR to RPS',
             false
         );
         self::$dom->addChild(
@@ -355,7 +355,7 @@ class RenderRPS
             'ValorCSLL',
             $rps->valorCSLL,
             true,
-            'Tag ValorCSLL',
+            'Tag ValorCSLL to RPS',
             false
         );
         self::$dom->addChild(
@@ -363,7 +363,7 @@ class RenderRPS
             'AliquotaPIS',
             $rps->aliquotaPIS,
             true,
-            'Tag AliquotaPIS',
+            'Tag AliquotaPIS to RPS',
             false
         );
         self::$dom->addChild(
@@ -371,7 +371,7 @@ class RenderRPS
             'AliquotaCOFINS',
             $rps->aliquotaCOFINS,
             true,
-            'Tag AliquotaCOFINS',
+            'Tag AliquotaCOFINS to RPS',
             false
         );
         self::$dom->addChild(
@@ -379,7 +379,7 @@ class RenderRPS
             'AliquotaINSS',
             $rps->aliquotaINSS,
             true,
-            'Tag AliquotaINSS',
+            'Tag AliquotaINSS to RPS',
             false
         );
         self::$dom->addChild(
@@ -387,7 +387,7 @@ class RenderRPS
             'AliquotaIR',
             $rps->aliquotaIR,
             true,
-            'Tag AliquotaIR',
+            'Tag AliquotaIR to RPS',
             false
         );
         self::$dom->addChild(
@@ -395,7 +395,7 @@ class RenderRPS
             'AliquotaCSLL',
             $rps->aliquotaCSLL,
             true,
-            'Tag AliquotaCSLL',
+            'Tag AliquotaCSLL to RPS',
             false
         );
         self::$dom->addChild(
@@ -403,7 +403,7 @@ class RenderRPS
             'DescricaoRPS',
             $rps->descricaoRPS,
             true,
-            'Tag DescricaoRPS',
+            'Tag DescricaoRPS to RPS',
             false
         );
         self::$dom->addChild(
@@ -411,7 +411,7 @@ class RenderRPS
             'DDDPrestador',
             $rps->dDDPrestador,
             true,
-            'Tag DDDPrestador',
+            'Tag DDDPrestador to RPS',
             false
         );
         self::$dom->addChild(
@@ -419,30 +419,76 @@ class RenderRPS
             'TelefonePrestador',
             $rps->telefonePrestador,
             true,
-            'Tag TelefonePrestador',
+            'Tag TelefonePrestador to RPS',
             false
         );
-        
-        
-        /*
-            <DDDPrestador>011</DDDPrestador>
-            <TelefonePrestador>80804040</TelefonePrestador>
-            <DDDTomador>011</DDDTomador>
-            <TelefoneTomador>20203030</TelefoneTomador>
-            <MotCancelamento></MotCancelamento>
-            <CPFCNPJIntermediario></CPFCNPJIntermediario>
-            <Deducoes/>
-            <Itens>
-                <Item>
-                    <DiscriminacaoServico>Descricao do Servico ...</DiscriminacaoServico>
-                    <Quantidade>1.5555</Quantidade>
-                    <ValorUnitario>155.5555</ValorUnitario>
-                    <ValorTotal>241.96</ValorTotal>
-                    <Tributavel>S</Tributavel>
-                </Item>
-            </Itens>
-         */
-        
+        self::$dom->addChild(
+            $root,
+            'DDDTomador',
+            $rps->dDDTomador,
+            true,
+            'Tag DDDTomador to RPS',
+            false
+        );
+        self::$dom->addChild(
+            $root,
+            'TelefoneTomador',
+            $rps->telefoneTomador,
+            true,
+            'Tag TelefoneTomador to RPS',
+            false
+        );
+        self::$dom->addChild(
+            $root,
+            'MotCancelamento',
+            $rps->motCancelamento,
+            true,
+            'Tag MotCancelamento to RPS',
+            true
+        );
+        self::$dom->addChild(
+            $root,
+            'CPFCNPJIntermediario',
+            $rps->cpfCnpjIntermediario,
+            true,
+            'Adding Tag CPFCNPJIntermediario to RPS',
+            true
+        );
+        foreach($rps->deducoes as $deduc) {
+            $deducoes = self::$dom->createElement('Deducoes');
+            foreach ($deduc as $tag => $value) {
+                self::$dom->addChild(
+                    $deducoes,
+                    $tag,
+                    $value,
+                    true,
+                    "Adding Tag $tag to Deducoes",
+                    false
+                );
+            }
+            self::$dom->appChild($root, $deducoes, 'Append Deducoes to RPS');
+        }
+        //insere uma tag vazia !?!?
+        if (empty($rps->deducoes)) {
+            $deducoes = self::$dom->createElement('Deducoes');
+            self::$dom->appChild($root, $deducoes, 'Append Deducoes to RPS');
+        }
+        $itens = self::$dom->createElement('Itens');
+        foreach($rps->itens as $item) {
+            $item = self::$dom->createElement('Item');
+            foreach($item as $tag => $value) {
+                self::$dom->addChild(
+                    $deducoes,
+                    $tag,
+                    $value,
+                    true,
+                    "Adding Tag $tag to Item",
+                    false
+                );
+            }
+            self::$dom->appChild($itens, $item, 'Append Item to Itens');
+        }
+        self::$dom->appChild($root, $itens, 'Append Itens to RPS');
         self::$dom->appendChild($root);
         $xml = str_replace('<?xml version="1.0" encoding="utf-8"?>', '', self::$dom->saveXML());
         return $xml;
