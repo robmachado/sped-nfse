@@ -454,7 +454,7 @@ class RenderRPS
             'Adding Tag CPFCNPJIntermediario to RPS',
             true
         );
-        foreach($rps->deducoes as $deduc) {
+        foreach ($rps->deducoes as $deduc) {
             $deducoes = self::$dom->createElement('Deducoes');
             foreach ($deduc as $tag => $value) {
                 self::$dom->addChild(
@@ -474,9 +474,9 @@ class RenderRPS
             self::$dom->appChild($root, $deducoes, 'Append Deducoes to RPS');
         }
         $itens = self::$dom->createElement('Itens');
-        foreach($rps->itens as $item) {
+        foreach ($rps->itens as $item) {
             $item = self::$dom->createElement('Item');
-            foreach($item as $tag => $value) {
+            foreach ($item as $tag => $value) {
                 self::$dom->addChild(
                     $deducoes,
                     $tag,
