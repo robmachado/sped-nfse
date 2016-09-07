@@ -177,13 +177,22 @@ class Tools extends ToolsBase
      */
     protected function buildRequest($body)
     {
-        $tag = $this->method;
-        $request = "<$tag>";
+        $request = "<dsf:$this->method>";
         $request .= "<mensagemXML>$body</mensagemXML>";
-        $request .= "</$tag>";
-        if ($this->withcdata) {
-            $request = $this->replaceNodeWithCdata($request, 'mensagemXML', $body);
+        $request .= "</dsf:$this->method>";
+        if ($this->withcdata === true) {
+            $param = ['soapenv:encodingStyle', 'http://schemas.xmlsoap.org/soap/encoding/'];
+            $request = $this->replaceNodeWithCdata($request, 'mensagemXML', $body, $param);
         }
-        return $request;
+        $envelope = "<soapenv:Envelope "
+                . "xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" "
+                . "xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" "
+                . "xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" "
+                . "xmlns:dsf=\"http://dsfnet.com.br\">"
+                . "<soapenv:Body>"
+                . $request
+                . "</soapenv:Body>"
+                . "</soapenv:Envelope>";
+        return $envelope;
     }
 }

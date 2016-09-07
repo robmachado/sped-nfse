@@ -76,19 +76,33 @@ class Tools extends BaseTools
         }
     }
     
-    protected function replaceNodeWithCdata($xml, $nodename, $body)
+    public function setUseCdata($flag)
+    {
+        $this->withcdata = $flag;
+    }
+    
+    protected function replaceNodeWithCdata($xml, $nodename, $body, $param = [])
     {
         $dom = new Dom('1.0', 'utf-8');
         $dom->loadXMLString($xml);
         $root = $dom->documentElement;
+        if (!empty($param)) {
+            $attrib = $dom->createAttribute($param[0]);
+            $attrib->value = $param[1];
+            $root->appendChild($attrib);
+        }
         $oldnode = $root->getElementsByTagName($nodename)->item(0);
         $tag = $oldnode->tagName;
         $root->removeChild($oldnode);
         $newnode = $dom->createElement($tag);
-        $cdatanode = $dom->createCDATASection($body);
+        $attrib = $dom->createAttribute("xsi:type");
+        $attrib->value = 'xsd:string';
+        $newnode->appendChild($attrib);
+        $cdatanode = $dom->createCDATASection(trim($body));
         $newnode->appendChild($cdatanode);
         $root->appendChild($newnode);
-        return $dom->saveXML();
+        $xml = str_replace('<?xml version="1.0"?>', '', $dom->saveXML());
+        return $xml;
     }
     
     /**
