@@ -4,7 +4,7 @@ namespace NFePHP\NFSe\Models\Dsfnet\Factories;
 
 /**
  * Classe para a construção do XML relativo ao serviço de
- * Pedido de Consulta da Se1quencia de RPS dos webservices
+ * Pedido de Consulta da Sequencia de RPS dos webservices
  * conforme o modelo DSFNET
  *
  * @category  NFePHP

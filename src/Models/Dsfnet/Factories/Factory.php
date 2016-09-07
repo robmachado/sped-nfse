@@ -21,4 +21,15 @@ use NFePHP\NFSe\Models\Factory as FactoryModel;
 class Factory extends FactoryModel
 {
     protected $pathSchemes = '../../schemes/Dsfnet/';
+    
+    protected function requestFirstPart($method)
+    {
+        return "<ns1:$method "
+            . "xmlns:ns1=\"http://localhost:8080/WsNFe2/lote\" "
+            . "xmlns:tipos=\"http://localhost:8080/WsNFe2/tp\" "
+            . "xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" "
+            . "xsi:schemaLocation=\"http://localhost:8080/WsNFe2/lote "
+            . "http://localhost:8080/WsNFe2/xsd/$method.xsd\""
+            . ">";
+    }
 }

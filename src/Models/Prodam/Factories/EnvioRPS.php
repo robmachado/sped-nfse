@@ -19,7 +19,7 @@ namespace NFePHP\NFSe\Models\Prodam\Factories;
 
 use NFePHP\NFSe\Models\Prodam\Rps;
 use NFePHP\NFSe\Models\Prodam\Factories\Factory;
-use NFePHP\NFSe\Models\Prodam\Factories\RenderRPS;
+use NFePHP\NFSe\Models\Prodam\RenderRPS;
 
 class EnvioRPS extends Factory
 {

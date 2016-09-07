@@ -1,6 +1,6 @@
 <?php
 
-namespace NFePHP\NFSe\Models\Prodam\Factories;
+namespace NFePHP\NFSe\Models\Prodam;
 
 /**
  * Classe para a renderização dos RPS em XML para a Cidade de São Paulo

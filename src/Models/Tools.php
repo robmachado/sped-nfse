@@ -88,4 +88,27 @@ class Tools extends BaseTools
         $root->appendChild($newnode);
         return $dom->saveXML();
     }
+    
+    /**
+     * Envia mensagem por SOAP
+     * @param string $body
+     * @param string $method
+     */
+    public function envia($request)
+    {
+       
+        
+        header("Content-type: text/xml");
+        echo $request;
+        die;
+        
+        $url = $this->url[$this->aConfig['tpAmb']];
+        try {
+            $this->setSSLProtocol('TLSv1');
+            //$response = $this->oSoap->send($url, '', '', $body, $this->method);
+        } catch (Exception $ex) {
+            echo $ex;
+        }
+    }
+    
 }
