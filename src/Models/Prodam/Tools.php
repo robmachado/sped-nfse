@@ -277,7 +277,7 @@ class Tools extends ToolsBase
         $request .= "<VersaoSchema>$this->versao</VersaoSchema>";
         $request .= "<MensagemXML>$body</MensagemXML>";
         $request .= "</$tag>";
-        if ($this->withcdata) {
+        if ($this->withcdata === true) {
             $request = $this->replaceNodeWithCdata($request, 'MensagemXML', $body);
         }
         return $request;

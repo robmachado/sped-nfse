@@ -11,7 +11,6 @@ class NFSeTestCase extends \PHPUnit_Framework_TestCase
     public function __construct()
     {
         $this->fixturesPath = dirname(__FILE__) . '/fixtures/';
-        
         $config = [
             "atualizacao" => "2016-08-03 18:01:21",
             "tpAmb" => 2,
@@ -62,7 +61,6 @@ class NFSeTestCase extends \PHPUnit_Framework_TestCase
                 "proxyPass" => ""
             ]    
         ];
-        
         $this->configJson = json_encode($config);
         $config['cmun'] = '1702554';
         $this->configJsonFail = json_encode($config);
