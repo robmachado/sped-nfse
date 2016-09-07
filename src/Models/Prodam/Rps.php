@@ -105,11 +105,11 @@ class Rps extends RpsBase
      */
     public function tomador(
         $razao,
-        $tipo = '2',
-        $cnpjcpf = '',
-        $ie = '',
-        $im = '',
-        $email = ''
+        $tipo,
+        $cnpjcpf,
+        $ie,
+        $im,
+        $email
     ) {
         $this->tomadorRazao = Strings::cleanString($razao);
         $this->tomadorTipoDoc = $tipo;
@@ -134,14 +134,14 @@ class Rps extends RpsBase
      * @param string $cep
      */
     public function tomadorEndereco(
-        $tipo = '',
-        $logradouro = '',
-        $numero = '',
-        $complemento = '',
-        $bairro = '',
-        $cmun = '',
-        $uf = '',
-        $cep = ''
+        $tipo,
+        $logradouro,
+        $numero,
+        $complemento,
+        $bairro,
+        $cmun,
+        $uf,
+        $cep
     ) {
         $this->tomadorTipoLogradouro = $tipo;
         $this->tomadorLogradouro = Strings::cleanString($logradouro);
@@ -161,10 +161,10 @@ class Rps extends RpsBase
      * @param string $email
      */
     public function intermediario(
-        $tipo = '',
-        $cnpj = '',
-        $im = '',
-        $email = ''
+        $tipo,
+        $cnpj,
+        $im,
+        $email
     ) {
         $this->intermediarioTipoDoc = $tipo;
         $this->intermediarioCNPJCPF = $cnpj;
@@ -186,7 +186,7 @@ class Rps extends RpsBase
      * Série do RPS
      * @param string $serie
      */
-    public function serie($serie = '')
+    public function serie($serie)
     {
         $serie = substr(trim($serie), 0, 5);
         $this->serieRPS = $serie;
@@ -197,10 +197,10 @@ class Rps extends RpsBase
      * @param int $numero
      * @throws InvalidArgumentException
      */
-    public function numero($numero = 0)
+    public function numero($numero)
     {
         if (!is_numeric($numero) || $numero <= 0) {
-            $msg = 'O numero do RPS deve ser maior ou igual a 1';
+            $msg = "[$numero] não é aceito. O numero do RPS deve ser numerico maior ou igual a 1";
             throw new InvalidArgumentException($msg);
         }
         $this->numeroRPS = $numero;
@@ -220,8 +220,9 @@ class Rps extends RpsBase
      * @param string $status
      * @throws InvalidArgumentException
      */
-    public function status($status = 'N')
+    public function status($status)
     {
+        $status = strtoupper(trim($status));
         if (!$this->zValidData(['N' => 0, 'C' => 1], $status)) {
             $msg = 'O status pode ser apenas N-normal ou C-cancelado.';
             throw new InvalidArgumentException($msg);
@@ -237,10 +238,11 @@ class Rps extends RpsBase
      *
      * @param string $tipo
      */
-    public function tipo($tipo = '')
+    public function tipo($tipo)
     {
+        $tipo = strtoupper(trim($tipo));
         if (!$this->zValidData($this->aTp, $tipo)) {
-            $msg = 'O tipo deve ser informado com um código válido';
+            $msg = "[$tipo] não é um codigo valido entre " . implode(',', array_keys($this->aTp)) . ".";
             throw new InvalidArgumentException($msg);
         }
         $this->tipoRPS = $tipo;
@@ -260,10 +262,11 @@ class Rps extends RpsBase
      *
      * @param string $tributacao
      */
-    public function tributacao($tributacao = '')
+    public function tributacao($tributacao)
     {
+        $tributacao = strtoupper(trim($tributacao));
         if (!$this->zValidData($this->aTrib, $tributacao)) {
-            $msg = 'A tributação deve ser informada com um código válido';
+            $msg = "[$tributacao] não é um código válido, ente" . implode(',', array_keys($this->aTrib));
             throw new InvalidArgumentException($msg);
         }
         $this->tributacaoRPS = $tributacao;
@@ -282,7 +285,7 @@ class Rps extends RpsBase
      * Valor dos Serviços prestados
      * @param float $valor
      */
-    public function valorServicos($valor = 0.00)
+    public function valorServicos($valor)
     {
         $this->valorServicosRPS = number_format($valor, 2, '.', '');
     }
@@ -291,7 +294,7 @@ class Rps extends RpsBase
      * Valor das deduções aplicáveis ao serviço
      * @param float $valor
      */
-    public function valorDeducoes($valor = 0.00)
+    public function valorDeducoes($valor)
     {
         $this->valorDeducoesRPS = number_format($valor, 2, '.', '');
     }
@@ -301,7 +304,7 @@ class Rps extends RpsBase
      * @param float $valor
      * @throws InvalidArgumentException
      */
-    public function aliquotaServico($valor = 0.0000)
+    public function aliquotaServico($valor)
     {
         if ($valor > 1 || $valor < 0) {
             $msg = 'Voce deve indicar uma aliquota em fração ex. 0.12.';
@@ -315,16 +318,15 @@ class Rps extends RpsBase
      * 1 - iss retido pelo tomador
      * 2 - sem retenção
      * 3 - iss retido pelo intermediário
-     * @param type $flag
+     * @param integer $flag
      */
-    public function issRetido($flag = '2')
+    public function issRetido($flag)
     {
         $this->issRetidoRPS = false;
         $this->intermediarioISSRetido = 'N';
         if ($flag == 1) {
             $this->issRetidoRPS = true;
-        }
-        if ($flag == 3) {
+        } elseif ($flag == 3) {
             $this->issRetidoRPS = true;
             $this->intermediarioISSRetido = 'S';
         }
@@ -334,7 +336,7 @@ class Rps extends RpsBase
      * Discriminação do serviço prestado
      * @param string $desc
      */
-    public function discriminacao($desc = '')
+    public function discriminacao($desc)
     {
         $this->discriminacaoRPS = Strings::cleanString(trim($desc));
     }
@@ -346,7 +348,7 @@ class Rps extends RpsBase
      * @param float $percentual
      * @param string $fonte
      */
-    public function cargaTributaria($valor = 0.00, $percentual = 0.0000, $fonte = '')
+    public function cargaTributaria($valor, $percentual, $fonte)
     {
         $this->valorCargaTributariaRPS = number_format($valor, 2, '.', '');
         $this->percentualCargaTributariaRPS = number_format($valor, 4, '.', '');
@@ -355,9 +357,9 @@ class Rps extends RpsBase
     
     /**
      * Valor referente ao recolhimento do PIS
-     * @param type $valor
+     * @param float $valor
      */
-    public function valorPIS($valor = 0.00)
+    public function valorPIS($valor)
     {
         $this->valorPISRPS = number_format($valor, 2, '.', '');
     }
@@ -366,7 +368,7 @@ class Rps extends RpsBase
      * Valor referente ao recolhimento da COFINS
      * @param float $valor
      */
-    public function valorCOFINS($valor = 0.00)
+    public function valorCOFINS($valor)
     {
         $this->valorCOFINSRPS = number_format($valor, 2, '.', '');
     }
@@ -375,7 +377,7 @@ class Rps extends RpsBase
      * Valor referente ao recolhimento da contribuição ao INSS
      * @param float $valor
      */
-    public function valorINSS($valor = 0.00)
+    public function valorINSS($valor)
     {
         $this->valorINSSRPS = number_format($valor, 2, '.', '');
     }
@@ -384,7 +386,7 @@ class Rps extends RpsBase
      * Valor refenrente ao IR (Imposto de Renda)
      * @param float $valor
      */
-    public function valorIR($valor = 0.00)
+    public function valorIR($valor)
     {
         $this->valorIRRPS = number_format($valor, 2, '.', '');
     }
@@ -393,7 +395,7 @@ class Rps extends RpsBase
      * Valor referente a CSLL (contribuição Sobre o Lucro Líquido)
      * @param float $valor
      */
-    public function valorCSLL($valor = 0.00)
+    public function valorCSLL($valor)
     {
         $this->valorCSLLRPS = number_format($valor, 2, '.', '');
     }
@@ -402,7 +404,7 @@ class Rps extends RpsBase
      * Código Matricula no CEI (Cadastro Especifico do INSS)
      * @param string $cod
      */
-    public function codigoCEI($cod = '')
+    public function codigoCEI($cod)
     {
         $this->codigoCEIRPS = $cod;
     }
@@ -411,7 +413,7 @@ class Rps extends RpsBase
      * Identificaçao ou número de matricula da Obra Civil
      * @param string $matricula
      */
-    public function matriculaObra($matricula = '')
+    public function matriculaObra($matricula)
     {
         $this->matriculaObraRPS = $matricula;
     }
@@ -421,7 +423,7 @@ class Rps extends RpsBase
      * foi prestado
      * @param int $cmun
      */
-    public function municipioPrestacao($cmun = '')
+    public function municipioPrestacao($cmun)
     {
         $this->municipioPrestacaoRPS = $cmun;
     }

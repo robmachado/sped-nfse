@@ -26,7 +26,7 @@ class Rps extends RpsBase
     public $tipoRPS = 'RPS'; //Padrão "RPS"
     public $serieRPS = 'NF';//Padrão "NF"
     public $numeroRPS = '';
-    public $dataEmissaoRPS = '';
+    public $dataEmissaoRPS = '';//Y-m-dTH:i:s
     public $situacaoRPS = 'N'; //Situação da RPS "N"-Normal "C"-Cancelada
     public $seriePrestacao = '99'; //preencha o campo com o valor '99'
     
@@ -98,7 +98,7 @@ class Rps extends RpsBase
         'M' => 'Micro Empreendedor Individual (MEI).'
     ];
     
-    protected $aDeducao = [
+    protected $aOperacao = [
         'A' => 'Sem Dedução',
         'B' => 'Com Dedução/Materiais',
         'C' => 'Imune/Isenta de ISSQN',
@@ -126,7 +126,7 @@ class Rps extends RpsBase
      * RPS – Recibo Provisório de Serviços
      * @param string $tipo
      */
-    public function tipoRPS($tipo = 'RPS')
+    public function tipoRPS($tipo)
     {
         $this->tipoRPS = $tipo;
     }
@@ -135,7 +135,7 @@ class Rps extends RpsBase
      * Série do RPS
      * @param string $serie
      */
-    public function serie($serie = 'NF')
+    public function serie($serie)
     {
         $this->serieRPS = $serie;
     }
@@ -145,7 +145,7 @@ class Rps extends RpsBase
      * @param int $numero
      * @throws InvalidArgumentException
      */
-    public function numero($numero = 0)
+    public function numero($numero)
     {
         if (!is_numeric($numero) || $numero <= 0) {
             $msg = 'O numero do RPS deve ser maior ou igual a 1';
@@ -157,9 +157,9 @@ class Rps extends RpsBase
     /**
      * Data do RPS
      * Formato YYYY-mm-ddTHH:ii:ss
-     * @param type $data
+     * @param datetime $data
      */
-    public function data($data = '')
+    public function data($data)
     {
         $dt = new \DateTime($data);
         $dtf = $dt->format('Y-m-d\TH:i:s');
@@ -171,7 +171,7 @@ class Rps extends RpsBase
      * @param string $status
      * @throws InvalidArgumentException
      */
-    public function situacao($status = 'N')
+    public function situacao($status)
     {
         if (!$this->zValidData(['N' => 0, 'C' => 1], $status)) {
             $msg = 'O status pode ser apenas N-normal ou C-cancelado.';
@@ -180,7 +180,7 @@ class Rps extends RpsBase
         $this->situacaoRPS = $status;
     }
     
-    public function prestador($im, $razao, $ddd = '', $telefone = '')
+    public function prestador($im, $razao, $ddd, $telefone)
     {
         $this->inscricaoMunicipalPrestador = $im;
         $this->razaoSocialPrestador = Strings::cleanString($razao);
@@ -188,16 +188,16 @@ class Rps extends RpsBase
         $this->telefonePrestador = $telefone;
     }
     
-    public function substituido($serieRPS = '', $numeroRPS = '', $numeroNFSe = '', $dataNFSe = '')
+    public function substituido($serieRPS, $numeroRPS, $numeroNFSe, $dataNFSe)
     {
         $this->serieRPSSubstituido = $serieRPS;
         $this->numeroRPSSubstituido = $numeroRPS;
         $this->numeroNFSeSubstituida = $numeroNFSe;
         $dt = new \DateTime($dataNFSe);
-        $this->dataEmissaoNFSeSubstituida = $dt->format('Y-m-d\TH:i:s');
+        $this->dataEmissaoNFSeSubstituida = $dt->format('Y-m-d');
     }
     
-    public function seriePrestacao($serie = 99)
+    public function seriePrestacao($serie)
     {
         $this->seriePrestacao = $serie;
     }
@@ -206,9 +206,9 @@ class Rps extends RpsBase
         $im,
         $cpfcnpj,
         $razao,
-        $docEstrangeiro = '',
-        $ddd = '',
-        $telefone = ''
+        $docEstrangeiro,
+        $ddd,
+        $telefone
     ) {
         $this->inscricaoMunicipalTomador = $im;
         $this->cPFCNPJTomador = $cpfcnpj;
@@ -260,6 +260,10 @@ class Rps extends RpsBase
     
     public function operacaoRPS($operacao)
     {
+        if (!$this->zValidData($this->aOperacao, $operacao)) {
+            $msg = "[$operacao] não é válido, pode ser apenas " . implode(',', array_keys($this->aOperacao)) . ".";
+            throw new InvalidArgumentException($msg);
+        }
         $this->operacao = $operacao;
     }
     

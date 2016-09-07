@@ -27,23 +27,24 @@ class Cancelar extends Factory
     public function render(
         $versao,
         $remetenteCNPJCPF,
-        $transacao = '',
-        $codcidade = '',
-        $prestadorIM = '',
-        $tokenEnvio = '',
-        $lote = '',
-        $numero = '',
-        $codigoverificacao = '',
-        $motivocancelamento = ''
+        $transacao,
+        $codcidade,
+        $prestadorIM,
+        $tokenEnvio,
+        $lote,
+        $numero,
+        $codigoverificacao,
+        $motivocancelamento
     ) {
         $method = "ReqCancelamentoNFSe";
         $content = $this->requestFirstPart($method);
         $content .= Header::render(
             $versao,
             $remetenteCNPJCPF,
+            null,
             $transacao,
             $codcidade,
-            '',
+            null,
             $tokenEnvio
         );
         $content .= "<Lote Id=\"lote:$lote\">";

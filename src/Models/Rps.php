@@ -22,7 +22,6 @@ class Rps
 {
     protected function zValidData($matriz, $key)
     {
-        $flag = array_key_exists($key, $matriz);
-        return true;
+        return array_key_exists($key, $matriz);
     }
 }

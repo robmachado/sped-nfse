@@ -36,12 +36,11 @@ class ConsultaCNPJ extends Factory
         $versao,
         $remetenteTipoDoc,
         $remetenteCNPJCPF,
-        $transacao = '',
-        $cnpjContribuinte = ''
+        $transacao,
+        $cnpjContribuinte
     ) {
         $method = 'PedidoConsultaCNPJ';
-        $content = "<$method "
-            . "xmlns:xsd=\"$this->xmlnsxsd\" xmlns=\"$this->xmlns\" xmlns:xsi=\"$this->xmlnsxsi\">";
+        $content = $this->requestFirstPart($method);
         $content .= Header::render($versao, $remetenteTipoDoc, $remetenteCNPJCPF, $transacao);
         $content .= "<CNPJContribuinte xmlns=\"\">";
         $content .= "<CNPJ>$cnpjContribuinte</CNPJ>";

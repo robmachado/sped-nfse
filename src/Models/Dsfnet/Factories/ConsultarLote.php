@@ -25,21 +25,21 @@ class ConsultarLote extends Factory
 {
     public function render(
         $versao,
-        $remetenteCNPJCPF = '',
-        $codcidade = '',
-        $numeroLote = ''
+        $remetenteCNPJCPF,
+        $codcidade,
+        $numeroLote
     ) {
         $method = "ReqConsultaLote";
         $content = $this->requestFirstPart($method);
         $content .= Header::render(
             $versao,
             $remetenteCNPJCPF,
-            '', //$transacao
+            null, //$transacao
             $codcidade,
-            '', //$codcid
-            '', //$token
-            '', //$prestadorIM
-            '', //$seriePrestacao
+            null, //$codcid
+            null, //$token
+            null, //$prestadorIM
+            null, //$seriePrestacao
             $numeroLote //$numeroLote
         );
         $content .= "</ns1:$method>";

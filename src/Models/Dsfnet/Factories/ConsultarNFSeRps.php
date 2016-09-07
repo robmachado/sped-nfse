@@ -10,10 +10,10 @@ class ConsultarNFSeRps extends Factory
     public function render(
         $versao,
         $remetenteCNPJCPF,
-        $codcidade = '',
-        $transacao = '',
-        $prestadorIM = '',
-        $lote = '',
+        $codcidade,
+        $transacao,
+        $prestadorIM,
+        $lote,
         $chavesNFSe = [],
         $chavesRPS = []
     ) {
@@ -22,12 +22,11 @@ class ConsultarNFSeRps extends Factory
         $content .= Header::render(
             $versao,
             $remetenteCNPJCPF,
+            null,
             $transacao,
             $codcidade
         );
-        
         $content .= "<Lote Id=\"lote:$lote\">";
-       
         foreach ($chavesNFSe as $nota) {
             $content .= "<NotaConsulta>";
             $content .= "<Nota Id=\"nota:".$nota['numero']."\">";
@@ -37,7 +36,6 @@ class ConsultarNFSeRps extends Factory
             $content .= "</Nota>";
             $content .= "</NotaConsulta>";
         }
-        
         foreach ($chavesRPS as $rps) {
             $content .= "<RPSConsulta>";
             $content .= "<RPS Id=\"rps:".$rps['numero']."\">";

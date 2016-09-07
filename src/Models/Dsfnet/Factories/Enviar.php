@@ -23,14 +23,44 @@ use NFePHP\NFSe\Models\Dsfnet\RenderRPS;
 
 class Enviar extends Factory
 {
-    public function render($rpss, $numeroLote)
-    {
+    private $dtIni = '';
+    private $dtFim = '';
+    private $qtdRPS = 0;
+    private $valorTotalServicos = 0;
+    private $valorTotalDeducoes = 0;
+    private $versaoComponente = '1.0.0';
+    
+    public function render(
+        $versao,
+        $remetenteCNPJCPF,
+        $remetenteRazao,
+        $transacao,
+        $codcidade,
+        $rpss,
+        $numeroLote
+    ) {
         $method = 'ReqEnvioLoteRPS';
+        $this->totalizeRps($rpss);
         $content = $this->requestFirstPart($method);
         $content .= Header::render(
             $versao,
             $remetenteCNPJCPF,
-            $transacao
+            $remetenteRazao,
+            $transacao,
+            $codcidade,
+            null, //$codcid
+            null, //$token
+            null, //$prestadorIM
+            null, //$seriePrestacao
+            null, //$numeroLote
+            $this->dtIni,
+            $this->dtFim,
+            null, //$notaInicial
+            $this->qtdRPS,
+            $this->valorTotalServicos,
+            $this->valorTotalDeducoes,
+            'WS', //$metodoEnvio
+            $this->versaoComponente
         );
         $content .= "<Lote Id=\"lote:$numeroLote\">";
         foreach ($rpss as $rps) {
@@ -40,7 +70,38 @@ class Enviar extends Factory
         $content .= "</ns1:$method>";
         $body = $this->oCertificate->signXML($content, 'Lote', 'Id', $this->signAlgorithm);
         $body = $this->clear($body);
-        //$this->validar($versao, $body, $method, '');
+        $this->validar($versao, $body, $method, '');
         return $body;
+    }
+
+    /**
+     * Totaliza os campos necessários para a montagem do cabeçalho
+     * quando envio de Lote de RPS
+     * @param array $rpss
+     */
+    private function totalizeRps($rpss)
+    {
+        foreach ($rpss as $rps) {
+            $this->qtdRPS++;
+            $data = \DateTime::createFromFormat('Y-m-d\TH:i:s', $rps->dataEmissaoRPS);
+            if ($this->dtIni == '') {
+                $this->dtIni = $data->format('Y-m-d');
+            }
+            if ($this->dtFim == '') {
+                $this->dtFim = $data->format('Y-m-d');
+            }
+            if ($data->format('Y-m-d') <= $this->dtIni) {
+                $this->dtIni = $data->format('Y-m-d');
+            }
+            if ($data->format('Y-m-d') >= $this->dtFim) {
+                $this->dtFim = $data->format('Y-m-d');
+            }
+            foreach ($rps->itens as $item) {
+                $this->valorTotalServicos += $item['ValorTotal'];
+            }
+            foreach ($rps->deducoes as $deducao) {
+                $this->valorTotalDeducoes += $deducao['ValorDeduzir'];
+            }
+        }
     }
 }

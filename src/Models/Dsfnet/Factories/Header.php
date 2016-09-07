@@ -24,6 +24,7 @@ class Header extends HeaderModel
      * Renderiza as tag do cabecalho
      * @param int $versao
      * @param string $remetenteCNPJCPF
+     * @param string $remetenteRazao
      * @param string $transacao
      * @param int $codcidade
      * @param int $codcid
@@ -41,23 +42,24 @@ class Header extends HeaderModel
      * @return string
      */
     public static function render(
-        $versao,
-        $remetenteCNPJCPF = '',
-        $transacao = '',
-        $codcidade = '',
-        $codcid = '',
-        $token = '',
-        $prestadorIM = '',
-        $seriePrestacao = '',
-        $numeroLote = '',
-        $dtInicio = '',
-        $dtFim = '',
-        $notaInicial = '',
-        $qtdRPS = 0,
-        $valorTotalServicos = 0,
-        $valorTotalDeducoes = 0,
-        $metodoEnvio = '',
-        $versaoComponente = ''
+        $versao = null,
+        $remetenteCNPJCPF = null,
+        $remetenteRazao = null,
+        $transacao = null,
+        $codcidade = null,
+        $codcid = null,
+        $token = null,
+        $prestadorIM = null,
+        $seriePrestacao = null,
+        $numeroLote = null,
+        $dtInicio = null,
+        $dtFim = null,
+        $notaInicial = null,
+        $qtdRPS = null,
+        $valorTotalServicos = null,
+        $valorTotalDeducoes = null,
+        $metodoEnvio = null,
+        $versaoComponente = null
     ) {
         $content = "<Cabecalho>";
         if ($codcid != '') {
@@ -70,6 +72,7 @@ class Header extends HeaderModel
             $content .= self::check('TokenEnvio', $token);
             $content .= self::check('CodCidade', $codcidade);
             $content .= self::check('CPFCNPJRemetente', $remetenteCNPJCPF);
+            $content .= self::check('RazaoSocialRemetente', $remetenteRazao);
             $content .= self::check('InscricaoMunicipalPrestador', $prestadorIM);
             $content .= self::check('transacao', $transacao);
             $content .= self::check('dtInicio', $dtInicio);

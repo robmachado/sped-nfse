@@ -51,15 +51,7 @@ class EnvioRPS extends Factory
         }
         $xmlRPS = '';
         $method = "PedidoEnvioRPS";
-        $content = "<$method "
-            . "xmlns:xsd=\""
-            . $this->xmlnsxsd
-            . "\" xmlns=\""
-            . $this->xmlns
-            . "\" xmlns:xsi=\""
-            . $this->xmlnsxsi
-            . "\">";
-        
+        $content = $this->requestFirstPart($method);
         if (is_object($data)) {
             $xmlRPS .= $this->individual($content, $data);
         } elseif (is_array($data)) {
@@ -67,14 +59,7 @@ class EnvioRPS extends Factory
                 $xmlRPS .= $this->individual($content, $data);
             } else {
                 $method = "PedidoEnvioLoteRPS";
-                $content = "<$method "
-                    . "xmlns:xsd=\""
-                    . $this->xmlnsxsd
-                    . "\" xmlns=\""
-                    . $this->xmlns
-                    . "\" xmlns:xsi=\""
-                    . $this->xmlnsxsi
-                    . "\">";
+                $content = $this->requestFirstPart($method);
                 $xmlRPS .= $this->lote($content, $data);
             }
         }
@@ -83,12 +68,12 @@ class EnvioRPS extends Factory
             $remetenteTipoDoc,
             $remetenteCNPJCPF,
             $transacao,
-            '',
-            '',
-            '',
+            null,
+            null,
+            null,
             $this->dtIni,
             $this->dtFim,
-            '',
+            null,
             $this->qtdRPS,
             $this->valorTotalServicos,
             $this->valorTotalDeducoes
@@ -130,11 +115,11 @@ class EnvioRPS extends Factory
     /**
      * Totaliza os campos necessários para a montagem do cabeçalho
      * quando envio de Lote de RPS
-     * @param array $data
+     * @param array $rpss
      */
-    private function totalizeRps($data)
+    private function totalizeRps($rpss)
     {
-        foreach ($data as $rps) {
+        foreach ($rpss as $rps) {
             $this->valorTotalServicos += $rps->valorServicosRPS;
             $this->valorTotalDeducoes += $rps->valorDeducoesRPS;
             $this->qtdRPS++;

@@ -454,11 +454,12 @@ class RenderRPS
             'Adding Tag CPFCNPJIntermediario to RPS',
             true
         );
+        $deducoes = self::$dom->createElement('Deducoes');
         foreach ($rps->deducoes as $deduc) {
-            $deducoes = self::$dom->createElement('Deducoes');
+            $node = self::$dom->createElement('Deducao');
             foreach ($deduc as $tag => $value) {
                 self::$dom->addChild(
-                    $deducoes,
+                    $node,
                     $tag,
                     $value,
                     true,
@@ -466,13 +467,9 @@ class RenderRPS
                     false
                 );
             }
-            self::$dom->appChild($root, $deducoes, 'Append Deducoes to RPS');
+            self::$dom->appChild($deducoes, $node, 'Append Deducao to Deducoes');
         }
-        //insere uma tag vazia !?!?
-        if (empty($rps->deducoes)) {
-            $deducoes = self::$dom->createElement('Deducoes');
-            self::$dom->appChild($root, $deducoes, 'Append Deducoes to RPS');
-        }
+        self::$dom->appChild($root, $deducoes, 'Append Deducoes to RPS');
         $itens = self::$dom->createElement('Itens');
         foreach ($rps->itens as $item) {
             $node = self::$dom->createElement('Item');

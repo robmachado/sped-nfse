@@ -135,11 +135,18 @@ class Tools extends ToolsBase
     public function enviar($rpss, $numeroLote)
     {
         $this->method = 'enviar';
-        /*
-         * <lot:enviar>
-         <mensagemXml>?</mensagemXml>
-      </lot:enviar>
-         */
+        $fact = new Factories\Enviar($this->oCertificate);
+        $fact->setSignAlgorithm($this->signaturealgo);
+        $xml = $fact->render(
+            $this->versao,
+            $this->remetenteCNPJCPF,
+            $this->remetenteRazao,
+            '',
+            $this->codcidade,
+            $rpss,
+            $numeroLote
+        );
+        return $this->buildRequest($xml);
     }
     
     public function enviarSincrono($rpss, $numeroLote)
@@ -179,5 +186,4 @@ class Tools extends ToolsBase
         }
         return $request;
     }
-    
 }

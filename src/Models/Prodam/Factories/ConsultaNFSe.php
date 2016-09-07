@@ -42,14 +42,7 @@ class ConsultaNFSe extends Factory
         $chavesRPS = []
     ) {
         $method = "PedidoConsultaNFe";
-        $content = "<$method "
-            . "xmlns:xsd=\""
-            . $this->xmlnsxsd
-            . "\" xmlns=\""
-            . $this->xmlns
-            . "\" xmlns:xsi=\""
-            . $this->xmlnsxsi
-            . "\">";
+        $content = $this->requestFirstPart($method);
         $content .= Header::render($versao, $remetenteTipoDoc, $remetenteCNPJCPF, $transacao);
         //minimo 1 e maximo de 50 objetos podem ser consultados
         $total = count($chavesNFSe) + count($chavesRPS);

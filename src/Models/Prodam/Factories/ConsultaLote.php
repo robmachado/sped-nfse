@@ -26,32 +26,25 @@ class ConsultaLote extends Factory
         $versao,
         $remetenteTipoDoc,
         $remetenteCNPJCPF,
-        $transacao = '',
-        $numeroLote = ''
+        $transacao,
+        $numeroLote
     ) {
         $method = "PedidoConsultaLote";
-        $content = "<$method "
-            . "xmlns:xsd=\""
-            . $this->xmlnsxsd
-            . "\" xmlns=\""
-            . $this->xmlns
-            . "\" xmlns:xsi=\""
-            . $this->xmlnsxsi
-            . "\">";
+        $content = $this->requestFirstPart($method);
         $content .= Header::render(
             $versao,
             $remetenteTipoDoc,
             $remetenteCNPJCPF,
             $transacao,
-            '',
-            '',
-            '',
-            '',
-            '',
-            '',
-            0,
-            0,
-            0,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
             $numeroLote
         );
         $content .= "</$method>";

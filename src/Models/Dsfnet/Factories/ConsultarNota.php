@@ -25,24 +25,25 @@ class ConsultarNota extends Factory
     public function render(
         $versao,
         $remetenteCNPJCPF,
-        $codcidade = '',
-        $prestadorIM = '',
-        $dtInicio = '',
-        $dtFim = '',
-        $notaInicial = ''
+        $codcidade,
+        $prestadorIM,
+        $dtInicio,
+        $dtFim,
+        $notaInicial
     ) {
         $method = "ReqConsultaNotas";
         $content = $this->requestFirstPart($method);
         $content .= Header::render(
             $versao,
             $remetenteCNPJCPF,
-            '',
+            null,
+            null,
             $codcidade,
-            '',
-            '',
+            null,
+            null,
             $prestadorIM,
-            '',
-            '',
+            null,
+            null,
             $dtInicio,
             $dtFim,
             $notaInicial
