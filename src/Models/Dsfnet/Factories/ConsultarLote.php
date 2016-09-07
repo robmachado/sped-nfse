@@ -25,27 +25,21 @@ class ConsultarLote extends Factory
 {
     public function render(
         $versao,
-        $remetenteCNPJCPF = '',
-        $codcidade = '',
-        $numeroLote = ''
+        $remetenteCNPJCPF,
+        $codcidade,
+        $numeroLote
     ) {
         $method = "ReqConsultaLote";
-        $content = "<ns1:$method "
-            . "xmlns:ns1=\"http://localhost:8080/WsNFe2/lote\" "
-            . "xmlns:tipos=\"http://localhost:8080/WsNFe2/tp\" "
-            . "xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" "
-            . "xsi:schemaLocation=\"http://localhost:8080/WsNFe2/lote "
-            . "http://localhost:8080/WsNFe2/xsd/$method.xsd\""
-            . ">";
+        $content = $this->requestFirstPart($method);
         $content .= Header::render(
             $versao,
             $remetenteCNPJCPF,
-            '', //$transacao
+            null, //$transacao
             $codcidade,
-            '', //$codcid
-            '', //$token
-            '', //$prestadorIM
-            '', //$seriePrestacao
+            null, //$codcid
+            null, //$token
+            null, //$prestadorIM
+            null, //$seriePrestacao
             $numeroLote //$numeroLote
         );
         $content .= "</ns1:$method>";

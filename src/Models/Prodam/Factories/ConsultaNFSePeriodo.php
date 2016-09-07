@@ -40,23 +40,16 @@ class ConsultaNFSePeriodo extends Factory
         $versao,
         $remetenteTipoDoc,
         $remetenteCNPJCPF,
-        $transacao = true,
-        $cnpj = '',
-        $cpf = '',
-        $im = '',
-        $dtInicio = '',
-        $dtFim = '',
-        $pagina = ''
+        $transacao,
+        $cnpj,
+        $cpf,
+        $im,
+        $dtInicio,
+        $dtFim,
+        $pagina
     ) {
         $method = "PedidoConsultaNFePeriodo";
-        $content = "<$method "
-            . "xmlns:xsd=\""
-            . $this->xmlnsxsd
-            . "\" xmlns=\""
-            . $this->xmlns
-            . "\" xmlns:xsi=\""
-            . $this->xmlnsxsi
-            . "\">";
+        $content = $this->requestFirstPart($method);
         $content .= Header::render(
             $versao,
             $remetenteTipoDoc,

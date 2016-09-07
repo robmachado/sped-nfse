@@ -22,68 +22,67 @@ use NFePHP\NFSe\Models\Rps as RpsBase;
 
 class Rps extends RpsBase
 {
-    public $versaoRPS;
-    public $tipoRPS; //Padrão "RPS"
-    public $serieRPS;//Padrão "NF"
-    public $numeroRPS;
-    public $dataEmissaoRPS;
-    public $situacaoRPS; //Situação da RPS "N"-Normal "C"-Cancelada
+    public $versaoRPS = '1';
+    public $tipoRPS = 'RPS'; //Padrão "RPS"
+    public $serieRPS = 'NF';//Padrão "NF"
+    public $numeroRPS = '';
+    public $dataEmissaoRPS = '';//Y-m-dTH:i:s
+    public $situacaoRPS = 'N'; //Situação da RPS "N"-Normal "C"-Cancelada
+    public $seriePrestacao = '99'; //preencha o campo com o valor '99'
     
-    public $inscricaoMunicipalPrestador;
-    public $razaoSocialPrestador;
-    public $dDDPrestador;
-    public $telefonePrestador;
+    public $inscricaoMunicipalPrestador = '';
+    public $razaoSocialPrestador = '';
+    public $dDDPrestador = '';
+    public $telefonePrestador = '';
     
-    public $serieRPSSubstituido;
-    public $numeroRPSSubstituido;
-    public $numeroNFSeSubstituida;
-    public $dataEmissaoNFSeSubstituida; //Preencher com "1900-01-01"
+    public $serieRPSSubstituido = '';
+    public $numeroRPSSubstituido = '';
+    public $numeroNFSeSubstituida = '';
+    public $dataEmissaoNFSeSubstituida = '1900-01-01'; //Preencher com "1900-01-01"
     
-    public $seriePrestacao; //preencha o campo com o valor '99'
+    public $inscricaoMunicipalTomador = '';
+    public $cPFCNPJTomador = '';
+    public $razaoSocialTomador = '';
+    public $docTomadorEstrangeiro  = '';
+    public $dDDTomador = '';
+    public $telefoneTomador = '';
     
-    public $inscricaoMunicipalTomador;
-    public $cPFCNPJTomador;
-    public $razaoSocialTomador;
-    public $docTomadorEstrangeiro;
-    public $dDDTomador;
-    public $telefoneTomador;
-    
-    public $tipoLogradouroTomador;
-    public $logradouroTomador;
-    public $numeroEnderecoTomador;
-    public $complementoTomador;
-    public $tipoBairroTomador;
-    public $bairroTomador;
-    public $cidadeTomador; //Código da Cidade do Tomador - Padrão SIAF
-    public $cidadeTomadorDescricao;
-    public $cEPTomador;
-    public $emailTomador;
+    public $tipoLogradouroTomador = '';
+    public $logradouroTomador = '';
+    public $numeroEnderecoTomador = '';
+    public $complementoTomador = '';
+    public $tipoBairroTomador = '';
+    public $bairroTomador = '';
+    public $cidadeTomador = ''; //Código da Cidade do Tomador - Padrão SIAF
+    public $cidadeTomadorDescricao = '';
+    public $cEPTomador = '';
+    public $emailTomador = '';
     
     public $itens = [];
     
-    public $codigoAtividade;
-    public $aliquotaAtividade;
-    public $tipoRecolhimento;
-    public $municipioPrestacao;
-    public $municipioPrestacaoDescricao;
-    public $operacao;
+    public $codigoAtividade = '';
+    public $aliquotaAtividade = '';
+    public $tipoRecolhimento = '';
+    public $municipioPrestacao = '';
+    public $municipioPrestacaoDescricao = '';
+    public $operacao = '';
     
-    public $tributacao;
-    public $valorPIS;
-    public $valorCOFINS;
-    public $valorINSS;
-    public $valorIR;
-    public $valorCSLL;
-    public $aliquotaPIS;
-    public $aliquotaCOFINS;
-    public $aliquotaINSS;
-    public $aliquotaIR;
-    public $aliquotaCSLL;
-    public $descricaoRPS;
+    public $tributacao = '';
+    public $valorPIS = 0;
+    public $valorCOFINS = 0;
+    public $valorINSS = 0;
+    public $valorIR = 0;
+    public $valorCSLL = 0;
+    public $aliquotaPIS = 0;
+    public $aliquotaCOFINS = 0;
+    public $aliquotaINSS = 0;
+    public $aliquotaIR = 0;
+    public $aliquotaCSLL = 0;
+    public $descricaoRPS = '';
     
-    public $motCancelamento;
+    public $motCancelamento = '';
     
-    public $cpfCnpjIntermediario;
+    public $cpfCnpjIntermediario = '';
     
     public $deducoes = [];
 
@@ -99,7 +98,7 @@ class Rps extends RpsBase
         'M' => 'Micro Empreendedor Individual (MEI).'
     ];
     
-    protected $aDeducao = [
+    protected $aOperacao = [
         'A' => 'Sem Dedução',
         'B' => 'Com Dedução/Materiais',
         'C' => 'Imune/Isenta de ISSQN',
@@ -127,7 +126,7 @@ class Rps extends RpsBase
      * RPS – Recibo Provisório de Serviços
      * @param string $tipo
      */
-    public function tipoRPS($tipo = 'RPS')
+    public function tipoRPS($tipo)
     {
         $this->tipoRPS = $tipo;
     }
@@ -136,7 +135,7 @@ class Rps extends RpsBase
      * Série do RPS
      * @param string $serie
      */
-    public function serie($serie = 'NF')
+    public function serie($serie)
     {
         $this->serieRPS = $serie;
     }
@@ -146,7 +145,7 @@ class Rps extends RpsBase
      * @param int $numero
      * @throws InvalidArgumentException
      */
-    public function numero($numero = 0)
+    public function numero($numero)
     {
         if (!is_numeric($numero) || $numero <= 0) {
             $msg = 'O numero do RPS deve ser maior ou igual a 1';
@@ -158,9 +157,9 @@ class Rps extends RpsBase
     /**
      * Data do RPS
      * Formato YYYY-mm-ddTHH:ii:ss
-     * @param type $data
+     * @param datetime $data
      */
-    public function data($data = '')
+    public function data($data)
     {
         $dt = new \DateTime($data);
         $dtf = $dt->format('Y-m-d\TH:i:s');
@@ -172,7 +171,7 @@ class Rps extends RpsBase
      * @param string $status
      * @throws InvalidArgumentException
      */
-    public function status($status = 'N')
+    public function situacao($status)
     {
         if (!$this->zValidData(['N' => 0, 'C' => 1], $status)) {
             $msg = 'O status pode ser apenas N-normal ou C-cancelado.';
@@ -181,23 +180,24 @@ class Rps extends RpsBase
         $this->situacaoRPS = $status;
     }
     
-    public function prestador($im, $razao, $ddd = '', $telefone = '')
+    public function prestador($im, $razao, $ddd, $telefone)
     {
         $this->inscricaoMunicipalPrestador = $im;
-        $this->razaoSocialPrestador = $razao;
+        $this->razaoSocialPrestador = Strings::cleanString($razao);
         $this->dDDPrestador = $ddd;
         $this->telefonePrestador = $telefone;
     }
     
-    public function substituido($serieRPS = '', $numeroRPS = '', $numeroNFSe = '', $dataNFSe = '')
+    public function substituido($serieRPS, $numeroRPS, $numeroNFSe, $dataNFSe)
     {
         $this->serieRPSSubstituido = $serieRPS;
         $this->numeroRPSSubstituido = $numeroRPS;
         $this->numeroNFSeSubstituida = $numeroNFSe;
-        $this->dataEmissaoNFSeSubstituida = $dataNFSe;
+        $dt = new \DateTime($dataNFSe);
+        $this->dataEmissaoNFSeSubstituida = $dt->format('Y-m-d');
     }
     
-    public function seriePrestacao($serie = 99)
+    public function seriePrestacao($serie)
     {
         $this->seriePrestacao = $serie;
     }
@@ -206,13 +206,13 @@ class Rps extends RpsBase
         $im,
         $cpfcnpj,
         $razao,
-        $docEstrangeiro = '',
-        $ddd = '',
-        $telefone = ''
+        $docEstrangeiro,
+        $ddd,
+        $telefone
     ) {
         $this->inscricaoMunicipalTomador = $im;
         $this->cPFCNPJTomador = $cpfcnpj;
-        $this->razaoSocialTomador = $razao;
+        $this->razaoSocialTomador = Strings::cleanString($razao);
         $this->docTomadorEstrangeiro = $docEstrangeiro;
         $this->dDDTomador = $ddd;
         $this->telefoneTomador = $telefone;
@@ -230,16 +230,16 @@ class Rps extends RpsBase
         $cep,
         $email
     ) {
-        $this->tipoLogradouroTomador = $tipoLogradouro;
-        $this->logradouroTomador = $logradouro;
+        $this->tipoLogradouroTomador = Strings::cleanString($tipoLogradouro);
+        $this->logradouroTomador = Strings::cleanString($logradouro);
         $this->numeroEnderecoTomador = $numero;
-        $this->complementoTomador = $complemento;
-        $this->tipoBairroTomador = $tipoBairro;
-        $this->bairroTomador = $bairro;
-        $this->cidadeTomador = $codigoSIAF;
-        $this->cidadeTomadorDescricao = $cidade;
+        $this->complementoTomador = Strings::cleanString($complemento);
+        $this->tipoBairroTomador = Strings::cleanString($tipoBairro);
+        $this->bairroTomador = Strings::cleanString($bairro);
+        $this->cidadeTomador = str_pad($codigoSIAF, 7, '0', STR_PAD_LEFT);
+        $this->cidadeTomadorDescricao = Strings::cleanString($cidade);
         $this->cEPTomador = $cep;
-        $this->emailTomador = $email;
+        $this->emailTomador = strtolower($email);
     }
     
     public function itemServico(
@@ -250,7 +250,7 @@ class Rps extends RpsBase
         $tributavel
     ) {
         $this->itens[] = [
-            'DiscriminacaoServico' => $discriminacao,
+            'DiscriminacaoServico' => Strings::cleanString($discriminacao),
             'Quantidade' => $quantidade,
             'ValorUnitario' => $valorUnitario,
             'ValorTotal' => $valorTotal,
@@ -260,12 +260,16 @@ class Rps extends RpsBase
     
     public function operacaoRPS($operacao)
     {
+        if (!$this->zValidData($this->aOperacao, $operacao)) {
+            $msg = "[$operacao] não é válido, pode ser apenas " . implode(',', array_keys($this->aOperacao)) . ".";
+            throw new InvalidArgumentException($msg);
+        }
         $this->operacao = $operacao;
     }
     
     public function descricao($descricao)
     {
-        $this->descricaoRPS = $descricao;
+        $this->descricaoRPS = Strings::cleanString($descricao);
     }
     
     public function codigoAtividadeRPS($codigo, $aliquota)
@@ -282,7 +286,7 @@ class Rps extends RpsBase
     public function localPrestacao($codmunicipio, $municipio)
     {
         $this->municipioPrestacao = $codmunicipio;
-        $this->municipioPrestacaoDescricao = $municipio;
+        $this->municipioPrestacaoDescricao = Strings::cleanString($municipio);
     }
     
     public function tributacaoServico(
@@ -313,7 +317,7 @@ class Rps extends RpsBase
     
     public function cancelamento($motivo)
     {
-        $this->motCancelamento = $motivo;
+        $this->motCancelamento = Strings::cleanString($motivo);
     }
     
     public function intermediario($cpfcnpj)

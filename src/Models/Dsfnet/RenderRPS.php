@@ -1,6 +1,6 @@
 <?php
 
-namespace NFePHP\NFSe\Models\Dsfnet\Factories;
+namespace NFePHP\NFSe\Models\Dsfnet;
 
 /**
  * Classe para a renderização dos RPS em XML
@@ -24,7 +24,7 @@ class RenderRPS
 {
     protected static $dom;
     protected static $priKey = '';
-    
+
     public static function toXml($data = '', $priKey = '')
     {
         if ($data == '') {
@@ -454,11 +454,12 @@ class RenderRPS
             'Adding Tag CPFCNPJIntermediario to RPS',
             true
         );
+        $deducoes = self::$dom->createElement('Deducoes');
         foreach ($rps->deducoes as $deduc) {
-            $deducoes = self::$dom->createElement('Deducoes');
+            $node = self::$dom->createElement('Deducao');
             foreach ($deduc as $tag => $value) {
                 self::$dom->addChild(
-                    $deducoes,
+                    $node,
                     $tag,
                     $value,
                     true,
@@ -466,19 +467,15 @@ class RenderRPS
                     false
                 );
             }
-            self::$dom->appChild($root, $deducoes, 'Append Deducoes to RPS');
+            self::$dom->appChild($deducoes, $node, 'Append Deducao to Deducoes');
         }
-        //insere uma tag vazia !?!?
-        if (empty($rps->deducoes)) {
-            $deducoes = self::$dom->createElement('Deducoes');
-            self::$dom->appChild($root, $deducoes, 'Append Deducoes to RPS');
-        }
+        self::$dom->appChild($root, $deducoes, 'Append Deducoes to RPS');
         $itens = self::$dom->createElement('Itens');
         foreach ($rps->itens as $item) {
-            $item = self::$dom->createElement('Item');
+            $node = self::$dom->createElement('Item');
             foreach ($item as $tag => $value) {
                 self::$dom->addChild(
-                    $deducoes,
+                    $node,
                     $tag,
                     $value,
                     true,
@@ -486,7 +483,7 @@ class RenderRPS
                     false
                 );
             }
-            self::$dom->appChild($itens, $item, 'Append Item to Itens');
+            self::$dom->appChild($itens, $node, 'Append Item to Itens');
         }
         self::$dom->appChild($root, $itens, 'Append Itens to RPS');
         self::$dom->appendChild($root);
@@ -502,7 +499,7 @@ class RenderRPS
      */
     private static function signstr(Rps $rps, $priKey = '')
     {
-        $content = str_pad($rps->prestadorIM, 11, '0', STR_PAD_LEFT);
+        $content = str_pad($rps->inscricaoMunicipalPrestador, 11, '0', STR_PAD_LEFT);
         $content .= str_pad($rps->serieRPS, 5, ' ', STR_PAD_RIGHT);
         $content .= str_pad($rps->numeroRPS, 12, '0', STR_PAD_LEFT);
         $dt = new \DateTime($rps->dataEmissaoRPS);
@@ -510,7 +507,7 @@ class RenderRPS
         $content .= str_pad($rps->tributacao, 2, ' ', STR_PAD_RIGHT);
         $content .= $rps->situacaoRPS;
         $content .= ($rps->tipoRecolhimento == 'A') ? 'N' : 'S';
-        $valores = $this->calcValor();
+        $valores = self::calcValor($rps);
         $content = str_pad(round($valores['valorFinal']*100, 0), 15, '0', STR_PAD_LEFT);
         $content = str_pad(round($valores['valorDeducao']*100, 0), 15, '0', STR_PAD_LEFT);
         $content .= str_pad($rps->codigoAtividade, 10, '0', STR_PAD_LEFT);
@@ -519,15 +516,15 @@ class RenderRPS
         return $signature;
     }
     
-    private function calcValor()
+    private static function calcValor(Rps $rps)
     {
         $valorItens = 0;
         foreach ($rps->itens as $item) {
-            $valorItens += $rps->item['valorTotal'];
+            $valorItens += $item['ValorTotal'];
         }
         $valorDeducao = 0;
         foreach ($rps->deducoes as $deducao) {
-            $valorDeducao += $deducao['valorDeduzir'];
+            $valorDeducao += $deducao['ValorDeduzir'];
         }
         $valor = ($valorItens - $valorDeducao);
         return ['valorFinal' => $valor, 'valorItens' => $valorItens, 'valorDeducao' => $valorDeducao];

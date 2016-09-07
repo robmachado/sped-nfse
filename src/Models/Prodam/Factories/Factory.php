@@ -22,4 +22,12 @@ class Factory extends FactoryBase
 {
     protected $xmlns= "http://www.prefeitura.sp.gov.br/nfe";
     protected $pathSchemes = '../../schemes/Prodam/';
+    
+    protected function requestFirstPart($method)
+    {
+        return "<$method "
+            . "xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" "
+            . "xmlns=\"http://www.prefeitura.sp.gov.br/nfe\" "
+            . "xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\">";
+    }
 }

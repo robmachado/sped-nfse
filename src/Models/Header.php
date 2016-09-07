@@ -85,7 +85,7 @@ class Header
     
     protected static function check($tag, $info = '')
     {
-        if ($info == '' || $info == '0') {
+        if (is_null($info)) {
             return '';
         }
         return "<$tag>$info</$tag>";

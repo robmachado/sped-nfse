@@ -39,19 +39,12 @@ class CancelamentoNFSe extends Factory
         $versao,
         $remetenteTipoDoc,
         $remetenteCNPJCPF,
-        $transacao = '',
-        $prestadorIM = '',
-        $numeroNFSe = ''
+        $transacao,
+        $prestadorIM,
+        $numeroNFSe
     ) {
         $method = "PedidoCancelamentoNFe";
-        $content = "<$method "
-            . "xmlns:xsd=\""
-            . $this->xmlnsxsd
-            . "\" xmlns=\""
-            . $this->xmlns
-            . "\" xmlns:xsi=\""
-            . $this->xmlnsxsi
-            . "\">";
+        $content = $this->requestFirstPart($method);
         $content .= Header::render($versao, $remetenteTipoDoc, $remetenteCNPJCPF, $transacao);
         if (is_array($numeroNFSe)) {
             if (count($numeroNFSe) > 50) {

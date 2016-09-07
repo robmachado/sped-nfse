@@ -135,11 +135,18 @@ class Tools extends ToolsBase
     public function enviar($rpss, $numeroLote)
     {
         $this->method = 'enviar';
-        /*
-         * <lot:enviar>
-         <mensagemXml>?</mensagemXml>
-      </lot:enviar>
-         */
+        $fact = new Factories\Enviar($this->oCertificate);
+        $fact->setSignAlgorithm($this->signaturealgo);
+        $xml = $fact->render(
+            $this->versao,
+            $this->remetenteCNPJCPF,
+            $this->remetenteRazao,
+            '',
+            $this->codcidade,
+            $rpss,
+            $numeroLote
+        );
+        return $this->buildRequest($xml);
     }
     
     public function enviarSincrono($rpss, $numeroLote)
@@ -178,27 +185,5 @@ class Tools extends ToolsBase
             $request = $this->replaceNodeWithCdata($request, 'mensagemXML', $body);
         }
         return $request;
-    }
-    
-    /**
-     * Envia mensagem por SOAP
-     * @param string $body
-     * @param string $method
-     */
-    public function envia($request)
-    {
-       
-        
-        header("Content-type: text/xml");
-        echo $request;
-        die;
-        
-        $url = $this->url[$this->aConfig['tpAmb']];
-        try {
-            $this->setSSLProtocol('TLSv1');
-            //$response = $this->oSoap->send($url, '', '', $body, $this->method);
-        } catch (Exception $ex) {
-            echo $ex;
-        }
     }
 }

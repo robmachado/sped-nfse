@@ -25,6 +25,7 @@ class Tools extends BaseTools
     protected $versao = '1';
     protected $remetenteTipoDoc = '2';
     protected $remetenteCNPJCPF = '';
+    protected $remetenteRazao = '';
     protected $method = '';
     /**
      * Webservices URL
@@ -68,6 +69,7 @@ class Tools extends BaseTools
         parent::__construct($config);
         $this->versao = $this->aConfig['versao'];
         $this->remetenteCNPJCPF = $this->aConfig['cnpj'];
+        $this->remetenteRazao = $this->aConfig['razaosocial'];
         if ($this->aConfig['cpf'] != '') {
             $this->remetenteTipoDoc = '1';
             $this->remetenteCNPJCPF = $this->aConfig['cpf'];
@@ -87,5 +89,27 @@ class Tools extends BaseTools
         $newnode->appendChild($cdatanode);
         $root->appendChild($newnode);
         return $dom->saveXML();
+    }
+    
+    /**
+     * Envia mensagem por SOAP
+     * @param string $body
+     * @param string $method
+     */
+    public function envia($request)
+    {
+       
+        
+        header("Content-type: text/xml");
+        echo $request;
+        die;
+        
+        $url = $this->url[$this->aConfig['tpAmb']];
+        try {
+            $this->setSSLProtocol('TLSv1');
+            //$response = $this->oSoap->send($url, '', '', $body, $this->method);
+        } catch (Exception $ex) {
+            echo $ex;
+        }
     }
 }

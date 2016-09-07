@@ -27,29 +27,24 @@ class Cancelar extends Factory
     public function render(
         $versao,
         $remetenteCNPJCPF,
-        $transacao = '',
-        $codcidade = '',
-        $prestadorIM = '',
-        $tokenEnvio = '',
-        $lote = '',
-        $numero = '',
-        $codigoverificacao = '',
-        $motivocancelamento = ''
+        $transacao,
+        $codcidade,
+        $prestadorIM,
+        $tokenEnvio,
+        $lote,
+        $numero,
+        $codigoverificacao,
+        $motivocancelamento
     ) {
         $method = "ReqCancelamentoNFSe";
-        $content = "<ns1:$method "
-            . "xmlns:ns1=\"http://localhost:8080/WsNFe2/lote\" "
-            . "xmlns:tipos=\"http://localhost:8080/WsNFe2/tp\" "
-            . "xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" "
-            . "xsi:schemaLocation=\"http://localhost:8080/WsNFe2/lote "
-            . "http://localhost:8080/WsNFe2/xsd/$method.xsd\""
-            . ">";
+        $content = $this->requestFirstPart($method);
         $content .= Header::render(
             $versao,
             $remetenteCNPJCPF,
+            null,
             $transacao,
             $codcidade,
-            '',
+            null,
             $tokenEnvio
         );
         $content .= "<Lote Id=\"lote:$lote\">";

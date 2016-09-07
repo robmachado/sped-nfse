@@ -10,30 +10,23 @@ class ConsultarNFSeRps extends Factory
     public function render(
         $versao,
         $remetenteCNPJCPF,
-        $codcidade = '',
-        $transacao = '',
-        $prestadorIM = '',
-        $lote = '',
+        $codcidade,
+        $transacao,
+        $prestadorIM,
+        $lote,
         $chavesNFSe = [],
         $chavesRPS = []
     ) {
         $method = 'ReqConsultaNFSeRPS';
-        $content = "<ns1:$method "
-            . "xmlns:ns1=\"http://localhost:8080/WsNFe2/lote\" "
-            . "xmlns:tipos=\"http://localhost:8080/WsNFe2/tp\" "
-            . "xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" "
-            . "xsi:schemaLocation=\"http://localhost:8080/WsNFe2/lote "
-            . "http://localhost:8080/WsNFe2/xsd/$method.xsd\""
-            . ">";
+        $content = $this->requestFirstPart($method);
         $content .= Header::render(
             $versao,
             $remetenteCNPJCPF,
+            null,
             $transacao,
             $codcidade
         );
-        
         $content .= "<Lote Id=\"lote:$lote\">";
-       
         foreach ($chavesNFSe as $nota) {
             $content .= "<NotaConsulta>";
             $content .= "<Nota Id=\"nota:".$nota['numero']."\">";
@@ -43,7 +36,6 @@ class ConsultarNFSeRps extends Factory
             $content .= "</Nota>";
             $content .= "</NotaConsulta>";
         }
-        
         foreach ($chavesRPS as $rps) {
             $content .= "<RPSConsulta>";
             $content .= "<RPS Id=\"rps:".$rps['numero']."\">";

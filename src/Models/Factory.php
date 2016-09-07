@@ -22,9 +22,6 @@ use NFePHP\Common\Certificate\Pkcs12;
 
 class Factory
 {
-    protected $xmlnsxsd="http://www.w3.org/2001/XMLSchema";
-    protected $xmlnsxsi="http://www.w3.org/2001/XMLSchema-instance";
-    protected $xmlns= "";
     protected $oCertificate;
     protected $pathSchemes = '../../schemes/';
     protected $xml = '';
