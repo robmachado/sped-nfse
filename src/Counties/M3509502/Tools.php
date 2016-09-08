@@ -48,7 +48,7 @@ class Tools extends ToolsDsfnet
      * SIAFI County Cod
      * @var int
      */
-    protected $codcidade = 0;
+    protected $codcidade = 6291;
     /**
      * Indicates when use CDATA string on message
      * @var boolean
