@@ -1,2 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<ns1:ReqConsultaLote xmlns:ns1="http://localhost:8080/WsNFe2/lote" xmlns:tipos="http://localhost:8080/WsNFe2/tp" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://localhost:8080/WsNFe2/lote  http://localhost:8080/WsNFe2/xsd/ReqConsultaLote.xsd"><Cabecalho><CodCidade>7145</CodCidade><CPFCNPJRemetente>02852715000106</CPFCNPJRemetente><Versao>1</Versao><NumeroLote>224727</NumeroLote></Cabecalho></ns1:ReqConsultaLote>

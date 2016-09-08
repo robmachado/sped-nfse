@@ -1,2 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<ns1_ReqConsultaNotas xmlns:ns1="http://localhost:8080/WsNFe2/lote" xmlns:tipos="http://localhost:8080/WsNFe2/tp" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://localhost:8080/WsNFe2/lote http://localhost:8080/WsNFe2/xsd/ReqConsultaNotas.xsd"><Cabecalho><CodCidade>1219</CodCidade><CPFCNPJRemetente>02646676000182</CPFCNPJRemetente><InscricaoMunicipalPrestador>0871834</InscricaoMunicipalPrestador><dtInicio>2008-12-01</dtInicio><dtFim>2009-12-30</dtFim><Versao>1</Versao></Cabecalho></ns1_ReqConsultaNotas>
