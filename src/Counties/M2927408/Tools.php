@@ -48,7 +48,7 @@ class Tools extends ToolsAbrasf
      * County Namespace
      * @var string
      */
-    protected $xmlns= "";
+    protected $xmlns= "http://tempuri.org/";
     /**
      * Soap Version
      * @var int
@@ -63,7 +63,7 @@ class Tools extends ToolsAbrasf
      * SIAFI County Cod
      * @var int
      */
-    protected $codcidade = 0;
+    protected $codcidade = 3849;
     /**
      * Indicates when use CDATA string on message
      * @var boolean

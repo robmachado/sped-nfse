@@ -48,7 +48,7 @@ class Tools extends ToolsProdam
      * SIAFI County Cod
      * @var int
      */
-    protected $codcidade = 0;
+    protected $codcidade = 7107;
     /**
      * Indicates when use CDATA string on message
      * @var boolean

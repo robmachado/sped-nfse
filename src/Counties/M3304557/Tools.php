@@ -27,25 +27,25 @@ class Tools extends ToolsAbrasf
      */
     protected $url = [
         1 => [
-            'EnvioLoteRPS'=>"",
-            'ConsultaSituacaoLoteRPS'=>"",
-            'ConsultaLoteRPS'=>"",
-            'ConsultaNfseRPS'=>"",
-            'ConsultaNFse'=>""
+            'EnvioLoteRPS'=>"https://notacarioca.rio.gov.br/WSNacional/nfse.asmx",
+            'ConsultaSituacaoLoteRPS'=>"https://notacarioca.rio.gov.br/WSNacional/nfse.asmx",
+            'ConsultaLoteRPS'=>"https://notacarioca.rio.gov.br/WSNacional/nfse.asmx",
+            'ConsultaNfseRPS'=>"https://notacarioca.rio.gov.br/WSNacional/nfse.asmx",
+            'ConsultaNFse'=>"https://notacarioca.rio.gov.br/WSNacional/nfse.asmx"
         ],
         2 => [
-            'EnvioLoteRPS'=>"",
-            'ConsultaSituacaoLoteRPS'=>"",
-            'ConsultaLoteRPS'=>"",
-            'ConsultaNfseRPS'=>"",
-            'ConsultaNFse'=>""
+            'EnvioLoteRPS'=>"https://homologacao.notacarioca.rio.gov.br/WSNacional/nfse.asmx",
+            'ConsultaSituacaoLoteRPS'=>"https://homologacao.notacarioca.rio.gov.br/WSNacional/nfse.asmx",
+            'ConsultaLoteRPS'=>"https://homologacao.notacarioca.rio.gov.br/WSNacional/nfse.asmx",
+            'ConsultaNfseRPS'=>"https://homologacao.notacarioca.rio.gov.br/WSNacional/nfse.asmx",
+            'ConsultaNFse'=>"https://homologacao.notacarioca.rio.gov.br/WSNacional/nfse.asmx"
         ]
     ];
     /**
      * County Namespace
      * @var string
      */
-    protected $xmlns= "";
+    protected $xmlns= "http://tempuri.org/";
     /**
      * Soap Version
      * @var int
@@ -60,7 +60,7 @@ class Tools extends ToolsAbrasf
      * SIAFI County Cod
      * @var int
      */
-    protected $codcidade = 0;
+    protected $codcidade = 6001;
     /**
      * Indicates when use CDATA string on message
      * @var boolean
