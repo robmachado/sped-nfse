@@ -19,7 +19,6 @@ use NFePHP\Common\Base\BaseTools;
 use NFePHP\Common\Files;
 use NFePHP\Common\Dom\Dom;
 
-
 class Tools extends BaseTools
 {
     
@@ -59,12 +58,12 @@ class Tools extends BaseTools
     /**
      * Indicates when use CDATA string on message
      * @var boolean
-     */    
+     */
     protected $withcdata = false;
     /**
      * Encription signature algorithm
      * @var string
-     */     
+     */
     protected $signaturealgo= 'SHA1';
 
     /**

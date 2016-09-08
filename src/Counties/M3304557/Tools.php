@@ -69,6 +69,6 @@ class Tools extends ToolsAbrasf
     /**
      * Encription signature algorithm
      * @var string
-     */    
+     */
     protected $signaturealgo = 'SHA1';
 }

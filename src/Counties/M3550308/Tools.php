@@ -57,6 +57,6 @@ class Tools extends ToolsProdam
     /**
      * Encription signature algorithm
      * @var string
-     */    
+     */
     protected $signaturealgo = 'SHA1';
 }

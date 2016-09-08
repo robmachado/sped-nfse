@@ -57,7 +57,6 @@ class Tools extends ToolsDsfnet
     /**
      * Encription signature algorithm
      * @var string
-     */    
+     */
     protected $signaturealgo = 'SHA1';
-    
 }

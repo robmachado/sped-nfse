@@ -60,7 +60,7 @@ class SoapClient
     }
     
     /**
-     * 
+     *
      * @param type $url
      * @param type $port
      * @param type $envelope
@@ -88,7 +88,7 @@ class SoapClient
             curl_setopt($oCurl, CURLOPT_SSLVERSION, $this->soapprotocol);
             curl_setopt($oCurl, CURLOPT_SSLCERT, $this->certfile);
             curl_setopt($oCurl, CURLOPT_SSLKEY, $this->prifile);
-        }    
+        }
         curl_setopt($oCurl, CURLOPT_RETURNTRANSFER, 1);
         curl_setopt($oCurl, CURLOPT_POST, 1);
         curl_setopt($oCurl, CURLOPT_POSTFIELDS, $envelope);
