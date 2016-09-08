@@ -1,3 +1,0 @@
-Os exemplos de XML encontram-se nas pastas de acordo com a cidade de declaração.
-Para cada prefeitura existem exemplos para cada método do Web Service, o XML não tem difereça de uma Prefeitura para outra, o que irá mudar basicamente é o codigo da cidade indicado no cabeçalho do XML.
-
