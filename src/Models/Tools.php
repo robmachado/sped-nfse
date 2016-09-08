@@ -19,6 +19,7 @@ use NFePHP\Common\Base\BaseTools;
 use NFePHP\Common\Files;
 use NFePHP\Common\Dom\Dom;
 
+
 class Tools extends BaseTools
 {
     
@@ -46,24 +47,30 @@ class Tools extends BaseTools
      */
     protected $soapversion = 1;
     /**
+     * Soap port
+     * @var int
+     */
+    protected $soapport = 443;
+    /**
      * SIAFI County Cod
      * @var int
      */
     protected $codcidade = 0;
+    /**
+     * Indicates when use CDATA string on message
+     * @var boolean
+     */    
     protected $withcdata = false;
+    /**
+     * Encription signature algorithm
+     * @var string
+     */     
     protected $signaturealgo= 'SHA1';
-    
-    /**
-     * Namespace for XMLSchema
-     * @var string
-     */
-    protected $xmlnsxsd="http://www.w3.org/2001/XMLSchema";
-    /**
-     * Namespace for XMLSchema-instance
-     * @var string
-     */
-    protected $xmlnsxsi="http://www.w3.org/2001/XMLSchema-instance";
 
+    /**
+     * Constructor
+     * @param string $config
+     */
     public function __construct($config)
     {
         parent::__construct($config);
@@ -106,22 +113,25 @@ class Tools extends BaseTools
     }
     
     /**
-     * Envia mensagem por SOAP
-     * @param string $body
-     * @param string $method
+     * Sends SOAP envelope
+     * @param string $url
+     * @param string $envelope
+     * @param array $params
      */
-    public function envia($request)
+    public function envia($url, $envelope, $params)
     {
        
         
-        header("Content-type: text/xml");
-        echo $request;
-        die;
+        //header("Content-type: text/xml");
+        //echo $request;
+        //die;
+        
+        $oSoap = new SoapClient($this->oCertificate);
         
         $url = $this->url[$this->aConfig['tpAmb']];
         try {
-            $this->setSSLProtocol('TLSv1');
-            //$response = $this->oSoap->send($url, '', '', $body, $this->method);
+            //$this->setSSLProtocol('TLSv1');
+            $response = $oSoap->soapSend($url, $this->port, $envelope, $params);
         } catch (Exception $ex) {
             echo $ex;
         }

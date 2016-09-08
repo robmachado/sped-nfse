@@ -44,7 +44,7 @@ class Tools extends ToolsAbrasf
         ]
     ];
     
-     /**
+    /**
      * County Namespace
      * @var string
      */
@@ -54,4 +54,24 @@ class Tools extends ToolsAbrasf
      * @var int
      */
     protected $soapversion = 2;
+      /**
+     * Soap port
+     * @var int
+     */
+    protected $soapport = 443;
+    /**
+     * SIAFI County Cod
+     * @var int
+     */
+    protected $codcidade = 0;
+    /**
+     * Indicates when use CDATA string on message
+     * @var boolean
+     */
+    protected $withcdata = false;
+    /**
+     * Encription signature algorithm
+     * @var string
+     */    
+    protected $signaturealgo = 'SHA1';
 }
