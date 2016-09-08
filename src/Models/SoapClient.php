@@ -16,8 +16,6 @@ class SoapClient
     const SSL_TLSV1_1 = 5; //TLSv1.1
     const SSL_TLSV1_2 = 6; //TLSv1.2
     
-    protected $soapinfo = [];
-    protected $soaperrors = '';
     protected $soaptimeout = 20;
     protected $soapprotocol = self::SSL_DEFAULT;
     protected $logger;
@@ -32,24 +30,9 @@ class SoapClient
     protected $pubfile = '';
     protected $certfile = '';
 
-    protected $ns = [
-        1 => [
-            'xmlns:soapenv'=>"http://schemas.xmlsoap.org/soap/envelope/"
-        ],
-        2 => [
-            'xmlns:soap'=>"http://www.w3.org/2003/05/soap-envelope",
-            'xmlns:xsi'=>"http://www.w3.org/2001/XMLSchema-instance",
-            'xmlns:xsd'=>"http://www.w3.org/2001/XMLSchema"
-        ]
-    ];
-    
     public function __construct(Pkcs12 $pkcs = null, LoggerInterface $logger = null)
     {
         $this->logger = $logger;
-        $this->tempdir = sys_get_temp_dir().DIRECTORY_SEPARATOR;
-        $this->prifile = tempnam($this->tempdir, 'Pri').'.pem';
-        $this->pubfile = tempnam($this->tempdir, 'Pub').'.pem';
-        $this->certfile = tempnam($this->tempdir, 'Cert').'.pem';
         $this->saveTemporaryKeyFiles($pkcs);
     }
     
@@ -76,8 +59,21 @@ class SoapClient
         $this->soapprotocol = $protocol;
     }
     
+    /**
+     *
+     * @param type $url
+     * @param type $port
+     * @param type $envelope
+     * @param type $params
+     * @return string
+     * @throws \RuntimeException
+     */
     public function soapSend($url, $port, $envelope, $params)
     {
+        $soapinfo = array();
+        $soaperror = '';
+        $response = '';
+        
         $oCurl = curl_init();
         $this->curlSetProxy($oCurl);
         curl_setopt($oCurl, CURLOPT_URL, $url);
@@ -85,22 +81,44 @@ class SoapClient
         curl_setopt($oCurl, CURLOPT_CONNECTTIMEOUT, $this->soapTimeout);
         curl_setopt($oCurl, CURLOPT_VERBOSE, 1);
         curl_setopt($oCurl, CURLOPT_HEADER, 1);
-        curl_setopt($oCurl, CURLOPT_SSLVERSION, $this->soapprotocol);
         curl_setopt($oCurl, CURLOPT_SSL_VERIFYHOST, 2);
         curl_setopt($oCurl, CURLOPT_SSL_VERIFYPEER, 0);
         curl_setopt($oCurl, CURLOPT_PORT, $port);
-        curl_setopt($oCurl, CURLOPT_SSLCERT, $this->certfile);
-        curl_setopt($oCurl, CURLOPT_SSLKEY, $this->prifile);
+        if ($port == 443) {
+            curl_setopt($oCurl, CURLOPT_SSLVERSION, $this->soapprotocol);
+            curl_setopt($oCurl, CURLOPT_SSLCERT, $this->certfile);
+            curl_setopt($oCurl, CURLOPT_SSLKEY, $this->prifile);
+        }
         curl_setopt($oCurl, CURLOPT_RETURNTRANSFER, 1);
         curl_setopt($oCurl, CURLOPT_POST, 1);
         curl_setopt($oCurl, CURLOPT_POSTFIELDS, $envelope);
         curl_setopt($oCurl, CURLOPT_HTTPHEADER, $params);
+        
+        //log sended data
+        //$this->logger->debug($envelope);
+        
         //connect and send
         //$response = curl_exec($oCurl);
-        $this->logger->debug($envelope);
-        //$this->soapinfo = curl_getinfo($oCurl);
-        //$this->soaperrors = curl_error($oCurl);
+        
+        //$soapinfo = curl_getinfo($oCurl);
+        //$soaperrors = curl_error($oCurl);
+        
+        //log soap info
+        //log soaperrors if exists
+        //log soap response ever
+        
         curl_close($oCurl);
+        
+        if (!empty($soapinfo)) {
+            if ($soapinfo["http_code"] != '200') {
+                //fail
+                //so log error and other messages
+                $msg = "Falha na comunicação.[".$soapinfo["http_code"]."";
+                throw new \RuntimeException($msg);
+            }
+        }
+        
+        
         return $response;
     }
     
@@ -120,6 +138,11 @@ class SoapClient
     private function saveTemporaryKeyFiles(Pkcs12 $pkcs = null)
     {
         if (is_object($pkcs)) {
+            $this->tempdir = sys_get_temp_dir().DIRECTORY_SEPARATOR;
+            $this->prifile = tempnam($this->tempdir, 'Pri').'.pem';
+            $this->pubfile = tempnam($this->tempdir, 'Pub').'.pem';
+            $this->certfile = tempnam($this->tempdir, 'Cert').'.pem';
+            
             file_put_contents($this->prifile, $pkcs->priKey);
             file_put_contents($this->pubfile, $pkcs->pubKey);
             file_put_contents($this->certfile, $pkcs->certKey);

@@ -152,21 +152,35 @@ class Tools extends ToolsBase
     public function enviarSincrono($rpss, $numeroLote)
     {
         $this->method = 'enviarSincrono';
-        /*
-         * <lot:enviarSincrono>
-         <mensagemXml>?</mensagemXml>
-      </lot:enviarSincrono>
-         */
+        $fact = new Factories\Enviar($this->oCertificate);
+        $fact->setSignAlgorithm($this->signaturealgo);
+        $xml = $fact->render(
+            $this->versao,
+            $this->remetenteCNPJCPF,
+            $this->remetenteRazao,
+            '',
+            $this->codcidade,
+            $rpss,
+            $numeroLote
+        );
+        return $this->buildRequest($xml);
     }
     
     public function testeEnviar($rpss, $numeroLote)
     {
         $this->method = 'testeEnviar';
-        /*
-         * <lot:testeEnviar>
-         <mensagemXml>?</mensagemXml>
-      </lot:testeEnviar>
-         */
+        $fact = new Factories\Enviar($this->oCertificate);
+        $fact->setSignAlgorithm($this->signaturealgo);
+        $xml = $fact->render(
+            $this->versao,
+            $this->remetenteCNPJCPF,
+            $this->remetenteRazao,
+            '',
+            $this->codcidade,
+            $rpss,
+            $numeroLote
+        );
+        return $this->buildRequest($xml);
     }
     
     /**
@@ -184,15 +198,22 @@ class Tools extends ToolsBase
             $param = ['soapenv:encodingStyle', 'http://schemas.xmlsoap.org/soap/encoding/'];
             $request = $this->replaceNodeWithCdata($request, 'mensagemXML', $body, $param);
         }
-        $envelope = "<soapenv:Envelope "
+        $envelope = "<?xml version=\"1.0\" encoding=\"utf-8\"?><soapenv:Envelope "
                 . "xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" "
                 . "xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" "
                 . "xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" "
-                . "xmlns:dsf=\"http://dsfnet.com.br\">"
+                . "xmlns:dsf=\"$this->xmlns\">"
                 . "<soapenv:Body>"
                 . $request
                 . "</soapenv:Body>"
                 . "</soapenv:Envelope>";
+        
+        $messageSize = strlen($envelope);
+        $parametros = array(
+            'Content-Type: application/soap+xml;charset=utf-8',
+            'SOAPAction: "'.$this->method.'"',
+            "Content-length: $messageSize");
+        
         return $envelope;
     }
 }
