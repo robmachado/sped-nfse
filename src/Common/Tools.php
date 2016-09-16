@@ -25,8 +25,11 @@ class Tools
     protected $config;
     protected $certificate;
     protected $method = '';
-    
-    
+
+    protected $versao;
+    protected $remetenteTipoDoc;
+    protected $remetenteCNPJCPF;
+            
     /**
      * Webservices URL
      * @var array
@@ -64,7 +67,7 @@ class Tools
      * Encription signature algorithm
      * @var string
      */
-    protected $signaturealgo= 'SHA1';
+    protected $algorithm;
 
     /**
      * Constructor
@@ -73,6 +76,13 @@ class Tools
     public function __construct(stdClass $config, Certificate $certificate)
     {
         $this->config = $config;
+        $this->versao = $config->versao;
+        $this->remetenteCNPJCPF = $config->cpf;
+        $this->remetenteTipoDoc = 1;
+        if ($config->cnpj != '') {
+            $this->remetenteCNPJCPF = $config->cnpj;
+            $this->remetenteTipoDoc = 2;
+        }
         $this->certificate = $certificate;
     }
     
@@ -109,23 +119,22 @@ class Tools
      * Sends SOAP envelope
      * @param string $url
      * @param string $envelope
-     * @param array $params
      */
-    public function envia($url, $envelope, $params)
+    public function envia($envelope)
     {
-       
-        
-        header("Content-type: text/xml");
-        echo $request;
-        die;
+        $messageSize = strlen($envelope);
+        $params = [
+            'Content-Type: application/soap+xml;charset=utf-8',
+            'SOAPAction: https://nfe.prefeitura.sp.gov.br/nfe/ws/' . $this->method,
+            "Content-length: $messageSize"
+        ];
         
         $oSoap = new SoapClient($this->certificate);
-        
         $url = $this->url[$this->config->tpAmb];
+        
         try {
-            //$this->setSSLProtocol('TLSv1');
-            $response = $oSoap->soapSend($url, $this->port, $envelope, $params);
-        } catch (Exception $ex) {
+            $response = $oSoap->soapSend($url, $this->soapport, $envelope, $params);
+        } catch (\RuntimeException $ex) {
             echo $ex;
         }
     }

@@ -25,15 +25,18 @@ class Factory
     protected $certificate;
     protected $pathSchemes = '../../schemes/';
     protected $xml = '';
-    protected $signAlgorithm = 'SHA1';
+    protected $algorithm;
     
     /**
      * Construtor recebe a classe de certificados
-     * @param Pkcs12 $pkcs
+     * 
+     * @param Certificate $certificate
+     * @param int $algorithm
      */
-    public function __construct(Certificate $certificate)
+    public function __construct(Certificate $certificate, $algorithm = OPENSSL_ALGO_SHA1)
     {
         $this->certificate = $certificate;
+        $this->algorithm = $algorithm;
     }
     
     /**
@@ -49,9 +52,9 @@ class Factory
         return $body;
     }
     
-    public function setSignAlgorithm($algo = 'SHA1')
+    public function setSignAlgorithm($algorithm)
     {
-        $this->signAlgorithm = $algo;
+        $this->algorithm = $algorithm;
     }
     
     /**

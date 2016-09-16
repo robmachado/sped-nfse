@@ -16,7 +16,7 @@ namespace NFePHP\NFSe\Models\Prodam\Factories;
  * @link      http://github.com/nfephp-org/sped-nfse for the canonical source repository
  */
 
-use NFePHP\NFSe\Models\Header as HeaderBase;
+use NFePHP\NFSe\Common\Header as HeaderBase;
 
 class Header extends HeaderBase
 {

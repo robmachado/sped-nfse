@@ -90,14 +90,12 @@ class SoapClient
         curl_setopt($oCurl, CURLOPT_SSL_VERIFYPEER, 0);
         curl_setopt($oCurl, CURLOPT_PORT, $port);
         if ($port == 443) {
-            //if ($this->soapprotocol != self::SSL_DEFAULT) {
-                curl_setopt($oCurl, CURLOPT_SSLVERSION, $this->soapprotocol);
-            //}
+            curl_setopt($oCurl, CURLOPT_SSLVERSION, $this->soapprotocol);
             curl_setopt($oCurl, CURLOPT_SSLCERT, $this->certfile);
             curl_setopt($oCurl, CURLOPT_SSLKEY, $this->prifile);
         }
         curl_setopt($oCurl, CURLOPT_RETURNTRANSFER, 1);
-        if (!empty($envelop)) {
+        if (!empty($envelope)) {
             curl_setopt($oCurl, CURLOPT_POST, 1);
             curl_setopt($oCurl, CURLOPT_POSTFIELDS, $envelope);
         }
@@ -123,8 +121,6 @@ class SoapClient
         
         if (!empty($soapinfo)) {
             if ($soapinfo["http_code"] != '200') {
-                //fail
-                //so log error and other messages
                 $msg = "Falha na comunicação.[".$soapinfo["http_code"]."] ".$response;
                 throw new \RuntimeException($msg);
             }

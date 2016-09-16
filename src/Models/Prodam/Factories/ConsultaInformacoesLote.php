@@ -19,6 +19,7 @@ namespace NFePHP\NFSe\Models\Prodam\Factories;
 
 use NFePHP\NFSe\Models\Prodam\Factories\Header;
 use NFePHP\NFSe\Models\Prodam\Factories\Factory;
+use NFePHP\NFSe\Common\Signner;
 
 class ConsultaInformacoesLote extends Factory
 {
@@ -50,8 +51,8 @@ class ConsultaInformacoesLote extends Factory
             $prestadorIM
         );
         $content .= "</$method>";
-        $body = $this->oCertificate->signXML($content, $method, '', $algorithm = 'SHA1');
-        $body = $this->clear($body);
+        $content = Signner::sign($this->certificate, $content, $method, '', $this->algorithm);
+        $body = $this->clear($content);
         $this->validar($versao, $body, $method);
         return $body;
     }

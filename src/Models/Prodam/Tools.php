@@ -30,7 +30,7 @@ class Tools extends ToolsBase
     {
         $this->method = 'EnvioRPS';
         $fact = new Factories\EnvioRPS($this->certificate);
-        $fact->setSignAlgorithm($this->signaturealgo);
+        $fact->setSignAlgorithm($this->algorithm);
         $xml = $fact->render(
             $this->versao,
             $this->remetenteTipoDoc,
@@ -49,7 +49,7 @@ class Tools extends ToolsBase
     {
         $this->method = 'EnvioLoteRPS';
         $fact = new Factories\EnvioRPS($this->certificate);
-        $fact->setSignAlgorithm($this->signaturealgo);
+        $fact->setSignAlgorithm($this->algorithm);
         $xml = $fact->render(
             $this->versao,
             $this->remetenteTipoDoc,
@@ -68,7 +68,7 @@ class Tools extends ToolsBase
     {
         $this->method = 'TesteEnvioLoteRPS';
         $fact = new Factories\EnvioRPS($this->certificate);
-        $fact->setSignAlgorithm($this->signaturealgo);
+        $fact->setSignAlgorithm($this->algorithm);
         $xml = $fact->render(
             $this->versao,
             $this->remetenteTipoDoc,
@@ -88,7 +88,7 @@ class Tools extends ToolsBase
     {
         $this->method = 'ConsultaNFe';
         $fact = new Factories\ConsultaNFSe($this->certificate);
-        $fact->setSignAlgorithm($this->signaturealgo);
+        $fact->setSignAlgorithm($this->algorithm);
         $xml = $fact->render(
             $this->versao,
             $this->remetenteTipoDoc,
@@ -119,7 +119,7 @@ class Tools extends ToolsBase
     ) {
         $this->method = 'ConsultaNFeRecebidas';
         $fact = new Factories\ConsultaNFSePeriodo($this->certificate);
-        $fact->setSignAlgorithm($this->signaturealgo);
+        $fact->setSignAlgorithm($this->algorithm);
         $xml = $fact->render(
             $this->versao,
             $this->remetenteTipoDoc,
@@ -154,7 +154,7 @@ class Tools extends ToolsBase
     ) {
         $this->method = 'ConsultaNFeEmitidas';
         $fact = new Factories\ConsultaNFSePeriodo($this->certificate);
-        $fact->setSignAlgorithm($this->signaturealgo);
+        $fact->setSignAlgorithm($this->algorithm);
         $xml = $fact->render(
             $this->versao,
             $this->remetenteTipoDoc,
@@ -178,7 +178,7 @@ class Tools extends ToolsBase
     {
         $this->method = 'ConsultaLote';
         $fact = new Factories\ConsultaLote($this->certificate);
-        $fact->setSignAlgorithm($this->signaturealgo);
+        $fact->setSignAlgorithm($this->algorithm);
         $xml = $fact->render(
             $this->versao,
             $this->remetenteTipoDoc,
@@ -198,7 +198,7 @@ class Tools extends ToolsBase
     {
         $this->method = 'ConsultaInformacoesLote';
         $fact = new Factories\ConsultaInformacoesLote($this->certificate);
-        $fact->setSignAlgorithm($this->signaturealgo);
+        $fact->setSignAlgorithm($this->algorithm);
         $xml = $fact->render(
             $this->versao,
             $this->remetenteTipoDoc,
@@ -219,7 +219,7 @@ class Tools extends ToolsBase
     {
         $this->method = 'CancelamentoNFe';
         $fact = new Factories\CancelamentoNFSe($this->certificate);
-        $fact->setSignAlgorithm($this->signaturealgo);
+        $fact->setSignAlgorithm($this->algorithm);
         $xml = $fact->render(
             $this->versao,
             $this->remetenteTipoDoc,
@@ -227,7 +227,7 @@ class Tools extends ToolsBase
             'true',
             $prestadorIM,
             $numeroNFSe
-        );
+        );        
         return $this->buildRequest($xml);
     }
     
@@ -243,7 +243,7 @@ class Tools extends ToolsBase
         }
         $this->method = 'ConsultaCNPJ';
         $fact = new Factories\ConsultaCNPJ($this->certificate);
-        $fact->setSignAlgorithm($this->signaturealgo);
+        $fact->setSignAlgorithm($this->algorithm);
         $xml = $fact->render(
             $this->versao,
             $this->remetenteTipoDoc,
@@ -263,13 +263,20 @@ class Tools extends ToolsBase
     protected function buildRequest($body)
     {
         $tag = $this->method."Request";
-        $request = "<$tag>";
-        $request .= "<VersaoSchema>$this->versao</VersaoSchema>";
-        $request .= "<MensagemXML>$body</MensagemXML>";
-        $request .= "</$tag>";
+        $request = "<nfe:$tag>";
+        $request .= "<nfe:VersaoSchema>$this->versao</nfe:VersaoSchema>";
+        $request .= "<nfe:MensagemXML>$body</nfe:MensagemXML>";
+        $request .= "</nfe:$tag>";
         if ($this->withcdata === true) {
             $request = $this->replaceNodeWithCdata($request, 'MensagemXML', $body);
         }
-        return $request;
+        $envelope = "<soap:Envelope "
+            . "xmlns:soap=\"http://www.w3.org/2003/05/soap-envelope\" "
+            . "xmlns:nfe=\"http://www.prefeitura.sp.gov.br/nfe\">"
+            . "<soap:Header/>"
+            . "<soap:Body>$request</soap:Body>"
+            . "</soap:Envelope>";
+        
+        return $envelope;
     }
 }

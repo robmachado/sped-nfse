@@ -23,16 +23,6 @@ use RuntimeException;
 class Signner
 {
     /**
-     * @var NFePHP\Common\Certificate
-     */
-    protected static $certificate;
-    
-    public static function loadCert(Certificate $certificate)
-    {
-        self::$certificate = $certificate;
-    }
-    
-    /**
      * sign
      * @param string $content
      * @param string $tagid
@@ -42,8 +32,13 @@ class Signner
      * @throws Exception\InvalidArgumentException
      * @throws Exception\RuntimeException
      */
-    public static function sign($content, $tagid = '', $mark = 'Id', $algorithm = 'SHA1')
-    {
+    public static function sign(
+        Certificate $certificate,
+        $content,
+        $tagid = '',
+        $mark = 'Id',
+        $algorithm = OPENSSL_ALGO_SHA1
+    ) {
         $dom = new DOMDocument('1.0', 'utf-8');
         $dom->loadXML($content);
         $root = $dom->documentElement;
@@ -52,7 +47,14 @@ class Signner
             throw new RuntimeException("A tag < $tagid > não existe no XML!!");
         }
         if (! self::signatureExists($dom)) {
-            $xml = self::createSignature($dom, $root, $node, $mark, $algorithm);
+            $xml = self::createSignature(
+               $certificate,
+               $dom,
+               $root,
+               $node,
+               $mark,
+               $algorithm
+            );
         }
         return $xml;
     }
@@ -69,28 +71,28 @@ class Signner
      * @internal param DOMDocument $xmlDoc
      */
     private static function createSignature(
+        Certificate $certificate,
         DOMDocument $dom,
         DOMElement $root,
         DOMElement $node,
         $mark,
-        $algorithm = 'SHA1'
+        $algorithm = OPENSSL_ALGO_SHA1
     ) {
         $nsDSIG = 'http://www.w3.org/2000/09/xmldsig#';
         $nsCannonMethod = 'http://www.w3.org/TR/2001/REC-xml-c14n-20010315';
         
         $nsSignatureMethod = 'http://www.w3.org/2000/09/xmldsig#rsa-sha1';
         $nsDigestMethod = 'http://www.w3.org/2000/09/xmldsig#sha1';
-        $signAlgorithm = OPENSSL_ALGO_SHA1;
-        if ($algorithm == 'SHA256') {
-            $signAlgorithm = OPENSSL_ALGO_SHA256;
+        $digestAlgorithm = 'sha1';
+        if ($algorithm == OPENSSL_ALGO_SHA256) {
+            $digestAlgorithm = 'sha256';
             $nsSignatureMethod = 'http://www.w3.org/2001/04/xmldsig-more#rsa-sha256';
             $nsDigestMethod = 'http://www.w3.org/2001/04/xmlenc#sha256';
         }
-        
         $nsTransformMethod1 ='http://www.w3.org/2000/09/xmldsig#enveloped-signature';
         $nsTransformMethod2 = 'http://www.w3.org/TR/2001/REC-xml-c14n-20010315';
         $idSigned = trim($node->getAttribute($mark));
-        $digestValue = self::calculeDigest($node, strtolower($algorithm));
+        $digestValue = self::calculeDigest($node, $digestAlgorithm);
         //cria o node <Signature>
         $signatureNode = $dom->createElementNS($nsDSIG, 'Signature');
         //adiciona a tag <Signature> ao node raiz
@@ -149,7 +151,7 @@ class Signner
         //extrai node <SignedInfo> para uma string na sua forma canonica
         $content = $signedInfoNode->C14N(true, false, null, null);
         //cria uma variavel vazia que receberá a assinatura
-        $signature = self::$certificate->sign($content, $signAlgorithm);
+        $signature = $certificate->sign($content, $algorithm);
         //converte a assinatura em base64
         $signatureValue = base64_encode($signature);
         //cria o node <SignatureValue>
@@ -165,7 +167,7 @@ class Signner
         //adiciona o node <X509Data> ao node <KeyInfo>
         $keyInfoNode->appendChild($x509DataNode);
         //remove linhas desnecessárias do certificado
-        $pubKeyClean = self::$certificate->publicKey->unFormated();
+        $pubKeyClean = $certificate->publicKey->unFormated();
         //cria o node <X509Certificate>
         $x509CertificateNode = $dom->createElement('X509Certificate', $pubKeyClean);
         //adiciona o node <X509Certificate> ao node <X509Data>
