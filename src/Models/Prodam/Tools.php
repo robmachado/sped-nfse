@@ -227,7 +227,7 @@ class Tools extends ToolsBase
             'true',
             $prestadorIM,
             $numeroNFSe
-        );        
+        );
         return $this->buildRequest($xml);
     }
     

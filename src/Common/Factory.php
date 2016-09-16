@@ -29,7 +29,7 @@ class Factory
     
     /**
      * Construtor recebe a classe de certificados
-     * 
+     *
      * @param Certificate $certificate
      * @param int $algorithm
      */

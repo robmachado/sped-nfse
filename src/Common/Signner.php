@@ -48,12 +48,12 @@ class Signner
         }
         if (! self::signatureExists($dom)) {
             $xml = self::createSignature(
-               $certificate,
-               $dom,
-               $root,
-               $node,
-               $mark,
-               $algorithm
+                $certificate,
+                $dom,
+                $root,
+                $node,
+                $mark,
+                $algorithm
             );
         }
         return $xml;
