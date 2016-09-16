@@ -18,20 +18,10 @@ namespace NFePHP\NFSe\Models\Prodam;
 
 use NFePHP\NFSe\Models\Prodam\Rps;
 use NFePHP\NFSe\Models\Prodam\Factories;
-use NFePHP\NFSe\Models\Tools as ToolsBase;
+use NFePHP\NFSe\Common\Tools as ToolsBase;
 
 class Tools extends ToolsBase
 {
-    
-    /**
-     * Construtor da classe Tools
-     * @param string $config
-     */
-    public function __construct($config)
-    {
-        parent::__construct($config);
-    }
-    
     /**
      * Envio de apenas um RPS
      * @param \NFePHP\NFSe\Models\Prodam\RPS $rps
@@ -39,7 +29,7 @@ class Tools extends ToolsBase
     public function envioRPS(RPS $rps)
     {
         $this->method = 'EnvioRPS';
-        $fact = new Factories\EnvioRPS($this->oCertificate);
+        $fact = new Factories\EnvioRPS($this->certificate);
         $fact->setSignAlgorithm($this->signaturealgo);
         $xml = $fact->render(
             $this->versao,
@@ -58,7 +48,7 @@ class Tools extends ToolsBase
     public function envioLoteRPS($rpss = array())
     {
         $this->method = 'EnvioLoteRPS';
-        $fact = new Factories\EnvioRPS($this->oCertificate);
+        $fact = new Factories\EnvioRPS($this->certificate);
         $fact->setSignAlgorithm($this->signaturealgo);
         $xml = $fact->render(
             $this->versao,
@@ -77,7 +67,7 @@ class Tools extends ToolsBase
     public function testeEnvioLoteRPS($rpss = array())
     {
         $this->method = 'TesteEnvioLoteRPS';
-        $fact = new Factories\EnvioRPS($this->oCertificate);
+        $fact = new Factories\EnvioRPS($this->certificate);
         $fact->setSignAlgorithm($this->signaturealgo);
         $xml = $fact->render(
             $this->versao,
@@ -97,7 +87,7 @@ class Tools extends ToolsBase
     public function consultaNFSe($chavesNFSe = [], $chavesRPS = [])
     {
         $this->method = 'ConsultaNFe';
-        $fact = new Factories\ConsultaNFSe($this->oCertificate);
+        $fact = new Factories\ConsultaNFSe($this->certificate);
         $fact->setSignAlgorithm($this->signaturealgo);
         $xml = $fact->render(
             $this->versao,
@@ -128,7 +118,7 @@ class Tools extends ToolsBase
         $pagina
     ) {
         $this->method = 'ConsultaNFeRecebidas';
-        $fact = new Factories\ConsultaNFSePeriodo($this->oCertificate);
+        $fact = new Factories\ConsultaNFSePeriodo($this->certificate);
         $fact->setSignAlgorithm($this->signaturealgo);
         $xml = $fact->render(
             $this->versao,
@@ -163,7 +153,7 @@ class Tools extends ToolsBase
         $pagina
     ) {
         $this->method = 'ConsultaNFeEmitidas';
-        $fact = new Factories\ConsultaNFSePeriodo($this->oCertificate);
+        $fact = new Factories\ConsultaNFSePeriodo($this->certificate);
         $fact->setSignAlgorithm($this->signaturealgo);
         $xml = $fact->render(
             $this->versao,
@@ -187,7 +177,7 @@ class Tools extends ToolsBase
     public function consultaLote($numeroLote = '')
     {
         $this->method = 'ConsultaLote';
-        $fact = new Factories\ConsultaLote($this->oCertificate);
+        $fact = new Factories\ConsultaLote($this->certificate);
         $fact->setSignAlgorithm($this->signaturealgo);
         $xml = $fact->render(
             $this->versao,
@@ -207,7 +197,7 @@ class Tools extends ToolsBase
     public function consultaInformacoesLote($prestadorIM = '', $numeroLote = '')
     {
         $this->method = 'ConsultaInformacoesLote';
-        $fact = new Factories\ConsultaInformacoesLote($this->oCertificate);
+        $fact = new Factories\ConsultaInformacoesLote($this->certificate);
         $fact->setSignAlgorithm($this->signaturealgo);
         $xml = $fact->render(
             $this->versao,
@@ -228,7 +218,7 @@ class Tools extends ToolsBase
     public function cancelamentoNFSe($prestadorIM = '', $numeroNFSe = '')
     {
         $this->method = 'CancelamentoNFe';
-        $fact = new Factories\CancelamentoNFSe($this->oCertificate);
+        $fact = new Factories\CancelamentoNFSe($this->certificate);
         $fact->setSignAlgorithm($this->signaturealgo);
         $xml = $fact->render(
             $this->versao,
@@ -252,7 +242,7 @@ class Tools extends ToolsBase
             return '';
         }
         $this->method = 'ConsultaCNPJ';
-        $fact = new Factories\ConsultaCNPJ($this->oCertificate);
+        $fact = new Factories\ConsultaCNPJ($this->certificate);
         $fact->setSignAlgorithm($this->signaturealgo);
         $xml = $fact->render(
             $this->versao,

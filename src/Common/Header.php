@@ -1,12 +1,13 @@
 <?php
 
-namespace NFePHP\NFSe\Models;
+namespace NFePHP\NFSe\Common;
 
 /**
- * Classe base para a construção do xml da NFSe e RPS
+ * Classe base para a construção dos cabaçalhos XML relativo aos serviços
+ * dos webservices
  *
  * @category  NFePHP
- * @package   NFePHP\NFSe\Models\Rps
+ * @package   NFePHP\NFSe\Models\Header
  * @copyright NFePHP Copyright (c) 2016
  * @license   http://www.gnu.org/licenses/lgpl.txt LGPLv3+
  * @license   https://opensource.org/licenses/MIT MIT
@@ -15,13 +16,13 @@ namespace NFePHP\NFSe\Models;
  * @link      http://github.com/nfephp-org/sped-nfse for the canonical source repository
  */
 
-use InvalidArgumentException;
-use NFePHP\Common\Files\FilesFolders;
-
-class Rps
+class Header
 {
-    protected function zValidData($matriz, $key)
+    protected static function check($tag, $info = '')
     {
-        return array_key_exists($key, $matriz);
+        if (is_null($info)) {
+            return '';
+        }
+        return "<$tag>$info</$tag>";
     }
 }

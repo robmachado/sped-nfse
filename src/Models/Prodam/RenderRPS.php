@@ -18,19 +18,18 @@ namespace NFePHP\NFSe\Models\Prodam;
 
 use NFePHP\Common\Dom\Dom;
 use NFePHP\NFSe\Models\Prodam\Rps;
-use NFePHP\NFSe\Models\Signner;
+use NFePHP\Common\Certificate;
 
 class RenderRPS
 {
     protected static $dom;
-    protected static $priKey = '';
-    
-    public static function toXml($data = '', $priKey = '')
+    protected static $certificate;
+    protected static $algorithm;
+
+    public static function toXml($data, $algorithm, Certificate $certificate)
     {
-        if ($data == '') {
-            return '';
-        }
-        self::$priKey = $priKey;
+        self::$certificate = $certificate;
+        self::$algorithm = $algorithm;
         if (is_object($data)) {
             return self::render($data);
         } elseif (is_array($data)) {
@@ -59,7 +58,7 @@ class RenderRPS
         self::$dom->addChild(
             $root,
             'Assinatura',
-            self::signstr($rps, self::$priKey),
+            self::signstr($rps, self::$algorithm),
             true,
             'Tag assinatura do RPS vazia',
             true
@@ -357,10 +356,10 @@ class RenderRPS
     /**
      * Cria a assinatura do RPS
      * @param Rps $rps
-     * @param string $priKey
+     * @param string $algorithm
      * @return string
      */
-    private static function signstr(Rps $rps, $priKey = '')
+    private static function signstr(Rps $rps, $algorithm)
     {
         $content = str_pad($rps->prestadorIM, 8, '0', STR_PAD_LEFT);
         $content .= str_pad($rps->serieRPS, 5, ' ', STR_PAD_RIGHT);
@@ -389,7 +388,7 @@ class RenderRPS
             $content .= str_pad($rps->intermediarioCNPJCPF, 14, '0', STR_PAD_LEFT);
             $content .= $rps->intermediarioISSRetido;
         }
-        $signature = Signner::sign($content, $priKey);
+        $signature = self::$certificate->privateKey->sign($content, $algorithm);
         return $signature;
     }
 }

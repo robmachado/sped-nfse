@@ -17,6 +17,7 @@ namespace NFePHP\NFSe\Models\Prodam\Factories;
  * @link      http://github.com/nfephp-org/sped-nfse for the canonical source repository
  */
 
+use NFePHP\NFSe\Common\Signner;
 use NFePHP\NFSe\Models\Prodam\Rps;
 use NFePHP\NFSe\Models\Prodam\Factories\Factory;
 use NFePHP\NFSe\Models\Prodam\RenderRPS;
@@ -79,7 +80,7 @@ class EnvioRPS extends Factory
             $this->valorTotalDeducoes
         );
         $content .= $xmlRPS."</$method>";
-        $body = $this->oCertificate->signXML($content, $method, '', $algorithm = 'SHA1');
+        //$body = $this->oCertificate->signXML($content, $method, '', $algorithm = 'SHA1');
         $body = $this->clear($body);
         //$this->validar($versao, $body, $method);
         return $body;
@@ -93,7 +94,7 @@ class EnvioRPS extends Factory
      */
     private function individual(&$content, $data)
     {
-        return RenderRPS::toXml($data, $this->oCertificate->priKey);
+        return RenderRPS::toXml($data, $algorithm, $this->certificate);
     }
     
     /**

@@ -16,7 +16,7 @@ namespace NFePHP\NFSe\Models\Prodam\Factories;
  * @link      http://github.com/nfephp-org/sped-nfse for the canonical source repository
  */
 
-use NFePHP\NFSe\Models\Factory as FactoryBase;
+use NFePHP\NFSe\Common\Factory as FactoryBase;
 
 class Factory extends FactoryBase
 {

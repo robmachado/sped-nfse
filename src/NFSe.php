@@ -16,30 +16,27 @@ namespace NFePHP\NFSe;
  */
 
 use NFePHP\NFSe\NFSeStatic;
+use NFePHP\Common\Certificate;
 
 class NFSe
 {
-    protected $configJson;
-    public $cMun;
     public $rps;
     public $convert;
     public $tools;
-    public $pkcs;
     
     /**
      * Construtor da classe
-     * @param string $config
+     * @param string $config  Path to file or string Json
+     * @param NFePHP\Common\Certificate $certificate
      */
-    public function __construct($config)
+    public function __construct($config, Certificate $certificate)
     {
-        $configJson = $config;
         if (is_file($config)) {
-            $this->configJson = file_get_contents($config);
+            $config = file_get_contents($config);
         }
-        $conf = json_decode($this->configJson);
-        $this->cMun = $conf->cmun;
-        $this->convert = NFSeStatic::convert($this->configJson);
-        $this->rps = NFSeStatic::rps($this->configJson);
-        $this->tools = NFSeStatic::tools($this->configJson);
+        $configJson = json_decode($config);
+        $this->convert = NFSeStatic::convert($configJson);
+        $this->rps = NFSeStatic::rps($configJson);
+        $this->tools = NFSeStatic::tools($configJson, $certificate);
     }
 }

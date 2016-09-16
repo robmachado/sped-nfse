@@ -1,6 +1,6 @@
 <?php
 
-namespace NFePHP\NFSe\Models;
+namespace NFePHP\NFSe\Common;
 
 /**
  * Classe para base para a comunicação com os webservices
@@ -15,18 +15,18 @@ namespace NFePHP\NFSe\Models;
  * @link      http://github.com/nfephp-org/sped-nfse for the canonical source repository
  */
 
-use NFePHP\Common\Base\BaseTools;
-use NFePHP\Common\Files;
-use NFePHP\Common\Dom\Dom;
+use NFePHP\Common\Certificate;
+use League\Flysystem;
+use DOMDocument;
+use stdClass;
 
-class Tools extends BaseTools
+class Tools
 {
-    
-    protected $versao = '1';
-    protected $remetenteTipoDoc = '2';
-    protected $remetenteCNPJCPF = '';
-    protected $remetenteRazao = '';
+    protected $config;
+    protected $certificate;
     protected $method = '';
+    
+    
     /**
      * Webservices URL
      * @var array
@@ -70,16 +70,10 @@ class Tools extends BaseTools
      * Constructor
      * @param string $config
      */
-    public function __construct($config)
+    public function __construct(stdClass $config, Certificate $certificate)
     {
-        parent::__construct($config);
-        $this->versao = $this->aConfig['versao'];
-        $this->remetenteCNPJCPF = $this->aConfig['cnpj'];
-        $this->remetenteRazao = $this->aConfig['razaosocial'];
-        if ($this->aConfig['cpf'] != '') {
-            $this->remetenteTipoDoc = '1';
-            $this->remetenteCNPJCPF = $this->aConfig['cpf'];
-        }
+        $this->config = $config;
+        $this->certificate = $certificate;
     }
     
     public function setUseCdata($flag)
@@ -89,8 +83,8 @@ class Tools extends BaseTools
     
     protected function replaceNodeWithCdata($xml, $nodename, $body, $param = [])
     {
-        $dom = new Dom('1.0', 'utf-8');
-        $dom->loadXMLString($xml);
+        $dom = new DOMDocument('1.0', 'utf-8');
+        $dom->loadXML($xml);
         $root = $dom->documentElement;
         if (!empty($param)) {
             $attrib = $dom->createAttribute($param[0]);
@@ -121,13 +115,13 @@ class Tools extends BaseTools
     {
        
         
-        //header("Content-type: text/xml");
-        //echo $request;
-        //die;
+        header("Content-type: text/xml");
+        echo $request;
+        die;
         
-        $oSoap = new SoapClient($this->oCertificate);
+        $oSoap = new SoapClient($this->certificate);
         
-        $url = $this->url[$this->aConfig['tpAmb']];
+        $url = $this->url[$this->config->tpAmb];
         try {
             //$this->setSSLProtocol('TLSv1');
             $response = $oSoap->soapSend($url, $this->port, $envelope, $params);

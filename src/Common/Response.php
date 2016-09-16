@@ -1,6 +1,6 @@
 <?php
 
-namespace NFePHP\NFSe\Models;
+namespace NFePHP\NFSe\Common;
 
 /**
  * Classe base para tratar os retornos das consultas aos webservices

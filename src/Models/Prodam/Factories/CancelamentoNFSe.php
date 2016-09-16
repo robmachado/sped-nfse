@@ -17,9 +17,8 @@ namespace NFePHP\NFSe\Models\Prodam\Factories;
  * @link      http://github.com/nfephp-org/sped-nfse for the canonical source repository
  */
 
-use InvalidArgumentException;
-use NFePHP\NFSe\Models\Signner;
 use NFePHP\NFSe\Models\Prodam\Factories\Factory;
+use InvalidArgumentException;
 
 class CancelamentoNFSe extends Factory
 {
@@ -57,7 +56,7 @@ class CancelamentoNFSe extends Factory
             $content .= $this->detalhe($prestadorIM, $numeroNFSe);
         }
         $content .= "</$method>";
-        $body = $this->oCertificate->signXML($content, $method, '', 'SHA1');
+        $body = $this->certificate->signXML($content, $method, '', 'SHA1');
         $body = $this->clear($body);
         $this->validar($versao, $body, $method);
         return $body;
