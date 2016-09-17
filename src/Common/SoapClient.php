@@ -90,7 +90,7 @@ class SoapClient
         curl_setopt($oCurl, CURLOPT_SSL_VERIFYPEER, 0);
         curl_setopt($oCurl, CURLOPT_PORT, $port);
         if ($port == 443) {
-            curl_setopt($oCurl, CURLOPT_SSLVERSION, $this->soapprotocol);
+            //curl_setopt($oCurl, CURLOPT_SSLVERSION, $this->soapprotocol);
             curl_setopt($oCurl, CURLOPT_SSLCERT, $this->certfile);
             curl_setopt($oCurl, CURLOPT_SSLKEY, $this->prifile);
         }

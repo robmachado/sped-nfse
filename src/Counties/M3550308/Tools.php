@@ -59,6 +59,9 @@ class Tools extends ToolsProdam
      * @var string
      */
     protected $algorithm = OPENSSL_ALGO_SHA1;
-    
-    protected $versao = '1';
+    /**
+     * Version of schemas
+     * @var int
+     */
+    protected $versao = 1;
 }

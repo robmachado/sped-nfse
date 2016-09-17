@@ -34,6 +34,7 @@ class ConsultarLote extends Factory
         $content .= Header::render(
             $versao,
             $remetenteCNPJCPF,
+            null, //remetenteRazao
             null, //$transacao
             $codcidade,
             null, //$codcid

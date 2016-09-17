@@ -47,7 +47,7 @@ class RenderRPS
      * @param Rps $rps
      * @return string
      */
-    private static function render(Rps $rps = null)
+    private static function render(Rps $rps)
     {
         self::$dom = new Dom();
         $root = self::$dom->createElement('RPS');
@@ -387,7 +387,7 @@ class RenderRPS
             $content .= str_pad($rps->intermediarioCNPJCPF, 14, '0', STR_PAD_LEFT);
             $content .= $rps->intermediarioISSRetido;
         }
-        $signature = base64_encode(self::$certificate->privateKey->sign($content, self::$algorithm));
+        $signature = base64_encode(self::$certificate->sign($content, self::$algorithm));
         return $signature;
     }
 }

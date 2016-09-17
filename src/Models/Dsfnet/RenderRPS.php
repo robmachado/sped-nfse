@@ -18,19 +18,20 @@ namespace NFePHP\NFSe\Models\Dsfnet;
 
 use NFePHP\Common\Dom\Dom;
 use NFePHP\NFSe\Models\Dsfnet\Rps;
-use NFePHP\NFSe\Models\Signner;
+use NFePHP\Common\Certificate;
+use NFePHP\NFSe\Common\Signner;
 
 class RenderRPS
 {
     protected static $dom;
-    protected static $priKey = '';
+    protected static $certificate;
+    protected static $algorithm;
 
-    public static function toXml($data = '', $priKey = '')
+    public static function toXml($data, Certificate $certificate, $algorithm = OPENSSL_ALGO_SHA1)
     {
-        if ($data == '') {
-            return '';
-        }
-        self::$priKey = $priKey;
+        self::$certificate = $certificate;
+        self::$algorithm = $algorithm;
+        
         if (is_object($data)) {
             return self::render($data);
         } elseif (is_array($data)) {
@@ -47,7 +48,7 @@ class RenderRPS
      * @param Rps $rps
      * @return string
      */
-    private static function render(Rps $rps = null)
+    private static function render(Rps $rps)
     {
         self::$dom = new Dom();
         $root = self::$dom->createElement('RPS');
@@ -512,7 +513,7 @@ class RenderRPS
         $content = str_pad(round($valores['valorDeducao']*100, 0), 15, '0', STR_PAD_LEFT);
         $content .= str_pad($rps->codigoAtividade, 10, '0', STR_PAD_LEFT);
         $content .= str_pad($rps->cPFCNPJTomador, 14, '0', STR_PAD_LEFT);
-        $signature = Signner::sign($content, $priKey);
+        $signature = base64_encode(self::$certificate->sign($content, self::$algorithm));
         return $signature;
     }
     

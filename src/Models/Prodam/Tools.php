@@ -263,16 +263,17 @@ class Tools extends ToolsBase
     protected function buildRequest($body)
     {
         $tag = $this->method."Request";
-        $request = "<nfe:$tag>";
-        $request .= "<nfe:VersaoSchema>$this->versao</nfe:VersaoSchema>";
-        $request .= "<nfe:MensagemXML>$body</nfe:MensagemXML>";
-        $request .= "</nfe:$tag>";
+        $request = "<$tag xmlns=\"http://www.prefeitura.sp.gov.br/nfe\">";
+        $request .= "<VersaoSchema>$this->versao</VersaoSchema>";
+        $request .= "<MensagemXML>$body</MensagemXML>";
+        $request .= "</$tag>";
         if ($this->withcdata === true) {
             $request = $this->replaceNodeWithCdata($request, 'MensagemXML', $body);
         }
         $envelope = "<soap:Envelope "
             . "xmlns:soap=\"http://www.w3.org/2003/05/soap-envelope\" "
-            . "xmlns:nfe=\"http://www.prefeitura.sp.gov.br/nfe\">"
+            . "xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" "
+            . "xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">"
             . "<soap:Header/>"
             . "<soap:Body>$request</soap:Body>"
             . "</soap:Envelope>";

@@ -105,10 +105,10 @@ class Tools
         $tag = $oldnode->tagName;
         $root->removeChild($oldnode);
         $newnode = $dom->createElement($tag);
-        $attrib = $dom->createAttribute("xsi:type");
-        $attrib->value = 'xsd:string';
-        $newnode->appendChild($attrib);
-        $cdatanode = $dom->createCDATASection(trim($body));
+        //$attrib = $dom->createAttribute("xsi:type");
+        //$attrib->value = 'xsd:string';
+        //$newnode->appendChild($attrib);
+        $cdatanode = $dom->createCDATASection(htmlentities($body, ENT_NOQUOTES, 'UTF-8'));
         $newnode->appendChild($cdatanode);
         $root->appendChild($newnode);
         $xml = str_replace('<?xml version="1.0"?>', '', $dom->saveXML());

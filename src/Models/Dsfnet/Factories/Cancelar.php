@@ -21,6 +21,7 @@ namespace NFePHP\NFSe\Models\Dsfnet\Factories;
 
 use NFePHP\NFSe\Models\Dsfnet\Factories\Factory;
 use NFePHP\NFSe\Models\Dsfnet\Factories\Header;
+use NFePHP\NFSe\Common\Signner;
 
 class Cancelar extends Factory
 {
@@ -56,8 +57,8 @@ class Cancelar extends Factory
         $content .= "</Nota>";
         $content .= "</Lote>";
         $content .= "</ns1:$method>";
-        $body = $this->oCertificate->signXML($content, 'Lote', 'Id', $this->signAlgorithm);
-        $body = $this->clear($body);
+        $content = Signner::sign($this->certificate, $content, 'Lote', 'Id', $this->algorithm);
+        $body = $this->clear($content);
         $this->validar($versao, $body, $method, '');
         return $body;
     }

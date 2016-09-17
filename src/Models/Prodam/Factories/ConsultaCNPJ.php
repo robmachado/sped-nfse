@@ -41,12 +41,13 @@ class ConsultaCNPJ extends Factory
         $cnpjContribuinte
     ) {
         $method = 'PedidoConsultaCNPJ';
-        $content = $this->requestFirstPart($method);
+        $content = $this->requestFirstPart("$method");
         $content .= Header::render($versao, $remetenteTipoDoc, $remetenteCNPJCPF, $transacao);
         $content .= "<CNPJContribuinte xmlns=\"\">";
         $content .= "<CNPJ>$cnpjContribuinte</CNPJ>";
         $content .= "</CNPJContribuinte>";
         $content .= "</$method>";
+        
         $content = Signner::sign($this->certificate, $content, $method, '', $this->algorithm);
         $body = $this->clear($content);
         $this->validar($versao, $body, $method);

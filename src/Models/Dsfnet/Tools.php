@@ -18,19 +18,10 @@ namespace NFePHP\NFSe\Models\Dsfnet;
 
 use NFePHP\NFSe\Models\Dsfnet\Rps;
 use NFePHP\NFSe\Models\Dsfnet\Factories;
-use NFePHP\NFSe\Models\Tools as ToolsBase;
+use NFePHP\NFSe\Common\Tools as ToolsBase;
 
 class Tools extends ToolsBase
 {
-    /**
-     * Construtor da classe Tools
-     * @param string $config
-     */
-    public function __construct($config)
-    {
-        parent::__construct($config);
-    }
-    
     /**
      * Solicita cancelamento da NFSe
      * @param string $prestadorIM
@@ -39,8 +30,8 @@ class Tools extends ToolsBase
     public function cancelar($prestadorIM, $numeroLote, $numeroNota, $codigoVerificacao, $motivo, $tokenEnvio = null)
     {
         $this->method = 'cancelar';
-        $fact = new Factories\Cancelar($this->oCertificate);
-        $fact->setSignAlgorithm($this->signaturealgo);
+        $fact = new Factories\Cancelar($this->certificate);
+        $fact->setSignAlgorithm($this->algorithm);
         $xml = $fact->render(
             $this->versao,
             $this->remetenteCNPJCPF,
@@ -64,8 +55,8 @@ class Tools extends ToolsBase
     public function consultarLote($numeroLote)
     {
         $this->method = 'consultarLote';
-        $fact = new Factories\ConsultarLote($this->oCertificate);
-        $fact->setSignAlgorithm($this->signaturealgo);
+        $fact = new Factories\ConsultarLote($this->certificate);
+        $fact->setSignAlgorithm($this->algorithm);
         $xml = $fact->render(
             $this->versao,
             $this->remetenteCNPJCPF,
@@ -84,8 +75,8 @@ class Tools extends ToolsBase
     public function consultarNFSeRps($prestadorIM, $lote, $nfse = [], $rps = [])
     {
         $this->method = 'consultarNFSeRps';
-        $fact = new Factories\ConsultarNFSeRps($this->oCertificate);
-        $fact->setSignAlgorithm($this->signaturealgo);
+        $fact = new Factories\ConsultarNFSeRps($this->certificate);
+        $fact->setSignAlgorithm($this->algorithm);
         $xml = $fact->render(
             $this->versao,
             $this->remetenteCNPJCPF,
@@ -103,8 +94,8 @@ class Tools extends ToolsBase
     public function consultarNota($prestadorIM, $dtInicio, $dtFim, $notaInicial)
     {
         $this->method = 'consultarNota';
-        $fact = new Factories\ConsultarNota($this->oCertificate);
-        $fact->setSignAlgorithm($this->signaturealgo);
+        $fact = new Factories\ConsultarNota($this->certificate);
+        $fact->setSignAlgorithm($this->algorithm);
         $xml = $fact->render(
             $this->versao,
             $this->remetenteCNPJCPF,
@@ -120,8 +111,8 @@ class Tools extends ToolsBase
     public function consultarSequencialRps($prestadorIM, $serieRPS)
     {
         $this->method = 'consultarSequencialRps';
-        $fact = new Factories\ConsultarSequencialRps($this->oCertificate);
-        $fact->setSignAlgorithm($this->signaturealgo);
+        $fact = new Factories\ConsultarSequencialRps($this->certificate);
+        $fact->setSignAlgorithm($this->algorithm);
         $xml = $fact->render(
             $this->versao,
             $this->remetenteCNPJCPF,
@@ -135,13 +126,13 @@ class Tools extends ToolsBase
     public function enviar($rpss, $numeroLote)
     {
         $this->method = 'enviar';
-        $fact = new Factories\Enviar($this->oCertificate);
-        $fact->setSignAlgorithm($this->signaturealgo);
+        $fact = new Factories\Enviar($this->certificate);
+        $fact->setSignAlgorithm($this->algorithm);
         $xml = $fact->render(
             $this->versao,
             $this->remetenteCNPJCPF,
             $this->remetenteRazao,
-            '',
+            null,
             $this->codcidade,
             $rpss,
             $numeroLote
@@ -152,13 +143,13 @@ class Tools extends ToolsBase
     public function enviarSincrono($rpss, $numeroLote)
     {
         $this->method = 'enviarSincrono';
-        $fact = new Factories\Enviar($this->oCertificate);
-        $fact->setSignAlgorithm($this->signaturealgo);
+        $fact = new Factories\Enviar($this->certificate);
+        $fact->setSignAlgorithm($this->algorithm);
         $xml = $fact->render(
             $this->versao,
             $this->remetenteCNPJCPF,
             $this->remetenteRazao,
-            '',
+            null,
             $this->codcidade,
             $rpss,
             $numeroLote
@@ -169,13 +160,13 @@ class Tools extends ToolsBase
     public function testeEnviar($rpss, $numeroLote)
     {
         $this->method = 'testeEnviar';
-        $fact = new Factories\Enviar($this->oCertificate);
-        $fact->setSignAlgorithm($this->signaturealgo);
+        $fact = new Factories\Enviar($this->certificate);
+        $fact->setSignAlgorithm($this->algorithm);
         $xml = $fact->render(
             $this->versao,
             $this->remetenteCNPJCPF,
             $this->remetenteRazao,
-            '',
+            null,
             $this->codcidade,
             $rpss,
             $numeroLote
