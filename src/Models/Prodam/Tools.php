@@ -285,4 +285,6 @@ class Tools extends ToolsBase
          * 
          */
     }
+    
+    //. "action=\"http://www.prefeitura.sp.gov.br/nfe/ws/". lcfirst($operation) ."\""
 }
