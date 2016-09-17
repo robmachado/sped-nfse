@@ -6,7 +6,7 @@ namespace NFePHP\NFSe\Common;
  * Classe base para tratar os retornos das consultas aos webservices
  *
  * @category  NFePHP
- * @package   NFePHP\NFSe\Models\Response
+ * @package   NFePHP\NFSe\Common\Response
  * @copyright NFePHP Copyright (c) 2016
  * @license   http://www.gnu.org/licenses/lgpl.txt LGPLv3+
  * @license   https://opensource.org/licenses/MIT MIT
@@ -16,10 +16,12 @@ namespace NFePHP\NFSe\Common;
  */
 
 use DOMDocument;
+use stdClass;
+use NFePHP\NFSe\Common\Characters;
 
 class Response
 {
-    public static function readReturn($tag = '', $xmlResp = '')
+    public static function readReturn($tag, $xmlResp = '')
     {
         if (trim($xmlResp) == '') {
             return [
@@ -54,10 +56,10 @@ class Response
     
     /**
      * Retorna os dados do objeto
-     * @param StdClass $std
+     * @param stdClass $std
      * @return array
      */
-    protected static function readRespStd($std)
+    protected static function readRespStd(stdClass $std)
     {
         return $std;
         /*
@@ -103,7 +105,7 @@ class Response
      * @param string $tag
      * @return StdClass
      */
-    protected static function xml2Obj($dom, $tag)
+    protected static function xml2Obj(DOMDocument $dom, $tag)
     {
         $node = $dom->getElementsByTagName($tag)->item(0);
         $newdoc = new DOMDocument('1.0', 'utf-8');
@@ -112,6 +114,8 @@ class Response
         $newdoc = null;
         $xml = str_replace('<?xml version="1.0" encoding="UTF-8"?>', '', $xml);
         $xml = str_replace('<?xml version="1.0" encoding="utf-8"?>', '', $xml);
+        $xml = str_replace('&lt;?xml version="1.0" encoding="UTF-8"?&gt;', '', $xml);
+        $xml = Characters::relaceEntities(html_entity_decode($xml));
         $resp = simplexml_load_string($xml, null, LIBXML_NOCDATA);
         $std = json_encode($resp);
         $std = str_replace('@attributes', 'attributes', $std);
@@ -125,7 +129,7 @@ class Response
      * @param DOMDocument $dom
      * @return string
      */
-    protected static function checkForFault($dom)
+    protected static function checkForFault(DOMDocument $dom)
     {
         $tagfault = $dom->getElementsByTagName('Fault')->item(0);
         if (empty($tagfault)) {
