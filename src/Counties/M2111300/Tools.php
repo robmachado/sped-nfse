@@ -53,7 +53,7 @@ class Tools extends ToolsDsfnet
      * Indicates when use CDATA string on message
      * @var boolean
      */
-    protected $withcdata = false;
+    protected $withcdata = true;
     /**
      * Encription signature algorithm
      * @var string

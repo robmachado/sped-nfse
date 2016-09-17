@@ -47,10 +47,10 @@ class ConsultaCNPJ extends Factory
         $content .= "<CNPJ>$cnpjContribuinte</CNPJ>";
         $content .= "</CNPJContribuinte>";
         $content .= "</$method>";
-        
-        $content = Signner::sign($this->certificate, $content, $method, '', $this->algorithm);
+        $content = Signner::sign($this->certificate, $content, 'CNPJContribuinte', '', $this->algorithm);
         $body = $this->clear($content);
         $this->validar($versao, $body, $method);
+        Signner::verifySignature($body, 'CNPJContribuinte');
         return $body;
     }
 }
