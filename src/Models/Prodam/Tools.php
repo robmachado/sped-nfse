@@ -267,9 +267,12 @@ class Tools extends ToolsBase
         $request .= "<VersaoSchema>$this->versao</VersaoSchema>";
         $request .= "<MensagemXML>$body</MensagemXML>";
         $request .= "</$tag>";
+        $request = $body;
         if ($this->withcdata === true) {
             $request = $this->replaceNodeWithCdata($request, 'MensagemXML', $body);
         }
+        return $request;
+        /*
         $envelope = "<soap:Envelope "
             . "xmlns:soap=\"http://www.w3.org/2003/05/soap-envelope\" "
             . "xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" "
@@ -279,5 +282,7 @@ class Tools extends ToolsBase
             . "</soap:Envelope>";
         
         return $envelope;
+         * 
+         */
     }
 }
