@@ -13,9 +13,15 @@ class SoapNative extends LocalClient
 {
     protected $connection;
     
-    public function soapSend($url, $operation = '', $action = '', $soapver = SOAP_1_2, $parameters = [])
-    {
-        $this->prepare($url);
+    public function soapSend(
+        $url,
+        $operation = '',
+        $action = '',
+        $soapver = SOAP_1_2,
+        $parameters = [],
+        $namespace = ''
+    ) {
+        $this->prepare($url, $soapver);
         try {
             $result = $this->connection->$operation($parameters);
             //por em log

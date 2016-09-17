@@ -2,7 +2,7 @@
 
 namespace NFePHP\NFSe\Common;
 
-class Characters
+class EntitiesCharacters
 {
     private static $chars = [
         '[0xc2][0xa1]' => '¡',
@@ -102,14 +102,14 @@ class Characters
         '[0xc3][0xbf]' => 'ÿ'
     ];
     
-    public static function relaceEntities($subject)
+    public static function unconvert($subject)
     {
         $search = array_keys(self::$chars);
         $replace = array_values(self::$chars);
         return str_replace($search, $replace, $subject);
     }
     
-    public static function convertEntities($subject)
+    public static function convert($subject)
     {
         $replace = array_keys(self::$chars);
         $search = array_values(self::$chars);

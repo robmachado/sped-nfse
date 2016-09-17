@@ -244,14 +244,15 @@ class Tools extends ToolsBase
         $this->method = 'ConsultaCNPJ';
         $fact = new Factories\ConsultaCNPJ($this->certificate);
         $fact->setSignAlgorithm($this->algorithm);
-        $xml = $fact->render(
+        $message = $fact->render(
             $this->versao,
             $this->remetenteTipoDoc,
             $this->remetenteCNPJCPF,
             null,
             str_pad($cnpjContribuinte, 14, '0', STR_PAD_LEFT)
         );
-        return $this->buildRequest($xml);
+        $url = $this->url[$this->config->tpAmb];
+        return $this->sendRequest($url, $message);
     }
     
     /**
@@ -260,31 +261,16 @@ class Tools extends ToolsBase
      * @param string $method
      * @return string
      */
-    protected function buildRequest($body)
+    protected function sendRequest($url, $message)
     {
-        $tag = $this->method."Request";
-        $request = "<$tag xmlns=\"http://www.prefeitura.sp.gov.br/nfe\">";
-        $request .= "<VersaoSchema>$this->versao</VersaoSchema>";
-        $request .= "<MensagemXML>$body</MensagemXML>";
-        $request .= "</$tag>";
-        $request = $body;
-        if ($this->withcdata === true) {
-            $request = $this->replaceNodeWithCdata($request, 'MensagemXML', $body);
+        if (!is_object($this->soap)) {
+            $this->soap = new \NFePHP\NFSe\Common\SoapCurl($this->certificate);
         }
-        return $request;
-        /*
-        $envelope = "<soap:Envelope "
-            . "xmlns:soap=\"http://www.w3.org/2003/05/soap-envelope\" "
-            . "xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" "
-            . "xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">"
-            . "<soap:Header/>"
-            . "<soap:Body>$request</soap:Body>"
-            . "</soap:Envelope>";
-        
-        return $envelope;
-         * 
-         */
+        $params = array(
+            'VersaoSchema' => $this->versao,
+            'MensagemXML' => $message
+        );
+        $action = "\"http://www.prefeitura.sp.gov.br/nfe/ws/". lcfirst($this->method) ."\"";
+        $resp = $this->soap->soapSend($url, $this->method, $action, $this->soapversion, $params, $this->xmlns);
     }
-    
-    //. "action=\"http://www.prefeitura.sp.gov.br/nfe/ws/". lcfirst($operation) ."\""
 }

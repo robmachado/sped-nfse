@@ -38,12 +38,7 @@ class Tools extends ToolsDsfnet
      * Soap Version
      * @var int
      */
-    protected $soapversion = 1;
-    /**
-     * Soap port
-     * @var int
-     */
-    protected $soapport = 443;
+    protected $soapversion = SOAP_1_1;
     /**
      * SIAFI County Cod
      * @var int

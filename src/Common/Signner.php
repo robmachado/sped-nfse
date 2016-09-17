@@ -41,6 +41,8 @@ class Signner
     ) {
         $dom = new DOMDocument('1.0', 'utf-8');
         $dom->loadXML($content);
+        $dom->preserveWhiteSpace = false;
+        $dom->formatOutput = false;
         $root = $dom->documentElement;
         $node = $dom->getElementsByTagName($tagid)->item(0);
         if (!isset($node)) {
@@ -89,10 +91,14 @@ class Signner
             $nsSignatureMethod = 'http://www.w3.org/2001/04/xmldsig-more#rsa-sha256';
             $nsDigestMethod = 'http://www.w3.org/2001/04/xmlenc#sha256';
         }
+        
         $nsTransformMethod1 ='http://www.w3.org/2000/09/xmldsig#enveloped-signature';
         $nsTransformMethod2 = 'http://www.w3.org/TR/2001/REC-xml-c14n-20010315';
+        
         $idSigned = trim($node->getAttribute($mark));
+        
         $digestValue = self::calculeDigest($node, $digestAlgorithm);
+        
         //cria o node <Signature>
         $signatureNode = $dom->createElementNS($nsDSIG, 'Signature');
         //adiciona a tag <Signature> ao node raiz

@@ -21,17 +21,24 @@ class SoapCurl extends LocalClient
      * @param string $action
      * @param int $soapver
      * @param array $parameters
+     * @param string $namespace
      * @return string
      */
-    public function soapSend($url, $operation = '', $action = '', $soapver = SOAP_1_2, $parameters = [])
-    {
+    public function soapSend(
+        $url,
+        $operation = '',
+        $action = '',
+        $soapver = SOAP_1_2,
+        $parameters = [],
+        $namespace = ''
+    ) {
         $soapinfo = array();
         $soaperror = '';
         $response = '';
         
-        $envelope = $this->mkEnvSoap1($operation, $parameters);
+        $envelope = $this->mkEnvSoap1($operation, $parameters, $namespace);
         if ($soapver == SOAP_1_2) {
-            $envelope = $this->mkEnvSoap2($operation, $parameters);
+            $envelope = $this->mkEnvSoap2($operation, $parameters, $namespace);
         }
         
         $msgSize = strlen($envelope);
@@ -97,7 +104,7 @@ class SoapCurl extends LocalClient
         return $this->stripHtmlPart($response, $headsize);
     }
     
-    private function mkEnvSoap1($operation, $parameters)
+    private function mkEnvSoap1($operation, $parameters, $namespace)
     {
         if (empty($operation)) {
             return '';
@@ -105,17 +112,13 @@ class SoapCurl extends LocalClient
         $request = $this->mkRequest($operation, $parameters);
         $envelope = "<soapenv:Envelope "
                 . "xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" "
-                . "xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" "
-                . "xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">"
-                . "<soapenv:Header/>"
-                . "<soapenv:Body>"
-                . $request
-                . "</soapenv:Body>"
+                . "xmlns=\"$namespace\">"
+                . "<soapenv:Body>$request</soapenv:Body>"
                 . "</soapenv:Envelope>";
         return $envelope;
     }
     
-    private function mkEnvSoap2($operation, $parameters)
+    private function mkEnvSoap2($operation, $parameters, $namespace)
     {
         if (empty($operation)) {
             return '';
@@ -123,7 +126,7 @@ class SoapCurl extends LocalClient
         $request = $this->mkRequest($operation, $parameters);
         $envelope = "<soap:Envelope "
             . "xmlns:soap=\"http://www.w3.org/2003/05/soap-envelope\" "
-            . "xmlns=\"http://www.prefeitura.sp.gov.br/nfe\" >"
+            . "xmlns=\"$namespace\" >"
             . "<soap:Body>$request</soap:Body>"
             . "</soap:Envelope>";
         return $envelope;
@@ -134,6 +137,9 @@ class SoapCurl extends LocalClient
         $tag = $operation . "Request";
         $request = "<$tag>";
         foreach ($parameters as $key => $value) {
+            if ($key == 'MensagemXML') {
+                $value = htmlentities($value, ENT_NOQUOTES);
+            }
             $request .= "<$key>$value</$key>";
         }
         $request .= "</$tag>";
