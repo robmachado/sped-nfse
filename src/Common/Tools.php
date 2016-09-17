@@ -20,10 +20,11 @@ use League\Flysystem;
 use DOMDocument;
 use stdClass;
 
-class Tools
+abstract class Tools
 {
     protected $config;
     protected $certificate;
+    protected $soap;
     protected $method = '';
 
     protected $versao;
@@ -38,7 +39,7 @@ class Tools
         1 => '',
         2 => ''
     ];
-   /**
+    /**
      * County Namespace
      * @var string
      */
@@ -47,12 +48,7 @@ class Tools
      * Soap Version
      * @var int
      */
-    protected $soapversion = 1;
-    /**
-     * Soap port
-     * @var int
-     */
-    protected $soapport = 443;
+    protected $soapversion = SOAP_1_2;
     /**
      * SIAFI County Cod
      * @var int
@@ -115,27 +111,5 @@ class Tools
         return $xml;
     }
     
-    /**
-     * Sends SOAP envelope
-     * @param string $url
-     * @param string $envelope
-     */
-    public function envia($envelope)
-    {
-        $messageSize = strlen($envelope);
-        $params = [
-            'Content-Type: application/soap+xml;charset=utf-8',
-            'SOAPAction: https://nfe.prefeitura.sp.gov.br/nfe/ws/' . $this->method,
-            "Content-length: $messageSize"
-        ];
-        
-        $oSoap = new SoapClient($this->certificate);
-        $url = $this->url[$this->config->tpAmb];
-        
-        try {
-            $response = $oSoap->soapSend($url, $this->soapport, $envelope, $params);
-        } catch (\RuntimeException $ex) {
-            echo $ex;
-        }
-    }
+    abstract protected function sendRequest($url, $message);
 }

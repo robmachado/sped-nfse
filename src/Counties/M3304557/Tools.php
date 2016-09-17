@@ -50,12 +50,7 @@ class Tools extends ToolsAbrasf
      * Soap Version
      * @var int
      */
-    protected $soapversion = 2;
-    /**
-     * Soap port
-     * @var int
-     */
-    protected $soapport = 443;
+    protected $soapversion = SOAP_1_2;
     /**
      * SIAFI County Cod
      * @var int

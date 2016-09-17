@@ -38,7 +38,7 @@ class Tools extends ToolsDsfnet
      * Soap Version
      * @var int
      */
-    protected $soapversion = 1;
+    protected $soapversion = SOAP_1_1;
     /**
      * Soap port
      * @var int
