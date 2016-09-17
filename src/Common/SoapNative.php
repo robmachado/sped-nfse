@@ -33,7 +33,7 @@ class SoapNative
     public function soapTimeout($timesecs)
     {
         $this->soaptimeout = $timesecs;
-    }    
+    }
     
     public function soapSend($url, $operation, $version, $parameters)
     {
@@ -43,7 +43,6 @@ class SoapNative
             $result = $this->connection->$operation($parameters);
             $lastH = $this->connection->__getLastRequestHeaders();
             $lastM = $this->connection->__getLastRequest();
-            
         } catch (SoapFault $e) {
             throw new RuntimeException($e->getMessage());
         } catch (Exception $e) {

@@ -28,5 +28,5 @@ class SoapClient
     public function soapTimeout($timesecs)
     {
         $this->soaptimeout = $timesecs;
-    }    
+    }
 }

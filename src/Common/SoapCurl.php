@@ -182,7 +182,7 @@ class SoapCurl
     private function mkRequest($operation, $parameters)
     {
         $request = "<$operation>";
-        foreach($parameters as $key => $value) {
+        foreach ($parameters as $key => $value) {
             $request .= "<$key>$value</$key>";
         }
         $request .= "</$operation>";
