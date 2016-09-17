@@ -19,6 +19,7 @@ namespace NFePHP\NFSe\Models\Dsfnet\Factories;
 
 use NFePHP\NFSe\Models\Dsfnet\Factories\Factory;
 use NFePHP\NFSe\Models\Dsfnet\Factories\Header;
+use NFePHP\NFSe\Common\Signner;
 
 class ConsultarNota extends Factory
 {
@@ -49,8 +50,8 @@ class ConsultarNota extends Factory
             $notaInicial
         );
         $content .= "</ns1:$method>";
-        $body = $this->oCertificate->signXML($content, $method, 'Consulta:notas', $this->signAlgorithm);
-        $body = $this->clear($body);
+        $content = Signner::sign($this->certificate, $content, $method, 'Consulta:notas', $this->algorithm);
+        $body = $this->clear($content);
         $this->validar($versao, $body, $method, '');
         return $body;
     }

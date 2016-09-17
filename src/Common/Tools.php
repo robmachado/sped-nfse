@@ -1,6 +1,6 @@
 <?php
 
-namespace NFePHP\NFSe\Models;
+namespace NFePHP\NFSe\Common;
 
 /**
  * Classe para base para a comunicação com os webservices
@@ -15,18 +15,21 @@ namespace NFePHP\NFSe\Models;
  * @link      http://github.com/nfephp-org/sped-nfse for the canonical source repository
  */
 
-use NFePHP\Common\Base\BaseTools;
-use NFePHP\Common\Files;
-use NFePHP\Common\Dom\Dom;
+use NFePHP\Common\Certificate;
+use League\Flysystem;
+use DOMDocument;
+use stdClass;
 
-class Tools extends BaseTools
+class Tools
 {
-    
-    protected $versao = '1';
-    protected $remetenteTipoDoc = '2';
-    protected $remetenteCNPJCPF = '';
-    protected $remetenteRazao = '';
+    protected $config;
+    protected $certificate;
     protected $method = '';
+
+    protected $versao;
+    protected $remetenteTipoDoc;
+    protected $remetenteCNPJCPF;
+            
     /**
      * Webservices URL
      * @var array
@@ -64,22 +67,23 @@ class Tools extends BaseTools
      * Encription signature algorithm
      * @var string
      */
-    protected $signaturealgo= 'SHA1';
+    protected $algorithm;
 
     /**
      * Constructor
      * @param string $config
      */
-    public function __construct($config)
+    public function __construct(stdClass $config, Certificate $certificate)
     {
-        parent::__construct($config);
-        $this->versao = $this->aConfig['versao'];
-        $this->remetenteCNPJCPF = $this->aConfig['cnpj'];
-        $this->remetenteRazao = $this->aConfig['razaosocial'];
-        if ($this->aConfig['cpf'] != '') {
-            $this->remetenteTipoDoc = '1';
-            $this->remetenteCNPJCPF = $this->aConfig['cpf'];
+        $this->config = $config;
+        $this->versao = $config->versao;
+        $this->remetenteCNPJCPF = $config->cpf;
+        $this->remetenteTipoDoc = 1;
+        if ($config->cnpj != '') {
+            $this->remetenteCNPJCPF = $config->cnpj;
+            $this->remetenteTipoDoc = 2;
         }
+        $this->certificate = $certificate;
     }
     
     public function setUseCdata($flag)
@@ -89,8 +93,8 @@ class Tools extends BaseTools
     
     protected function replaceNodeWithCdata($xml, $nodename, $body, $param = [])
     {
-        $dom = new Dom('1.0', 'utf-8');
-        $dom->loadXMLString($xml);
+        $dom = new DOMDocument('1.0', 'utf-8');
+        $dom->loadXML($xml);
         $root = $dom->documentElement;
         if (!empty($param)) {
             $attrib = $dom->createAttribute($param[0]);
@@ -101,10 +105,10 @@ class Tools extends BaseTools
         $tag = $oldnode->tagName;
         $root->removeChild($oldnode);
         $newnode = $dom->createElement($tag);
-        $attrib = $dom->createAttribute("xsi:type");
-        $attrib->value = 'xsd:string';
-        $newnode->appendChild($attrib);
-        $cdatanode = $dom->createCDATASection(trim($body));
+        //$attrib = $dom->createAttribute("xsi:type");
+        //$attrib->value = 'xsd:string';
+        //$newnode->appendChild($attrib);
+        $cdatanode = $dom->createCDATASection(htmlentities($body, ENT_NOQUOTES, 'UTF-8'));
         $newnode->appendChild($cdatanode);
         $root->appendChild($newnode);
         $xml = str_replace('<?xml version="1.0"?>', '', $dom->saveXML());
@@ -115,23 +119,22 @@ class Tools extends BaseTools
      * Sends SOAP envelope
      * @param string $url
      * @param string $envelope
-     * @param array $params
      */
-    public function envia($url, $envelope, $params)
+    public function envia($envelope)
     {
-       
+        $messageSize = strlen($envelope);
+        $params = [
+            'Content-Type: application/soap+xml;charset=utf-8',
+            'SOAPAction: https://nfe.prefeitura.sp.gov.br/nfe/ws/' . $this->method,
+            "Content-length: $messageSize"
+        ];
         
-        //header("Content-type: text/xml");
-        //echo $request;
-        //die;
+        $oSoap = new SoapClient($this->certificate);
+        $url = $this->url[$this->config->tpAmb];
         
-        $oSoap = new SoapClient($this->oCertificate);
-        
-        $url = $this->url[$this->aConfig['tpAmb']];
         try {
-            //$this->setSSLProtocol('TLSv1');
-            $response = $oSoap->soapSend($url, $this->port, $envelope, $params);
-        } catch (Exception $ex) {
+            $response = $oSoap->soapSend($url, $this->soapport, $envelope, $params);
+        } catch (\RuntimeException $ex) {
             echo $ex;
         }
     }

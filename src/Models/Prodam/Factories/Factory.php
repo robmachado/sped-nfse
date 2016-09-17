@@ -16,7 +16,7 @@ namespace NFePHP\NFSe\Models\Prodam\Factories;
  * @link      http://github.com/nfephp-org/sped-nfse for the canonical source repository
  */
 
-use NFePHP\NFSe\Models\Factory as FactoryBase;
+use NFePHP\NFSe\Common\Factory as FactoryBase;
 
 class Factory extends FactoryBase
 {
@@ -27,7 +27,7 @@ class Factory extends FactoryBase
     {
         return "<$method "
             . "xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" "
-            . "xmlns=\"http://www.prefeitura.sp.gov.br/nfe\" "
-            . "xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\">";
+            . "xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" "
+            . "xmlns=\"http://www.prefeitura.sp.gov.br/nfe\">";
     }
 }

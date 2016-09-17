@@ -18,19 +18,19 @@ namespace NFePHP\NFSe\Models\Prodam;
 
 use NFePHP\Common\Dom\Dom;
 use NFePHP\NFSe\Models\Prodam\Rps;
-use NFePHP\NFSe\Models\Signner;
+use NFePHP\Common\Certificate;
+use NFePHP\NFSe\Common\Signner;
 
 class RenderRPS
 {
     protected static $dom;
-    protected static $priKey = '';
-    
-    public static function toXml($data = '', $priKey = '')
+    protected static $certificate;
+    protected static $algorithm;
+
+    public static function toXml($data, Certificate $certificate, $algorithm = OPENSSL_ALGO_SHA1)
     {
-        if ($data == '') {
-            return '';
-        }
-        self::$priKey = $priKey;
+        self::$certificate = $certificate;
+        self::$algorithm = $algorithm;
         if (is_object($data)) {
             return self::render($data);
         } elseif (is_array($data)) {
@@ -47,7 +47,7 @@ class RenderRPS
      * @param Rps $rps
      * @return string
      */
-    private static function render(Rps $rps = null)
+    private static function render(Rps $rps)
     {
         self::$dom = new Dom();
         $root = self::$dom->createElement('RPS');
@@ -59,7 +59,7 @@ class RenderRPS
         self::$dom->addChild(
             $root,
             'Assinatura',
-            self::signstr($rps, self::$priKey),
+            self::signstr($rps),
             true,
             'Tag assinatura do RPS vazia',
             true
@@ -349,7 +349,6 @@ class RenderRPS
         );
         //finaliza
         self::$dom->appendChild($root);
-        //retorna o xml em uma string
         $xml = str_replace('<?xml version="1.0" encoding="utf-8"?>', '', self::$dom->saveXML());
         return $xml;
     }
@@ -357,10 +356,9 @@ class RenderRPS
     /**
      * Cria a assinatura do RPS
      * @param Rps $rps
-     * @param string $priKey
      * @return string
      */
-    private static function signstr(Rps $rps, $priKey = '')
+    private static function signstr(Rps $rps)
     {
         $content = str_pad($rps->prestadorIM, 8, '0', STR_PAD_LEFT);
         $content .= str_pad($rps->serieRPS, 5, ' ', STR_PAD_RIGHT);
@@ -389,7 +387,7 @@ class RenderRPS
             $content .= str_pad($rps->intermediarioCNPJCPF, 14, '0', STR_PAD_LEFT);
             $content .= $rps->intermediarioISSRetido;
         }
-        $signature = Signner::sign($content, $priKey);
+        $signature = base64_encode(self::$certificate->sign($content, self::$algorithm));
         return $signature;
     }
 }

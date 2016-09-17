@@ -17,6 +17,8 @@ namespace NFePHP\NFSe;
  */
 
 use NFePHP\NFSe\Counties;
+use NFePHP\Common\Certificate;
+use stdClass;
 use RuntimeException;
 
 class NFSeStatic
@@ -24,69 +26,62 @@ class NFSeStatic
     /**
      * Instancia a classe usada na conversão dos arquivos txt em RPS
      * @param string $config
-     * @return \NFePHP\NFSe\className
+     * @return \NFePHP\NFSe\Counties\class
      */
-    public static function convert($config = '')
+    public static function convert(stdClass $config)
     {
-        $className = self::getClassName($config, 'Convert');
-        return self::classCheck($className, $config);
+        return self::classCheck(self::getClassName($config, 'Convert'), $config);
     }
     
     /**
      * Instancia a classe usada na construção do RPS
      * para um municipio em particular
      *
-     * @param string $config
-     * @return \NFePHP\NFSe\className
+     * @param stdClass $config
+     * @return \NFePHP\NFSe\Counties\class
      */
-    public static function rps($config = '')
+    public static function rps(stdClass $config)
     {
-        $className = self::getClassName($config, 'Rps');
-        return self::classCheck($className, $config);
+        return self::classCheck(self::getClassName($config, 'Rps'), $config);
     }
 
     /**
      * Instancia a classe usada na comunicação com o webservice
      * para um municipio em particular
      *
-     * @param string $config
-     * @return \NFePHP\NFSe\className
+     * @param stdClass $config
+     * @return \NFePHP\NFSe\Counties\class
      */
-    public static function tools($config = '')
+    public static function tools(stdClass $config, Certificate $certificate)
     {
-        $className = self::getClassName($config, 'Tools');
-        return self::classCheck($className, $config);
+        return self::classCheck(self::getClassName($config, 'Tools'), $config, $certificate);
     }
     
     /**
      * Monta o nome das classes referentes a determinado municipio
      *
-     * @param string $config
+     * @param stdClass $config
      * @param string $complement
      * @return string
      */
-    private static function getClassName($config, $complement)
+    private static function getClassName(stdClass $config, $complement)
     {
-        $configJson = $config;
-        if (is_file($config)) {
-            $configJson = file_get_contents($config);
-        }
-        $conf = json_decode($configJson);
-        return "\NFePHP\NFSe\Counties\\M$conf->cmun\\$complement";
+        return "\NFePHP\NFSe\Counties\\M$config->cmun\\$complement";
     }
     
     /**
      * Instancia e retorna a classe desejada
      *
      * @param string $className
-     * @param string $config
+     * @param stdClass $config
+     * @param NFePHP\Common\Certificate $certificate
      * @return \NFePHP\NFSe\className
      * @throws RuntimeException
      */
-    private static function classCheck($className, $config)
+    private static function classCheck($className, stdClass $config, $certificate = null)
     {
         if (class_exists($className)) {
-            return new $className($config);
+            return new $className($config, $certificate);
         }
         $msg = 'Este municipio não é atendido pela API.';
         throw new RuntimeException($msg);

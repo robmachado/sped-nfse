@@ -70,5 +70,10 @@ class Tools extends ToolsAbrasf
      * Encription signature algorithm
      * @var string
      */
-    protected $signaturealgo = 'SHA1';
+    protected $algorithm = OPENSSL_ALGO_SHA1;
+    /**
+     * Version of schemas
+     * @var int
+     */
+    protected $versao = 1;
 }

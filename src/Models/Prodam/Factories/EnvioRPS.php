@@ -20,14 +20,15 @@ namespace NFePHP\NFSe\Models\Prodam\Factories;
 use NFePHP\NFSe\Models\Prodam\Rps;
 use NFePHP\NFSe\Models\Prodam\Factories\Factory;
 use NFePHP\NFSe\Models\Prodam\RenderRPS;
+use NFePHP\NFSe\Common\Signner;
 
 class EnvioRPS extends Factory
 {
-    private $dtIni = '';
-    private $dtFim = '';
-    private $qtdRPS = 0;
-    private $valorTotalServicos = 0;
-    private $valorTotalDeducoes = 0;
+    private $dtIni;
+    private $dtFim;
+    private $qtdRPS;
+    private $valorTotalServicos;
+    private $valorTotalDeducoes;
     
     /**
      * Renderiza o pedido em seu respectivo xml e faz
@@ -53,14 +54,14 @@ class EnvioRPS extends Factory
         $method = "PedidoEnvioRPS";
         $content = $this->requestFirstPart($method);
         if (is_object($data)) {
-            $xmlRPS .= $this->individual($content, $data);
+            $xmlRPS .= $this->individual($data);
         } elseif (is_array($data)) {
             if (count($data) == 1) {
-                $xmlRPS .= $this->individual($content, $data);
+                $xmlRPS .= $this->individual($data);
             } else {
                 $method = "PedidoEnvioLoteRPS";
                 $content = $this->requestFirstPart($method);
-                $xmlRPS .= $this->lote($content, $data);
+                $xmlRPS .= $this->lote($data);
             }
         }
         $content .= Header::render(
@@ -79,35 +80,33 @@ class EnvioRPS extends Factory
             $this->valorTotalDeducoes
         );
         $content .= $xmlRPS."</$method>";
-        $body = $this->oCertificate->signXML($content, $method, '', $algorithm = 'SHA1');
-        $body = $this->clear($body);
-        //$this->validar($versao, $body, $method);
+        $content = Signner::sign($this->certificate, $content, $method, '', $this->algorithm);
+        $body = $this->clear($content);
+        $this->validar($versao, $body, $method);
         return $body;
     }
     
     /**
      * Processa quando temos apenas um RPS
-     * @param string $content
      * @param Rps $data
      * @return string
      */
-    private function individual(&$content, $data)
+    private function individual($data)
     {
-        return RenderRPS::toXml($data, $this->oCertificate->priKey);
+        return RenderRPS::toXml($data, $this->certificate);
     }
     
     /**
      * Processa vários Rps dentro de um array
-     * @param string $content
      * @param array $data
      * @return string
      */
-    private function lote(&$content, $data)
+    private function lote($data)
     {
         $xmlRPS = '';
         $this->totalizeRps($data);
         foreach ($data as $rps) {
-            $xmlRPS .= RenderRPS::toXml($data, $this->oCertificate->priKey);
+            $xmlRPS .= RenderRPS::toXml($data, $this->certificate, $this->algorithm);
         }
         return $xmlRPS;
     }

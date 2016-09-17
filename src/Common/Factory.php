@@ -1,6 +1,6 @@
 <?php
 
-namespace NFePHP\NFSe\Models;
+namespace NFePHP\NFSe\Common;
 
 /**
  * Classe base para a construção dos XMLs relativos ao serviços
@@ -18,22 +18,25 @@ namespace NFePHP\NFSe\Models;
 
 use InvalidArgumentException;
 use NFePHP\Common\Dom\ValidXsd;
-use NFePHP\Common\Certificate\Pkcs12;
+use NFePHP\Common\Certificate;
 
 class Factory
 {
-    protected $oCertificate;
+    protected $certificate;
     protected $pathSchemes = '../../schemes/';
     protected $xml = '';
-    protected $signAlgorithm = 'SHA1';
+    protected $algorithm;
     
     /**
      * Construtor recebe a classe de certificados
-     * @param Pkcs12 $pkcs
+     *
+     * @param Certificate $certificate
+     * @param int $algorithm
      */
-    public function __construct(Pkcs12 $pkcs)
+    public function __construct(Certificate $certificate, $algorithm = OPENSSL_ALGO_SHA1)
     {
-        $this->oCertificate = $pkcs;
+        $this->certificate = $certificate;
+        $this->algorithm = $algorithm;
     }
     
     /**
@@ -49,9 +52,9 @@ class Factory
         return $body;
     }
     
-    public function setSignAlgorithm($algo = 'SHA1')
+    public function setSignAlgorithm($algorithm)
     {
-        $this->signAlgorithm = $algo;
+        $this->algorithm = $algorithm;
     }
     
     /**

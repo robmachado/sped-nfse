@@ -16,7 +16,7 @@ namespace NFePHP\NFSe\Models\Dsfnet\Factories;
  * @link      http://github.com/nfephp-org/sped-nfse for the canonical source repository
  */
 
-use NFePHP\NFSe\Models\Header as HeaderModel;
+use NFePHP\NFSe\Common\Header as HeaderModel;
 
 class Header extends HeaderModel
 {

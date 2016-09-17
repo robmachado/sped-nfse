@@ -18,7 +18,7 @@ namespace NFePHP\NFSe\Models\Dsfnet;
 
 use InvalidArgumentException;
 use NFePHP\Common\Strings\Strings;
-use NFePHP\NFSe\Models\Rps as RpsBase;
+use NFePHP\NFSe\Common\Rps as RpsBase;
 
 class Rps extends RpsBase
 {
