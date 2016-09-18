@@ -19,6 +19,7 @@ use NFePHP\Common\Certificate;
 use League\Flysystem;
 use DOMDocument;
 use stdClass;
+use NFePHP\NFSe\Common\Soap\SoapInterface;
 
 abstract class Tools
 {
@@ -85,6 +86,12 @@ abstract class Tools
     public function setUseCdata($flag)
     {
         $this->withcdata = $flag;
+    }
+    
+    public function setSoapClass(SoapInterface $soap)
+    {
+        $this->soap = $soap;
+        $this->soap->setCertificate($this->certificate);
     }
     
     protected function replaceNodeWithCdata($xml, $nodename, $body, $param = [])

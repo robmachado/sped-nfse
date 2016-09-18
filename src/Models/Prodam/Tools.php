@@ -31,14 +31,14 @@ class Tools extends ToolsBase
         $this->method = 'EnvioRPS';
         $fact = new Factories\EnvioRPS($this->certificate);
         $fact->setSignAlgorithm($this->algorithm);
-        $xml = $fact->render(
+        $message = $fact->render(
             $this->versao,
             $this->remetenteTipoDoc,
             $this->remetenteCNPJCPF,
             null,
             $rps
         );
-        return $this->buildRequest($xml);
+        return $this->sendRequest('', $message);
     }
     
     /**
@@ -50,14 +50,14 @@ class Tools extends ToolsBase
         $this->method = 'EnvioLoteRPS';
         $fact = new Factories\EnvioRPS($this->certificate);
         $fact->setSignAlgorithm($this->algorithm);
-        $xml = $fact->render(
+        $message = $fact->render(
             $this->versao,
             $this->remetenteTipoDoc,
             $this->remetenteCNPJCPF,
             'true',
             $rpss
         );
-        return $this->buildRequest($xml);
+        return $this->sendRequest('', $message);
     }
     
     /**
@@ -69,14 +69,14 @@ class Tools extends ToolsBase
         $this->method = 'TesteEnvioLoteRPS';
         $fact = new Factories\EnvioRPS($this->certificate);
         $fact->setSignAlgorithm($this->algorithm);
-        $xml = $fact->render(
+        $message = $fact->render(
             $this->versao,
             $this->remetenteTipoDoc,
             $this->remetenteCNPJCPF,
             'true',
             $rpss
         );
-        return $this->buildRequest($xml);
+        return $this->sendRequest('', $message);
     }
     
     /**
@@ -89,7 +89,7 @@ class Tools extends ToolsBase
         $this->method = 'ConsultaNFe';
         $fact = new Factories\ConsultaNFSe($this->certificate);
         $fact->setSignAlgorithm($this->algorithm);
-        $xml = $fact->render(
+        $message = $fact->render(
             $this->versao,
             $this->remetenteTipoDoc,
             $this->remetenteCNPJCPF,
@@ -97,7 +97,7 @@ class Tools extends ToolsBase
             $chavesNFSe,
             $chavesRPS
         );
-        return $this->buildRequest($xml);
+        return $this->sendRequest('', $message);
     }
     
     /**
@@ -120,7 +120,7 @@ class Tools extends ToolsBase
         $this->method = 'ConsultaNFeRecebidas';
         $fact = new Factories\ConsultaNFSePeriodo($this->certificate);
         $fact->setSignAlgorithm($this->algorithm);
-        $xml = $fact->render(
+        $message = $fact->render(
             $this->versao,
             $this->remetenteTipoDoc,
             $this->remetenteCNPJCPF,
@@ -132,7 +132,7 @@ class Tools extends ToolsBase
             $dtFim,
             $pagina
         );
-        return $this->buildRequest($xml);
+        return $this->sendRequest('', $message);
     }
     
     /**
@@ -155,7 +155,7 @@ class Tools extends ToolsBase
         $this->method = 'ConsultaNFeEmitidas';
         $fact = new Factories\ConsultaNFSePeriodo($this->certificate);
         $fact->setSignAlgorithm($this->algorithm);
-        $xml = $fact->render(
+        $message = $fact->render(
             $this->versao,
             $this->remetenteTipoDoc,
             $this->remetenteCNPJCPF,
@@ -167,7 +167,7 @@ class Tools extends ToolsBase
             $dtFim,
             $pagina
         );
-        return $this->buildRequest($xml);
+        return $this->sendRequest('', $message);
     }
     
     /**
@@ -179,14 +179,14 @@ class Tools extends ToolsBase
         $this->method = 'ConsultaLote';
         $fact = new Factories\ConsultaLote($this->certificate);
         $fact->setSignAlgorithm($this->algorithm);
-        $xml = $fact->render(
+        $message = $fact->render(
             $this->versao,
             $this->remetenteTipoDoc,
             $this->remetenteCNPJCPF,
             null,
             $numeroLote
         );
-        return $this->buildRequest($xml);
+        return $this->sendRequest('', $message);
     }
     
     /**
@@ -199,7 +199,7 @@ class Tools extends ToolsBase
         $this->method = 'ConsultaInformacoesLote';
         $fact = new Factories\ConsultaInformacoesLote($this->certificate);
         $fact->setSignAlgorithm($this->algorithm);
-        $xml = $fact->render(
+        $message = $fact->render(
             $this->versao,
             $this->remetenteTipoDoc,
             $this->remetenteCNPJCPF,
@@ -207,7 +207,7 @@ class Tools extends ToolsBase
             $prestadorIM,
             $numeroLote
         );
-        return $this->buildRequest($xml);
+        return $this->sendRequest('', $message);
     }
     
     /**
@@ -220,7 +220,7 @@ class Tools extends ToolsBase
         $this->method = 'CancelamentoNFe';
         $fact = new Factories\CancelamentoNFSe($this->certificate);
         $fact->setSignAlgorithm($this->algorithm);
-        $xml = $fact->render(
+        $message = $fact->render(
             $this->versao,
             $this->remetenteTipoDoc,
             $this->remetenteCNPJCPF,
@@ -228,7 +228,7 @@ class Tools extends ToolsBase
             $prestadorIM,
             $numeroNFSe
         );
-        return $this->buildRequest($xml);
+        return $this->sendRequest('', $message);
     }
     
     /**
@@ -251,18 +251,20 @@ class Tools extends ToolsBase
             null,
             str_pad($cnpjContribuinte, 14, '0', STR_PAD_LEFT)
         );
-        $url = $this->url[$this->config->tpAmb];
-        return $this->sendRequest($url, $message);
+        return $this->sendRequest('', $message);
     }
     
     /**
-     * Monta o request da mansagem SOAP
-     * @param string $body
-     * @param string $method
+     * Send request to webservice
+     * @param string $message
      * @return string
      */
     protected function sendRequest($url, $message)
     {
+        $url = $this->url[$this->config->tpAmb];
+        if ($this->config->tpAmb == 2) {
+            $this->soapversion = SOAP_1_1;
+        }
         if (!is_object($this->soap)) {
             $this->soap = new \NFePHP\NFSe\Common\SoapCurl($this->certificate);
         }
@@ -271,6 +273,6 @@ class Tools extends ToolsBase
             'MensagemXML' => $message
         );
         $action = "\"http://www.prefeitura.sp.gov.br/nfe/ws/". lcfirst($this->method) ."\"";
-        $resp = $this->soap->soapSend($url, $this->method, $action, $this->soapversion, $params, $this->xmlns);
+        return $this->soap->soapSend($url, $this->method, $action, $this->soapversion, $params, $this->xmlns);
     }
 }

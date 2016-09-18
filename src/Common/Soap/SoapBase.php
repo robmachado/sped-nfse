@@ -1,11 +1,11 @@
 <?php
 
-namespace NFePHP\NFSe\Common;
+namespace NFePHP\NFSe\Common\Soap;
 
 use NFePHP\Common\Certificate;
 use Psr\Log\LoggerInterface;
 
-class SoapClient
+class SoapBase
 {
     const SSL_DEFAULT = 0; //default
     const SSL_TLSV1 = 1; //TLSv1
@@ -29,7 +29,7 @@ class SoapClient
     protected $pubfile = '';
     protected $certfile = '';
 
-    public function __construct(Certificate $certificate, LoggerInterface $logger = null)
+    public function __construct(Certificate $certificate = null, LoggerInterface $logger = null)
     {
         $this->logger = $logger;
         $this->certificate = $certificate;
@@ -39,6 +39,17 @@ class SoapClient
     public function __destruct()
     {
         $this->removeTemporarilyKeyFiles();
+    }
+    
+    public function setCertificate(Certificate $certificate)
+    {
+        $this->certificate = $certificate;
+        $this->saveTemporarilyKeyFiles();
+    }
+    
+    public function setLogger(LoggerInterface $logger)
+    {
+        $this->logger = $logger;
     }
 
     public function soapTimeout($timesecs)

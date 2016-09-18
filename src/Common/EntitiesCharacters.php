@@ -102,14 +102,14 @@ class EntitiesCharacters
         '[0xc3][0xbf]' => 'ÿ'
     ];
     
-    public static function unconvert($subject)
+    public static function convert($subject)
     {
         $search = array_keys(self::$chars);
         $replace = array_values(self::$chars);
         return str_replace($search, $replace, $subject);
     }
     
-    public static function convert($subject)
+    public static function unconvert($subject)
     {
         $replace = array_keys(self::$chars);
         $search = array_values(self::$chars);

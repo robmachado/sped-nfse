@@ -1,14 +1,12 @@
 <?php
 
-namespace NFePHP\NFSe\Common;
+namespace NFePHP\NFSe\Common\Soap;
 
-use NFePHP\NFSe\Common\SoapClient as LocalClient;
-use NFePHP\Common\Certificate;
-use Psr\Log\LoggerInterface;
+use NFePHP\NFSe\Common\Soap\SoapBase;
+use NFePHP\NFSe\Common\Soap\SoapInterface;
 use RuntimeException;
-use SimpleXMLElement;
 
-class SoapCurl extends LocalClient
+class SoapCurl extends SoapBase implements SoapInterface
 {
   
     protected $responseHead = '';
@@ -50,15 +48,11 @@ class SoapCurl extends LocalClient
                 . "charset=utf-8;",
             "Content-length: $msgSize"
         ];
-        
         if (!empty($action)) {
-            $curlparams[0] .= ";action=$action";
+            $curlparams[0] .= "action=$action";
         }
-        
         $oCurl = curl_init();
-        
         $this->curlSetProxy($oCurl);
-        
         curl_setopt($oCurl, CURLOPT_URL, $url);
         curl_setopt($oCurl, CURLOPT_IPRESOLVE, CURL_IPRESOLVE_V4);
         curl_setopt($oCurl, CURLOPT_CONNECTTIMEOUT, $this->soaptimeout);
@@ -76,21 +70,16 @@ class SoapCurl extends LocalClient
             curl_setopt($oCurl, CURLOPT_POSTFIELDS, $envelope);
             curl_setopt($oCurl, CURLOPT_HTTPHEADER, $curlparams);
         }
-        
         //log sended data
         //$this->logger->debug($envelope);
-        
         //connect and send
         $response = curl_exec($oCurl);
-        
         $soapinfo = curl_getinfo($oCurl);
         $soaperrors = curl_error($oCurl);
         $headsize = curl_getinfo($oCurl, CURLINFO_HEADER_SIZE);
-        
         //log soap info
         //log soaperrors if exists
         //log soap response ever
-        
         curl_close($oCurl);
         /*
         if (!empty($soapinfo)) {
@@ -104,7 +93,7 @@ class SoapCurl extends LocalClient
         return $this->stripHtmlPart($response, $headsize);
     }
     
-    private function mkEnvSoap1($operation, $parameters, $namespace)
+    protected function mkEnvSoap1($operation, $parameters, $namespace)
     {
         if (empty($operation)) {
             return '';
@@ -118,7 +107,7 @@ class SoapCurl extends LocalClient
         return $envelope;
     }
     
-    private function mkEnvSoap2($operation, $parameters, $namespace)
+    protected function mkEnvSoap2($operation, $parameters, $namespace)
     {
         if (empty($operation)) {
             return '';
@@ -132,7 +121,7 @@ class SoapCurl extends LocalClient
         return $envelope;
     }
     
-    private function mkRequest($operation, $parameters)
+    protected function mkRequest($operation, $parameters)
     {
         $tag = $operation . "Request";
         $request = "<$tag>";
@@ -168,35 +157,11 @@ class SoapCurl extends LocalClient
         if ($this->proxyIP != '') {
             curl_setopt($oCurl, CURLOPT_HTTPPROXYTUNNEL, 1);
             curl_setopt($oCurl, CURLOPT_PROXYTYPE, CURLPROXY_HTTP);
-            curl_setopt($oCurl, CURLOPT_PROXY, $this->proxyIP.':'.$this->proxyPORT);
-            if ($this->proxyPASS != '') {
-                curl_setopt($oCurl, CURLOPT_PROXYUSERPWD, $this->proxyUSER.':'.$this->proxyPASS);
+            curl_setopt($oCurl, CURLOPT_PROXY, $this->proxyIP.':'.$this->proxyPort);
+            if ($this->proxyUser != '') {
+                curl_setopt($oCurl, CURLOPT_PROXYUSERPWD, $this->proxyUser.':'.$this->proxyPass);
                 curl_setopt($oCurl, CURLOPT_PROXYAUTH, CURLAUTH_BASIC);
             }
-        }
-    }
-    
-    private function saveTemporarilyKeyFiles()
-    {
-        if (is_object($this->certificate)) {
-            $this->tempdir = sys_get_temp_dir().DIRECTORY_SEPARATOR.'certs'.DIRECTORY_SEPARATOR;
-            if (! is_dir($this->tempdir)) {
-                mkdir($this->tempdir);
-            }
-            $this->prifile = tempnam($this->tempdir, 'Pri').'.pem';
-            $this->pubfile = tempnam($this->tempdir, 'Pub').'.pem';
-            $this->certfile = tempnam($this->tempdir, 'Cert').'.pem';
-            file_put_contents($this->prifile, $this->certificate->privateKey);
-            file_put_contents($this->pubfile, $this->certificate->publicKey);
-            file_put_contents($this->certfile, $this->certificate->privateKey.$this->certificate->publicKey);
-        }
-    }
-
-    private function removeTemporarilyKeyFiles()
-    {
-        $files = glob($this->tempdir.'*');
-        foreach ($files as $file) {
-            unlink($file);
         }
     }
 }

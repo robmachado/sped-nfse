@@ -1,15 +1,16 @@
 <?php
 
-namespace NFePHP\NFSe\Common;
+namespace NFePHP\NFSe\Common\Soap;
 
-use SoapClient;
-use NFePHP\NFSe\Common\SoapClient as LocalClient;
+use NFePHP\NFSe\Common\Soap\SoapExtended;
+use NFePHP\NFSe\Common\Soap\SoapBase;
+use NFePHP\NFSe\Common\Soap\SoapInterface;
 use NFePHP\Common\Certificate;
 use Psr\Log\LoggerInterface;
 use RuntimeException;
 use SimpleXMLElement;
 
-class SoapNative extends LocalClient
+class SoapNative extends SoapBase implements SoapInterface
 {
     protected $connection;
     
@@ -54,8 +55,9 @@ class SoapNative extends LocalClient
             'trace' => true,
             'cache_wsdl' => WSDL_CACHE_NONE
         ];
+        $this->setproxy($params);
         try {
-            $this->connection = new SoapClient($wsdl, $params);
+            $this->connection = new SoapExtended($wsdl, $params);
         } catch (SoapFault $e) {
             throw new RuntimeException($e->getMessage());
         } catch (Exception $e) {
@@ -68,15 +70,14 @@ class SoapNative extends LocalClient
         if ($this->proxyIP != '') {
             $pproxy1 = [
                 'proxy_host' => $this->proxyIP,
-                'proxy_port' => $this->proxyPORT
+                'proxy_port' => $this->proxyPort
             ];
             array_push($params, $pproxy1);
         }
-        
-        if ($this->proxyPASS != '') {
+        if ($this->proxyUser != '') {
             $pproxy2 = [
-                'proxy_login' => $this->proxyUSER,
-                'proxy_password' => $this->proxyPASS
+                'proxy_login' => $this->proxyUser,
+                'proxy_password' => $this->proxyPass
             ];
             array_push($params, $pproxy2);
         }
