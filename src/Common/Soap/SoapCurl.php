@@ -19,7 +19,7 @@ class SoapCurl extends SoapBase implements SoapInterface
      * @param string $action
      * @param int $soapver
      * @param array $parameters
-     * @param string $namespace
+     * @param array $namespaces
      * @return string
      */
     public function soapSend(
@@ -28,15 +28,15 @@ class SoapCurl extends SoapBase implements SoapInterface
         $action = '',
         $soapver = SOAP_1_2,
         $parameters = [],
-        $namespace = ''
+        $namespaces = []
     ) {
         $soapinfo = array();
         $soaperror = '';
         $response = '';
         
-        $envelope = $this->mkEnvSoap1($operation, $parameters, $namespace);
+        $envelope = $this->mkEnvSoap1($operation, $parameters, $namespaces);
         if ($soapver == SOAP_1_2) {
-            $envelope = $this->mkEnvSoap2($operation, $parameters, $namespace);
+            $envelope = $this->mkEnvSoap2($operation, $parameters, $namespaces);
         }
         
         $msgSize = strlen($envelope);
@@ -93,30 +93,32 @@ class SoapCurl extends SoapBase implements SoapInterface
         return $this->stripHtmlPart($response, $headsize);
     }
     
-    protected function mkEnvSoap1($operation, $parameters, $namespace)
+    protected function mkEnvSoap1($operation, $parameters, $namespaces)
     {
         if (empty($operation)) {
             return '';
         }
         $request = $this->mkRequest($operation, $parameters);
-        $envelope = "<soapenv:Envelope "
-                . "xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" "
-                . "xmlns=\"$namespace\">"
-                . "<soapenv:Body>$request</soapenv:Body>"
+        $envelope = "<soapenv:Envelope";
+        foreach($namespaces as $key => $value) {
+            $envelope .= " $key=\"$value\"";
+        }
+        $envelope .= "><soapenv:Body>$request</soapenv:Body>"
                 . "</soapenv:Envelope>";
         return $envelope;
     }
     
-    protected function mkEnvSoap2($operation, $parameters, $namespace)
+    protected function mkEnvSoap2($operation, $parameters, $namespaces)
     {
         if (empty($operation)) {
             return '';
         }
         $request = $this->mkRequest($operation, $parameters);
-        $envelope = "<soap:Envelope "
-            . "xmlns:soap=\"http://www.w3.org/2003/05/soap-envelope\" "
-            . "xmlns=\"$namespace\" >"
-            . "<soap:Body>$request</soap:Body>"
+        $envelope = "<soap:Envelope";
+        foreach($namespaces as $key => $value) {
+            $envelope .= " $key=\"$value\"";
+        }    
+        $envelope .= "><soap:Body>$request</soap:Body>"
             . "</soap:Envelope>";
         return $envelope;
     }

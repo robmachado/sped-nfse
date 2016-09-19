@@ -50,7 +50,6 @@ class ConsultaCNPJ extends Factory
         $content = Signner::sign($this->certificate, $content, $method, '', $this->algorithm);
         $body = $this->clear($content);
         $this->validar($versao, $body, $method);
-        //Signner::verifySignature($body, $method);
         return $body;
     }
 }

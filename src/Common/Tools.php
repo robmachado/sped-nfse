@@ -65,6 +65,11 @@ abstract class Tools
      * @var string
      */
     protected $algorithm;
+    /**
+     * namespaces for soap envelope
+     * @var array
+     */    
+    protected $namespaces = [];
 
     /**
      * Constructor
