@@ -59,4 +59,19 @@ class Tools extends ToolsProdam
      * @var int
      */
     protected $versao = 1;
+    /**
+     * namespaces for soap envelope
+     * @var array
+     */
+    protected $namespaces = [
+        1 => [
+            'xmlns:soapenv' => 'http://schemas.xmlsoap.org/soap/envelope/',
+            'xmlns' => 'http://www.prefeitura.sp.gov.br/nfe'
+        ],
+        2  => [
+            'xmlns:soap' => 'http://www.w3.org/2003/05/soap-envelope',
+            'xmlns' => 'http://www.prefeitura.sp.gov.br/nfe'
+        ]
+    ];
+    
 }

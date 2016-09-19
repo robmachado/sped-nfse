@@ -273,6 +273,15 @@ class Tools extends ToolsBase
             'MensagemXML' => $message
         );
         $action = "\"http://www.prefeitura.sp.gov.br/nfe/ws/". lcfirst($this->method) ."\"";
-        return $this->soap->soapSend($url, $this->method, $action, $this->soapversion, $params, $this->xmlns);
+        
+        $ns = $this->namespaces[$this->soapversion];
+        return $this->soap->soapSend(
+            $url,
+            $this->method,
+            $action,
+            $this->soapversion,
+            $params,
+            []
+        );
     }
 }

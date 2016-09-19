@@ -39,7 +39,9 @@ class Signner
         $mark = 'Id',
         $algorithm = OPENSSL_ALGO_SHA1
     ) {
-        $dom = new DOMDocument('1.0', 'utf-8');
+        $content = str_replace(["<?xml version=\"1.0\" encoding=\"UTF-8\"?>", "<?xml version=\"1.0\" encoding=\"utf-8\"?>"], '', $content);
+        $content = str_replace(["\r", "\n"], '', "<?xml version=\"1.0\" encoding=\"UTF-8\"?>".$content);
+        $dom = new DOMDocument('1.0', 'UTF-8');
         $dom->loadXML($content);
         $dom->preserveWhiteSpace = false;
         $dom->formatOutput = false;
@@ -52,7 +54,7 @@ class Signner
             $xml = self::createSignature(
                 $certificate,
                 $dom,
-                $root,
+                $root,    
                 $node,
                 $mark,
                 $algorithm
@@ -65,7 +67,6 @@ class Signner
      * createSignature
      * Método que provê a assinatura do xml conforme padrão SEFAZ
      * @param \DOMDocument $xmldoc
-     * @param \DOMElement $root
      * @param \DOMElement $node
      * @param string $marcador
      * @param string $algorithm
@@ -75,14 +76,13 @@ class Signner
     private static function createSignature(
         Certificate $certificate,
         DOMDocument $dom,
-        DOMElement $root,
+        DOMElement $root,    
         DOMElement $node,
         $mark,
         $algorithm = OPENSSL_ALGO_SHA1
     ) {
         $nsDSIG = 'http://www.w3.org/2000/09/xmldsig#';
         $nsCannonMethod = 'http://www.w3.org/TR/2001/REC-xml-c14n-20010315';
-        
         $nsSignatureMethod = 'http://www.w3.org/2000/09/xmldsig#rsa-sha1';
         $nsDigestMethod = 'http://www.w3.org/2000/09/xmldsig#sha1';
         $digestAlgorithm = 'sha1';
@@ -91,14 +91,10 @@ class Signner
             $nsSignatureMethod = 'http://www.w3.org/2001/04/xmldsig-more#rsa-sha256';
             $nsDigestMethod = 'http://www.w3.org/2001/04/xmlenc#sha256';
         }
-        
         $nsTransformMethod1 ='http://www.w3.org/2000/09/xmldsig#enveloped-signature';
         $nsTransformMethod2 = 'http://www.w3.org/TR/2001/REC-xml-c14n-20010315';
-        
         $idSigned = trim($node->getAttribute($mark));
-        
-        $digestValue = self::calculeDigest($node, $digestAlgorithm);
-        
+        $digestValue = self::calculeDigest($root, $digestAlgorithm);
         //cria o node <Signature>
         $signatureNode = $dom->createElementNS($nsDSIG, 'Signature');
         //adiciona a tag <Signature> ao node raiz
@@ -155,9 +151,9 @@ class Signner
         //adiciona o node <DigestValue> ao node <Reference>
         $referenceNode->appendChild($digestValueNode);
         //extrai node <SignedInfo> para uma string na sua forma canonica
-        $content = $signedInfoNode->C14N(true, false, null, null);
+        $c14n = $signedInfoNode->C14N(false, false, null, null);
         //cria uma variavel vazia que receberá a assinatura
-        $signature = $certificate->sign($content, $algorithm);
+        $signature = $certificate->sign($c14n, $algorithm);
         //converte a assinatura em base64
         $signatureValue = base64_encode($signature);
         //cria o node <SignatureValue>
@@ -178,8 +174,9 @@ class Signner
         $x509CertificateNode = $dom->createElement('X509Certificate', $pubKeyClean);
         //adiciona o node <X509Certificate> ao node <X509Data>
         $x509DataNode->appendChild($x509CertificateNode);
-        //salva o xml completo em uma string
-        return $dom->saveXML();
+        $xml = $dom->saveXML();
+        //retorna o xml completo em uma string
+        return str_replace('<?xml version="1.0"?>', '', $xml);
     }
     
     /**
@@ -196,9 +193,13 @@ class Signner
         }
         $dom = new DOMDocument('1.0', 'UTF-8');
         $dom->loadXML($content);
-        $flag = self::signatureExists($dom);
-        $flag &= self::digestCheck($dom, $tagid);
-        $flag &= self::signatureCheck($dom);
+        $dom->preserveWhiteSpace = false;
+        $dom->formatOutput = false;
+        $flag = false;
+        if (self::signatureExists($dom)) {
+            $flag = self::digestCheck($content, $tagid);
+            $flag &= self::signatureCheck($dom);
+        }    
         return $flag;
     }
 
@@ -225,13 +226,14 @@ class Signner
      */
     private static function signatureCheck(DOMDocument $dom)
     {
-        $sigMethAlgo = $dom->getElementsByTagName('SignatureMethod')->item(0)->getAttribute('Algorithm');
+        $signature = $dom->getElementsByTagName('Signature')->item(0);
+        $sigMethAlgo = $signature->getElementsByTagName('SignatureMethod')->item(0)->getAttribute('Algorithm');
         if ($sigMethAlgo == 'http://www.w3.org/2000/09/xmldsig#rsa-sha1') {
             $signAlgorithm = OPENSSL_ALGO_SHA1;
         } else {
             $signAlgorithm = OPENSSL_ALGO_SHA256;
         }
-        $x509Certificate = $dom->getElementsByTagName('X509Certificate')->item(0)->nodeValue;
+        $x509Certificate = $signature->getElementsByTagName('X509Certificate')->item(0)->nodeValue;
         $x509Certificate =  "-----BEGIN CERTIFICATE-----\n"
             . self::splitLines($x509Certificate)
             . "\n-----END CERTIFICATE-----\n";
@@ -240,8 +242,8 @@ class Signner
             $msg = "Ocorreram problemas ao carregar a chave pública. Certificado incorreto ou corrompido!!";
             $this->thowOpenSSLError($msg);
         }
-        $signContent = $dom->getElementsByTagName('SignedInfo')->item(0)->C14N(true, false, null, null);
-        $signatureValue = $dom->getElementsByTagName('SignatureValue')->item(0)->nodeValue;
+        $signContent = $signature->getElementsByTagName('SignedInfo')->item(0)->C14N(true, false, null, null);
+        $signatureValue = $signature->getElementsByTagName('SignatureValue')->item(0)->nodeValue;
         $decodedSignature = base64_decode(str_replace(array("\r", "\n"), '', $signatureValue));
         $resp = openssl_verify($signContent, $decodedSignature, $objSSLPubKey, $signAlgorithm);
         if ($resp != 1) {
@@ -253,24 +255,40 @@ class Signner
     
     /**
      * digestCheck
-     * @param DOMDocument $dom
+     * @param string $content
      * @param string $tagid
      * @return boolean
      * @throws Exception\RuntimeException
      */
-    private static function digestCheck(DOMDocument $dom, $tagid = '')
-    {
+    private static function digestCheck($content, $tagid = '')
+    {   
+        $dom = new DOMDocument('1.0', 'UTF-8');
+        $dom->loadXML($content);
+        $dom->preserveWhiteSpace = false;
+        $dom->formatOutput = false;
+        $root = $dom->documentElement;
         $node = $dom->getElementsByTagName($tagid)->item(0);
         if (empty($node)) {
             throw new RuntimeException("A tag < $tagid > não existe no XML!!");
         }
-        $sigMethAlgo = $dom->getElementsByTagName('SignatureMethod')->item(0)->getAttribute('Algorithm');
+        $signature = $node->getElementsByTagName('Signature')->item(0);
+        if (! empty($signature)) {
+            $clone = $signature->cloneNode(true);
+        } else {
+            $signature = $dom->getElementsByTagName('Signature')->item(0);
+        }
+        $sigMethAlgo = $signature->getElementsByTagName('SignatureMethod')->item(0)->getAttribute('Algorithm');
         $algorithm = 'sha256';
         if ($sigMethAlgo == 'http://www.w3.org/2000/09/xmldsig#rsa-sha1') {
             $algorithm = 'sha1';
         }
+        $sigURI = $signature->getElementsByTagName('Reference')->item(0)->getAttribute('URI');
+        if ($sigURI == '') {
+            $node->removeChild($signature);
+        }
+        file_put_contents('/var/www/sped/sped-nfse/local/Prodam/node.xml', $dom->saveXML($node));
         $calculatedDigest = self::calculeDigest($node, $algorithm);
-        $informedDigest = $dom->getElementsByTagName('DigestValue')->item(0)->nodeValue;
+        $informedDigest = $signature->getElementsByTagName('DigestValue')->item(0)->nodeValue;
         if ($calculatedDigest != $informedDigest) {
             $msg = "O conteúdo do XML não confere com o Digest Value.\n
                 Digest calculado [{$calculatedDigest}], digest informado no XML [{$informedDigest}].\n
@@ -282,8 +300,8 @@ class Signner
     
     private static function calculeDigest(DOMElement $node, $algorithm)
     {
-        $tagInf = $node->C14N(true, false, null, null);
-        $hashValue = hash($algorithm, $tagInf, true);
+        $c14n = $node->C14N(false, false, null, null);
+        $hashValue = hash($algorithm, $c14n, true);
         return base64_encode($hashValue);
     }
     

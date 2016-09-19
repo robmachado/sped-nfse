@@ -18,6 +18,6 @@ interface SoapInterface
         $action = '',
         $soapver = SOAP_1_2,
         $parameters = [],
-        $namespace = ''
+        $namespaces = []
     );
 }
