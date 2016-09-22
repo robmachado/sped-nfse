@@ -68,7 +68,7 @@ abstract class Tools
     /**
      * namespaces for soap envelope
      * @var array
-     */    
+     */
     protected $namespaces = [];
 
     /**

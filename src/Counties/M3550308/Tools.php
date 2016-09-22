@@ -73,5 +73,4 @@ class Tools extends ToolsProdam
             'xmlns' => 'http://www.prefeitura.sp.gov.br/nfe'
         ]
     ];
-    
 }

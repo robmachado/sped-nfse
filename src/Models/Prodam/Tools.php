@@ -238,7 +238,7 @@ class Tools extends ToolsBase
      * @return string
      */
     public function consultaCNPJ($cnpjContribuinte)
-    {     
+    {
         $this->method = 'ConsultaCNPJ';
         $fact = new Factories\ConsultaCNPJ($this->certificate);
         $fact->setSignAlgorithm($this->algorithm);
