@@ -48,7 +48,7 @@ class Tools extends ToolsProdam
      * Indicates when use CDATA string on message
      * @var boolean
      */
-    protected $withcdata = false;
+    protected $withcdata = true;
     /**
      * Encription signature algorithm
      * @var string
@@ -73,5 +73,4 @@ class Tools extends ToolsProdam
             'xmlns' => 'http://www.prefeitura.sp.gov.br/nfe'
         ]
     ];
-    
 }

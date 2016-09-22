@@ -19,7 +19,6 @@ namespace NFePHP\NFSe\Models\Prodam\Factories;
 
 use NFePHP\NFSe\Models\Prodam\Factories\Header;
 use NFePHP\NFSe\Models\Prodam\Factories\Factory;
-use NFePHP\NFSe\Common\Signner;
 
 class ConsultaInformacoesLote extends Factory
 {

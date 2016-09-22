@@ -16,10 +16,10 @@ namespace NFePHP\NFSe\Common;
  */
 
 use NFePHP\Common\Certificate;
+use NFePHP\Common\Soap\SoapInterface;
 use League\Flysystem;
 use DOMDocument;
 use stdClass;
-use NFePHP\NFSe\Common\Soap\SoapInterface;
 
 abstract class Tools
 {
@@ -68,7 +68,7 @@ abstract class Tools
     /**
      * namespaces for soap envelope
      * @var array
-     */    
+     */
     protected $namespaces = [];
 
     /**
@@ -96,7 +96,7 @@ abstract class Tools
     public function setSoapClass(SoapInterface $soap)
     {
         $this->soap = $soap;
-        $this->soap->setCertificate($this->certificate);
+        $this->soap->loadCertificate($this->certificate);
     }
     
     protected function replaceNodeWithCdata($xml, $nodename, $body, $param = [])

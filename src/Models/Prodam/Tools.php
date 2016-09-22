@@ -19,6 +19,7 @@ namespace NFePHP\NFSe\Models\Prodam;
 use NFePHP\NFSe\Models\Prodam\Rps;
 use NFePHP\NFSe\Models\Prodam\Factories;
 use NFePHP\NFSe\Common\Tools as ToolsBase;
+use NFePHP\NFSe\Models\Prodam\Response;
 
 class Tools extends ToolsBase
 {
@@ -45,7 +46,7 @@ class Tools extends ToolsBase
      * Envio de lote de RPS
      * @param array $rpss
      */
-    public function envioLoteRPS($rpss = array())
+    public function envioLoteRPS($rpss)
     {
         $this->method = 'EnvioLoteRPS';
         $fact = new Factories\EnvioRPS($this->certificate);
@@ -64,7 +65,7 @@ class Tools extends ToolsBase
      * Pedido de teste de envio de lote
      * @param array $rpss
      */
-    public function testeEnvioLoteRPS($rpss = array())
+    public function testeEnvioLoteRPS($rpss)
     {
         $this->method = 'TesteEnvioLoteRPS';
         $fact = new Factories\EnvioRPS($this->certificate);
@@ -174,7 +175,7 @@ class Tools extends ToolsBase
      * Consulta Lote
      * @param string $numeroLote
      */
-    public function consultaLote($numeroLote = '')
+    public function consultaLote($numeroLote)
     {
         $this->method = 'ConsultaLote';
         $fact = new Factories\ConsultaLote($this->certificate);
@@ -194,7 +195,7 @@ class Tools extends ToolsBase
      * @param string $prestadorIM
      * @param string $numeroLote
      */
-    public function consultaInformacoesLote($prestadorIM = '', $numeroLote = '')
+    public function consultaInformacoesLote($prestadorIM, $numeroLote)
     {
         $this->method = 'ConsultaInformacoesLote';
         $fact = new Factories\ConsultaInformacoesLote($this->certificate);
@@ -215,7 +216,7 @@ class Tools extends ToolsBase
      * @param string $prestadorIM
      * @param string $numeroNFSe
      */
-    public function cancelamentoNFSe($prestadorIM = '', $numeroNFSe = '')
+    public function cancelamentoNFSe($prestadorIM, $numeroNFSe)
     {
         $this->method = 'CancelamentoNFe';
         $fact = new Factories\CancelamentoNFSe($this->certificate);
@@ -236,11 +237,8 @@ class Tools extends ToolsBase
      * @param string $cnpjContribuinte
      * @return string
      */
-    public function consultaCNPJ($cnpjContribuinte = '')
+    public function consultaCNPJ($cnpjContribuinte)
     {
-        if ($cnpjContribuinte == '') {
-            return '';
-        }
         $this->method = 'ConsultaCNPJ';
         $fact = new Factories\ConsultaCNPJ($this->certificate);
         $fact->setSignAlgorithm($this->algorithm);
@@ -273,15 +271,14 @@ class Tools extends ToolsBase
             'MensagemXML' => $message
         );
         $action = "\"http://www.prefeitura.sp.gov.br/nfe/ws/". lcfirst($this->method) ."\"";
-        
-        $ns = $this->namespaces[$this->soapversion];
-        return $this->soap->soapSend(
+        return $this->soap->send(
             $url,
             $this->method,
             $action,
             $this->soapversion,
             $params,
-            []
+            $this->namespaces[$this->soapversion],
+            $this->withcdata
         );
     }
 }
