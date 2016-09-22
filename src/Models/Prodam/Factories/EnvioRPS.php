@@ -20,7 +20,7 @@ namespace NFePHP\NFSe\Models\Prodam\Factories;
 use NFePHP\NFSe\Models\Prodam\Rps;
 use NFePHP\NFSe\Models\Prodam\Factories\Factory;
 use NFePHP\NFSe\Models\Prodam\RenderRPS;
-use NFePHP\NFSe\Common\Signner;
+use NFePHP\Common\Signner;
 
 class EnvioRPS extends Factory
 {

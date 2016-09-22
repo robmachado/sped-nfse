@@ -19,7 +19,6 @@ namespace NFePHP\NFSe\Models\Dsfnet;
 use NFePHP\Common\Dom\Dom;
 use NFePHP\NFSe\Models\Dsfnet\Rps;
 use NFePHP\Common\Certificate;
-use NFePHP\NFSe\Common\Signner;
 
 class RenderRPS
 {

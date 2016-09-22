@@ -48,7 +48,7 @@ class Tools extends ToolsProdam
      * Indicates when use CDATA string on message
      * @var boolean
      */
-    protected $withcdata = false;
+    protected $withcdata = true;
     /**
      * Encription signature algorithm
      * @var string

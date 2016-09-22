@@ -17,93 +17,37 @@ namespace NFePHP\NFSe\Common;
 
 use DOMDocument;
 use stdClass;
-use NFePHP\NFSe\Common\Characters;
+use NFePHP\NFSe\Common\EntitiesCharacters;
 
 class Response
 {
-    public static function readReturn($tag, $xmlResp = '')
+    public static function readReturn($tag, $response, $withcdata = false)
     {
-        if (trim($xmlResp) == '') {
-            return [
-                'bStat' => false,
-                'message' => 'Não retornou nenhum dado'
-            ];
+        if (trim($response) == '') {
+            //throw
         }
         libxml_use_internal_errors(true);
         $dom = new DOMDocument('1.0', 'utf-8');
-        $dom->loadXML($xmlResp);
+        $dom->loadXML($response);
         $errors = libxml_get_errors();
         libxml_clear_errors();
         if (! empty($errors)) {
-            return [
-                'bStat' => false,
-                'message' => $xmlResp,
-                'errors' => $errors
-            ];
+            //throw
         }
         //foi retornado um xml continue
         $reason = self::checkForFault($dom);
         if ($reason != '') {
-            return [
-                'bStat' => false,
-                'message' => $reason
-            ];
+            //throw
         }
-        //converte o xml em uma StdClass
-        $std = self::xml2Obj($dom, $tag);
-        return self::readRespStd($std);
+        //converte o xml em uma stdClass
+        return self::xml2Obj($dom, $tag);
     }
     
     /**
-     * Retorna os dados do objeto
-     * @param stdClass $std
-     * @return array
-     */
-    protected static function readRespStd(stdClass $std)
-    {
-        return $std;
-        /*
-        if ($std->return->status == 'ERRO') {
-            return [
-                'bStat' => false,
-                'message' => $std->return->mensagem,
-                'status' => $std->return->status
-            ];
-        }
-        $aResp = [
-            'bStat' => true,
-            'message' => $std->return->mensagem,
-            'status' => $std->return->status
-        ];
-        $dados = $std->return->dados;
-        $aReg = array();
-        if (property_exists($dados, 'entry')) {
-            foreach ($std->return->dados->entry as $entry) {
-                if (is_object($entry->value)) {
-                    if (property_exists($entry->value, 'registros')) {
-                        foreach ($entry->value->registros as $registro) {
-                            $aReg[$registro->campo] = $registro->valor;
-                        }
-                    } else {
-                        foreach ($entry->value as $chave => $valor) {
-                            $aReg[$chave] = $valor;
-                        }
-                    }
-                    $aResp[$entry->key] = $aReg;
-                } else {
-                    $aResp[$entry->key] = $entry->value;
-                }
-            }
-        }
-        return $aResp;
-        */
-    }
-    
-    /**
-     * Converte DOMDocument em uma StdClass com a tag desejada
+     * Convert DOMDocument in stdClass
      * @param DOMDocument $dom
      * @param string $tag
-     * @return StdClass
+     * @return \stdClass
      */
     protected static function xml2Obj(DOMDocument $dom, $tag)
     {
@@ -115,7 +59,7 @@ class Response
         $xml = str_replace('<?xml version="1.0" encoding="UTF-8"?>', '', $xml);
         $xml = str_replace('<?xml version="1.0" encoding="utf-8"?>', '', $xml);
         $xml = str_replace('&lt;?xml version="1.0" encoding="UTF-8"?&gt;', '', $xml);
-        $xml = Characters::relaceEntities(html_entity_decode($xml));
+        $xml = EntitiesCharacters::convert(html_entity_decode($xml));
         $resp = simplexml_load_string($xml, null, LIBXML_NOCDATA);
         $std = json_encode($resp);
         $std = str_replace('@attributes', 'attributes', $std);
@@ -125,7 +69,6 @@ class Response
 
     /**
      * Verifica se o retorno é relativo a um ERRO SOAP
-     *
      * @param DOMDocument $dom
      * @return string
      */

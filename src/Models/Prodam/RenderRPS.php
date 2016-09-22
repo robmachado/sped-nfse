@@ -17,9 +17,8 @@ namespace NFePHP\NFSe\Models\Prodam;
  */
 
 use NFePHP\Common\Dom\Dom;
-use NFePHP\NFSe\Models\Prodam\Rps;
 use NFePHP\Common\Certificate;
-use NFePHP\NFSe\Common\Signner;
+use NFePHP\NFSe\Models\Prodam\Rps;
 
 class RenderRPS
 {
@@ -49,9 +48,8 @@ class RenderRPS
      */
     private static function render(Rps $rps)
     {
-        self::$dom = new Dom();
+        self::$dom = new Dom('1.0', 'utf-8');
         $root = self::$dom->createElement('RPS');
-        //$root->createAttributeNS('','');
         $xmlnsAttribute = self::$dom->createAttribute('xmlns');
         $xmlnsAttribute->value = '';
         $root->appendChild($xmlnsAttribute);
@@ -354,7 +352,7 @@ class RenderRPS
     }
     
     /**
-     * Cria a assinatura do RPS
+     * Cria o valor da assinatura do RPS
      * @param Rps $rps
      * @return string
      */

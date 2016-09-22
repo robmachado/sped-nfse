@@ -19,6 +19,7 @@ namespace NFePHP\NFSe\Common;
 use InvalidArgumentException;
 use NFePHP\Common\Dom\ValidXsd;
 use NFePHP\Common\Certificate;
+use NFePHP\NFSe\Common\Signner;
 
 class Factory
 {
