@@ -17,6 +17,12 @@
             "homepage": "https://github.com/nfephp-org/sped-cte/graphs/contributors"
         }
     ],
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/robmachado/sped-common"
+        }
+    ],
     "require": {
         "php" : "~5.6|~7.0",
         "nfephp-org/sped-common" : "dev-develop",

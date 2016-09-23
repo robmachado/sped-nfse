@@ -6,7 +6,7 @@ namespace NFePHP\NFSe\Common;
  * Classe para base para a comunicação com os webservices
  *
  * @category  NFePHP
- * @package   NFePHP\NFSe\Models\Tools
+ * @package   NFePHP\NFSe\Common\Tools
  * @copyright NFePHP Copyright (c) 2016
  * @license   http://www.gnu.org/licenses/lgpl.txt LGPLv3+
  * @license   https://opensource.org/licenses/MIT MIT
@@ -17,6 +17,7 @@ namespace NFePHP\NFSe\Common;
 
 use NFePHP\Common\Certificate;
 use NFePHP\Common\Soap\SoapInterface;
+use NFePHP\NFSe\Common\EntitiesCharacters;
 use League\Flysystem;
 use DOMDocument;
 use stdClass;
@@ -124,4 +125,15 @@ abstract class Tools
     }
     
     abstract protected function sendRequest($url, $message);
+    
+    /**
+     * Convert string xml message to cdata string
+     * @param string $message
+     * @param boolean $withcdata
+     * @return string
+     */
+    protected function stringTransform($message)
+    {
+        return EntitiesCharacters::unconvert(htmlentities($message, ENT_NOQUOTES));
+    }
 }
