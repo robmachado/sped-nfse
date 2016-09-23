@@ -52,7 +52,7 @@ class ConsultarNota extends Factory
         $content .= "</ns1:$method>";
         $content = Signner::sign($this->certificate, $content, $method, 'Consulta:notas', $this->algorithm);
         $body = $this->clear($content);
-        $this->validar($versao, $body, $method, '');
+        $this->validar($versao, $body, 'Dsfnet', $method, '');
         return $body;
     }
 }

@@ -34,6 +34,7 @@ class Tools extends ToolsDsfnet
      * @var string
      */
     protected $xmlns = 'http://sistemas.semfaz.saoluis.ma.gov.br/WsNFe2/LoteRps.jws';
+    
     /**
      * Soap Version
      * @var int

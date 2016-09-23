@@ -24,7 +24,7 @@ use NFePHP\NFSe\Common\Signner;
 class Factory
 {
     protected $certificate;
-    protected $pathSchemes = '../../schemes/';
+    protected $pathSchemes = '';
     protected $xml = '';
     protected $algorithm;
     
@@ -38,6 +38,7 @@ class Factory
     {
         $this->certificate = $certificate;
         $this->algorithm = $algorithm;
+        $this->pathSchemes = realpath('../../../schemes/');
     }
     
     /**
@@ -62,17 +63,19 @@ class Factory
      * Executa a validação da mensagem XML com base no XSD
      * @param int $versao
      * @param string $body
+     * @param string $model
      * @param string $method
      * @return boolean
      * @throws InvalidArgumentException
      */
-    public function validar($versao, $body, $method = '', $suffix = 'v')
+    public function validar($versao, $body, $model, $method = '', $suffix = 'v')
     {
         $ver = str_pad($versao, 2, '0', STR_PAD_LEFT);
         $flag = false;
-        $schema = $this->pathSchemes."v$ver".DIRECTORY_SEPARATOR.$method.".xsd";
+        $path = $this->pathSchemes . DIRECTORY_SEPARATOR . $model . DIRECTORY_SEPARATOR;
+        $schema = $path."v$ver".DIRECTORY_SEPARATOR.$method.".xsd";
         if ($suffix) {
-            $schema = $this->pathSchemes."v$ver".DIRECTORY_SEPARATOR.$method."_v$ver.xsd";
+            $schema = $path."v$ver".DIRECTORY_SEPARATOR.$method."_v$ver.xsd";
         }
         $flag = ValidXsd::validar(
             $body,

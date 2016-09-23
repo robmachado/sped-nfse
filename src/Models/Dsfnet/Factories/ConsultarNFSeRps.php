@@ -50,7 +50,7 @@ class ConsultarNFSeRps extends Factory
         $content .= "</ns1:$method>";
         $content = Signner::sign($this->certificate, $content, 'Lote', 'Id', $this->algorithm);
         $body = $this->clear($content);
-        $this->validar($versao, $body, $method, '');
+        $this->validar($versao, $body, 'Dsfnet', $method, '');
         return $body;
     }
 }

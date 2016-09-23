@@ -19,7 +19,6 @@ namespace NFePHP\NFSe\Models\Prodam;
 use NFePHP\NFSe\Models\Prodam\Rps;
 use NFePHP\NFSe\Models\Prodam\Factories;
 use NFePHP\NFSe\Common\Tools as ToolsBase;
-use NFePHP\NFSe\Models\Prodam\Response;
 
 class Tools extends ToolsBase
 {

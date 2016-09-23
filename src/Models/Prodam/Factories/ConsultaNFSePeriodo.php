@@ -67,7 +67,7 @@ class ConsultaNFSePeriodo extends Factory
         $canonical = [false,false,null,null];
         $content = Signner::sign($this->certificate, $content, $method, '', $this->algorithm, $canonical);
         $body = $this->clear($content);
-        $this->validar($versao, $body, $method);
+        $this->validar($versao, $body, 'Prodam', $method);
         return $body;
     }
 }
