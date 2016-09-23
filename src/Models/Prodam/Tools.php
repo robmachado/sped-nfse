@@ -259,7 +259,9 @@ class Tools extends ToolsBase
      */
     protected function sendRequest($url, $message)
     {
+        //no caso da Prodam o URL é unico para todas as ações
         $url = $this->url[$this->config->tpAmb];
+        //o ambiente de testes da Prodam não FUNCIONA!!
         if ($this->config->tpAmb == 2) {
             $this->soapversion = SOAP_1_1;
         }
