@@ -273,10 +273,10 @@ class Tools extends ToolsBase
         if (is_a($this->soap, 'NFePHP\Common\Soap\SoapCurl') && $this->withcdata) {
             $message = $this->stringTransform($message);
         }
-        $params = array(
+        $params = [
             'VersaoSchema' => $this->versao,
             'MensagemXML' => $message
-        );
+        ];
         $action = "\"http://www.prefeitura.sp.gov.br/nfe/ws/". lcfirst($this->method) ."\"";
         return $this->soap->send(
             $url,
