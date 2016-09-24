@@ -20,8 +20,6 @@ use NFePHP\NFSe\Common\Factory as FactoryModel;
 
 class Factory extends FactoryModel
 {
-    protected $pathSchemes = '../../schemes/Dsfnet/';
-    
     protected function requestFirstPart($method)
     {
         return "<ns1:$method "

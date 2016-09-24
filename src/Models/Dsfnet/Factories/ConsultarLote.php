@@ -45,7 +45,7 @@ class ConsultarLote extends Factory
         );
         $content .= "</ns1:$method>";
         $body = $this->clear($content);
-        $this->validar($versao, $body, $method, '');
+        $this->validar($versao, $body, 'Dsfnet', $method, '');
         return $body;
     }
 }

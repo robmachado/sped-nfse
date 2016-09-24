@@ -179,7 +179,7 @@ Existem muitos "padrões" diferentes para a emissão de NFSe, além disso, cada 
 - Sorocaba (SP) DSFNET - em desenvolvimento
 - Teresina (PI) DSFNET - em desenvolvimento
 - Uberlandia (MG) DSFNET - em desenvolvimento
-- Nova Iguaçu (RJ) DSFNET - em desenvolvimento
+
 
 ## Install
 

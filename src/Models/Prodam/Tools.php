@@ -19,7 +19,6 @@ namespace NFePHP\NFSe\Models\Prodam;
 use NFePHP\NFSe\Models\Prodam\Rps;
 use NFePHP\NFSe\Models\Prodam\Factories;
 use NFePHP\NFSe\Common\Tools as ToolsBase;
-use NFePHP\NFSe\Models\Prodam\Response;
 
 class Tools extends ToolsBase
 {
@@ -259,17 +258,26 @@ class Tools extends ToolsBase
      */
     protected function sendRequest($url, $message)
     {
+        //no caso da Prodam o URL é unico para todas as ações
         $url = $this->url[$this->config->tpAmb];
+        //o ambiente de testes da Prodam não FUNCIONA!!
         if ($this->config->tpAmb == 2) {
             $this->soapversion = SOAP_1_1;
         }
         if (!is_object($this->soap)) {
             $this->soap = new \NFePHP\NFSe\Common\SoapCurl($this->certificate);
         }
-        $params = array(
+        //para usar o cURL quando está estabelecido o uso do CData na estrutura
+        //do xml, terá de haver uma transformação, porém no caso do SoapNative isso
+        //não é necessário, pois o próprio SoapClient faz essas transformações, 
+        //baseado no WSDL.
+        if (is_a($this->soap, 'NFePHP\Common\Soap\SoapCurl') && $this->withcdata) {
+            $message = $this->stringTransform($message);
+        }
+        $params = [
             'VersaoSchema' => $this->versao,
             'MensagemXML' => $message
-        );
+        ];
         $action = "\"http://www.prefeitura.sp.gov.br/nfe/ws/". lcfirst($this->method) ."\"";
         return $this->soap->send(
             $url,
@@ -277,8 +285,7 @@ class Tools extends ToolsBase
             $action,
             $this->soapversion,
             $params,
-            $this->namespaces[$this->soapversion],
-            $this->withcdata
+            $this->namespaces[$this->soapversion]
         );
     }
 }

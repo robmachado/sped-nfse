@@ -44,7 +44,7 @@ class Tools extends ToolsBase
             $codigoVerificacao,
             $motivo
         );
-        return $this->buildRequest($xml);
+        return $this->sendRequest('', $xml);
     }
     
     /**
@@ -63,7 +63,7 @@ class Tools extends ToolsBase
             $this->codcidade,
             $numeroLote
         );
-        return $this->buildRequest($xml);
+        return $this->sendRequest('', $xml);
     }
     
     /**
@@ -87,7 +87,7 @@ class Tools extends ToolsBase
             $nfse,
             $rps
         );
-        return $this->buildRequest($xml);
+        return $this->sendRequest('', $xml);
     }
     
     
@@ -105,7 +105,7 @@ class Tools extends ToolsBase
             $dtFim,
             $notaInicial
         );
-        return $this->buildRequest($xml);
+        return $this->sendRequest('', $xml);
     }
     
     public function consultarSequencialRps($prestadorIM, $serieRPS)
@@ -120,7 +120,7 @@ class Tools extends ToolsBase
             $prestadorIM,
             $serieRPS
         );
-        return $this->buildRequest($xml);
+        return $this->sendRequest('', $xml);
     }
     
     public function enviar($rpss, $numeroLote)
@@ -137,7 +137,7 @@ class Tools extends ToolsBase
             $rpss,
             $numeroLote
         );
-        return $this->buildRequest($xml);
+        return $this->sendRequest('', $xml);
     }
     
     public function enviarSincrono($rpss, $numeroLote)
@@ -154,7 +154,7 @@ class Tools extends ToolsBase
             $rpss,
             $numeroLote
         );
-        return $this->buildRequest($xml);
+        return $this->sendRequest('', $xml);
     }
     
     public function testeEnviar($rpss, $numeroLote)
@@ -171,7 +171,7 @@ class Tools extends ToolsBase
             $rpss,
             $numeroLote
         );
-        return $this->buildRequest($xml);
+        return $this->sendRequest('', $xml);
     }
     
     /**
@@ -180,8 +180,37 @@ class Tools extends ToolsBase
      * @param string $method
      * @return string
      */
-    protected function buildRequest($body)
+    protected function sendRequest($url, $message)
     {
+        return $message;
+        $url = $this->url[$this->config->tpAmb];      
+        if (!is_object($this->soap)) {
+            $this->soap = new \NFePHP\NFSe\Common\SoapCurl($this->certificate);
+        }
+        //para usar o cURL quando está estabelecido o uso do CData na estrutura
+        //do xml, terá de haver uma transformação, porém no caso do SoapNative isso
+        //não é necessário, pois o próprio SoapClient faz essas transformações, 
+        //baseado no WSDL.
+        if (is_a($this->soap, 'NFePHP\Common\Soap\SoapCurl') && $this->withcdata) {
+            $message = $this->stringTransform($message);
+        }
+        $params = [
+            'VersaoSchema' => $this->versao,
+            'MensagemXML' => $message
+        ];
+        $action = "\"$this->xmlns/LoteRps/". $this->method ."Request\"";
+        return $this->soap->send(
+            $url,
+            $this->method,
+            $action,
+            $this->soapversion,
+            $params,
+            $this->namespaces[$this->soapversion]
+        );
+
+        
+        
+        /*
         $request = "<dsf:$this->method>";
         $request .= "<mensagemXML>$body</mensagemXML>";
         $request .= "</dsf:$this->method>";
@@ -206,5 +235,6 @@ class Tools extends ToolsBase
             "Content-length: $messageSize");
         
         return $envelope;
+         */
     }
 }

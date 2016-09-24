@@ -6,7 +6,7 @@ namespace NFePHP\NFSe\Common;
  * Classe para base para a comunicação com os webservices
  *
  * @category  NFePHP
- * @package   NFePHP\NFSe\Models\Tools
+ * @package   NFePHP\NFSe\Common\Tools
  * @copyright NFePHP Copyright (c) 2016
  * @license   http://www.gnu.org/licenses/lgpl.txt LGPLv3+
  * @license   https://opensource.org/licenses/MIT MIT
@@ -17,6 +17,7 @@ namespace NFePHP\NFSe\Common;
 
 use NFePHP\Common\Certificate;
 use NFePHP\Common\Soap\SoapInterface;
+use NFePHP\NFSe\Common\EntitiesCharacters;
 use League\Flysystem;
 use DOMDocument;
 use stdClass;
@@ -88,40 +89,40 @@ abstract class Tools
         $this->certificate = $certificate;
     }
     
+    /**
+     * Set to true if CData is used in XML message
+     * @param boolean $flag
+     */
     public function setUseCdata($flag)
     {
         $this->withcdata = $flag;
     }
     
+    /**
+     * Load the chosen soap class
+     * @param SoapInterface $soap
+     */
     public function setSoapClass(SoapInterface $soap)
     {
         $this->soap = $soap;
         $this->soap->loadCertificate($this->certificate);
     }
     
-    protected function replaceNodeWithCdata($xml, $nodename, $body, $param = [])
-    {
-        $dom = new DOMDocument('1.0', 'utf-8');
-        $dom->loadXML($xml);
-        $root = $dom->documentElement;
-        if (!empty($param)) {
-            $attrib = $dom->createAttribute($param[0]);
-            $attrib->value = $param[1];
-            $root->appendChild($attrib);
-        }
-        $oldnode = $root->getElementsByTagName($nodename)->item(0);
-        $tag = $oldnode->tagName;
-        $root->removeChild($oldnode);
-        $newnode = $dom->createElement($tag);
-        //$attrib = $dom->createAttribute("xsi:type");
-        //$attrib->value = 'xsd:string';
-        //$newnode->appendChild($attrib);
-        $cdatanode = $dom->createCDATASection(htmlentities($body, ENT_NOQUOTES, 'UTF-8'));
-        $newnode->appendChild($cdatanode);
-        $root->appendChild($newnode);
-        $xml = str_replace('<?xml version="1.0"?>', '', $dom->saveXML());
-        return $xml;
-    }
-    
+    /**
+     * Send request to webservice
+     * @param string $message
+     * @return string
+     */
     abstract protected function sendRequest($url, $message);
+    
+    /**
+     * Convert string xml message to cdata string
+     * @param string $message
+     * @param boolean $withcdata
+     * @return string
+     */
+    protected function stringTransform($message)
+    {
+        return EntitiesCharacters::unconvert(htmlentities($message, ENT_NOQUOTES));
+    }
 }
