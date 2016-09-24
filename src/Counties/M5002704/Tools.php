@@ -1,14 +1,14 @@
 <?php
 
-namespace NFePHP\NFSe\Counties\M2111300;
+namespace NFePHP\NFSe\Counties\M5002704;
 
 /**
  * Classe para a comunicação com os webservices da
- * Cidade de São Luis MA
+ * Cidade de Campo Grande MS
  * conforme o modelo DSFNET
  *
  * @category  NFePHP
- * @package   NFePHP\NFSe\Counties\M2111300\Tools
+ * @package   NFePHP\NFSe\Counties\M5002704\Tools
  * @copyright NFePHP Copyright (c) 2016
  * @license   http://www.gnu.org/licenses/lgpl.txt LGPLv3+
  * @license   https://opensource.org/licenses/MIT MIT
@@ -26,14 +26,14 @@ class Tools extends ToolsDsfnet
      * @var array
      */
     protected $url = [
-        1 => 'http://sistemas.semfaz.saoluis.ma.gov.br:80/WsNFe2/LoteRps',
-        2 => ''
+        1 => 'http://issdigital.pmcg.ms.gov.br/WsNFe2/LoteRps.jws',
+        2 => 'http://200.201.194.78/WsNFe2/LoteRps.jws'
     ];
     /**
      * County Namespace
      * @var string
      */
-    protected $xmlns = 'http://sistemas.semfaz.saoluis.ma.gov.br/WsNFe2/LoteRps.jws';
+    protected $xmlns = 'http://proces.wsnfe2.dsfnet.com.br';
     
     /**
      * Soap Version
@@ -44,7 +44,7 @@ class Tools extends ToolsDsfnet
      * SIAFI County Cod
      * @var int
      */
-    protected $codcidade = 921;
+    protected $codcidade = 9051;
     /**
      * Indicates when use CDATA string on message
      * @var boolean
@@ -66,9 +66,16 @@ class Tools extends ToolsDsfnet
      */
     protected $namespaces = [
         1 => [
+            'xmlns:xsi' => "http://www.w3.org/2001/XMLSchema-instance",
+            'xmlns:xsd' => "http://www.w3.org/2001/XMLSchema",
             'xmlns:soapenv' => "http://schemas.xmlsoap.org/soap/envelope/",
-            'xmlns' => "http://sistemas.semfaz.saoluis.ma.gov.br/WsNFe2/LoteRps.jws"
+            'xmlns' => "http://proces.wsnfe2.dsfnet.com.br"
         ],
-        2  => []
-    ];      
+        2  => [
+            'xmlns:xsi' => "http://www.w3.org/2001/XMLSchema-instance",
+            'xmlns:xsd' => "http://www.w3.org/2001/XMLSchema",
+            'xmlns:soapenv' => "http://schemas.xmlsoap.org/soap/envelope/",
+            'xmlns' => "http://proces.wsnfe2.dsfnet.com.br"
+        ]
+    ];    
 }
