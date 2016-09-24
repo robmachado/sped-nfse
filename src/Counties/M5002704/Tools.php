@@ -77,5 +77,5 @@ class Tools extends ToolsDsfnet
             'xmlns:soapenv' => "http://schemas.xmlsoap.org/soap/envelope/",
             'xmlns' => "http://proces.wsnfe2.dsfnet.com.br"
         ]
-    ];    
+    ];
 }

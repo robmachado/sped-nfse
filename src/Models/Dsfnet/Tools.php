@@ -183,13 +183,13 @@ class Tools extends ToolsBase
     protected function sendRequest($url, $message)
     {
         return $message;
-        $url = $this->url[$this->config->tpAmb];      
+        $url = $this->url[$this->config->tpAmb];
         if (!is_object($this->soap)) {
             $this->soap = new \NFePHP\NFSe\Common\SoapCurl($this->certificate);
         }
         //para usar o cURL quando está estabelecido o uso do CData na estrutura
         //do xml, terá de haver uma transformação, porém no caso do SoapNative isso
-        //não é necessário, pois o próprio SoapClient faz essas transformações, 
+        //não é necessário, pois o próprio SoapClient faz essas transformações,
         //baseado no WSDL.
         if (is_a($this->soap, 'NFePHP\Common\Soap\SoapCurl') && $this->withcdata) {
             $message = $this->stringTransform($message);
