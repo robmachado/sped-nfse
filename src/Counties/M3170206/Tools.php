@@ -72,5 +72,5 @@ class Tools extends ToolsDsfnet
             'xmlns' => "http://proces.wsnfe2.dsfnet.com.br"
         ],
         2  => []
-    ];    
+    ];
 }
