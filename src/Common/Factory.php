@@ -38,7 +38,7 @@ class Factory
     {
         $this->certificate = $certificate;
         $this->algorithm = $algorithm;
-        $this->pathSchemes = realpath('../../../schemes/');
+        $this->pathSchemes = __DIR__.'/../../schemes';
     }
     
     /**

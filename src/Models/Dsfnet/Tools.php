@@ -23,9 +23,14 @@ use NFePHP\NFSe\Common\Tools as ToolsBase;
 class Tools extends ToolsBase
 {
     /**
-     * Solicita cancelamento da NFSe
+     * Solicita o cancelamento
      * @param string $prestadorIM
-     * @param string $numeroNFSe
+     * @param string $numeroLote
+     * @param int $numeroNota
+     * @param string $codigoVerificacao
+     * @param string $motivo
+     * @param string $tokenEnvio
+     * @return string
      */
     public function cancelar($prestadorIM, $numeroLote, $numeroNota, $codigoVerificacao, $motivo, $tokenEnvio = null)
     {
@@ -90,7 +95,14 @@ class Tools extends ToolsBase
         return $this->sendRequest('', $xml);
     }
     
-    
+    /**
+     * Consulta nota
+     * @param string $prestadorIM
+     * @param string $dtInicio
+     * @param string $dtFim
+     * @param int $notaInicial
+     * @return string
+     */
     public function consultarNota($prestadorIM, $dtInicio, $dtFim, $notaInicial)
     {
         $this->method = 'consultarNota';
@@ -108,6 +120,12 @@ class Tools extends ToolsBase
         return $this->sendRequest('', $xml);
     }
     
+    /**
+     * Consulta numero sequencial
+     * @param string $prestadorIM
+     * @param string $serieRPS
+     * @return string
+     */
     public function consultarSequencialRps($prestadorIM, $serieRPS)
     {
         $this->method = 'consultarSequencialRps';
@@ -123,6 +141,12 @@ class Tools extends ToolsBase
         return $this->sendRequest('', $xml);
     }
     
+    /**
+     *
+     * @param array $rpss
+     * @param string $numeroLote
+     * @return string
+     */
     public function enviar($rpss, $numeroLote)
     {
         $this->method = 'enviar';
@@ -140,6 +164,12 @@ class Tools extends ToolsBase
         return $this->sendRequest('', $xml);
     }
     
+    /**
+     *
+     * @param array $rpss
+     * @param string $numeroLote
+     * @return string
+     */
     public function enviarSincrono($rpss, $numeroLote)
     {
         $this->method = 'enviarSincrono';
@@ -157,6 +187,12 @@ class Tools extends ToolsBase
         return $this->sendRequest('', $xml);
     }
     
+    /**
+     *
+     * @param array $rpss
+     * @param string $numeroLote
+     * @return string
+     */
     public function testeEnviar($rpss, $numeroLote)
     {
         $this->method = 'testeEnviar';
@@ -176,8 +212,8 @@ class Tools extends ToolsBase
     
     /**
      * Monta o request da mansagem SOAP
-     * @param string $body
-     * @param string $method
+     * @param string $url
+     * @param string $message
      * @return string
      */
     protected function sendRequest($url, $message)
@@ -192,12 +228,17 @@ class Tools extends ToolsBase
         //não é necessário, pois o próprio SoapClient faz essas transformações,
         //baseado no WSDL.
         if (is_a($this->soap, 'NFePHP\Common\Soap\SoapCurl') && $this->withcdata) {
-            $message = $this->stringTransform($message);
+            $messageText = $this->stringTransform($message);
+            $request = "<$this->method soapenv:encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\">"
+                . "<mensagemXml xsi:type=\"xsd:string\">"
+                . $messageText
+                . "</mensagemXml>"
+                . "</$this->method>";
+        } else {
+            $params = [
+                'mensagemXml' => $message
+            ];
         }
-        $params = [
-            'VersaoSchema' => $this->versao,
-            'MensagemXML' => $message
-        ];
         $action = "\"$this->xmlns/LoteRps/". $this->method ."Request\"";
         return $this->soap->send(
             $url,

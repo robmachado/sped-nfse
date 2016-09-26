@@ -271,9 +271,16 @@ class Tools extends ToolsBase
         //do xml, terá de haver uma transformação, porém no caso do SoapNative isso
         //não é necessário, pois o próprio SoapClient faz essas transformações,
         //baseado no WSDL.
-        if (is_a($this->soap, 'NFePHP\Common\Soap\SoapCurl') && $this->withcdata) {
-            $message = $this->stringTransform($message);
+        $messageText = $message;
+        if ($this->withcdata) {
+            $messageText = $this->stringTransform($message);
         }
+        
+        $request = "<". lcfirst($this->method) . "Request xmlns=\"\">"
+            . "<VersaoSchema>$this->versao</VersaoSchema>"
+            . "<MensagemXML>$messageText</MensagemXML>"
+            . "</". lcfirst($this->method) . "Request>";
+        
         $params = [
             'VersaoSchema' => $this->versao,
             'MensagemXML' => $message
@@ -285,7 +292,8 @@ class Tools extends ToolsBase
             $action,
             $this->soapversion,
             $params,
-            $this->namespaces[$this->soapversion]
+            $this->namespaces[$this->soapversion],
+            $request
         );
     }
 }
