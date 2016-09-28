@@ -63,7 +63,7 @@ class Factory
      * @param string $versao versão dos schemas
      * @param string $body corpo do XML a ser validado
      * @param string $model modelo de RPS
-     * @param string $method Denominação do método 
+     * @param string $method Denominação do método
      * @param string $suffix Alguns xsd possuem sulfixos
      * @return boolean
      * @throws \InvalidArgumentException
