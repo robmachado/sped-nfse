@@ -275,7 +275,6 @@ class Tools extends ToolsBase
         if ($this->withcdata) {
             $messageText = $this->stringTransform($message);
         }
-        
         $request = "<". lcfirst($this->method) . "Request xmlns=\"\">"
             . "<VersaoSchema>$this->versao</VersaoSchema>"
             . "<MensagemXML>$messageText</MensagemXML>"

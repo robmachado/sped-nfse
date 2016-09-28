@@ -50,8 +50,7 @@ class ConsultaInformacoesLote extends Factory
             $prestadorIM
         );
         $content .= "</$method>";
-        $canonical = [false,false,null,null];
-        $content = Signner::sign($this->certificate, $content, $method, '', $this->algorithm, $canonical);
+        $content = $this->signer($content, $method, '', [false,false,null,null]);
         $body = $this->clear($content);
         $this->validar($versao, $body, 'Prodam', $method);
         return $body;

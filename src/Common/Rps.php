@@ -16,11 +16,10 @@ namespace NFePHP\NFSe\Common;
  */
 
 use InvalidArgumentException;
-use NFePHP\Common\Files\FilesFolders;
 
 class Rps
 {
-    protected function zValidData($matriz, $key)
+    protected function validData($matriz, $key)
     {
         return array_key_exists($key, $matriz);
     }

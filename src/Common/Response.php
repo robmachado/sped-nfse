@@ -15,9 +15,9 @@ namespace NFePHP\NFSe\Common;
  * @link      http://github.com/nfephp-org/sped-nfse for the canonical source repository
  */
 
+use NFePHP\NFSe\Common\EntitiesCharacters;
 use DOMDocument;
 use stdClass;
-use NFePHP\NFSe\Common\EntitiesCharacters;
 
 class Response
 {

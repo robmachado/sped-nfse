@@ -19,7 +19,6 @@ namespace NFePHP\NFSe\Models\Prodam\Factories;
 
 use NFePHP\NFSe\Models\Prodam\Factories\Header;
 use NFePHP\NFSe\Models\Prodam\Factories\Factory;
-use NFePHP\Common\Signner;
 
 class CancelamentoNFSe extends Factory
 {
@@ -57,8 +56,7 @@ class CancelamentoNFSe extends Factory
             $content .= $this->detalhe($prestadorIM, $numeroNFSe);
         }
         $content .= "</$method>";
-        $canonical = [false,false,null,null];
-        $content = Signner::sign($this->certificate, $content, $method, '', $this->algorithm, $canonical);
+        $content = $this->signer($content, $method, '', [false,false,null,null]);
         $body = $this->clear($content);
         $this->validar($versao, $body, 'Prodam', $method);
         return $body;
