@@ -20,7 +20,6 @@ namespace NFePHP\NFSe\Models\Prodam\Factories;
 use NFePHP\NFSe\Models\Prodam\Rps;
 use NFePHP\NFSe\Models\Prodam\Factories\Factory;
 use NFePHP\NFSe\Models\Prodam\RenderRPS;
-use NFePHP\Common\Signner;
 
 class EnvioRPS extends Factory
 {
@@ -80,8 +79,7 @@ class EnvioRPS extends Factory
             $this->valorTotalDeducoes
         );
         $content .= $xmlRPS."</$method>";
-        $canonical = [false,false,null,null];
-        $content = Signner::sign($this->certificate, $content, $method, '', $this->algorithm, $canonical);
+        $content = $this->signer($content, $method, '', [false,false,null,null]);
         $body = $this->clear($content);
         $this->validar($versao, $body, 'Prodam', $method);
         return $body;

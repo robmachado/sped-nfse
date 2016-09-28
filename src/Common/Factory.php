@@ -16,10 +16,9 @@ namespace NFePHP\NFSe\Common;
  * @link      http://github.com/nfephp-org/sped-nfse for the canonical source repository
  */
 
-use InvalidArgumentException;
-use NFePHP\Common\Dom\ValidXsd;
 use NFePHP\Common\Certificate;
-use NFePHP\NFSe\Common\Signner;
+use NFePHP\Common\Signer;
+use NFePHP\Common\Validator;
 
 class Factory
 {
@@ -38,7 +37,7 @@ class Factory
     {
         $this->certificate = $certificate;
         $this->algorithm = $algorithm;
-        $this->pathSchemes = realpath('../../../schemes/');
+        $this->pathSchemes = __DIR__.'/../../schemes';
     }
     
     /**
@@ -61,12 +60,13 @@ class Factory
     
     /**
      * Executa a validação da mensagem XML com base no XSD
-     * @param int $versao
-     * @param string $body
-     * @param string $model
-     * @param string $method
+     * @param string $versao versão dos schemas
+     * @param string $body corpo do XML a ser validado
+     * @param string $model modelo de RPS
+     * @param string $method Denominação do método
+     * @param string $suffix Alguns xsd possuem sulfixos
      * @return boolean
-     * @throws InvalidArgumentException
+     * @throws \InvalidArgumentException
      */
     public function validar($versao, $body, $model, $method = '', $suffix = 'v')
     {
@@ -77,17 +77,28 @@ class Factory
         if ($suffix) {
             $schema = $path."v$ver".DIRECTORY_SEPARATOR.$method."_v$ver.xsd";
         }
-        $flag = ValidXsd::validar(
+        if (!is_file($schema)) {
+            throw new \InvalidArgumentException("XSD file not found. [$schema]");
+        }
+        return Validator::isValid(
             $body,
             $schema
         );
-        if (!$flag) {
-            $msg = "O XML falhou ao ser validado:\n";
-            foreach (ValidXsd::$errors as $error) {
-                $msg .= $error."\n";
-            }
-            throw new InvalidArgumentException($msg);
+    }
+    
+    /**
+     * Monta a assinatura
+     * @param string $content
+     * @param string $method
+     * @param string $mark
+     * @param array $canonical
+     * @return string
+     */
+    public function signer($content, $method, $mark = '', $canonical = [])
+    {
+        if (empty($canonical)) {
+            $canonical = [false,false,null,null];
         }
-        return $flag;
+        return Signer::sign($this->certificate, $content, $method, $mark, $this->algorithm, $canonical);
     }
 }

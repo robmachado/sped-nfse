@@ -223,7 +223,7 @@ class Rps extends RpsBase
     public function status($status)
     {
         $status = strtoupper(trim($status));
-        if (!$this->zValidData(['N' => 0, 'C' => 1], $status)) {
+        if (!$this->validData(['N' => 0, 'C' => 1], $status)) {
             $msg = 'O status pode ser apenas N-normal ou C-cancelado.';
             throw new InvalidArgumentException($msg);
         }
@@ -241,7 +241,7 @@ class Rps extends RpsBase
     public function tipo($tipo)
     {
         $tipo = strtoupper(trim($tipo));
-        if (!$this->zValidData($this->aTp, $tipo)) {
+        if (!$this->validData($this->aTp, $tipo)) {
             $msg = "[$tipo] não é um codigo valido entre " . implode(',', array_keys($this->aTp)) . ".";
             throw new InvalidArgumentException($msg);
         }
@@ -265,7 +265,7 @@ class Rps extends RpsBase
     public function tributacao($tributacao)
     {
         $tributacao = strtoupper(trim($tributacao));
-        if (!$this->zValidData($this->aTrib, $tributacao)) {
+        if (!$this->validData($this->aTrib, $tributacao)) {
             $msg = "[$tributacao] não é um código válido, ente" . implode(',', array_keys($this->aTrib));
             throw new InvalidArgumentException($msg);
         }

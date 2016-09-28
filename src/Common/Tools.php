@@ -18,7 +18,6 @@ namespace NFePHP\NFSe\Common;
 use NFePHP\Common\Certificate;
 use NFePHP\Common\Soap\SoapInterface;
 use NFePHP\NFSe\Common\EntitiesCharacters;
-use League\Flysystem;
 use DOMDocument;
 use stdClass;
 
