@@ -3,12 +3,26 @@ error_reporting(E_ALL);
 ini_set('display_errors', 'On');
 require_once '../../bootstrap.php';
 
+//classes que deverão estar instanciadas para que o framework as localize
 use NFePHP\NFSe\NFSe;
 use NFePHP\Common\Certificate;
 use NFePHP\Common\Soap\SoapCurl;
 use NFePHP\Common\Soap\SoapNative;
 
-//Para cada Prefeitura 
+//Para cada Prefeitura o que identifica qual serão as classe a serem usadas é o numero 
+//cmun indicado no config.
+//A partir desse numero as classes especificas serão localizadas e carregadas para seu uso.
+
+//As classes estão separadas em blocos:
+//Na pasta Counties/ estão as classes para cada municipio qu eextendem as classes de cada modelo
+//que por sua vez estão na pasta Models/ e que extendem as classes básicas
+//que estão na pasta Common/
+
+//ATENÇÃO : cada modelo diferente possuirá métodos com nomes e parametros diferentes!!!  
+
+//NOTA: Por ora não serão salvos nenhum arquivo em disco, apenas os certificados 
+//serão salvos e apenas de forma temporária apenas no momento do uso, pelas classes SOAP,
+//que não permitem o uso dos mesmo apenas em memoria e em seguida removidos.
 
 //tanto o config.json como o certificado.pfx podem estar
 //armazenados em uma base de dados, então não é necessário 
@@ -47,7 +61,8 @@ try {
     //a mesma interface
     $nfse->tools->setSoapClass(new SoapCurl());
     
-    //aqui está o comando para a consulta do CNPJ
+    //aqui está o comando para a consulta do CNPJ no modelo PRODAM, São Paulo
+    //para cada modelo poderão possuir nomes diferentes bem como seus parametros
     $response = $nfse->tools->consultaCNPJ('08894935000170');
     //será retornado o XML de resposta do webservice
     
