@@ -16,9 +16,9 @@ namespace NFePHP\NFSe\Models\Dsfnet\Factories;
  * @link      http://github.com/nfephp-org/sped-nfse for the canonical source repository
  */
 
-use NFePHP\NFSe\Common\Header as HeaderModel;
+use NFePHP\NFSe\Common\Header as HeaderBase;
 
-class Header extends HeaderModel
+class Header extends HeaderBase
 {
     /**
      * Renderiza as tag do cabecalho

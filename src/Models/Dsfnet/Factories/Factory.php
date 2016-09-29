@@ -16,9 +16,9 @@ namespace NFePHP\NFSe\Models\Dsfnet\Factories;
  * @link      http://github.com/nfephp-org/sped-nfse for the canonical source repository
  */
 
-use NFePHP\NFSe\Common\Factory as FactoryModel;
+use NFePHP\NFSe\Common\Factory as FactoryBase;
 
-class Factory extends FactoryModel
+class Factory extends FactoryBase
 {
     protected function requestFirstPart($method)
     {

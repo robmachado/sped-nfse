@@ -19,7 +19,7 @@ namespace NFePHP\NFSe\Models\Abrasf;
 
 use InvalidArgumentException;
 use NFePHP\Common\Strings\Strings;
-use NFePHP\NFSe\Models\Base\RpsBase;
+use NFePHP\NFSe\Common\Rps as RspBase;
 
 class Rps extends RpsBase
 {
