@@ -4,7 +4,7 @@ namespace NFePHP\NFSe\Models\Dsfnet\Factories;
 
 use NFePHP\NFSe\Models\Dsfnet\Factories\Factory;
 use NFePHP\NFSe\Models\Dsfnet\Factories\Header;
-use NFePHP\NFSe\Common\Signner;
+use NFePHP\NFSe\Common\Signer;
 
 class ConsultarNFSeRps extends Factory
 {
@@ -48,7 +48,7 @@ class ConsultarNFSeRps extends Factory
         }
         $content .= "</Lote>";
         $content .= "</ns1:$method>";
-        $content = Signner::sign($this->certificate, $content, 'Lote', 'Id', $this->algorithm);
+        $content = $this->signer($content, 'Lote', 'Id', [false,false,null,null]);
         $body = $this->clear($content);
         $this->validar($versao, $body, 'Dsfnet', $method, '');
         return $body;

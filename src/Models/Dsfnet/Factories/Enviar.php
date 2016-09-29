@@ -68,8 +68,8 @@ class Enviar extends Factory
         }
         $content .= "</Lote>";
         $content .= "</ns1:$method>";
-        $body = $this->oCertificate->signXML($content, 'Lote', 'Id', $this->signAlgorithm);
-        $body = $this->clear($body);
+        $content = $this->signer($content, 'Lote', 'Id', [false,false,null,null]);
+        $body = $this->clear($content);
         $this->validar($versao, $body, 'Dsfnet', $method, '');
         return $body;
     }

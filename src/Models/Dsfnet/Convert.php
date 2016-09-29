@@ -16,6 +16,10 @@ namespace NFePHP\NFSe\Models\Dsfnet;
  * @link      http://github.com/nfephp-org/sped-nfse for the canonical source repository
  */
 
+use InvalidArgumentException;
+use NFePHP\Common\Strings\Strings;
+use NFePHP\NFSe\Models\Dsfnet\Rps;
+
 class Convert
 {
     /**

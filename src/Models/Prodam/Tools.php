@@ -275,10 +275,10 @@ class Tools extends ToolsBase
         if ($this->withcdata) {
             $messageText = $this->stringTransform($message);
         }
-        $request = "<". lcfirst($this->method) . "Request xmlns=\"\">"
+        $request = "<". $this->method . "Request xmlns=\"".$this->xmlns."\">"
             . "<VersaoSchema>$this->versao</VersaoSchema>"
             . "<MensagemXML>$messageText</MensagemXML>"
-            . "</". lcfirst($this->method) . "Request>";
+            . "</". $this->method . "Request>";
         
         $params = [
             'VersaoSchema' => $this->versao,
