@@ -21,7 +21,7 @@ use stdClass;
 
 class Response
 {
-    public static function readReturn($tag, $response, $withcdata = false)
+    public function readReturn($tag, $response)
     {
         libxml_use_internal_errors(true);
         $dom = new DOMDocument('1.0', 'utf-8');
@@ -36,7 +36,7 @@ class Response
             //throw
         }
         //converte o xml em uma stdClass
-        return self::xml2Obj($dom, $tag);
+        return $this->xml2Obj($dom, $tag);
     }
     
     /**
@@ -45,7 +45,7 @@ class Response
      * @param string $tag
      * @return \stdClass
      */
-    protected static function xml2Obj(DOMDocument $dom, $tag)
+    protected function xml2Obj(DOMDocument $dom, $tag)
     {
         $node = $dom->getElementsByTagName($tag)->item(0);
         $newdoc = new DOMDocument('1.0', 'utf-8');
