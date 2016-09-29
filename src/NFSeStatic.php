@@ -58,6 +58,16 @@ class NFSeStatic
     }
     
     /**
+     * Instancia a classe que converte o xml de resposta em
+     * uma stdClass
+     * @return \NFePHP\NFSe\Counties\class
+     */
+    public static function response(stdClass $config)
+    {
+        return self::classCheck(self::getClassName($config, 'Response'), $config);
+    }
+    
+    /**
      * Monta o nome das classes referentes a determinado municipio
      *
      * @param stdClass $config

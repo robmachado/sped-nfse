@@ -23,6 +23,7 @@ class NFSe
     public $rps;
     public $convert;
     public $tools;
+    public $response;
     
     /**
      * Construtor da classe
@@ -32,11 +33,12 @@ class NFSe
     public function __construct($config, Certificate $certificate)
     {
         if (is_file($config)) {
-            $config = file_get_contents($config);
+            $configJson = file_get_contents($config);
         }
-        $configJson = json_decode($config);
-        $this->convert = NFSeStatic::convert($configJson);
-        $this->rps = NFSeStatic::rps($configJson);
-        $this->tools = NFSeStatic::tools($configJson, $certificate);
+        $configClass = json_decode($configJson);
+        $this->convert = NFSeStatic::convert($configClass);
+        $this->rps = NFSeStatic::rps($configClass);
+        $this->tools = NFSeStatic::tools($configClass, $certificate);
+        $this->response = NFSeStatic::response($configClass);
     }
 }
