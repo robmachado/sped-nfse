@@ -3,26 +3,28 @@ error_reporting(E_ALL);
 ini_set('display_errors', 'On');
 require_once '../../bootstrap.php';
 
-//classes que deverão estar instanciadas para que o framework as localize
+//as classes abaixo serão sempre usadas e serão instanciadas
 use NFePHP\NFSe\NFSe;
 use NFePHP\Common\Certificate;
 use NFePHP\Common\Soap\SoapCurl;
 use NFePHP\Common\Soap\SoapNative;
 
-//Para cada Prefeitura o que identifica qual serão as classe a serem usadas é o numero 
-//cmun indicado no config.
-//A partir desse numero as classes especificas serão localizadas e carregadas para seu uso.
+//Para cada Prefeitura, o que identifica as classe a serem usadas é o numero 
+//cmun indicado no config. A partir desse numero as classes especificas serão
+//localizadas e carregadas.
 
 //As classes estão separadas em blocos:
-//Na pasta Counties/ estão as classes para cada municipio qu eextendem as classes de cada modelo
-//que por sua vez estão na pasta Models/ e que extendem as classes básicas
-//que estão na pasta Common/
+//  Na pasta Counties/ estão as classes para cada municipio, que extendem as classes
+//  de cada modelo, que por sua vez estão na pasta Models/ e que extendem as classes
+//  básicas que estão na pasta Common/
 
 //ATENÇÃO : cada modelo diferente possuirá métodos com nomes e parametros diferentes!!!  
 
-//NOTA: Por ora não serão salvos nenhum arquivo em disco, apenas os certificados 
-//serão salvos e apenas de forma temporária apenas no momento do uso, pelas classes SOAP,
-//que não permitem o uso dos mesmo apenas em memoria e em seguida removidos.
+//NOTA: Por ora, não serão automaticamente salvos nenhum arquivo em disco, 
+//apenas os certificados serão salvos e de forma temporária no momento do uso, 
+//pelas classes SOAP, pois as mesmas não permitem o uso em memoria e em seguida 
+//esses arquivos serão removidos. Como os nomes desses arquivos são gerados de forma
+//aleatória não haverão conflitos.
 
 //tanto o config.json como o certificado.pfx podem estar
 //armazenados em uma base de dados, então não é necessário 
