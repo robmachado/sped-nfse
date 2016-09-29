@@ -31,7 +31,9 @@ abstract class Tools
     protected $versao;
     protected $remetenteTipoDoc;
     protected $remetenteCNPJCPF;
-            
+    protected $remetenteRazao;
+
+
     /**
      * Webservices URL
      * @var array
@@ -80,6 +82,7 @@ abstract class Tools
         $this->config = $config;
         $this->versao = $config->versao;
         $this->remetenteCNPJCPF = $config->cpf;
+        $this->remetenteRazao = $config->razaosocial;
         $this->remetenteTipoDoc = 1;
         if ($config->cnpj != '') {
             $this->remetenteCNPJCPF = $config->cnpj;

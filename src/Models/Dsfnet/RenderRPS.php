@@ -30,11 +30,10 @@ class RenderRPS
     {
         self::$certificate = $certificate;
         self::$algorithm = $algorithm;
-        
+        $xml = '';
         if (is_object($data)) {
             return self::render($data);
         } elseif (is_array($data)) {
-            $xml = '';
             foreach ($data as $rps) {
                 $xml .= self::render($rps);
             }
@@ -508,8 +507,8 @@ class RenderRPS
         $content .= $rps->situacaoRPS;
         $content .= ($rps->tipoRecolhimento == 'A') ? 'N' : 'S';
         $valores = self::calcValor($rps);
-        $content = str_pad(round($valores['valorFinal']*100, 0), 15, '0', STR_PAD_LEFT);
-        $content = str_pad(round($valores['valorDeducao']*100, 0), 15, '0', STR_PAD_LEFT);
+        $content .= str_pad(round($valores['valorFinal']*100, 0), 15, '0', STR_PAD_LEFT);
+        $content .= str_pad(round($valores['valorDeducao']*100, 0), 15, '0', STR_PAD_LEFT);
         $content .= str_pad($rps->codigoAtividade, 10, '0', STR_PAD_LEFT);
         $content .= str_pad($rps->cPFCNPJTomador, 14, '0', STR_PAD_LEFT);
         $signature = base64_encode(self::$certificate->sign($content, self::$algorithm));

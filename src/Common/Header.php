@@ -18,7 +18,7 @@ namespace NFePHP\NFSe\Common;
 
 class Header
 {
-    protected static function check($tag, $info = '')
+    protected static function check($tag, $info = null)
     {
         if (is_null($info)) {
             return '';
