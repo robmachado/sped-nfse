@@ -406,7 +406,6 @@ class Convert
      */
     private static function extract($dado, $aFields)
     {
-        $ini = 0;
         $x = 0;
         $pos = 0;
         $aData = [];

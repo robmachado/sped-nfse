@@ -273,7 +273,7 @@ class Tools extends ToolsBase
         //baseado no WSDL.
         $messageText = $message;
         if ($this->withcdata) {
-            $messageText = $this->stringTransform($message);
+            $messageText = $this->stringTransform("<?xml version=\"1.0\" encoding=\"UTF-8\"?>".$message);
         }
         $request = "<". $this->method . "Request xmlns=\"".$this->xmlns."\">"
             . "<VersaoSchema>$this->versao</VersaoSchema>"

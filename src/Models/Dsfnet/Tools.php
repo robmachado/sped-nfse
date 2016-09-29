@@ -211,7 +211,7 @@ class Tools extends ToolsBase
     }
     
     /**
-     * Monta o request da mansagem SOAP
+     * Monta o request da mensagem SOAP
      * @param string $url
      * @param string $message
      * @return string
@@ -219,6 +219,7 @@ class Tools extends ToolsBase
     protected function sendRequest($url, $message)
     {
         return $message;
+        /*
         $url = $this->url[$this->config->tpAmb];
         if (!is_object($this->soap)) {
             $this->soap = new \NFePHP\NFSe\Common\SoapCurl($this->certificate);
@@ -249,7 +250,7 @@ class Tools extends ToolsBase
             $this->namespaces[$this->soapversion]
         );
 
-        
+        */
         
         /*
         $request = "<dsf:$this->method>";
