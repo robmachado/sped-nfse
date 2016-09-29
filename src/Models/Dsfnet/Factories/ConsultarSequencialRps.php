@@ -43,7 +43,7 @@ class ConsultarSequencialRps extends Factory
             $serieRPS
         );
         $content .= "</ns1:$method>";
-        $this->validar($versao, $body, 'Dsfnet', $method, '');
+        $this->validar($versao, $content, 'Dsfnet', $method, '');
         return $content;
     }
 }

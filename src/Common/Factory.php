@@ -71,7 +71,6 @@ class Factory
     public function validar($versao, $body, $model, $method = '', $suffix = 'v')
     {
         $ver = str_pad($versao, 2, '0', STR_PAD_LEFT);
-        $flag = false;
         $path = $this->pathSchemes . DIRECTORY_SEPARATOR . $model . DIRECTORY_SEPARATOR;
         $schema = $path."v$ver".DIRECTORY_SEPARATOR.$method.".xsd";
         if ($suffix) {

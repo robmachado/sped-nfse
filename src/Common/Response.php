@@ -23,9 +23,6 @@ class Response
 {
     public static function readReturn($tag, $response, $withcdata = false)
     {
-        if (trim($response) == '') {
-            //throw
-        }
         libxml_use_internal_errors(true);
         $dom = new DOMDocument('1.0', 'utf-8');
         $dom->loadXML($response);
@@ -34,7 +31,6 @@ class Response
         if (! empty($errors)) {
             //throw
         }
-        //foi retornado um xml continue
         $reason = self::checkForFault($dom);
         if ($reason != '') {
             //throw
@@ -55,7 +51,7 @@ class Response
         $newdoc = new DOMDocument('1.0', 'utf-8');
         $newdoc->appendChild($newdoc->importNode($node, true));
         $xml = $newdoc->saveXML();
-        $newdoc = null;
+        unset($newdoc);
         $xml = str_replace('<?xml version="1.0" encoding="UTF-8"?>', '', $xml);
         $xml = str_replace('<?xml version="1.0" encoding="utf-8"?>', '', $xml);
         $xml = str_replace('&lt;?xml version="1.0" encoding="UTF-8"?&gt;', '', $xml);

@@ -64,7 +64,7 @@ class Enviar extends Factory
         );
         $content .= "<Lote Id=\"lote:$numeroLote\">";
         foreach ($rpss as $rps) {
-            $content .= RenderRPS::toXml($rps, $this->oCertificate->priKey);
+            $content .= RenderRPS::toXml($rps, $this->certificate);
         }
         $content .= "</Lote>";
         $content .= "</ns1:$method>";

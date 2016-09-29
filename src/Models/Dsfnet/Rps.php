@@ -173,7 +173,7 @@ class Rps extends RpsBase
      */
     public function situacao($status)
     {
-        if (!$this->zValidData(['N' => 0, 'C' => 1], $status)) {
+        if (!$this->validData(['N' => 0, 'C' => 1], $status)) {
             $msg = 'O status pode ser apenas N-normal ou C-cancelado.';
             throw new InvalidArgumentException($msg);
         }
@@ -260,7 +260,7 @@ class Rps extends RpsBase
     
     public function operacaoRPS($operacao)
     {
-        if (!$this->zValidData($this->aOperacao, $operacao)) {
+        if (!$this->validData($this->aOperacao, $operacao)) {
             $msg = "[$operacao] não é válido, pode ser apenas " . implode(',', array_keys($this->aOperacao)) . ".";
             throw new InvalidArgumentException($msg);
         }
