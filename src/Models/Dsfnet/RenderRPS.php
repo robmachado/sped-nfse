@@ -56,7 +56,7 @@ class RenderRPS
         self::$dom->addChild(
             $root,
             'Assinatura',
-            self::signstr($rps, self::$priKey),
+            self::signstr($rps),
             true,
             'Tag assinatura do RPS vazia',
             true
