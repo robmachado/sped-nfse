@@ -23,11 +23,11 @@ use NFePHP\NFSe\Models\Prodam\RenderRPS;
 
 class EnvioRPS extends Factory
 {
-    private $dtIni;
-    private $dtFim;
-    private $qtdRPS;
-    private $valorTotalServicos;
-    private $valorTotalDeducoes;
+    private $dtIni = null;
+    private $dtFim = null;
+    private $qtdRPS = null;
+    private $valorTotalServicos = null;
+    private $valorTotalDeducoes = null;
     
     /**
      * Renderiza o pedido em seu respectivo xml e faz
@@ -36,7 +36,7 @@ class EnvioRPS extends Factory
      * @param int $remetenteTipoDoc
      * @param string $remetenteCNPJCPF
      * @param string $transacao
-     * @param Rps | array $data
+     * @param NFePHP\NFSe\Models\Prodam\Rps|array|null $data
      * @return string
      */
     public function render(
@@ -44,11 +44,8 @@ class EnvioRPS extends Factory
         $remetenteTipoDoc,
         $remetenteCNPJCPF,
         $transacao = 'true',
-        $data = ''
+        $data = null
     ) {
-        if ($data == '') {
-            return '';
-        }
         $xmlRPS = '';
         $method = "PedidoEnvioRPS";
         $content = $this->requestFirstPart($method);
@@ -56,12 +53,14 @@ class EnvioRPS extends Factory
             $xmlRPS .= $this->individual($data);
         } elseif (is_array($data)) {
             if (count($data) == 1) {
-                $xmlRPS .= $this->individual($data);
+                $xmlRPS .= $this->individual($data[0]);
             } else {
                 $method = "PedidoEnvioLoteRPS";
                 $content = $this->requestFirstPart($method);
                 $xmlRPS .= $this->lote($data);
             }
+        } else {
+            return '';
         }
         $content .= Header::render(
             $versao,
@@ -87,12 +86,12 @@ class EnvioRPS extends Factory
     
     /**
      * Processa quando temos apenas um RPS
-     * @param Rps $data
+     * @param NFePHP\NFSe\Models\Prodam\Rps $data
      * @return string
      */
-    private function individual($data)
+    private function individual(Rps $data)
     {
-        return RenderRPS::toXml($data, $this->certificate);
+        return RenderRPS::toXml($data, $this->certificate, $this->algorithm);
     }
     
     /**
@@ -100,7 +99,7 @@ class EnvioRPS extends Factory
      * @param array $data
      * @return string
      */
-    private function lote($data)
+    private function lote(array $data)
     {
         $xmlRPS = '';
         $this->totalizeRps($data);
@@ -115,16 +114,18 @@ class EnvioRPS extends Factory
      * quando envio de Lote de RPS
      * @param array $rpss
      */
-    private function totalizeRps($rpss)
+    private function totalizeRps(array $rpss)
     {
+        $this->valorTotalServicos = 0;
+        $this->valorTotalDeducoes = 0;
         foreach ($rpss as $rps) {
             $this->valorTotalServicos += $rps->valorServicosRPS;
             $this->valorTotalDeducoes += $rps->valorDeducoesRPS;
             $this->qtdRPS++;
-            if ($this->dtIni == '') {
+            if (is_null($this->dtIni)) {
                 $this->dtIni = $rps->dtEmiRPS;
             }
-            if ($this->dtFim == '') {
+            if (is_null($this->dtFim)) {
                 $this->dtFim = $rps->dtEmiRPS;
             }
             if ($rps->dtEmiRPS <= $this->dtIni) {
