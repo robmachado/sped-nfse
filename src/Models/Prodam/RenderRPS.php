@@ -30,10 +30,10 @@ class RenderRPS
     {
         self::$certificate = $certificate;
         self::$algorithm = $algorithm;
+        $xml = '';
         if (is_object($data)) {
             return self::render($data);
         } elseif (is_array($data)) {
-            $xml = '';
             foreach ($data as $rps) {
                 $xml .= self::render($rps);
             }
@@ -193,7 +193,7 @@ class RenderRPS
         self::$dom->addChild(
             $root,
             'ISSRetido',
-            'true',
+            $issRet,
             true,
             'ISS Retido',
             false
@@ -319,7 +319,7 @@ class RenderRPS
                 "CNPJ do intermediario",
                 false
             );
-            self::$dom->appChild($root, $tomador, 'Adicionando tag CPFCNPJIntermediario');
+            self::$dom->appChild($root, $intermediario, 'Adicionando tag CPFCNPJIntermediario');
             self::$dom->addChild(
                 $root,
                 'InscricaoMunicipalIntermediario',

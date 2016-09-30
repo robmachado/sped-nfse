@@ -16,6 +16,7 @@ namespace NFePHP\NFSe\Common;
  */
 
 use NFePHP\NFSe\Common\EntitiesCharacters;
+use NFePHP\Common\Exception\ExceptionCollection;
 use DOMDocument;
 use stdClass;
 
@@ -29,11 +30,15 @@ class Response
         $errors = libxml_get_errors();
         libxml_clear_errors();
         if (! empty($errors)) {
-            //throw
+            $msg = '';
+            foreach ($errors as $error) {
+                $msg .= $error->message();
+            }
+            throw new \RuntimeException($msg);
         }
         $reason = self::checkForFault($dom);
         if ($reason != '') {
-            //throw
+            throw new \RuntimeException($reason);
         }
         //converte o xml em uma stdClass
         return $this->xml2Obj($dom, $tag);
