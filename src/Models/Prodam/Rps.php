@@ -87,7 +87,7 @@ class Rps extends RpsBase
     
     /**
      * Inscrição Municipal do Prestador do Serviço
-     * @param type $im
+     * @param string $im
      */
     public function prestador($im)
     {
@@ -208,7 +208,7 @@ class Rps extends RpsBase
     
     /**
      * Data do RPS
-     * @param type $data
+     * @param string $data
      */
     public function data($data)
     {
