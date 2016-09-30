@@ -25,6 +25,7 @@ class Tools extends ToolsBase
     /**
      * Envio de apenas um RPS
      * @param \NFePHP\NFSe\Models\Prodam\RPS $rps
+     * @return string
      */
     public function envioRPS(RPS $rps)
     {
@@ -45,7 +46,7 @@ class Tools extends ToolsBase
      * Envio de lote de RPS
      * @param array $rpss
      */
-    public function envioLoteRPS($rpss)
+    public function envioLoteRPS(array $rpss)
     {
         $this->method = 'EnvioLoteRPS';
         $fact = new Factories\EnvioRPS($this->certificate);
@@ -64,7 +65,7 @@ class Tools extends ToolsBase
      * Pedido de teste de envio de lote
      * @param array $rpss
      */
-    public function testeEnvioLoteRPS($rpss)
+    public function testeEnvioLoteRPS(array $rpss)
     {
         $this->method = 'TesteEnvioLoteRPS';
         $fact = new Factories\EnvioRPS($this->certificate);
@@ -84,7 +85,7 @@ class Tools extends ToolsBase
      * @param array $chavesNFSe array(array('prestadorIM'=>'', 'numeroNFSe'=>''))
      * @param array $chavesRPS array(array('prestadorIM'=>'', 'serieRPS'=>'', 'numeroRPS'=>''))
      */
-    public function consultaNFSe($chavesNFSe = [], $chavesRPS = [])
+    public function consultaNFSe(array $chavesNFSe = [], array $chavesRPS = [])
     {
         $this->method = 'ConsultaNFe';
         $fact = new Factories\ConsultaNFSe($this->certificate);
