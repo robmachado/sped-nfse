@@ -18,6 +18,17 @@ use NFePHP\Common\Soap\SoapNative;
 //  de cada modelo, que por sua vez estão na pasta Models/ e que extendem as classes
 //  básicas que estão na pasta Common/
 
+//Cada Prefeitura irá fornecer 4 classes básicas para o uso
+// 1 - Rps::class classe para carregar os dados de um Rps (cada modelo usado 
+//     possue dados e regras diferentes para os RPS)
+// 2 - Convert::class classe para transformar dados TXT estruturados em um ou 
+//     mais Rps::class (referente ao modelo utilizado)
+// 3 - Tools::class classe que realiza a comunicação com os webservices
+//     (lembrando novamente que modelos diferentes tem métodos diferentes)
+// 4 - Response::class classe que converte os retornos xml em stdClass para facilitar
+//     a extração dos dados, neste ponte deve ficar claro tambem que esses retornos 
+//     são muito diferentes a conforme o modelo sendo usado pela Prefeitura
+
 //ATENÇÃO : cada modelo diferente possuirá métodos com nomes e parametros diferentes!!!  
 
 //NOTA: Por ora, não serão automaticamente salvos nenhum arquivo em disco, 
@@ -49,13 +60,15 @@ $arr = [
     ]    
 ];
 $configJson = json_encode($arr);
-//esse certificado pode estar em uma base de dados para isso não esqueça de converter para base64
-//ao gravar na base e desconverter para usar
+
+//esse certificado pode estar em uma base de dados para isso não esqueça 
+//de converter para base64 ao gravar na base e desconverter para usar
+//também podem ser compactados esses dados usando o gunzip
 $contentpfx = file_get_contents('/var/www/sped/sped-nfse/certs/certificado.pfx');
 
 try {
     //com os dados do config e do certificado já obtidos e descompactados e desconvertidos
-    //a sua forma original e só passa-los para a classe 
+    //par a sua forma original é só passa-los para a classe principal
     $nfse = new NFSe($configJson, Certificate::readPfx($contentpfx, 'senha'));
     
     //Aqui podemos escolher entre usar o SOAP nativo ou o cURL,
@@ -64,18 +77,20 @@ try {
     $nfse->tools->setSoapClass(new SoapCurl());
     
     //aqui está o comando para a consulta do CNPJ no modelo PRODAM, São Paulo
-    //para cada modelo poderão possuir nomes diferentes bem como seus parametros
+    //para cada modelo os métodos poderão nem existir ou possuir nomes diferentes
+    //bem como seus parametros podem variar.
+    //Todos os métodos sempre irão retornar a resposta do webservice ou seja o 
+    //SOAP envelope do mesmo, sem nenhum outro tratamento ou irão gerar um Exception
+    //em caso de algum erro na construção ou na comunicação SOAP
     $response = $nfse->tools->consultaCNPJ('08894935000170');
-    //será retornado o XML de resposta do webservice
-    
+        
     //mostra o xml retornado
     header("Content-type: text/xml");
     echo $response;
     
     //esse XML poderá ser convertido em uma stdClass para facilitar a extração dos 
-    //dados para uso da aplicação
-    //para isso usamos a classe Response::readReturn($tag, $response)
-    //passando o nome da tag desejada, e o xml 
+    //dados para uso da aplicação para isso usamos a classe 
+    //Response::readReturn($tag, $response) passando o nome da tag desejada, e o xml 
     $responseClass = $nfse->response->readReturn('RetornoConsultaCNPJ', $response);
     
 } catch (\NFePHP\Common\Exception\SoapException $e) {
