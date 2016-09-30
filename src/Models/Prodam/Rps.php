@@ -351,7 +351,7 @@ class Rps extends RpsBase
     public function cargaTributaria($valor, $percentual, $fonte)
     {
         $this->valorCargaTributariaRPS = number_format($valor, 2, '.', '');
-        $this->percentualCargaTributariaRPS = number_format($valor, 4, '.', '');
+        $this->percentualCargaTributariaRPS = number_format($percentual, 4, '.', '');
         $this->fonteCargaTributariaRPS = substr(Strings::cleanString($fonte), 0, 10);
     }
     

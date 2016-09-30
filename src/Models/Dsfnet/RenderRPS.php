@@ -493,10 +493,9 @@ class RenderRPS
     /**
      * Cria a assinatura do RPS
      * @param Rps $rps
-     * @param string $priKey
      * @return string
      */
-    private static function signstr(Rps $rps, $priKey = '')
+    private static function signstr(Rps $rps)
     {
         $content = str_pad($rps->inscricaoMunicipalPrestador, 11, '0', STR_PAD_LEFT);
         $content .= str_pad($rps->serieRPS, 5, ' ', STR_PAD_RIGHT);
