@@ -33,9 +33,9 @@ class NFSe
     public function __construct($config, Certificate $certificate)
     {
         if (is_file($config)) {
-            $configJson = file_get_contents($config);
+            $config = file_get_contents($config);
         }
-        $configClass = json_decode($configJson);
+        $configClass = json_decode($config);
         $this->convert = NFSeStatic::convert($configClass);
         $this->rps = NFSeStatic::rps($configClass);
         $this->tools = NFSeStatic::tools($configClass, $certificate);
