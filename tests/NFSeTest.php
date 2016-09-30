@@ -14,20 +14,9 @@ class NFSeTest extends NFSeTestCase
             $this->configJson,
             Certificate::readPfx($this->contentpfx, $this->passwordpfx)
         );
-        $expected = 'NFePHP\NFSe\Counties\M3550308\Tools';
-        $actual = get_class($nfse->tools);
-        $this->assertEquals($expected, $actual);
-        
-        $expected = 'NFePHP\NFSe\Counties\M3550308\Rps';
-        $actual = get_class($nfse->rps);
-        $this->assertEquals($expected, $actual);
-        
-        $expected = 'NFePHP\NFSe\Counties\M3550308\Convert';
-        $actual = get_class($nfse->convert);
-        $this->assertEquals($expected, $actual);
-        
-        $expected = 'NFePHP\NFSe\Counties\M3550308\Response';
-        $actual = get_class($nfse->response);
-        $this->assertEquals($expected, $actual);
+        $this->assertInstanceOf('NFePHP\NFSe\Counties\M3550308\Tools', $nfse->tools);
+        $this->assertInstanceOf('NFePHP\NFSe\Counties\M3550308\Rps', $nfse->rps);
+        $this->assertInstanceOf('NFePHP\NFSe\Counties\M3550308\Convert', $nfse->convert);
+        $this->assertInstanceOf('NFePHP\NFSe\Counties\M3550308\Response', $nfse->response);
     }
 }

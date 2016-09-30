@@ -3,11 +3,11 @@
 namespace NFePHP\NFSe\Tests\Models\Prodam;
 
 use NFePHP\NFSe\Tests\NFSeTestCase;
-use NFePHP\NFSe\NFSe;
+use NFePHP\NFSe\Models\Prodam\Response;
 
-class RpsTest extends NFSeTestCase
+class ResponseTest extends NFSeTestCase
 {
-   public function testPrestador()
+    public function testReadReturn()
     {
         $this->assertTrue(true);
     }
