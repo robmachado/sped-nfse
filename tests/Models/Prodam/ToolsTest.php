@@ -1,6 +1,14 @@
 <?php
 
-class ToolsTest
+namespace NFePHP\NFSe\Tests\Models\Prodam;
+
+use NFePHP\NFSe\Tests\NFSeTestCase;
+use NFePHP\NFSe\NFSe;
+
+class ToolsTest extends NFSeTestCase
 {
-    //put your code here
+    public function testConsultaCNPJ()
+    {
+        $this->assertTrue(true);
+    }
 }
