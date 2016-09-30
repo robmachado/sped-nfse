@@ -50,6 +50,7 @@ class NFSeStatic
      * para um municipio em particular
      *
      * @param stdClass $config
+     * @param NFePHP\Common\Certificate $certificate
      * @return \NFePHP\NFSe\Counties\class
      */
     public static function tools(stdClass $config, Certificate $certificate)
@@ -84,7 +85,7 @@ class NFSeStatic
      *
      * @param string $className
      * @param stdClass $config
-     * @param NFePHP\Common\Certificate $certificate
+     * @param NFePHP\Common\Certificate|null $certificate
      * @return \NFePHP\NFSe\className
      * @throws RuntimeException
      */

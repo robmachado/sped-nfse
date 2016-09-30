@@ -134,5 +134,6 @@ class Convert
      */
     public static function toRps($txt = '')
     {
+        return $txt;
     }
 }
