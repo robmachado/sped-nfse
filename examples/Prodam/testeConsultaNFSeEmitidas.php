@@ -74,25 +74,20 @@ try {
     //Aqui podemos escolher entre usar o SOAP nativo ou o cURL,
     //em ambos os casos os comandos são os mesmos pois observam
     //a mesma interface
-    $nfse->tools->setSoapClass(new SoapCurl());
+    $nfse->tools->setSoapClass(new SoapNative());
     
-    //aqui está o comando para a consulta do CNPJ no modelo PRODAM, São Paulo
-    //para cada modelo os métodos poderão nem existir ou possuir nomes diferentes
-    //bem como seus parametros podem variar.
-    //Todos os métodos sempre irão retornar a resposta do webservice ou seja o 
-    //SOAP envelope do mesmo, sem nenhum outro tratamento ou irão gerar um Exception
-    //em caso de algum erro na construção ou na comunicação SOAP
     $cnpj = '99999999999999';
-    $response = $nfse->tools->consultaCNPJ($cnpj);
-        
-    //mostra o xml retornado
-    header("Content-type: text/xml");
-    echo $response;
+    $cpf = '';
+    $im = '12345678';
+    $dtInicial = '2016-08-01';
+    $dtFinal = '2016-09-01';
+    $pagina = 1;
+    $response = $nfse->tools->consultaNFSeEmitidas($cnpj, $cpf, $im, $dtInicial, $dtFinal, $pagina);
+    $response = $nfse->response->readReturn('RetornoXML', $response);
     
-    //esse XML poderá ser convertido em uma stdClass para facilitar a extração dos 
-    //dados para uso da aplicação para isso usamos a classe 
-    //Response::readReturn($tag, $response) passando o nome da tag desejada, e o xml 
-    $responseClass = $nfse->response->readReturn('RetornoXML', $response);
+    echo "<pre>";
+    print_r($response);
+    echo "</pre>";
     
 } catch (\NFePHP\Common\Exception\SoapException $e) {
     echo $e->getMessage();
