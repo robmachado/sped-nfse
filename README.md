@@ -79,7 +79,7 @@ Existem muitos "padrões" diferentes para a emissão de NFSe, além disso, cada 
 - DB NFSE
 - DEISS
 - DigiFred
-- **DSFNET - em desenvolvimento**
+- **DSFNET - ALPHA-TESTS **
 - Dueto
 - DUETO 2.0
 - E-Caucaia
@@ -139,7 +139,7 @@ Existem muitos "padrões" diferentes para a emissão de NFSe, além disso, cada 
 - PortalFacil
 - Prescon
 - Primax Online
-- **Prodam (NF Paulistana) - em desenvolvimento**
+- **Prodam (NF Paulistana) - BETA-TESTS **
 - PRODATA
 - Pública
 - RLZ
