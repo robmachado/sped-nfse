@@ -3,7 +3,7 @@
 namespace NFePHP\NFSe\Common;
 
 /**
- * Classe para base para a comunicação com os webservices
+ * Basic Abstract Class, for all derived classes from NFSe models
  *
  * @category  NFePHP
  * @package   NFePHP\NFSe\Common\Tools
@@ -18,24 +18,59 @@ namespace NFePHP\NFSe\Common;
 use NFePHP\Common\Certificate;
 use NFePHP\Common\Soap\SoapInterface;
 use NFePHP\NFSe\Common\EntitiesCharacters;
+use Psr\Log\LoggerInterface;
 use DOMDocument;
 use stdClass;
 
 abstract class Tools
 {
-    protected $config;
-    protected $certificate;
-    protected $soap;
-    protected $method = '';
-
-    protected $versao;
-    protected $remetenteTipoDoc;
-    protected $remetenteCNPJCPF;
-    protected $remetenteRazao;
-
-
     /**
-     * Webservices URL
+     * configuration values
+     * @var stdClass
+     */
+    protected $config;
+    /**
+     * Certificate::class
+     * @var NFePHP\Common\Certificate
+     */
+    protected $certificate;
+    /**
+     * Soap::class
+     * @var NFePHP\Common\Soap\SoapInterface
+     */
+    protected $soap;
+    /**
+     * Method from webservice
+     * @var string
+     */
+    protected $method = '';
+    /**
+     * Logger::class
+     * @var Psr\Log\LoggerInterface
+     */
+    protected $logger;
+    /**
+     * Version of XSD
+     * @var int
+     */
+    protected $versao;
+    /**
+     * Type of document
+     * @var int
+     */
+    protected $remetenteTipoDoc;
+    /**
+     * Document
+     * @var string
+     */
+    protected $remetenteCNPJCPF;
+    /**
+     * Company Name
+     * @var string
+     */
+    protected $remetenteRazao;
+    /**
+     * Webservices URL's
      * @var array
      */
     protected $url = [
@@ -64,15 +99,15 @@ abstract class Tools
     protected $withcdata = false;
     /**
      * Encription signature algorithm
-     * @var string
+     * @var int
      */
-    protected $algorithm;
+    protected $algorithm = OPENSSL_ALGO_SHA1;
     /**
-     * namespaces for soap envelope
+     * Namespaces for soap envelope
      * @var array
      */
     protected $namespaces = [];
-
+    
     /**
      * Constructor
      * @param string $config
@@ -111,6 +146,15 @@ abstract class Tools
     }
     
     /**
+     * Load the cohsen logger class
+     * @param LoggerInterface $logger
+     */
+    public function setLoggerClass(LoggerInterface $logger)
+    {
+        $this->logger = $logger;
+    }
+    
+    /**
      * Send request to webservice
      * @param string $message
      * @return string
@@ -120,7 +164,6 @@ abstract class Tools
     /**
      * Convert string xml message to cdata string
      * @param string $message
-     * @param boolean $withcdata
      * @return string
      */
     protected function stringTransform($message)

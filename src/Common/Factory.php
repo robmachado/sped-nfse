@@ -22,10 +22,10 @@ use NFePHP\Common\Validator;
 
 class Factory
 {
-    protected $certificate;
-    protected $pathSchemes = '';
-    protected $xml = '';
-    protected $algorithm;
+    public $certificate;
+    public $pathSchemes = '';
+    public $xml = '';
+    public $algorithm;
     
     /**
      * Construtor recebe a classe de certificados
@@ -53,7 +53,11 @@ class Factory
         return $body;
     }
     
-    public function setSignAlgorithm($algorithm)
+    /**
+     * Set OPENSSL Algorithm using OPENSSL constants
+     * @param int $algorithm
+     */
+    public function setSignAlgorithm($algorithm = OPENSSL_ALGO_SHA1)
     {
         $this->algorithm = $algorithm;
     }
