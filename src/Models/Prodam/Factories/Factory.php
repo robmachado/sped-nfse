@@ -20,9 +20,6 @@ use NFePHP\NFSe\Common\Factory as FactoryBase;
 
 class Factory extends FactoryBase
 {
-    protected $xmlns= "http://www.prefeitura.sp.gov.br/nfe";
-    protected $pathSchemes = '../../schemes/Prodam/';
-    
     protected function requestFirstPart($method)
     {
         return "<$method "
