@@ -111,7 +111,7 @@ abstract class Tools
     /**
      * Constructor
      * @param stdClass $config
-     * @param Certificate $certificate
+     * @param \NFePHP\Common\Certificate $certificate
      */
     public function __construct(stdClass $config, Certificate $certificate)
     {
@@ -138,7 +138,7 @@ abstract class Tools
     
     /**
      * Load the chosen soap class
-     * @param SoapInterface $soap
+     * @param \NFePHP\Common\Soap\SoapInterface $soap
      */
     public function setSoapClass(SoapInterface $soap)
     {
@@ -148,7 +148,7 @@ abstract class Tools
     
     /**
      * Load the cohsen logger class
-     * @param LoggerInterface $logger
+     * @param \Psr\Log\LoggerInterface $logger
      */
     public function setLoggerClass(LoggerInterface $logger)
     {
