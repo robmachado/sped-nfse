@@ -46,7 +46,7 @@ class Response
     
     /**
      * Convert DOMDocument in stdClass
-     * @param DOMDocument $dom
+     * @param \DOMDocument $dom
      * @param string $tag
      * @return \stdClass
      */
@@ -70,7 +70,7 @@ class Response
 
     /**
      * Verifica se o retorno é relativo a um ERRO SOAP
-     * @param DOMDocument $dom
+     * @param \DOMDocument $dom
      * @return string
      */
     protected static function checkForFault(DOMDocument $dom)

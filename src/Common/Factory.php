@@ -30,7 +30,7 @@ class Factory
     /**
      * Construtor recebe a classe de certificados
      *
-     * @param Certificate $certificate
+     * @param \NFePHP\Common\Certificate $certificate
      * @param int $algorithm
      */
     public function __construct(Certificate $certificate, $algorithm = OPENSSL_ALGO_SHA1)
@@ -97,7 +97,7 @@ class Factory
      * @param array $canonical
      * @return string
      */
-    public function signer($content, $method, $mark = '', $canonical = [])
+    public function signer($content, $method, $mark = '', array $canonical = [])
     {
         if (empty($canonical)) {
             $canonical = [false,false,null,null];
