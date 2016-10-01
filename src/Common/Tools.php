@@ -26,17 +26,17 @@ abstract class Tools
 {
     /**
      * configuration values
-     * @var stdClass
+     * @var \stdClass
      */
     protected $config;
     /**
      * Certificate::class
-     * @var NFePHP\Common\Certificate
+     * @var \NFePHP\Common\Certificate
      */
     protected $certificate;
     /**
      * Soap::class
-     * @var NFePHP\Common\Soap\SoapInterface
+     * @var \NFePHP\Common\Soap\SoapInterface
      */
     protected $soap;
     /**
@@ -46,7 +46,7 @@ abstract class Tools
     protected $method = '';
     /**
      * Logger::class
-     * @var Psr\Log\LoggerInterface
+     * @var \Psr\Log\LoggerInterface
      */
     protected $logger;
     /**
@@ -110,7 +110,8 @@ abstract class Tools
     
     /**
      * Constructor
-     * @param string $config
+     * @param stdClass $config
+     * @param Certificate $certificate
      */
     public function __construct(stdClass $config, Certificate $certificate)
     {
