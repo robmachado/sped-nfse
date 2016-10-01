@@ -22,23 +22,23 @@ use NFePHP\NFSe\Common\Rps as RpsBase;
 
 class Rps extends RpsBase
 {
-    public $versaoRPS = '';
+    public $versaoRPS = 1;
     public $prestadorIM = '';
     public $serieRPS = '';
-    public $numeroRPS = '';
+    public $numeroRPS = 0;
     public $dtEmiRPS = '';
     public $tipoRPS = '';
     public $statusRPS = '';
     public $tributacaoRPS = '';
-    public $valorServicosRPS = '';
-    public $valorDeducoesRPS = '';
-    public $valorPISRPS = '';
-    public $valorCOFINSRPS = '';
-    public $valorINSSRPS = '';
-    public $valorIRRPS = '';
-    public $valorCSLLRPS = '';
-    public $valorCargaTributariaRPS = '';
-    public $percentualCargaTributariaRPS = '';
+    public $valorServicosRPS = 0;
+    public $valorDeducoesRPS = 0;
+    public $valorPISRPS = 0;
+    public $valorCOFINSRPS = 0;
+    public $valorINSSRPS = 0;
+    public $valorIRRPS = 0;
+    public $valorCSLLRPS = 0;
+    public $valorCargaTributariaRPS = 0;
+    public $percentualCargaTributariaRPS = 0;
     public $fonteCargaTributariaRPS = '';
     public $codigoCEIRPS = '';
     public $matriculaObraRPS = '';
@@ -97,7 +97,7 @@ class Rps extends RpsBase
     /**
      * Dados do Tomador do Serviço
      * @param string $razao
-     * @param int $tipo
+     * @param string $tipo
      * @param string $cnpjcpf
      * @param string $ie
      * @param string $im
@@ -129,7 +129,7 @@ class Rps extends RpsBase
      * @param string $numero
      * @param string $complemento
      * @param string $bairro
-     * @param int $cmun
+     * @param string $cmun
      * @param string $uf
      * @param string $cep
      */
@@ -155,7 +155,7 @@ class Rps extends RpsBase
     
     /**
      * Dados do intermediário
-     * @param int $tipo
+     * @param string $tipo
      * @param string $cnpj
      * @param string $im
      * @param string $email
