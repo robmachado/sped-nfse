@@ -22,23 +22,23 @@ use NFePHP\NFSe\Common\Rps as RpsBase;
 
 class Rps extends RpsBase
 {
-    public $versaoRPS = 1;
+    public $versaoRPS = '';
     public $prestadorIM = '';
     public $serieRPS = '';
-    public $numeroRPS = 0;
+    public $numeroRPS = '';
     public $dtEmiRPS = '';
     public $tipoRPS = '';
     public $statusRPS = '';
     public $tributacaoRPS = '';
-    public $valorServicosRPS = 0;
-    public $valorDeducoesRPS = 0;
-    public $valorPISRPS = 0;
-    public $valorCOFINSRPS = 0;
-    public $valorINSSRPS = 0;
-    public $valorIRRPS = 0;
-    public $valorCSLLRPS = 0;
-    public $valorCargaTributariaRPS = 0;
-    public $percentualCargaTributariaRPS = 0;
+    public $valorServicosRPS = '';
+    public $valorDeducoesRPS = '';
+    public $valorPISRPS = '';
+    public $valorCOFINSRPS = '';
+    public $valorINSSRPS = '';
+    public $valorIRRPS = '';
+    public $valorCSLLRPS = '';
+    public $valorCargaTributariaRPS = '';
+    public $percentualCargaTributariaRPS = '';
     public $fonteCargaTributariaRPS = '';
     public $codigoCEIRPS = '';
     public $matriculaObraRPS = '';
@@ -174,7 +174,7 @@ class Rps extends RpsBase
     
     /**
      * Versão do layout usado 1 ou 2
-     * @param int $versao
+     * @param string $versao
      */
     public function versao($versao)
     {
@@ -194,7 +194,7 @@ class Rps extends RpsBase
     
     /**
      * Numero do RPS
-     * @param int $numero
+     * @param string $numero
      * @throws InvalidArgumentException
      */
     public function numero($numero)
@@ -343,7 +343,7 @@ class Rps extends RpsBase
     
     /**
      * Carga tributária total estimada
-     * Daods normalmente obtidos no IBPT
+     * Dados normalmente obtidos no IBPT
      * @param float $valor
      * @param float $percentual
      * @param string $fonte
@@ -421,7 +421,7 @@ class Rps extends RpsBase
     /**
      * Código IBGE para o municio onde o serviço
      * foi prestado
-     * @param int $cmun
+     * @param string $cmun
      */
     public function municipioPrestacao($cmun)
     {
