@@ -31,7 +31,6 @@ class CancelamentoNFSe extends Factory
      * @param string $transacao '', 'true' ou 'false' como string
      * @param string $prestadorIM
      * @param string $numeroNFSe
-     * @param string $priKey chave privada em uma string
      * @return string
      */
     public function render(
