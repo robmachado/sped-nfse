@@ -169,7 +169,7 @@ Existem muitos "padrões" diferentes para a emissão de NFSe, além disso, cada 
 
 ## Municipios atendidos pelo Framework
 
-- São Paulo (SP) PRODAM - em desenvolvimento
+- São Paulo (SP) PRODAM - BETA TESTS
 - Salvador (BA) ABRASF (modificado) - em desenvolvimento
 - Rio de Janeiro (RJ) ABRASF (modificado) - em desenvolvimento
 - Campinas (SP) DSFNET - em desenvolvimento
