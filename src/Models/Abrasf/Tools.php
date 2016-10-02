@@ -16,9 +16,9 @@ namespace NFePHP\NFSe\Models\Abrasf;
  * @link      http://github.com/nfephp-org/sped-nfse for the canonical source repository
  */
 
-use NFePHP\NFSe\Models\Base\ToolsBase;
 use NFePHP\NFSe\Models\Abrasf\Rps;
 use NFePHP\NFSe\Models\Abrasf\Factories;
+use NFePHP\NFSe\Commob\Tools as ToolsBase;
 
 class Tools extends ToolsBase
 {
