@@ -2,7 +2,12 @@
 
 namespace NFePHP\NFSe\Models\Issnet\Factories;
 
-class ConsultarUrlVisualizacaoNfseSerie
-{
+use NFePHP\NFSe\Models\Issnet\Factories\Header;
+use NFePHP\NFSe\Models\Issnet\Factories\Factory;
 
+class ConsultarUrlVisualizacaoNfseSerie extends Factory
+{
+    public function render()
+    {
+    }
 }
