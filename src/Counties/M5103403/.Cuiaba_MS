@@ -1,0 +1,9 @@
+Padrão: ISSNET (Abrasf 1.0 modificado)
+
+SOAP Version: 1.1 
+SOAP Version: 1.2
+
+URL: http://cuiaba.issnetonline.com.br/webserviceabrasf/cuiaba/servicos.asmx
+xmlns: http://www.issnetonline.com.br/webservice/nfd
+
+
