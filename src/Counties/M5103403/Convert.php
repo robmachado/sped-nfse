@@ -4,7 +4,7 @@ namespace NFePHP\NFSe\Counties\M5103403;
 
 /**
  * Classe a construção do xml da NFSe
- * para a Cidade de Cuiabá MS
+ * para a Cidade de Cuiabá MT
  * conforme o modelo ISSNET
  *
  * @category  NFePHP

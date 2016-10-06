@@ -4,7 +4,7 @@ namespace NFePHP\NFSe\Counties\M5103403;
 
 /**
  * Classe para a comunicação com os webservices da
- * Cidade de Cuiabá MS
+ * Cidade de Cuiabá MT
  * conforme o modelo ISSNET
  *
  * @category  NFePHP
@@ -44,7 +44,7 @@ class Tools extends ToolsModel
      * SIAFI County Cod
      * @var int
      */
-    protected $codcidade = 0;
+    protected $codcidade = 9067;
     /**
      * Indicates when use CDATA string on message
      * @var boolean
