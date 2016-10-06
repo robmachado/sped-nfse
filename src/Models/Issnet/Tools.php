@@ -22,6 +22,45 @@ use NFePHP\NFSe\Common\Tools as ToolsBase;
 
 class Tools extends ToolsBase
 {
+    public function cancelarNfse()
+    {
+    }
+    
+    public function consultaNFSePorRPS()
+    {
+    }
+    
+    public function consultarLoteRps()
+    {
+    }
+    
+    public function consultarNfse()
+    {
+    }
+    
+    public function consultarNFSePorRPS()
+    {
+    }
+    
+    public function consultarSituacaoLoteRPS()
+    {
+    }
+    
+    public function consultarUrlVisualizacaoNfse()
+    {
+    }
+    
+    public function consultarUrlVisualizacaoNfseSerie()
+    {
+    }
+    
+    public function consultaSituacaoLoteRPS()
+    {
+    }
+    
+    public function recepcionarLoteRps()
+    {
+    }
     
     protected function sendRequest($url, $message)
     {

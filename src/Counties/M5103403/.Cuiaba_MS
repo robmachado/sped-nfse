@@ -6,4 +6,4 @@ SOAP Version: 1.2
 URL: http://cuiaba.issnetonline.com.br/webserviceabrasf/cuiaba/servicos.asmx
 xmlns: http://www.issnetonline.com.br/webservice/nfd
 
-
+Atenção com os XSD: nesse caso existe um prefixo "servico_" no nome e não tem sulfixos
