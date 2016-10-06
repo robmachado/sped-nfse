@@ -64,5 +64,31 @@ class Tools extends ToolsBase
     
     protected function sendRequest($url, $message)
     {
+        //no caso do ISSNET o URL é unico para todas as ações
+        $url = $this->url[$this->config->tpAmb];
+        if (!is_object($this->soap)) {
+            $this->soap = new \NFePHP\NFSe\Common\SoapCurl($this->certificate);
+        }
+        $messageText = $message;
+        if ($this->withcdata) {
+            $messageText = $this->stringTransform("<?xml version=\"1.0\" encoding=\"UTF-8\"?>".$message);
+        }
+        $request = "<". $this->method . " xmlns=\"".$this->xmlns."\">"
+            . "<xml>$messageText</xml>"
+            . "</". $this->method . ">";
+        
+        $params = [
+            'xml' => $message
+        ];
+        $action = "\"". $this->xmlns ."/". $this->method ."\"";
+        return $this->soap->send(
+            $url,
+            $this->method,
+            $action,
+            $this->soapversion,
+            $params,
+            $this->namespaces[$this->soapversion],
+            $request
+        );
     }
 }

@@ -26,14 +26,14 @@ class Tools extends ToolsModel
      * @var array
      */
     protected $url = [
-        1 => '',
+        1 => 'http://cuiaba.issnetonline.com.br/webserviceabrasf/cuiaba/servicos.asmx',
         2 => ''
     ];
     /**
      * County Namespace
      * @var string
      */
-    protected $xmlns = '';
+    protected $xmlns = 'http://www.issnetonline.com.br/webservice/nfd';
     
     /**
      * Soap Version
@@ -66,8 +66,12 @@ class Tools extends ToolsModel
      */
     protected $namespaces = [
         1 => [
+            'xmlns:soapenv' => "http://schemas.xmlsoap.org/soap/envelope/",
+            'xmlns' => "http://www.issnetonline.com.br/webservice/nfd"
         ],
         2  => [
+            'xmlns:soap' => "http://www.w3.org/2003/05/soap-envelope",
+            'xmlns' => "http://www.issnetonline.com.br/webservice/nfd"
         ]
     ];
 }
