@@ -2,7 +2,12 @@
 
 namespace NFePHP\NFSe\Models\Issnet\Factories;
 
-class CancelarNfse
-{
+use NFePHP\NFSe\Models\Issnet\Factories\Header;
+use NFePHP\NFSe\Models\Issnet\Factories\Factory;
 
+class CancelarNfse extends Factory
+{
+    public function render()
+    {
+    }
 }
