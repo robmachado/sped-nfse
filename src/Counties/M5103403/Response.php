@@ -4,7 +4,7 @@ namespace NFePHP\NFSe\Counties\M5103403;
 
 /**
  * Classe para extração dos dados retornados pelos webservices da
- * Cidade de Cuiabá MS conforme o modelo ISSNET
+ * Cidade de Cuiabá MT conforme o modelo ISSNET
  *
  * @category  NFePHP
  * @package   NFePHP\NFSe\Counties\M5103403\Response
