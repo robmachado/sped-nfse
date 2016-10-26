@@ -2,7 +2,7 @@
 
 [![Join the chat at https://gitter.im/nfephp-org/sped-nfse](https://badges.gitter.im/nfephp-org/sped-nfse.svg)](https://gitter.im/nfephp-org/sped-nfse?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-**API para a integração com os sistemas de Notas Fiscais Eletrônicas de Serviços das Prefeituras Municipais**
+**Framework para a integração com os sistemas de Notas Fiscais Eletrônicas de Serviços das Prefeituras Municipais**
 
 *sped-nfse* é um framework para geração dos RPS e comunicação das NFSe com as Prefeituras Municipais.
 
@@ -79,7 +79,7 @@ Existem muitos "padrões" diferentes para a emissão de NFSe, além disso, cada 
 - DB NFSE
 - DEISS
 - DigiFred
-- **DSFNET - ALPHA-TESTS **
+- **DSFNET - ALPHA-TESTS**
 - Dueto
 - DUETO 2.0
 - E-Caucaia
@@ -139,7 +139,7 @@ Existem muitos "padrões" diferentes para a emissão de NFSe, além disso, cada 
 - PortalFacil
 - Prescon
 - Primax Online
-- **Prodam (NF Paulistana) - BETA-TESTS **
+- **Prodam (NF Paulistana) - BETA-TESTS**
 - PRODATA
 - Pública
 - RLZ
@@ -169,7 +169,7 @@ Existem muitos "padrões" diferentes para a emissão de NFSe, além disso, cada 
 
 ## Municipios atendidos pelo Framework
 
-- São Paulo (SP) PRODAM - BETA TESTS
+- **São Paulo (SP) PRODAM - BETA TESTS**
 - Salvador (BA) ABRASF (modificado) - em desenvolvimento
 - Rio de Janeiro (RJ) ABRASF (modificado) - em desenvolvimento
 - Campinas (SP) DSFNET - em desenvolvimento
