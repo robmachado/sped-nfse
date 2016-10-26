@@ -4,7 +4,7 @@ namespace NFePHP\NFSe\Models\Ginfes;
 
 /**
  * Classe a construção do xml dos RPS
- * para o modelo GINFES 
+ * para o modelo GINFES
  * NOTA: O padrão GINFES extende o modelo ABRASF
  *
  * @category  NFePHP
