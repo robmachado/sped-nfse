@@ -5,6 +5,7 @@ namespace NFePHP\NFSe\Models\Ginfes;
 /**
  * Classe para a comunicação com os webservices
  * conforme o modelo GINFES
+ * NOTA: O padrão GINFES extende o modelo ABRASF
  *
  * @category  NFePHP
  * @package   NFePHP\NFSe\Ginfes\Tools
@@ -16,11 +17,9 @@ namespace NFePHP\NFSe\Models\Ginfes;
  * @link      http://github.com/nfephp-org/sped-nfse for the canonical source repository
  */
 
-use NFePHP\NFSe\Models\Base\ToolsBase;
-use NFePHP\NFSe\Models\Ginfes\Rps;
-use NFePHP\NFSe\Models\Ginfes\Factories;
+use NFePHP\NFSe\Models\Abrasf\Tools as ToolsAbrasf;
 
-class Tools extends ToolsBase
+class Tools extends ToolsAbrasf
 {
     
 }

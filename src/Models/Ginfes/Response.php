@@ -5,6 +5,7 @@ namespace NFePHP\NFSe\Models\Ginges;
 /**
  * Classe para extração dos dados retornados pelos webservices
  * conforme o modelo GINFES
+ * NOTA: O padrão GINFES extende o modelo ABRASF
  *
  * @category  NFePHP
  * @package   NFePHP\NFSe\Ginfes\Response
@@ -16,8 +17,8 @@ namespace NFePHP\NFSe\Models\Ginges;
  * @link      http://github.com/nfephp-org/sped-nfse for the canonical source repository
  */
 
-use NFePHP\NFSe\Common\Response as ResponseBase;
+use NFePHP\NFSe\Models\Abrasf\Response as ResponseAbrasf;
 
-class Response extends ResponseBase
+class Response extends ResponseAbrasf
 {
 }
