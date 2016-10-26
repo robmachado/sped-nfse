@@ -3,7 +3,7 @@
     "type": "library",
     "description": "API para geração e comunicação da NFSe com as Prefeituras.",
     "keywords": ["nfse", "sped", "nfephp"],
-    "homepage": "https://github.com/nfephp-org/sped-cte",
+    "homepage": "https://github.com/nfephp-org/sped-nfse",
     "license": ["GPL-3.0+","LGPL-3.0+", "MIT"],
     "authors": [
         {
@@ -14,7 +14,7 @@
         },
         {
             "name": "Comunidade NFePHP",
-            "homepage": "https://github.com/nfephp-org/sped-cte/graphs/contributors"
+            "homepage": "https://github.com/nfephp-org/sped-nfse/graphs/contributors"
         }
     ],
     "repositories": [
