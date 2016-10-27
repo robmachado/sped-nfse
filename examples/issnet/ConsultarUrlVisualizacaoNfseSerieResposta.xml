@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ConsultarUrlVisualizacaoNfseResposta xmlns="http://www.issnetonline.com.br/webserviceabrasf/vsd/servico_consultar_url_visualizacao_nfse_serie_resposta.xsd">
+  <Prestador>
+    <CpfCnpj xmlns="http://www.issnetonline.com.br/webserviceabrasf/vsd/tipos_complexos.xsd">
+      <Cnpj>00028986006220</Cnpj>
+    </CpfCnpj>
+    <InscricaoMunicipal xmlns="http://www.issnetonline.com.br/webserviceabrasf/vsd/tipos_complexos.xsd">25187-9</InscricaoMunicipal>
+  </Prestador>
+  <Numero>1</Numero>
+  <UrlVisualizacao>http://www.issnetonline.com.br/praiagrande/online/NotaDigital/NotaDigital.aspx?EF+4E+50+D1+44+B1+18+A8+DF+5C+59+97+6E+CD+6B+EA+28+C1+48+96+F3+B9+7A+84+A4+F9+24+D9+AD+FF+88+E3+54+C3+FE+48+80+5C+5F+9B+D3+6+A3+CB+2D+A3+3E+F6+9D+A7+B7+FA+D7+B8+7E+47+2D+50+86+69+50+3E+97+22+2A+E2+A3+E4+73+B3+70+EF+8A+31+38+6A+16+5D+92+D7+D+C+28+57+D8+DC+80+D4+E1+A9+C4+6D+F6+93+CB+5B+50+6+CF+3D+3E+C9+4E+DC+16+E3+95+C1+6B+DE+A1+62+C1+E6+38+D9+D6+63+C0+32+</UrlVisualizacao>
+</ConsultarUrlVisualizacaoNfseResposta>

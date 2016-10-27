@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ConsultarUrlVisualizacaoNfseResposta xmlns="http://www.issnetonline.com.br/webserviceabrasf/vsd/servico_consultar_url_visualizacao_nfse_resposta.xsd">
+    <Prestador>
+        <CpfCnpj xmlns="http://www.issnetonline.com.br/webserviceabrasf/vsd/tipos_complexos.xsd">
+            <Cnpj>03746864000145</Cnpj>
+        </CpfCnpj>
+        <InscricaoMunicipal xmlns="http://www.issnetonline.com.br/webserviceabrasf/vsd/tipos_complexos.xsd">812005</InscricaoMunicipal>
+    </Prestador>
+    <Numero>2748</Numero>
+    <UrlVisualizacao>http://localhost/ServicosWeb/Homologacao/NotaDigital/NovoLayoutNovaNota.aspx?EF+4E+50+D1+44+B1+18+A8+DF+5C+59+97+6E+CD+6B+EA+D+8+D+B9+19+31+9B+5D+9A+41+B4+8E+5A+50+FC+C4+4A+69+CD+CB+AD+FA+B7+53+71+52+7C+76+EA+59+55+1C+A9+DF+93+E4+B6+D9+71+15+E5+CE+17+EA+A5+60+15+2A+F+7A+4E+17+2B+AF+4C+62+B6+66+CA+C6+D2+E0+5+74+29+DD+96+63+A7+FD+90+77+82+2A+D7+18+17+54+95+5+81+5C+22+4A+E2+1+9F+8+9A+3+18+F5+87+F7+D1+7E+1A+61+81+55+7E+F4+FB+BD+</UrlVisualizacao>
+</ConsultarUrlVisualizacaoNfseResposta>
