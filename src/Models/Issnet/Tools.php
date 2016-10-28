@@ -17,8 +17,9 @@ namespace NFePHP\NFSe\Models\Issnet;
  */
 
 use NFePHP\NFSe\Models\Issnet\Rps;
-use NFePHP\NFSe\Models\Issnet\Factories;
+use NFePHP\NFSe\Models\Issnet\Factories\ConsultarNfseEnvio;
 use NFePHP\NFSe\Common\Tools as ToolsBase;
+use NFePHP\Common\Soap\SoapCurl;
 
 class Tools extends ToolsBase
 {
@@ -33,9 +34,36 @@ class Tools extends ToolsBase
     public function consultarLoteRps()
     {
     }
-    
-    public function consultarNfse()
-    {
+
+	/**
+	 * @param $cnpjPrestador
+	 * @param $cpfPrestador
+	 * @param $imPrestador
+	 * @param $dtInicio
+	 * @param $dtFim
+	 * @param $pagina
+	 *
+	 * @return string
+	 */
+	public function consultaNFSeEmitidas(
+		$dtInicio,
+		$dtFim,
+        $cnpjPrestador = '',
+        $cpfPrestador = '',
+        $imPrestador = '',
+        $pagina = ''
+    ) {
+        $this->method = 'ConsultarNFseEnvio';
+        $fact = new ConsultarNFSeEnvio($this->certificate);
+        $fact->setSignAlgorithm($this->algorithm);
+        $message = $fact->render(
+	        $this->remetenteTipoDoc,
+	        $this->remetenteCNPJCPF,
+	        $this->inscricaoMunicipal,
+	        $dtInicio,
+	        $dtFim
+        );
+        return $this->sendRequest('', $message);
     }
     
     public function consultarNFSePorRPS()
@@ -67,7 +95,7 @@ class Tools extends ToolsBase
         //no caso do ISSNET o URL é unico para todas as ações
         $url = $this->url[$this->config->tpAmb];
         if (!is_object($this->soap)) {
-            $this->soap = new \NFePHP\NFSe\Common\SoapCurl($this->certificate);
+            $this->soap = new SoapCurl($this->certificate);
         }
         $messageText = $message;
         if ($this->withcdata) {

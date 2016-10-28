@@ -24,7 +24,7 @@ class Factory extends FactoryBase
 	{
 		return "<$method "
 			. "xmlns=\"http://www.issnetonline.com.br/webserviceabrasf/vsd/servico_consultar_nfse_envio.xsd\" "
-			. "xmlns:tc=\"http://www.issnetonline.com.br/webserviceabrasf/vsd/tipos_complexos.xsd>";
+			. "xmlns:tc=\"http://www.issnetonline.com.br/webserviceabrasf/vsd/tipos_complexos.xsd\">";
 	}
 
 }

@@ -20,86 +20,63 @@ use NFePHP\NFSe\Common\Header as HeaderBase;
 
 class Header extends HeaderBase
 {
+
 	/**
-	 * Renderiza as tag do cabecalho
-	 * @param int $versao
-	 * @param int $remetenteTipoDoc
-	 * @param string $remetenteCNPJCPF
-	 * @param string $transacao
-	 * @param string $cnpj
-	 * @param string $cpf
-	 * @param string $im
-	 * @param date $dtIni
-	 * @param date $dtFim
-	 * @param int $pagina
-	 * @param int $qtdRPS
-	 * @param float $valorTotalServicos
-	 * @param float $valorTotalDeducoes
-	 * @param string $numeroLote
-	 * @param string $prestadorIM
+	 * @param $remetenteTipoDoc
+	 * @param $remetenteCNPJCPF
+	 * @param $inscricaoMunicipal
+	 *
+	 * @param $dtInicio
+	 * @param $dtFim
+	 * @param $numeroLote
+	 * @param $cnpjTomador
+	 * @param $cpfTomador
+	 * @param $inscricaoMunicipalTomador
+	 *
 	 * @return string
 	 */
 	public static function render(
-		$versao = null,
-		$remetenteTipoDoc = null,
-		$remetenteCNPJCPF = null,
-		$transacao = null,
-		$cnpj = null,
-		$cpf = null,
-		$im = null,
-		$dtIni = null,
-		$dtFim = null,
-		$pagina = null,
-		$qtdRPS = null,
-		$valorTotalServicos = null,
-		$valorTotalDeducoes = null,
-		$numeroLote = null,
-		$prestadorIM = null
+		$remetenteTipoDoc,
+		$remetenteCNPJCPF,
+		$inscricaoMunicipal,
+		$dtInicio,
+		$dtFim,
+		$numeroLote,
+		$cnpjTomador,
+		$cpfTomador,
+		$inscricaoMunicipalTomador
 	) {
-		$content = "";//"<Cabecalho xmlns=\"\" Versao=\"$versao\">";
-		$content .= "<Prestador>";
-		$content .= "<CpfCnpj>";
+
+		$content = "<Prestador>";
+		$content .= "<tc:CpfCnpj>";
 		if ($remetenteTipoDoc == '2') {
-			$content .= self::check('Cnpj', $remetenteCNPJCPF);
+			$content .= self::check('tc:Cnpj', $remetenteCNPJCPF);
 		} else {
-			$content .= self::check('Cpf', $remetenteCNPJCPF);
+			$content .= self::check('tc:Cpf', $remetenteCNPJCPF);
 		}
-		$content .= "</CpfCnpj>";
-		$content .= self::check('InscricaoMunicipal', $im);
+		$content .= "</tc:CpfCnpj>";
+		$content .= self::check('tc:InscricaoMunicipal', $inscricaoMunicipal);
 		$content .= "</Prestador>";
 
-		$content .= self::check('NumeroNfse', $numeroLote);
+		if ($numeroLote) {
+			$content .= self::check('tc:NumeroNfse', $numeroLote);
+		}
 		$content .= "<PeriodoEmissao>";
-		$content .= self::check('DataInicial', $dtIni);
+		$content .= self::check('DataInicial', $dtInicio);
 		$content .= self::check('DataFinal', $dtFim);
 		$content .= "</PeriodoEmissao>";
 
-		$content .= "<Tomador>";
-		if ($cnpj != '') {
-			$content .= "<CpfCnpj><Cnpj>$cnpj</Cnpj></CpfCnpj>";
-		} elseif ($cpf != '') {
-			$content .= "<CpfCnpj><Cpf>$cpf</Cpf></CpfCnpj>";
+		if ($cpfTomador or $cnpjTomador) {
+			$content .= "<Tomador>";
+			if ($cnpjTomador != '') {
+				$content .= "<tc:CpfCnpj><tc:Cnpj>$cnpjTomador</tc:Cnpj></tc:CpfCnpj>";
+			} elseif ($cpfTomador != '') {
+				$content .= "<tc:CpfCnpj><tc:Cpf>$cpfTomador</tc:Cpf></tc:CpfCnpj>";
+			}
+			$content .= self::check('tc:InscricaoMunicipal', $inscricaoMunicipalTomador);
+			$content .= "</Tomador>";
 		}
-		$content .= self::check('InscricaoMunicipal', $prestadorIM);
-		$content .= "</Tomador>";
 
-//		$content .= "<IntermediarioServico>";
-//		$content .= "<CpfCnpj>";
-//		$content .= "<Cnpj>38693524000188</Cnpj>";
-//		$content .= "<CpfCnpj>";
-//		$content .= "<RazaoSocial>sdfsfsdfsf</RazaoSocial>";
-//		$content .= "<InscricaoMunicipal>812005</InscricaoMunicipal>";
-//		$content .= "</IntermediarioServico>";
-
-//		$content .= self::check('transacao', $transacao);
-		$content .= self::check('NumeroPagina', $pagina);
-
-		if ($valorTotalServicos != 0) {
-			$content .= self::check('QtdRPS', $qtdRPS);
-			$content .= "<ValorTotalServicos>".number_format($valorTotalServicos, 2, '.', '')."</ValorTotalServicos>";
-			$content .= "<ValorTotalDeducoes>".number_format($valorTotalDeducoes, 2, '.', '')."</ValorTotalDeducoes>";
-		}
-//		$content .= "</Cabecalho>";
 		return $content;
 	}
 }

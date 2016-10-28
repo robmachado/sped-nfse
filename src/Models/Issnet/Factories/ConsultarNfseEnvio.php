@@ -20,52 +20,62 @@ namespace NFePHP\NFSe\Models\Issnet\Factories;
 use NFePHP\NFSe\Models\Issnet\Factories\Header;
 use NFePHP\NFSe\Models\Issnet\Factories\Factory;
 
-class ConsultarNfse extends Factory
+class ConsultarNfseEnvio extends Factory
 {
 	/**
 	 * Renderiza o pedido em seu respectivo xml e faz a validação com o XSD
-	 * @param int $versao
-	 * @param int $remetenteTipoDoc
+	 *
+	 * @param int    $remetenteTipoDoc
 	 * @param string $remetenteCNPJCPF
-	 * @param string $transacao
-	 * @param string $cnpj
-	 * @param string $cpf
-	 * @param string $im
-	 * @param date $dtInicio
-	 * @param date $dtFim
-	 * @param int $pagina
+	 * @param        $inscricaoMunicipal
+	 * @param date   $dtInicio
+	 * @param date   $dtFim
+	 *
+	 * @param int    $versao
+	 * @param string $numeroLote
+	 * @param string $cnpjTomador
+	 * @param string $cpfTomador
+	 * @param string $inscricaoMunicipalTomador
+	 *
 	 * @return string
+	 * @internal param int $versao
+	 * @internal param string $transacao
+	 * @internal param $cnpjContribuinte
+	 * @internal param string $cnpj
+	 * @internal param string $cpf
+	 * @internal param string $im
+	 * @internal param int $pagina
 	 */
 	public function render(
-		$versao,
 		$remetenteTipoDoc,
 		$remetenteCNPJCPF,
-		$transacao,
-		$cnpj,
-		$cpf,
-		$im,
+		$inscricaoMunicipal,
 		$dtInicio,
 		$dtFim,
-		$pagina
+		$versao = 1,
+		$numeroLote = '',
+		$cnpjTomador = '',
+		$cpfTomador = '',
+		$inscricaoMunicipalTomador = ''
 	) {
 		$method = "ConsultarNfseEnvio";
 		$content = $this->requestFirstPart($method);
 		$content .= Header::render(
-			$versao,
 			$remetenteTipoDoc,
 			$remetenteCNPJCPF,
-			$transacao,
-			$cnpj,
-			$cpf,
-			$im,
+			$inscricaoMunicipal,
 			$dtInicio,
 			$dtFim,
-			$pagina
+			$numeroLote,
+			$cnpjTomador,
+			$cpfTomador,
+			$inscricaoMunicipalTomador
 		);
 		$content .= "</$method>";
-		$content = $this->signer($content, $method, '', [false,false,null,null]);
+
 		$body = $this->clear($content);
-		$this->validar($versao, $body, 'Prodam', $method);
+		$body = $this->signer($body, $method, '', [false,false,null,null]);
+		$this->validar($versao, $body, 'Issnet', 'servico_consultar_nfse_envio', '');
 		return $body;
 	}
 }
