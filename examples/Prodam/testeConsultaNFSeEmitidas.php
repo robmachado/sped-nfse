@@ -26,21 +26,22 @@ use NFePHP\Common\Soap\SoapNative;
 // 3 - Tools::class classe que realiza a comunicação com os webservices
 //     (lembrando novamente que modelos diferentes tem métodos diferentes)
 // 4 - Response::class classe que converte os retornos xml em stdClass para facilitar
-//     a extração dos dados, neste ponte deve ficar claro tambem que esses retornos 
+//     a extração dos dados, neste ponto deve ficar claro tambem que esses retornos 
 //     são muito diferentes a conforme o modelo sendo usado pela Prefeitura
 
-//ATENÇÃO : cada modelo diferente possuirá métodos com nomes e parametros diferentes!!!  
+//ATENÇÃO : cada modelo diferente possuirá métodos com nomes e 
+//          parametros diferentes!!!  
 
-//NOTA: Por ora, não serão automaticamente salvos nenhum arquivo em disco, 
+//NOTA: Por ora, não serão automaticamente salvos NENHUM arquivo em disco, 
 //apenas os certificados serão salvos e de forma temporária no momento do uso, 
 //pelas classes SOAP, pois as mesmas não permitem o uso em memoria e em seguida 
-//esses arquivos serão removidos. Como os nomes desses arquivos são gerados de forma
-//aleatória não haverão conflitos.
+//esses arquivos serão removidos. Como os nomes desses arquivos são gerados de
+//forma aleatória não haverão conflitos.
 
 //tanto o config.json como o certificado.pfx podem estar
 //armazenados em uma base de dados, então não é necessário 
-///trabalhar com arquivos, estes abaixo servem apenas para 
-//exemplos de desenvolvimento
+///trabalhar com arquivos, este script abaixo serve apenas como 
+//exemplo durante a fase de desenvolvimento e testes.
 $arr = [
     "atualizacao" => "2016-08-03 18:01:21",
     "tpAmb" => 1,
@@ -61,14 +62,17 @@ $arr = [
 ];
 $configJson = json_encode($arr);
 
-//esse certificado pode estar em uma base de dados para isso não esqueça 
-//de converter para base64 ao gravar na base e desconverter para usar
-//também podem ser compactados esses dados usando o gunzip
+//esse certificado pode estar em uma base de dados e para isso não esqueça 
+//de converter para base64 ao gravar na base e desconverter para pode usar,
+//esses dados também podem ser compactados usando o gunzip para diminuir o 
+//seu tamanho
 $contentpfx = file_get_contents('/var/www/sped/sped-nfse/certs/certificado.pfx');
 
 try {
-    //com os dados do config e do certificado já obtidos e descompactados e desconvertidos
-    //par a sua forma original é só passa-los para a classe principal
+    //com os dados do config e do certificado já obtidos e descompactado 
+    //e desconvertido para a sua forma original é só passa-los para a 
+    //classe principal. A classe principal usa o config para localizar as 
+    //classes especificas de cada municipio
     $nfse = new NFSe($configJson, Certificate::readPfx($contentpfx, 'senha'));
     
     //Aqui podemos escolher entre usar o SOAP nativo ou o cURL,
@@ -76,6 +80,9 @@ try {
     //a mesma interface
     $nfse->tools->setSoapClass(new SoapNative());
     
+    //abaixo esta a chamada do método que consulta as NFSe emitidas por 
+    //um emitente autorizado, os dados devem ser fornecidos sempr eno formato
+    //indicado, o metodo não irá validar os dados fornecidos!!
     $cnpj = '99999999999999';
     $cpf = '';
     $im = '12345678';
@@ -83,6 +90,12 @@ try {
     $dtFinal = '2016-09-01';
     $pagina = 1;
     $response = $nfse->tools->consultaNFSeEmitidas($cnpj, $cpf, $im, $dtInicial, $dtFinal, $pagina);
+    
+    //esse XML retornado na resposta SOAP poderá ser convertido, de assim for desejado, em uma stdClass 
+    //para facilitar a extração dos dados para uso da aplicação. Para isso 
+    //usamos a classe Response::readReturn($tag, $response) passando 
+    //o nome da tag desejada, e o xml. Lembrando que o nome da TAG desejada irá 
+    //variar de modelo para modelo
     $response = $nfse->response->readReturn('RetornoXML', $response);
     
     echo "<pre>";

@@ -6,8 +6,8 @@ require_once '../../bootstrap.php';
 //as classes abaixo serão sempre usadas e serão instanciadas
 use NFePHP\NFSe\NFSe;
 use NFePHP\Common\Certificate;
-use NFePHP\Common\Soap\SoapCurl;
-use NFePHP\Common\Soap\SoapNative;
+use NFePHP\Common\Soap\SoapCurl; //ou usa essa ou a de baixo
+use NFePHP\Common\Soap\SoapNative;//ou usa essa ou a de cima
 
 //Para cada Prefeitura, o que identifica as classe a serem usadas é o numero 
 //cmun indicado no config. A partir desse numero as classes especificas serão
@@ -26,21 +26,22 @@ use NFePHP\Common\Soap\SoapNative;
 // 3 - Tools::class classe que realiza a comunicação com os webservices
 //     (lembrando novamente que modelos diferentes tem métodos diferentes)
 // 4 - Response::class classe que converte os retornos xml em stdClass para facilitar
-//     a extração dos dados, neste ponte deve ficar claro tambem que esses retornos 
+//     a extração dos dados, neste ponto deve ficar claro tambem que esses retornos 
 //     são muito diferentes a conforme o modelo sendo usado pela Prefeitura
 
-//ATENÇÃO : cada modelo diferente possuirá métodos com nomes e parametros diferentes!!!  
+//ATENÇÃO : cada modelo diferente possuirá métodos com nomes e 
+//          parametros diferentes!!!  
 
-//NOTA: Por ora, não serão automaticamente salvos nenhum arquivo em disco, 
+//NOTA: Por ora, não serão automaticamente salvos NENHUM arquivo em disco, 
 //apenas os certificados serão salvos e de forma temporária no momento do uso, 
 //pelas classes SOAP, pois as mesmas não permitem o uso em memoria e em seguida 
-//esses arquivos serão removidos. Como os nomes desses arquivos são gerados de forma
-//aleatória não haverão conflitos.
+//esses arquivos serão removidos. Como os nomes desses arquivos são gerados de
+//forma aleatória não haverão conflitos.
 
 //tanto o config.json como o certificado.pfx podem estar
 //armazenados em uma base de dados, então não é necessário 
-///trabalhar com arquivos, estes abaixo servem apenas para 
-//exemplos de desenvolvimento
+///trabalhar com arquivos, este script abaixo serve apenas como 
+//exemplo durante a fase de desenvolvimento e testes.
 $arr = [
     "atualizacao" => "2016-08-03 18:01:21",
     "tpAmb" => 1,
@@ -61,14 +62,17 @@ $arr = [
 ];
 $configJson = json_encode($arr);
 
-//esse certificado pode estar em uma base de dados para isso não esqueça 
-//de converter para base64 ao gravar na base e desconverter para usar
-//também podem ser compactados esses dados usando o gunzip
+//esse certificado pode estar em uma base de dados e para isso não esqueça 
+//de converter para base64 ao gravar na base e desconverter para pode usar,
+//esses dados também podem ser compactados usando o gunzip para diminuir o 
+//seu tamanho
 $contentpfx = file_get_contents('/var/www/sped/sped-nfse/certs/certificado.pfx');
 
 try {
-    //com os dados do config e do certificado já obtidos e descompactados e desconvertidos
-    //par a sua forma original é só passa-los para a classe principal
+    //com os dados do config e do certificado já obtidos e descompactado 
+    //e desconvertido para a sua forma original é só passa-los para a 
+    //classe principal. A classe principal usa o config para localizar as 
+    //classes especificas de cada municipio
     $nfse = new NFSe($configJson, Certificate::readPfx($contentpfx, 'senha'));
     
     //Aqui podemos escolher entre usar o SOAP nativo ou o cURL,
@@ -80,8 +84,11 @@ try {
     //para cada modelo os métodos poderão nem existir ou possuir nomes diferentes
     //bem como seus parametros podem variar.
     //Todos os métodos sempre irão retornar a resposta do webservice ou seja o 
-    //SOAP envelope do mesmo, sem nenhum outro tratamento ou irão gerar um Exception
-    //em caso de algum erro na construção ou na comunicação SOAP
+    //SOAP envelope do mesmo, sem nenhum outro tratamento ou então irão gerar 
+    //um Exception em caso de algum erro na construção ou na comunicação SOAP
+    //caso o webservice detectar algum erro na informação forneceida isso não
+    //irá necessáriamente gerar um Exception, por isso o retorno pode ser um xml 
+    //com uma mensagem de erro seu sistema deverá avaliar esse retorno
     $cnpj = '99999999999999';
     $response = $nfse->tools->consultaCNPJ($cnpj);
         
@@ -89,9 +96,11 @@ try {
     header("Content-type: text/xml");
     echo $response;
     
-    //esse XML poderá ser convertido em uma stdClass para facilitar a extração dos 
-    //dados para uso da aplicação para isso usamos a classe 
-    //Response::readReturn($tag, $response) passando o nome da tag desejada, e o xml 
+    //esse XML retornado na resposta SOAP poderá ser convertido, de assim for desejado, em uma stdClass 
+    //para facilitar a extração dos dados para uso da aplicação. Para isso 
+    //usamos a classe Response::readReturn($tag, $response) passando 
+    //o nome da tag desejada, e o xml. Lembrando que o nome da TAG desejada irá 
+    //variar de modelo para modelo
     $responseClass = $nfse->response->readReturn('RetornoXML', $response);
     
 } catch (\NFePHP\Common\Exception\SoapException $e) {
