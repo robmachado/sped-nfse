@@ -35,19 +35,19 @@ class Tools extends ToolsBase
     {
     }
 
-	/**
-	 * @param $cnpjPrestador
-	 * @param $cpfPrestador
-	 * @param $imPrestador
-	 * @param $dtInicio
-	 * @param $dtFim
-	 * @param $pagina
-	 *
-	 * @return string
-	 */
-	public function consultaNFSeEmitidas(
-		$dtInicio,
-		$dtFim,
+    /**
+     * @param $cnpjPrestador
+     * @param $cpfPrestador
+     * @param $imPrestador
+     * @param $dtInicio
+     * @param $dtFim
+     * @param $pagina
+     *
+     * @return string
+     */
+    public function consultaNFSeEmitidas(
+        $dtInicio,
+        $dtFim,
         $cnpjPrestador = '',
         $cpfPrestador = '',
         $imPrestador = '',
@@ -57,11 +57,11 @@ class Tools extends ToolsBase
         $fact = new ConsultarNFSeEnvio($this->certificate);
         $fact->setSignAlgorithm($this->algorithm);
         $message = $fact->render(
-	        $this->remetenteTipoDoc,
-	        $this->remetenteCNPJCPF,
-	        $this->inscricaoMunicipal,
-	        $dtInicio,
-	        $dtFim
+            $this->remetenteTipoDoc,
+            $this->remetenteCNPJCPF,
+            $this->inscricaoMunicipal,
+            $dtInicio,
+            $dtFim
         );
         return $this->sendRequest('', $message);
     }
