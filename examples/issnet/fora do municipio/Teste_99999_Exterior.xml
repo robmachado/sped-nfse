@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<EnviarLoteRpsEnvio xmlns:tc="http://www.issnetonline.com.br/webserviceabrasf/vsd/tipos_complexos.xsd" xmlns:ts="http://www.issnetonline.com.br/webserviceabrasf/vsd/tipos_simples.xsd" xmlns="http://www.issnetonline.com.br/webserviceabrasf/vsd/servico_enviar_lote_rps_envio.xsd">
+  <LoteRps>
+    <tc:NumeroLote>2</tc:NumeroLote>
+    <tc:CpfCnpj>
+      <tc:Cnpj>77877877877857</tc:Cnpj>
+    </tc:CpfCnpj>
+    <tc:InscricaoMunicipal>999999</tc:InscricaoMunicipal>
+    <tc:QuantidadeRps>1</tc:QuantidadeRps>
+    <tc:ListaRps>
+      <tc:Rps>
+        <tc:InfRps>
+          <tc:IdentificacaoRps>
+            <tc:Numero>24</tc:Numero>
+            <tc:Serie>8</tc:Serie>
+            <tc:Tipo>1</tc:Tipo>
+          </tc:IdentificacaoRps>
+          <tc:DataEmissao>2010-04-23T08:15:00</tc:DataEmissao>
+          <tc:NaturezaOperacao>1</tc:NaturezaOperacao>
+          <tc:RegimeEspecialTributacao>1</tc:RegimeEspecialTributacao>
+          <tc:OptanteSimplesNacional>2</tc:OptanteSimplesNacional>
+          <tc:IncentivadorCultural>1</tc:IncentivadorCultural>
+          <tc:Status>1</tc:Status>
+          <tc:Servico>
+            <tc:Valores>
+              <tc:ValorServicos>200.00</tc:ValorServicos>
+              <tc:ValorDeducoes>0.00</tc:ValorDeducoes>
+              <tc:ValorPis>0.00</tc:ValorPis>
+              <tc:ValorCofins>0.00</tc:ValorCofins>
+              <tc:ValorInss>0.00</tc:ValorInss>
+              <tc:ValorIr>0.00</tc:ValorIr>
+              <tc:ValorCsll>0.00</tc:ValorCsll>
+              <tc:IssRetido>2</tc:IssRetido>
+              <tc:OutrasRetencoes>0.00</tc:OutrasRetencoes>
+              <tc:BaseCalculo>200.00</tc:BaseCalculo>
+              <tc:Aliquota>5.00</tc:Aliquota>
+              <tc:ValorLiquidoNfse>200.00</tc:ValorLiquidoNfse>
+              <tc:ValorIssRetido>0.00</tc:ValorIssRetido>
+              <tc:ValorIss>10.00</tc:ValorIss>
+              <tc:DescontoCondicionado>0.00</tc:DescontoCondicionado>
+              <tc:DescontoIncondicionado>0.00</tc:DescontoIncondicionado>
+            </tc:Valores>
+            <tc:ItemListaServico>12</tc:ItemListaServico>
+            <tc:CodigoCnae>6969</tc:CodigoCnae>
+            <tc:CodigoTributacaoMunicipio>101</tc:CodigoTributacaoMunicipio>
+            <tc:Discriminacao>Serviços de manutenção de microcomputador: formatação e troca de memória</tc:Discriminacao>
+            <tc:MunicipioPrestacaoServico>999</tc:MunicipioPrestacaoServico>
+          </tc:Servico>
+          <tc:Prestador>
+            <tc:CpfCnpj>
+              <tc:Cnpj>77877877877857</tc:Cnpj>
+            </tc:CpfCnpj>
+            <tc:InscricaoMunicipal>999999</tc:InscricaoMunicipal>
+          </tc:Prestador>
+          <tc:Tomador>
+            <tc:IdentificacaoTomador>
+              <tc:CpfCnpj>
+                <tc:Cpf>12345678911</tc:Cpf>
+              </tc:CpfCnpj>
+             </tc:IdentificacaoTomador>
+            <tc:RazaoSocial>James Bond</tc:RazaoSocial>
+            <tc:Endereco>
+              <tc:Endereco>R. Sétima Avenida</tc:Endereco>
+              <tc:Complemento>Não há</tc:Complemento>
+              <tc:Bairro>EUA</tc:Bairro>
+              <tc:Cidade>99999</tc:Cidade>
+              <tc:Estado>EX</tc:Estado>
+              </tc:Endereco>
+           </tc:Tomador>
+        </tc:InfRps>
+      </tc:Rps>
+    </tc:ListaRps>
+  </LoteRps>
+  <Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+    <SignedInfo>
+      <CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" />
+      <SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" />
+      <Reference URI="">
+        <Transforms>
+          <Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" />
+        </Transforms>
+        <DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+        <DigestValue>3+/aI7ZMDRb61VUsc/DQHgf3/Mk=</DigestValue>
+      </Reference>
+    </SignedInfo>
+    <SignatureValue>JWLagExaLsXfOKrmmfzLe2/JXajVWXGeJMuusuz0IAfg13YOOQD66gJpqlR58vRQqQFH3GF+XWvh0PiTQ4yBp0OpZJyFyFPBKjL02IGcMQua2d2f4xG4n2CBhLgPIme05a1myos4Znz1Hx60ac2tkXH5uMB7dTbqW0hFP+FmAQA=</SignatureValue>
+    <KeyInfo>
+      <X509Data>
+        <X509Certificate>MIIFCjCCA/KgAwIBAgIKYQWNggAAAAAAvDANBgkqhkiG9w0BAQUFADAcMRowGAYDVQQDExFDQVRFU1RFTUFRVklSVFVBTDAeFw0wOTA4MDcxMzE2MzhaFw0xMDA4MDcxMzI2MzhaMIGVMQswCQYDVQQGEwJCUjELMAkGA1UECBMCTVMxFTATBgNVBAcTDENhbXBvIEdyYW5kZTEVMBMGA1UEChMMTm90YSBDb250cm9sMRAwDgYDVQQLEwdTdXBvcnRlMRcwFQYDVQQDEw5TaGFraXJhIFJpaGFuYTEgMB4GCSqGSIb3DQEJARYRc2hha2lyYUBlbWFpbC5jb20wgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBAKVSMfXH8hZbCeHujsqsgxf0ENY+ONdCMQht3AsS5NG+dZRU/Y+DMlMxvPoU7oDivYni+DNnZ2Mm/My9do/v91HSQanJNlQeO+AbWI+kmVGvYMUdi4xHTK3ThQADfc3Kgp+t/hhEdU81nLV5MxTLoKOK3u2phr/w9uofpyfV6ThfAgMBAAGjggJWMIICUjAOBgNVHQ8BAf8EBAMCBPAwRAYJKoZIhvcNAQkPBDcwNTAOBggqhkiG9w0DAgICAIAwDgYIKoZIhvcNAwQCAgCAMAcGBSsOAwIHMAoGCCqGSIb3DQMHMB0GA1UdDgQWBBSFdpCkfqxb+tOcW9gN5Oo6Kkj6JTAdBgNVHSUEFjAUBggrBgEFBQcDAgYIKwYBBQUHAwQwgZIGA1UdEQEB/wSBhzCBhIERc2hha2lyYUBlbWFpbC5jb22gOgYFYEwBAwGgMQwvMDEwMTE5ODUxNTkxNTkxNTk3MzExMTExMTExMTExMzg5NDc0OTgyNzRTU1AvTVOgMwYFYEwBAwWgKgwoMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAfBgNVHSMEGDAWgBTZfD2K20FVnpg1gAoOxCBQ+4DoujBvBgNVHR8EaDBmMGSgYqBghi1odHRwOi8vdGVzdGUvQ2VydEVucm9sbC9DQVRFU1RFTUFRVklSVFVBTC5jcmyGL2ZpbGU6Ly9cXHRlc3RlXENlcnRFbnJvbGxcQ0FURVNURU1BUVZJUlRVQUwuY3JsMIGUBggrBgEFBQcBAQSBhzCBhDA/BggrBgEFBQcwAoYzaHR0cDovL3Rlc3RlL0NlcnRFbnJvbGwvdGVzdGVfQ0FURVNURU1BUVZJUlRVQUwuY3J0MEEGCCsGAQUFBzAChjVmaWxlOi8vXFx0ZXN0ZVxDZXJ0RW5yb2xsXHRlc3RlX0NBVEVTVEVNQVFWSVJUVUFMLmNydDANBgkqhkiG9w0BAQUFAAOCAQEAR54+NlTlZ2RL3tMJHLA2nrlR2QnsmjK5BcWfbNb9Cidmj4l+50iBz0nMCZTJZLkitqEgPGHI3SpTN6yO6CUtDBi6Afbycc6wmfRtPc2qIPcskUPhUTvUaToPeHeFaOJvSSasKRUEd6fqqdUgcV6aOr5q7sFOwuxKAUmLNI89iRaB/tn6BUIh8RX4sWHNCDu+lH0cycQyxib7Rrf6rQ5UEoTwC8vkQO7ksCaS7hALiHF7G+sTBxI/8CVLUrlksgZrB4e8xUfBtpLa0GeyxzoWgV3hwaSIowDejt44IToT9Iyq2vmpMJpk/2RAKYI5399jgY/hvqsGvaTw0hB35WY9lQ==</X509Certificate>
+      </X509Data>
+    </KeyInfo>
+  </Signature>
+</EnviarLoteRpsEnvio>

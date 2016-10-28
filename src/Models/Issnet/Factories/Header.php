@@ -20,4 +20,63 @@ use NFePHP\NFSe\Common\Header as HeaderBase;
 
 class Header extends HeaderBase
 {
+
+    /**
+     * @param $remetenteTipoDoc
+     * @param $remetenteCNPJCPF
+     * @param $inscricaoMunicipal
+     *
+     * @param $dtInicio
+     * @param $dtFim
+     * @param $numeroLote
+     * @param $cnpjTomador
+     * @param $cpfTomador
+     * @param $inscricaoMunicipalTomador
+     *
+     * @return string
+     */
+    public static function render(
+        $remetenteTipoDoc,
+        $remetenteCNPJCPF,
+        $inscricaoMunicipal,
+        $dtInicio,
+        $dtFim,
+        $numeroLote,
+        $cnpjTomador,
+        $cpfTomador,
+        $inscricaoMunicipalTomador
+    ) {
+
+        $content = "<Prestador>";
+        $content .= "<tc:CpfCnpj>";
+        if ($remetenteTipoDoc == '2') {
+            $content .= self::check('tc:Cnpj', $remetenteCNPJCPF);
+        } else {
+            $content .= self::check('tc:Cpf', $remetenteCNPJCPF);
+        }
+        $content .= "</tc:CpfCnpj>";
+        $content .= self::check('tc:InscricaoMunicipal', $inscricaoMunicipal);
+        $content .= "</Prestador>";
+
+        if ($numeroLote) {
+            $content .= self::check('tc:NumeroNfse', $numeroLote);
+        }
+        $content .= "<PeriodoEmissao>";
+        $content .= self::check('DataInicial', $dtInicio);
+        $content .= self::check('DataFinal', $dtFim);
+        $content .= "</PeriodoEmissao>";
+
+        if ($cpfTomador or $cnpjTomador) {
+            $content .= "<Tomador>";
+            if ($cnpjTomador != '') {
+                $content .= "<tc:CpfCnpj><tc:Cnpj>$cnpjTomador</tc:Cnpj></tc:CpfCnpj>";
+            } elseif ($cpfTomador != '') {
+                $content .= "<tc:CpfCnpj><tc:Cpf>$cpfTomador</tc:Cpf></tc:CpfCnpj>";
+            }
+            $content .= self::check('tc:InscricaoMunicipal', $inscricaoMunicipalTomador);
+            $content .= "</Tomador>";
+        }
+
+        return $content;
+    }
 }

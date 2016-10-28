@@ -119,6 +119,9 @@ abstract class Tools
         $this->versao = $config->versao;
         $this->remetenteCNPJCPF = $config->cpf;
         $this->remetenteRazao = $config->razaosocial;
+        if (isset($config->inscricaoMunicipal)) {
+            $this->inscricaoMunicipal = $config->inscricaoMunicipal;
+        }
         $this->remetenteTipoDoc = 1;
         if ($config->cnpj != '') {
             $this->remetenteCNPJCPF = $config->cnpj;

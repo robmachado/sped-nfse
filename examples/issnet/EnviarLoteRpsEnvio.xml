@@ -1,0 +1,152 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<EnviarLoteRpsEnvio xmlns="http://www.issnetonline.com.br/webserviceabrasf/vsd/servico_enviar_lote_rps_envio.xsd" xmlns:tc="http://www.issnetonline.com.br/webserviceabrasf/vsd/tipos_complexos.xsd">
+  <LoteRps>
+    <tc:NumeroLote>1</tc:NumeroLote>
+    <tc:CpfCnpj>
+      <tc:Cnpj>11006269000100</tc:Cnpj>
+    </tc:CpfCnpj>
+    <tc:InscricaoMunicipal>812005</tc:InscricaoMunicipal>
+    <tc:QuantidadeRps>1</tc:QuantidadeRps>
+    <tc:ListaRps>
+      <tc:Rps>
+        <tc:InfRps>
+          <tc:IdentificacaoRps>
+            <tc:Numero>215</tc:Numero>
+            <tc:Serie>10</tc:Serie>
+            <tc:Tipo>1</tc:Tipo>
+          </tc:IdentificacaoRps>
+          <tc:DataEmissao>2009-07-24T10:00:00</tc:DataEmissao>
+          <tc:NaturezaOperacao>1</tc:NaturezaOperacao>
+          <tc:OptanteSimplesNacional>2</tc:OptanteSimplesNacional>
+          <tc:IncentivadorCultural>2</tc:IncentivadorCultural>
+          <tc:Status>1</tc:Status>
+          <tc:RegimeEspecialTributacao>1</tc:RegimeEspecialTributacao>
+          <tc:Servico>
+            <tc:Valores>
+              <tc:ValorServicos>1100</tc:ValorServicos>
+              <tc:ValorPis>10</tc:ValorPis>
+              <tc:ValorCofins>20</tc:ValorCofins>
+              <tc:ValorInss>30</tc:ValorInss>
+              <tc:ValorIr>40</tc:ValorIr>
+              <tc:ValorCsll>50</tc:ValorCsll>
+              <tc:IssRetido>2</tc:IssRetido>
+              <tc:ValorIss>50</tc:ValorIss>
+              <tc:BaseCalculo>1000</tc:BaseCalculo>
+              <tc:Aliquota>5.00</tc:Aliquota>
+              <tc:ValorLiquidoNfse>850</tc:ValorLiquidoNfse>
+              <tc:DescontoIncondicionado>0</tc:DescontoIncondicionado>
+              <tc:DescontoCondicionado>0</tc:DescontoCondicionado>
+            </tc:Valores>
+            <tc:ItemListaServico>12</tc:ItemListaServico>
+            <tc:CodigoCnae>6311900</tc:CodigoCnae>
+            <tc:CodigoTributacaoMunicipio>45217023</tc:CodigoTributacaoMunicipio>
+            <tc:Discriminacao>Teste de RPS - Discriminação com vários caracteres especiais:  " ! @ # $ % Ǩ * ( ) - _ = + | \ , ; : / ? � � </tc:Discriminacao>
+            <tc:MunicipioPrestacaoServico>999</tc:MunicipioPrestacaoServico>
+          </tc:Servico>
+          <tc:Prestador>
+            <tc:CpfCnpj>
+              <tc:Cnpj>11006269000100</tc:Cnpj>
+            </tc:CpfCnpj>
+            <tc:InscricaoMunicipal>812005</tc:InscricaoMunicipal>
+          </tc:Prestador>
+          <tc:Tomador>
+            <tc:IdentificacaoTomador>
+              <tc:CpfCnpj>
+                <tc:Cnpj>38693524000188</tc:Cnpj>
+              </tc:CpfCnpj>
+            </tc:IdentificacaoTomador>
+            <tc:RazaoSocial>Empresa do Recife</tc:RazaoSocial>
+            <tc:Endereco>
+              <tc:Endereco>R dos Navegantes 123, 321</tc:Endereco>
+              <tc:Numero>123</tc:Numero>
+              <tc:Complemento>321</tc:Complemento>
+              <tc:Bairro>Boa Viagem</tc:Bairro>
+              <tc:Cidade>261160</tc:Cidade>
+              <tc:Estado>PE</tc:Estado>
+              <tc:Cep>51021010</tc:Cep>
+            </tc:Endereco>
+          </tc:Tomador>
+        </tc:InfRps>
+      </tc:Rps>
+      <tc:Rps>
+        <tc:InfRps>
+          <tc:IdentificacaoRps>
+            <tc:Numero>216</tc:Numero>
+            <tc:Serie>10</tc:Serie>
+            <tc:Tipo>1</tc:Tipo>
+          </tc:IdentificacaoRps>
+          <tc:DataEmissao>2009-07-24T10:00:00</tc:DataEmissao>
+          <tc:NaturezaOperacao>1</tc:NaturezaOperacao>
+          <tc:OptanteSimplesNacional>2</tc:OptanteSimplesNacional>
+          <tc:IncentivadorCultural>2</tc:IncentivadorCultural>
+          <tc:Status>1</tc:Status>
+          <tc:RegimeEspecialTributacao>1</tc:RegimeEspecialTributacao>
+          <tc:Servico>
+            <tc:Valores>
+              <tc:ValorServicos>1100</tc:ValorServicos>
+              <tc:ValorPis>10</tc:ValorPis>
+              <tc:ValorCofins>20</tc:ValorCofins>
+              <tc:ValorInss>30</tc:ValorInss>
+              <tc:ValorIr>40</tc:ValorIr>
+              <tc:ValorCsll>50</tc:ValorCsll>
+              <tc:IssRetido>2</tc:IssRetido>
+              <tc:ValorIss>50</tc:ValorIss>
+              <tc:BaseCalculo>1000</tc:BaseCalculo>
+              <tc:Aliquota>0.05</tc:Aliquota>
+              <tc:ValorLiquidoNfse>850</tc:ValorLiquidoNfse>
+              <tc:DescontoIncondicionado>0</tc:DescontoIncondicionado>
+              <tc:DescontoCondicionado>0</tc:DescontoCondicionado>
+            </tc:Valores>
+            <tc:ItemListaServico>6311</tc:ItemListaServico>
+            <tc:CodigoCnae>6311900</tc:CodigoCnae>
+            <tc:CodigoTributacaoMunicipio>45217023</tc:CodigoTributacaoMunicipio>
+            <tc:Discriminacao>Teste de RPS - Discriminação com vários caracteres especiais:  " ! @ # $ % Ǩ * ( ) - _ = + | \ , ; : / ? � � </tc:Discriminacao>
+            <tc:MunicipioPrestacaoServico>999</tc:MunicipioPrestacaoServico>
+          </tc:Servico>
+          <tc:Prestador>
+            <tc:CpfCnpj>
+              <tc:Cnpj>11006269000100</tc:Cnpj>
+            </tc:CpfCnpj>
+            <tc:InscricaoMunicipal>812005</tc:InscricaoMunicipal>
+          </tc:Prestador>
+          <tc:Tomador>
+            <tc:IdentificacaoTomador>
+              <tc:CpfCnpj>
+                <tc:Cnpj>38693524000188</tc:Cnpj>
+              </tc:CpfCnpj>
+            </tc:IdentificacaoTomador>
+            <tc:RazaoSocial>Empresa do Recife</tc:RazaoSocial>
+            <tc:Endereco>
+              <tc:Endereco>R dos Navegantes 123, 321</tc:Endereco>
+              <tc:Numero>123</tc:Numero>
+              <tc:Complemento>321</tc:Complemento>
+              <tc:Bairro>Boa Viagem</tc:Bairro>
+              <tc:Cidade>261160</tc:Cidade>
+              <tc:Estado>PE</tc:Estado>
+              <tc:Cep>51021010</tc:Cep>
+            </tc:Endereco>
+          </tc:Tomador>
+        </tc:InfRps>
+      </tc:Rps>
+    </tc:ListaRps>
+  </LoteRps>
+  <Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+    <SignedInfo>
+      <CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" />
+      <SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" />
+      <Reference URI="">
+        <Transforms>
+          <Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" />
+        </Transforms>
+        <DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+        <DigestValue>4kT1zV9agND7rGrciH12sajHd5I=</DigestValue>
+      </Reference>
+    </SignedInfo>
+    <SignatureValue>SQ9WCttx1Su1+f8b9dPBjJx+dmsW6VC8ueSK47Mja+4CtOqdFu6WL471GdiSV8K1GcPtTTHvG4mKbF/RVh9qTrcEpx/Wpg3M5KxB5yA2FDhSH8HIaAXofgR430asXhrBVbpxrSVre8F3UohB5G+Q7mSjTWWx8Tm2/eH4FHCStRw=</SignatureValue>
+    <KeyInfo>
+      <X509Data>
+        <X509Certificate>MIIFJDCCBAygAwIBAgIQe9xvzF9Ub7cb4rxHCJcgVzANBgkqhkiG9w0BAQUFADBu MQswCQYDVQQGEwJCUjETMBEGA1UEChMKSUNQLUJyYXNpbDEsMCoGA1UECxMjU2Vj cmV0YXJpYSBkYSBSZWNlaXRhIEZlZGVyYWwgLSBTUkYxHDAaBgNVBAMTE0FDIENl cnRpU2lnbiBTUkYgVjMwHhcNMDgwMjAxMDAwMDAwWhcNMTEwMTMxMjM1OTU5WjCB iDELMAkGA1UEBhMCQlIxEzARBgNVBAoUCklDUC1CcmFzaWwxKjAoBgNVBAsUIVNl Y3JldGFyaWEgZGEgUmVjZWl0YSBGZWRlcmFsLVNSRjESMBAGA1UECxQJU1JGIGUt Q1BGMSQwIgYDVQQDExtGRVJOQU5ETyBBTUFSQUw6NzA3NTMyNjEwNDkwgZ8wDQYJ KoZIhvcNAQEBBQADgY0AMIGJAoGBANf4hA6RHoKjDYqa97XvGzKCCzSsZz52bBVC YD6kt24VlilKYriQKKf+Bb8YkQXuy/PSC5npvdvGosiCW1QOdp8pA9f/uwX4hmG6 Aal7lHvaz3aVJuLi6FX1SY45AA4nRezPK0OZI3XKerAtt0pcFhZs0AYKIIPPPAT4 rBu63HytAgMBAAGjggIlMIICITCBwgYDVR0RBIG6MIG3oD0GBWBMAQMBoDQEMjA0 MTIxOTcxNzA3NTMyNjEwNDkwMDAwMDAwMDAwMDAwMDAwMDAwMTY1NTc0NVNTUE1T oBcGBWBMAQMGoA4EDDAwMDAwMDAwMDAwMKAeBgVgTAEDBaAVBBMwMDAwMDAwMDAw MDAwMDAwMDAwgSJmZXJuYW5kby5tYXRyaXpAbm90YWNvbnRyb2wuY29tLmJyoBkG CisGAQQBgjcUAgOgCwwJMDAwMEAwMDAwMAkGA1UdEwQCMAAwYgYDVR0fBFswWTBX oFWgU4ZRaHR0cDovL2ljcC1icmFzaWwuY2VydGlzaWduLmNvbS5ici9yZXBvc2l0 b3Jpby9sY3IvQUNDZXJ0aVNpZ25TUkZWMy9MYXRlc3RDUkwuY3JsMB8GA1UdIwQY MBaAFPadWV3+v8Vyzd3OxC5mGy7uCM92MA4GA1UdDwEB/wQEAwIF4DBVBgNVHSAE TjBMMEoGBmBMAQIDBjBAMD4GCCsGAQUFBwIBFjJodHRwOi8vaWNwLWJyYXNpbC5j ZXJ0aXNpZ24uY29tLmJyL3JlcG9zaXRvcmlvL2RwYzApBgNVHSUEIjAgBggrBgEF BQcDBAYIKwYBBQUHAwIGCisGAQQBgjcUAgIwOAYIKwYBBQUHAQEELDAqMCgGCCsG AQUFBzABhhxodHRwOi8vb2NzcC5jZXJ0aXNpZ24uY29tLmJyMA0GCSqGSIb3DQEB BQUAA4IBAQA91P0fPOdTOlkulMVOEsXkwzGsoXKN3pSmiqXGyeMw4Vhf/DosD/nx kVl9o89kYelWtb9KTA9RBB7CPNBEshManFy/mowI8P6b8c5c/vEDFhYkeJMBv9Cw rAWpWoZhfsu5mp+uiY53ahsvUrfbC0vL3AQYm/wJipczq8uAsSSbfvr2hT7XAqiR PQy3WM2fcR/2U2WFHpKwgJoWEpwWB63pOERBTTbLZiZ/4fKLnnGU/3wiNEAthz/H ALjNSz9rAz6hjfIIPEPpGXhzkVpsSn7vANX0mBOjQDbYPYZ9kI8iNetFVqdpXhOo v3dQ8gxItYjxbdJssJQSeZRGvvU0B40i</X509Certificate>
+      </X509Data>
+    </KeyInfo>
+  </Signature>
+</EnviarLoteRpsEnvio>
