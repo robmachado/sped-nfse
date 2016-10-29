@@ -21,7 +21,7 @@ use NFePHP\NFSe\Models\Prodam\Rps;
 use NFePHP\NFSe\Models\Prodam\Factories\Factory;
 use NFePHP\NFSe\Models\Prodam\RenderRPS;
 
-class EnvioRPS extends Factory
+class TesteEnvioLoteRPS extends Factory
 {
     private $dtIni = null;
     private $dtFim = null;
@@ -47,26 +47,14 @@ class EnvioRPS extends Factory
         $data = null
     ) {
         $xmlRPS = '';
-        $method = "PedidoEnvioRPS";
+        $method = "PedidoEnvioLoteRPS";
         $content = $this->requestFirstPart($method);
-        if (is_object($data)) {
-            $xmlRPS .= $this->individual($data);
-        } elseif (is_array($data)) {
-            if (count($data) == 1) {
-                $xmlRPS .= $this->individual($data[0]);
-            } else {
-                $method = "PedidoEnvioLoteRPS";
-                $content = $this->requestFirstPart($method);
-                $xmlRPS .= $this->lote($data);
-            }
-        } else {
-            return '';
-        }
+        $xmlRPS .= $this->lote($data);
         $content .= Header::render(
             $versao,
             $remetenteTipoDoc,
             $remetenteCNPJCPF,
-            null,
+            $transacao,
             null,
             null,
             null,
@@ -80,7 +68,7 @@ class EnvioRPS extends Factory
         $content .= $xmlRPS."</$method>";
         $content = $this->signer($content, $method, '', [false,false,null,null]);
         $body = $this->clear($content);
-        $this->validar($versao, $body, 'Prodam', $method);
+        //$this->validar($versao, $body, 'Prodam', $method);
         return $body;
     }
     

@@ -39,6 +39,9 @@ class Tools extends ToolsBase
             null,
             $rps
         );
+        header("Content-type: text/xml");
+        echo $message;
+        die;
         return $this->sendRequest('', $message);
     }
     
@@ -68,7 +71,7 @@ class Tools extends ToolsBase
     public function testeEnvioLoteRPS(array $rpss)
     {
         $this->method = 'TesteEnvioLoteRPS';
-        $fact = new Factories\EnvioRPS($this->certificate);
+        $fact = new Factories\TesteEnvioLoteRPS($this->certificate);
         $fact->setSignAlgorithm($this->algorithm);
         $message = $fact->render(
             $this->versao,
@@ -280,7 +283,6 @@ class Tools extends ToolsBase
             . "<VersaoSchema>$this->versao</VersaoSchema>"
             . "<MensagemXML>$messageText</MensagemXML>"
             . "</". $this->method . "Request>";
-        
         $params = [
             'VersaoSchema' => $this->versao,
             'MensagemXML' => $message

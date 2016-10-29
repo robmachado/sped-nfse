@@ -74,6 +74,14 @@ class RenderRPS
         );
         self::$dom->addChild(
             $chaveRps,
+            'SerieRPS',
+            $rps->serieRPS,
+            true,
+            'Serie do RPS',
+            false
+        );
+        self::$dom->addChild(
+            $chaveRps,
             'NumeroRPS',
             $rps->numeroRPS,
             true,
@@ -348,6 +356,9 @@ class RenderRPS
         //finaliza
         self::$dom->appendChild($root);
         $xml = str_replace('<?xml version="1.0" encoding="utf-8"?>', '', self::$dom->saveXML());
+        //header("Content-type: text/xml");
+        //echo $xml;
+        //die;
         return $xml;
     }
     
@@ -358,6 +369,7 @@ class RenderRPS
      */
     private static function signstr(Rps $rps)
     {
+        //36443573     00000000010020161029TNN00000000000010000000000000000007285217673962000104
         $content = str_pad($rps->prestadorIM, 8, '0', STR_PAD_LEFT);
         $content .= str_pad($rps->serieRPS, 5, ' ', STR_PAD_RIGHT);
         $content .= str_pad($rps->numeroRPS, 12, '0', STR_PAD_LEFT);
