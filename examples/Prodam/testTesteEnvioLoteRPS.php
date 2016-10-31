@@ -41,15 +41,15 @@ try {
     $nfse->tools->setSoapClass(new SoapNative());
    
     $nfse->rps->versao(1);
-    $nfse->rps->prestador('36443573');
+    $nfse->rps->prestador('99999999');
     $nfse->rps->status('N');
     $nfse->rps->tipo('RPS');
     $nfse->rps->numero('100');
     $nfse->rps->serie(1);
     $nfse->rps->data('2016-10-29');
-    $nfse->rps->tomador('MUBI TECNOLOGIA DA INFORMACAO LTDA', 2, '17673962000104', '', '4658544', 'geraldo@mubisys.com');
-    $nfse->rps->tomadorEndereco('AV', 'IRACEMA', '958', 'CASA 4', 'JD IRACEMA', '3505708', 'SP', '06440010');
-    $nfse->rps->municipioPrestacao('3505708');
+    $nfse->rps->tomador('SEU CLIENTE LTDA', 2, '99999999999911', '', '8888888', 'cliente@dominio.com');
+    $nfse->rps->tomadorEndereco('RUA', 'IRARI', '001', 'SALA 22', 'CENTRO', '3550308', 'SP', '01111000');
+    $nfse->rps->municipioPrestacao('3550308');
     $nfse->rps->codigoServico('7285');
     $nfse->rps->discriminacao('Teste de Emissao de NFSe');
     $nfse->rps->valorServicos(1.00);
