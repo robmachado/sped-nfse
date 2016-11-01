@@ -35,33 +35,26 @@ class Tools extends ToolsBase
     {
     }
 
-    /**
-     * @param $cnpjPrestador
-     * @param $cpfPrestador
-     * @param $imPrestador
-     * @param $dtInicio
-     * @param $dtFim
-     * @param $pagina
-     *
-     * @return string
-     */
-    public function consultaNFSeEmitidas(
-        $dtInicio,
-        $dtFim,
-        $cnpjPrestador = '',
-        $cpfPrestador = '',
-        $imPrestador = '',
-        $pagina = ''
+    public function consultaNFSeEnvio(
+        $numeroNFSe = '',    
+        $dtInicio = '',
+        $dtFim = '',
+        $tomador = [],
+        $intermediario = []
     ) {
         $this->method = 'ConsultarNFseEnvio';
         $fact = new ConsultarNFSeEnvio($this->certificate);
         $fact->setSignAlgorithm($this->algorithm);
         $message = $fact->render(
+            $this->config->versao,    
             $this->remetenteTipoDoc,
             $this->remetenteCNPJCPF,
-            $this->inscricaoMunicipal,
+            $this->remetenteIM,
+            $numeroNFSe,    
             $dtInicio,
-            $dtFim
+            $dtFim,
+            $tomador,
+            $intermediario
         );
         return $this->sendRequest('', $message);
     }
@@ -108,6 +101,13 @@ class Tools extends ToolsBase
         $params = [
             'xml' => $message
         ];
+        
+        //retorna o XML durante a fase desenvolvimento dos xml
+        //depois retirar esse retorno na fase de testes com o 
+        //webservice, usando primeiro o SOAPUI e depois realizando
+        //os testes com o soap pelo PHP
+        return $messageText;
+        /*
         $action = "\"". $this->xmlns ."/". $this->method ."\"";
         return $this->soap->send(
             $url,
@@ -118,5 +118,6 @@ class Tools extends ToolsBase
             $this->namespaces[$this->soapversion],
             $request
         );
+         */
     }
 }
