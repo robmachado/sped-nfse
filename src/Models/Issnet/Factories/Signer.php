@@ -4,16 +4,10 @@ namespace NFePHP\NFSe\Models\Issnet\Factories;
 
 /**
  * Class to signner a Xml
- * Meets packages :
- *     sped-nfe,
- *     sped-cte,
- *     sped-mdfe,
- *     sped-nfse,
- *     sped-efinanceira
- *     e sped-esfinge
+ * Meets only for Issnet
  *
  * @category  NFePHP
- * @package   NFePHP\Common\Signer
+ * @package   NFePHP\NFSe\Models\Issnet\Factories\Signer
  * @copyright NFePHP Copyright (c) 2016
  * @license   http://www.gnu.org/licenses/lgpl.txt LGPLv3+
  * @license   https://opensource.org/licenses/MIT MIT
