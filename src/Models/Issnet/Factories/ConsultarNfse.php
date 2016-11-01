@@ -8,7 +8,7 @@ namespace NFePHP\NFSe\Models\Issnet\Factories;
  * os webservices conforme o modelo Issnet
  *
  * @category  NFePHP
- * @package   NFePHP\NFSe\Models\Prodam\Factories\ConsultarNFse
+ * @package   NFePHP\NFSe\Models\Prodam\Factories\ConsultarNfse
  * @copyright NFePHP Copyright (c) 2016
  * @license   http://www.gnu.org/licenses/lgpl.txt LGPLv3+
  * @license   https://opensource.org/licenses/MIT MIT
@@ -20,7 +20,7 @@ namespace NFePHP\NFSe\Models\Issnet\Factories;
 use NFePHP\NFSe\Models\Issnet\Factories\Header;
 use NFePHP\NFSe\Models\Issnet\Factories\Factory;
 
-class ConsultarNfseEnvio extends Factory
+class ConsultarNfse extends Factory
 {
     /**
      * Renderiza o pedido em seu respectivo xml e faz a validação com o XSD

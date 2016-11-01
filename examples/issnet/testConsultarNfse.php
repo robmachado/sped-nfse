@@ -44,7 +44,7 @@ try {
     $dtFim = '2016-10-31';
     $tomador = ['tipo' => 2, 'doc' => '11111111111111', 'im' => '55555555'];
     $intermediario = ['tipo' => 2, 'doc' => '11111111111111', 'im' => '44444444', 'razao' => 'SEI LA LTDA-ME'];
-    $content = $nfse->tools->consultarNFSeEnvio($numeroNFSe, $dtInicio, $dtFim, $tomador, $intermediario);    
+    $content = $nfse->tools->consultarNfse($numeroNFSe, $dtInicio, $dtFim, $tomador, $intermediario);    
     
     header("Content-type: text/xml");
     echo $content;
