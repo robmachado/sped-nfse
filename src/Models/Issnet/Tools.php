@@ -36,7 +36,7 @@ class Tools extends ToolsBase
     }
 
     public function consultaNFSeEnvio(
-        $numeroNFSe = '',    
+        $numeroNFSe = '',
         $dtInicio = '',
         $dtFim = '',
         $tomador = [],
@@ -46,11 +46,11 @@ class Tools extends ToolsBase
         $fact = new ConsultarNFSeEnvio($this->certificate);
         $fact->setSignAlgorithm($this->algorithm);
         $message = $fact->render(
-            $this->config->versao,    
+            $this->config->versao,
             $this->remetenteTipoDoc,
             $this->remetenteCNPJCPF,
             $this->remetenteIM,
-            $numeroNFSe,    
+            $numeroNFSe,
             $dtInicio,
             $dtFim,
             $tomador,
@@ -103,7 +103,7 @@ class Tools extends ToolsBase
         ];
         
         //retorna o XML durante a fase desenvolvimento dos xml
-        //depois retirar esse retorno na fase de testes com o 
+        //depois retirar esse retorno na fase de testes com o
         //webservice, usando primeiro o SOAPUI e depois realizando
         //os testes com o soap pelo PHP
         return $messageText;
