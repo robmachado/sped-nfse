@@ -36,7 +36,7 @@ class ConsultarNfseEnvio extends Factory
      * @return string
      */
     public function render(
-        $versao,    
+        $versao,
         $remetenteTipoDoc,
         $remetenteCNPJCPF,
         $inscricaoMunicipal,
@@ -83,10 +83,10 @@ class ConsultarNfseEnvio extends Factory
             $content .= "</tc:CpfCnpj>";
             if (!empty($intermediario['razao'])) {
                 $content .= "<tc:RazaoSocial>".$intermediario['razao']."</tc:RazaoSocial>";
-            }            
+            }
             if (!empty($intermediario['im'])) {
                 $content .= "<tc:InscricaoMunicipal>".$intermediario['im']."</tc:InscricaoMunicipal>";
-            }            
+            }
             $content .= "</IntermediarioServico>";
         }
         $content .= "</$method>";
