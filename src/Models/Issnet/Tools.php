@@ -39,24 +39,46 @@ class Tools extends ToolsBase
         return $this->sendRequest('', $message);
     }
     
-    public function consultaNFSePorRPS()
+    public function consultarUrlVisualizacaoNfse($numero, $codigoTributacao)
     {
+        $this->method = 'ConsultarUrlVisualizacaoNfseEnvio';
+        $fact = new Factories\ConsultarUrlVisualizacaoNfse($this->certificate);
+        $fact->setSignAlgorithm($this->algorithm);
+        $message = $fact->render(
+            $this->config->versao,
+            $this->remetenteTipoDoc,
+            $this->remetenteCNPJCPF,
+            $this->remetenteIM,
+            $numero,
+            $codigoTributacao
+        );
+        return $this->sendRequest('', $message);
     }
     
-    public function consultarUrlVisualizacaoNfse()
+    public function consultarUrlVisualizacaoNfseSerie($numero, $codigoTributacao, $serie)
     {
+        $this->method = 'ConsultarUrlVisualizacaoNfseSerieEnvio';
+        $fact = new Factories\ConsultarUrlVisualizacaoNfse($this->certificate);
+        $fact->setSignAlgorithm($this->algorithm);
+        $message = $fact->render(
+            $this->config->versao,
+            $this->remetenteTipoDoc,
+            $this->remetenteCNPJCPF,
+            $this->remetenteIM,
+            $numero,
+            $codigoTributacao,
+            $serie
+        );
+        return $this->sendRequest('', $message);
     }
     
-    public function consultarUrlVisualizacaoNfseSerie()
-    {
-    }
     
-    
-    public function recepcionarLoteRps()
+    public function enviarLoteRps($rpss)
     {
+        $this->method = 'EnviarLoteRpsEnvio';
     }
 
-    public function consultarNFSeEnvio(
+    public function consultarNFSe(
         $numeroNFSe = '',
         $dtInicio = '',
         $dtFim = '',
@@ -80,8 +102,9 @@ class Tools extends ToolsBase
         return $this->sendRequest('', $message);
     }
     
-    public function consultarNFSePorRPS()
+    public function consultarNfseRps($numero, $serie, $tipo)
     {
+        $this->method = 'ConsultarNfseRpsEnvio';
     }
     
     public function consultarLoteRps($protocolo)
@@ -98,6 +121,7 @@ class Tools extends ToolsBase
         );
         return $this->sendRequest('', $message);
     }
+    
     public function consultarSituacaoLoteRps($protocolo)
     {
         $this->method = 'ConsultarSituacaoLoteRpsEnvio';
@@ -113,12 +137,6 @@ class Tools extends ToolsBase
         return $this->sendRequest('', $message);
     }
     
-    protected function consultaLote($protocolo, $servico)
-    {
-        $this->method = $servico;
-    }
-
-
     protected function sendRequest($url, $message)
     {
         //no caso do ISSNET o URL é unico para todas as ações
