@@ -38,15 +38,8 @@ class Header extends HeaderBase
     public static function render(
         $remetenteTipoDoc,
         $remetenteCNPJCPF,
-        $inscricaoMunicipal,
-        $dtInicio,
-        $dtFim,
-        $numeroLote,
-        $cnpjTomador,
-        $cpfTomador,
-        $inscricaoMunicipalTomador
+        $inscricaoMunicipal
     ) {
-
         $content = "<Prestador>";
         $content .= "<tc:CpfCnpj>";
         if ($remetenteTipoDoc == '2') {
@@ -57,26 +50,6 @@ class Header extends HeaderBase
         $content .= "</tc:CpfCnpj>";
         $content .= self::check('tc:InscricaoMunicipal', $inscricaoMunicipal);
         $content .= "</Prestador>";
-
-        if ($numeroLote) {
-            $content .= self::check('tc:NumeroNfse', $numeroLote);
-        }
-        $content .= "<PeriodoEmissao>";
-        $content .= self::check('DataInicial', $dtInicio);
-        $content .= self::check('DataFinal', $dtFim);
-        $content .= "</PeriodoEmissao>";
-
-        if ($cpfTomador or $cnpjTomador) {
-            $content .= "<Tomador>";
-            if ($cnpjTomador != '') {
-                $content .= "<tc:CpfCnpj><tc:Cnpj>$cnpjTomador</tc:Cnpj></tc:CpfCnpj>";
-            } elseif ($cpfTomador != '') {
-                $content .= "<tc:CpfCnpj><tc:Cpf>$cpfTomador</tc:Cpf></tc:CpfCnpj>";
-            }
-            $content .= self::check('tc:InscricaoMunicipal', $inscricaoMunicipalTomador);
-            $content .= "</Tomador>";
-        }
-
         return $content;
     }
 }

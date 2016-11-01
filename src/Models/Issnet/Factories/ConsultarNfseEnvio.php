@@ -24,57 +24,82 @@ class ConsultarNfseEnvio extends Factory
 {
     /**
      * Renderiza o pedido em seu respectivo xml e faz a validação com o XSD
-     *
-     * @param int    $remetenteTipoDoc
+     * @param int $versao
+     * @param int $remetenteTipoDoc
      * @param string $remetenteCNPJCPF
-     * @param        $inscricaoMunicipal
-     * @param date   $dtInicio
-     * @param date   $dtFim
-     *
-     * @param int    $versao
-     * @param string $numeroLote
-     * @param string $cnpjTomador
-     * @param string $cpfTomador
-     * @param string $inscricaoMunicipalTomador
-     *
+     * @param string $inscricaoMunicipal
+     * @param int $numeroNFse
+     * @param string $dtInicio
+     * @param string $dtFim
+     * @param array $tomador
+     * @param array $intermediario
      * @return string
-     * @internal param int $versao
-     * @internal param string $transacao
-     * @internal param $cnpjContribuinte
-     * @internal param string $cnpj
-     * @internal param string $cpf
-     * @internal param string $im
-     * @internal param int $pagina
      */
     public function render(
+        $versao,    
         $remetenteTipoDoc,
         $remetenteCNPJCPF,
         $inscricaoMunicipal,
-        $dtInicio,
-        $dtFim,
-        $versao = 1,
-        $numeroLote = '',
-        $cnpjTomador = '',
-        $cpfTomador = '',
-        $inscricaoMunicipalTomador = ''
+        $numeroNFse = '',
+        $dtInicio = '',
+        $dtFim = '',
+        $tomador = [],
+        $intermediario = []
     ) {
         $method = "ConsultarNfseEnvio";
         $content = $this->requestFirstPart($method);
-        $content .= Header::render(
-            $remetenteTipoDoc,
-            $remetenteCNPJCPF,
-            $inscricaoMunicipal,
-            $dtInicio,
-            $dtFim,
-            $numeroLote,
-            $cnpjTomador,
-            $cpfTomador,
-            $inscricaoMunicipalTomador
-        );
+        $content .= Header::render($remetenteTipoDoc, $remetenteCNPJCPF, $inscricaoMunicipal);
+        if (!empty(trim($numeroNFse))) {
+            $content .= "<NumeroNfse>$numeroNFse</NumeroNfse>";
+        }
+        if (!empty($dtInicio) && !empty($dtFim)) {
+            $content .= "<PeriodoEmissao>";
+            $content .= "<DataInicial>$dtInicio</DataInicial>";
+            $content .= "<DataFinal>$dtFim</DataFinal>";
+            $content .= "</PeriodoEmissao>";
+        }
+        if (!empty($tomador)) {
+            $content .= "<Tomador>";
+            $content .= "<tc:CpfCnpj>";
+            if ($tomador['tipo'] == 2) {
+                $content .= "<tc:Cnpj>".$tomador['doc']."</tc:Cnpj>";
+            } else {
+                $content .= "<tc:Cpf>".$tomador['doc']."</tc:Cpf>";
+            }
+            $content .= "</tc:CpfCnpj>";
+            if (!empty($tomador['im'])) {
+                $content .= "<tc:InscricaoMunicipal>".$tomador['im']."</tc:InscricaoMunicipal>";
+            }
+            $content .= "</Tomador>";
+        }
+        if (!empty($intermediario)) {
+            $content .= "<IntermediarioServico>";
+            $content .= "<tc:CpfCnpj>";
+            if ($intermediario['tipo'] == 2) {
+                $content .= "<tc:Cnpj>".$intermediario['doc']."</tc:Cnpj>";
+            } else {
+                $content .= "<tc:Cpf>".$intermediario['doc']."</tc:Cpf>";
+            }
+            $content .= "</tc:CpfCnpj>";
+            if (!empty($intermediario['razao'])) {
+                $content .= "<tc:RazaoSocial>".$intermediario['razao']."</tc:RazaoSocial>";
+            }            
+            if (!empty($intermediario['im'])) {
+                $content .= "<tc:InscricaoMunicipal>".$intermediario['im']."</tc:InscricaoMunicipal>";
+            }            
+            $content .= "</IntermediarioServico>";
+        }
         $content .= "</$method>";
-
+        //acredito que nessa consulta não exista assinatura
+        //$body = $this->signer($content, $method, '', [false,false,null,null]);
         $body = $this->clear($content);
-        $body = $this->signer($body, $method, '', [false,false,null,null]);
+        
+        //comandos para testes apenas depois remover
+        //header("Content-type: text/xml");
+        //echo $content;
+        //die;
+        //file_put_contents('/tmp/issnet_ConsultarNfseEnvio.xml', $body);
+        
         $this->validar($versao, $body, 'Issnet', 'servico_consultar_nfse_envio', '');
         return $body;
     }

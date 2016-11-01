@@ -39,9 +39,6 @@ class Tools extends ToolsBase
             null,
             $rps
         );
-        header("Content-type: text/xml");
-        echo $message;
-        die;
         return $this->sendRequest('', $message);
     }
     
