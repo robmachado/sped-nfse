@@ -47,7 +47,8 @@ class ConsultarNfseEnvio extends Factory
         $intermediario = []
     ) {
         $method = "ConsultarNfseEnvio";
-        $content = $this->requestFirstPart($method);
+        $xsd = 'servico_consultar_nfse_envio';
+        $content = $this->requestFirstPart($method, $xsd);
         $content .= Header::render($remetenteTipoDoc, $remetenteCNPJCPF, $inscricaoMunicipal);
         if (!empty(trim($numeroNFse))) {
             $content .= "<NumeroNfse>$numeroNFse</NumeroNfse>";
@@ -100,7 +101,7 @@ class ConsultarNfseEnvio extends Factory
         //die;
         //file_put_contents('/tmp/issnet_ConsultarNfseEnvio.xml', $body);
         
-        $this->validar($versao, $body, 'Issnet', 'servico_consultar_nfse_envio', '');
+        $this->validar($versao, $body, 'Issnet', $xsd, '');
         return $body;
     }
 }

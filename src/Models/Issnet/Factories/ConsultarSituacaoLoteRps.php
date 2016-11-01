@@ -5,7 +5,7 @@ namespace NFePHP\NFSe\Models\Issnet\Factories;
 use NFePHP\NFSe\Models\Issnet\Factories\Header;
 use NFePHP\NFSe\Models\Issnet\Factories\Factory;
 
-class ConsultarLoteRps extends Factory
+class ConsultarSituacaoLoteRps extends Factory
 {
     public function render(
         $versao,
@@ -14,8 +14,8 @@ class ConsultarLoteRps extends Factory
         $inscricaoMunicipal,
         $protocolo
     ) {
-        $method = "ConsultarLoteRpsEnvio";
-        $xsd = 'servico_consultar_lote_rps_envio';
+        $method = "ConsultarSituacaoLoteRpsEnvio";
+        $xsd = 'servico_consultar_situacao_lote_rps_envio';
         $content = $this->requestFirstPart($method, $xsd);
         $content .= Header::render($remetenteTipoDoc, $remetenteCNPJCPF, $inscricaoMunicipal);
         $content .= "<Protocolo>$protocolo</Protocolo>";

@@ -20,10 +20,12 @@ use NFePHP\NFSe\Common\Factory as FactoryBase;
 
 class Factory extends FactoryBase
 {
-    protected function requestFirstPart($method)
+    protected function requestFirstPart($method, $xsd)
     {
         return "<$method "
-            . "xmlns=\"http://www.issnetonline.com.br/webserviceabrasf/vsd/servico_consultar_nfse_envio.xsd\" "
-            . "xmlns:tc=\"http://www.issnetonline.com.br/webserviceabrasf/vsd/tipos_complexos.xsd\">";
+            . "xmlns=\"http://www.issnetonline.com.br/webserviceabrasf/vsd/$xsd.xsd\" "
+            . "xmlns:tc=\"http://www.issnetonline.com.br/webserviceabrasf/vsd/tipos_complexos.xsd\" "
+            . "xmlns:ts=\"http://www.issnetonline.com.br/webserviceabrasf/vsd/tipos_simples.xsd\""
+            . ">";
     }
 }
