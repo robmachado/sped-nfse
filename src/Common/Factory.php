@@ -97,11 +97,11 @@ class Factory
      * @param array $canonical
      * @return string
      */
-    public function signer($content, $method, $mark = '', array $canonical = [])
+    public function signer($content, $method, $mark = '', array $canonical = [], $rootname = '')
     {
         if (empty($canonical)) {
             $canonical = [false,false,null,null];
         }
-        return Signer::sign($this->certificate, $content, $method, $mark, $this->algorithm, $canonical);
+        return Signer::sign($this->certificate, $content, $method, $mark, $this->algorithm, $canonical, $rootname);
     }
 }
