@@ -115,7 +115,7 @@ Existem muitos "padrões" diferentes para a emissão de NFSe, além disso, cada 
 - ISS Simples SPCONSIG
 - ISS4R
 - ISSE
-- ISSNET
+- **ISSNET - em desenvolvimento**
 - ISSNFe On-line
 - ISSWEB Camaçari
 - ISSWEB Fiorilli
@@ -179,6 +179,7 @@ Existem muitos "padrões" diferentes para a emissão de NFSe, além disso, cada 
 - Sorocaba (SP) DSFNET - em desenvolvimento
 - Teresina (PI) DSFNET - em desenvolvimento
 - Uberlandia (MG) DSFNET - em desenvolvimento
+- Cuiabá (MT) ISSNET - em desenvolvimento
 
 
 ## Install
