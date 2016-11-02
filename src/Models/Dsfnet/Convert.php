@@ -20,6 +20,8 @@ use InvalidArgumentException;
 use NFePHP\Common\Strings\Strings;
 use NFePHP\NFSe\Models\Dsfnet\Rps;
 
+//classe incompleta
+
 class Convert
 {
     /**
