@@ -18,6 +18,9 @@
 [![Stars][ico-stars]][link-stars]
 
 # NOTA IMPORTANTE - LEIA COM MUITA ATENÇÃO
+
+###Estamos em busca de *patrocinadores* para financiar parte do desenvolvimento deste pacote, aqueles que estiverem interessados entrem em contato com o autor pelo email linux.rlm@gmail.com 
+
 ###As prefeituras **mudam de modelo de NFSe e alteram seu layout livremente e até a forma de acesso aos webservices**, isso é um FATO !!
 
 ###Isso torna esse pacote IMENSAMENTE COMPLEXO, se comparado a outros similares.
@@ -115,7 +118,7 @@ Existem muitos "padrões" diferentes para a emissão de NFSe, além disso, cada 
 - ISS Simples SPCONSIG
 - ISS4R
 - ISSE
-- **ISSNET - em desenvolvimento**
+- **ISSNET - ALPHA-TESTS**
 - ISSNFe On-line
 - ISSWEB Camaçari
 - ISSWEB Fiorilli
@@ -169,17 +172,17 @@ Existem muitos "padrões" diferentes para a emissão de NFSe, além disso, cada 
 
 ## Municipios atendidos pelo Framework
 
-- **São Paulo (SP) PRODAM - BETA TESTS**
+- **São Paulo (SP) PRODAM - BETA-TESTS**
 - Salvador (BA) ABRASF (modificado) - em desenvolvimento
 - Rio de Janeiro (RJ) ABRASF (modificado) - em desenvolvimento
 - Campinas (SP) DSFNET - em desenvolvimento
-- São Luis (MA) DSFNET - em desenvolvimento
+- **São Luis (MA) DSFNET - ALPHA-TESTS**
 - Belem (PA) DSFNET - em desenvolvimento
 - Campo Grande (MS) DSFNET - em desenvolvimento
 - Sorocaba (SP) DSFNET - em desenvolvimento
 - Teresina (PI) DSFNET - em desenvolvimento
 - Uberlandia (MG) DSFNET - em desenvolvimento
-- Cuiabá (MT) ISSNET - em desenvolvimento
+- **Cuiabá (MT) ISSNET - ALPHA-TESTS**
 
 
 ## Install
