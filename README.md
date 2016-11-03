@@ -17,9 +17,11 @@
 [![Forks][ico-forks]][link-forks]
 [![Stars][ico-stars]][link-stars]
 
-# NOTA IMPORTANTE - LEIA COM MUITA ATENÇÃO
+#PATRICINIO
 
-###Estamos em busca de *patrocinadores* para financiar parte do desenvolvimento deste pacote, aqueles que estiverem interessados entrem em contato com o autor pelo email linux.rlm@gmail.com 
+###Estamos em busca de *patrocinadores* para financiar parte do desenvolvimento deste pacote, aqueles que estiverem interessados por favor entrem em contato com o autor pelo email linux.rlm@gmail.com 
+
+#NOTA IMPORTANTE - LEIA COM MUITA ATENÇÃO
 
 ###As prefeituras **mudam de modelo de NFSe e alteram seu layout livremente e até a forma de acesso aos webservices**, isso é um FATO !!
 
@@ -39,13 +41,13 @@ Os usuários desse framework devem avaliar quais os riscos e quais são as respo
 
 **"NÃO TEMOS COMO GARANTIR O FUNCIONAMENTO CASO ACONTEÇA ALGUMA ALTERAÇÃO NO LEIAUTE DO XML OU NO WEBSERVICE DE RECEPÇÃO DO RPS", evidentemente faremos o possível para adequar, mas não temos como garantir que teremos sucesso no caso da NFSe**
 
-## RECOMENDAÇÃO
+##RECOMENDAÇÃO
 
 Apenas use esse framework se tiver conhecimentos suficientes para corrigir as falhas encontradas, caso contrario DESISTA e não INSISTA NISSO, pois provavelmente NÂO HAVERÁ NENHUM TIPO DE SUPORTE, gratuito ou mesmo PAGO.
 
 ***Você assume a responsabilidade por sua própria conta e risco.***
 
-## DEFINIÇÃO
+##DEFINIÇÃO
 
 A Nota Fiscal de Serviços Eletrônica - NFS-e é o documento fiscal de existência apenas digital que substituirá as tradicionais notas fiscais de serviços impressas.
 A NFSe, implantada pelas Secretarias Municipais de Finanças, será emitida e armazenada eletronicamente em programa de computador, com o objetivo de materializar os fatos geradores do ISSQN – Imposto Sobre Serviços de Qualquer Natureza, por meio do registro eletrônico das prestações de serviços sujeitas à tributação do ISSQN.
@@ -170,7 +172,7 @@ Existem muitos "padrões" diferentes para a emissão de NFSe, além disso, cada 
 - Tributos Municipais
 - WEB ISS
 
-## Municipios atendidos pelo Framework
+##Municipios atendidos pelo Framework
 
 - **São Paulo (SP) PRODAM - BETA-TESTS**
 - Salvador (BA) ABRASF (modificado) - em desenvolvimento
@@ -185,7 +187,7 @@ Existem muitos "padrões" diferentes para a emissão de NFSe, além disso, cada 
 - **Cuiabá (MT) ISSNET - ALPHA-TESTS**
 
 
-## Install
+##Install
 
 Via Composer
 
@@ -193,34 +195,34 @@ Via Composer
 $ composer require nfephp-org/sped-nfse
 ```
 
-## Usage
+##Usage
 Em breve ....
 
-## Change log
+##Change log
 
 Acompanhe o [CHANGELOG](CHANGELOG.md) para maiores informações sobre as alterações recentes.
 
-## Testing
+##Testing
 
 ``` bash
 $ composer test
 ```
 
-## Contributing
+##Contributing
 
 Para contribuir por favor observe o [CONTRIBUTING](CONTRIBUTING.md) e o  [Código de Conduta](CONDUCT.md) para detalhes.
 
 E entre em contato comigo pelo [Gitter](https://gitter.im/nfephp-org/sped-nfse), pelo [Forum](https://groups.google.com/forum/#!forum/nfephp), por email ou pelo Hangout do Google, este projeto é muito complexo e requer muita ajuda EXPERIENTE e dedicada para poder se tornar realmente util e ser mantido.
 
-## Security
+##Security
 
 Caso você encontre algum problema relativo a segurança, por favor envie um email diretamente aos mantenedores do pacote ao invés de abrir um ISSUE.
 
-## Credits
+##Credits
 
 - Roberto L. Machado <linux.rlm@gmail.com>
 
-## License
+##License
 
 Este patote está diponibilizado sob LGPLv3, GPLv3 ou MIT License (MIT). Leia  [Arquivo de Licença](LICENSE.md) para maiores informações.
 
