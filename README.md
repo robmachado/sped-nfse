@@ -17,7 +17,7 @@
 [![Forks][ico-forks]][link-forks]
 [![Stars][ico-stars]][link-stars]
 
-#PATRICINIO
+#PATROCINIO FINANCEIRO
 
 ###Estamos em busca de *patrocinadores* para financiar parte do desenvolvimento deste pacote, aqueles que estiverem interessados por favor entrem em contato com o autor pelo email linux.rlm@gmail.com 
 
