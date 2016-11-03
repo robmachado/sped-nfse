@@ -27,7 +27,7 @@ class Tools extends ToolsModel
      */
     protected $url = [
         1 => 'http://cuiaba.issnetonline.com.br/webserviceabrasf/cuiaba/servicos.asmx',
-        2 => ''
+        2 => 'http://www.issnetonline.com.br/webserviceabrasf/homologacao/servicos.asmx'
     ];
     /**
      * County Namespace
@@ -49,7 +49,7 @@ class Tools extends ToolsModel
      * Indicates when use CDATA string on message
      * @var boolean
      */
-    protected $withcdata = false;
+    protected $withcdata = true;
     /**
      * Encription signature algorithm
      * @var string
