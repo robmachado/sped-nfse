@@ -16,11 +16,17 @@ namespace NFePHP\NFSe\Common;
  */
 
 use InvalidArgumentException;
+use Respect\Validation\Validator as v;
 
 class Rps
 {
+    
     protected function validData($matriz, $key)
     {
         return array_key_exists($key, $matriz);
+    }
+    
+    protected function validate($value, $format, $default)
+    {
     }
 }

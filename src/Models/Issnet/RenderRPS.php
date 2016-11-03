@@ -26,9 +26,9 @@ class RenderRPS
     protected static $certificate;
     protected static $algorithm;
 
-    public static function toXml($data, Certificate $certificate, $algorithm = OPENSSL_ALGO_SHA1)
+    public static function toXml($data, $algorithm = OPENSSL_ALGO_SHA1)
     {
-        self::$certificate = $certificate;
+        //self::$certificate = $certificate;
         self::$algorithm = $algorithm;
         $xml = '';
         if (is_object($data)) {
@@ -49,13 +49,13 @@ class RenderRPS
     private static function render(Rps $rps)
     {
         self::$dom = new Dom('1.0', 'utf-8');
-        $root = self::$dom->createElement('RPS');
-        $infRPS = self::$dom->createElement('infRPS');
+        $root = self::$dom->createElement('tc:Rps');
+        $infRPS = self::$dom->createElement('tc:InfRps');
         
-        $identificacaoRps = self::$dom->createElement('IdentificacaoRps');
+        $identificacaoRps = self::$dom->createElement('tc:IdentificacaoRps');
         self::$dom->addChild(
             $identificacaoRps,
-            'Numero',
+            'tc:Numero',
             $rps->infNumero,
             true,
             "Numero do RPS",
@@ -63,7 +63,7 @@ class RenderRPS
         );
         self::$dom->addChild(
             $identificacaoRps,
-            'Serie',
+            'tc:Serie',
             $rps->infSerie,
             true,
             "Serie do RPS",
@@ -71,7 +71,7 @@ class RenderRPS
         );
         self::$dom->addChild(
             $identificacaoRps,
-            'Tipo',
+            'tc:Tipo',
             $rps->infTipo,
             true,
             "Tipo do RPS",
@@ -81,15 +81,15 @@ class RenderRPS
         
         self::$dom->addChild(
             $infRPS,
-            'DataEmissao',
-            $rps->infDataEmissao,
+            'tc:DataEmissao',
+            $rps->infDataEmissao->format('Y-m-d\TH:i:s'),
             true,
             'Data de Emissão do RPS',
             false
         );
         self::$dom->addChild(
             $infRPS,
-            'NaturezaOperacao',
+            'tc:NaturezaOperacao',
             $rps->infNaturezaOperacao,
             true,
             'Natureza da operação',
@@ -97,7 +97,7 @@ class RenderRPS
         );
         self::$dom->addChild(
             $infRPS,
-            'OptanteSimplesNacional',
+            'tc:OptanteSimplesNacional',
             $rps->infOptanteSimplesNacional,
             true,
             'OptanteSimplesNacional',
@@ -105,7 +105,7 @@ class RenderRPS
         );
         self::$dom->addChild(
             $infRPS,
-            'IncentivadorCultural',
+            'tc:IncentivadorCultural',
             $rps->infIncentivadorCultural,
             true,
             'IncentivadorCultural',
@@ -113,7 +113,7 @@ class RenderRPS
         );
         self::$dom->addChild(
             $infRPS,
-            'Status',
+            'tc:Status',
             $rps->infStatus,
             true,
             'Status',
@@ -121,18 +121,18 @@ class RenderRPS
         );
         self::$dom->addChild(
             $infRPS,
-            'RegimeEspecialTributacao',
+            'tc:RegimeEspecialTributacao',
             $rps->infRegimeEspecialTributacao,
             true,
             'RegimeEspecialTributacao',
             false
         );
         
-        $servico = self::$dom->createElement('Servico');
-        $valores = self::$dom->createElement('Valores');
+        $servico = self::$dom->createElement('tc:Servico');
+        $valores = self::$dom->createElement('tc:Valores');
         self::$dom->addChild(
             $valores,
-            'ValorServicos',
+            'tc:ValorServicos',
             $rps->infValorServicos,
             true,
             'ValorServicos',
@@ -140,7 +140,7 @@ class RenderRPS
         );
         self::$dom->addChild(
             $valores,
-            'ValorPis',
+            'tc:ValorPis',
             $rps->infValorPis,
             true,
             'ValorPis',
@@ -148,7 +148,7 @@ class RenderRPS
         );
         self::$dom->addChild(
             $valores,
-            'ValorCofins',
+            'tc:ValorCofins',
             $rps->infValorCofins,
             true,
             'ValorCofins',
@@ -156,7 +156,7 @@ class RenderRPS
         );
         self::$dom->addChild(
             $valores,
-            'ValorInss',
+            'tc:ValorInss',
             $rps->infValorInss,
             true,
             'ValorInss',
@@ -164,7 +164,7 @@ class RenderRPS
         );
         self::$dom->addChild(
             $valores,
-            'ValorIr',
+            'tc:ValorIr',
             $rps->infValorIr,
             true,
             'ValorIr',
@@ -172,7 +172,7 @@ class RenderRPS
         );
         self::$dom->addChild(
             $valores,
-            'ValorCsll',
+            'tc:ValorCsll',
             $rps->infValorCsll,
             true,
             'ValorCsll',
@@ -180,7 +180,7 @@ class RenderRPS
         );
         self::$dom->addChild(
             $valores,
-            'IssRetido',
+            'tc:IssRetido',
             $rps->infIssRetido,
             true,
             'IssRetido',
@@ -188,7 +188,7 @@ class RenderRPS
         );
         self::$dom->addChild(
             $valores,
-            'ValorIss',
+            'tc:ValorIss',
             $rps->infValorIss,
             true,
             'ValorIss',
@@ -196,7 +196,7 @@ class RenderRPS
         );
         self::$dom->addChild(
             $valores,
-            'BaseCalculo',
+            'tc:BaseCalculo',
             $rps->infBaseCalculo,
             true,
             'BaseCalculo',
@@ -204,7 +204,7 @@ class RenderRPS
         );
         self::$dom->addChild(
             $valores,
-            'Aliquota',
+            'tc:Aliquota',
             $rps->infAliquota,
             true,
             'Aliquota',
@@ -212,7 +212,7 @@ class RenderRPS
         );
         self::$dom->addChild(
             $valores,
-            'ValorLiquidoNfse',
+            'tc:ValorLiquidoNfse',
             $rps->infValorLiquidoNfse,
             true,
             'ValorLiquidoNfse',
@@ -220,7 +220,7 @@ class RenderRPS
         );
         self::$dom->addChild(
             $valores,
-            'DescontoIncondicionado',
+            'tc:DescontoIncondicionado',
             $rps->infDescontoIncondicionado,
             true,
             'DescontoIncondicionado',
@@ -228,7 +228,7 @@ class RenderRPS
         );
         self::$dom->addChild(
             $valores,
-            'DescontoCondicionado',
+            'tc:DescontoCondicionado',
             $rps->infDescontoCondicionado,
             true,
             'DescontoCondicionado',
@@ -238,7 +238,7 @@ class RenderRPS
         
         self::$dom->addChild(
             $servico,
-            'ItemListaServico',
+            'tc:ItemListaServico',
             $rps->infItemListaServico,
             true,
             'ItemListaServico',
@@ -246,7 +246,7 @@ class RenderRPS
         );
         self::$dom->addChild(
             $servico,
-            'CodigoCnae',
+            'tc:CodigoCnae',
             $rps->infCodigoCnae,
             true,
             'CodigoCnae',
@@ -254,7 +254,7 @@ class RenderRPS
         );
         self::$dom->addChild(
             $servico,
-            'CodigoTributacaoMunicipio',
+            'tc:CodigoTributacaoMunicipio',
             $rps->infCodigoTributacaoMunicipio,
             true,
             'CodigoTributacaoMunicipio',
@@ -262,7 +262,7 @@ class RenderRPS
         );
         self::$dom->addChild(
             $servico,
-            'Discriminacao',
+            'tc:Discriminacao',
             $rps->infDiscriminacao,
             true,
             'Discriminacao',
@@ -270,7 +270,7 @@ class RenderRPS
         );
         self::$dom->addChild(
             $servico,
-            'MunicipioPrestacaoServico',
+            'tc:MunicipioPrestacaoServico',
             $rps->infMunicipioPrestacaoServico,
             true,
             'MunicipioPrestacaoServico',
@@ -278,12 +278,12 @@ class RenderRPS
         );
         self::$dom->appChild($infRPS, $servico, 'Adicionando tag Servico');
         
-        $prestador = self::$dom->createElement('Prestador');
-        $cpfCnpj = self::$dom->createElement('CpfCnpj');
+        $prestador = self::$dom->createElement('tc:Prestador');
+        $cpfCnpj = self::$dom->createElement('tc:CpfCnpj');
         if ($rps->infPrestador['tipo'] == 2) {
             self::$dom->addChild(
                 $cpfCnpj,
-                'Cnpj',
+                'tc:Cnpj',
                 $rps->infPrestador['cnpjcpf'],
                 true,
                 'Prestador CNPJ',
@@ -292,7 +292,7 @@ class RenderRPS
         } else {
             self::$dom->addChild(
                 $cpfCnpj,
-                'Cpf',
+                'tc:Cpf',
                 $rps->infPrestador['cnpjcpf'],
                 true,
                 'Prestador CPF',
@@ -302,7 +302,7 @@ class RenderRPS
         self::$dom->appChild($prestador, $cpfCnpj, 'Adicionando tag CpfCnpj em Prestador');
         self::$dom->addChild(
             $prestador,
-            'InscricaoMunicipal',
+            'tc:InscricaoMunicipal',
             $rps->infPrestador['im'],
             true,
             'InscricaoMunicipal',
@@ -310,13 +310,13 @@ class RenderRPS
         );
         self::$dom->appChild($infRPS, $prestador, 'Adicionando tag Prestador em infRPS');
         
-        $tomador = self::$dom->createElement('Tomador');
-        $identificacaoTomador = self::$dom->createElement('IdentificacaoTomador');
-        $cpfCnpjTomador = self::$dom->createElement('CpfCnpj');
+        $tomador = self::$dom->createElement('tc:Tomador');
+        $identificacaoTomador = self::$dom->createElement('tc:IdentificacaoTomador');
+        $cpfCnpjTomador = self::$dom->createElement('tc:CpfCnpj');
         if ($rps->infTomador['tipo'] == 2) {
             self::$dom->addChild(
                 $cpfCnpjTomador,
-                'Cnpj',
+                'tc:Cnpj',
                 $rps->infTomador['cnpjcpf'],
                 true,
                 'Tomador CNPJ',
@@ -325,7 +325,7 @@ class RenderRPS
         } else {
             self::$dom->addChild(
                 $cpfCnpjTomador,
-                'Cpf',
+                'tc:Cpf',
                 $rps->infTomador['cnpjcpf'],
                 true,
                 'Tomador CPF',
@@ -333,20 +333,20 @@ class RenderRPS
             );
         }
         self::$dom->appChild($identificacaoTomador, $cpfCnpjTomador, 'Adicionando tag CpfCnpj em IdentificacaTomador');
+        self::$dom->appChild($tomador, $identificacaoTomador, 'Adicionando tag IdentificacaoTomador em Tomador');
         self::$dom->addChild(
-            $identificacaoTomador,
-            'RazaoSocial',
+            $tomador,
+            'tc:RazaoSocial',
             $rps->infTomador['razao'],
             true,
             'RazaoSocial',
             false
         );
-        self::$dom->appChild($tomador, $identificacaoTomador, 'Adicionando tag IdentificacaoTomador em Tomador');
         
-        $endereco = self::$dom->createElement('Endereco');
+        $endereco = self::$dom->createElement('tc:Endereco');
         self::$dom->addChild(
             $endereco,
-            'Endereco',
+            'tc:Endereco',
             $rps->infTomadorEndereco['end'],
             true,
             'Endereco',
@@ -354,7 +354,7 @@ class RenderRPS
         );
         self::$dom->addChild(
             $endereco,
-            'Numero',
+            'tc:Numero',
             $rps->infTomadorEndereco['numero'],
             true,
             'Numero',
@@ -362,7 +362,7 @@ class RenderRPS
         );
         self::$dom->addChild(
             $endereco,
-            'Complemento',
+            'tc:Complemento',
             $rps->infTomadorEndereco['complemento'],
             true,
             'Complemento',
@@ -370,7 +370,7 @@ class RenderRPS
         );
         self::$dom->addChild(
             $endereco,
-            'Bairro',
+            'tc:Bairro',
             $rps->infTomadorEndereco['bairro'],
             true,
             'Bairro',
@@ -378,7 +378,7 @@ class RenderRPS
         );
         self::$dom->addChild(
             $endereco,
-            'Cidade',
+            'tc:Cidade',
             $rps->infTomadorEndereco['cmun'],
             true,
             'Cidade',
@@ -386,7 +386,7 @@ class RenderRPS
         );
         self::$dom->addChild(
             $endereco,
-            'Estado',
+            'tc:Estado',
             $rps->infTomadorEndereco['uf'],
             true,
             'Estado',
@@ -394,7 +394,7 @@ class RenderRPS
         );
         self::$dom->addChild(
             $endereco,
-            'Cep',
+            'tc:Cep',
             $rps->infTomadorEndereco['cep'],
             true,
             'Cep',
@@ -406,9 +406,6 @@ class RenderRPS
         self::$dom->appChild($root, $infRPS, 'Adicionando tag infRPS em RPS');
         self::$dom->appendChild($root);
         $xml = str_replace('<?xml version="1.0" encoding="utf-8"?>', '', self::$dom->saveXML());
-        //header("Content-type: text/xml");
-        //echo $xml;
-        //die;
         return $xml;
     }
 }

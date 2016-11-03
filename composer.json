@@ -28,7 +28,8 @@
         "nfephp-org/sped-common" : "dev-develop",
         "psr/log": "^1.0",
         "league/flysystem": "^1.0",
-        "monolog/monolog": "^1.21"
+        "monolog/monolog": "^1.21",
+        "respect/validation": "^1.1"
     },
     "require-dev": {
         "squizlabs/php_codesniffer": "^2.6",
