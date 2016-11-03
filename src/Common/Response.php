@@ -60,7 +60,9 @@ class Response
         $xml = str_replace('<?xml version="1.0" encoding="UTF-8"?>', '', $xml);
         $xml = str_replace('<?xml version="1.0" encoding="utf-8"?>', '', $xml);
         $xml = str_replace('&lt;?xml version="1.0" encoding="UTF-8"?&gt;', '', $xml);
+        $xml = str_replace('&lt;?xml version="1.0" encoding="utf-8"?&gt;', '', $xml);
         $xml = EntitiesCharacters::convert(html_entity_decode($xml));
+        
         $resp = simplexml_load_string($xml, null, LIBXML_NOCDATA);
         $std = json_encode($resp);
         $std = str_replace('@attributes', 'attributes', $std);

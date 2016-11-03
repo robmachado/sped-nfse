@@ -16,12 +16,36 @@ namespace NFePHP\NFSe\Models\Issnet;
  * @link      http://github.com/nfephp-org/sped-nfse for the canonical source repository
  */
 
+use DateTime;
 use InvalidArgumentException;
+use Respect\Validation\Validator;
 use NFePHP\Common\Strings\Strings;
 use NFePHP\NFSe\Common\Rps as RpsBase;
 
 class Rps extends RpsBase
 {
+    const TIPO_RPS = 1;
+    const TIPO_MISTA = 2;
+    const TIPO_CUPOM = 3;
+    
+    const STATUS_NORMAL = 1;
+    const STATUS_CANCELADO = 2;
+    
+    const REGIME_MICROEMPRESA = 1;
+    const REGIME_ESTIMATIVA = 2;
+    const REGIME_SOCIEDADE = 3;
+    const REGIME_COOPERATIVA = 4;
+    
+    const NATUREZA_INTERNA = 1; //Tributação no município
+    const NATUREZA_EXTERNA = 2;  //Tributação fora do município
+    const NATUREZA_ISENTA = 3; //Isenção
+    const NATUREZA_IMUNE = 4; //Imune
+    const NATUREZA_SUSPENSA_JUS = 5; //Exigibilidade suspensa por decisão judicial
+    const NATUREZA_SUSPENSA_ADMIN = 6; //Exigibilidade suspensa por procedimento administrativo
+    
+    const SIM = 1;
+    const NAO = 2;
+    
     /**
      * @var array
      */
@@ -29,7 +53,7 @@ class Rps extends RpsBase
     /**
      * @var array
      */
-    public $infTomador = ['tipo' => '', 'cnpjcpf' => '' , 'im' => '', 'razao' => ''];
+    public $infTomador = ['tipo' => '', 'cnpjcpf' => '' , 'im' => '', 'razao' => '', 'email' => ''];
     /**
      * @var array
      */
@@ -42,56 +66,176 @@ class Rps extends RpsBase
         'uf' => '',
         'cep' => ''
     ];
+    /**
+     * @var int
+     */
     public $infNumero;
+    /**
+     * @var string
+     */
     public $infSerie;
+    /**
+     * @var int
+     */
     public $infTipo;
+    /**
+     * @var DateTime
+     */
     public $infDataEmissao;
+    /**
+     * @var int
+     */
     public $infNaturezaOperacao;
+    /**
+     * @var int
+     */
     public $infOptanteSimplesNacional;
+    /**
+     * @var int
+     */
     public $infIncentivadorCultural;
+    /**
+     * @var int
+     */
     public $infStatus;
+    /**
+     * @var int
+     */
     public $infRegimeEspecialTributacao;
+    /**
+     * @var float
+     */
     public $infValorServicos;
+    /**
+     * @var float
+     */
+    public $infValorDeducoes;
+    /**
+     * float
+     */
+    public $infOutrasRetencoes;
+    /**
+     * @var float
+     */
     public $infValorPis;
+    /**
+     * @var float
+     */
     public $infValorCofins;
+    /**
+     * @var float
+     */
     public $infValorInss;
+    /**
+     * @var float
+     */
     public $infValorIr;
+    /**
+     * @var float
+     */
     public $infValorCsll;
+    /**
+     * @var int
+     */
     public $infIssRetido;
+    /**
+     * @var float
+     */
     public $infValorIss;
+    /**
+     * @var float
+     */
+    public $infValorIssRetido;
+    /**
+     * @var float
+     */
     public $infBaseCalculo;
+    /**
+     * @var float
+     */
     public $infAliquota;
+    /**
+     * @var float
+     */
     public $infValorLiquidoNfse;
+    /**
+     * @var float
+     */
     public $infDescontoIncondicionado;
+    /**
+     * @var float
+     */
     public $infDescontoCondicionado;
+    /**
+     * @var string
+     */
     public $infItemListaServico;
+    /**
+     * @var int
+     */
     public $infCodigoCnae;
+    /**
+     * @var string
+     */
     public $infCodigoTributacaoMunicipio;
+    /**
+     * @var string
+     */
     public $infDiscriminacao;
+    /**
+     * @var int
+     */
     public $infMunicipioPrestacaoServico;
     
+    /**
+     * Set informations of provider
+     * @param int $tipo
+     * @param string $cnpjcpf
+     * @param string $im
+     */
     public function prestador($tipo, $cnpjcpf, $im)
     {
-        $this->prestador = [
+        $this->infPrestador = [
             'tipo' => $tipo,
             'cnpjcpf' => $cnpjcpf,
             'im' => $im
         ];
     }
     
-    public function tomador($tipo, $cnpjcpf, $im, $razao)
+    /**
+     * Set informations of customer
+     * @param int $tipo
+     * @param string $cnpjcpf
+     * @param string $im
+     * @param string $razao
+     * @param string $telefone
+     * @param string $email
+     */
+    public function tomador($tipo, $cnpjcpf, $im, $razao, $telefone, $email)
     {
-        $this->tomador = [
+        $this->infTomador = [
             'tipo' => $tipo,
             'cnpjcpf' => $cnpjcpf,
             'im' => $im,
-            'razao' => $razao
+            'razao' => $razao,
+            'tel' => $telefone,
+            'email' => $email
         ];
     }
     
+    /**
+     * Set address of customer
+     * @param string $end
+     * @param string $numero
+     * @param string $complemento
+     * @param string $bairro
+     * @param int $cmun
+     * @param string $uf
+     * @param int $cep
+     */
     public function tomadorEndereco($end, $numero, $complemento, $bairro, $cmun, $uf, $cep)
     {
-        $this->tomadorEndereco = [
+        $this->infTomadorEndereco = [
             'end' => $end,
             'numero' => $numero,
             'complemento' => $complemento,
@@ -102,138 +246,400 @@ class Rps extends RpsBase
         ];
     }
     
+    /**
+     * Set number of RPS
+     * @param int $value
+     * @throws InvalidArgumentException
+     */
     public function numero($value)
     {
+        if (!Validator::numeric()->intVal()->positive()->validate($value)) {
+            throw new \InvalidArgumentException('O numero do RPS deve ser um inteiro positivo apenas.');
+        }
         $this->infNumero = $value;
     }
     
+    /**
+     * Set series of RPS
+     * @param string $value
+     * @throws InvalidArgumentException
+     */
     public function serie($value)
     {
+        $value = trim($value);
+        if (!Validator::stringType()->length(1, 5)->validate($value)) {
+            throw new \InvalidArgumentException('A série não pode ser vazia deve ter até 5 caracteres.');
+        }
         $this->infSerie = $value;
     }
     
-    public function tipo($value)
+    /**
+     * Set type of RPS
+     * @param int $value
+     * @throws InvalidArgumentException
+     */
+    public function tipo($value = self::TIPO_RPS)
     {
+        if (!Validator::numeric()->intVal()->between(1, 3)->validate($value)) {
+            throw new \InvalidArgumentException('O tipo deve estar entre 1 e 3.');
+        }
         $this->infTipo = $value;
     }
     
-    public function dataEmissao($value)
+    /**
+     * Set date of issue
+     * @param DateTime $value
+     */
+    public function dataEmissao(DateTime $value)
     {
         $this->infDataEmissao = $value;
     }
     
-    public function naturezaOperacao($value)
+    /**
+     * Set type of kind tax operation
+     * @param int $value
+     * @throws InvalidArgumentException
+     */
+    public function naturezaOperacao($value = self::NATUREZA_INTERNA)
     {
+        if (!Validator::numeric()->intVal()->between(1, 6)->validate($value)) {
+            throw new \InvalidArgumentException('A natureza da operação deve estar entre 1 e 6.');
+        }
         $this->infNaturezaOperacao = $value;
     }
     
-    public function optanteSimplesNacional($value)
+    /**
+     * Set opting for Simple National tax regime
+     * @param int $value
+     * @throws InvalidArgumentException
+     */
+    public function optanteSimplesNacional($value = self::SIM)
     {
+        if (!Validator::numeric()->intVal()->between(1, 2)->validate($value)) {
+            throw new \InvalidArgumentException('Optante pelo Simples deve ser 1 ou 2.');
+        }
         $this->infOptanteSimplesNacional = $value;
     }
     
-    public function incentivadorCultural($value)
+    /**
+     * Set encouraging cultural flag
+     * @param int $value
+     * @throws InvalidArgumentException
+     */
+    public function incentivadorCultural($value = self::NAO)
     {
+        if (!Validator::numeric()->intVal()->between(1, 2)->validate($value)) {
+            throw new \InvalidArgumentException('Incentivador cultural deve ser 1 ou 2.');
+        }
         $this->infIncentivadorCultural = $value;
     }
     
-    public function status($value)
+    /**
+     * Set RPS status
+     * @param int $value
+     * @throws InvalidArgumentException
+     */
+    public function status($value = self::STATUS_NORMAL)
     {
+        if (!Validator::numeric()->intVal()->between(1, 2)->validate($value)) {
+            throw new \InvalidArgumentException('O status do RPS deve ser 1 ou 2.');
+        }
         $this->infStatus = $value;
     }
     
-    public function regimeEspecialTributacao($value)
+    /**
+     * Set special tax regime
+     * @param int $value
+     * @throws InvalidArgumentException
+     */
+    public function regimeEspecialTributacao($value = self::REGIME_MICROEMPRESA)
     {
+        if (!Validator::numeric()->intVal()->between(1, 4)->validate($value)) {
+            throw new \InvalidArgumentException('O regime de tributação deve estar entre 1 e 4.');
+        }
         $this->infRegimeEspecialTributacao = $value;
     }
     
+    /**
+     * Set service amount
+     * @param float $value
+     * @throws InvalidArgumentException
+     */
     public function valorServicos($value)
     {
+        if (!Validator::numeric()->floatVal()->min(0)->validate($value)) {
+            throw new \InvalidArgumentException('Os valores deve ser numericos tipo float.');
+        }
         $this->infValorServicos = $value;
     }
     
+    /**
+     * Set other withholdings amount
+     * @param float $value
+     * @throws InvalidArgumentException
+     */
+    public function outrasRetencoes($value)
+    {
+        if (!Validator::numeric()->floatVal()->min(0)->validate($value)) {
+            throw new \InvalidArgumentException('Os valores deve ser numericos tipo float.');
+        }
+        $this->infOutrasRetencoes = $value;
+    }
+    
+    /**
+     * Set amount for PIS tax
+     * @param float $value
+     * @throws InvalidArgumentException
+     */
     public function valorPis($value)
     {
+        if (!Validator::numeric()->floatVal()->min(0)->validate($value)) {
+            throw new \InvalidArgumentException('Os valores deve ser numericos tipo float.');
+        }
         $this->infValorPis = $value;
     }
     
+    /**
+     * Set amount for COFINS tax
+     * @param float $value
+     * @throws InvalidArgumentException
+     */
     public function valorCofins($value)
     {
+        if (!Validator::numeric()->floatVal()->min(0)->validate($value)) {
+            throw new \InvalidArgumentException('Os valores deve ser numericos tipo float.');
+        }
         $this->infValorCofins = $value;
     }
     
+    /**
+     * Set amount for INSS tax
+     * @param float $value
+     * @throws InvalidArgumentException
+     */
     public function valorInss($value)
     {
+        if (!Validator::numeric()->floatVal()->min(0)->validate($value)) {
+            throw new \InvalidArgumentException('Os valores deve ser numericos tipo float.');
+        }
         $this->infValorInss = $value;
     }
     
+    /**
+     * Set amount for IR tax
+     * @param float $value
+     * @throws InvalidArgumentException
+     */
     public function valorIr($value)
     {
+        if (!Validator::numeric()->floatVal()->min(0)->validate($value)) {
+            throw new \InvalidArgumentException('Os valores deve ser numericos tipo float.');
+        }
         $this->infValorIr = $value;
     }
     
+    /**
+     * Set amount for CSLL tax
+     * @param float $value
+     * @throws InvalidArgumentException
+     */
     public function valorCsll($value)
     {
+        if (!Validator::numeric()->floatVal()->min(0)->validate($value)) {
+            throw new \InvalidArgumentException('Os valores deve ser numericos tipo float.');
+        }
         $this->infValorCsll = $value;
     }
     
-    public function issRetido($value)
+    /**
+     * Set ISS taxes retention flag
+     * @param int $value
+     * @throws InvalidArgumentException
+     */
+    public function issRetido($value = self::NAO)
     {
+        if (!Validator::numeric()->intVal()->between(1, 2)->validate($value)) {
+            throw new \InvalidArgumentException('IssRetido deve ser 1 ou 2.');
+        }
         $this->infIssRetido = $value;
     }
     
-    public function valorIss($value)
+    /**
+     * Set amount withheld of ISS
+     * @param float $value
+     * @throws InvalidArgumentException
+     */
+    public function valorIssRetido($value = 0.00)
     {
+        if (!Validator::numeric()->floatVal()->min(0)->validate($value)) {
+            throw new \InvalidArgumentException('Os valores deve ser numericos tipo float.');
+        }
+        $this->infValorIssRetido = $value;
+    }
+    
+    /**
+     * Set amount of ISS
+     * @param float $value
+     * @throws InvalidArgumentException
+     */
+    public function valorIss($value = 0.00)
+    {
+        if (!Validator::numeric()->floatVal()->min(0)->validate($value)) {
+            throw new \InvalidArgumentException('Os valores deve ser numericos tipo float.');
+        }
         $this->infValorIss = $value;
     }
     
-    public function baseCalculo($value)
+    /**
+     * Set calculation base value
+     * (Valor dos serviços - Valor das deduções - descontos incondicionados)
+     * @param float $value
+     * @throws InvalidArgumentException
+     */
+    public function baseCalculo($value = 0.00)
     {
+        if (!Validator::numeric()->floatVal()->min(0)->validate($value)) {
+            throw new \InvalidArgumentException('Os valores deve ser numericos tipo float.');
+        }
         $this->infBaseCalculo = $value;
     }
     
-    public function aliquota($value)
+    /**
+     * Set ISS tax aliquot in percent
+     * @param float $value
+     * @throws InvalidArgumentException
+     */
+    public function aliquota($value = 0.00)
     {
+        if (!Validator::numeric()->floatVal()->min(0)->validate($value)) {
+            throw new \InvalidArgumentException('Os valores deve ser numericos tipo float.');
+        }
         $this->infAliquota = $value;
     }
     
+    /**
+     * Set deductions amount
+     * @param float $value
+     * @throws InvalidArgumentException
+     */
+    public function valorDeducoes($value)
+    {
+        if (!Validator::numeric()->floatVal()->min(0)->validate($value)) {
+            throw new \InvalidArgumentException('Os valores deve ser numericos tipo float.');
+        }
+        $this->infValorDeducoes = $value;
+    }
+    
+    /**
+     * Set net amount
+     * (ValorServicos - ValorPIS - ValorCOFINS - ValorINSS
+     * - ValorIR - ValorCSLL - OutrasRetençoes - ValorISSRetido
+     * - DescontoIncondicionado - DescontoCondicionado)
+     * @param type $value
+     * @throws InvalidArgumentException
+     */
     public function valorLiquidoNfse($value)
     {
+        if (!Validator::numeric()->floatVal()->min(0)->validate($value)) {
+            throw new \InvalidArgumentException('Os valores deve ser numericos tipo float.');
+        }
         $this->infValorLiquidoNfse = $value;
     }
     
+    /**
+     * Set inconditioning off amount
+     * @param float $value
+     * @throws InvalidArgumentException
+     */
     public function descontoIncondicionado($value)
     {
+        if (!Validator::numeric()->floatVal()->min(0)->validate($value)) {
+            throw new \InvalidArgumentException('Os valores deve ser numericos tipo float.');
+        }
         $this->infDescontoIncondicionado = $value;
     }
     
+    /**
+     * Set conditioning off amount
+     * @param float $value
+     * @throws InvalidArgumentException
+     */
     public function descontoCondicionado($value)
     {
+        if (!Validator::numeric()->floatVal()->min(0)->validate($value)) {
+            throw new \InvalidArgumentException('Os valores deve ser numericos tipo float.');
+        }
         $this->infDescontoCondicionado = $value;
     }
     
+    /**
+     * Set Services List item
+     * @param string $value
+     * @throws InvalidArgumentException
+     */
     public function itemListaServico($value)
     {
+        $value = trim($value);
+        if (!Validator::stringType()->length(1, 5)->validate($value)) {
+            throw new \InvalidArgumentException('A sdiscriminação é obrigatória e deve ter no máximo 2000 caracteres.');
+        }
         $this->infItemListaServico = $value;
     }
     
+    /**
+     * Set CNAE code
+     * @param int $value
+     * @throws InvalidArgumentException
+     */
     public function codigoCnae($value)
     {
+        if (!Validator::numeric()->intVal()->validate($value)) {
+            throw new \InvalidArgumentException('O código CNAE é obrigatorio.');
+        }
         $this->infCodigoCnae = $value;
     }
     
     public function codigoTributacaoMunicipio($value)
     {
+        $value = trim($value);
+        if (!Validator::stringType()->length(1, 20)->validate($value)) {
+            throw new \InvalidArgumentException('O codigo de tributação é obrigatório e deve ter no máximo 20 caracteres.');
+        }
         $this->infCodigoTributacaoMunicipio = $value;
     }
     
+    /**
+     * Set discrimination of service
+     * @param string $value
+     * @throws InvalidArgumentException
+     */
     public function discriminacao($value)
     {
+        $value = trim($value);
+        if (!Validator::stringType()->length(1, 2000)->validate($value)) {
+            throw new \InvalidArgumentException('A discriminação é obrigatória e deve ter no máximo 2000 caracteres.');
+        }
         $this->infDiscriminacao = $value;
     }
     
+    public function codigoObra($value)
+    {
+    }
+    
+    public function numeroART($value)
+    {
+    }
+    
+    /**
+     * Set IBGE county code where service was realized
+     * @param int $value
+     * @throws InvalidArgumentException
+     */
     public function municipioPrestacaoServico($value)
     {
+        if (!Validator::numeric()->intVal()->validate($value)) {
+            throw new \InvalidArgumentException('Deve ser passado o código do IBGE.');
+        }
         $this->infMunicipioPrestacaoServico = $value;
     }
 }
