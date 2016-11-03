@@ -85,7 +85,8 @@ class Tools extends ToolsBase
             $lote,
             $rpss
         );
-        return $this->sendRequest('', $message);
+        return $message;
+        //return $this->sendRequest('', $message);
     }
 
     public function consultarNfse(
