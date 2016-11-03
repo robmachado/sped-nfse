@@ -36,14 +36,13 @@ try {
     //Aqui podemos escolher entre usar o SOAP nativo ou o cURL,
     //em ambos os casos os comandos são os mesmos pois observam
     //a mesma interface
-    $nfse->tools->setSoapClass(new SoapNative());
-    
-    
-    $numeroNFSe = '2222';    
+    $nfse->tools->setSoapClass(new SoapCurl());
+        
+    $numeroNFSe = '';    
     $dtInicio = '2016-10-01';
-    $dtFim = '2016-10-31';
-    $tomador = ['tipo' => 2, 'doc' => '11111111111111', 'im' => '55555555'];
-    $intermediario = ['tipo' => 2, 'doc' => '11111111111111', 'im' => '44444444', 'razao' => 'SEI LA LTDA-ME'];
+    $dtFim = '2016-10-06';
+    $tomador = []; //['tipo' => 2, 'doc' => '11111111111111', 'im' => '55555555'];
+    $intermediario = []; //['tipo' => 2, 'doc' => '11111111111111', 'im' => '44444444', 'razao' => 'SEI LA LTDA-ME'];
     $content = $nfse->tools->consultarNfse($numeroNFSe, $dtInicio, $dtFim, $tomador, $intermediario);    
     
     header("Content-type: text/xml");

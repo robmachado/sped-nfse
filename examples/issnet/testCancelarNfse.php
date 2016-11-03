@@ -36,7 +36,7 @@ try {
     //Aqui podemos escolher entre usar o SOAP nativo ou o cURL,
     //em ambos os casos os comandos são os mesmos pois observam
     //a mesma interface
-    $nfse->tools->setSoapClass(new SoapNative());
+    $nfse->tools->setSoapClass(new SoapCurl());
     
     $content = $nfse->tools->cancelarNfse('12345', '5');
     

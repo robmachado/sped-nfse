@@ -72,7 +72,7 @@ class Tools extends ToolsBase
         return $this->sendRequest('', $message);
     }
     
-    public function enviarLoteRps($lote, $rpss)
+    public function recepcionarLoteRps($lote, $rpss)
     {
         $this->method = 'RecepcionarLoteRps';
         $fact = new Factories\EnviarLoteRps($this->certificate);
@@ -173,18 +173,11 @@ class Tools extends ToolsBase
         $request = "<". $this->method . " xmlns=\"".$this->xmlns."\">"
             . "<xml>$messageText</xml>"
             . "</". $this->method . ">";
-        
         $params = [
-            'xml' => $message
+            'xml' => $messageText
         ];
-        
-        //retorna o XML durante a fase desenvolvimento dos xml
-        //depois retirar esse retorno na fase de testes com o
-        //webservice, usando primeiro o SOAPUI e depois realizando
-        //os testes com o soap pelo PHP
-        return $messageText;
-        /*
         $action = "\"". $this->xmlns ."/". $this->method ."\"";
+        
         return $this->soap->send(
             $url,
             $this->method,
@@ -194,6 +187,5 @@ class Tools extends ToolsBase
             $this->namespaces[$this->soapversion],
             $request
         );
-         */
     }
 }

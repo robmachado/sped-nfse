@@ -36,7 +36,7 @@ try {
     //Aqui podemos escolher entre usar o SOAP nativo ou o cURL,
     //em ambos os casos os comandos são os mesmos pois observam
     //a mesma interface
-    $nfse->tools->setSoapClass(new SoapNative());
+    $nfse->tools->setSoapClass(new SoapCurl());
     
     $protocolo = '5e798c53-ec97-44e0-a048-aaa35966afcf';
     $content = $nfse->tools->consultarLoteRps($protocolo);
