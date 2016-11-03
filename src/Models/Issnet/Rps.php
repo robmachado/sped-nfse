@@ -263,7 +263,7 @@ class Rps extends RpsBase
     }
     
     /**
-     * Set informations of intermediary 
+     * Set informations of intermediary
      * @param string $tipo
      * @param string $cnpjcpf
      * @param string $im
