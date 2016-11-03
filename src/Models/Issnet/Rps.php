@@ -581,7 +581,8 @@ class Rps extends RpsBase
     {
         $value = trim($value);
         if (!Validator::stringType()->length(1, 5)->validate($value)) {
-            throw new \InvalidArgumentException('A sdiscriminação é obrigatória e deve ter no máximo 2000 caracteres.');
+            throw new \InvalidArgumentException('A sdiscriminação é obrigatória e'
+                    . ' deve ter no máximo 2000 caracteres.');
         }
         $this->infItemListaServico = $value;
     }
@@ -603,7 +604,8 @@ class Rps extends RpsBase
     {
         $value = trim($value);
         if (!Validator::stringType()->length(1, 20)->validate($value)) {
-            throw new \InvalidArgumentException('O codigo de tributação é obrigatório e deve ter no máximo 20 caracteres.');
+            throw new \InvalidArgumentException('O codigo de tributação é obrigatório e deve ter '
+                    . 'no máximo 20 caracteres.');
         }
         $this->infCodigoTributacaoMunicipio = $value;
     }
@@ -617,7 +619,8 @@ class Rps extends RpsBase
     {
         $value = trim($value);
         if (!Validator::stringType()->length(1, 2000)->validate($value)) {
-            throw new \InvalidArgumentException('A discriminação é obrigatória e deve ter no máximo 2000 caracteres.');
+            throw new \InvalidArgumentException('A discriminação é obrigatória e deve ter '
+                    . 'no máximo 2000 caracteres.');
         }
         $this->infDiscriminacao = $value;
     }
