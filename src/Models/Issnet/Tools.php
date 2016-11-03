@@ -24,7 +24,7 @@ class Tools extends ToolsBase
 {
     public function cancelarNfse($numero, $codigoCancelamento)
     {
-        $this->method = 'CancelarNfseEnvio';
+        $this->method = 'CancelarNfse';
         $fact = new Factories\CancelarNfse($this->certificate);
         $fact->setSignAlgorithm($this->algorithm);
         $message = $fact->render(
@@ -41,7 +41,7 @@ class Tools extends ToolsBase
     
     public function consultarUrlVisualizacaoNfse($numero, $codigoTributacao)
     {
-        $this->method = 'ConsultarUrlVisualizacaoNfseEnvio';
+        $this->method = 'ConsultarUrlVisualizacaoNfse';
         $fact = new Factories\ConsultarUrlVisualizacaoNfse($this->certificate);
         $fact->setSignAlgorithm($this->algorithm);
         $message = $fact->render(
@@ -57,7 +57,7 @@ class Tools extends ToolsBase
     
     public function consultarUrlVisualizacaoNfseSerie($numero, $codigoTributacao, $serie)
     {
-        $this->method = 'ConsultarUrlVisualizacaoNfseSerieEnvio';
+        $this->method = 'ConsultarUrlVisualizacaoNfseSerie';
         $fact = new Factories\ConsultarUrlVisualizacaoNfse($this->certificate);
         $fact->setSignAlgorithm($this->algorithm);
         $message = $fact->render(
@@ -74,7 +74,7 @@ class Tools extends ToolsBase
     
     public function enviarLoteRps($lote, $rpss)
     {
-        $this->method = 'EnviarLoteRpsEnvio';
+        $this->method = 'RecepcionarLoteRps';
         $fact = new Factories\EnviarLoteRps($this->certificate);
         $fact->setSignAlgorithm($this->algorithm);
         $message = $fact->render(
@@ -95,7 +95,7 @@ class Tools extends ToolsBase
         $tomador = [],
         $intermediario = []
     ) {
-        $this->method = 'ConsultarNfseEnvio';
+        $this->method = 'ConsultarNfse';
         $fact = new Factories\ConsultarNfse($this->certificate);
         $fact->setSignAlgorithm($this->algorithm);
         $message = $fact->render(
@@ -114,7 +114,7 @@ class Tools extends ToolsBase
     
     public function consultarNfseRps($numero, $serie, $tipo)
     {
-        $this->method = 'ConsultarNfseRpsEnvio';
+        $this->method = 'ConsultarNfseRps';
         $fact = new Factories\ConsultarNfseRps($this->certificate);
         $fact->setSignAlgorithm($this->algorithm);
         $message = $fact->render(
@@ -131,7 +131,7 @@ class Tools extends ToolsBase
     
     public function consultarLoteRps($protocolo)
     {
-        $this->method = 'ConsultarLoteRpsEnvio';
+        $this->method = 'ConsultarLoteRps';
         $fact = new Factories\ConsultarLoteRps($this->certificate);
         $fact->setSignAlgorithm($this->algorithm);
         $message = $fact->render(
@@ -146,7 +146,7 @@ class Tools extends ToolsBase
     
     public function consultarSituacaoLoteRps($protocolo)
     {
-        $this->method = 'ConsultarSituacaoLoteRpsEnvio';
+        $this->method = 'ConsultarSituacaoLoteRps';
         $fact = new Factories\ConsultarSituacaoLoteRps($this->certificate);
         $fact->setSignAlgorithm($this->algorithm);
         $message = $fact->render(
