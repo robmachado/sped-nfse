@@ -25,7 +25,7 @@ use NFePHP\NFSe\Common\Rps as RpsBase;
 class Rps extends RpsBase
 {
     const TIPO_RPS = 1;
-    const TIPO_MISTA = 2;
+    const TIPO_MISTO = 2;
     const TIPO_CUPOM = 3;
     
     const STATUS_NORMAL = 1;
@@ -53,7 +53,7 @@ class Rps extends RpsBase
     /**
      * @var array
      */
-    public $infTomador = ['tipo' => '', 'cnpjcpf' => '' , 'im' => '', 'razao' => '', 'email' => ''];
+    public $infTomador = ['tipo' => '', 'cnpjcpf' => '' , 'im' => '', 'razao' => '', 'tel' => '','email' => ''];
     /**
      * @var array
      */
@@ -66,6 +66,14 @@ class Rps extends RpsBase
         'uf' => '',
         'cep' => ''
     ];
+    /**
+     * @var array
+     */
+    public $infIntermediario = ['tipo' => '', 'cnpjcpf' => '' , 'im' => '', 'razao' => ''];
+    /**
+     * @var array
+     */
+    public $infConstrucaoCivil = ['obra' => '', 'art' => ''];
     /**
      * @var int
      */
@@ -82,6 +90,14 @@ class Rps extends RpsBase
      * @var DateTime
      */
     public $infDataEmissao;
+    /**
+     * @var int
+     */
+    public $infNfseSubstituida;
+    /**
+     * @var string
+     */
+    public $infOutrasInformacoes;
     /**
      * @var int
      */
@@ -247,6 +263,23 @@ class Rps extends RpsBase
     }
     
     /**
+     * Set informations of intermediary 
+     * @param string $tipo
+     * @param string $cnpjcpf
+     * @param string $im
+     * @param string $razao
+     */
+    public function intermediario($tipo, $cnpjcpf, $im, $razao)
+    {
+        $this->infIntermediario = [
+            'tipo' => $tipo,
+            'cnpjcpf' => $cnpjcpf,
+            'im' => $im,
+            'razao' => $razao
+        ];
+    }
+    
+    /**
      * Set number of RPS
      * @param int $value
      * @throws InvalidArgumentException
@@ -293,6 +326,33 @@ class Rps extends RpsBase
     public function dataEmissao(DateTime $value)
     {
         $this->infDataEmissao = $value;
+    }
+    
+    /**
+     * Set replaced NFSe
+     * @param int $value
+     * @throws InvalidArgumentException
+     */
+    public function nfseSubstituida($value)
+    {
+        if (!Validator::numeric()->intVal()->validate($value)) {
+            throw new \InvalidArgumentException('NfseSubstituida deve ser numerico.');
+        }
+        $this->infNfseSubstituida = $value;
+    }
+    
+    /**
+     * Set other informations
+     * @param string $value
+     * @throws InvalidArgumentException
+     */
+    public function outrasInformacoes($value = '')
+    {
+        $value = trim($value);
+        if (!Validator::stringType()->length(1, 2000)->validate($value)) {
+            throw new \InvalidArgumentException('OUtras informações com no máximo 255 caracteres.');
+        }
+        $this->infOutrasInformacoes = $value;
     }
     
     /**
@@ -581,8 +641,8 @@ class Rps extends RpsBase
     {
         $value = trim($value);
         if (!Validator::stringType()->length(1, 5)->validate($value)) {
-            throw new \InvalidArgumentException('A sdiscriminação é obrigatória e'
-                    . ' deve ter no máximo 2000 caracteres.');
+            throw new \InvalidArgumentException('O item da lista é obrigatório e'
+                    . ' deve ter no máximo 5 caracteres.');
         }
         $this->infItemListaServico = $value;
     }
@@ -625,13 +685,12 @@ class Rps extends RpsBase
         $this->infDiscriminacao = $value;
     }
     
-    public function codigoObra($value)
+    public function construcaoCivil($codigoObra, $art)
     {
+        $this->infConstrucaoCivil = ['obra' => $codigoObra, 'art' => $art];
     }
     
-    public function numeroART($value)
-    {
-    }
+    
     
     /**
      * Set IBGE county code where service was realized

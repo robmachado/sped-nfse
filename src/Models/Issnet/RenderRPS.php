@@ -140,9 +140,17 @@ class RenderRPS
         );
         self::$dom->addChild(
             $valores,
+            'tc:ValorDeducoes',
+            $rps->infValorDeducoes,
+            false,
+            'ValorDeducoes',
+            false
+        );
+        self::$dom->addChild(
+            $valores,
             'tc:ValorPis',
             $rps->infValorPis,
-            true,
+            false,
             'ValorPis',
             false
         );
@@ -150,7 +158,7 @@ class RenderRPS
             $valores,
             'tc:ValorCofins',
             $rps->infValorCofins,
-            true,
+            false,
             'ValorCofins',
             false
         );
@@ -158,7 +166,7 @@ class RenderRPS
             $valores,
             'tc:ValorInss',
             $rps->infValorInss,
-            true,
+            false,
             'ValorInss',
             false
         );
@@ -166,7 +174,7 @@ class RenderRPS
             $valores,
             'tc:ValorIr',
             $rps->infValorIr,
-            true,
+            false,
             'ValorIr',
             false
         );
@@ -174,7 +182,7 @@ class RenderRPS
             $valores,
             'tc:ValorCsll',
             $rps->infValorCsll,
-            true,
+            false,
             'ValorCsll',
             false
         );
@@ -190,15 +198,31 @@ class RenderRPS
             $valores,
             'tc:ValorIss',
             $rps->infValorIss,
-            true,
+            false,
             'ValorIss',
+            false
+        );
+        self::$dom->addChild(
+            $valores,
+            'tc:ValorIssRetido',
+            $rps->infValorIssRetido,
+            false,
+            'ValorIssRetido',
+            false
+        );
+        self::$dom->addChild(
+            $valores,
+            'tc:OutrasRetencoes',
+            $rps->infOutrasRetencoes,
+            false,
+            'OutrasRetencoes',
             false
         );
         self::$dom->addChild(
             $valores,
             'tc:BaseCalculo',
             $rps->infBaseCalculo,
-            true,
+            false,
             'BaseCalculo',
             false
         );
@@ -206,7 +230,7 @@ class RenderRPS
             $valores,
             'tc:Aliquota',
             $rps->infAliquota,
-            true,
+            false,
             'Aliquota',
             false
         );
@@ -214,7 +238,7 @@ class RenderRPS
             $valores,
             'tc:ValorLiquidoNfse',
             $rps->infValorLiquidoNfse,
-            true,
+            false,
             'ValorLiquidoNfse',
             false
         );
@@ -222,7 +246,7 @@ class RenderRPS
             $valores,
             'tc:DescontoIncondicionado',
             $rps->infDescontoIncondicionado,
-            true,
+            false,
             'DescontoIncondicionado',
             false
         );
@@ -230,7 +254,7 @@ class RenderRPS
             $valores,
             'tc:DescontoCondicionado',
             $rps->infDescontoCondicionado,
-            true,
+            false,
             'DescontoCondicionado',
             false
         );
@@ -401,6 +425,27 @@ class RenderRPS
             false
         );
         self::$dom->appChild($tomador, $endereco, 'Adicionando tag Endereco em Tomador');
+        
+        if ($rps->infTomador['tel'] != '' || $rps->infTomador['email'] != '') {
+            $contato = self::$dom->createElement('tc:Contato');
+            self::$dom->addChild(
+                $contato,
+                'tc:Telefone',
+                $rps->infTomador['tel'],
+                false,
+                'Telefone Tomador',
+                false
+            );
+            self::$dom->addChild(
+                $contato,
+                'tc:Email',
+                $rps->infTomador['email'],
+                false,
+                'Email Tomador',
+                false
+            );
+            self::$dom->appChild($tomador, $contato, 'Adicionando tag Contato em Tomador');
+        }
         self::$dom->appChild($infRPS, $tomador, 'Adicionando tag Tomador em infRPS');
         
         self::$dom->appChild($root, $infRPS, 'Adicionando tag infRPS em RPS');
