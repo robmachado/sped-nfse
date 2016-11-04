@@ -67,7 +67,7 @@ class Rps extends RpsBase
         'cep' => ''
     ];
     /**
-     * @var array 
+     * @var array
      */
     public $infRpsSubstituido = ['numero' => '', 'serie' => '', 'tipo' => ''];
     /**
