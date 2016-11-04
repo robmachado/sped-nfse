@@ -146,7 +146,7 @@ class RenderRPS
                 'tipo',
                 false
             );
-            self::$dom->appChild($infRPS, $rpssubs, 'Adicionando tag RpsSubstituido em infRps');    
+            self::$dom->appChild($infRPS, $rpssubs, 'Adicionando tag RpsSubstituido em infRps');
         }
         
         self::$dom->addChild(
