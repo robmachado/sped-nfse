@@ -67,6 +67,10 @@ class Rps extends RpsBase
         'cep' => ''
     ];
     /**
+     * @var array 
+     */
+    public $infRpsSubstituido = ['numero' => '', 'serie' => '', 'tipo' => ''];
+    /**
      * @var array
      */
     public $infIntermediario = ['tipo' => '', 'cnpjcpf' => '' , 'im' => '', 'razao' => ''];
@@ -90,14 +94,6 @@ class Rps extends RpsBase
      * @var DateTime
      */
     public $infDataEmissao;
-    /**
-     * @var int
-     */
-    public $infNfseSubstituida;
-    /**
-     * @var string
-     */
-    public $infOutrasInformacoes;
     /**
      * @var int
      */
@@ -329,30 +325,19 @@ class Rps extends RpsBase
     }
     
     /**
-     * Set replaced NFSe
-     * @param int $value
+     * Set replaced RPS
+     * @param int $numero
+     * @param string $serie
+     * @param int $tipo
      * @throws InvalidArgumentException
      */
-    public function nfseSubstituida($value)
+    public function rpsSubstituido($numero, $serie, $tipo)
     {
-        if (!Validator::numeric()->intVal()->validate($value)) {
-            throw new \InvalidArgumentException('NfseSubstituida deve ser numerico.');
-        }
-        $this->infNfseSubstituida = $value;
-    }
-    
-    /**
-     * Set other informations
-     * @param string $value
-     * @throws InvalidArgumentException
-     */
-    public function outrasInformacoes($value = '')
-    {
-        $value = trim($value);
-        if (!Validator::stringType()->length(1, 2000)->validate($value)) {
-            throw new \InvalidArgumentException('OUtras informações com no máximo 255 caracteres.');
-        }
-        $this->infOutrasInformacoes = $value;
+        $this->infRpsSubstituido = [
+            'numero' => $numero,
+            'serie' => $serie,
+            'tipo' => $tipo
+        ];
     }
     
     /**
@@ -660,6 +645,11 @@ class Rps extends RpsBase
         $this->infCodigoCnae = $value;
     }
     
+    /**
+     * Set tax code from county
+     * @param string $value
+     * @throws InvalidArgumentException
+     */
     public function codigoTributacaoMunicipio($value)
     {
         $value = trim($value);
@@ -685,12 +675,15 @@ class Rps extends RpsBase
         $this->infDiscriminacao = $value;
     }
     
+    /**
+     * Set constructions information
+     * @param string $codigoObra
+     * @param string $art
+     */
     public function construcaoCivil($codigoObra, $art)
     {
         $this->infConstrucaoCivil = ['obra' => $codigoObra, 'art' => $art];
     }
-    
-    
     
     /**
      * Set IBGE county code where service was realized
