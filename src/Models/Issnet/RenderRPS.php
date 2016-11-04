@@ -119,6 +119,36 @@ class RenderRPS
             'Status',
             false
         );
+        
+        if (!empty($rps->infRpsSubstituido['numero'])) {
+            $rpssubs = self::$dom->createElement('tc:RpsSubstituido');
+            self::$dom->addChild(
+                $rpssubs,
+                'tc:Numero',
+                $rps->infRpsSubstituido['numero'],
+                true,
+                'Numero',
+                false
+            );
+            self::$dom->addChild(
+                $rpssubs,
+                'tc:Serie',
+                $rps->infRpsSubstituido['serie'],
+                true,
+                'Serie',
+                false
+            );
+            self::$dom->addChild(
+                $rpssubs,
+                'tc:Tipo',
+                $rps->infRpsSubstituido['tipo'],
+                true,
+                'tipo',
+                false
+            );
+            self::$dom->appChild($infRPS, $rpssubs, 'Adicionando tag RpsSubstituido em infRps');    
+        }
+        
         self::$dom->addChild(
             $infRPS,
             'tc:RegimeEspecialTributacao',
@@ -127,7 +157,6 @@ class RenderRPS
             'RegimeEspecialTributacao',
             false
         );
-        
         $servico = self::$dom->createElement('tc:Servico');
         $valores = self::$dom->createElement('tc:Valores');
         self::$dom->addChild(
@@ -301,7 +330,7 @@ class RenderRPS
             false
         );
         self::$dom->appChild($infRPS, $servico, 'Adicionando tag Servico');
-        
+
         $prestador = self::$dom->createElement('tc:Prestador');
         $cpfCnpj = self::$dom->createElement('tc:CpfCnpj');
         if ($rps->infPrestador['tipo'] == 2) {
@@ -366,7 +395,6 @@ class RenderRPS
             'RazaoSocial',
             false
         );
-        
         $endereco = self::$dom->createElement('tc:Endereco');
         self::$dom->addChild(
             $endereco,
@@ -447,6 +475,68 @@ class RenderRPS
             self::$dom->appChild($tomador, $contato, 'Adicionando tag Contato em Tomador');
         }
         self::$dom->appChild($infRPS, $tomador, 'Adicionando tag Tomador em infRPS');
+        
+        if (!empty($rps->infIntermediario['razao'])) {
+            $intermediario = self::$dom->createElement('tc:IntermediarioServico');
+            self::$dom->addChild(
+                $intermediario,
+                'tc:RazaoSocial',
+                $rps->infIntermediario['razao'],
+                true,
+                'Razao Intermediario',
+                false
+            );
+            $cpfCnpj = self::$dom->createElement('tc:CpfCnpj');
+            if ($rps->infIntermediario['tipo'] == 2) {
+                self::$dom->addChild(
+                    $cpfCnpj,
+                    'tc:Cnpj',
+                    $rps->infIntermediario['cnpjcpf'],
+                    true,
+                    'CNPJ Intermediario',
+                    false
+                );
+            } elseif ($rps->infIntermediario['tipo'] == 1) {
+                self::$dom->addChild(
+                    $cpfCnpj,
+                    'tc:Cpf',
+                    $rps->infIntermediario['cnpjcpf'],
+                    true,
+                    'CPF Intermediario',
+                    false
+                );
+            }
+            self::$dom->appChild($intermediario, $cpfCnpj, 'Adicionando tag CpfCnpj em Intermediario');
+            self::$dom->addChild(
+                $intermediario,
+                'tc:InscricaoMunicipal',
+                $rps->infIntermediario['im'],
+                false,
+                'IM Intermediario',
+                false
+            );
+            self::$dom->appChild($infRPS, $intermediario, 'Adicionando tag Intermediario em infRPS');
+        }
+        if (!empty($rps->infConstrucaoCivil['obra'])) {
+            $construcao = self::$dom->createElement('tc:ContrucaoCivil');
+            self::$dom->addChild(
+                $construcao,
+                'tc:CodigoObra',
+                $rps->infConstrucaoCivil['obra'],
+                true,
+                'Codigo da Obra',
+                false
+            );
+            self::$dom->addChild(
+                $construcao,
+                'tc:Art',
+                $rps->infConstrucaoCivil['art'],
+                true,
+                'Art da Obra',
+                false
+            );
+            self::$dom->appChild($infRPS, $construcao, 'Adicionando tag Construcao em infRPS');
+        }
         
         self::$dom->appChild($root, $infRPS, 'Adicionando tag infRPS em RPS');
         self::$dom->appendChild($root);
