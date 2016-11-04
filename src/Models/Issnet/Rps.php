@@ -415,7 +415,7 @@ class Rps extends RpsBase
         if (!Validator::numeric()->floatVal()->min(0)->validate($value)) {
             throw new \InvalidArgumentException('Os valores deve ser numericos tipo float.');
         }
-        $this->infValorServicos = $value;
+        $this->infValorServicos = round($value, 2);
     }
     
     /**
@@ -428,7 +428,7 @@ class Rps extends RpsBase
         if (!Validator::numeric()->floatVal()->min(0)->validate($value)) {
             throw new \InvalidArgumentException('Os valores deve ser numericos tipo float.');
         }
-        $this->infOutrasRetencoes = $value;
+        $this->infOutrasRetencoes = round($value, 2);
     }
     
     /**
@@ -441,7 +441,7 @@ class Rps extends RpsBase
         if (!Validator::numeric()->floatVal()->min(0)->validate($value)) {
             throw new \InvalidArgumentException('Os valores deve ser numericos tipo float.');
         }
-        $this->infValorPis = $value;
+        $this->infValorPis = round($value, 2);
     }
     
     /**
@@ -454,7 +454,7 @@ class Rps extends RpsBase
         if (!Validator::numeric()->floatVal()->min(0)->validate($value)) {
             throw new \InvalidArgumentException('Os valores deve ser numericos tipo float.');
         }
-        $this->infValorCofins = $value;
+        $this->infValorCofins = round($value, 2);
     }
     
     /**
@@ -467,7 +467,7 @@ class Rps extends RpsBase
         if (!Validator::numeric()->floatVal()->min(0)->validate($value)) {
             throw new \InvalidArgumentException('Os valores deve ser numericos tipo float.');
         }
-        $this->infValorInss = $value;
+        $this->infValorInss = round($value, 2);
     }
     
     /**
@@ -480,7 +480,7 @@ class Rps extends RpsBase
         if (!Validator::numeric()->floatVal()->min(0)->validate($value)) {
             throw new \InvalidArgumentException('Os valores deve ser numericos tipo float.');
         }
-        $this->infValorIr = $value;
+        $this->infValorIr = round($value, 2);
     }
     
     /**
@@ -493,7 +493,7 @@ class Rps extends RpsBase
         if (!Validator::numeric()->floatVal()->min(0)->validate($value)) {
             throw new \InvalidArgumentException('Os valores deve ser numericos tipo float.');
         }
-        $this->infValorCsll = $value;
+        $this->infValorCsll = round($value, 2);
     }
     
     /**
@@ -519,7 +519,7 @@ class Rps extends RpsBase
         if (!Validator::numeric()->floatVal()->min(0)->validate($value)) {
             throw new \InvalidArgumentException('Os valores deve ser numericos tipo float.');
         }
-        $this->infValorIssRetido = $value;
+        $this->infValorIssRetido = round($value, 2);
     }
     
     /**
@@ -532,7 +532,7 @@ class Rps extends RpsBase
         if (!Validator::numeric()->floatVal()->min(0)->validate($value)) {
             throw new \InvalidArgumentException('Os valores deve ser numericos tipo float.');
         }
-        $this->infValorIss = $value;
+        $this->infValorIss = round($value, 2);
     }
     
     /**
@@ -546,7 +546,7 @@ class Rps extends RpsBase
         if (!Validator::numeric()->floatVal()->min(0)->validate($value)) {
             throw new \InvalidArgumentException('Os valores deve ser numericos tipo float.');
         }
-        $this->infBaseCalculo = $value;
+        $this->infBaseCalculo = round($value, 2);
     }
     
     /**
@@ -559,7 +559,7 @@ class Rps extends RpsBase
         if (!Validator::numeric()->floatVal()->min(0)->validate($value)) {
             throw new \InvalidArgumentException('Os valores deve ser numericos tipo float.');
         }
-        $this->infAliquota = $value;
+        $this->infAliquota = round($value, 4);
     }
     
     /**
@@ -572,7 +572,7 @@ class Rps extends RpsBase
         if (!Validator::numeric()->floatVal()->min(0)->validate($value)) {
             throw new \InvalidArgumentException('Os valores deve ser numericos tipo float.');
         }
-        $this->infValorDeducoes = $value;
+        $this->infValorDeducoes = round($value, 2);
     }
     
     /**
@@ -588,7 +588,7 @@ class Rps extends RpsBase
         if (!Validator::numeric()->floatVal()->min(0)->validate($value)) {
             throw new \InvalidArgumentException('Os valores deve ser numericos tipo float.');
         }
-        $this->infValorLiquidoNfse = $value;
+        $this->infValorLiquidoNfse = round($value, 2);
     }
     
     /**
@@ -601,7 +601,7 @@ class Rps extends RpsBase
         if (!Validator::numeric()->floatVal()->min(0)->validate($value)) {
             throw new \InvalidArgumentException('Os valores deve ser numericos tipo float.');
         }
-        $this->infDescontoIncondicionado = $value;
+        $this->infDescontoIncondicionado = round($value, 2);
     }
     
     /**
@@ -614,7 +614,7 @@ class Rps extends RpsBase
         if (!Validator::numeric()->floatVal()->min(0)->validate($value)) {
             throw new \InvalidArgumentException('Os valores deve ser numericos tipo float.');
         }
-        $this->infDescontoCondicionado = $value;
+        $this->infDescontoCondicionado = round($value, 2);
     }
     
     /**
