@@ -18,6 +18,7 @@ namespace NFePHP\NFSe\Common;
 use NFePHP\Common\Certificate;
 use NFePHP\Common\Soap\SoapInterface;
 use NFePHP\NFSe\Common\EntitiesCharacters;
+use NFePHP\NFSe\Common\DateTime;
 use Psr\Log\LoggerInterface;
 use DOMDocument;
 use stdClass;
@@ -108,10 +109,18 @@ abstract class Tools
      */
     protected $algorithm = OPENSSL_ALGO_SHA1;
     /**
+     * @var \DateTimeZone
+     */
+    protected $timezone;
+    /**
      * Namespaces for soap envelope
      * @var array
      */
     protected $namespaces = [];
+    /**
+     * @var bool
+     */
+    protected $debugsoap = false;
     
     /**
      * Constructor
@@ -131,6 +140,7 @@ abstract class Tools
             $this->remetenteTipoDoc = 2;
         }
         $this->certificate = $certificate;
+        $this->timezone = DateTime::tzdBR($config->siglaUF);
     }
     
     /**
@@ -143,13 +153,26 @@ abstract class Tools
     }
     
     /**
+     * Set debug Soap Mode
+     * @param bool $value
+     */
+    public function setDebugSoapMode($value = false)
+    {
+        $this->debugsoap = $value;
+        if (is_object($this->soap)) {
+            $this->soap->setDebugMode($this->debugsoap);
+        }    
+    }
+    
+    /**
      * Load the chosen soap class
      * @param \NFePHP\Common\Soap\SoapInterface $soap
      */
-    public function setSoapClass(SoapInterface $soap)
+    public function loadSoapClass(SoapInterface $soap)
     {
         $this->soap = $soap;
         $this->soap->loadCertificate($this->certificate);
+        $this->soap->setDebugMode($this->debugsoap);
     }
     
     /**

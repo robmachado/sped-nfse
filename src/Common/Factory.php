@@ -22,10 +22,26 @@ use NFePHP\Common\Validator;
 
 class Factory
 {
+    /**
+     * @var Certificate
+     */
     public $certificate;
+    /**
+     * @var string
+     */
     public $pathSchemes = '';
+    /**
+     * @var string
+     */
     public $xml = '';
-    public $algorithm;
+    /**
+     * @var int
+     */
+    public $algorithm = OPENSSL_ALGO_SHA1;
+    /**
+     * @var \DateTimeZone
+     */
+    public $timezone;
     
     /**
      * Construtor recebe a classe de certificados
@@ -41,6 +57,24 @@ class Factory
     }
     
     /**
+     * Set time Zone as class DateTimeZone based in UF alias
+     * @param \DateTimeZone $timezone
+     */
+    public function setTimezone(\DateTimeZone $timezone)
+    {
+        $this->timezone = $timezone;
+    }
+    
+    /**
+     * Set OPENSSL Algorithm using OPENSSL constants
+     * @param int $algorithm
+     */
+    public function setSignAlgorithm($algorithm = OPENSSL_ALGO_SHA1)
+    {
+        $this->algorithm = $algorithm;
+    }
+    
+    /**
      * Remove os marcadores de XML
      * @param string $body
      * @return string
@@ -51,15 +85,6 @@ class Factory
         $body = str_replace('<?xml version="1.0" encoding="utf-8"?>', '', $body);
         $body = str_replace('<?xml version="1.0"  encoding="UTF-8"?>', '', $body);
         return $body;
-    }
-    
-    /**
-     * Set OPENSSL Algorithm using OPENSSL constants
-     * @param int $algorithm
-     */
-    public function setSignAlgorithm($algorithm = OPENSSL_ALGO_SHA1)
-    {
-        $this->algorithm = $algorithm;
     }
     
     /**
@@ -90,7 +115,7 @@ class Factory
     }
     
     /**
-     * Monta a assinatura
+     * Bild signature tag
      * @param string $content
      * @param string $method
      * @param string $mark

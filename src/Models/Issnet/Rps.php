@@ -28,6 +28,9 @@ class Rps extends RpsBase
     const TIPO_MISTO = 2;
     const TIPO_CUPOM = 3;
     
+    const CPF = 1;
+    const CNPJ = 2;
+    
     const STATUS_NORMAL = 1;
     const STATUS_CANCELADO = 2;
     
@@ -123,7 +126,7 @@ class Rps extends RpsBase
      */
     public $infValorDeducoes;
     /**
-     * float
+     * @var float
      */
     public $infOutrasRetencoes;
     /**
@@ -410,7 +413,7 @@ class Rps extends RpsBase
      * @param float $value
      * @throws InvalidArgumentException
      */
-    public function valorServicos($value)
+    public function valorServicos($value = 0.00)
     {
         if (!Validator::numeric()->floatVal()->min(0)->validate($value)) {
             throw new \InvalidArgumentException('Os valores deve ser numericos tipo float.');
@@ -423,7 +426,7 @@ class Rps extends RpsBase
      * @param float $value
      * @throws InvalidArgumentException
      */
-    public function outrasRetencoes($value)
+    public function outrasRetencoes($value = 0.00)
     {
         if (!Validator::numeric()->floatVal()->min(0)->validate($value)) {
             throw new \InvalidArgumentException('Os valores deve ser numericos tipo float.');
@@ -436,7 +439,7 @@ class Rps extends RpsBase
      * @param float $value
      * @throws InvalidArgumentException
      */
-    public function valorPis($value)
+    public function valorPis($value = 0.00)
     {
         if (!Validator::numeric()->floatVal()->min(0)->validate($value)) {
             throw new \InvalidArgumentException('Os valores deve ser numericos tipo float.');
@@ -449,7 +452,7 @@ class Rps extends RpsBase
      * @param float $value
      * @throws InvalidArgumentException
      */
-    public function valorCofins($value)
+    public function valorCofins($value = 0.00)
     {
         if (!Validator::numeric()->floatVal()->min(0)->validate($value)) {
             throw new \InvalidArgumentException('Os valores deve ser numericos tipo float.');
@@ -462,7 +465,7 @@ class Rps extends RpsBase
      * @param float $value
      * @throws InvalidArgumentException
      */
-    public function valorInss($value)
+    public function valorInss($value = 0.00)
     {
         if (!Validator::numeric()->floatVal()->min(0)->validate($value)) {
             throw new \InvalidArgumentException('Os valores deve ser numericos tipo float.');
@@ -475,7 +478,7 @@ class Rps extends RpsBase
      * @param float $value
      * @throws InvalidArgumentException
      */
-    public function valorIr($value)
+    public function valorIr($value = 0.00)
     {
         if (!Validator::numeric()->floatVal()->min(0)->validate($value)) {
             throw new \InvalidArgumentException('Os valores deve ser numericos tipo float.');
@@ -488,7 +491,7 @@ class Rps extends RpsBase
      * @param float $value
      * @throws InvalidArgumentException
      */
-    public function valorCsll($value)
+    public function valorCsll($value = 0.00)
     {
         if (!Validator::numeric()->floatVal()->min(0)->validate($value)) {
             throw new \InvalidArgumentException('Os valores deve ser numericos tipo float.');
@@ -567,7 +570,7 @@ class Rps extends RpsBase
      * @param float $value
      * @throws InvalidArgumentException
      */
-    public function valorDeducoes($value)
+    public function valorDeducoes($value = 0.00)
     {
         if (!Validator::numeric()->floatVal()->min(0)->validate($value)) {
             throw new \InvalidArgumentException('Os valores deve ser numericos tipo float.');
@@ -583,7 +586,7 @@ class Rps extends RpsBase
      * @param type $value
      * @throws InvalidArgumentException
      */
-    public function valorLiquidoNfse($value)
+    public function valorLiquidoNfse($value = 0.00)
     {
         if (!Validator::numeric()->floatVal()->min(0)->validate($value)) {
             throw new \InvalidArgumentException('Os valores deve ser numericos tipo float.');
@@ -596,7 +599,7 @@ class Rps extends RpsBase
      * @param float $value
      * @throws InvalidArgumentException
      */
-    public function descontoIncondicionado($value)
+    public function descontoIncondicionado($value = 0.00)
     {
         if (!Validator::numeric()->floatVal()->min(0)->validate($value)) {
             throw new \InvalidArgumentException('Os valores deve ser numericos tipo float.');
@@ -609,7 +612,7 @@ class Rps extends RpsBase
      * @param float $value
      * @throws InvalidArgumentException
      */
-    public function descontoCondicionado($value)
+    public function descontoCondicionado($value = 0.00)
     {
         if (!Validator::numeric()->floatVal()->min(0)->validate($value)) {
             throw new \InvalidArgumentException('Os valores deve ser numericos tipo float.');

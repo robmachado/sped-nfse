@@ -27,12 +27,16 @@ class Tools extends ToolsBase
         $this->method = 'CancelarNfse';
         $fact = new Factories\CancelarNfse($this->certificate);
         $fact->setSignAlgorithm($this->algorithm);
+        $cmun = $this->config->cmun;
+        if ($this->config->tpAmb == 2) {
+            $cmun = '999';
+        }
         $message = $fact->render(
             $this->config->versao,
             $this->remetenteTipoDoc,
             $this->remetenteCNPJCPF,
             $this->remetenteIM,
-            $this->config->cmun,
+            $cmun,
             $numero,
             $codigoCancelamento
         );
@@ -77,6 +81,7 @@ class Tools extends ToolsBase
         $this->method = 'RecepcionarLoteRps';
         $fact = new Factories\EnviarLoteRps($this->certificate);
         $fact->setSignAlgorithm($this->algorithm);
+        $fact->setTimezone($this->timezone);
         $message = $fact->render(
             $this->config->versao,
             $this->remetenteTipoDoc,
@@ -85,8 +90,7 @@ class Tools extends ToolsBase
             $lote,
             $rpss
         );
-        return $message;
-        //return $this->sendRequest('', $message);
+        return $this->sendRequest('', $message);
     }
 
     public function consultarNfse(
@@ -178,7 +182,6 @@ class Tools extends ToolsBase
             'xml' => $messageText
         ];
         $action = "\"". $this->xmlns ."/". $this->method ."\"";
-        
         return $this->soap->send(
             $url,
             $this->method,
