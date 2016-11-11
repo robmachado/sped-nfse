@@ -23,7 +23,7 @@ use NFePHP\Common\Certificate;
 class RenderRPS
 {
     /**
-     * @var DOMImproved 
+     * @var DOMImproved
      */
     protected static $dom;
     /**

@@ -161,7 +161,7 @@ abstract class Tools
         $this->debugsoap = $value;
         if (is_object($this->soap)) {
             $this->soap->setDebugMode($this->debugsoap);
-        }    
+        }
     }
     
     /**
