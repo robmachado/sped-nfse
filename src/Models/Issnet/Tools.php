@@ -90,11 +90,6 @@ class Tools extends ToolsBase
             $lote,
             $rpss
         );
-        $dom = new \DOMDocument('1.0', 'UTF-8');
-        $dom->preserveWhiteSpace = false;
-        $dom->formatOutput = true;
-        $dom->loadXML($message);
-        $message = str_replace('<?xml version="1.0"?>', '<?xml version="1.0" encoding="UTF-8"?>', $dom->saveXML());
         return $this->sendRequest('', $message);
     }
 
@@ -156,7 +151,7 @@ class Tools extends ToolsBase
     
     public function consultarSituacaoLoteRps($protocolo)
     {
-        $this->method = 'ConsultarSituacaoLoteRps';
+        $this->method = 'ConsultarSituacaoLoteRPS';
         $fact = new Factories\ConsultarSituacaoLoteRps($this->certificate);
         $fact->setSignAlgorithm($this->algorithm);
         $message = $fact->render(
@@ -176,6 +171,13 @@ class Tools extends ToolsBase
         if (!is_object($this->soap)) {
             $this->soap = new \NFePHP\NFSe\Common\SoapCurl($this->certificate);
         }
+        //formata o xml da mensagem para o padão esperado pelo webservice
+        $dom = new \DOMDocument('1.0', 'UTF-8');
+        $dom->preserveWhiteSpace = false;
+        $dom->formatOutput = true;
+        $dom->loadXML($message);
+        $message = str_replace('<?xml version="1.0"?>', '<?xml version="1.0" encoding="UTF-8"?>', $dom->saveXML());
+        
         $messageText = $message;
         if ($this->withcdata) {
             $messageText = $this->stringTransform($message);
