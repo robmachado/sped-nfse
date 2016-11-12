@@ -90,6 +90,11 @@ class Tools extends ToolsBase
             $lote,
             $rpss
         );
+        $dom = new \DOMDocument('1.0', 'UTF-8');
+        $dom->preserveWhiteSpace = false;
+        $dom->formatOutput = true;
+        $dom->loadXML($message);
+        $message = str_replace('<?xml version="1.0"?>', '<?xml version="1.0" encoding="UTF-8"?>', $dom->saveXML());
         return $this->sendRequest('', $message);
     }
 
@@ -173,14 +178,15 @@ class Tools extends ToolsBase
         }
         $messageText = $message;
         if ($this->withcdata) {
-            $messageText = $this->stringTransform("<?xml version=\"1.0\" encoding=\"UTF-8\"?>".$message);
+            $messageText = $this->stringTransform($message);
         }
         $request = "<". $this->method . " xmlns=\"".$this->xmlns."\">"
             . "<xml>$messageText</xml>"
             . "</". $this->method . ">";
         $params = [
-            'xml' => $messageText
+            'xml' => $message
         ];
+        
         $action = "\"". $this->xmlns ."/". $this->method ."\"";
         return $this->soap->send(
             $url,

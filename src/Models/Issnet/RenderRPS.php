@@ -272,7 +272,7 @@ class RenderRPS
         self::$dom->addChild(
             $valores,
             'tc:Aliquota',
-            $rps->infAliquota,
+            number_format($rps->infAliquota, 2, '.', ''),
             false,
             'Aliquota',
             false

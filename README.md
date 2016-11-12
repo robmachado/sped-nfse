@@ -21,6 +21,11 @@
 
 ###Estamos em busca de *patrocinadores* para financiar parte do desenvolvimento deste pacote, aqueles que estiverem interessados por favor entrem em contato com o autor pelo email linux.rlm@gmail.com 
 
+#PATROCINADORES
+Agradecemos a colaboração e o patrocinio dos colaboradores pois sem eles o desenvolvimento desse projeto seria muito lento a talvés até impossivel.
+
+>Hugo Cegana - *Patrocinador Gold*
+
 #NOTA IMPORTANTE - LEIA COM MUITA ATENÇÃO
 
 ###As prefeituras **mudam de modelo de NFSe e alteram seu layout livremente e até a forma de acesso aos webservices**, isso é um FATO !!
