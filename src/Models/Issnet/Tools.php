@@ -27,12 +27,16 @@ class Tools extends ToolsBase
         $this->method = 'CancelarNfse';
         $fact = new Factories\CancelarNfse($this->certificate);
         $fact->setSignAlgorithm($this->algorithm);
+        $cmun = $this->config->cmun;
+        if ($this->config->tpAmb == 2) {
+            $cmun = '999';
+        }
         $message = $fact->render(
             $this->config->versao,
             $this->remetenteTipoDoc,
             $this->remetenteCNPJCPF,
             $this->remetenteIM,
-            $this->config->cmun,
+            $cmun,
             $numero,
             $codigoCancelamento
         );
@@ -77,6 +81,7 @@ class Tools extends ToolsBase
         $this->method = 'RecepcionarLoteRps';
         $fact = new Factories\EnviarLoteRps($this->certificate);
         $fact->setSignAlgorithm($this->algorithm);
+        $fact->setTimezone($this->timezone);
         $message = $fact->render(
             $this->config->versao,
             $this->remetenteTipoDoc,
@@ -85,8 +90,12 @@ class Tools extends ToolsBase
             $lote,
             $rpss
         );
-        return $message;
-        //return $this->sendRequest('', $message);
+        $dom = new \DOMDocument('1.0', 'UTF-8');
+        $dom->preserveWhiteSpace = false;
+        $dom->formatOutput = true;
+        $dom->loadXML($message);
+        $message = str_replace('<?xml version="1.0"?>', '<?xml version="1.0" encoding="UTF-8"?>', $dom->saveXML());
+        return $this->sendRequest('', $message);
     }
 
     public function consultarNfse(
@@ -169,16 +178,16 @@ class Tools extends ToolsBase
         }
         $messageText = $message;
         if ($this->withcdata) {
-            $messageText = $this->stringTransform("<?xml version=\"1.0\" encoding=\"UTF-8\"?>".$message);
+            $messageText = $this->stringTransform($message);
         }
         $request = "<". $this->method . " xmlns=\"".$this->xmlns."\">"
             . "<xml>$messageText</xml>"
             . "</". $this->method . ">";
         $params = [
-            'xml' => $messageText
+            'xml' => $message
         ];
-        $action = "\"". $this->xmlns ."/". $this->method ."\"";
         
+        $action = "\"". $this->xmlns ."/". $this->method ."\"";
         return $this->soap->send(
             $url,
             $this->method,

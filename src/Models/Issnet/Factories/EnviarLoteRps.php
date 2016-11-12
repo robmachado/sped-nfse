@@ -20,8 +20,8 @@ class EnviarLoteRps extends Factory
         $xsd = 'servico_enviar_lote_rps_envio';
         $qtdRps = count($rpss);
         $content = "<EnviarLoteRpsEnvio "
-                . "xmlns=\"http://www.issnetonline.com.br/webserviceabrasf/vsd/$xsd.xsd\" "
-                . "xmlns:tc=\"http://www.issnetonline.com.br/webserviceabrasf/vsd/tipos_complexos.xsd\">";
+            . "xmlns=\"http://www.issnetonline.com.br/webserviceabrasf/vsd/$xsd.xsd\" "
+            . "xmlns:tc=\"http://www.issnetonline.com.br/webserviceabrasf/vsd/tipos_complexos.xsd\">";
         $content .= "<LoteRps>";
         $content .= "<tc:NumeroLote>$lote</tc:NumeroLote>";
         $content .= "<tc:CpfCnpj>";
@@ -35,7 +35,7 @@ class EnviarLoteRps extends Factory
         $content .= "<tc:QuantidadeRps>$qtdRps</tc:QuantidadeRps>";
         $content .= "<tc:ListaRps>";
         foreach ($rpss as $rps) {
-            $content .= RenderRPS::toXml($rps);
+            $content .= RenderRPS::toXml($rps, $this->timezone, $this->algorithm);
         }
         $content .= "</tc:ListaRps>";
         $content .= "</LoteRps>";

@@ -25,7 +25,6 @@ class Factory extends FactoryBase
         return "<$method "
             . "xmlns=\"http://www.issnetonline.com.br/webserviceabrasf/vsd/$xsd.xsd\" "
             . "xmlns:tc=\"http://www.issnetonline.com.br/webserviceabrasf/vsd/tipos_complexos.xsd\" "
-            . "xmlns:ts=\"http://www.issnetonline.com.br/webserviceabrasf/vsd/tipos_simples.xsd\""
             . ">";
     }
 }

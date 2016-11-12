@@ -25,7 +25,7 @@ class ToolsTest extends NFSeTestCase
     {
         $expected = '';
         $this->dummySoap->method('send')->willReturn($expected);
-        $this->nfse->tools->setSoapClass($this->dummySoap);
+        $this->nfse->tools->loadSoapClass($this->dummySoap);
         //$rps = $this->nfse->rps->
         //$actual = $this->nfse->tools->envioRPS($rps);
         $this->assertTrue(true);
@@ -35,7 +35,7 @@ class ToolsTest extends NFSeTestCase
     {
         $expected = '';
         $this->dummySoap->method('send')->willReturn($expected);
-        $this->nfse->tools->setSoapClass($this->dummySoap);
+        $this->nfse->tools->loadSoapClass($this->dummySoap);
         //$rpss[] = $this->nfse->rps->
         //$rpss[] = $this->nfse->rps->
         //$actual = $this->nfse->tools->envioLoteRPS($rpss);
@@ -46,7 +46,7 @@ class ToolsTest extends NFSeTestCase
     {
         $expected = '';
         $this->dummySoap->method('send')->willReturn($expected);
-        $this->nfse->tools->setSoapClass($this->dummySoap);
+        $this->nfse->tools->loadSoapClass($this->dummySoap);
         //$rpss[] = $this->nfse->rps->
         //$rpss[] = $this->nfse->rps->
         //$actual = $this->nfse->tools->testeEnvioLoteRPS();
@@ -57,7 +57,7 @@ class ToolsTest extends NFSeTestCase
     {
         $expected = file_get_contents($this->fixturesPath."Prodam/response_retornoCancelamentoNFe.xml");
         $this->dummySoap->method('send')->willReturn($expected);
-        $this->nfse->tools->setSoapClass($this->dummySoap);
+        $this->nfse->tools->loadSoapClass($this->dummySoap);
         $prestadorIM = '11111111';
         $numeroNFSe = '9999999999';
         $actual = $this->nfse->tools->cancelamentoNFSe($prestadorIM, $numeroNFSe);
@@ -68,7 +68,7 @@ class ToolsTest extends NFSeTestCase
     {
         $expected = file_get_contents($this->fixturesPath."Prodam/response_consultaNFSeEmitidas.xml");
         $this->dummySoap->method('send')->willReturn($expected);
-        $this->nfse->tools->setSoapClass($this->dummySoap);
+        $this->nfse->tools->loadSoapClass($this->dummySoap);
         $cnpj = '08894935000170';
         $cpf = '';
         $im = '36443573';
@@ -83,7 +83,7 @@ class ToolsTest extends NFSeTestCase
     {
         $expected = file_get_contents($this->fixturesPath."Prodam/response_consultaNFSeRecebidas.xml");
         $this->dummySoap->method('send')->willReturn($expected);
-        $this->nfse->tools->setSoapClass($this->dummySoap);
+        $this->nfse->tools->loadSoapClass($this->dummySoap);
         $cnpj = '08894935000170';
         $cpf = '';
         $im = '36443573';
@@ -98,7 +98,7 @@ class ToolsTest extends NFSeTestCase
     {
         $expected = file_get_contents($this->fixturesPath."Prodam/response_consultaInformacoesLoteErro.xml");
         $this->dummySoap->method('send')->willReturn($expected);
-        $this->nfse->tools->setSoapClass($this->dummySoap);
+        $this->nfse->tools->loadSoapClass($this->dummySoap);
         $im = '36443573';
         $lote = '1';
         $actual = $this->nfse->tools->consultaInformacoesLote($im, $lote);
@@ -109,7 +109,7 @@ class ToolsTest extends NFSeTestCase
     {
         $expected = file_get_contents($this->fixturesPath."Prodam/response_consultaLoteErro.xml");
         $this->dummySoap->method('send')->willReturn($expected);
-        $this->nfse->tools->setSoapClass($this->dummySoap);
+        $this->nfse->tools->loadSoapClass($this->dummySoap);
         $lote = '1';
         $actual = $this->nfse->tools->consultaLote($lote);
         $this->assertEquals($expected, $actual);
@@ -119,7 +119,7 @@ class ToolsTest extends NFSeTestCase
     {
         $expected = file_get_contents($this->fixturesPath."Prodam/response_consultaNFSe.xml");
         $this->dummySoap->method('send')->willReturn($expected);
-        $this->nfse->tools->setSoapClass($this->dummySoap);
+        $this->nfse->tools->loadSoapClass($this->dummySoap);
         $im = '36443573';
         $actual = $this->nfse->tools->consultaNFSe(
             [0=>['prestadorIM'=>$im,'numeroNFSe'=>'577']],
@@ -132,7 +132,7 @@ class ToolsTest extends NFSeTestCase
     {
         $expected = file_get_contents($this->fixturesPath."Prodam/response_consultaCnpj.xml");
         $this->dummySoap->method('send')->willReturn($expected);
-        $this->nfse->tools->setSoapClass($this->dummySoap);
+        $this->nfse->tools->loadSoapClass($this->dummySoap);
         $actual = $this->nfse->tools->consultaCNPJ('08894935000170');
         $this->assertEquals($expected, $actual);
     }

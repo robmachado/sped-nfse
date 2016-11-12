@@ -16,20 +16,34 @@ namespace NFePHP\NFSe\Models\Issnet;
  * @link      http://github.com/nfephp-org/sped-nfse for the canonical source repository
  */
 
-use NFePHP\Common\Dom\Dom;
+use NFePHP\Common\DOMImproved as Dom;
 use NFePHP\NFSe\Models\Issnet\Rps;
 use NFePHP\Common\Certificate;
 
 class RenderRPS
 {
+    /**
+     * @var DOMImproved
+     */
     protected static $dom;
+    /**
+     * @var Certificate
+     */
     protected static $certificate;
+    /**
+     * @var int
+     */
     protected static $algorithm;
+    /**
+     * @var \DateTimeZone
+     */
+    protected static $timezone;
 
-    public static function toXml($data, $algorithm = OPENSSL_ALGO_SHA1)
+    public static function toXml($data, \DateTimeZone $timezone, $algorithm = OPENSSL_ALGO_SHA1)
     {
         //self::$certificate = $certificate;
         self::$algorithm = $algorithm;
+        self::$timezone = $timezone;
         $xml = '';
         if (is_object($data)) {
             return self::render($data);
@@ -78,7 +92,7 @@ class RenderRPS
             true
         );
         self::$dom->appChild($infRPS, $identificacaoRps, 'Adicionando tag IdentificacaoRPS');
-        
+        $rps->infDataEmissao->setTimezone(self::$timezone);
         self::$dom->addChild(
             $infRPS,
             'tc:DataEmissao',
@@ -258,7 +272,7 @@ class RenderRPS
         self::$dom->addChild(
             $valores,
             'tc:Aliquota',
-            $rps->infAliquota,
+            number_format($rps->infAliquota, 2, '.', ''),
             false,
             'Aliquota',
             false
