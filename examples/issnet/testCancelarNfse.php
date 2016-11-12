@@ -16,8 +16,8 @@ $arr = [
     "cnpj" => "99999999999999",
     "cpf" => "",
     "im" => "99999999",
-    "cmun" => "5103403",
-    "siglaUF" => "SP",
+    "cmun" => "5103403", //CUIABA
+    "siglaUF" => "MT",
     "pathNFSeFiles" => "/dados/nfse",
     "proxyConf" => [
         "proxyIp" => "",
@@ -33,10 +33,12 @@ try {
     //com os dados do config e do certificado já obtidos e desconvertidos
     //a sua forma original e só passa-los para a classe 
     $nfse = new NFSe($config, Certificate::readPfx($contentpfx, 'senha'));
-    //Aqui podemos escolher entre usar o SOAP nativo ou o cURL,
-    //em ambos os casos os comandos são os mesmos pois observam
-    //a mesma interface
-    $nfse->tools->setSoapClass(new SoapCurl());
+    //Por ora apenas o SoapCurl funciona com IssNet
+    $nfse->tools->loadSoapClass(new SoapCurl());
+    //caso o mode debug seja ativado serão salvos em arquivos 
+    //a requisicção SOAP e a resposta do webservice na pasta de 
+    //arquivos temporarios do SO em sub pasta denominada "soap"
+    $nfse->tools->setDebugSoapMode(false);
     
     $content = $nfse->tools->cancelarNfse('12345', '5');
     
