@@ -22,7 +22,7 @@
 ###Estamos em busca de *patrocinadores* para financiar parte do desenvolvimento deste pacote, aqueles que estiverem interessados por favor entrem em contato com o autor pelo email linux.rlm@gmail.com 
 
 ##*NOSSOS PATROCINADORES*
-*Agradecemos a colaboração e o patrocinio dos colaboradores pois sem eles o desenvolvimento desse projeto seria muito lento a talvés até impossivel.*
+*Agradecemos a colaboração e o patrocinio, pois sem eles o desenvolvimento desse projeto seria muito mais lento a talvez até impossivel.*
 
 >Hugo Cegana - *Patrocinador Gold*
 
@@ -100,13 +100,14 @@ Existem muitos "padrões" diferentes para a emissão de NFSe, além disso, cada 
 - eISS
 - Elotech
 - Equiplano
+- **ETransparencia - em desenvolvimento**
 - FacilitaISS
 - FGMAISS
 - FINTELISS
 - FISS-LEX
 - Freire
 - GENERATIVA
-- GINFES
+- **GINFES - em desenvolvimento**
 - GLC Consultoria (Sumaré e Monte Mor)
 - Goiânia
 - Governa
@@ -189,7 +190,11 @@ Existem muitos "padrões" diferentes para a emissão de NFSe, além disso, cada 
 - Sorocaba (SP) DSFNET - em desenvolvimento
 - Teresina (PI) DSFNET - em desenvolvimento
 - Uberlandia (MG) DSFNET - em desenvolvimento
-- **Cuiabá (MT) ISSNET - ALPHA-TESTS**
+- **Cuiabá (MT) ISSNET - BETA-TESTS**
+- São José dos Campos (SP) GINFESv3 - em desenvolvimento
+- Limeira (SP) ETransparencia
+- Itatiba (SP) Somente TXT
+
 
 
 ##Install
