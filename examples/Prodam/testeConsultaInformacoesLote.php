@@ -78,7 +78,11 @@ try {
     //Aqui podemos escolher entre usar o SOAP nativo ou o cURL,
     //em ambos os casos os comandos são os mesmos pois observam
     //a mesma interface
-    $nfse->tools->setSoapClass(new SoapNative());
+    $nfse->tools->loadSoapClass(new SoapNative());
+    //caso o mode debug seja ativado serão salvos em arquivos 
+    //a requisicção SOAP e a resposta do webservice na pasta de 
+    //arquivos temporarios do SO em sub pasta denominada "soap"
+    $nfse->tools->setDebugSoapMode(false);
     
     //abaixo esta a chamada do método que consulta as informações do lote
     //enviado por um emitente autorizado, os dados devem ser fornecidos 
