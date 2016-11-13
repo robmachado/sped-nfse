@@ -78,7 +78,12 @@ try {
     //Aqui podemos escolher entre usar o SOAP nativo ou o cURL,
     //em ambos os casos os comandos são os mesmos pois observam
     //a mesma interface
-    $nfse->tools->setSoapClass(new SoapCurl());
+    $nfse->tools->loadSoapClass(new SoapNative());
+    //caso o mode debug seja ativado serão salvos em arquivos 
+    //a requisicção SOAP e a resposta do webservice na pasta de 
+    //arquivos temporarios do SO em sub pasta denominada "soap"
+    $nfse->tools->setDebugSoapMode(false);
+
     
     //aqui está o comando para a consulta do CNPJ no modelo PRODAM, São Paulo
     //para cada modelo os métodos poderão nem existir ou possuir nomes diferentes
