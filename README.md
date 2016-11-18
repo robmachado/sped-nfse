@@ -190,12 +190,43 @@ Existem muitos "padrões" diferentes para a emissão de NFSe, além disso, cada 
 - Sorocaba (SP) DSFNET - em desenvolvimento
 - Teresina (PI) DSFNET - em desenvolvimento
 - Uberlandia (MG) DSFNET - em desenvolvimento
-- **Cuiabá (MT) ISSNET - BETA-TESTS**
 - São José dos Campos (SP) GINFESv3 - em desenvolvimento
 - Limeira (SP) ETransparencia
 - Itatiba (SP) Somente TXT
 
-
+###ISSNET (BETA-TESTS)
+- **Alta Floresta (MT) Nota: incompleto falta URL de produção**
+- **Anapolis (GO) Nota: incompleto falta URL de produção**
+- **Andradina (SP) Nota: incompleto falta URL de produção**
+- **Aparecida de Goiania (GO) Nota: incompleto falta URL de produção**
+- **Aparecida (SP) Nota: incompleto falta URL de produção**
+- **Araguaína (TO) Nota: incompleto falta URL de produção**
+- **Bonito (MS) Nota: incompleto falta URL de produção**
+- **Cascavel (PR) Nota: incompleto falta URL de produção**
+- **Cruz Alta (RS) Nota: incompleto falta URL de produção**
+- **Cuiaba (MT)**
+- **Dourados (MT) Nota: incompleto falta URL de produção**
+- **Itapetininga (SP) Nota: incompleto falta URL de produção**
+- **Jacareí (SP) Nota: incompleto falta URL de produção**
+- **Jaguariuna (SP) Nota: incompleto falta URL de produção**
+- **Juara (MT) Nota: incompleto falta URL de produção**
+- **Lorena (SP) Nota: incompleto falta URL de produção**
+- **Mantena (MG) Nota: incompleto falta URL de produção**
+- **Mogi das Cruzes (SP) Nota: incompleto falta URL de produção**
+- **Naviraí (MS) Nota: incompleto falta URL de produção**
+- **Nobres (MT) Nota: incompleto falta URL de produção**
+- **Nova Alvorada do Sul (MS) Nota: incompleto falta URL de produção**
+- **Nova Olimpia (MT) Nota: incompleto falta URL de produção**
+- **Novo Hamburgo (RS) Nota: incompleto falta URL de produção**
+- **Praia Grande (SP) Nota: incompleto falta URL de produção**
+- **Rio Brilhante (MS) Nota: incompleto falta URL de produção**
+- **Santa Maria (RS) Nota: incompleto falta URL de produção**
+- **São Vicente (SP) Nota: incompleto falta URL de produção**
+- **Serrana (SP) Nota: incompleto falta URL de produção**
+- **Sidrolândia (MS) Nota: incompleto falta URL de produção**
+- **Sorriso (MT) Nota: incompleto falta URL de produção**
+- **Três Corações (MG) Nota: incompleto falta URL de produção**	
+- **Várzea Grande (MT) Nota: incompleto falta URL de produção**
 
 ##Install
 
