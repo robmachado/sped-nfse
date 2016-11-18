@@ -26,6 +26,8 @@
 
 >Hugo Cegana - *Patrocinador Gold*
 
+>Geraldo Raimundo - *Patrocinador Gold*
+
 #NOTA IMPORTANTE - LEIA COM MUITA ATENÇÃO
 
 ###As prefeituras **mudam de modelo de NFSe e alteram seu layout livremente e até a forma de acesso aos webservices**, isso é um FATO !!
