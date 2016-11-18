@@ -74,7 +74,7 @@ A emissão de NFSe depende de prévio cadastramento do emissor e da disponibilid
 Existem muitos "padrões" diferentes para a emissão de NFSe, além disso, cada prefeitura pode fazer alterações no "padrão" escolhido, por isso, cada Prefeitura autorizadora deverá ser claramente identificada para que os códigos corretos sejam utilizados nas chamadas do framework. Isso eleva muito a complexidade desta API, e consequentemente sua manutenção.
 
 - Ábaco
-- **ABRASF - em desenvolvimento**
+- ABRASF
 - Ágili
 - ArrecadaNet
 - Assessor Público
@@ -102,14 +102,14 @@ Existem muitos "padrões" diferentes para a emissão de NFSe, além disso, cada 
 - eISS
 - Elotech
 - Equiplano
-- **ETransparencia - em desenvolvimento**
+- ETransparencia
 - FacilitaISS
 - FGMAISS
 - FINTELISS
 - FISS-LEX
 - Freire
 - GENERATIVA
-- **GINFES - em desenvolvimento**
+- GINFES
 - GLC Consultoria (Sumaré e Monte Mor)
 - Goiânia
 - Governa
@@ -128,7 +128,7 @@ Existem muitos "padrões" diferentes para a emissão de NFSe, além disso, cada 
 - ISS Simples SPCONSIG
 - ISS4R
 - ISSE
-- **ISSNET - ALPHA-TESTS**
+- **ISSNET - BETA-TESTS**
 - ISSNFe On-line
 - ISSWEB Camaçari
 - ISSWEB Fiorilli
@@ -178,57 +178,61 @@ Existem muitos "padrões" diferentes para a emissão de NFSe, além disso, cada 
 - Tinus Upload
 - TIPLAN
 - Tributos Municipais
-- WEB ISS
+- WEBISS
 
 ##Municipios atendidos pelo Framework
 
-- **São Paulo (SP) PRODAM - BETA-TESTS**
-- Salvador (BA) ABRASF (modificado) - em desenvolvimento
-- Rio de Janeiro (RJ) ABRASF (modificado) - em desenvolvimento
-- Campinas (SP) DSFNET - em desenvolvimento
-- **São Luis (MA) DSFNET - ALPHA-TESTS**
-- Belem (PA) DSFNET - em desenvolvimento
-- Campo Grande (MS) DSFNET - em desenvolvimento
-- Sorocaba (SP) DSFNET - em desenvolvimento
-- Teresina (PI) DSFNET - em desenvolvimento
-- Uberlandia (MG) DSFNET - em desenvolvimento
-- São José dos Campos (SP) GINFESv3 - em desenvolvimento
+###Em estudo 
+- Salvador (BA) ABRASF (modificado)
+- Rio de Janeiro (RJ) ABRASF (modificado)
+- São José dos Campos (SP) GINFESv3
 - Limeira (SP) ETransparencia
-- Itatiba (SP) Somente TXT
+
+###DSFNET (ALPHA-TESTS)
+- Campinas (SP)
+- São Luis (MA)
+- Belem (PA)
+- Campo Grande
+- Sorocaba (SP)
+- Teresina (PI)
+- Uberlandia (MG)
 
 ###ISSNET (BETA-TESTS)
-- **Alta Floresta (MT) Nota: incompleto falta URL de produção**
-- **Anapolis (GO) Nota: incompleto falta URL de produção**
-- **Andradina (SP) Nota: incompleto falta URL de produção**
-- **Aparecida de Goiania (GO) Nota: incompleto falta URL de produção**
-- **Aparecida (SP) Nota: incompleto falta URL de produção**
-- **Araguaína (TO) Nota: incompleto falta URL de produção**
-- **Bonito (MS) Nota: incompleto falta URL de produção**
-- **Cascavel (PR) Nota: incompleto falta URL de produção**
-- **Cruz Alta (RS) Nota: incompleto falta URL de produção**
-- **Cuiaba (MT)**
-- **Dourados (MT) Nota: incompleto falta URL de produção**
-- **Itapetininga (SP) Nota: incompleto falta URL de produção**
-- **Jacareí (SP) Nota: incompleto falta URL de produção**
-- **Jaguariuna (SP) Nota: incompleto falta URL de produção**
-- **Juara (MT) Nota: incompleto falta URL de produção**
-- **Lorena (SP) Nota: incompleto falta URL de produção**
-- **Mantena (MG) Nota: incompleto falta URL de produção**
-- **Mogi das Cruzes (SP) Nota: incompleto falta URL de produção**
-- **Naviraí (MS) Nota: incompleto falta URL de produção**
-- **Nobres (MT) Nota: incompleto falta URL de produção**
-- **Nova Alvorada do Sul (MS) Nota: incompleto falta URL de produção**
-- **Nova Olimpia (MT) Nota: incompleto falta URL de produção**
-- **Novo Hamburgo (RS) Nota: incompleto falta URL de produção**
-- **Praia Grande (SP) Nota: incompleto falta URL de produção**
-- **Rio Brilhante (MS) Nota: incompleto falta URL de produção**
-- **Santa Maria (RS) Nota: incompleto falta URL de produção**
-- **São Vicente (SP) Nota: incompleto falta URL de produção**
-- **Serrana (SP) Nota: incompleto falta URL de produção**
-- **Sidrolândia (MS) Nota: incompleto falta URL de produção**
-- **Sorriso (MT) Nota: incompleto falta URL de produção**
-- **Três Corações (MG) Nota: incompleto falta URL de produção**	
-- **Várzea Grande (MT) Nota: incompleto falta URL de produção**
+- Alta Floresta (MT) Nota: incompleto falta URL de produção
+- Anapolis (GO) Nota: incompleto falta URL de produção
+- Andradina (SP) Nota: incompleto falta URL de produção
+- Aparecida de Goiania (GO) Nota: incompleto falta URL de produção
+- Aparecida (SP) Nota: incompleto falta URL de produção
+- Araguaína (TO) Nota: incompleto falta URL de produção
+- Bonito (MS) Nota: incompleto falta URL de produção
+- Cascavel (PR) Nota: incompleto falta URL de produção
+- Cruz Alta (RS) Nota: incompleto falta URL de produção
+- Cuiaba (MT)
+- Dourados (MT) Nota: incompleto falta URL de produção
+- Itapetininga (SP) Nota: incompleto falta URL de produção
+- Jacareí (SP) Nota: incompleto falta URL de produção
+- Jaguariuna (SP) Nota: incompleto falta URL de produção
+- Juara (MT) Nota: incompleto falta URL de produção
+- Lorena (SP) Nota: incompleto falta URL de produção
+- Mantena (MG) Nota: incompleto falta URL de produção
+- Mogi das Cruzes (SP) Nota: incompleto falta URL de produção
+- Naviraí (MS) Nota: incompleto falta URL de produção
+- Nobres (MT) Nota: incompleto falta URL de produção
+- Nova Alvorada do Sul (MS) Nota: incompleto falta URL de produção
+- Nova Olimpia (MT) Nota: incompleto falta URL de produção
+- Novo Hamburgo (RS) Nota: incompleto falta URL de produção
+- Praia Grande (SP) Nota: incompleto falta URL de produção
+- Rio Brilhante (MS) Nota: incompleto falta URL de produção
+- Santa Maria (RS) Nota: incompleto falta URL de produção
+- São Vicente (SP) Nota: incompleto falta URL de produção
+- Serrana (SP) Nota: incompleto falta URL de produção
+- Sidrolândia (MS) Nota: incompleto falta URL de produção
+- Sorriso (MT) Nota: incompleto falta URL de produção
+- Três Corações (MG) Nota: incompleto falta URL de produção	
+- Várzea Grande (MT) Nota: incompleto falta URL de produção
+
+###PRODAM (BETA-TESTS)
+- São Paulo (SP) Nota: não tem ambiente de testes
 
 ##Install
 
