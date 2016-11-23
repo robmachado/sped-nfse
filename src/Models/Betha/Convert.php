@@ -3,9 +3,8 @@ namespace NFePHP\NFSe\Models\Betha;
 
 /**
  * Classe para a conversão do TXT dos RPS
- * para o Objeto RPS no modelo Betha
- * Nota: Betha extende Abasf
- *
+ * para o Objeto RPS no modelo BETHA
+ * Nota: BETHA extende ABRASF
  *
  * @category  NFePHP
  * @package   NFePHP\NFSe\Models\Betha\Convert

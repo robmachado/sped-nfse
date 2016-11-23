@@ -1,14 +1,13 @@
 <?php
 
-namespace NFePHP\NFSe\Models\Betha;
+namespace NFePHP\NFSe\Models\Ginfes;
 
 /**
- * Classe para a comunicação com os webservices
- * conforme o modelo BETHA
- * NOTA: BETHA extende ABRASF
+ * Classe para a renderização do XML dos RPS
+ * para o Objeto RPS no modelo GINFES
  *
  * @category  NFePHP
- * @package   NFePHP\NFSe\Models\Betha\Tools
+ * @package   NFePHP\NFSe\Ginfes\RenderRps
  * @copyright NFePHP Copyright (c) 2016
  * @license   http://www.gnu.org/licenses/lgpl.txt LGPLv3+
  * @license   https://opensource.org/licenses/MIT MIT
@@ -17,9 +16,11 @@ namespace NFePHP\NFSe\Models\Betha;
  * @link      http://github.com/nfephp-org/sped-nfse for the canonical source repository
  */
 
-use NFePHP\NFSe\Models\Abrasf\Tools as ToolsAbrasf;
+use NFePHP\Common\DOMImproved as Dom;
+use NFePHP\NFSe\Models\Ginfes\Rps;
+use NFePHP\Common\Certificate;
 
-class Tools extends ToolsAbrasf
+class ResnderRps
 {
     
 }

@@ -16,7 +16,7 @@ namespace NFePHP\NFSe\Models\Dsfnet;
  * @link      http://github.com/nfephp-org/sped-nfse for the canonical source repository
  */
 
-use NFePHP\Common\Dom\Dom;
+use NFePHP\Common\DOMImproved as Dom;
 use NFePHP\NFSe\Models\Dsfnet\Rps;
 use NFePHP\Common\Certificate;
 
