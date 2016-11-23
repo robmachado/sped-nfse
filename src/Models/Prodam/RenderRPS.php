@@ -16,7 +16,7 @@ namespace NFePHP\NFSe\Models\Prodam;
  * @link      http://github.com/nfephp-org/sped-nfse for the canonical source repository
  */
 
-use NFePHP\Common\Dom\Dom;
+use NFePHP\Common\DOMImproved as Dom;
 use NFePHP\Common\Certificate;
 use NFePHP\NFSe\Models\Prodam\Rps;
 

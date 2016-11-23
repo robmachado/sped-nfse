@@ -7,7 +7,7 @@ namespace NFePHP\NFSe\Models\Prodam;
  * para o Objeto RPS no modelo PRODAM
  *
  * @category  NFePHP
- * @package   NFePHP\NFSe\Prodam\Convert
+ * @package   NFePHP\NFSe\Models\Prodam\Convert
  * @copyright NFePHP Copyright (c) 2016
  * @license   http://www.gnu.org/licenses/lgpl.txt LGPLv3+
  * @license   https://opensource.org/licenses/MIT MIT

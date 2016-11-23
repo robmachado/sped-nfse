@@ -7,7 +7,7 @@ namespace NFePHP\NFSe\Models\Abrasf;
  * para o Objeto RPS no modelo ABRASF 2.03
  *
  * @category  NFePHP
- * @package   NFePHP\NFSe\Abrasf\RenderRps
+ * @package   NFePHP\NFSe\Models\Abrasf\RenderRps
  * @copyright NFePHP Copyright (c) 2016
  * @license   http://www.gnu.org/licenses/lgpl.txt LGPLv3+
  * @license   https://opensource.org/licenses/MIT MIT
@@ -20,7 +20,7 @@ use NFePHP\Common\DOMImproved as Dom;
 use NFePHP\NFSe\Models\Abrasf\Rps;
 use NFePHP\Common\Certificate;
 
-class ResnderRps
+class RenderRps
 {
     
 }

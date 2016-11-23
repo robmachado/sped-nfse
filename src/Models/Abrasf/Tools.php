@@ -7,7 +7,7 @@ namespace NFePHP\NFSe\Models\Abrasf;
  * conforme o modelo ABRASF 2.03
  *
  * @category  NFePHP
- * @package   NFePHP\NFSe\Abrasf\Tools
+ * @package   NFePHP\NFSe\Models\Abrasf\Tools
  * @copyright NFePHP Copyright (c) 2016
  * @license   http://www.gnu.org/licenses/lgpl.txt LGPLv3+
  * @license   https://opensource.org/licenses/MIT MIT

@@ -25,7 +25,7 @@
     ],
     "require": {
         "php" : "~5.6|~7.0",
-        "nfephp-org/sped-common" : "dev-develop",
+        "nfephp-org/sped-common" : "v5.0.x-dev",
         "psr/log": "^1.0",
         "respect/validation": "^1.1"
     },
