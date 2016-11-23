@@ -5,7 +5,7 @@ namespace NFePHP\NFSe\Models\Betha;
 /**
  * Classe para extração dos dados retornados pelos webservices
  * conforme o modelo BETHA
- * NOTA: O padrão BETHA extende o modelo ABRASF
+ * NOTA: BETHA extende ABRASF
  *
  * @category  NFePHP
  * @package   NFePHP\NFSe\Models\Betha\Response

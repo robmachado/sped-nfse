@@ -3,12 +3,12 @@
 namespace NFePHP\NFSe\Models\Betha;
 
 /**
- * Classe para a comunicação com os webservices
- * conforme o modelo BETHA
- * NOTA: BETHA extende ABRASF
+ * Classe para a conversão do TXT dos RPS
+ * para o Objeto RPS no modelo BETHA
+ * Nota: BETHA extende ABRASF
  *
  * @category  NFePHP
- * @package   NFePHP\NFSe\Models\Betha\Tools
+ * @package   NFePHP\NFSe\Models\Betha\RenderRps
  * @copyright NFePHP Copyright (c) 2016
  * @license   http://www.gnu.org/licenses/lgpl.txt LGPLv3+
  * @license   https://opensource.org/licenses/MIT MIT
@@ -17,9 +17,9 @@ namespace NFePHP\NFSe\Models\Betha;
  * @link      http://github.com/nfephp-org/sped-nfse for the canonical source repository
  */
 
-use NFePHP\NFSe\Models\Abrasf\Tools as ToolsAbrasf;
+use NFePHP\NFSe\Models\Abrasf\RenderRps as RenderBase;
 
-class Tools extends ToolsAbrasf
+class ResnderRps extends RenderBase
 {
     
 }
