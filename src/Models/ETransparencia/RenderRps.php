@@ -1,13 +1,13 @@
 <?php
 
-namespace NFePHP\NFSe\Models\Ginfes;
+namespace NFePHP\NFSe\Models\ETransparencia;
 
 /**
  * Classe para a renderização do XML dos RPS
- * para o Objeto RPS no modelo GINFES
+ * para o Objeto RPS no modelo ETransparencia
  *
  * @category  NFePHP
- * @package   NFePHP\NFSe\Ginfes\RenderRps
+ * @package   NFePHP\NFSe\Models\ETransparencia\RenderRps
  * @copyright NFePHP Copyright (c) 2016
  * @license   http://www.gnu.org/licenses/lgpl.txt LGPLv3+
  * @license   https://opensource.org/licenses/MIT MIT
@@ -17,10 +17,10 @@ namespace NFePHP\NFSe\Models\Ginfes;
  */
 
 use NFePHP\Common\DOMImproved as Dom;
-use NFePHP\NFSe\Models\Ginfes\Rps;
+use NFePHP\NFSe\Models\ETransparencia\Rps;
 use NFePHP\Common\Certificate;
 
-class ResnderRps
+class RenderRps
 {
     
 }

@@ -7,7 +7,7 @@ namespace NFePHP\NFSe\Models\Dsfnet;
  * conforme o modelo DSFNET
  *
  * @category  NFePHP
- * @package   NFePHP\NFSe\Dsfnet\Response
+ * @package   NFePHP\NFSe\Models\Dsfnet\Response
  * @copyright NFePHP Copyright (c) 2016
  * @license   http://www.gnu.org/licenses/lgpl.txt LGPLv3+
  * @license   https://opensource.org/licenses/MIT MIT

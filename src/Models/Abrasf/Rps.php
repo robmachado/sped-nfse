@@ -8,7 +8,7 @@ namespace NFePHP\NFSe\Models\Abrasf;
  *  - O modelo ABRASF tem multiplas versões em uso, por vários municipos
  *
  * @category  NFePHP
- * @package   NFePHP\NFSe\Abrasf\Rps
+ * @package   NFePHP\NFSe\Models\Abrasf\Rps
  * @copyright NFePHP Copyright (c) 2016
  * @license   http://www.gnu.org/licenses/lgpl.txt LGPLv3+
  * @license   https://opensource.org/licenses/MIT MIT

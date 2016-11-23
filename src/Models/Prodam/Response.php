@@ -7,7 +7,7 @@ namespace NFePHP\NFSe\Models\Prodam;
  * conforme o modelo Prodam
  *
  * @category  NFePHP
- * @package   NFePHP\NFSe\Prodam\Response
+ * @package   NFePHP\NFSe\Models\Prodam\Response
  * @copyright NFePHP Copyright (c) 2016
  * @license   http://www.gnu.org/licenses/lgpl.txt LGPLv3+
  * @license   https://opensource.org/licenses/MIT MIT
