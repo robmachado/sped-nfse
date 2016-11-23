@@ -4,10 +4,9 @@ namespace NFePHP\NFSe\Models\Ginfes;
 /**
  * Classe para a conversão do TXT dos RPS
  * para o Objeto RPS no modelo GINFES
- * NOTA: O padrão GINFES extende o modelo ABRASF
  *
  * @category  NFePHP
- * @package   NFePHP\NFSe\Ginfes\Convert
+ * @package   NFePHP\NFSe\Models\Ginfes\Convert
  * @copyright NFePHP Copyright (c) 2016
  * @license   http://www.gnu.org/licenses/lgpl.txt LGPLv3+
  * @license   https://opensource.org/licenses/MIT MIT
@@ -16,9 +15,11 @@ namespace NFePHP\NFSe\Models\Ginfes;
  * @link      http://github.com/nfephp-org/sped-nfse for the canonical source repository
  */
 
-use NFePHP\NFSe\Models\Abrasf\Convert as ConvertAbrasf;
+use InvalidArgumentException;
+use NFePHP\Common\Strings\Strings;
+use NFePHP\NFSe\Models\Ginfes\Rps;
 
-class Convert extends CobvertAbrasf
+class Convert
 {
     
 }

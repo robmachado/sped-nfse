@@ -4,7 +4,7 @@ namespace NFePHP\NFSe\Models\Abrasf;
 
 /**
  * Classe para a comunicação com os webservices
- * conforme o modelo ABRASF
+ * conforme o modelo ABRASF 2.03
  *
  * @category  NFePHP
  * @package   NFePHP\NFSe\Abrasf\Tools
@@ -22,5 +22,47 @@ use NFePHP\NFSe\Commob\Tools as ToolsBase;
 
 class Tools extends ToolsBase
 {
+    public function cancelarNfse()
+    {
+    }
     
+    public function consultarLoteRps()
+    {
+    }
+    
+    public function consultarNfsePorFaixa()
+    {
+    }
+    
+    public function consultarNfsePorRps()
+    {
+    }
+    
+    public function consultarNfseServicoPrestado()
+    {
+    }
+    
+    public function consultarNfseServicoTomado()
+    {
+    }
+    
+    public function gerarNfse()
+    {
+    }
+    
+    public function recepcionarLoteRps()
+    {
+    }
+    
+    public function recepcionarLoteRpsSincrono()
+    {
+    }
+    
+    public function substituirNfse()
+    {
+    }
+    
+    protected function sendRequest($url, $message)
+    {
+    }
 }

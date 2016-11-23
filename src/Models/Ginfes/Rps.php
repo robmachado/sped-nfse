@@ -5,10 +5,9 @@ namespace NFePHP\NFSe\Models\Ginfes;
 /**
  * Classe a construção do xml dos RPS
  * para o modelo GINFES
- * NOTA: O padrão GINFES extende o modelo ABRASF
  *
  * @category  NFePHP
- * @package   NFePHP\NFSe\Ginfes\Rps
+ * @package   NFePHP\NFSe\Models\Ginfes\Rps
  * @copyright NFePHP Copyright (c) 2016
  * @license   http://www.gnu.org/licenses/lgpl.txt LGPLv3+
  * @license   https://opensource.org/licenses/MIT MIT
@@ -17,9 +16,13 @@ namespace NFePHP\NFSe\Models\Ginfes;
  * @link      http://github.com/nfephp-org/sped-nfse for the canonical source repository
  */
 
-use NFePHP\NFSe\Models\Abrasf\Rps as RpsAbrasf;
+use DateTime;
+use InvalidArgumentException;
+use Respect\Validation\Validator;
+use NFePHP\Common\Strings\Strings;
+use NFePHP\NFSe\Common\Rps as RpsBase;
 
-class Rps extends RpsAbrasf
+class Rps extends RpsBase
 {
     
 }

@@ -3,7 +3,7 @@
 namespace NFePHP\NFSe\Models\Abrasf;
 
 /**
- * Classe a construção do xml dos RPS para o modelo ABRASF
+ * Classe a construção do xml dos RPS para o modelo ABRASF 2.03
  * ATENÇÃO:
  *  - O modelo ABRASF tem multiplas versões em uso, por vários municipos
  *
@@ -17,9 +17,11 @@ namespace NFePHP\NFSe\Models\Abrasf;
  * @link      http://github.com/nfephp-org/sped-nfse for the canonical source repository
  */
 
+use DateTime;
 use InvalidArgumentException;
+use Respect\Validation\Validator;
 use NFePHP\Common\Strings\Strings;
-use NFePHP\NFSe\Common\Rps as RspBase;
+use NFePHP\NFSe\Common\Rps as RpsBase;
 
 class Rps extends RpsBase
 {

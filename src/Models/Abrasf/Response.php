@@ -4,7 +4,7 @@ namespace NFePHP\NFSe\Models\Abrasf;
 
 /**
  * Classe para extração dos dados retornados pelos webservices
- * conforme o modelo Abrasf
+ * conforme o modelo ABRASF 2.03
  *
  * @category  NFePHP
  * @package   NFePHP\NFSe\Abrasf\Response
