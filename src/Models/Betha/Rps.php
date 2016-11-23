@@ -1,12 +1,14 @@
 <?php
-namespace NFePHP\NFSe\Models\Abrasf;
+
+namespace NFePHP\NFSe\Models\Betha;
 
 /**
- * Classe para a conversão do TXT dos RPS
- * para o Objeto RPS no modelo ABRASF 2.03
+ * Classe a construção do xml dos RPS
+ * para o modelo BETHA
+ * NOTA: O padrão BETHA extende o modelo ABRASF
  *
  * @category  NFePHP
- * @package   NFePHP\NFSe\Abrasf\Convert
+ * @package   NFePHP\NFSe\Models\Betha\Rps
  * @copyright NFePHP Copyright (c) 2016
  * @license   http://www.gnu.org/licenses/lgpl.txt LGPLv3+
  * @license   https://opensource.org/licenses/MIT MIT
@@ -15,11 +17,9 @@ namespace NFePHP\NFSe\Models\Abrasf;
  * @link      http://github.com/nfephp-org/sped-nfse for the canonical source repository
  */
 
-use InvalidArgumentException;
-use NFePHP\Common\Strings\Strings;
-use NFePHP\NFSe\Models\Abrasf\Rps;
+use NFePHP\NFSe\Models\Abrasf\Rps as RpsAbrasf;
 
-class Convert
+class Rps extends RpsAbrasf
 {
     
 }

@@ -5,10 +5,9 @@ namespace NFePHP\NFSe\Models\Ginfes;
 /**
  * Classe para a comunicação com os webservices
  * conforme o modelo GINFES
- * NOTA: O padrão GINFES extende o modelo ABRASF
  *
  * @category  NFePHP
- * @package   NFePHP\NFSe\Ginfes\Tools
+ * @package   NFePHP\NFSe\Models\Ginfes\Tools
  * @copyright NFePHP Copyright (c) 2016
  * @license   http://www.gnu.org/licenses/lgpl.txt LGPLv3+
  * @license   https://opensource.org/licenses/MIT MIT
@@ -17,9 +16,53 @@ namespace NFePHP\NFSe\Models\Ginfes;
  * @link      http://github.com/nfephp-org/sped-nfse for the canonical source repository
  */
 
-use NFePHP\NFSe\Models\Abrasf\Tools as ToolsAbrasf;
+use NFePHP\NFSe\Models\Ginfes\Rps;
+use NFePHP\NFSe\Models\Ginfes\Factories;
+use NFePHP\NFSe\Commob\Tools as ToolsBase;
 
-class Tools extends ToolsAbrasf
+class Tools extends ToolsBase
 {
+    public function cancelarNfse()
+    {
+    }
     
+    public function cancelarNfseV3()
+    {
+    }
+    
+    public function consultarLoteRps()
+    {
+    }
+
+    public function consultarLoteRpsV3()
+    {
+    }
+    
+    public function consultarNfsePorRps()
+    {
+    }
+    
+    public function consultarNfsePorRpsV3()
+    {
+    }
+    
+    public function consultarSituacaoLoteRps()
+    {
+    }
+    
+    public function consultarSituacaoLoteRpsV3()
+    {
+    }
+    
+    public function recepcionarLoteRps()
+    {
+    }
+    
+    public function recepcionarLoteRpsV3()
+    {
+    }
+    
+    protected function sendRequest($url, $message)
+    {
+    }
 }
