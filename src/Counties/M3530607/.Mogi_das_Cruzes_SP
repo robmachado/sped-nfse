@@ -1,9 +1,8 @@
 Mogi_das_Cruzes SP
 IBGE: 3530607
 SIAF:
-Padrão: ISSNET (Abrasf 1.0 modificado)
+Padrão: Smartpd 
 SOAP Version: 1.1 e/ou SOAP Version: 1.2
-URL Homologação: http://www.issnetonline.com.br/webserviceabrasf/homologacao/servicos.asmx
+URL Homologação: 
 URL Produção:
-xmlns: http://www.issnetonline.com.br/webservice/nfd
-Atenção com os XSD: nesse caso existe um prefixo "servico_" no nome e não tem sulfixos
+xmlns: 
