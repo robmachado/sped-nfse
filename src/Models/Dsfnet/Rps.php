@@ -17,7 +17,7 @@ namespace NFePHP\NFSe\Models\Dsfnet;
  */
 
 use InvalidArgumentException;
-use NFePHP\Common\Strings\Strings;
+use NFePHP\Common\Strings;
 use NFePHP\NFSe\Common\Rps as RpsBase;
 
 class Rps extends RpsBase
@@ -183,7 +183,7 @@ class Rps extends RpsBase
     public function prestador($im, $razao, $ddd, $telefone)
     {
         $this->inscricaoMunicipalPrestador = $im;
-        $this->razaoSocialPrestador = Strings::cleanString($razao);
+        $this->razaoSocialPrestador = Strings::replaceSpecialsChars($razao);
         $this->dDDPrestador = $ddd;
         $this->telefonePrestador = $telefone;
     }
@@ -212,7 +212,7 @@ class Rps extends RpsBase
     ) {
         $this->inscricaoMunicipalTomador = $im;
         $this->cPFCNPJTomador = $cpfcnpj;
-        $this->razaoSocialTomador = Strings::cleanString($razao);
+        $this->razaoSocialTomador = Strings::replaceSpecialsChars($razao);
         $this->docTomadorEstrangeiro = $docEstrangeiro;
         $this->dDDTomador = $ddd;
         $this->telefoneTomador = $telefone;
@@ -230,14 +230,14 @@ class Rps extends RpsBase
         $cep,
         $email
     ) {
-        $this->tipoLogradouroTomador = Strings::cleanString($tipoLogradouro);
-        $this->logradouroTomador = Strings::cleanString($logradouro);
+        $this->tipoLogradouroTomador = Strings::replaceSpecialsChars($tipoLogradouro);
+        $this->logradouroTomador = Strings::replaceSpecialsChars($logradouro);
         $this->numeroEnderecoTomador = $numero;
-        $this->complementoTomador = Strings::cleanString($complemento);
-        $this->tipoBairroTomador = Strings::cleanString($tipoBairro);
-        $this->bairroTomador = Strings::cleanString($bairro);
+        $this->complementoTomador = Strings::replaceSpecialsChars($complemento);
+        $this->tipoBairroTomador = Strings::replaceSpecialsChars($tipoBairro);
+        $this->bairroTomador = Strings::replaceSpecialsChars($bairro);
         $this->cidadeTomador = str_pad($codigoSIAF, 7, '0', STR_PAD_LEFT);
-        $this->cidadeTomadorDescricao = Strings::cleanString($cidade);
+        $this->cidadeTomadorDescricao = Strings::replaceSpecialsChars($cidade);
         $this->cEPTomador = $cep;
         $this->emailTomador = strtolower($email);
     }
@@ -250,7 +250,7 @@ class Rps extends RpsBase
         $tributavel
     ) {
         $this->itens[] = [
-            'DiscriminacaoServico' => Strings::cleanString($discriminacao),
+            'DiscriminacaoServico' => Strings::replaceSpecialsChars($discriminacao),
             'Quantidade' => $quantidade,
             'ValorUnitario' => $valorUnitario,
             'ValorTotal' => $valorTotal,
@@ -269,7 +269,7 @@ class Rps extends RpsBase
     
     public function descricao($descricao)
     {
-        $this->descricaoRPS = Strings::cleanString($descricao);
+        $this->descricaoRPS = Strings::replaceSpecialsChars($descricao);
     }
     
     public function codigoAtividadeRPS($codigo, $aliquota)
@@ -286,7 +286,7 @@ class Rps extends RpsBase
     public function localPrestacao($codmunicipio, $municipio)
     {
         $this->municipioPrestacao = $codmunicipio;
-        $this->municipioPrestacaoDescricao = Strings::cleanString($municipio);
+        $this->municipioPrestacaoDescricao = Strings::replaceSpecialsChars($municipio);
     }
     
     public function tributacaoServico(
@@ -317,7 +317,7 @@ class Rps extends RpsBase
     
     public function cancelamento($motivo)
     {
-        $this->motCancelamento = Strings::cleanString($motivo);
+        $this->motCancelamento = Strings::replaceSpecialsChars($motivo);
     }
     
     public function intermediario($cpfcnpj)

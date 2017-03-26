@@ -20,7 +20,7 @@ namespace NFePHP\NFSe\Models\Abrasf;
 use DateTime;
 use InvalidArgumentException;
 use Respect\Validation\Validator;
-use NFePHP\Common\Strings\Strings;
+use NFePHP\Common\Strings;
 use NFePHP\NFSe\Common\Rps as RpsBase;
 
 class Rps extends RpsBase

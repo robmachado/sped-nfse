@@ -16,7 +16,7 @@ namespace NFePHP\NFSe\Models\ETransparencia;
  */
 
 use InvalidArgumentException;
-use NFePHP\Common\Strings\Strings;
+use NFePHP\Common\Strings;
 use NFePHP\NFSe\Models\ETransparencia\Rps;
 
 class Convert

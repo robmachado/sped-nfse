@@ -16,7 +16,7 @@ namespace NFePHP\NFSe\Models\Abrasf;
  */
 
 use InvalidArgumentException;
-use NFePHP\Common\Strings\Strings;
+use NFePHP\Common\Strings;
 use NFePHP\NFSe\Models\Abrasf\Rps;
 
 class Convert
