@@ -44,8 +44,8 @@ use NFePHP\Common\Soap\SoapNative;
 //exemplo durante a fase de desenvolvimento e testes.
 $arr = [
     "atualizacao" => "2016-08-03 18:01:21",
-    "tpAmb" => 1,
-    "versao" => 1,
+    "tpAmb" => 2,
+    "versao" => 3.10,
     "razaosocial" => "SUA RAZAO SOCIAL LTDA",
     "cnpj" => "99999999999999",
     "cpf" => "",

@@ -17,7 +17,7 @@ namespace NFePHP\NFSe\Models\Prodam;
  */
 
 use InvalidArgumentException;
-use NFePHP\Common\Strings\Strings;
+use NFePHP\Common\Strings;
 use NFePHP\NFSe\Models\Prodam\Rps;
 
 class Convert
@@ -148,7 +148,7 @@ class Convert
         $total = count($aDados);
         for ($x=0; $x<$total; $x++) {
             $aDados[$x] = str_replace("\r", '', $aDados[$x]);
-            $aDados[$x] = Strings::cleanString($aDados[$x]);
+            $aDados[$x] = Strings::replaceSpecialsChars($aDados[$x]);
             $tipo = substr($aDados[$x], 0, 1);
             self::$contTipos[$tipo] += 1;
         }

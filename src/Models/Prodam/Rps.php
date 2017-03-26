@@ -17,7 +17,7 @@ namespace NFePHP\NFSe\Models\Prodam;
  */
 
 use InvalidArgumentException;
-use NFePHP\Common\Strings\Strings;
+use NFePHP\Common\Strings;
 use NFePHP\NFSe\Common\Rps as RpsBase;
 
 class Rps extends RpsBase
@@ -111,7 +111,7 @@ class Rps extends RpsBase
         $im,
         $email
     ) {
-        $this->tomadorRazao = Strings::cleanString($razao);
+        $this->tomadorRazao = Strings::replaceSpecialsChars($razao);
         $this->tomadorTipoDoc = $tipo;
         if ($tipo == '2') {
             $cnpjcpf = str_pad($cnpjcpf, 14, '0', STR_PAD_LEFT);
@@ -144,10 +144,10 @@ class Rps extends RpsBase
         $cep
     ) {
         $this->tomadorTipoLogradouro = $tipo;
-        $this->tomadorLogradouro = Strings::cleanString($logradouro);
+        $this->tomadorLogradouro = Strings::replaceSpecialsChars($logradouro);
         $this->tomadorNumeroEndereco = $numero;
-        $this->tomadorComplementoEndereco = Strings::cleanString($complemento);
-        $this->tomadorBairro = Strings::cleanString($bairro);
+        $this->tomadorComplementoEndereco = Strings::replaceSpecialsChars($complemento);
+        $this->tomadorBairro = Strings::replaceSpecialsChars($bairro);
         $this->tomadorCodCidade = $cmun;
         $this->tomadorSiglaUF = $uf;
         $this->tomadorCEP = $cep;
@@ -338,7 +338,7 @@ class Rps extends RpsBase
      */
     public function discriminacao($desc)
     {
-        $this->discriminacaoRPS = Strings::cleanString(trim($desc));
+        $this->discriminacaoRPS = Strings::replaceSpecialsChars(trim($desc));
     }
     
     /**
@@ -352,7 +352,7 @@ class Rps extends RpsBase
     {
         $this->valorCargaTributariaRPS = number_format($valor, 2, '.', '');
         $this->percentualCargaTributariaRPS = number_format($percentual, 4, '.', '');
-        $this->fonteCargaTributariaRPS = substr(Strings::cleanString($fonte), 0, 10);
+        $this->fonteCargaTributariaRPS = substr(Strings::replaceSpecialsChars($fonte), 0, 10);
     }
     
     /**

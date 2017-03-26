@@ -4,7 +4,7 @@ namespace NFePHP\NFSe\Counties\M3530607;
 
 /**
  * Classe para extração dos dados retornados pelos webservices da
- * Cidade de Mogi das Cruzes SP conforme o modelo ISSNET
+ * Cidade de Mogi das Cruzes SP conforme o modelo SMARTPD
  *
  * @category  NFePHP
  * @package   NFePHP\NFSe\Counties\M3530607\Response
@@ -16,7 +16,7 @@ namespace NFePHP\NFSe\Counties\M3530607;
  * @link      http://github.com/nfephp-org/sped-nfse for the canonical source repository
  */
 
-use NFePHP\NFSe\Models\Issnet\Response as ResponseModel;
+use NFePHP\NFSe\Models\Smartpd\Response as ResponseModel;
 
 class Response extends ResponseModel
 {

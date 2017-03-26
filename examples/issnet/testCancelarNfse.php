@@ -27,7 +27,7 @@ $arr = [
     ]    
 ];
 $configJson = json_encode($arr);
-$contentpfx = file_get_contents('/var/www/sped/sped-nfse/certs/certificado.pfx');
+$contentpfx = file_get_contents('certificado.pfx');
 
 try {
     //com os dados do config e do certificado já obtidos e desconvertidos

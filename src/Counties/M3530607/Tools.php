@@ -5,11 +5,11 @@ namespace NFePHP\NFSe\Counties\M3530607;
 /**
  * Classe para a comunicação com os webservices da
  * Cidade de Mogi das Cruzes SP
- * conforme o modelo ISSNET
+ * conforme o modelo SMARTPD
  *
  * @category  NFePHP
  * @package   NFePHP\NFSe\Counties\M3530607\Tools
- * @copyright NFePHP Copyright (c) 2016
+ * @copyright NFePHP Copyright (c) 2017
  * @license   http://www.gnu.org/licenses/lgpl.txt LGPLv3+
  * @license   https://opensource.org/licenses/MIT MIT
  * @license   http://www.gnu.org/licenses/gpl.txt GPLv3+
@@ -17,7 +17,7 @@ namespace NFePHP\NFSe\Counties\M3530607;
  * @link      http://github.com/nfephp-org/sped-nfse for the canonical source repository
  */
 
-use NFePHP\NFSe\Models\Issnet\Tools as ToolsModel;
+use NFePHP\NFSe\Models\Smartpd\Tools as ToolsModel;
 
 class Tools extends ToolsModel
 {
@@ -27,13 +27,13 @@ class Tools extends ToolsModel
      */
     protected $url = [
         1 => '',
-        2 => 'http://www.issnetonline.com.br/webserviceabrasf/homologacao/servicos.asmx'
+        2 => ''
     ];
     /**
      * County Namespace
      * @var string
      */
-    protected $xmlns = 'http://www.issnetonline.com.br/webservice/nfd';
+    protected $xmlns = '';
     
     /**
      * Soap Version

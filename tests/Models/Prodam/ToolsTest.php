@@ -49,7 +49,7 @@ class ToolsTest extends NFSeTestCase
         $this->nfse->tools->loadSoapClass($this->dummySoap);
         //$rpss[] = $this->nfse->rps->
         //$rpss[] = $this->nfse->rps->
-        //$actual = $this->nfse->tools->testeEnvioLoteRPS();
+        //$actual = $this->nfse->tools->testeEnvioLoteRPS($rpss);
         $this->assertTrue(true);
     }
     

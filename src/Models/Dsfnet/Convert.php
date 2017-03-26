@@ -17,7 +17,7 @@ namespace NFePHP\NFSe\Models\Dsfnet;
  */
 
 use InvalidArgumentException;
-use NFePHP\Common\Strings\Strings;
+use NFePHP\Common\Strings;
 use NFePHP\NFSe\Models\Dsfnet\Rps;
 
 class Convert

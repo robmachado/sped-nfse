@@ -5,7 +5,7 @@ namespace NFePHP\NFSe\Counties\M3530607;
 /**
  * Classe a construção do xml da NFSe
  * para a Cidade de Mogi das Cruzes SP
- * conforme o modelo ISSNET
+ * conforme o modelo SMARTPD
  *
  * @category  NFePHP
  * @package   NFePHP\NFSe\Counties\M3530607\Convert
