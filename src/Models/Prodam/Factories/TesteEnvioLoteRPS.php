@@ -66,9 +66,10 @@ class TesteEnvioLoteRPS extends Factory
             $this->valorTotalDeducoes
         );
         $content .= $xmlRPS."</$method>";
-        $content = $this->signer($content, $method, '', [false,false,null,null]);
-        $body = $this->clear($content);
-        //$this->validar($versao, $body, 'Prodam', $method);
+        $content = str_replace("\n", "", $content);
+        $body = $this->signer($content, $method, '', [false,false,null,null]);
+        $body = $this->clear($body);
+        $this->validar($versao, $body, 'Prodam', $method);
         return $body;
     }
     
