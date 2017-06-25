@@ -78,7 +78,6 @@ class EnvioRPS extends Factory
             $this->valorTotalDeducoes
         );
         $content .= $xmlRPS."</$method>";
-        $content = str_replace("\n", "", $content);
         $content = $this->signer($content, $method, '', [false,false,null,null]);
         $body = $this->clear($content);
         $this->validar($versao, $body, 'Prodam', $method);

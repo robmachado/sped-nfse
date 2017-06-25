@@ -19,6 +19,7 @@ namespace NFePHP\NFSe\Models\Prodam;
 use NFePHP\NFSe\Models\Prodam\Rps;
 use NFePHP\NFSe\Models\Prodam\Factories;
 use NFePHP\NFSe\Common\Tools as ToolsBase;
+use NFePHP\Common\Soap\SoapCurl;
 
 class Tools extends ToolsBase
 {
@@ -266,7 +267,7 @@ class Tools extends ToolsBase
             $this->soapversion = SOAP_1_1;
         }
         if (!is_object($this->soap)) {
-            $this->soap = new \NFePHP\NFSe\Common\SoapCurl($this->certificate);
+            $this->soap = new SoapCurl($this->certificate);
         }
         //para usar o cURL quando está estabelecido o uso do CData na estrutura
         //do xml, terá de haver uma transformação, porém no caso do SoapNative isso
