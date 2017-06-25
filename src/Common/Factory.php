@@ -83,7 +83,7 @@ class Factory
     {
         $body = str_replace('<?xml version="1.0"?>', '', $body);
         $body = str_replace('<?xml version="1.0" encoding="utf-8"?>', '', $body);
-        $body = str_replace('<?xml version="1.0"  encoding="UTF-8"?>', '', $body);
+        $body = str_replace('<?xml version="1.0" encoding="UTF-8"?>', '', $body);
         return $body;
     }
     
@@ -124,6 +124,7 @@ class Factory
      */
     public function signer($content, $method, $mark = '', array $canonical = [], $rootname = '')
     {
+        $content = str_replace("\n", "", $content);
         if (empty($canonical)) {
             $canonical = [false,false,null,null];
         }

@@ -278,7 +278,7 @@ class Rps extends RpsBase
      */
     public function codigoServico($cod = '')
     {
-        $this->codigoServicoRPS =  $cod;
+        $this->codigoServicoRPS =  str_pad($cod, 5, '0', STR_PAD_LEFT);
     }
     
     /**
