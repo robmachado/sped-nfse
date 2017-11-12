@@ -3,8 +3,9 @@
 namespace NFePHP\NFSe\Tests\Common;
 
 use NFePHP\NFSe\Common\EntitiesCharacters;
+use PHPUnit\Framework\TestCase;
 
-class EntitiesCharactersTest extends \PHPUnit_Framework_TestCase
+class EntitiesCharactersTest extends TestCase
 {
     public function testUnConvert()
     {
@@ -13,7 +14,7 @@ class EntitiesCharactersTest extends \PHPUnit_Framework_TestCase
         $expected = 'Esse [0xc3][0xa9] um teste de convers[0xc3][0xa3]o';
         $this->assertEquals($expected, $actual);
     }
-    
+
     public function testConvert()
     {
         $subject = 'Esse [0xc3][0xa9] um teste de convers[0xc3][0xa3]o';

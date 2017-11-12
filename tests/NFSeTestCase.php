@@ -2,13 +2,15 @@
 
 namespace NFePHP\NFSe\Tests;
 
-class NFSeTestCase extends \PHPUnit_Framework_TestCase
+use PHPUnit\Framework\TestCase;
+
+class NFSeTestCase extends TestCase
 {
     public $fixturesPath = '';
     public $configJson = '';
     public $contentpfx = '';
     public $passwordpfx = '';
-    
+
     public function __construct()
     {
         $this->fixturesPath = dirname(__FILE__) . '/fixtures/';
@@ -28,7 +30,7 @@ class NFSeTestCase extends \PHPUnit_Framework_TestCase
                 "proxyPort" => "",
                 "proxyUser" => "",
                 "proxyPass" => ""
-            ]    
+            ]
         ];
         $this->contentpfx = file_get_contents($this->fixturesPath . "certs/certificado_teste.pfx");
         $this->passwordpfx = "associacao";
