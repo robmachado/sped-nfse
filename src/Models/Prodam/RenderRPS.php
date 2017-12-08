@@ -353,6 +353,31 @@ class RenderRPS
             'Discriminação do serviço',
             false
         );
+        self::$dom->addChild(
+            $root,
+            'ValorCargaTributaria',
+            $rps->valorCargaTributariaRPS,
+            true,
+            'Valor da carga tributária total em R$.',
+            false
+        );
+        self::$dom->addChild(
+            $root,
+            'PercentualCargaTributaria',
+            $rps->percentualCargaTributariaRPS,
+            true,
+            'Valor percentual da carga tributária',
+            false
+        );
+        self::$dom->addChild(
+            $root,
+            'FonteCargaTributaria',
+            $rps->fonteCargaTributariaRPS,
+            true,
+            'Fonte de informação da carga tributária ',
+            false
+        );
+
         //finaliza
         self::$dom->appendChild($root);
         $xml = str_replace('<?xml version="1.0" encoding="utf-8"?>', '', self::$dom->saveXML());
