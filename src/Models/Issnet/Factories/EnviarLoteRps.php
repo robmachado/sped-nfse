@@ -2,8 +2,6 @@
 
 namespace NFePHP\NFSe\Models\Issnet\Factories;
 
-use NFePHP\NFSe\Models\Issnet\Factories\Header;
-use NFePHP\NFSe\Models\Issnet\Factories\Factory;
 use NFePHP\NFSe\Models\Issnet\RenderRPS;
 
 class EnviarLoteRps extends Factory
@@ -40,14 +38,14 @@ class EnviarLoteRps extends Factory
         $content .= "</tc:ListaRps>";
         $content .= "</LoteRps>";
         $content .= "</EnviarLoteRpsEnvio>";
-        
+
         $body = Signer::sign(
             $this->certificate,
             $content,
             'LoteRps',
             '',
             $this->algorithm,
-            [false,false,null,null]
+            [false, false, null, null]
         );
         $body = $this->clear($body);
         $this->validar($versao, $body, 'Issnet', $xsd, '');

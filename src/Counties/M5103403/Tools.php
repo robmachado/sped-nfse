@@ -26,7 +26,7 @@ class Tools extends ToolsModel
      * @var array
      */
     protected $url = [
-        1 => 'http://cuiaba.issnetonline.com.br/webserviceabrasf/cuiaba/servicos.asmx',
+        1 => 'http://www.issnetonline.com.br/webserviceabrasf/cuiaba/servicos.asmx',
         2 => 'http://www.issnetonline.com.br/webserviceabrasf/homologacao/servicos.asmx'
     ];
     /**
@@ -34,7 +34,7 @@ class Tools extends ToolsModel
      * @var string
      */
     protected $xmlns = 'http://www.issnetonline.com.br/webservice/nfd';
-    
+
     /**
      * Soap Version
      * @var int
@@ -69,7 +69,7 @@ class Tools extends ToolsModel
             'xmlns:soapenv' => "http://schemas.xmlsoap.org/soap/envelope/",
             'xmlns' => "http://www.issnetonline.com.br/webservice/nfd"
         ],
-        2  => [
+        2 => [
             'xmlns:soap' => "http://www.w3.org/2003/05/soap-envelope",
             'xmlns' => "http://www.issnetonline.com.br/webservice/nfd"
         ]

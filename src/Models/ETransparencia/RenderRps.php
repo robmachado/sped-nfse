@@ -16,11 +16,7 @@ namespace NFePHP\NFSe\Models\ETransparencia;
  * @link      http://github.com/nfephp-org/sped-nfse for the canonical source repository
  */
 
-use NFePHP\Common\DOMImproved as Dom;
-use NFePHP\NFSe\Models\ETransparencia\Rps;
-use NFePHP\Common\Certificate;
-
 class RenderRps
 {
-    
+
 }

@@ -16,8 +16,6 @@ namespace NFePHP\NFSe\Models\Ginfes;
  * @link      http://github.com/nfephp-org/sped-nfse for the canonical source repository
  */
 
-use NFePHP\NFSe\Models\Ginfes\Rps;
-use NFePHP\NFSe\Models\Ginfes\Factories;
 use NFePHP\NFSe\Commob\Tools as ToolsBase;
 
 class Tools extends ToolsBase
@@ -25,11 +23,11 @@ class Tools extends ToolsBase
     public function cancelarNfse()
     {
     }
-    
+
     public function cancelarNfseV3()
     {
     }
-    
+
     public function consultarLoteRps()
     {
     }
@@ -37,31 +35,31 @@ class Tools extends ToolsBase
     public function consultarLoteRpsV3()
     {
     }
-    
+
     public function consultarNfsePorRps()
     {
     }
-    
+
     public function consultarNfsePorRpsV3()
     {
     }
-    
+
     public function consultarSituacaoLoteRps()
     {
     }
-    
+
     public function consultarSituacaoLoteRpsV3()
     {
     }
-    
+
     public function recepcionarLoteRps()
     {
     }
-    
+
     public function recepcionarLoteRpsV3()
     {
     }
-    
+
     protected function sendRequest($url, $message)
     {
     }

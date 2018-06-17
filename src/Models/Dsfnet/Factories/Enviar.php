@@ -17,8 +17,6 @@ namespace NFePHP\NFSe\Models\Dsfnet\Factories;
  * @link      http://github.com/nfephp-org/sped-nfse for the canonical source repository
  */
 
-use NFePHP\NFSe\Models\Dsfnet\Factories\Factory;
-use NFePHP\NFSe\Models\Dsfnet\Factories\Header;
 use NFePHP\NFSe\Models\Dsfnet\RenderRPS;
 
 class Enviar extends Factory
@@ -29,7 +27,7 @@ class Enviar extends Factory
     private $valorTotalServicos = 0;
     private $valorTotalDeducoes = 0;
     private $versaoComponente = '1.0.0';
-    
+
     public function render(
         $versao,
         $remetenteCNPJCPF,
@@ -68,7 +66,7 @@ class Enviar extends Factory
         }
         $content .= "</Lote>";
         $content .= "</ns1:$method>";
-        $content = $this->signer($content, 'Lote', 'Id', [false,false,null,null]);
+        $content = $this->signer($content, 'Lote', 'Id', [false, false, null, null]);
         $body = $this->clear($content);
         $this->validar($versao, $body, 'Dsfnet', $method, '');
         return $body;

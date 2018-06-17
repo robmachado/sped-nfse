@@ -16,13 +16,9 @@ namespace NFePHP\NFSe\Models\ETransparencia;
  * @link      http://github.com/nfephp-org/sped-nfse for the canonical source repository
  */
 
-use DateTime;
-use InvalidArgumentException;
-use Respect\Validation\Validator;
-use NFePHP\Common\Strings;
 use NFePHP\NFSe\Common\Rps as RpsBase;
 
 class Rps extends RpsBase
 {
-    
+
 }

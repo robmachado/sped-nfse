@@ -42,7 +42,7 @@ class Factory
      * @var \DateTimeZone
      */
     public $timezone;
-    
+
     /**
      * Construtor recebe a classe de certificados
      *
@@ -53,9 +53,9 @@ class Factory
     {
         $this->certificate = $certificate;
         $this->algorithm = $algorithm;
-        $this->pathSchemes = __DIR__.'/../../schemes';
+        $this->pathSchemes = __DIR__ . '/../../schemes';
     }
-    
+
     /**
      * Set time Zone as class DateTimeZone based in UF alias
      * @param \DateTimeZone $timezone
@@ -64,7 +64,7 @@ class Factory
     {
         $this->timezone = $timezone;
     }
-    
+
     /**
      * Set OPENSSL Algorithm using OPENSSL constants
      * @param int $algorithm
@@ -73,7 +73,7 @@ class Factory
     {
         $this->algorithm = $algorithm;
     }
-    
+
     /**
      * Remove os marcadores de XML
      * @param string $body
@@ -86,7 +86,7 @@ class Factory
         $body = str_replace('<?xml version="1.0" encoding="UTF-8"?>', '', $body);
         return $body;
     }
-    
+
     /**
      * Executa a validação da mensagem XML com base no XSD
      * @param string $versao versão dos schemas
@@ -97,14 +97,22 @@ class Factory
      * @return boolean
      * @throws \InvalidArgumentException
      */
-    public function validar($versao, $body, $model, $method = '', $suffix = 'v')
+    public function validar($versao, $body, $model, $method = '', $suffix = 'v', $cmun = null)
     {
         $ver = str_pad($versao, 2, '0', STR_PAD_LEFT);
-        $path = $this->pathSchemes . DIRECTORY_SEPARATOR . $model . DIRECTORY_SEPARATOR;
-        $schema = $path."v$ver".DIRECTORY_SEPARATOR.$method.".xsd";
-        if ($suffix) {
-            $schema = $path."v$ver".DIRECTORY_SEPARATOR.$method."_v$ver.xsd";
+        $cmunPath = $this->pathSchemes . DIRECTORY_SEPARATOR . 'Counties' . DIRECTORY_SEPARATOR . "M{$cmun}" . DIRECTORY_SEPARATOR;
+
+        if ($cmun && is_dir($cmunPath)) {
+            $path = $cmunPath;
+        } else {
+            $path = $this->pathSchemes . DIRECTORY_SEPARATOR . 'Models' . DIRECTORY_SEPARATOR . $model . DIRECTORY_SEPARATOR;
         }
+
+        $schema = $path . "v$ver" . DIRECTORY_SEPARATOR . $method . ".xsd";
+        if ($suffix) {
+            $schema = $path . "{$suffix}{$ver}" . DIRECTORY_SEPARATOR . $method . "_{$suffix}{$ver}.xsd";
+        }
+
         if (!is_file($schema)) {
             throw new \InvalidArgumentException("XSD file not found. [$schema]");
         }
@@ -113,7 +121,7 @@ class Factory
             $schema
         );
     }
-    
+
     /**
      * Bild signature tag
      * @param string $content
@@ -126,7 +134,7 @@ class Factory
     {
         $content = str_replace("\n", "", $content);
         if (empty($canonical)) {
-            $canonical = [false,false,null,null];
+            $canonical = [false, false, null, null];
         }
         return Signer::sign($this->certificate, $content, $method, $mark, $this->algorithm, $canonical, $rootname);
     }

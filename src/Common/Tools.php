@@ -17,10 +17,7 @@ namespace NFePHP\NFSe\Common;
 
 use NFePHP\Common\Certificate;
 use NFePHP\Common\Soap\SoapInterface;
-use NFePHP\NFSe\Common\EntitiesCharacters;
-use NFePHP\NFSe\Common\DateTime;
 use Psr\Log\LoggerInterface;
-use DOMDocument;
 use stdClass;
 
 abstract class Tools
@@ -121,7 +118,7 @@ abstract class Tools
      * @var bool
      */
     protected $debugsoap = false;
-    
+
     /**
      * Constructor
      * @param stdClass $config
@@ -130,7 +127,12 @@ abstract class Tools
     public function __construct(stdClass $config, Certificate $certificate)
     {
         $this->config = $config;
-        $this->versao = $config->versao;
+
+        //Se o model já possuia  versão não tem necessidade de pegar da configuração
+        if (empty($this->versao)) {
+            $this->versao = $config->versao;
+        }
+
         $this->remetenteCNPJCPF = $config->cpf;
         $this->remetenteRazao = $config->razaosocial;
         $this->remetenteIM = $config->im;
@@ -141,8 +143,14 @@ abstract class Tools
         }
         $this->certificate = $certificate;
         $this->timezone = DateTime::tzdBR($config->siglaUF);
+
+
+        if (empty($this->versao)) {
+            throw new \LogicException('Informe a versão do modelo.');
+        }
+
     }
-    
+
     /**
      * Set to true if CData is used in XML message
      * @param boolean $flag
@@ -151,7 +159,7 @@ abstract class Tools
     {
         $this->withcdata = $flag;
     }
-    
+
     /**
      * Set debug Soap Mode
      * @param bool $value
@@ -163,7 +171,7 @@ abstract class Tools
             $this->soap->setDebugMode($this->debugsoap);
         }
     }
-    
+
     /**
      * Load the chosen soap class
      * @param \NFePHP\Common\Soap\SoapInterface $soap
@@ -174,7 +182,7 @@ abstract class Tools
         $this->soap->loadCertificate($this->certificate);
         $this->soap->setDebugMode($this->debugsoap);
     }
-    
+
     /**
      * Load the cohsen logger class
      * @param \Psr\Log\LoggerInterface $logger
@@ -183,14 +191,14 @@ abstract class Tools
     {
         $this->logger = $logger;
     }
-    
+
     /**
      * Send request to webservice
      * @param string $message
      * @return string
      */
     abstract protected function sendRequest($url, $message);
-    
+
     /**
      * Convert string xml message to cdata string
      * @param string $message

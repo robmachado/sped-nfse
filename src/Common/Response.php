@@ -15,10 +15,7 @@ namespace NFePHP\NFSe\Common;
  * @link      http://github.com/nfephp-org/sped-nfse for the canonical source repository
  */
 
-use NFePHP\NFSe\Common\EntitiesCharacters;
-use NFePHP\Common\Exception\ExceptionCollection;
 use DOMDocument;
-use stdClass;
 
 class Response
 {
@@ -29,10 +26,10 @@ class Response
         $dom->loadXML($response);
         $errors = libxml_get_errors();
         libxml_clear_errors();
-        if (! empty($errors)) {
+        if (!empty($errors)) {
             $msg = '';
             foreach ($errors as $error) {
-                $msg .= $error->message();
+                $msg .= $error->message;
             }
             throw new \RuntimeException($msg);
         }
@@ -43,7 +40,26 @@ class Response
         //converte o xml em uma stdClass
         return $this->xml2Obj($dom, $tag);
     }
-    
+
+    /**
+     * Verifica se o retorno é relativo a um ERRO SOAP
+     * @param \DOMDocument $dom
+     * @return string
+     */
+    protected static function checkForFault(DOMDocument $dom)
+    {
+        $tagfault = $dom->getElementsByTagName('Fault')->item(0);
+        if (empty($tagfault)) {
+            return '';
+        }
+        $tagreason = $tagfault->getElementsByTagName('Reason')->item(0);
+        if (!empty($tagreason)) {
+            $reason = $tagreason->getElementsByTagName('Text')->item(0)->nodeValue;
+            return $reason;
+        }
+        return 'Houve uma falha na comunicação.';
+    }
+
     /**
      * Convert DOMDocument in stdClass
      * @param \DOMDocument $dom
@@ -62,30 +78,11 @@ class Response
         $xml = str_replace('&lt;?xml version="1.0" encoding="UTF-8"?&gt;', '', $xml);
         $xml = str_replace('&lt;?xml version="1.0" encoding="utf-8"?&gt;', '', $xml);
         $xml = EntitiesCharacters::convert(html_entity_decode($xml));
-        
+
         $resp = simplexml_load_string($xml, null, LIBXML_NOCDATA);
         $std = json_encode($resp);
         $std = str_replace('@attributes', 'attributes', $std);
         $std = json_decode($std);
         return $std;
-    }
-
-    /**
-     * Verifica se o retorno é relativo a um ERRO SOAP
-     * @param \DOMDocument $dom
-     * @return string
-     */
-    protected static function checkForFault(DOMDocument $dom)
-    {
-        $tagfault = $dom->getElementsByTagName('Fault')->item(0);
-        if (empty($tagfault)) {
-            return '';
-        }
-        $tagreason = $tagfault->getElementsByTagName('Reason')->item(0);
-        if (! empty($tagreason)) {
-            $reason = $tagreason->getElementsByTagName('Text')->item(0)->nodeValue;
-            return $reason;
-        }
-        return 'Houve uma falha na comunicação.';
     }
 }

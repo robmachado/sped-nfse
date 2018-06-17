@@ -16,10 +16,9 @@ namespace NFePHP\NFSe\Models\Prodam;
  * @link      http://github.com/nfephp-org/sped-nfse for the canonical source repository
  */
 
-use NFePHP\NFSe\Models\Prodam\Rps;
-use NFePHP\NFSe\Models\Prodam\Factories;
-use NFePHP\NFSe\Common\Tools as ToolsBase;
 use NFePHP\Common\Soap\SoapCurl;
+use NFePHP\NFSe\Common\Tools as ToolsBase;
+use NFePHP\NFSe\Models\Prodam\Factories;
 
 class Tools extends ToolsBase
 {
@@ -42,7 +41,51 @@ class Tools extends ToolsBase
         );
         return $this->sendRequest('', $message);
     }
-    
+
+    /**
+     * Send request to webservice
+     * @param string $message
+     * @return string
+     */
+    protected function sendRequest($url, $message)
+    {
+        //no caso da Prodam o URL é unico para todas as ações
+        $url = $this->url[$this->config->tpAmb];
+        //o ambiente de testes da Prodam não FUNCIONA!!
+        if ($this->config->tpAmb == 2) {
+            $this->soapversion = SOAP_1_1;
+        }
+        if (!is_object($this->soap)) {
+            $this->soap = new SoapCurl($this->certificate);
+        }
+        //para usar o cURL quando está estabelecido o uso do CData na estrutura
+        //do xml, terá de haver uma transformação, porém no caso do SoapNative isso
+        //não é necessário, pois o próprio SoapClient faz essas transformações,
+        //baseado no WSDL.
+        $messageText = $message;
+        if ($this->withcdata) {
+            $messageText = $this->stringTransform("<?xml version=\"1.0\" encoding=\"UTF-8\"?>" . $message);
+        }
+        $request = "<" . $this->method . "Request xmlns=\"" . $this->xmlns . "\">"
+            . "<VersaoSchema>$this->versao</VersaoSchema>"
+            . "<MensagemXML>$messageText</MensagemXML>"
+            . "</" . $this->method . "Request>";
+        $params = [
+            'VersaoSchema' => $this->versao,
+            'MensagemXML' => $message
+        ];
+        $action = "\"http://www.prefeitura.sp.gov.br/nfe/ws/" . lcfirst($this->method) . "\"";
+        return $this->soap->send(
+            $url,
+            $this->method,
+            $action,
+            $this->soapversion,
+            $params,
+            $this->namespaces[$this->soapversion],
+            $request
+        );
+    }
+
     /**
      * Envio de lote de RPS
      * @param array $rpss
@@ -61,7 +104,7 @@ class Tools extends ToolsBase
         );
         return $this->sendRequest('', $message);
     }
-    
+
     /**
      * Pedido de teste de envio de lote
      * @param array $rpss
@@ -80,7 +123,7 @@ class Tools extends ToolsBase
         );
         return $this->sendRequest('', $message);
     }
-    
+
     /**
      * Consulta as NFSe e/ou RPS
      * @param array $chavesNFSe array(array('prestadorIM'=>'', 'numeroNFSe'=>''))
@@ -101,7 +144,7 @@ class Tools extends ToolsBase
         );
         return $this->sendRequest('', $message);
     }
-    
+
     /**
      * Consulta as NFSe Recebidas pelo Tomador no periodo
      * @param string $cnpjTomador
@@ -136,7 +179,7 @@ class Tools extends ToolsBase
         );
         return $this->sendRequest('', $message);
     }
-    
+
     /**
      * Consulta das NFSe emitidas pelo prestador no período
      * @param string $cnpjPrestador
@@ -171,7 +214,7 @@ class Tools extends ToolsBase
         );
         return $this->sendRequest('', $message);
     }
-    
+
     /**
      * Consulta Lote
      * @param string $numeroLote
@@ -190,7 +233,7 @@ class Tools extends ToolsBase
         );
         return $this->sendRequest('', $message);
     }
-    
+
     /**
      * Pedido de informações de Lote
      * @param string $prestadorIM
@@ -211,7 +254,7 @@ class Tools extends ToolsBase
         );
         return $this->sendRequest('', $message);
     }
-    
+
     /**
      * Solicita cancelamento da NFSe
      * @param string $prestadorIM
@@ -232,7 +275,7 @@ class Tools extends ToolsBase
         );
         return $this->sendRequest('', $message);
     }
-    
+
     /**
      * Consulta CNPJ de contribuinte do ISS
      * @param string $cnpjContribuinte
@@ -251,49 +294,5 @@ class Tools extends ToolsBase
             str_pad($cnpjContribuinte, 14, '0', STR_PAD_LEFT)
         );
         return $this->sendRequest('', $message);
-    }
-    
-    /**
-     * Send request to webservice
-     * @param string $message
-     * @return string
-     */
-    protected function sendRequest($url, $message)
-    {
-        //no caso da Prodam o URL é unico para todas as ações
-        $url = $this->url[$this->config->tpAmb];
-        //o ambiente de testes da Prodam não FUNCIONA!!
-        if ($this->config->tpAmb == 2) {
-            $this->soapversion = SOAP_1_1;
-        }
-        if (!is_object($this->soap)) {
-            $this->soap = new SoapCurl($this->certificate);
-        }
-        //para usar o cURL quando está estabelecido o uso do CData na estrutura
-        //do xml, terá de haver uma transformação, porém no caso do SoapNative isso
-        //não é necessário, pois o próprio SoapClient faz essas transformações,
-        //baseado no WSDL.
-        $messageText = $message;
-        if ($this->withcdata) {
-            $messageText = $this->stringTransform("<?xml version=\"1.0\" encoding=\"UTF-8\"?>".$message);
-        }
-        $request = "<". $this->method . "Request xmlns=\"".$this->xmlns."\">"
-            . "<VersaoSchema>$this->versao</VersaoSchema>"
-            . "<MensagemXML>$messageText</MensagemXML>"
-            . "</". $this->method . "Request>";
-        $params = [
-            'VersaoSchema' => $this->versao,
-            'MensagemXML' => $message
-        ];
-        $action = "\"http://www.prefeitura.sp.gov.br/nfe/ws/". lcfirst($this->method) ."\"";
-        return $this->soap->send(
-            $url,
-            $this->method,
-            $action,
-            $this->soapversion,
-            $params,
-            $this->namespaces[$this->soapversion],
-            $request
-        );
     }
 }

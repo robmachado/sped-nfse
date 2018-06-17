@@ -76,8 +76,10 @@ class Header extends HeaderBase
         $content .= self::check('NumeroPagina', $pagina);
         if ($valorTotalServicos != 0) {
             $content .= self::check('QtdRPS', $qtdRPS);
-            $content .= "<ValorTotalServicos>".number_format($valorTotalServicos, 2, '.', '')."</ValorTotalServicos>";
-            $content .= "<ValorTotalDeducoes>".number_format($valorTotalDeducoes, 2, '.', '')."</ValorTotalDeducoes>";
+            $content .= "<ValorTotalServicos>" . number_format($valorTotalServicos, 2, '.',
+                    '') . "</ValorTotalServicos>";
+            $content .= "<ValorTotalDeducoes>" . number_format($valorTotalDeducoes, 2, '.',
+                    '') . "</ValorTotalDeducoes>";
         }
         $content .= self::check('NumeroLote', $numeroLote);
         $content .= self::check('InscricaoPrestador', $prestadorIM);

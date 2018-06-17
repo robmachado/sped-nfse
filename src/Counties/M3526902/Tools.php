@@ -33,7 +33,7 @@ class Tools extends ToolsModel
      * County Namespace
      * @var string
      */
-    protected $xmlns= "NFe";
+    protected $xmlns = "NFe";
     /**
      * Soap Version
      * @var int
@@ -68,6 +68,6 @@ class Tools extends ToolsModel
             'xmlns:soapenv' => 'http://schemas.xmlsoap.org/soap/envelope/',
             'xmlns' => 'NFe'
         ],
-        2  => []
+        2 => []
     ];
 }

@@ -15,17 +15,14 @@ namespace NFePHP\NFSe\Common;
  * @link      http://github.com/nfephp-org/sped-nfse for the canonical source repository
  */
 
-use InvalidArgumentException;
-use Respect\Validation\Validator as v;
-
 class Rps
 {
-    
+
     protected function validData($matriz, $key)
     {
         return array_key_exists($key, $matriz);
     }
-    
+
     protected function validate($value, $format, $default)
     {
     }

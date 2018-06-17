@@ -6,5 +6,5 @@ use NFePHP\NFSe\Common\Header as HeaderBase;
 
 class Header extends HeaderBase
 {
-    
+
 }

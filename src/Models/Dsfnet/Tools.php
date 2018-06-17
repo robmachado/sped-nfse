@@ -16,9 +16,8 @@ namespace NFePHP\NFSe\Models\Dsfnet;
  * @link      http://github.com/nfephp-org/sped-nfse for the canonical source repository
  */
 
-use NFePHP\NFSe\Models\Dsfnet\Rps;
-use NFePHP\NFSe\Models\Dsfnet\Factories;
 use NFePHP\NFSe\Common\Tools as ToolsBase;
+use NFePHP\NFSe\Models\Dsfnet\Factories;
 
 class Tools extends ToolsBase
 {
@@ -51,165 +50,7 @@ class Tools extends ToolsBase
         );
         return $this->sendRequest('', $xml);
     }
-    
-    /**
-     * Consulta Lote
-     * @param string $numeroLote
-     * @return string
-     */
-    public function consultarLote($numeroLote)
-    {
-        $this->method = 'consultarLote';
-        $fact = new Factories\ConsultarLote($this->certificate);
-        $fact->setSignAlgorithm($this->algorithm);
-        $xml = $fact->render(
-            $this->versao,
-            $this->remetenteCNPJCPF,
-            $this->codcidade,
-            $numeroLote
-        );
-        return $this->sendRequest('', $xml);
-    }
-    
-    /**
-     * Consulta Lote de NFSe e/ou RPS
-     * @param type $prestadorIM
-     * @param type $nfse [0 => ['numero', 'codigoVerificacao']]
-     * @param type $rps  [0 => ['numero', 'serie']]
-     */
-    public function consultarNFSeRps($prestadorIM, $lote, $nfse = [], $rps = [])
-    {
-        $this->method = 'consultarNFSeRps';
-        $fact = new Factories\ConsultarNFSeRps($this->certificate);
-        $fact->setSignAlgorithm($this->algorithm);
-        $xml = $fact->render(
-            $this->versao,
-            $this->remetenteCNPJCPF,
-            $this->codcidade,
-            'true', //transacao
-            $prestadorIM,
-            $lote,
-            $nfse,
-            $rps
-        );
-        return $this->sendRequest('', $xml);
-    }
-    
-    /**
-     * Consulta nota
-     * @param string $prestadorIM
-     * @param string $dtInicio
-     * @param string $dtFim
-     * @param int $notaInicial
-     * @return string
-     */
-    public function consultarNota($prestadorIM, $dtInicio, $dtFim, $notaInicial)
-    {
-        $this->method = 'consultarNota';
-        $fact = new Factories\ConsultarNota($this->certificate);
-        $fact->setSignAlgorithm($this->algorithm);
-        $xml = $fact->render(
-            $this->versao,
-            $this->remetenteCNPJCPF,
-            $this->codcidade,
-            $prestadorIM,
-            $dtInicio,
-            $dtFim,
-            $notaInicial
-        );
-        return $this->sendRequest('', $xml);
-    }
-    
-    /**
-     * Consulta numero sequencial
-     * @param string $prestadorIM
-     * @param string $serieRPS
-     * @return string
-     */
-    public function consultarSequencialRps($prestadorIM, $serieRPS)
-    {
-        $this->method = 'consultarSequencialRps';
-        $fact = new Factories\ConsultarSequencialRps($this->certificate);
-        $fact->setSignAlgorithm($this->algorithm);
-        $xml = $fact->render(
-            $this->versao,
-            $this->remetenteCNPJCPF,
-            $this->codcidade,
-            $prestadorIM,
-            $serieRPS
-        );
-        return $this->sendRequest('', $xml);
-    }
-    
-    /**
-     *
-     * @param array $rpss
-     * @param string $numeroLote
-     * @return string
-     */
-    public function enviar($rpss, $numeroLote)
-    {
-        $this->method = 'enviar';
-        $fact = new Factories\Enviar($this->certificate);
-        $fact->setSignAlgorithm($this->algorithm);
-        $xml = $fact->render(
-            $this->versao,
-            $this->remetenteCNPJCPF,
-            $this->remetenteRazao,
-            null,
-            $this->codcidade,
-            $rpss,
-            $numeroLote
-        );
-        return $this->sendRequest('', $xml);
-    }
-    
-    /**
-     *
-     * @param array $rpss
-     * @param string $numeroLote
-     * @return string
-     */
-    public function enviarSincrono($rpss, $numeroLote)
-    {
-        $this->method = 'enviarSincrono';
-        $fact = new Factories\Enviar($this->certificate);
-        $fact->setSignAlgorithm($this->algorithm);
-        $xml = $fact->render(
-            $this->versao,
-            $this->remetenteCNPJCPF,
-            $this->remetenteRazao,
-            null,
-            $this->codcidade,
-            $rpss,
-            $numeroLote
-        );
-        return $this->sendRequest('', $xml);
-    }
-    
-    /**
-     *
-     * @param array $rpss
-     * @param string $numeroLote
-     * @return string
-     */
-    public function testeEnviar($rpss, $numeroLote)
-    {
-        $this->method = 'testeEnviar';
-        $fact = new Factories\Enviar($this->certificate);
-        $fact->setSignAlgorithm($this->algorithm);
-        $xml = $fact->render(
-            $this->versao,
-            $this->remetenteCNPJCPF,
-            $this->remetenteRazao,
-            null,
-            $this->codcidade,
-            $rpss,
-            $numeroLote
-        );
-        return $this->sendRequest('', $xml);
-    }
-    
+
     /**
      * Monta o request da mensagem SOAP
      * @param string $url
@@ -251,7 +92,7 @@ class Tools extends ToolsBase
         );
 
         */
-        
+
         /*
         $request = "<dsf:$this->method>";
         $request .= "<mensagemXML>$body</mensagemXML>";
@@ -269,14 +110,172 @@ class Tools extends ToolsBase
                 . $request
                 . "</soapenv:Body>"
                 . "</soapenv:Envelope>";
-        
+
         $messageSize = strlen($envelope);
         $parametros = array(
             'Content-Type: application/soap+xml;charset=utf-8',
             'SOAPAction: "'.$this->method.'"',
             "Content-length: $messageSize");
-        
+
         return $envelope;
          */
+    }
+
+    /**
+     * Consulta Lote
+     * @param string $numeroLote
+     * @return string
+     */
+    public function consultarLote($numeroLote)
+    {
+        $this->method = 'consultarLote';
+        $fact = new Factories\ConsultarLote($this->certificate);
+        $fact->setSignAlgorithm($this->algorithm);
+        $xml = $fact->render(
+            $this->versao,
+            $this->remetenteCNPJCPF,
+            $this->codcidade,
+            $numeroLote
+        );
+        return $this->sendRequest('', $xml);
+    }
+
+    /**
+     * Consulta Lote de NFSe e/ou RPS
+     * @param type $prestadorIM
+     * @param type $nfse [0 => ['numero', 'codigoVerificacao']]
+     * @param type $rps [0 => ['numero', 'serie']]
+     */
+    public function consultarNFSeRps($prestadorIM, $lote, $nfse = [], $rps = [])
+    {
+        $this->method = 'consultarNFSeRps';
+        $fact = new Factories\ConsultarNFSeRps($this->certificate);
+        $fact->setSignAlgorithm($this->algorithm);
+        $xml = $fact->render(
+            $this->versao,
+            $this->remetenteCNPJCPF,
+            $this->codcidade,
+            'true', //transacao
+            $prestadorIM,
+            $lote,
+            $nfse,
+            $rps
+        );
+        return $this->sendRequest('', $xml);
+    }
+
+    /**
+     * Consulta nota
+     * @param string $prestadorIM
+     * @param string $dtInicio
+     * @param string $dtFim
+     * @param int $notaInicial
+     * @return string
+     */
+    public function consultarNota($prestadorIM, $dtInicio, $dtFim, $notaInicial)
+    {
+        $this->method = 'consultarNota';
+        $fact = new Factories\ConsultarNota($this->certificate);
+        $fact->setSignAlgorithm($this->algorithm);
+        $xml = $fact->render(
+            $this->versao,
+            $this->remetenteCNPJCPF,
+            $this->codcidade,
+            $prestadorIM,
+            $dtInicio,
+            $dtFim,
+            $notaInicial
+        );
+        return $this->sendRequest('', $xml);
+    }
+
+    /**
+     * Consulta numero sequencial
+     * @param string $prestadorIM
+     * @param string $serieRPS
+     * @return string
+     */
+    public function consultarSequencialRps($prestadorIM, $serieRPS)
+    {
+        $this->method = 'consultarSequencialRps';
+        $fact = new Factories\ConsultarSequencialRps($this->certificate);
+        $fact->setSignAlgorithm($this->algorithm);
+        $xml = $fact->render(
+            $this->versao,
+            $this->remetenteCNPJCPF,
+            $this->codcidade,
+            $prestadorIM,
+            $serieRPS
+        );
+        return $this->sendRequest('', $xml);
+    }
+
+    /**
+     *
+     * @param array $rpss
+     * @param string $numeroLote
+     * @return string
+     */
+    public function enviar($rpss, $numeroLote)
+    {
+        $this->method = 'enviar';
+        $fact = new Factories\Enviar($this->certificate);
+        $fact->setSignAlgorithm($this->algorithm);
+        $xml = $fact->render(
+            $this->versao,
+            $this->remetenteCNPJCPF,
+            $this->remetenteRazao,
+            null,
+            $this->codcidade,
+            $rpss,
+            $numeroLote
+        );
+        return $this->sendRequest('', $xml);
+    }
+
+    /**
+     *
+     * @param array $rpss
+     * @param string $numeroLote
+     * @return string
+     */
+    public function enviarSincrono($rpss, $numeroLote)
+    {
+        $this->method = 'enviarSincrono';
+        $fact = new Factories\Enviar($this->certificate);
+        $fact->setSignAlgorithm($this->algorithm);
+        $xml = $fact->render(
+            $this->versao,
+            $this->remetenteCNPJCPF,
+            $this->remetenteRazao,
+            null,
+            $this->codcidade,
+            $rpss,
+            $numeroLote
+        );
+        return $this->sendRequest('', $xml);
+    }
+
+    /**
+     *
+     * @param array $rpss
+     * @param string $numeroLote
+     * @return string
+     */
+    public function testeEnviar($rpss, $numeroLote)
+    {
+        $this->method = 'testeEnviar';
+        $fact = new Factories\Enviar($this->certificate);
+        $fact->setSignAlgorithm($this->algorithm);
+        $xml = $fact->render(
+            $this->versao,
+            $this->remetenteCNPJCPF,
+            $this->remetenteRazao,
+            null,
+            $this->codcidade,
+            $rpss,
+            $numeroLote
+        );
+        return $this->sendRequest('', $xml);
     }
 }

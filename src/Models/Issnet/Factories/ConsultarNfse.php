@@ -17,9 +17,6 @@ namespace NFePHP\NFSe\Models\Issnet\Factories;
  * @link      http://github.com/nfephp-org/sped-nfse for the canonical source repository
  */
 
-use NFePHP\NFSe\Models\Issnet\Factories\Header;
-use NFePHP\NFSe\Models\Issnet\Factories\Factory;
-
 class ConsultarNfse extends Factory
 {
     /**
@@ -63,13 +60,13 @@ class ConsultarNfse extends Factory
             $content .= "<Tomador>";
             $content .= "<tc:CpfCnpj>";
             if ($tomador['tipo'] == 2) {
-                $content .= "<tc:Cnpj>".$tomador['doc']."</tc:Cnpj>";
+                $content .= "<tc:Cnpj>" . $tomador['doc'] . "</tc:Cnpj>";
             } else {
-                $content .= "<tc:Cpf>".$tomador['doc']."</tc:Cpf>";
+                $content .= "<tc:Cpf>" . $tomador['doc'] . "</tc:Cpf>";
             }
             $content .= "</tc:CpfCnpj>";
             if (!empty($tomador['im'])) {
-                $content .= "<tc:InscricaoMunicipal>".$tomador['im']."</tc:InscricaoMunicipal>";
+                $content .= "<tc:InscricaoMunicipal>" . $tomador['im'] . "</tc:InscricaoMunicipal>";
             }
             $content .= "</Tomador>";
         }
@@ -77,16 +74,16 @@ class ConsultarNfse extends Factory
             $content .= "<IntermediarioServico>";
             $content .= "<tc:CpfCnpj>";
             if ($intermediario['tipo'] == 2) {
-                $content .= "<tc:Cnpj>".$intermediario['doc']."</tc:Cnpj>";
+                $content .= "<tc:Cnpj>" . $intermediario['doc'] . "</tc:Cnpj>";
             } else {
-                $content .= "<tc:Cpf>".$intermediario['doc']."</tc:Cpf>";
+                $content .= "<tc:Cpf>" . $intermediario['doc'] . "</tc:Cpf>";
             }
             $content .= "</tc:CpfCnpj>";
             if (!empty($intermediario['razao'])) {
-                $content .= "<tc:RazaoSocial>".$intermediario['razao']."</tc:RazaoSocial>";
+                $content .= "<tc:RazaoSocial>" . $intermediario['razao'] . "</tc:RazaoSocial>";
             }
             if (!empty($intermediario['im'])) {
-                $content .= "<tc:InscricaoMunicipal>".$intermediario['im']."</tc:InscricaoMunicipal>";
+                $content .= "<tc:InscricaoMunicipal>" . $intermediario['im'] . "</tc:InscricaoMunicipal>";
             }
             $content .= "</IntermediarioServico>";
         }
@@ -94,13 +91,13 @@ class ConsultarNfse extends Factory
         //acredito que nessa consulta não exista assinatura
         //$body = $this->signer($content, $method, '', [false,false,null,null]);
         $body = $this->clear($content);
-        
+
         //comandos para testes apenas depois remover
         //header("Content-type: text/xml");
         //echo $content;
         //die;
         //file_put_contents('/tmp/issnet_ConsultarNfseEnvio.xml', $body);
-        
+
         $this->validar($versao, $body, 'Issnet', $xsd, '');
         return $body;
     }

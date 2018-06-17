@@ -34,7 +34,7 @@ class Tools extends ToolsDsfnet
      * @var string
      */
     protected $xmlns = 'http://proces.wsnfe2.dsfnet.com.br';
-    
+
     /**
      * Soap Version
      * @var int
@@ -71,6 +71,6 @@ class Tools extends ToolsDsfnet
             'xmlns:soapenv' => "http://schemas.xmlsoap.org/soap/envelope/",
             'xmlns' => "http://proces.wsnfe2.dsfnet.com.br"
         ],
-        2  => []
+        2 => []
     ];
 }

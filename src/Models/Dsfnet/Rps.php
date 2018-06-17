@@ -29,24 +29,24 @@ class Rps extends RpsBase
     public $dataEmissaoRPS = '';//Y-m-dTH:i:s
     public $situacaoRPS = 'N'; //Situação da RPS "N"-Normal "C"-Cancelada
     public $seriePrestacao = '99'; //preencha o campo com o valor '99'
-    
+
     public $inscricaoMunicipalPrestador = '';
     public $razaoSocialPrestador = '';
     public $dDDPrestador = '';
     public $telefonePrestador = '';
-    
+
     public $serieRPSSubstituido = '';
     public $numeroRPSSubstituido = '';
     public $numeroNFSeSubstituida = '';
     public $dataEmissaoNFSeSubstituida = '1900-01-01'; //Preencher com "1900-01-01"
-    
+
     public $inscricaoMunicipalTomador = '';
     public $cPFCNPJTomador = '';
     public $razaoSocialTomador = '';
-    public $docTomadorEstrangeiro  = '';
+    public $docTomadorEstrangeiro = '';
     public $dDDTomador = '';
     public $telefoneTomador = '';
-    
+
     public $tipoLogradouroTomador = '';
     public $logradouroTomador = '';
     public $numeroEnderecoTomador = '';
@@ -57,16 +57,16 @@ class Rps extends RpsBase
     public $cidadeTomadorDescricao = '';
     public $cEPTomador = '';
     public $emailTomador = '';
-    
+
     public $itens = [];
-    
+
     public $codigoAtividade = '';
     public $aliquotaAtividade = '';
     public $tipoRecolhimento = '';
     public $municipioPrestacao = '';
     public $municipioPrestacaoDescricao = '';
     public $operacao = '';
-    
+
     public $tributacao = '';
     public $valorPIS = 0;
     public $valorCOFINS = 0;
@@ -79,25 +79,25 @@ class Rps extends RpsBase
     public $aliquotaIR = 0;
     public $aliquotaCSLL = 0;
     public $descricaoRPS = '';
-    
+
     public $motCancelamento = '';
-    
+
     public $cpfCnpjIntermediario = '';
-    
+
     public $deducoes = [];
 
     protected $aTributacao = [
         'C' => 'Isenta de ISS',
         'E' => 'Não Incidência no Município',
         'F' => 'Imune',
-        'K' => 'Exigibilidd Susp.Dec.J/Proc.A',
+        'K' => 'Exigibilidade Susp.Dec.J/Proc.A',
         'N' => 'Não Tributável',
         'T' => 'Tributável',
         'G' => 'Tributável Fixo',
         'H' => 'Tributável S.N.',
         'M' => 'Micro Empreendedor Individual (MEI).'
     ];
-    
+
     protected $aOperacao = [
         'A' => 'Sem Dedução',
         'B' => 'Com Dedução/Materiais',
@@ -105,12 +105,12 @@ class Rps extends RpsBase
         'D' => 'Devolução / Simples Remessa',
         'J' => 'Intermediação*'
     ];
-    
+
     protected $aTipoRecolhimento = [
         "A" => 'A Recolher',
         "R" => 'Retido na Fonte'
     ];
-    
+
     /**
      * Versão do layout usado 1
      * @param int $versao
@@ -120,7 +120,7 @@ class Rps extends RpsBase
         $versao = preg_replace('/[^0-9]/', '', $versao);
         $this->versaoRPS = $versao;
     }
-    
+
     /**
      * Tipo do RPS
      * RPS – Recibo Provisório de Serviços
@@ -130,7 +130,7 @@ class Rps extends RpsBase
     {
         $this->tipoRPS = $tipo;
     }
-    
+
     /**
      * Série do RPS
      * @param string $serie
@@ -139,7 +139,7 @@ class Rps extends RpsBase
     {
         $this->serieRPS = $serie;
     }
-    
+
     /**
      * Numero do RPS
      * @param int $numero
@@ -153,7 +153,7 @@ class Rps extends RpsBase
         }
         $this->numeroRPS = $numero;
     }
-    
+
     /**
      * Data do RPS
      * Formato YYYY-mm-ddTHH:ii:ss
@@ -165,7 +165,7 @@ class Rps extends RpsBase
         $dtf = $dt->format('Y-m-d\TH:i:s');
         $this->dataEmissaoRPS = $dtf;
     }
-    
+
     /**
      * Status do RPS Normal ou Cancelado
      * @param string $status
@@ -179,7 +179,7 @@ class Rps extends RpsBase
         }
         $this->situacaoRPS = $status;
     }
-    
+
     public function prestador($im, $razao, $ddd, $telefone)
     {
         $this->inscricaoMunicipalPrestador = $im;
@@ -187,7 +187,7 @@ class Rps extends RpsBase
         $this->dDDPrestador = $ddd;
         $this->telefonePrestador = $telefone;
     }
-    
+
     public function substituido($serieRPS, $numeroRPS, $numeroNFSe, $dataNFSe)
     {
         $this->serieRPSSubstituido = $serieRPS;
@@ -196,12 +196,12 @@ class Rps extends RpsBase
         $dt = new \DateTime($dataNFSe);
         $this->dataEmissaoNFSeSubstituida = $dt->format('Y-m-d');
     }
-    
+
     public function seriePrestacao($serie)
     {
         $this->seriePrestacao = $serie;
     }
-    
+
     public function tomador(
         $im,
         $cpfcnpj,
@@ -217,7 +217,7 @@ class Rps extends RpsBase
         $this->dDDTomador = $ddd;
         $this->telefoneTomador = $telefone;
     }
-    
+
     public function tomadorEndereco(
         $tipoLogradouro,
         $logradouro,
@@ -241,7 +241,7 @@ class Rps extends RpsBase
         $this->cEPTomador = $cep;
         $this->emailTomador = strtolower($email);
     }
-    
+
     public function itemServico(
         $discriminacao,
         $quantidade,
@@ -257,7 +257,7 @@ class Rps extends RpsBase
             'Tributavel' => $tributavel
         ];
     }
-    
+
     public function operacaoRPS($operacao)
     {
         if (!$this->validData($this->aOperacao, $operacao)) {
@@ -266,29 +266,29 @@ class Rps extends RpsBase
         }
         $this->operacao = $operacao;
     }
-    
+
     public function descricao($descricao)
     {
         $this->descricaoRPS = Strings::replaceSpecialsChars($descricao);
     }
-    
+
     public function codigoAtividadeRPS($codigo, $aliquota)
     {
         $this->codigoAtividade = $codigo;
         $this->aliquotaAtividade = $aliquota;
     }
-    
+
     public function recolhimento($tipo)
     {
         $this->tipoRecolhimento = $tipo;
     }
-    
+
     public function localPrestacao($codmunicipio, $municipio)
     {
         $this->municipioPrestacao = $codmunicipio;
         $this->municipioPrestacaoDescricao = Strings::replaceSpecialsChars($municipio);
     }
-    
+
     public function tributacaoServico(
         $tributacao,
         $valorPIS,
@@ -314,12 +314,12 @@ class Rps extends RpsBase
         $this->aliquotaIR = $aliquotaIR;
         $this->aliquotaCSLL = $aliquotaCSLL;
     }
-    
+
     public function cancelamento($motivo)
     {
         $this->motCancelamento = Strings::replaceSpecialsChars($motivo);
     }
-    
+
     public function intermediario($cpfcnpj)
     {
         $this->cpfCnpjIntermediario = $cpfcnpj;

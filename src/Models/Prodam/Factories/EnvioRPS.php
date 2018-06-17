@@ -17,9 +17,8 @@ namespace NFePHP\NFSe\Models\Prodam\Factories;
  * @link      http://github.com/nfephp-org/sped-nfse for the canonical source repository
  */
 
-use NFePHP\NFSe\Models\Prodam\Rps;
-use NFePHP\NFSe\Models\Prodam\Factories\Factory;
 use NFePHP\NFSe\Models\Prodam\RenderRPS;
+use NFePHP\NFSe\Models\Prodam\Rps;
 
 class EnvioRPS extends Factory
 {
@@ -28,7 +27,7 @@ class EnvioRPS extends Factory
     private $qtdRPS = null;
     private $valorTotalServicos = null;
     private $valorTotalDeducoes = null;
-    
+
     /**
      * Renderiza o pedido em seu respectivo xml e faz
      * a validação com o xsd
@@ -77,13 +76,13 @@ class EnvioRPS extends Factory
             $this->valorTotalServicos,
             $this->valorTotalDeducoes
         );
-        $content .= $xmlRPS."</$method>";
-        $content = $this->signer($content, $method, '', [false,false,null,null]);
+        $content .= $xmlRPS . "</$method>";
+        $content = $this->signer($content, $method, '', [false, false, null, null]);
         $body = $this->clear($content);
         $this->validar($versao, $body, 'Prodam', $method);
         return $body;
     }
-    
+
     /**
      * Processa quando temos apenas um RPS
      * @param NFePHP\NFSe\Models\Prodam\Rps $data
@@ -93,7 +92,7 @@ class EnvioRPS extends Factory
     {
         return RenderRPS::toXml($data, $this->certificate, $this->algorithm);
     }
-    
+
     /**
      * Processa vários Rps dentro de um array
      * @param array $data
@@ -108,7 +107,7 @@ class EnvioRPS extends Factory
         }
         return $xmlRPS;
     }
-    
+
     /**
      * Totaliza os campos necessários para a montagem do cabeçalho
      * quando envio de Lote de RPS

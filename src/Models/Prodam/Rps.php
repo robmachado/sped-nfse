@@ -51,7 +51,7 @@ class Rps extends RpsBase
     public $tomadorCNPJCPF = '';
     public $tomadorIE = '';
     public $tomadorIM = '';
-    public $tomadorRazao  = '';
+    public $tomadorRazao = '';
     public $tomadorTipoLogradouro = '';
     public $tomadorLogradouro = '';
     public $tomadorNumeroEndereco = '';
@@ -66,13 +66,13 @@ class Rps extends RpsBase
     public $intermediarioIM = '';
     public $intermediarioISSRetido = 'N';
     public $intermediarioEmail = '';
-    
+
     private $aTp = [
         'RPS' => 'Recibo Provisório de Serviços',
         'RPS-M' => 'Recibo Provisório de Serviços proveniente de Nota Fiscal Conjugada (Mista)',
         'RPS-C' => 'Cupom'
     ];
-    
+
     private $aTrib = [
         'T' => 'Tributado em São Paulo',
         'F' => 'Tributado Fora de São Paulo',
@@ -84,7 +84,7 @@ class Rps extends RpsBase
         'V' => 'Tributado Fora de São Paulo, porém Exigibilidade Suspensa',
         'P' => 'Exportação de Serviços'
     ];
-    
+
     /**
      * Inscrição Municipal do Prestador do Serviço
      * @param string $im
@@ -93,7 +93,7 @@ class Rps extends RpsBase
     {
         $this->prestadorIM = $im;
     }
-    
+
     /**
      * Dados do Tomador do Serviço
      * @param string $razao
@@ -121,7 +121,7 @@ class Rps extends RpsBase
         $this->tomadorIM = $im;
         $this->tomadorEmail = $email;
     }
-    
+
     /**
      * Endereço do Tomador do serviço
      * @param string $tipo
@@ -152,7 +152,7 @@ class Rps extends RpsBase
         $this->tomadorSiglaUF = $uf;
         $this->tomadorCEP = $cep;
     }
-    
+
     /**
      * Dados do intermediário
      * @param string $tipo
@@ -171,7 +171,7 @@ class Rps extends RpsBase
         $this->intermediarioIM = $im;
         $this->intermediarioEmail = strtolower($email);
     }
-    
+
     /**
      * Versão do layout usado 1 ou 2
      * @param string $versao
@@ -181,7 +181,7 @@ class Rps extends RpsBase
         $versao = preg_replace('/[^0-9]/', '', $versao);
         $this->versaoRPS = $versao;
     }
-    
+
     /**
      * Série do RPS
      * @param string $serie
@@ -191,7 +191,7 @@ class Rps extends RpsBase
         $serie = substr(trim($serie), 0, 5);
         $this->serieRPS = $serie;
     }
-    
+
     /**
      * Numero do RPS
      * @param string $numero
@@ -205,7 +205,7 @@ class Rps extends RpsBase
         }
         $this->numeroRPS = $numero;
     }
-    
+
     /**
      * Data do RPS
      * @param string $data
@@ -214,7 +214,7 @@ class Rps extends RpsBase
     {
         $this->dtEmiRPS = $data;
     }
-    
+
     /**
      * Status do RPS Normal ou Cancelado
      * @param string $status
@@ -229,7 +229,7 @@ class Rps extends RpsBase
         }
         $this->statusRPS = $status;
     }
-    
+
     /**
      * Tipo do RPS
      * RPS – Recibo Provisório de Serviços
@@ -247,7 +247,7 @@ class Rps extends RpsBase
         }
         $this->tipoRPS = $tipo;
     }
-    
+
     /**
      * Tributação
      * T – Tributado em São Paulo
@@ -271,16 +271,16 @@ class Rps extends RpsBase
         }
         $this->tributacaoRPS = $tributacao;
     }
-    
+
     /**
      * Código do serviço prestado
      * @param string $cod
      */
     public function codigoServico($cod = '')
     {
-        $this->codigoServicoRPS =  str_pad($cod, 5, '0', STR_PAD_LEFT);
+        $this->codigoServicoRPS = str_pad($cod, 5, '0', STR_PAD_LEFT);
     }
-    
+
     /**
      * Valor dos Serviços prestados
      * @param float $valor
@@ -289,7 +289,7 @@ class Rps extends RpsBase
     {
         $this->valorServicosRPS = number_format($valor, 2, '.', '');
     }
-    
+
     /**
      * Valor das deduções aplicáveis ao serviço
      * @param float $valor
@@ -298,7 +298,7 @@ class Rps extends RpsBase
     {
         $this->valorDeducoesRPS = number_format($valor, 2, '.', '');
     }
-    
+
     /**
      * Aliquota do ISS do serviço
      * @param float $valor
@@ -312,7 +312,7 @@ class Rps extends RpsBase
         }
         $this->aliquotaServicosRPS = number_format($valor, 4, '.', '');
     }
-    
+
     /**
      * Indicador de retenção de ISS
      * 1 - iss retido pelo tomador
@@ -331,7 +331,7 @@ class Rps extends RpsBase
             $this->intermediarioISSRetido = 'S';
         }
     }
-    
+
     /**
      * Discriminação do serviço prestado
      * @param string $desc
@@ -340,7 +340,7 @@ class Rps extends RpsBase
     {
         $this->discriminacaoRPS = Strings::replaceSpecialsChars(trim($desc));
     }
-    
+
     /**
      * Carga tributária total estimada
      * Dados normalmente obtidos no IBPT
@@ -354,7 +354,7 @@ class Rps extends RpsBase
         $this->percentualCargaTributariaRPS = number_format($percentual, 4, '.', '');
         $this->fonteCargaTributariaRPS = substr(Strings::replaceSpecialsChars($fonte), 0, 10);
     }
-    
+
     /**
      * Valor referente ao recolhimento do PIS
      * @param float $valor
@@ -363,7 +363,7 @@ class Rps extends RpsBase
     {
         $this->valorPISRPS = number_format($valor, 2, '.', '');
     }
-    
+
     /**
      * Valor referente ao recolhimento da COFINS
      * @param float $valor
@@ -372,7 +372,7 @@ class Rps extends RpsBase
     {
         $this->valorCOFINSRPS = number_format($valor, 2, '.', '');
     }
-    
+
     /**
      * Valor referente ao recolhimento da contribuição ao INSS
      * @param float $valor
@@ -381,7 +381,7 @@ class Rps extends RpsBase
     {
         $this->valorINSSRPS = number_format($valor, 2, '.', '');
     }
-    
+
     /**
      * Valor refenrente ao IR (Imposto de Renda)
      * @param float $valor
@@ -390,7 +390,7 @@ class Rps extends RpsBase
     {
         $this->valorIRRPS = number_format($valor, 2, '.', '');
     }
-    
+
     /**
      * Valor referente a CSLL (contribuição Sobre o Lucro Líquido)
      * @param float $valor
@@ -399,7 +399,7 @@ class Rps extends RpsBase
     {
         $this->valorCSLLRPS = number_format($valor, 2, '.', '');
     }
-    
+
     /**
      * Código Matricula no CEI (Cadastro Especifico do INSS)
      * @param string $cod
@@ -408,7 +408,7 @@ class Rps extends RpsBase
     {
         $this->codigoCEIRPS = $cod;
     }
-    
+
     /**
      * Identificaçao ou número de matricula da Obra Civil
      * @param string $matricula
@@ -417,7 +417,7 @@ class Rps extends RpsBase
     {
         $this->matriculaObraRPS = $matricula;
     }
-    
+
     /**
      * Código IBGE para o municio onde o serviço
      * foi prestado

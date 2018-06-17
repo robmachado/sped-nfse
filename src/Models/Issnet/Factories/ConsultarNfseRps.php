@@ -2,9 +2,6 @@
 
 namespace NFePHP\NFSe\Models\Issnet\Factories;
 
-use NFePHP\NFSe\Models\Issnet\Factories\Header;
-use NFePHP\NFSe\Models\Issnet\Factories\Factory;
-
 class ConsultarNfseRps extends Factory
 {
     public function render(
@@ -26,7 +23,7 @@ class ConsultarNfseRps extends Factory
         $content .= "</IdentificacaoRps>";
         $content .= Header::render($remetenteTipoDoc, $remetenteCNPJCPF, $inscricaoMunicipal);
         $content .= "</$method>";
-        
+
         $body = $this->clear($content);
         $this->validar($versao, $body, 'Issnet', $xsd, '');
         return $body;

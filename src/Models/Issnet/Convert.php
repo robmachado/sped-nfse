@@ -16,10 +16,6 @@ namespace NFePHP\NFSe\Models\Issnet;
  * @link      http://github.com/nfephp-org/sped-nfse for the canonical source repository
  */
 
-use InvalidArgumentException;
-use NFePHP\Common\Strings;
-use NFePHP\NFSe\Models\Issnet\Rps;
-
 class Convert
 {
 

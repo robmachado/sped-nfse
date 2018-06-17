@@ -18,9 +18,6 @@ namespace NFePHP\NFSe\Models\Dsfnet\Factories;
  * @link      http://github.com/nfephp-org/sped-nfse for the canonical source repository
  */
 
-use NFePHP\NFSe\Models\Dsfnet\Factories\Factory;
-use NFePHP\NFSe\Models\Dsfnet\Factories\Header;
-
 class ConsultarLote extends Factory
 {
     public function render(
