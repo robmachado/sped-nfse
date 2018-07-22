@@ -21,7 +21,7 @@ class PedidoStatusLote extends Factory
         $body = \NFePHP\Common\Signer::sign(
             $this->certificate,
             $content,
-            'pedidoStatusLote',
+            $method,
             '',
             $this->algorithm,
             [false,false,null,null]            

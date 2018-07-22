@@ -13,22 +13,22 @@ class EnviarLoteNotas extends Factory
         $CNPJ,
         $dhTrans,        
         $rpss
-    ) {        
-        $timezone = new \DateTimeZone('America/Cuiaba');
-        $this->timezone = $timezone;     
-        $xsd = 'SchemaCaxias-NFSe';
-        $qtdRps = count($rpss);
-        $content = "<envioLote versao=\"1.0\">";
+    ) {                
+        $xsd = 'SchemaCaxias-NFSe';        
+        $method = "envioLote";        
+        $content = "<$method versao=\"1.0\">";                      
             $content .= "<CNPJ>$CNPJ</CNPJ>";
             $content .= "<dhTrans>$dhTrans</dhTrans>";
         foreach ($rpss as $rps) {
-            $content .= RenderRPS::toXml($rps, $this->timezone, $this->algorithm);
+            $content .= RenderRPS::toXml($rps, $this->algorithm);
         }
-        $content .= "</envioLote>";        
+        $content .= "</$method>";
+        
+        $content = \NFePHP\Common\Strings::clearXmlString($content);
         $body = \NFePHP\Common\Signer::sign(
             $this->certificate,
             $content,
-            'envioLote',
+            $method,
             '',
             $this->algorithm,
             [false,false,null,null]            

@@ -27,7 +27,7 @@ class Tools extends ToolsBase
      * Pedido de teste de envio de lote
      * @param array $rpss
      */
-    public function envioLoteRPS(array $rpss)
+    public function envioLote(array $rpss)
     {
         $this->method = 'ns1:enviarLoteNotas';
         $fact = new Factories\EnviarLoteNotas($this->certificate);
@@ -41,7 +41,15 @@ class Tools extends ToolsBase
         return $this->sendRequest('', $message);
     }
     
-    public function pedidoStatusLote($protocolo)
+    /**
+     * Pedido de status de um lote NFS-e
+     * 
+     * Esse serviço permite que o contribuinte obtenha a crítica de um lote de NFS-e já enviado.
+     * 
+     * @param type $lote Número do lote
+     * @return type
+     */
+    public function pedidoStatusLote($lote)
     {
         $this->method = 'ns1:obterCriticaLote';
         $fact = new Factories\PedidoStatusLote($this->certificate);
@@ -49,7 +57,7 @@ class Tools extends ToolsBase
         $message = $fact->render(
             $this->config->versao,
             $this->config->cnpj,
-            $protocolo
+            $lote
         );
         return $this->sendRequest('', $message);
     }

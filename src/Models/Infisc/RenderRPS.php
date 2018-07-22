@@ -36,16 +36,9 @@ class RenderRPS
      */
     protected static $algorithm;
 
-    /**
-     * @var \DateTimeZone
-     */
-    protected static $timezone;
-
-    public static function toXml($data, \DateTimeZone $timezone, $algorithm = OPENSSL_ALGO_SHA1)
-    {
-        //self::$certificate = $certificate;
-        self::$algorithm = $algorithm;
-        self::$timezone = $timezone;
+    public static function toXml($data, $algorithm = OPENSSL_ALGO_SHA1)
+    {        
+        self::$algorithm = $algorithm;        
         $xml = '';
         if (is_object($data)) {
             return self::render($data);

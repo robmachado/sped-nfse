@@ -45,7 +45,7 @@ try {
     $rps = new Rps();
 
     $nfse->tools->CNPJ = '28504634000109';
-    $nfse->tools->dhTrans = '2013-04-07 07:28:12';
+    $nfse->tools->dhTrans = date('Y-m-d H:i:s');
 
     $id = new stdClass();
     $id->cNFSe = '123';
@@ -175,7 +175,7 @@ try {
     $nfse->rps = $rps;
 
     //envio do RPS
-    $response = $nfse->tools->envioLoteRPS([$nfse->rps]);
+    $response = $nfse->tools->envioLote([$nfse->rps]);
     
     //Converte em objeto
     $return = $nfse->response->readReturn('return', $response);

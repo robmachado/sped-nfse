@@ -40,17 +40,17 @@ try {
     //arquivos temporarios do SO em sub pasta denominada "soap"
     $nfse->tools->setDebugSoapMode(true);
 
-    $protocolo = '12';
-    $content = $nfse->tools->pedidoStatusLote($protocolo);
+    $lote = '1245844';
+    $content = $nfse->tools->pedidoStatusLote($lote);
     $response = $nfse->response->readReturn('return', $content);
 //    echo $response->confirmaLote->sit;
 //    echo $response->confirmaLote->mot;
-//    echo "<pre>";
-//    print_r($response);
-//    echo "</pre>";
+    echo "<pre>";
+    print_r($response);
+    echo "</pre>";
 
-    header("Content-type: text/xml");
-    echo $content;
+//    header("Content-type: text/xml");
+//    echo $content;
 //    
     //echo "<pre>";
     //print_r($response);
