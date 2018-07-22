@@ -22,23 +22,16 @@ class Header extends HeaderBase
 {
 
     /**
-     * @param $remetenteTipoDoc
-     * @param $remetenteCNPJCPF
-     * @param $inscricaoMunicipal
-     *
-     * @param $dtInicio
-     * @param $dtFim
-     * @param $numeroLote
-     * @param $cnpjTomador
-     * @param $cpfTomador
-     * @param $inscricaoMunicipalTomador
-     *
-     * @return string
+     * 
+     * @param type $CNPJ
+     * @param type $lote
+     * @return type string
      */
     public static function render(
-        $CNPJ
+        $CNPJ, $lote
     ) {
         $content = "<CNPJ>$CNPJ</CNPJ>";                                
+        $content .= "<cLote>$lote</cLote>";                                
         return $content;
     }
 }

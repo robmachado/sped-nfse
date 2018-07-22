@@ -25,7 +25,7 @@ class EnviarLoteNotas extends Factory
             $content .= RenderRPS::toXml($rps, $this->timezone, $this->algorithm);
         }
         $content .= "</envioLote>";        
-        $body = Signer::sign(
+        $body = \NFePHP\Common\Signer::sign(
             $this->certificate,
             $content,
             'envioLote',

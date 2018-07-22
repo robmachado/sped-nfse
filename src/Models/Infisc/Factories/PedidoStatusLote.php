@@ -10,16 +10,15 @@ class PedidoStatusLote extends Factory
     public function render(
         $versao,
         $CNPJ,
-        $protocolo
+        $lote
     ) {
-        $method = "pedidoStatusLote";
         $xsd = 'SchemaCaxias-NFSe';
-        $content = $this->requestFirstPart($method, $xsd);
-        $content .= Header::render($CNPJ);
-        $content .= "<cLote>$protocolo</cLote>";
+        $method = "pedidoStatusLote";        
+        $content = "<$method versao=\"1.0\">";
+        $content .= Header::render($CNPJ,$lote);        
         $content .= "</$method>";
         
-        $body = Signer::sign(
+        $body = \NFePHP\Common\Signer::sign(
             $this->certificate,
             $content,
             'pedidoStatusLote',
@@ -29,7 +28,6 @@ class PedidoStatusLote extends Factory
         );  
         $this->validar($versao, $body, 'Infisc', $xsd, '');
         
-        //$this->validar($versao, $body, 'Infisc', $xsd, '');
         return $body;
     }
 }
