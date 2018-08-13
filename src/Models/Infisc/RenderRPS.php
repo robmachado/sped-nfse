@@ -733,6 +733,8 @@ class RenderRPS
         
         
         //Detalhamento dos serviços        
+        $rps->totalvISS = 0;
+        $rps->totalvBCISS = 0;
         foreach ($rps->det as $d) {            
             $det = self::$dom->createElement('det');                        
             self::$dom->addChild(
@@ -834,6 +836,7 @@ class RenderRPS
                 'BaseISSQN',
                 false
             );
+            $rps->totalvBCISS += $rps->serv[$d->nItem]->vBCISS;
             self::$dom->addChild(
                 $serv,
                 'pISS',
@@ -850,6 +853,7 @@ class RenderRPS
                 'Valor iss',
                 false
             );
+            $rps->totalvISS += $rps->serv[$d->nItem]->vISS;
             self::$dom->addChild(
                 $serv,
                 'vBCINSS',
@@ -985,7 +989,8 @@ class RenderRPS
                 true,
                 '',
                 false
-            );        
+            );                    
+            
             self::$dom->appChild($det, $serv, 'Adicionando tag Endereco do Prestador');    
             self::$dom->appChild($infRPS, $det, 'Adicionando tag Transportadora em infRPS');            
         }
@@ -1037,7 +1042,7 @@ class RenderRPS
         self::$dom->addChild(
             $ISS,
             'vBCISS',
-            $rps->serv->vBCISS,
+            number_format($rps->totalvBCISS,2),
             true,
             'Valor total da base cálculo ISSQN',
             false
@@ -1045,7 +1050,7 @@ class RenderRPS
         self::$dom->addChild(
             $ISS,
             'vISS',
-            $rps->serv->vISS,
+            number_format($rps->totalvISS,2),
             true,
             'Valor total ISS',
             false
