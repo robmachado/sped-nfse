@@ -39,7 +39,7 @@ try {
     //caso o mode debug seja ativado serão salvos em arquivos 
     //a requisicção SOAP e a resposta do webservice na pasta de 
     //arquivos temporarios do SO em sub pasta denominada "soap"
-    $nfse->tools->setDebugSoapMode(true);    
+    $nfse->tools->setDebugSoapMode(true);
 
     //Construção do RPS
     $rps = new Rps();
@@ -49,7 +49,7 @@ try {
 
     $id = new stdClass();
     $id->cNFSe = '123';
-    $id->mod = '55';
+    $id->mod = '98';
     $id->serie = 'S';
     $id->nNFSe = '1';
     $id->dEmi = date('Y-m-d');
@@ -61,7 +61,7 @@ try {
     $id->formaEmi = '2';
     $id->empreitadaGlobal = '2';
 
-    $rps->setId($id);
+    $rps->Id = $id;
 
     //Prestador do serviço
     $prestador = new stdClass();
@@ -98,8 +98,7 @@ try {
     $tomador->ender->UF = 'SC';
     $tomador->ender->CEP = '88899000';
     $tomador->ender->cPais = '1058';
-    $tomador->ender->xPais = 'Brasul';
-    $tomador->regimeTrib = '1';
+    $tomador->ender->xPais = 'Brasul';    
     $rps->TomS = $tomador;
 
     //Empresa transportadora
@@ -176,25 +175,20 @@ try {
 
     //envio do RPS
     $response = $nfse->tools->envioLote([$nfse->rps]);
-    
+
     //Converte em objeto
     $return = $nfse->response->readReturn('return', $response);
-//    echo "Situação: ".$return->confirmaLote->sit."<br/>";
-//    echo "Motivo: ".$return->confirmaLote->mot."<br/>";
-//    echo "CNPJ: ".$return->confirmaLote->CNPJ."<br/>";
-//    echo "Data: ".$return->confirmaLote->dhRecbto."<br/>";
-//    echo "<pre>";
-//    print_r($return);
-//    echo "</pre>";
 
-    //error_log(print_r($response, TRUE) . PHP_EOL, 3, '/var/www/tests/sped-nfse/post.xml');
-
-    //apresentação do retorno
-//    header("Content-type: text/xml");
-//    echo $response;
-    //Imprime XML na tela
-header('Content-type: text/xml; charset=UTF-8');
-print_r($response);
+    //Lote recebido    
+    if ($return->confirmaLote->sit == 100) {
+        echo "Lote: " . $return->confirmaLote->cLote."<br/>";
+        echo "Situação: " . $return->confirmaLote->sit . "<br/>";        
+        echo "CNPJ: " . $return->confirmaLote->CNPJ . "<br/>";
+        echo "Data: " . $return->confirmaLote->dhRecbto . "<br/>";
+    }
+    //echo "<pre>";
+    //header('Content-type: text/xml; charset=UTF-8');
+    //print_r($response);
     exit();
 } catch (\NFePHP\Common\Exception\SoapException $e) {
     echo $e->getMessage();

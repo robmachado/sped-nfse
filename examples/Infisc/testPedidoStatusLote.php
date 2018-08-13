@@ -40,7 +40,7 @@ try {
     //arquivos temporarios do SO em sub pasta denominada "soap"
     $nfse->tools->setDebugSoapMode(true);
 
-    $lote = '1245844';
+    $lote = '1245852';
     $content = $nfse->tools->pedidoStatusLote($lote);
     $response = $nfse->response->readReturn('return', $content);
 //    echo $response->confirmaLote->sit;

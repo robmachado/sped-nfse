@@ -56,12 +56,7 @@ class Rps extends RpsBase
     public function infNFSe($std)
     {
         return $std;
-    }
-        
-    public function setId($std)
-    {        
-        $this->Id = $std;        
-    }
+    }            
     
     /**
      * Inscrição Municipal do Prestador do Serviço
