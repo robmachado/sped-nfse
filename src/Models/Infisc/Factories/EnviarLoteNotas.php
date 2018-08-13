@@ -20,8 +20,11 @@ class EnviarLoteNotas extends Factory
             $content .= "<CNPJ>$CNPJ</CNPJ>";
             $content .= "<dhTrans>$dhTrans</dhTrans>";
         foreach ($rpss as $rps) {
-            $content .= RenderRPS::toXml($rps, $this->algorithm);
+            $content = RenderRPS::toXml($rps, $this->algorithm);
         }
+        header('Content-type: text/xml; charset=UTF-8');
+    print_r($content);
+    exit();
         $content .= "</$method>";
         
         $content = \NFePHP\Common\Strings::clearXmlString($content);

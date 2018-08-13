@@ -732,261 +732,263 @@ class RenderRPS
         self::$dom->appChild($infRPS, $transportadora, 'Adicionando tag Transportadora em infRPS');        
         
         
-        //Detalhamento dos serviços
-        $det = self::$dom->createElement('det');                        
-        self::$dom->addChild(
-            $det,
-            'nItem',
-            $rps->det->nItem,
-            true,
-            'Número do Item',
-            false
-        );
-        //Serviço da NFS-e
-        $serv = self::$dom->createElement('serv');
-        self::$dom->addChild(
-            $serv,
-            'cServ',
-            $rps->serv->cServ,
-            true,
-            'Código Municipal do serviço',
-            false
-        );
-        self::$dom->addChild(
-            $serv,
-            'cLCServ',
-            $rps->serv->cLCServ,
-            true,
-            'Código do Serviço',
-            false
-        );
-        self::$dom->addChild(
-            $serv,
-            'xServ',
-            $rps->serv->xServ,
-            true,
-            'Discriminação do Serviço',
-            false
-        );
-        self::$dom->addChild(
-            $serv,
-            'localTributacao',
-            $rps->serv->localTributacao,
-            true,
-            'Local tributação IBGE',
-            false
-        );
-        self::$dom->addChild(
-            $serv,
-            'localVerifResServ',
-            $rps->serv->localVerifResServ,
-            true,
-            'Local verificação do serviço',
-            false
-        );
-        self::$dom->addChild(
-            $serv,
-            'uTrib',
-            $rps->serv->uTrib,
-            true,
-            'Unidade',
-            false
-        );
-        self::$dom->addChild(
-            $serv,
-            'qTrib',
-            $rps->serv->qTrib,
-            true,
-            'Quantidade',
-            false
-        );
-        self::$dom->addChild(
-            $serv,
-            'vUnit',
-            $rps->serv->vUnit,
-            true,
-            'Valor unitário',
-            false
-        );
-        self::$dom->addChild(
-            $serv,
-            'vServ',
-            $rps->serv->vServ,
-            true,
-            'Valor do Serviço',
-            false
-        );
-        self::$dom->addChild(
-            $serv,
-            'vDesc',
-            $rps->serv->vDesc,
-            true,
-            'Desconto',
-            false
-        );
-        self::$dom->addChild(
-            $serv,
-            'vBCISS',
-            $rps->serv->vBCISS,
-            true,
-            'BaseISSQN',
-            false
-        );
-        self::$dom->addChild(
-            $serv,
-            'pISS',
-            $rps->serv->pISS,
-            true,
-            'ISS',
-            false
-        );
-        self::$dom->addChild(
-            $serv,
-            'vISS',
-            $rps->serv->vISS,
-            true,
-            'Valor iss',
-            false
-        );
-        self::$dom->addChild(
-            $serv,
-            'vBCINSS',
-            $rps->serv->vBCINSS,
-            true,
-            'Base INSS',
-            false
-        );
-        self::$dom->addChild(
-            $serv,
-            'pRetINSS',
-            $rps->serv->pRetINSS,
-            true,
-            'Retenção INSS',
-            false
-        );
-        self::$dom->addChild(
-            $serv,
-            'vRetINSS',
-            $rps->serv->vRetINSS,
-            true,
-            'Retenção INSS',
-            false
-        );
-        self::$dom->addChild(
-            $serv,
-            'vRed',
-            $rps->serv->vRed,
-            true,
-            'Valor redução ISS',
-            false
-        );
-        self::$dom->addChild(
-            $serv,
-            'vBCRetIR',
-            $rps->serv->vBCRetIR,
-            true,
-            'Retenção IR',
-            false
-        );
-        self::$dom->addChild(
-            $serv,
-            'pRetIR',
-            $rps->serv->pRetIR,
-            true,
-            '',
-            false
-        );
-        self::$dom->addChild(
-            $serv,
-            'vRetIR',
-            $rps->serv->vRetIR,
-            true,
-            '',
-            false
-        );
-        self::$dom->addChild(
-            $serv,
-            'vBCCOFINS',
-            $rps->serv->vBCCOFINS,
-            true,
-            'Base Cofins',
-            false
-        );
-        self::$dom->addChild(
-            $serv,
-            'pRetCOFINS',
-            $rps->serv->pRetCOFINS,
-            true,
-            'Retenção Cofins',
-            false
-        );
-        self::$dom->addChild(
-            $serv,
-            'vRetCOFINS',
-            $rps->serv->pRetCOFINS,
-            true,
-            '',
-            false
-        );
-        self::$dom->addChild(
-            $serv,
-            'vBCCSLL',
-            $rps->serv->vBCCSLL,
-            true,
-            'Base CSLL',
-            false
-        );
-        self::$dom->addChild(
-            $serv,
-            'pRetCSLL',
-            $rps->serv->pRetCSLL,
-            true,
-            '',
-            false
-        );
-        self::$dom->addChild(
-            $serv,
-            'vRetCSLL',
-            $rps->serv->vRetCSLL,
-            true,
-            '',
-            false
-        );
-        self::$dom->addChild(
-            $serv,
-            'vBCPISPASEP',
-            $rps->serv->vBCPISPASEP,
-            true,
-            '',
-            false
-        );
-        self::$dom->addChild(
-            $serv,
-            'pRetPISPASEP',
-            $rps->serv->pRetPISPASEP,
-            true,
-            '',
-            false
-        );
-        self::$dom->addChild(
-            $serv,
-            'vRetPISPASEP',
-            $rps->serv->vRetPISPASEP,
-            true,
-            '',
-            false
-        );
-        self::$dom->addChild(
-            $serv,
-            'totalAproxTribServ',
-            $rps->serv->totalAproxTribServ,
-            true,
-            '',
-            false
-        );
-        
-        self::$dom->appChild($det, $serv, 'Adicionando tag Endereco do Prestador');
-        self::$dom->appChild($infRPS, $det, 'Adicionando tag Transportadora em infRPS');        
+        //Detalhamento dos serviços        
+        foreach ($rps->det as $d) {            
+            $det = self::$dom->createElement('det');                        
+            self::$dom->addChild(
+                $det,
+                'nItem',
+                $d->nItem,
+                true,
+                'Número do Item',
+                false
+            );      
+                    
+            //Serviço da NFS-e
+            $serv = self::$dom->createElement('serv');
+            self::$dom->addChild(
+                $serv,
+                'cServ',
+                $rps->serv[$d->nItem]->cServ,
+                true,
+                'Código Municipal do serviço',
+                false
+            );
+            self::$dom->addChild(
+                $serv,
+                'cLCServ',
+                $rps->serv[$d->nItem]->cLCServ,
+                true,
+                'Código do Serviço',
+                false
+            );
+            self::$dom->addChild(
+                $serv,
+                'xServ',
+                $rps->serv[$d->nItem]->xServ,
+                true,
+                'Discriminação do Serviço',
+                false
+            );
+            self::$dom->addChild(
+                $serv,
+                'localTributacao',
+                $rps->serv[$d->nItem]->localTributacao,
+                true,
+                'Local tributação IBGE',
+                false
+            );
+            self::$dom->addChild(
+                $serv,
+                'localVerifResServ',
+                $rps->serv[$d->nItem]->localVerifResServ,
+                true,
+                'Local verificação do serviço',
+                false
+            );
+            self::$dom->addChild(
+                $serv,
+                'uTrib',
+                $rps->serv[$d->nItem]->uTrib,
+                true,
+                'Unidade',
+                false
+            );
+            self::$dom->addChild(
+                $serv,
+                'qTrib',
+                $rps->serv[$d->nItem]->qTrib,
+                true,
+                'Quantidade',
+                false
+            );
+            self::$dom->addChild(
+                $serv,
+                'vUnit',
+                $rps->serv[$d->nItem]->vUnit,
+                true,
+                'Valor unitário',
+                false
+            );
+            self::$dom->addChild(
+                $serv,
+                'vServ',
+                $rps->serv[$d->nItem]->vServ,
+                true,
+                'Valor do Serviço',
+                false
+            );
+            self::$dom->addChild(
+                $serv,
+                'vDesc',
+                $rps->serv[$d->nItem]->vDesc,
+                true,
+                'Desconto',
+                false
+            );
+            self::$dom->addChild(
+                $serv,
+                'vBCISS',
+                $rps->serv[$d->nItem]->vBCISS,
+                true,
+                'BaseISSQN',
+                false
+            );
+            self::$dom->addChild(
+                $serv,
+                'pISS',
+                $rps->serv[$d->nItem]->pISS,
+                true,
+                'ISS',
+                false
+            );
+            self::$dom->addChild(
+                $serv,
+                'vISS',
+                $rps->serv[$d->nItem]->vISS,
+                true,
+                'Valor iss',
+                false
+            );
+            self::$dom->addChild(
+                $serv,
+                'vBCINSS',
+                $rps->serv[$d->nItem]->vBCINSS,
+                true,
+                'Base INSS',
+                false
+            );
+            self::$dom->addChild(
+                $serv,
+                'pRetINSS',
+                $rps->serv[$d->nItem]->pRetINSS,
+                true,
+                'Retenção INSS',
+                false
+            );
+            self::$dom->addChild(
+                $serv,
+                'vRetINSS',
+                $rps->serv[$d->nItem]->vRetINSS,
+                true,
+                'Retenção INSS',
+                false
+            );
+            self::$dom->addChild(
+                $serv,
+                'vRed',
+                $rps->serv[$d->nItem]->vRed,
+                true,
+                'Valor redução ISS',
+                false
+            );
+            self::$dom->addChild(
+                $serv,
+                'vBCRetIR',
+                $rps->serv[$d->nItem]->vBCRetIR,
+                true,
+                'Retenção IR',
+                false
+            );
+            self::$dom->addChild(
+                $serv,
+                'pRetIR',
+                $rps->serv[$d->nItem]->pRetIR,
+                true,
+                '',
+                false
+            );
+            self::$dom->addChild(
+                $serv,
+                'vRetIR',
+                $rps->serv[$d->nItem]->vRetIR,
+                true,
+                '',
+                false
+            );
+            self::$dom->addChild(
+                $serv,
+                'vBCCOFINS',
+                $rps->serv[$d->nItem]->vBCCOFINS,
+                true,
+                'Base Cofins',
+                false
+            );
+            self::$dom->addChild(
+                $serv,
+                'pRetCOFINS',
+                $rps->serv[$d->nItem]->pRetCOFINS,
+                true,
+                'Retenção Cofins',
+                false
+            );
+            self::$dom->addChild(
+                $serv,
+                'vRetCOFINS',
+                $rps->serv[$d->nItem]->pRetCOFINS,
+                true,
+                '',
+                false
+            );
+            self::$dom->addChild(
+                $serv,
+                'vBCCSLL',
+                $rps->serv[$d->nItem]->vBCCSLL,
+                true,
+                'Base CSLL',
+                false
+            );
+            self::$dom->addChild(
+                $serv,
+                'pRetCSLL',
+                $rps->serv[$d->nItem]->pRetCSLL,
+                true,
+                '',
+                false
+            );
+            self::$dom->addChild(
+                $serv,
+                'vRetCSLL',
+                $rps->serv[$d->nItem]->vRetCSLL,
+                true,
+                '',
+                false
+            );
+            self::$dom->addChild(
+                $serv,
+                'vBCPISPASEP',
+                $rps->serv[$d->nItem]->vBCPISPASEP,
+                true,
+                '',
+                false
+            );
+            self::$dom->addChild(
+                $serv,
+                'pRetPISPASEP',
+                $rps->serv[$d->nItem]->pRetPISPASEP,
+                true,
+                '',
+                false
+            );
+            self::$dom->addChild(
+                $serv,
+                'vRetPISPASEP',
+                $rps->serv[$d->nItem]->vRetPISPASEP,
+                true,
+                '',
+                false
+            );
+            self::$dom->addChild(
+                $serv,
+                'totalAproxTribServ',
+                $rps->serv[$d->nItem]->totalAproxTribServ,
+                true,
+                '',
+                false
+            );        
+            self::$dom->appChild($det, $serv, 'Adicionando tag Endereco do Prestador');    
+            self::$dom->appChild($infRPS, $det, 'Adicionando tag Transportadora em infRPS');            
+        }
         
          //Totais
         $total = self::$dom->createElement('total');                        

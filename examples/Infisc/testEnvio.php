@@ -98,7 +98,7 @@ try {
     $tomador->ender->UF = 'SC';
     $tomador->ender->CEP = '88899000';
     $tomador->ender->cPais = '1058';
-    $tomador->ender->xPais = 'Brasul';    
+    $tomador->ender->xPais = 'Brasul';
     $rps->TomS = $tomador;
 
     //Empresa transportadora
@@ -117,45 +117,49 @@ try {
     $rps->transportadora = $transportadora;
 
     //Detalhamento dos serviços
-    $det = new stdClass();
-    $det->nItem = '1';
-    $det->serv = 'Serviço xyz';
-    $rps->det = $det;
+    $i = 1;
+    while ($i < 3) {
+        $det = new stdClass();
+        $det->nItem = $i;        
 
-    //Serviço da NFS-e
-    $serv = new stdClass();
-    $serv->cServ = '8394';
-    $serv->cLCServ = '1602';
-    $serv->xServ = 'TRANSPORTE RODOVIARIO DE CARGA, MUNICIPAL (NOVO)';
-    $serv->localTributacao = '4305108';
-    $serv->localVerifResServ = '1';
-    $serv->uTrib = 'UN';
-    $serv->qTrib = '1';
-    $serv->vUnit = '100.00';
-    $serv->vServ = '100.00';
-    $serv->vDesc = 0.00;
-    $serv->vBCISS = '100.00';
-    $serv->pISS = '4.00';
-    $serv->vISS = '4.00';
-    $serv->vBCINSS = '100.00';
-    $serv->pRetINSS = '0.00';
-    $serv->vRetINSS = '0.00';
-    $serv->nItemPed = '0';
-    $serv->vRed = '0.00';
-    $serv->vBCRetIR = '0.00';
-    $serv->pRetIR = '0.00';
-    $serv->vRetIR = '0.00';
-    $serv->vBCCOFINS = '0.00';
-    $serv->pRetCOFINS = '0.00';
-    $serv->vRetCOFINS = '0.00';
-    $serv->vBCCSLL = '0.00';
-    $serv->pRetCSLL = '0.00';
-    $serv->vRetCSLL = '0.00';
-    $serv->vBCPISPASEP = '0.00';
-    $serv->pRetPISPASEP = '0.00';
-    $serv->vRetPISPASEP = '0.00';
-    $serv->totalAproxTribServ = '0.00';
-    $rps->serv = $serv;
+        //Serviço da NFS-e
+        $serv = new stdClass();
+        $serv->nItem = $i;
+        $serv->cServ = '8394';
+        $serv->cLCServ = '1602';
+        $serv->xServ = 'TRANSPORTE RODOVIARIO DE CARGA, MUNICIPAL (NOVO)';
+        $serv->localTributacao = '4305108';
+        $serv->localVerifResServ = '1';
+        $serv->uTrib = 'UN';
+        $serv->qTrib = '1';
+        $serv->vUnit = '100.00';
+        $serv->vServ = '100.00';
+        $serv->vDesc = 0.00;
+        $serv->vBCISS = '100.00';
+        $serv->pISS = '4.00';
+        $serv->vISS = '4.00';
+        $serv->vBCINSS = '100.00';
+        $serv->pRetINSS = '0.00';
+        $serv->vRetINSS = '0.00';
+        $serv->nItemPed = '0';
+        $serv->vRed = '0.00';
+        $serv->vBCRetIR = '0.00';
+        $serv->pRetIR = '0.00';
+        $serv->vRetIR = '0.00';
+        $serv->vBCCOFINS = '0.00';
+        $serv->pRetCOFINS = '0.00';
+        $serv->vRetCOFINS = '0.00';
+        $serv->vBCCSLL = '0.00';
+        $serv->pRetCSLL = '0.00';
+        $serv->vRetCSLL = '0.00';
+        $serv->vBCPISPASEP = '0.00';
+        $serv->pRetPISPASEP = '0.00';
+        $serv->vRetPISPASEP = '0.00';
+        $serv->totalAproxTribServ = '0.00';
+        $rps->serv[$i] = $serv;
+        $rps->det[$i] = $det;
+        $i++;
+    }
 
     //Totais
     $total = new stdClass();
@@ -181,8 +185,8 @@ try {
 
     //Lote recebido    
     if ($return->confirmaLote->sit == 100) {
-        echo "Lote: " . $return->confirmaLote->cLote."<br/>";
-        echo "Situação: " . $return->confirmaLote->sit . "<br/>";        
+        echo "Lote: " . $return->confirmaLote->cLote . "<br/>";
+        echo "Situação: " . $return->confirmaLote->sit . "<br/>";
         echo "CNPJ: " . $return->confirmaLote->CNPJ . "<br/>";
         echo "Data: " . $return->confirmaLote->dhRecbto . "<br/>";
     }
