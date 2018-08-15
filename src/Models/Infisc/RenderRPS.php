@@ -149,259 +149,6 @@ class RenderRPS
             true
         );
         self::$dom->appChild($infRPS, $identificacaoRps, 'Adicionando tag IdentificacaoRPS');
-//        $rps->infDataEmissao->setTimezone(self::$timezone);
-//        self::$dom->addChild(
-//            $infRPS,
-//            'tc:DataEmissao',
-//            $rps->infDataEmissao->format('Y-m-d\TH:i:s'),
-//            true,
-//            'Data de Emissão do RPS',
-//            false
-//        );
-//        self::$dom->addChild(
-//            $infRPS,
-//            'tc:NaturezaOperacao',
-//            $rps->infNaturezaOperacao,
-//            true,
-//            'Natureza da operação',
-//            false
-//        );
-//        self::$dom->addChild(
-//            $infRPS,
-//            'tc:OptanteSimplesNacional',
-//            $rps->infOptanteSimplesNacional,
-//            true,
-//            'OptanteSimplesNacional',
-//            false
-//        );
-//        self::$dom->addChild(
-//            $infRPS,
-//            'tc:IncentivadorCultural',
-//            $rps->infIncentivadorCultural,
-//            true,
-//            'IncentivadorCultural',
-//            false
-//        );
-//        self::$dom->addChild(
-//            $infRPS,
-//            'tc:Status',
-//            $rps->infStatus,
-//            true,
-//            'Status',
-//            false
-//        );
-//        
-//        if (!empty($rps->infRpsSubstituido['numero'])) {
-//            $rpssubs = self::$dom->createElement('tc:RpsSubstituido');
-//            self::$dom->addChild(
-//                $rpssubs,
-//                'tc:Numero',
-//                $rps->infRpsSubstituido['numero'],
-//                true,
-//                'Numero',
-//                false
-//            );
-//            self::$dom->addChild(
-//                $rpssubs,
-//                'tc:Serie',
-//                $rps->infRpsSubstituido['serie'],
-//                true,
-//                'Serie',
-//                false
-//            );
-//            self::$dom->addChild(
-//                $rpssubs,
-//                'tc:Tipo',
-//                $rps->infRpsSubstituido['tipo'],
-//                true,
-//                'tipo',
-//                false
-//            );
-//            self::$dom->appChild($infRPS, $rpssubs, 'Adicionando tag RpsSubstituido em infRps');
-//        }
-//        
-//        self::$dom->addChild(
-//            $infRPS,
-//            'tc:RegimeEspecialTributacao',
-//            $rps->infRegimeEspecialTributacao,
-//            true,
-//            'RegimeEspecialTributacao',
-//            false
-//        );
-//        $servico = self::$dom->createElement('tc:Servico');
-//        $valores = self::$dom->createElement('tc:Valores');
-//        self::$dom->addChild(
-//            $valores,
-//            'tc:ValorServicos',
-//            $rps->infValorServicos,
-//            true,
-//            'ValorServicos',
-//            false
-//        );
-//        self::$dom->addChild(
-//            $valores,
-//            'tc:ValorDeducoes',
-//            $rps->infValorDeducoes,
-//            false,
-//            'ValorDeducoes',
-//            false
-//        );
-//        self::$dom->addChild(
-//            $valores,
-//            'tc:ValorPis',
-//            $rps->infValorPis,
-//            false,
-//            'ValorPis',
-//            false
-//        );
-//        self::$dom->addChild(
-//            $valores,
-//            'tc:ValorCofins',
-//            $rps->infValorCofins,
-//            false,
-//            'ValorCofins',
-//            false
-//        );
-//        self::$dom->addChild(
-//            $valores,
-//            'tc:ValorInss',
-//            $rps->infValorInss,
-//            false,
-//            'ValorInss',
-//            false
-//        );
-//        self::$dom->addChild(
-//            $valores,
-//            'tc:ValorIr',
-//            $rps->infValorIr,
-//            false,
-//            'ValorIr',
-//            false
-//        );
-//        self::$dom->addChild(
-//            $valores,
-//            'tc:ValorCsll',
-//            $rps->infValorCsll,
-//            false,
-//            'ValorCsll',
-//            false
-//        );
-//        self::$dom->addChild(
-//            $valores,
-//            'tc:IssRetido',
-//            $rps->infIssRetido,
-//            true,
-//            'IssRetido',
-//            false
-//        );
-//        self::$dom->addChild(
-//            $valores,
-//            'tc:ValorIss',
-//            $rps->infValorIss,
-//            false,
-//            'ValorIss',
-//            false
-//        );
-//        self::$dom->addChild(
-//            $valores,
-//            'tc:ValorIssRetido',
-//            $rps->infValorIssRetido,
-//            false,
-//            'ValorIssRetido',
-//            false
-//        );
-//        self::$dom->addChild(
-//            $valores,
-//            'tc:OutrasRetencoes',
-//            $rps->infOutrasRetencoes,
-//            false,
-//            'OutrasRetencoes',
-//            false
-//        );
-//        self::$dom->addChild(
-//            $valores,
-//            'tc:BaseCalculo',
-//            $rps->infBaseCalculo,
-//            false,
-//            'BaseCalculo',
-//            false
-//        );
-//        self::$dom->addChild(
-//            $valores,
-//            'tc:Aliquota',
-//            number_format($rps->infAliquota, 2, '.', ''),
-//            false,
-//            'Aliquota',
-//            false
-//        );
-//        self::$dom->addChild(
-//            $valores,
-//            'tc:ValorLiquidoNfse',
-//            $rps->infValorLiquidoNfse,
-//            false,
-//            'ValorLiquidoNfse',
-//            false
-//        );
-//        self::$dom->addChild(
-//            $valores,
-//            'tc:DescontoIncondicionado',
-//            $rps->infDescontoIncondicionado,
-//            false,
-//            'DescontoIncondicionado',
-//            false
-//        );
-//        self::$dom->addChild(
-//            $valores,
-//            'tc:DescontoCondicionado',
-//            $rps->infDescontoCondicionado,
-//            false,
-//            'DescontoCondicionado',
-//            false
-//        );
-//        self::$dom->appChild($servico, $valores, 'Adicionando tag Valores em Servico');
-//        
-//        self::$dom->addChild(
-//            $servico,
-//            'tc:ItemListaServico',
-//            $rps->infItemListaServico,
-//            true,
-//            'ItemListaServico',
-//            false
-//        );
-//        self::$dom->addChild(
-//            $servico,
-//            'tc:CodigoCnae',
-//            $rps->infCodigoCnae,
-//            true,
-//            'CodigoCnae',
-//            false
-//        );
-//        self::$dom->addChild(
-//            $servico,
-//            'tc:CodigoTributacaoMunicipio',
-//            $rps->infCodigoTributacaoMunicipio,
-//            true,
-//            'CodigoTributacaoMunicipio',
-//            false
-//        );
-//        self::$dom->addChild(
-//            $servico,
-//            'tc:Discriminacao',
-//            $rps->infDiscriminacao,
-//            true,
-//            'Discriminacao',
-//            false
-//        );
-//        self::$dom->addChild(
-//            $servico,
-//            'tc:MunicipioPrestacaoServico',
-//            $rps->infMunicipioPrestacaoServico,
-//            true,
-//            'MunicipioPrestacaoServico',
-//            false
-//        );
-//        self::$dom->appChild($infRPS, $servico, 'Adicionando tag Servico');
-//
         
         $prestador = self::$dom->createElement('prest');
         self::$dom->addChild(
@@ -525,11 +272,11 @@ class RenderRPS
         self::$dom->appChild($infRPS, $prestador, 'Adicionando tag Prestador em infRPS');        
                        
         $tomador = self::$dom->createElement('TomS');                
-        if (!empty($rps->TomS->CPNJ)) {
+        if (!empty($rps->TomS->CNPJ)) {
             self::$dom->addChild(
                 $tomador,
                 'CNPJ',
-                $rps->TomS->CPNJ,
+                $rps->TomS->CNPJ,
                 true,
                 'Tomador CNPJ',
                 false
@@ -640,97 +387,98 @@ class RenderRPS
         self::$dom->appChild($infRPS, $tomador, 'Adicionando tag Tomador em infRPS');        
         
         //Transportadora        
-        $transportadora = self::$dom->createElement('transportadora');                        
-        self::$dom->addChild(
-            $transportadora,
-            'xNomeTrans',
-            $rps->transportadora->xNomeTrans,
-            true,
-            'Razao Social',
-            false
-        );
-        self::$dom->addChild(
-            $transportadora,
-            'xCpfCnpjTrans',
-            $rps->transportadora->xCpfCnpjTrans,
-            true,
-            'CPF ou CNPJ',
-            false
-        );
-        self::$dom->addChild(
-            $transportadora,
-            'xInscEstTrans',
-            $rps->transportadora->xInscEstTrans,
-            true,
-            'IE',
-            false
-        );
-        self::$dom->addChild(
-            $transportadora,
-            'xPlacaTrans',
-            $rps->transportadora->xPlacaTrans,
-            true,
-            'Placa',
-            false
-        );
-        self::$dom->addChild(
-            $transportadora,
-            'xEndTrans',
-            $rps->transportadora->xEndTrans,
-            true,
-            'Endereço',
-            false
-        );
-        self::$dom->addChild(
-            $transportadora,
-            'cMunTrans',
-            $rps->transportadora->cMunTrans,
-            true,
-            'Código Cidade',
-            false
-        );
-        self::$dom->addChild(
-            $transportadora,
-            'xMunTrans',
-            $rps->transportadora->xMunTrans,
-            true,
-            'Cidade',
-            false
-        );
-        self::$dom->addChild(
-            $transportadora,
-            'xUfTrans',
-            $rps->transportadora->xUfTrans,
-            true,
-            'UF',
-            false
-        );
-        self::$dom->addChild(
-            $transportadora,
-            'cPaisTrans',
-            $rps->transportadora->cPaisTrans,
-            true,
-            'País',
-            false
-        );
-        self::$dom->addChild(
-            $transportadora,
-            'xPaisTrans',
-            $rps->transportadora->xPaisTrans,
-            true,
-            'País',
-            false
-        );
-        self::$dom->addChild(
-            $transportadora,
-            'vTipoFreteTrans',
-            $rps->transportadora->vTipoFreteTrans,
-            true,
-            'Tipo frete',
-            false
-        );
-        self::$dom->appChild($infRPS, $transportadora, 'Adicionando tag Transportadora em infRPS');        
-        
+        if (isset($rps->transportadora)){
+            $transportadora = self::$dom->createElement('transportadora');                        
+            self::$dom->addChild(
+                $transportadora,
+                'xNomeTrans',
+                $rps->transportadora->xNomeTrans,
+                true,
+                'Razao Social',
+                false
+            );
+            self::$dom->addChild(
+                $transportadora,
+                'xCpfCnpjTrans',
+                $rps->transportadora->xCpfCnpjTrans,
+                true,
+                'CPF ou CNPJ',
+                false
+            );
+            self::$dom->addChild(
+                $transportadora,
+                'xInscEstTrans',
+                $rps->transportadora->xInscEstTrans,
+                true,
+                'IE',
+                false
+            );
+            self::$dom->addChild(
+                $transportadora,
+                'xPlacaTrans',
+                $rps->transportadora->xPlacaTrans,
+                true,
+                'Placa',
+                false
+            );
+            self::$dom->addChild(
+                $transportadora,
+                'xEndTrans',
+                $rps->transportadora->xEndTrans,
+                true,
+                'Endereço',
+                false
+            );
+            self::$dom->addChild(
+                $transportadora,
+                'cMunTrans',
+                $rps->transportadora->cMunTrans,
+                true,
+                'Código Cidade',
+                false
+            );
+            self::$dom->addChild(
+                $transportadora,
+                'xMunTrans',
+                $rps->transportadora->xMunTrans,
+                true,
+                'Cidade',
+                false
+            );
+            self::$dom->addChild(
+                $transportadora,
+                'xUfTrans',
+                $rps->transportadora->xUfTrans,
+                true,
+                'UF',
+                false
+            );
+            self::$dom->addChild(
+                $transportadora,
+                'cPaisTrans',
+                $rps->transportadora->cPaisTrans,
+                true,
+                'País',
+                false
+            );
+            self::$dom->addChild(
+                $transportadora,
+                'xPaisTrans',
+                $rps->transportadora->xPaisTrans,
+                true,
+                'País',
+                false
+            );
+            self::$dom->addChild(
+                $transportadora,
+                'vTipoFreteTrans',
+                $rps->transportadora->vTipoFreteTrans,
+                true,
+                'Tipo frete',
+                false
+            );
+            self::$dom->appChild($infRPS, $transportadora, 'Adicionando tag Transportadora em infRPS');        
+        }
         
         //Detalhamento dos serviços        
         $rps->totalvISS = 0;
@@ -1058,6 +806,26 @@ class RenderRPS
         
         self::$dom->appChild($total, $ISS, 'Adicionando tag ISS');
         self::$dom->appChild($infRPS, $total, 'Adicionando tag Total em infRPS');    
+        
+        //Informações adicionais
+        self::$dom->addChild(
+            $infRPS,
+            'infAdicLT',
+            $rps->infAdicLT,
+            true,
+            'Local da tributação utilizando código do município conforme IBGE',
+            false
+        );
+        foreach ($rps->infAdic as $inf) {                    
+            self::$dom->addChild(
+                $infRPS,
+                'infAdic',
+                $inf,
+                true,
+                'Informações adicionais',
+                false
+            );
+        }
                 
 
         self::$dom->appChild($root, $infRPS, 'Adicionando tag infRPS em RPS');

@@ -174,9 +174,20 @@ try {
     $ISS->vBCISS = '100.00';
     $ISS->vISS = '4.00';
     $rps->ISS = $ISS;
+    
+    //Informações Adicionais
+    $rps->infAdicLT = '4321122';
+    $rps->infAdic[] = 'Informação 1';
+    $rps->infAdic[] = 'Informação 2';
 
     $nfse->rps = $rps;
 
+    $content = \NFePHP\NFSe\Models\Infisc\RenderRPS::toXml($rps);
+    //echo "<pre>";
+    header('Content-type: text/xml; charset=UTF-8');
+    print_r($content);
+    exit();
+    
     //envio do RPS
     $response = $nfse->tools->envioLote([$nfse->rps]);
 
