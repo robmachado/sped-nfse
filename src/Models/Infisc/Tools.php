@@ -62,132 +62,25 @@ class Tools extends ToolsBase
         return $this->sendRequest('', $message);
     }
     
-    public function cancelarNfse($numero, $codigoCancelamento)
+    /**
+     * Esse serviço permite que o contribuinte solicite as informações de uma NFS-e já submetida
+     * 
+     * @param type $chave
+     * @return type
+     */
+    public function pedidoNFSe($chave)
     {
-        $this->method = 'CancelarNfse';
-        $fact = new Factories\CancelarNfse($this->certificate);
+        $this->method = 'ns1:obterNotaFiscal';
+        $fact = new Factories\PedidoNFSe($this->certificate);
         $fact->setSignAlgorithm($this->algorithm);
-        $cmun = $this->config->cmun;
-        if ($this->config->tpAmb == 2) {
-            $cmun = '999';
-        }
-        $message = $fact->render(
+        $message = $fact->render(     
             $this->config->versao,
-            $this->remetenteTipoDoc,
-            $this->remetenteCNPJCPF,
-            $this->remetenteIM,
-            $cmun,
-            $numero,
-            $codigoCancelamento
+            $this->config->cnpj,
+            $chave
         );
         return $this->sendRequest('', $message);
     }
     
-    public function consultarUrlVisualizacaoNfse($numero, $codigoTributacao)
-    {
-        $this->method = 'ConsultarUrlVisualizacaoNfse';
-        $fact = new Factories\ConsultarUrlVisualizacaoNfse($this->certificate);
-        $fact->setSignAlgorithm($this->algorithm);
-        $message = $fact->render(
-            $this->config->versao,
-            $this->remetenteTipoDoc,
-            $this->remetenteCNPJCPF,
-            $this->remetenteIM,
-            $numero,
-            $codigoTributacao
-        );
-        return $this->sendRequest('', $message);
-    }
-    
-    public function consultarUrlVisualizacaoNfseSerie($numero, $codigoTributacao, $serie)
-    {
-        $this->method = 'ConsultarUrlVisualizacaoNfseSerie';
-        $fact = new Factories\ConsultarUrlVisualizacaoNfse($this->certificate);
-        $fact->setSignAlgorithm($this->algorithm);
-        $message = $fact->render(
-            $this->config->versao,
-            $this->remetenteTipoDoc,
-            $this->remetenteCNPJCPF,
-            $this->remetenteIM,
-            $numero,
-            $codigoTributacao,
-            $serie
-        );
-        return $this->sendRequest('', $message);
-    }
-    
-    public function recepcionarLoteRps($lote, $rpss)
-    {
-        $this->method = 'RecepcionarLoteRps';
-        $fact = new Factories\EnviarLoteRps($this->certificate);
-        $fact->setSignAlgorithm($this->algorithm);
-        $fact->setTimezone($this->timezone);
-        $message = $fact->render(
-            $this->config->versao,
-            $this->remetenteTipoDoc,
-            $this->remetenteCNPJCPF,
-            $this->remetenteIM,
-            $lote,
-            $rpss
-        );
-        return $this->sendRequest('', $message);
-    }
-
-    public function consultarNfse(
-        $numeroNFSe = '',
-        $dtInicio = '',
-        $dtFim = '',
-        $tomador = [],
-        $intermediario = []
-    ) {
-        $this->method = 'ConsultarNfse';
-        $fact = new Factories\ConsultarNfse($this->certificate);
-        $fact->setSignAlgorithm($this->algorithm);
-        $message = $fact->render(
-            $this->config->versao,
-            $this->remetenteTipoDoc,
-            $this->remetenteCNPJCPF,
-            $this->remetenteIM,
-            $numeroNFSe,
-            $dtInicio,
-            $dtFim,
-            $tomador,
-            $intermediario
-        );
-        return $this->sendRequest('', $message);
-    }
-    
-    public function consultarNfseRps($numero, $serie, $tipo)
-    {
-        $this->method = 'ConsultarNfseRps';
-        $fact = new Factories\ConsultarNfseRps($this->certificate);
-        $fact->setSignAlgorithm($this->algorithm);
-        $message = $fact->render(
-            $this->config->versao,
-            $this->remetenteTipoDoc,
-            $this->remetenteCNPJCPF,
-            $this->remetenteIM,
-            $numero,
-            $serie,
-            $tipo
-        );
-        return $this->sendRequest('', $message);
-    }        
-    
-    public function consultarSituacaoLoteRps($protocolo)
-    {
-        $this->method = 'ConsultarSituacaoLoteRPS';
-        $fact = new Factories\ConsultarSituacaoLoteRps($this->certificate);
-        $fact->setSignAlgorithm($this->algorithm);
-        $message = $fact->render(
-            $this->config->versao,
-            $this->remetenteTipoDoc,
-            $this->remetenteCNPJCPF,
-            $this->remetenteIM,
-            $protocolo
-        );
-        return $this->sendRequest('', $message);
-    }
     
     protected function sendRequest($url, $message)
     {        
@@ -220,7 +113,7 @@ class Tools extends ToolsBase
         $request = preg_replace("/<\?xml.*\?>/", "", $xml);
         //echo '<pre>';
 //        header('Content-type: text/xml; charset=UTF-8');
-        error_log(print_r($request, TRUE) . PHP_EOL, 3, '/var/www/tests/sped-nfse/post.xml');       
+        //error_log(print_r($request, TRUE) . PHP_EOL, 3, '/var/www/tests/sped-nfse/post.xml');       
 //        exit();        
         
         return $this->soap->send(
