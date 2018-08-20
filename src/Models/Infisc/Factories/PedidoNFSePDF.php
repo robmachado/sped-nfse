@@ -4,18 +4,22 @@ namespace NFePHP\NFSe\Models\Infisc\Factories;
 
 use NFePHP\NFSe\Models\Infisc\Factories\Factory;
 
-class PedidoNFSe extends Factory
+class PedidoNFSePDF extends Factory
 {
     public function render(
         $versao,
         $CNPJ,
-        $chave
+        $notaInicial,
+        $notaFinal,
+        $serie
     ) {
         $xsd = 'SchemaCaxias-NFSe';
-        $method = "pedidoNFSe";
+        $method = "pedidoNFSePDF";
         $content = "<$method versao=\"1.0\">";
         $content .= "<CNPJ>$CNPJ</CNPJ>";
-        $content .= "<chvAcessoNFS-e>$chave</chvAcessoNFS-e>";
+        $content .= "<notaInicial>$notaInicial</notaInicial>";
+        $content .= "<notaFinal>$notaFinal</notaFinal>";
+        $content .= "<serieNotaFiscal>$serie</serieNotaFiscal>";
         $content .= "</$method>";
         
         $body = \NFePHP\Common\Signer::sign(

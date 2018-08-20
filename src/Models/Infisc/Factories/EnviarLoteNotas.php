@@ -2,7 +2,6 @@
 
 namespace NFePHP\NFSe\Models\Infisc\Factories;
 
-use NFePHP\NFSe\Models\Infisc\Factories\Header;
 use NFePHP\NFSe\Models\Infisc\Factories\Factory;
 use NFePHP\NFSe\Models\Infisc\RenderRPS;
 

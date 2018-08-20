@@ -82,6 +82,30 @@ class Tools extends ToolsBase
         return $this->sendRequest('', $message);
     }
     
+    /**
+     * Esse serviço permite que o contribuinte solicite a imagem em formato PDF, codificada em uma
+     * String Base64, de uma NFS-e já submetida e validada.
+     *
+     * @param type $notaInicial
+     * @param type $notaFinal
+     * @param type $serie
+     * @return type
+     */
+    public function pedidoNFSePDF($notaInicial, $notaFinal, $serie = 'S')
+    {
+        $this->method = 'ns1:obterNotasEmPDF';
+        $fact = new Factories\PedidoNFSePDF($this->certificate);
+        $fact->setSignAlgorithm($this->algorithm);
+        $message = $fact->render(
+            $this->config->versao,
+            $this->config->cnpj,
+            $notaInicial,
+            $notaFinal,
+            $serie
+        );
+        return $this->sendRequest('', $message);
+    }
+    
     
     protected function sendRequest($url, $message)
     {

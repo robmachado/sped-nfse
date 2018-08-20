@@ -2,7 +2,6 @@
 
 namespace NFePHP\NFSe\Models\Infisc\Factories;
 
-use NFePHP\NFSe\Models\Infisc\Factories\Header;
 use NFePHP\NFSe\Models\Infisc\Factories\Factory;
 
 class PedidoStatusLote extends Factory
@@ -15,7 +14,8 @@ class PedidoStatusLote extends Factory
         $xsd = 'SchemaCaxias-NFSe';
         $method = "pedidoStatusLote";
         $content = "<$method versao=\"1.0\">";
-        $content .= Header::render($CNPJ, $lote);
+        $content .= "<CNPJ>$CNPJ</CNPJ>";
+        $content .= "<cLote>$lote</cLote>";
         $content .= "</$method>";
         
         $body = \NFePHP\Common\Signer::sign(
