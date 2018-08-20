@@ -22,7 +22,8 @@ use NFePHP\NFSe\Common\Tools as ToolsBase;
 use NFePHP\Common\Soap\SoapCurl;
 
 class Tools extends ToolsBase
-{        
+{
+
      /**
      * Pedido de teste de envio de lote
      * @param array $rpss
@@ -33,9 +34,9 @@ class Tools extends ToolsBase
         $fact = new Factories\EnviarLoteNotas($this->certificate);
         $fact->setSignAlgorithm($this->algorithm);
         $message = $fact->render(
-            $this->versao,            
+            $this->versao,
             $this->CNPJ,
-            $this->dhTrans,            
+            $this->dhTrans,
             $rpss
         );
         return $this->sendRequest('', $message);
@@ -43,9 +44,9 @@ class Tools extends ToolsBase
     
     /**
      * Pedido de status de um lote NFS-e
-     * 
+     *
      * Esse serviço permite que o contribuinte obtenha a crítica de um lote de NFS-e já enviado.
-     * 
+     *
      * @param type $lote Número do lote
      * @return type
      */
@@ -64,7 +65,7 @@ class Tools extends ToolsBase
     
     /**
      * Esse serviço permite que o contribuinte solicite as informações de uma NFS-e já submetida
-     * 
+     *
      * @param type $chave
      * @return type
      */
@@ -73,7 +74,7 @@ class Tools extends ToolsBase
         $this->method = 'ns1:obterNotaFiscal';
         $fact = new Factories\PedidoNFSe($this->certificate);
         $fact->setSignAlgorithm($this->algorithm);
-        $message = $fact->render(     
+        $message = $fact->render(
             $this->config->versao,
             $this->config->cnpj,
             $chave
@@ -83,7 +84,7 @@ class Tools extends ToolsBase
     
     
     protected function sendRequest($url, $message)
-    {        
+    {
         
         $url = $this->url[$this->config->tpAmb];
         
@@ -100,7 +101,8 @@ class Tools extends ToolsBase
         if ($this->withcdata) {
             $messageText = ($message);
         }
-        $request = "<{$this->method} soapenv:encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\" xmlns:ns1=\"{$this->xmlns}\" >"
+        $request = "<{$this->method} soapenv:encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\" "
+        . "xmlns:ns1=\"{$this->xmlns}\" >"
             . "<xml xsi:type=\"xsd:string\">$messageText</xml>"
             . "</{$this->method}>";
         $params = [
@@ -120,6 +122,6 @@ class Tools extends ToolsBase
             $params,
             $this->namespaces[$this->soapversion],
             $request
-        );                
+        );
     }
 }

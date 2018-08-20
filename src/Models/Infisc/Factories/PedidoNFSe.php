@@ -13,10 +13,10 @@ class PedidoNFSe extends Factory
         $chave
     ) {
         $xsd = 'SchemaCaxias-NFSe';
-        $method = "pedidoNFSe";        
+        $method = "pedidoNFSe";
         $content = "<$method versao=\"1.0\">";
-        $content .= "<CNPJ>$CNPJ</CNPJ>";                                
-        $content .= "<chvAcessoNFS-e>$chave</chvAcessoNFS-e>";                                
+        $content .= "<CNPJ>$CNPJ</CNPJ>";
+        $content .= "<chvAcessoNFS-e>$chave</chvAcessoNFS-e>";
         $content .= "</$method>";
         
         $body = \NFePHP\Common\Signer::sign(
@@ -25,8 +25,8 @@ class PedidoNFSe extends Factory
             $method,
             '',
             $this->algorithm,
-            [false,false,null,null]            
-        );  
+            [false,false,null,null]
+        );
         $this->validar($versao, $body, 'Infisc', $xsd, '');
         
         return $body;

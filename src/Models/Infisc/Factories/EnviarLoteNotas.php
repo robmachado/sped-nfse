@@ -9,14 +9,14 @@ use NFePHP\NFSe\Models\Infisc\RenderRPS;
 class EnviarLoteNotas extends Factory
 {
     public function render(
-        $versao,        
+        $versao,
         $CNPJ,
-        $dhTrans,        
+        $dhTrans,
         $rpss
-    ) {                
-        $xsd = 'SchemaCaxias-NFSe';        
-        $method = "envioLote";        
-        $content = "<$method versao=\"1.0\">";                      
+    ) {
+        $xsd = 'SchemaCaxias-NFSe';
+        $method = "envioLote";
+        $content = "<$method versao=\"1.0\">";
             $content .= "<CNPJ>$CNPJ</CNPJ>";
             $content .= "<dhTrans>$dhTrans</dhTrans>";
         foreach ($rpss as $rps) {
@@ -32,9 +32,9 @@ class EnviarLoteNotas extends Factory
             $method,
             '',
             $this->algorithm,
-            [false,false,null,null]            
+            [false,false,null,null]
         );
-        $body = $this->clear($body);    
+        $body = $this->clear($body);
         //error_log(print_r($body, TRUE) . PHP_EOL, 3, '/var/www/tests/sped-nfse/post.xml');
         $this->validar($versao, $body, 'Infisc', $xsd, '');
         return $body;

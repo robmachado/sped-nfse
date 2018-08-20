@@ -22,17 +22,17 @@ use NFePHP\NFSe\Common\Rps as RpsBase;
 
 class Rps extends RpsBase
 {
-    public $versao = '1.0';    
+    public $versao = '1.0';
     public $dhTrans = '';
-    public $infNFSe = '';    
-    public $Id;    
-    public $prest;    
-    public $TomS;    
-    public $transportadora;    
-    public $det = [];    
-    public $serv = [];    
-    public $total;    
-    public $ISS;    
+    public $infNFSe = '';
+    public $Id;
+    public $prest;
+    public $TomS;
+    public $transportadora;
+    public $det = [];
+    public $serv = [];
+    public $total;
+    public $ISS;
     
     private $aTp = [
         'RPS' => 'Recibo Provisório de Serviços',
@@ -56,7 +56,7 @@ class Rps extends RpsBase
     public function infNFSe($std)
     {
         return $std;
-    }            
+    }
     
     /**
      * Inscrição Municipal do Prestador do Serviço
@@ -401,6 +401,4 @@ class Rps extends RpsBase
     {
         $this->municipioPrestacaoRPS = $cmun;
     }
-    
-    
 }

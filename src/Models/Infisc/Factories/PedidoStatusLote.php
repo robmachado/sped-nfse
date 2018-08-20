@@ -13,9 +13,9 @@ class PedidoStatusLote extends Factory
         $lote
     ) {
         $xsd = 'SchemaCaxias-NFSe';
-        $method = "pedidoStatusLote";        
+        $method = "pedidoStatusLote";
         $content = "<$method versao=\"1.0\">";
-        $content .= Header::render($CNPJ,$lote);        
+        $content .= Header::render($CNPJ, $lote);
         $content .= "</$method>";
         
         $body = \NFePHP\Common\Signer::sign(
@@ -24,8 +24,8 @@ class PedidoStatusLote extends Factory
             $method,
             '',
             $this->algorithm,
-            [false,false,null,null]            
-        );  
+            [false,false,null,null]
+        );
         $this->validar($versao, $body, 'Infisc', $xsd, '');
         
         return $body;

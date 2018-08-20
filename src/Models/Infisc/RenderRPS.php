@@ -37,8 +37,8 @@ class RenderRPS
     protected static $algorithm;
 
     public static function toXml($data, $algorithm = OPENSSL_ALGO_SHA1)
-    {        
-        self::$algorithm = $algorithm;        
+    {
+        self::$algorithm = $algorithm;
         $xml = '';
         if (is_object($data)) {
             return self::render($data);
@@ -63,10 +63,20 @@ class RenderRPS
         $infRPS->setAttribute("versao", "1.1");
         $identificacaoRps = self::$dom->createElement('Id');
         self::$dom->addChild(
-            $identificacaoRps, 'cNFS-e', $rps->Id->cNFSe, true, "Numero Aleatório", true
+            $identificacaoRps,
+            'cNFS-e',
+            $rps->Id->cNFSe,
+            true,
+            "Numero Aleatório",
+            true
         );
         self::$dom->addChild(
-            $identificacaoRps, 'mod', $rps->Id->mod, true, "Modelo do RPS", true
+            $identificacaoRps,
+            'mod',
+            $rps->Id->mod,
+            true,
+            "Modelo do RPS",
+            true
         );
         self::$dom->addChild(
             $identificacaoRps,
@@ -158,7 +168,7 @@ class RenderRPS
             true,
             "CNPJ",
             true
-        );        
+        );
         self::$dom->addChild(
             $prestador,
             'xNome',
@@ -174,7 +184,7 @@ class RenderRPS
             true,
             'Inscrição Municipal',
             false
-        );                
+        );
         
         $endereco = self::$dom->createElement('end');
         self::$dom->addChild(
@@ -184,7 +194,7 @@ class RenderRPS
             true,
             'Logradouro',
             false
-        );        
+        );
         self::$dom->addChild(
             $endereco,
             'nro',
@@ -248,7 +258,7 @@ class RenderRPS
             true,
             'País',
             false
-        );        
+        );
         self::$dom->addChild(
             $endereco,
             'xPais',
@@ -269,9 +279,9 @@ class RenderRPS
             'Regime',
             false
         );
-        self::$dom->appChild($infRPS, $prestador, 'Adicionando tag Prestador em infRPS');        
+        self::$dom->appChild($infRPS, $prestador, 'Adicionando tag Prestador em infRPS');
                        
-        $tomador = self::$dom->createElement('TomS');                
+        $tomador = self::$dom->createElement('TomS');
         if (!empty($rps->TomS->CNPJ)) {
             self::$dom->addChild(
                 $tomador,
@@ -281,7 +291,7 @@ class RenderRPS
                 'Tomador CNPJ',
                 false
             );
-        } else {            
+        } else {
             self::$dom->addChild(
                 $tomador,
                 'CPF',
@@ -308,7 +318,7 @@ class RenderRPS
             true,
             'Logradouro',
             false
-        );        
+        );
         self::$dom->addChild(
             $ender,
             'nro',
@@ -372,7 +382,7 @@ class RenderRPS
             true,
             'País',
             false
-        );        
+        );
         self::$dom->addChild(
             $ender,
             'xPais',
@@ -383,12 +393,12 @@ class RenderRPS
         );
         
         self::$dom->appChild($tomador, $ender, 'Adicionando tag Endereco do Prestador');
-        //Fim endereço tomador        
-        self::$dom->appChild($infRPS, $tomador, 'Adicionando tag Tomador em infRPS');        
+        //Fim endereço tomador
+        self::$dom->appChild($infRPS, $tomador, 'Adicionando tag Tomador em infRPS');
         
-        //Transportadora        
-        if (isset($rps->transportadora)){
-            $transportadora = self::$dom->createElement('transportadora');                        
+        //Transportadora
+        if (isset($rps->transportadora)) {
+            $transportadora = self::$dom->createElement('transportadora');
             self::$dom->addChild(
                 $transportadora,
                 'xNomeTrans',
@@ -477,14 +487,14 @@ class RenderRPS
                 'Tipo frete',
                 false
             );
-            self::$dom->appChild($infRPS, $transportadora, 'Adicionando tag Transportadora em infRPS');        
+            self::$dom->appChild($infRPS, $transportadora, 'Adicionando tag Transportadora em infRPS');
         }
         
-        //Detalhamento dos serviços        
+        //Detalhamento dos serviços
         $rps->totalvISS = 0;
         $rps->totalvBCISS = 0;
-        foreach ($rps->det as $d) {            
-            $det = self::$dom->createElement('det');                        
+        foreach ($rps->det as $d) {
+            $det = self::$dom->createElement('det');
             self::$dom->addChild(
                 $det,
                 'nItem',
@@ -492,7 +502,7 @@ class RenderRPS
                 true,
                 'Número do Item',
                 false
-            );      
+            );
                     
             //Serviço da NFS-e
             $serv = self::$dom->createElement('serv');
@@ -737,14 +747,14 @@ class RenderRPS
                 false,
                 '',
                 false
-            );                    
+            );
             
-            self::$dom->appChild($det, $serv, 'Adicionando tag Endereco do Prestador');    
-            self::$dom->appChild($infRPS, $det, 'Adicionando tag Transportadora em infRPS');            
+            self::$dom->appChild($det, $serv, 'Adicionando tag Endereco do Prestador');
+            self::$dom->appChild($infRPS, $det, 'Adicionando tag Transportadora em infRPS');
         }
         
          //Totais
-        $total = self::$dom->createElement('total');                        
+        $total = self::$dom->createElement('total');
         self::$dom->addChild(
             $total,
             'vServ',
@@ -790,7 +800,7 @@ class RenderRPS
         self::$dom->addChild(
             $ISS,
             'vBCISS',
-            number_format($rps->totalvBCISS,2),
+            number_format($rps->totalvBCISS, 2),
             true,
             'Valor total da base cálculo ISSQN',
             false
@@ -798,14 +808,14 @@ class RenderRPS
         self::$dom->addChild(
             $ISS,
             'vISS',
-            number_format($rps->totalvISS,2),
+            number_format($rps->totalvISS, 2),
             true,
             'Valor total ISS',
             false
         );
         
         self::$dom->appChild($total, $ISS, 'Adicionando tag ISS');
-        self::$dom->appChild($infRPS, $total, 'Adicionando tag Total em infRPS');    
+        self::$dom->appChild($infRPS, $total, 'Adicionando tag Total em infRPS');
         
         //Informações adicionais
         self::$dom->addChild(
@@ -816,7 +826,7 @@ class RenderRPS
             'Local da tributação utilizando código do município conforme IBGE',
             false
         );
-        foreach ($rps->infAdic as $inf) {                    
+        foreach ($rps->infAdic as $inf) {
             self::$dom->addChild(
                 $infRPS,
                 'infAdic',
