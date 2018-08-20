@@ -1,4 +1,18 @@
 <?php
+ini_set('display_errors', 'On');
+$file = file_get_contents('/var/www/tests/sped-nfse/nota.xml');
+$dom = new DOMDocument();
+$dom->loadXML($file);
+$doc = ($dom->getElementsByTagName('return')->item(0)->nodeValue);
+$xml = html_entity_decode($doc);
+
+$dom2 = new DOMDocument();
+$dom2->loadXML($xml);
+//echo $dom2->getElementsByTagName('CNPJ')->item(0)->nodeValue;
+
+header("Content-type: text/xml");
+echo $xml;
+exit();
 error_reporting(E_ALL | E_STRICT);
 ini_set('display_errors', 'On');
 require_once '../../bootstrap.php';
@@ -42,6 +56,7 @@ try {
 
     $chave = '431177092800017198S00000000101201808101';
     $content = $nfse->tools->pedidoNFSe($chave);
+    //error_log(print_r($content, TRUE) . PHP_EOL, 3, '/var/www/tests/sped-nfse/nota.xml');
     $response = $nfse->response->readReturn('return', $content);
 //    echo $response->confirmaLote->sit;
 //    echo $response->confirmaLote->mot;
@@ -56,8 +71,9 @@ try {
     $newdoc = new DOMDocument('1.0', 'utf-8');
     $newdoc->appendChild($newdoc->importNode($node, true));
     $xml = $newdoc->saveXML();
-    header("Content-type: text/xml");
-    echo $xml;
+    error_log(print_r($xml, TRUE) . PHP_EOL, 3, '/var/www/tests/sped-nfse/post.xml');
+//    header("Content-type: text/xml");
+//    echo $xml;
 } catch (\NFePHP\Common\Exception\SoapException $e) {
     echo $e->getMessage();
 } catch (NFePHP\Common\Exception\CertificateException $e) {

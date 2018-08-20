@@ -401,7 +401,7 @@ class RenderRPS
                 $transportadora,
                 'xCpfCnpjTrans',
                 $rps->transportadora->xCpfCnpjTrans,
-                true,
+                false,
                 'CPF ou CNPJ',
                 false
             );
@@ -409,7 +409,7 @@ class RenderRPS
                 $transportadora,
                 'xInscEstTrans',
                 $rps->transportadora->xInscEstTrans,
-                true,
+                false,
                 'IE',
                 false
             );
@@ -417,7 +417,7 @@ class RenderRPS
                 $transportadora,
                 'xPlacaTrans',
                 $rps->transportadora->xPlacaTrans,
-                true,
+                false,
                 'Placa',
                 false
             );
@@ -425,7 +425,7 @@ class RenderRPS
                 $transportadora,
                 'xEndTrans',
                 $rps->transportadora->xEndTrans,
-                true,
+                false,
                 'Endereço',
                 false
             );
@@ -433,7 +433,7 @@ class RenderRPS
                 $transportadora,
                 'cMunTrans',
                 $rps->transportadora->cMunTrans,
-                true,
+                false,
                 'Código Cidade',
                 false
             );
@@ -441,7 +441,7 @@ class RenderRPS
                 $transportadora,
                 'xMunTrans',
                 $rps->transportadora->xMunTrans,
-                true,
+                false,
                 'Cidade',
                 false
             );
@@ -449,7 +449,7 @@ class RenderRPS
                 $transportadora,
                 'xUfTrans',
                 $rps->transportadora->xUfTrans,
-                true,
+                false,
                 'UF',
                 false
             );
@@ -457,7 +457,7 @@ class RenderRPS
                 $transportadora,
                 'cPaisTrans',
                 $rps->transportadora->cPaisTrans,
-                true,
+                false,
                 'País',
                 false
             );
@@ -465,7 +465,7 @@ class RenderRPS
                 $transportadora,
                 'xPaisTrans',
                 $rps->transportadora->xPaisTrans,
-                true,
+                false,
                 'País',
                 false
             );
@@ -473,7 +473,7 @@ class RenderRPS
                 $transportadora,
                 'vTipoFreteTrans',
                 $rps->transportadora->vTipoFreteTrans,
-                true,
+                false,
                 'Tipo frete',
                 false
             );
@@ -580,7 +580,7 @@ class RenderRPS
                 $serv,
                 'vBCISS',
                 $rps->serv[$d->nItem]->vBCISS,
-                true,
+                false,
                 'BaseISSQN',
                 false
             );
@@ -589,7 +589,7 @@ class RenderRPS
                 $serv,
                 'pISS',
                 $rps->serv[$d->nItem]->pISS,
-                true,
+                false,
                 'ISS',
                 false
             );
@@ -597,7 +597,7 @@ class RenderRPS
                 $serv,
                 'vISS',
                 $rps->serv[$d->nItem]->vISS,
-                true,
+                false,
                 'Valor iss',
                 false
             );
@@ -606,7 +606,7 @@ class RenderRPS
                 $serv,
                 'vBCINSS',
                 $rps->serv[$d->nItem]->vBCINSS,
-                true,
+                false,
                 'Base INSS',
                 false
             );
@@ -614,7 +614,7 @@ class RenderRPS
                 $serv,
                 'pRetINSS',
                 $rps->serv[$d->nItem]->pRetINSS,
-                true,
+                false,
                 'Retenção INSS',
                 false
             );
@@ -622,7 +622,7 @@ class RenderRPS
                 $serv,
                 'vRetINSS',
                 $rps->serv[$d->nItem]->vRetINSS,
-                true,
+                false,
                 'Retenção INSS',
                 false
             );
@@ -630,7 +630,7 @@ class RenderRPS
                 $serv,
                 'vRed',
                 $rps->serv[$d->nItem]->vRed,
-                true,
+                false,
                 'Valor redução ISS',
                 false
             );
@@ -638,7 +638,7 @@ class RenderRPS
                 $serv,
                 'vBCRetIR',
                 $rps->serv[$d->nItem]->vBCRetIR,
-                true,
+                false,
                 'Retenção IR',
                 false
             );
@@ -646,7 +646,7 @@ class RenderRPS
                 $serv,
                 'pRetIR',
                 $rps->serv[$d->nItem]->pRetIR,
-                true,
+                false,
                 '',
                 false
             );
@@ -654,7 +654,7 @@ class RenderRPS
                 $serv,
                 'vRetIR',
                 $rps->serv[$d->nItem]->vRetIR,
-                true,
+                false,
                 '',
                 false
             );
@@ -662,7 +662,7 @@ class RenderRPS
                 $serv,
                 'vBCCOFINS',
                 $rps->serv[$d->nItem]->vBCCOFINS,
-                true,
+                false,
                 'Base Cofins',
                 false
             );
@@ -670,7 +670,7 @@ class RenderRPS
                 $serv,
                 'pRetCOFINS',
                 $rps->serv[$d->nItem]->pRetCOFINS,
-                true,
+                false,
                 'Retenção Cofins',
                 false
             );
@@ -678,7 +678,7 @@ class RenderRPS
                 $serv,
                 'vRetCOFINS',
                 $rps->serv[$d->nItem]->pRetCOFINS,
-                true,
+                false,
                 '',
                 false
             );
@@ -686,7 +686,7 @@ class RenderRPS
                 $serv,
                 'vBCCSLL',
                 $rps->serv[$d->nItem]->vBCCSLL,
-                true,
+                false,
                 'Base CSLL',
                 false
             );
@@ -694,7 +694,7 @@ class RenderRPS
                 $serv,
                 'pRetCSLL',
                 $rps->serv[$d->nItem]->pRetCSLL,
-                true,
+                false,
                 '',
                 false
             );
@@ -702,7 +702,7 @@ class RenderRPS
                 $serv,
                 'vRetCSLL',
                 $rps->serv[$d->nItem]->vRetCSLL,
-                true,
+                false,
                 '',
                 false
             );
@@ -710,7 +710,7 @@ class RenderRPS
                 $serv,
                 'vBCPISPASEP',
                 $rps->serv[$d->nItem]->vBCPISPASEP,
-                true,
+                false,
                 '',
                 false
             );
@@ -718,7 +718,7 @@ class RenderRPS
                 $serv,
                 'pRetPISPASEP',
                 $rps->serv[$d->nItem]->pRetPISPASEP,
-                true,
+                false,
                 '',
                 false
             );
@@ -726,7 +726,7 @@ class RenderRPS
                 $serv,
                 'vRetPISPASEP',
                 $rps->serv[$d->nItem]->vRetPISPASEP,
-                true,
+                false,
                 '',
                 false
             );
@@ -734,7 +734,7 @@ class RenderRPS
                 $serv,
                 'totalAproxTribServ',
                 $rps->serv[$d->nItem]->totalAproxTribServ,
-                true,
+                false,
                 '',
                 false
             );                    
@@ -757,15 +757,15 @@ class RenderRPS
             $total,
             'vRedBCCivil',
             $rps->total->vRedBCCivil,
-            true,
-            'Valor Serviço',
+            false,
+            'Valor BC construção civil',
             false
         );
         self::$dom->addChild(
             $total,
             'vDesc',
             $rps->total->vDesc,
-            true,
+            false,
             'Valor Desconto',
             false
         );
