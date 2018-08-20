@@ -183,11 +183,11 @@ try {
     $nfse->rps = $rps;
 
     $content = \NFePHP\NFSe\Models\Infisc\RenderRPS::toXml($rps);
-    //echo "<pre>";
-    header('Content-type: text/xml; charset=UTF-8');
-    print_r($content);
-    exit();
-    
+//    //echo "<pre>";
+//    header('Content-type: text/xml; charset=UTF-8');
+//    print_r($content);
+//    exit();
+//    
     //envio do RPS
     $response = $nfse->tools->envioLote([$nfse->rps]);
 

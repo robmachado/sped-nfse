@@ -111,11 +111,7 @@ class Tools extends ToolsBase
         
         $xml = \NFePHP\Common\Strings::clearXmlString($request);
         $request = preg_replace("/<\?xml.*\?>/", "", $xml);
-        //echo '<pre>';
-//        header('Content-type: text/xml; charset=UTF-8');
-        //error_log(print_r($request, TRUE) . PHP_EOL, 3, '/var/www/tests/sped-nfse/post.xml');       
-//        exit();        
-        
+
         return $this->soap->send(
             $url,
             $this->method,

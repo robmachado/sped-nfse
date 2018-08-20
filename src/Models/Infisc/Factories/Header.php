@@ -20,18 +20,5 @@ use NFePHP\NFSe\Common\Header as HeaderBase;
 
 class Header extends HeaderBase
 {
-
-    /**
-     * 
-     * @param type $CNPJ
-     * @param type $lote
-     * @return type string
-     */
-    public static function render(
-        $CNPJ, $lote
-    ) {
-        $content = "<CNPJ>$CNPJ</CNPJ>";                                
-        $content .= "<cLote>$lote</cLote>";                                
-        return $content;
-    }
+   
 }
