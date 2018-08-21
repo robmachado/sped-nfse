@@ -10,7 +10,7 @@ class NFSeTest extends NFSeTestCase
 {
     public function testInstanciarNFSE()
     {
-        $nfse = new NFse(
+        $nfse = new NFSe(
             $this->configJson,
             Certificate::readPfx($this->contentpfx, $this->passwordpfx)
         );
