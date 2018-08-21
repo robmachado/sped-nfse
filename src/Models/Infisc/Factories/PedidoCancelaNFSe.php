@@ -13,7 +13,7 @@ class PedidoCancelaNFSe extends Factory
         $motivo
     ) {
         $xsd = 'SchemaCaxias-NFSe';
-        $method = "cancelarNotaFiscal";
+        $method = "pedCancelaNFSe";
         $content = "<$method versao=\"1.0\">";
         $content .= "<CNPJ>$CNPJ</CNPJ>";
         $content .= "<chvAcessoNFS-e>$chave</chvAcessoNFS-e>";
