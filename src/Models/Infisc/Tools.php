@@ -106,7 +106,27 @@ class Tools extends ToolsBase
         return $this->sendRequest('', $message);
     }
     
-    
+    /**
+     * Esse serviço permite que o contribuinte solicite o cancelamento de uma NFS-e já submetida
+     *
+     * @param type $chave
+     * @param type $motivo
+     * @return type
+     */
+    public function pedCancelaNFSe($chave, $motivo)
+    {
+        $this->method = 'ns1:cancelarNotaFiscal';
+        $fact = new Factories\PedidoCancelaNFSe($this->certificate);
+        $fact->setSignAlgorithm($this->algorithm);
+        $message = $fact->render(
+            $this->config->versao,
+            $this->config->cnpj,
+            $chave,
+            $motivo
+        );
+        return $this->sendRequest('', $message);
+    }
+        
     protected function sendRequest($url, $message)
     {
         

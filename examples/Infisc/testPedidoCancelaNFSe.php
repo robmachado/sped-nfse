@@ -41,25 +41,13 @@ try {
     $nfse->tools->setDebugSoapMode(true);
 
     $chave = '431177092800017198S00000000101201808101';
-    $content = $nfse->tools->pedidoNFSe($chave);
+    $content = $nfse->tools->pedCancelaNFSe($chave, 1);
     //error_log(print_r($content, TRUE) . PHP_EOL, 3, '/var/www/tests/sped-nfse/nota.xml');
     $response = $nfse->response->readReturn('return', $content);
-//    echo $response->confirmaLote->sit;
-//    echo $response->confirmaLote->mot;
-//    echo "<pre>";
-//    print_r($response);
-//    echo "</pre>";
-    //header("Content-type: text/xml");
-    //echo $content;
-    $dom = new DOMDocument('1.0', 'utf-8');
-    $dom->loadXML($content);
-    $node = $dom->getElementsByTagName('return')->item(0);
-    $newdoc = new DOMDocument('1.0', 'utf-8');
-    $newdoc->appendChild($newdoc->importNode($node, true));
-    $xml = $newdoc->saveXML();
-    error_log(print_r($xml, TRUE) . PHP_EOL, 3, '/var/www/tests/sped-nfse/post.xml');
-//    header("Content-type: text/xml");
-//    echo $xml;
+
+    echo "<pre>";
+    print_r($response);
+    echo "</pre>";
 } catch (\NFePHP\Common\Exception\SoapException $e) {
     echo $e->getMessage();
 } catch (NFePHP\Common\Exception\CertificateException $e) {
