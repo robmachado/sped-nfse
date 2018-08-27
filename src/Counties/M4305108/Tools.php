@@ -26,7 +26,7 @@ class Tools extends ToolsModel
      * @var array
      */
     protected $url = [
-        1 => '',
+        1 => 'https://nfse.caxias.rs.gov.br/portal/Servicos',
         2 => 'https://nfsehomol.caxias.rs.gov.br/portal/Servicos'
     ];
     /**
