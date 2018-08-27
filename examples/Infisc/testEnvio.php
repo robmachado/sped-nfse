@@ -15,7 +15,7 @@ $arr = [
     "tpAmb" => 2,
     "versao" => 1,
     "razaosocial" => "SUA RAZAO SOCIAL LTDA",
-    "cnpj" => "28504634000109",
+    "cnpj" => "999999999999",
     "cpf" => "",
     "im" => "99999999",
     "cmun" => "4305108", //CAXIAS DO SUL
@@ -29,7 +29,7 @@ $arr = [
     ]
 ];
 $configJson = json_encode($arr);
-$contentpfx = file_get_contents('/var/www/transweb_resources/api/nfephp/certs/certificado28504634000109.pfx');
+$contentpfx = file_get_contents('../../certs/certificado.pfx');
 
 try {
 
@@ -44,7 +44,7 @@ try {
     //Construção do RPS
     $rps = new Rps();
 
-    $nfse->tools->CNPJ = '28504634000109';
+    $nfse->tools->CNPJ = '999999999999';
     $nfse->tools->dhTrans = date('Y-m-d H:i:s');
 
     $id = new stdClass();

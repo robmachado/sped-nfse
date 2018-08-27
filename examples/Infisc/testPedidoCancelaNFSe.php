@@ -11,10 +11,10 @@ $arr = [
     "atualizacao" => "2016-08-03 18:01:21",
     "tpAmb" => 2,
     "versao" => 1,
-    "razaosocial" => "TRANSPORTES EXPRESSO 24 HORAS EIRELI ME",
-    "cnpj" => "11770928000171",
+    "razaosocial" => "SUA RAZAO SOCIAL LTDA",
+    "cnpj" => "999999999999",
     "cpf" => "",
-    "im" => "",
+    "im" => "99999999",
     "cmun" => "4305108", //CAXIAS DO SUL
     "siglaUF" => "RS",
     "pathNFSeFiles" => "/dados/nfse",
@@ -25,9 +25,9 @@ $arr = [
         "proxyPass" => ""
     ]
 ];
-
 $configJson = json_encode($arr);
-$contentpfx = file_get_contents('/var/www/transweb_resources/stores/11770928000171/certs/certificado11770928000171.pfx');
+$contentpfx = file_get_contents('../../certs/certificado.pfx');
+
 
 try {
     //com os dados do config e do certificado já obtidos e desconvertidos
@@ -40,7 +40,7 @@ try {
     //arquivos temporarios do SO em sub pasta denominada "soap"
     $nfse->tools->setDebugSoapMode(true);
 
-    $chave = '431177092800017198S00000000101201808101';
+    $chave = '4399999999999998S00000000101201808101';
     $content = $nfse->tools->pedCancelaNFSe($chave, 1);
     //error_log(print_r($content, TRUE) . PHP_EOL, 3, '/var/www/tests/sped-nfse/nota.xml');
     $response = $nfse->response->readReturn('return', $content);
