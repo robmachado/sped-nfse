@@ -33,7 +33,7 @@ class Tools extends ToolsProdam
      * County Namespace
      * @var string
      */
-    protected $xmlns= "http://www.prefeitura.sp.gov.br/nfe";
+    protected $xmlns = "http://www.prefeitura.sp.gov.br/nfe";
     /**
      * Soap Version
      * @var int
@@ -68,7 +68,7 @@ class Tools extends ToolsProdam
             'xmlns:soapenv' => 'http://schemas.xmlsoap.org/soap/envelope/',
             'xmlns' => 'http://www.prefeitura.sp.gov.br/nfe'
         ],
-        2  => [
+        2 => [
             'xmlns:soap' => 'http://www.w3.org/2003/05/soap-envelope',
             'xmlns' => 'http://www.prefeitura.sp.gov.br/nfe'
         ]

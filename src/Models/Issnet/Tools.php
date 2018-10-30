@@ -16,9 +16,8 @@ namespace NFePHP\NFSe\Models\Issnet;
  * @link      http://github.com/nfephp-org/sped-nfse for the canonical source repository
  */
 
-use NFePHP\NFSe\Models\Issnet\Rps;
-use NFePHP\NFSe\Models\Issnet\Factories;
 use NFePHP\NFSe\Common\Tools as ToolsBase;
+use NFePHP\NFSe\Models\Issnet\Factories;
 
 class Tools extends ToolsBase
 {
@@ -32,7 +31,7 @@ class Tools extends ToolsBase
             $cmun = '999';
         }
         $message = $fact->render(
-            $this->config->versao,
+            $this->versao,
             $this->remetenteTipoDoc,
             $this->remetenteCNPJCPF,
             $this->remetenteIM,
@@ -42,14 +41,54 @@ class Tools extends ToolsBase
         );
         return $this->sendRequest('', $message);
     }
-    
+
+    protected function sendRequest($url, $message)
+    {
+        //no caso do ISSNET o URL é unico para todas as ações
+        if (!$url) {
+            $url = $this->url[$this->config->tpAmb];
+        }
+
+        if (!is_object($this->soap)) {
+            $this->soap = new \NFePHP\NFSe\Common\SoapCurl($this->certificate);
+        }
+        //formata o xml da mensagem para o padão esperado pelo webservice
+        $dom = new \DOMDocument('1.0', 'UTF-8');
+        $dom->preserveWhiteSpace = false;
+        $dom->formatOutput = true;
+        $dom->loadXML($message);
+        $message = str_replace('<?xml version="1.0"?>', '<?xml version="1.0" encoding="UTF-8"?>', $dom->saveXML());
+
+        $messageText = $message;
+        if ($this->withcdata) {
+            $messageText = $this->stringTransform($message);
+        }
+        $request = "<" . $this->method . " xmlns=\"" . $this->xmlns . "\">"
+            . "<xml>$messageText</xml>"
+            . "</" . $this->method . ">";
+        $params = [
+            'xml' => $message
+        ];
+
+        $action = "\"" . $this->xmlns . "/" . $this->method . "\"";
+        return $this->soap->send(
+            $url,
+            $this->method,
+            $action,
+            $this->soapversion,
+            $params,
+            $this->namespaces[$this->soapversion],
+            $request
+        );
+    }
+
     public function consultarUrlVisualizacaoNfse($numero, $codigoTributacao)
     {
         $this->method = 'ConsultarUrlVisualizacaoNfse';
         $fact = new Factories\ConsultarUrlVisualizacaoNfse($this->certificate);
         $fact->setSignAlgorithm($this->algorithm);
         $message = $fact->render(
-            $this->config->versao,
+            $this->versao,
             $this->remetenteTipoDoc,
             $this->remetenteCNPJCPF,
             $this->remetenteIM,
@@ -58,14 +97,14 @@ class Tools extends ToolsBase
         );
         return $this->sendRequest('', $message);
     }
-    
+
     public function consultarUrlVisualizacaoNfseSerie($numero, $codigoTributacao, $serie)
     {
         $this->method = 'ConsultarUrlVisualizacaoNfseSerie';
         $fact = new Factories\ConsultarUrlVisualizacaoNfse($this->certificate);
         $fact->setSignAlgorithm($this->algorithm);
         $message = $fact->render(
-            $this->config->versao,
+            $this->versao,
             $this->remetenteTipoDoc,
             $this->remetenteCNPJCPF,
             $this->remetenteIM,
@@ -75,7 +114,7 @@ class Tools extends ToolsBase
         );
         return $this->sendRequest('', $message);
     }
-    
+
     public function recepcionarLoteRps($lote, $rpss)
     {
         $this->method = 'RecepcionarLoteRps';
@@ -83,7 +122,7 @@ class Tools extends ToolsBase
         $fact->setSignAlgorithm($this->algorithm);
         $fact->setTimezone($this->timezone);
         $message = $fact->render(
-            $this->config->versao,
+            $this->versao,
             $this->remetenteTipoDoc,
             $this->remetenteCNPJCPF,
             $this->remetenteIM,
@@ -104,7 +143,7 @@ class Tools extends ToolsBase
         $fact = new Factories\ConsultarNfse($this->certificate);
         $fact->setSignAlgorithm($this->algorithm);
         $message = $fact->render(
-            $this->config->versao,
+            $this->versao,
             $this->remetenteTipoDoc,
             $this->remetenteCNPJCPF,
             $this->remetenteIM,
@@ -116,14 +155,14 @@ class Tools extends ToolsBase
         );
         return $this->sendRequest('', $message);
     }
-    
+
     public function consultarNfseRps($numero, $serie, $tipo)
     {
         $this->method = 'ConsultarNfseRps';
         $fact = new Factories\ConsultarNfseRps($this->certificate);
         $fact->setSignAlgorithm($this->algorithm);
         $message = $fact->render(
-            $this->config->versao,
+            $this->versao,
             $this->remetenteTipoDoc,
             $this->remetenteCNPJCPF,
             $this->remetenteIM,
@@ -133,14 +172,14 @@ class Tools extends ToolsBase
         );
         return $this->sendRequest('', $message);
     }
-    
+
     public function consultarLoteRps($protocolo)
     {
         $this->method = 'ConsultarLoteRps';
         $fact = new Factories\ConsultarLoteRps($this->certificate);
         $fact->setSignAlgorithm($this->algorithm);
         $message = $fact->render(
-            $this->config->versao,
+            $this->versao,
             $this->remetenteTipoDoc,
             $this->remetenteCNPJCPF,
             $this->remetenteIM,
@@ -148,56 +187,19 @@ class Tools extends ToolsBase
         );
         return $this->sendRequest('', $message);
     }
-    
+
     public function consultarSituacaoLoteRps($protocolo)
     {
         $this->method = 'ConsultarSituacaoLoteRPS';
         $fact = new Factories\ConsultarSituacaoLoteRps($this->certificate);
         $fact->setSignAlgorithm($this->algorithm);
         $message = $fact->render(
-            $this->config->versao,
+            $this->versao,
             $this->remetenteTipoDoc,
             $this->remetenteCNPJCPF,
             $this->remetenteIM,
             $protocolo
         );
         return $this->sendRequest('', $message);
-    }
-    
-    protected function sendRequest($url, $message)
-    {
-        //no caso do ISSNET o URL é unico para todas as ações
-        $url = $this->url[$this->config->tpAmb];
-        if (!is_object($this->soap)) {
-            $this->soap = new \NFePHP\NFSe\Common\SoapCurl($this->certificate);
-        }
-        //formata o xml da mensagem para o padão esperado pelo webservice
-        $dom = new \DOMDocument('1.0', 'UTF-8');
-        $dom->preserveWhiteSpace = false;
-        $dom->formatOutput = true;
-        $dom->loadXML($message);
-        $message = str_replace('<?xml version="1.0"?>', '<?xml version="1.0" encoding="UTF-8"?>', $dom->saveXML());
-        
-        $messageText = $message;
-        if ($this->withcdata) {
-            $messageText = $this->stringTransform($message);
-        }
-        $request = "<". $this->method . " xmlns=\"".$this->xmlns."\">"
-            . "<xml>$messageText</xml>"
-            . "</". $this->method . ">";
-        $params = [
-            'xml' => $message
-        ];
-        
-        $action = "\"". $this->xmlns ."/". $this->method ."\"";
-        return $this->soap->send(
-            $url,
-            $this->method,
-            $action,
-            $this->soapversion,
-            $params,
-            $this->namespaces[$this->soapversion],
-            $request
-        );
     }
 }

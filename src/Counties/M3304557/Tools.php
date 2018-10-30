@@ -27,25 +27,25 @@ class Tools extends ToolsAbrasf
      */
     protected $url = [
         1 => [
-            'EnvioLoteRPS'=>"https://notacarioca.rio.gov.br/WSNacional/nfse.asmx",
-            'ConsultaSituacaoLoteRPS'=>"https://notacarioca.rio.gov.br/WSNacional/nfse.asmx",
-            'ConsultaLoteRPS'=>"https://notacarioca.rio.gov.br/WSNacional/nfse.asmx",
-            'ConsultaNfseRPS'=>"https://notacarioca.rio.gov.br/WSNacional/nfse.asmx",
-            'ConsultaNFse'=>"https://notacarioca.rio.gov.br/WSNacional/nfse.asmx"
+            'EnvioLoteRPS' => "https://notacarioca.rio.gov.br/WSNacional/nfse.asmx",
+            'ConsultaSituacaoLoteRPS' => "https://notacarioca.rio.gov.br/WSNacional/nfse.asmx",
+            'ConsultaLoteRPS' => "https://notacarioca.rio.gov.br/WSNacional/nfse.asmx",
+            'ConsultaNfseRPS' => "https://notacarioca.rio.gov.br/WSNacional/nfse.asmx",
+            'ConsultaNFse' => "https://notacarioca.rio.gov.br/WSNacional/nfse.asmx"
         ],
         2 => [
-            'EnvioLoteRPS'=>"https://homologacao.notacarioca.rio.gov.br/WSNacional/nfse.asmx",
-            'ConsultaSituacaoLoteRPS'=>"https://homologacao.notacarioca.rio.gov.br/WSNacional/nfse.asmx",
-            'ConsultaLoteRPS'=>"https://homologacao.notacarioca.rio.gov.br/WSNacional/nfse.asmx",
-            'ConsultaNfseRPS'=>"https://homologacao.notacarioca.rio.gov.br/WSNacional/nfse.asmx",
-            'ConsultaNFse'=>"https://homologacao.notacarioca.rio.gov.br/WSNacional/nfse.asmx"
+            'EnvioLoteRPS' => "https://homologacao.notacarioca.rio.gov.br/WSNacional/nfse.asmx",
+            'ConsultaSituacaoLoteRPS' => "https://homologacao.notacarioca.rio.gov.br/WSNacional/nfse.asmx",
+            'ConsultaLoteRPS' => "https://homologacao.notacarioca.rio.gov.br/WSNacional/nfse.asmx",
+            'ConsultaNfseRPS' => "https://homologacao.notacarioca.rio.gov.br/WSNacional/nfse.asmx",
+            'ConsultaNFse' => "https://homologacao.notacarioca.rio.gov.br/WSNacional/nfse.asmx"
         ]
     ];
     /**
      * County Namespace
      * @var string
      */
-    protected $xmlns= "http://tempuri.org/";
+    protected $xmlns = "http://tempuri.org/";
     /**
      * Soap Version
      * @var int

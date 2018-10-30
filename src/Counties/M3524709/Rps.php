@@ -21,5 +21,5 @@ use NFePHP\NFSe\Models\Issnet\Rps as RpsModel;
 
 class Rps extends RpsModel
 {
-    
+
 }

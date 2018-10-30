@@ -17,9 +17,6 @@ namespace NFePHP\NFSe\Models\Prodam\Factories;
  * @link      http://github.com/nfephp-org/sped-nfse for the canonical source repository
  */
 
-use NFePHP\NFSe\Models\Prodam\Factories\Header;
-use NFePHP\NFSe\Models\Prodam\Factories\Factory;
-
 class ConsultaNFSePeriodo extends Factory
 {
     /**
@@ -63,7 +60,7 @@ class ConsultaNFSePeriodo extends Factory
             $pagina
         );
         $content .= "</$method>";
-        $content = $this->signer($content, $method, '', [false,false,null,null]);
+        $content = $this->signer($content, $method, '', [false, false, null, null]);
         $body = $this->clear($content);
         $this->validar($versao, $body, 'Prodam', $method);
         return $body;

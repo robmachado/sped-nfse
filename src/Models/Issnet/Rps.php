@@ -18,45 +18,44 @@ namespace NFePHP\NFSe\Models\Issnet;
 
 use DateTime;
 use InvalidArgumentException;
-use Respect\Validation\Validator;
-use NFePHP\Common\Strings;
 use NFePHP\NFSe\Common\Rps as RpsBase;
+use Respect\Validation\Validator;
 
 class Rps extends RpsBase
 {
     const TIPO_RPS = 1;
     const TIPO_MISTO = 2;
     const TIPO_CUPOM = 3;
-    
+
     const CPF = 1;
     const CNPJ = 2;
-    
+
     const STATUS_NORMAL = 1;
     const STATUS_CANCELADO = 2;
-    
+
     const REGIME_MICROEMPRESA = 1;
     const REGIME_ESTIMATIVA = 2;
     const REGIME_SOCIEDADE = 3;
     const REGIME_COOPERATIVA = 4;
-    
+
     const NATUREZA_INTERNA = 1; //Tributação no município
     const NATUREZA_EXTERNA = 2;  //Tributação fora do município
     const NATUREZA_ISENTA = 3; //Isenção
     const NATUREZA_IMUNE = 4; //Imune
     const NATUREZA_SUSPENSA_JUS = 5; //Exigibilidade suspensa por decisão judicial
     const NATUREZA_SUSPENSA_ADMIN = 6; //Exigibilidade suspensa por procedimento administrativo
-    
+
     const SIM = 1;
     const NAO = 2;
-    
+
     /**
      * @var array
      */
-    public $infPrestador = ['tipo' => '', 'cnpjcpf' => '' , 'im' => ''];
+    public $infPrestador = ['tipo' => '', 'cnpjcpf' => '', 'im' => ''];
     /**
      * @var array
      */
-    public $infTomador = ['tipo' => '', 'cnpjcpf' => '' , 'im' => '', 'razao' => '', 'tel' => '','email' => ''];
+    public $infTomador = ['tipo' => '', 'cnpjcpf' => '', 'im' => '', 'razao' => '', 'tel' => '', 'email' => ''];
     /**
      * @var array
      */
@@ -76,7 +75,7 @@ class Rps extends RpsBase
     /**
      * @var array
      */
-    public $infIntermediario = ['tipo' => '', 'cnpjcpf' => '' , 'im' => '', 'razao' => ''];
+    public $infIntermediario = ['tipo' => '', 'cnpjcpf' => '', 'im' => '', 'razao' => ''];
     /**
      * @var array
      */
@@ -201,7 +200,7 @@ class Rps extends RpsBase
      * @var int
      */
     public $infMunicipioPrestacaoServico;
-    
+
     /**
      * Set informations of provider
      * @param int $tipo
@@ -216,7 +215,7 @@ class Rps extends RpsBase
             'im' => $im
         ];
     }
-    
+
     /**
      * Set informations of customer
      * @param int $tipo
@@ -237,7 +236,7 @@ class Rps extends RpsBase
             'email' => $email
         ];
     }
-    
+
     /**
      * Set address of customer
      * @param string $end
@@ -260,7 +259,7 @@ class Rps extends RpsBase
             'cep' => $cep
         ];
     }
-    
+
     /**
      * Set informations of intermediary
      * @param string $tipo
@@ -277,7 +276,7 @@ class Rps extends RpsBase
             'razao' => $razao
         ];
     }
-    
+
     /**
      * Set number of RPS
      * @param int $value
@@ -290,7 +289,7 @@ class Rps extends RpsBase
         }
         $this->infNumero = $value;
     }
-    
+
     /**
      * Set series of RPS
      * @param string $value
@@ -304,7 +303,7 @@ class Rps extends RpsBase
         }
         $this->infSerie = $value;
     }
-    
+
     /**
      * Set type of RPS
      * @param int $value
@@ -317,7 +316,7 @@ class Rps extends RpsBase
         }
         $this->infTipo = $value;
     }
-    
+
     /**
      * Set date of issue
      * @param DateTime $value
@@ -326,7 +325,7 @@ class Rps extends RpsBase
     {
         $this->infDataEmissao = $value;
     }
-    
+
     /**
      * Set replaced RPS
      * @param int $numero
@@ -342,7 +341,7 @@ class Rps extends RpsBase
             'tipo' => $tipo
         ];
     }
-    
+
     /**
      * Set type of kind tax operation
      * @param int $value
@@ -355,7 +354,7 @@ class Rps extends RpsBase
         }
         $this->infNaturezaOperacao = $value;
     }
-    
+
     /**
      * Set opting for Simple National tax regime
      * @param int $value
@@ -368,7 +367,7 @@ class Rps extends RpsBase
         }
         $this->infOptanteSimplesNacional = $value;
     }
-    
+
     /**
      * Set encouraging cultural flag
      * @param int $value
@@ -381,7 +380,7 @@ class Rps extends RpsBase
         }
         $this->infIncentivadorCultural = $value;
     }
-    
+
     /**
      * Set RPS status
      * @param int $value
@@ -394,7 +393,7 @@ class Rps extends RpsBase
         }
         $this->infStatus = $value;
     }
-    
+
     /**
      * Set special tax regime
      * @param int $value
@@ -407,7 +406,7 @@ class Rps extends RpsBase
         }
         $this->infRegimeEspecialTributacao = $value;
     }
-    
+
     /**
      * Set service amount
      * @param float $value
@@ -420,7 +419,7 @@ class Rps extends RpsBase
         }
         $this->infValorServicos = round($value, 2);
     }
-    
+
     /**
      * Set other withholdings amount
      * @param float $value
@@ -433,7 +432,7 @@ class Rps extends RpsBase
         }
         $this->infOutrasRetencoes = round($value, 2);
     }
-    
+
     /**
      * Set amount for PIS tax
      * @param float $value
@@ -446,7 +445,7 @@ class Rps extends RpsBase
         }
         $this->infValorPis = round($value, 2);
     }
-    
+
     /**
      * Set amount for COFINS tax
      * @param float $value
@@ -459,7 +458,7 @@ class Rps extends RpsBase
         }
         $this->infValorCofins = round($value, 2);
     }
-    
+
     /**
      * Set amount for INSS tax
      * @param float $value
@@ -472,7 +471,7 @@ class Rps extends RpsBase
         }
         $this->infValorInss = round($value, 2);
     }
-    
+
     /**
      * Set amount for IR tax
      * @param float $value
@@ -485,7 +484,7 @@ class Rps extends RpsBase
         }
         $this->infValorIr = round($value, 2);
     }
-    
+
     /**
      * Set amount for CSLL tax
      * @param float $value
@@ -498,7 +497,7 @@ class Rps extends RpsBase
         }
         $this->infValorCsll = round($value, 2);
     }
-    
+
     /**
      * Set ISS taxes retention flag
      * @param int $value
@@ -511,7 +510,7 @@ class Rps extends RpsBase
         }
         $this->infIssRetido = $value;
     }
-    
+
     /**
      * Set amount withheld of ISS
      * @param float $value
@@ -524,7 +523,7 @@ class Rps extends RpsBase
         }
         $this->infValorIssRetido = round($value, 2);
     }
-    
+
     /**
      * Set amount of ISS
      * @param float $value
@@ -537,7 +536,7 @@ class Rps extends RpsBase
         }
         $this->infValorIss = round($value, 2);
     }
-    
+
     /**
      * Set calculation base value
      * (Valor dos serviços - Valor das deduções - descontos incondicionados)
@@ -551,7 +550,7 @@ class Rps extends RpsBase
         }
         $this->infBaseCalculo = round($value, 2);
     }
-    
+
     /**
      * Set ISS tax aliquot in percent
      * @param float $value
@@ -564,7 +563,7 @@ class Rps extends RpsBase
         }
         $this->infAliquota = round($value, 4);
     }
-    
+
     /**
      * Set deductions amount
      * @param float $value
@@ -577,7 +576,7 @@ class Rps extends RpsBase
         }
         $this->infValorDeducoes = round($value, 2);
     }
-    
+
     /**
      * Set net amount
      * (ValorServicos - ValorPIS - ValorCOFINS - ValorINSS
@@ -593,7 +592,7 @@ class Rps extends RpsBase
         }
         $this->infValorLiquidoNfse = round($value, 2);
     }
-    
+
     /**
      * Set inconditioning off amount
      * @param float $value
@@ -606,7 +605,7 @@ class Rps extends RpsBase
         }
         $this->infDescontoIncondicionado = round($value, 2);
     }
-    
+
     /**
      * Set conditioning off amount
      * @param float $value
@@ -619,7 +618,7 @@ class Rps extends RpsBase
         }
         $this->infDescontoCondicionado = round($value, 2);
     }
-    
+
     /**
      * Set Services List item
      * @param string $value
@@ -630,11 +629,11 @@ class Rps extends RpsBase
         $value = trim($value);
         if (!Validator::stringType()->length(1, 5)->validate($value)) {
             throw new \InvalidArgumentException('O item da lista é obrigatório e'
-                    . ' deve ter no máximo 5 caracteres.');
+                . ' deve ter no máximo 5 caracteres.');
         }
         $this->infItemListaServico = $value;
     }
-    
+
     /**
      * Set CNAE code
      * @param int $value
@@ -647,7 +646,7 @@ class Rps extends RpsBase
         }
         $this->infCodigoCnae = $value;
     }
-    
+
     /**
      * Set tax code from county
      * @param string $value
@@ -658,11 +657,11 @@ class Rps extends RpsBase
         $value = trim($value);
         if (!Validator::stringType()->length(1, 20)->validate($value)) {
             throw new \InvalidArgumentException('O codigo de tributação é obrigatório e deve ter '
-                    . 'no máximo 20 caracteres.');
+                . 'no máximo 20 caracteres.');
         }
         $this->infCodigoTributacaoMunicipio = $value;
     }
-    
+
     /**
      * Set discrimination of service
      * @param string $value
@@ -673,11 +672,11 @@ class Rps extends RpsBase
         $value = trim($value);
         if (!Validator::stringType()->length(1, 2000)->validate($value)) {
             throw new \InvalidArgumentException('A discriminação é obrigatória e deve ter '
-                    . 'no máximo 2000 caracteres.');
+                . 'no máximo 2000 caracteres.');
         }
         $this->infDiscriminacao = $value;
     }
-    
+
     /**
      * Set constructions information
      * @param string $codigoObra
@@ -687,7 +686,7 @@ class Rps extends RpsBase
     {
         $this->infConstrucaoCivil = ['obra' => $codigoObra, 'art' => $art];
     }
-    
+
     /**
      * Set IBGE county code where service was realized
      * @param int $value

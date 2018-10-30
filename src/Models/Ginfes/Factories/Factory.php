@@ -6,5 +6,5 @@ use NFePHP\NFSe\Common\Factory as FactoryBase;
 
 class Factory extends FactoryBase
 {
-    
+
 }

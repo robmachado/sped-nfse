@@ -16,11 +16,9 @@ namespace NFePHP\NFSe\Models\ETransparencia;
  * @link      http://github.com/nfephp-org/sped-nfse for the canonical source repository
  */
 
-use NFePHP\NFSe\Models\ETransparencia\Rps;
-use NFePHP\NFSe\Models\ETransparencia\Factories;
 use NFePHP\NFSe\Common\Tools as ToolsBase;
 
 class Tools extends ToolsBase
 {
-    
+
 }

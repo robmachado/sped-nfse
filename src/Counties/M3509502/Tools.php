@@ -64,13 +64,13 @@ class Tools extends ToolsDsfnet
      * @var int
      */
     protected $versao = 1;
-        /**
+    /**
      * namespaces for soap envelope
      * @var array
      */
     protected $namespaces = [
         1 => [
-            'xmlns:xsi'=> "http://www.w3.org/2001/XMLSchema-instance",
+            'xmlns:xsi' => "http://www.w3.org/2001/XMLSchema-instance",
             'xmlns:xsd' => "http://www.w3.org/2001/XMLSchema",
             'xmlns:soapenv' => 'http://schemas.xmlsoap.org/soap/envelope/',
             'xmlns' => 'http://proces.wsnfe2.dsfnet.com.br'

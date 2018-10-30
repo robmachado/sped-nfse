@@ -16,9 +16,8 @@ namespace NFePHP\NFSe\Models\Prodam;
  * @link      http://github.com/nfephp-org/sped-nfse for the canonical source repository
  */
 
-use NFePHP\Common\DOMImproved as Dom;
 use NFePHP\Common\Certificate;
-use NFePHP\NFSe\Models\Prodam\Rps;
+use NFePHP\Common\DOMImproved as Dom;
 
 class RenderRPS
 {
@@ -40,7 +39,7 @@ class RenderRPS
         }
         return $xml;
     }
-    
+
     /**
      * Monta o xml com base no objeto Rps
      * @param Rps $rps
@@ -353,7 +352,7 @@ class RenderRPS
             'Discriminação do serviço',
             false
         );
-        self::$dom->addChild(
+	 self::$dom->addChild(
             $root,
             'ValorCargaTributaria',
             $rps->valorCargaTributariaRPS,
@@ -377,13 +376,12 @@ class RenderRPS
             'Fonte de informação da carga tributária ',
             false
         );
-
         //finaliza
         self::$dom->appendChild($root);
         $xml = str_replace('<?xml version="1.0" encoding="utf-8"?>', '', self::$dom->saveXML());
         return $xml;
     }
-    
+
     /**
      * Cria o valor da assinatura do RPS
      * @param Rps $rps

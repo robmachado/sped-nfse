@@ -34,7 +34,7 @@ class Tools extends ToolsDsfnet
      * @var string
      */
     protected $xmlns = 'http://sistemas.semfaz.saoluis.ma.gov.br/WsNFe2/LoteRps.jws';
-    
+
     /**
      * Soap Version
      * @var int
@@ -69,6 +69,6 @@ class Tools extends ToolsDsfnet
             'xmlns:soapenv' => "http://schemas.xmlsoap.org/soap/envelope/",
             'xmlns' => "http://sistemas.semfaz.saoluis.ma.gov.br/WsNFe2/LoteRps.jws"
         ],
-        2  => []
+        2 => []
     ];
 }

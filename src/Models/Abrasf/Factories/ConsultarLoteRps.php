@@ -1,12 +1,29 @@
 <?php
 
-
 namespace NFePHP\NFSe\Models\Abrasf\Factories;
 
-use NFePHP\NFSe\Models\Abrasf\Factories\Header;
-use NFePHP\NFSe\Models\Abrasf\Factories\Factory;
-
-class ConsultarLoteRps extends Factory
+abstract class ConsultarLoteRps extends Factory
 {
-    
+    protected $xmlns;
+
+    /**
+     * Método usado para gerar o XML do Soap Request
+     * @param $cnpj
+     * @param $im
+     * @param $protocolo
+     * @return mixed
+     */
+    abstract public function render(
+        $cnpj,
+        $im,
+        $protocolo
+    );
+
+    /**
+     * @param $xmlns
+     */
+    public function setXmlns($xmlns)
+    {
+        $this->xmlns = $xmlns;
+    }
 }

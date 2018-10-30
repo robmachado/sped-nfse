@@ -16,10 +16,10 @@ namespace NFePHP\NFSe;
  * @link      http://github.com/nfephp-org/sped-nfse for the canonical source repository
  */
 
-use NFePHP\NFSe\Counties;
 use NFePHP\Common\Certificate;
-use stdClass;
+use NFePHP\NFSe\Counties;
 use RuntimeException;
+use stdClass;
 
 class NFSeStatic
 {
@@ -32,7 +32,37 @@ class NFSeStatic
     {
         return self::classCheck(self::getClassName($config, 'Convert'), $config);
     }
-    
+
+    /**
+     * Instancia e retorna a classe desejada
+     *
+     * @param string $className
+     * @param stdClass $config
+     * @param NFePHP\Common\Certificate|null $certificate
+     * @return \NFePHP\NFSe\className
+     * @throws RuntimeException
+     */
+    private static function classCheck($className, stdClass $config, $certificate = null)
+    {
+        if (class_exists($className)) {
+            return new $className($config, $certificate);
+        }
+        $msg = 'Este municipio não é atendido pela API.';
+        throw new RuntimeException($msg);
+    }
+
+    /**
+     * Monta o nome das classes referentes a determinado municipio
+     *
+     * @param stdClass $config
+     * @param string $complement
+     * @return string
+     */
+    private static function getClassName(stdClass $config, $complement)
+    {
+        return "\NFePHP\NFSe\Counties\\M$config->cmun\\$complement";
+    }
+
     /**
      * Instancia a classe usada na construção do RPS
      * para um municipio em particular
@@ -57,7 +87,7 @@ class NFSeStatic
     {
         return self::classCheck(self::getClassName($config, 'Tools'), $config, $certificate);
     }
-    
+
     /**
      * Instancia a classe que converte o xml de resposta em
      * uma stdClass
@@ -66,35 +96,5 @@ class NFSeStatic
     public static function response(stdClass $config)
     {
         return self::classCheck(self::getClassName($config, 'Response'), $config);
-    }
-    
-    /**
-     * Monta o nome das classes referentes a determinado municipio
-     *
-     * @param stdClass $config
-     * @param string $complement
-     * @return string
-     */
-    private static function getClassName(stdClass $config, $complement)
-    {
-        return "\NFePHP\NFSe\Counties\\M$config->cmun\\$complement";
-    }
-    
-    /**
-     * Instancia e retorna a classe desejada
-     *
-     * @param string $className
-     * @param stdClass $config
-     * @param NFePHP\Common\Certificate|null $certificate
-     * @return \NFePHP\NFSe\className
-     * @throws RuntimeException
-     */
-    private static function classCheck($className, stdClass $config, $certificate = null)
-    {
-        if (class_exists($className)) {
-            return new $className($config, $certificate);
-        }
-        $msg = 'Este municipio não é atendido pela API.';
-        throw new RuntimeException($msg);
     }
 }

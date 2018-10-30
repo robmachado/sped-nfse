@@ -1,4 +1,5 @@
 <?php
+
 namespace NFePHP\NFSe;
 
 /**
@@ -15,7 +16,6 @@ namespace NFePHP\NFSe;
  * @link      http://github.com/nfephp-org/sped-nfse for the canonical source repository
  */
 
-use NFePHP\NFSe\NFSeStatic;
 use NFePHP\Common\Certificate;
 
 class NFSe
@@ -24,10 +24,10 @@ class NFSe
     public $convert;
     public $tools;
     public $response;
-    
+
     /**
      * Construtor da classe
-     * @param string $config  Path to file or string Json
+     * @param string $config Path to file or string Json
      * @param NFePHP\Common\Certificate $certificate
      */
     public function __construct($config, Certificate $certificate)

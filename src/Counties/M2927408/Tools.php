@@ -27,28 +27,28 @@ class Tools extends ToolsAbrasf
      */
     protected $url = [
         1 => [
-            'EnvioLoteRPS'=>"https://nfse.salvador.ba.gov.br/rps/ENVIOLOTERPS/EnvioLoteRPS.svc",
-            'ConsultaSituacaoLoteRPS'=>
-            "https://nfse.salvador.ba.gov.br/rps/CONSULTASITUACAOLOTERPS/ConsultaSituacaoLoteRPS.svc",
-            'ConsultaLoteRPS'=>"https://nfse.salvador.ba.gov.br/rps/CONSULTALOTERPS/ConsultaLoteRPS.svc",
-            'ConsultaNfseRPS'=>"https://nfse.salvador.ba.gov.br/rps/CONSULTANFSERPS/ConsultaNfseRPS.svc",
-            'ConsultaNFse'=>"https://nfse.salvador.ba.gov.br/rps/CONSULTANFSE/ConsultaNfse.svc"
+            'EnvioLoteRPS' => "https://nfse.salvador.ba.gov.br/rps/ENVIOLOTERPS/EnvioLoteRPS.svc",
+            'ConsultaSituacaoLoteRPS' =>
+                "https://nfse.salvador.ba.gov.br/rps/CONSULTASITUACAOLOTERPS/ConsultaSituacaoLoteRPS.svc",
+            'ConsultaLoteRPS' => "https://nfse.salvador.ba.gov.br/rps/CONSULTALOTERPS/ConsultaLoteRPS.svc",
+            'ConsultaNfseRPS' => "https://nfse.salvador.ba.gov.br/rps/CONSULTANFSERPS/ConsultaNfseRPS.svc",
+            'ConsultaNFse' => "https://nfse.salvador.ba.gov.br/rps/CONSULTANFSE/ConsultaNfse.svc"
         ],
         2 => [
-            'EnvioLoteRPS'=>"https://notahml.salvador.ba.gov.br/rps/ENVIOLOTERPS/EnvioLoteRPS.svc",
-            'ConsultaSituacaoLoteRPS'=>
-            "https://notahml.salvador.ba.gov.br/rps/CONSULTASITUACAOLOTERPS/ConsultaSituacaoLoteRPS.svc",
-            'ConsultaLoteRPS'=>"https://notahml.salvador.ba.gov.br/rps/CONSULTALOTERPS/ConsultaLoteRPS.svc",
-            'ConsultaNfseRPS'=>"https://notahml.salvador.ba.gov.br/rps/CONSULTANFSERPS/ConsultaNfseRPS.svc",
-            'ConsultaNFse'=>"https://notahml.salvador.ba.gov.br/rps/CONSULTANFSE/ConsultaNfse.svc"
+            'EnvioLoteRPS' => "https://notahml.salvador.ba.gov.br/rps/ENVIOLOTERPS/EnvioLoteRPS.svc",
+            'ConsultaSituacaoLoteRPS' =>
+                "https://notahml.salvador.ba.gov.br/rps/CONSULTASITUACAOLOTERPS/ConsultaSituacaoLoteRPS.svc",
+            'ConsultaLoteRPS' => "https://notahml.salvador.ba.gov.br/rps/CONSULTALOTERPS/ConsultaLoteRPS.svc",
+            'ConsultaNfseRPS' => "https://notahml.salvador.ba.gov.br/rps/CONSULTANFSERPS/ConsultaNfseRPS.svc",
+            'ConsultaNFse' => "https://notahml.salvador.ba.gov.br/rps/CONSULTANFSE/ConsultaNfse.svc"
         ]
     ];
-    
+
     /**
      * County Namespace
      * @var string
      */
-    protected $xmlns= "http://tempuri.org/";
+    protected $xmlns = "http://tempuri.org/";
     /**
      * Soap Version
      * @var int

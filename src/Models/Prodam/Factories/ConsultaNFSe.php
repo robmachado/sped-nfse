@@ -17,8 +17,6 @@ namespace NFePHP\NFSe\Models\Prodam\Factories;
  * @link      http://github.com/nfephp-org/sped-nfse for the canonical source repository
  */
 
-use NFePHP\NFSe\Models\Prodam\Factories\Header;
-use NFePHP\NFSe\Models\Prodam\Factories\Factory;
 use InvalidArgumentException;
 
 class ConsultaNFSe extends Factory
@@ -55,22 +53,22 @@ class ConsultaNFSe extends Factory
         foreach ($chavesNFSe as $chave) {
             $content .= "<Detalhe xmlns=\"\">";
             $content .= "<ChaveNFe>";
-            $content .= "<InscricaoPrestador>".$chave['prestadorIM']."</InscricaoPrestador>";
-            $content .= "<NumeroNFe>".$chave['numeroNFSe']."</NumeroNFe>";
+            $content .= "<InscricaoPrestador>" . $chave['prestadorIM'] . "</InscricaoPrestador>";
+            $content .= "<NumeroNFe>" . $chave['numeroNFSe'] . "</NumeroNFe>";
             $content .= "</ChaveNFe>";
             $content .= "</Detalhe>";
         }
         foreach ($chavesRPS as $chave) {
             $content .= "<Detalhe xmlns=\"\">";
             $content .= "<ChaveRPS>";
-            $content .= "<InscricaoPrestador>".$chave['prestadorIM']."</InscricaoPrestador>";
-            $content .= "<SerieRPS>".$chave['serieRPS']."</SerieRPS>";
-            $content .= "<NumeroRPS>".$chave['numeroRPS']."</NumeroRPS>";
+            $content .= "<InscricaoPrestador>" . $chave['prestadorIM'] . "</InscricaoPrestador>";
+            $content .= "<SerieRPS>" . $chave['serieRPS'] . "</SerieRPS>";
+            $content .= "<NumeroRPS>" . $chave['numeroRPS'] . "</NumeroRPS>";
             $content .= "</ChaveRPS>";
             $content .= "</Detalhe>";
         }
         $content .= "</$method>";
-        $content = $this->signer($content, $method, '', [false,false,null,null]);
+        $content = $this->signer($content, $method, '', [false, false, null, null]);
         $body = $this->clear($content);
         $this->validar($versao, $body, 'Prodam', $method);
         return $body;

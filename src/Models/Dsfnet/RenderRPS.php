@@ -16,9 +16,8 @@ namespace NFePHP\NFSe\Models\Dsfnet;
  * @link      http://github.com/nfephp-org/sped-nfse for the canonical source repository
  */
 
-use NFePHP\Common\DOMImproved as Dom;
-use NFePHP\NFSe\Models\Dsfnet\Rps;
 use NFePHP\Common\Certificate;
+use NFePHP\Common\DOMImproved as Dom;
 
 class RenderRPS
 {
@@ -40,7 +39,7 @@ class RenderRPS
         }
         return $xml;
     }
-    
+
     /**
      * Monta o xml com base no objeto Rps
      * @param Rps $rps
@@ -51,7 +50,7 @@ class RenderRPS
         self::$dom = new Dom();
         $root = self::$dom->createElement('RPS');
         $idAttribute = self::$dom->createAttribute('Id');
-        $idAttribute->value = 'rps:'.$rps->numeroRPS;
+        $idAttribute->value = 'rps:' . $rps->numeroRPS;
         $root->appendChild($idAttribute);
         self::$dom->addChild(
             $root,
@@ -489,7 +488,7 @@ class RenderRPS
         $xml = str_replace('<?xml version="1.0" encoding="utf-8"?>', '', self::$dom->saveXML());
         return $xml;
     }
-    
+
     /**
      * Cria a assinatura do RPS
      * @param Rps $rps
@@ -506,14 +505,14 @@ class RenderRPS
         $content .= $rps->situacaoRPS;
         $content .= ($rps->tipoRecolhimento == 'A') ? 'N' : 'S';
         $valores = self::calcValor($rps);
-        $content .= str_pad(round($valores['valorFinal']*100, 0), 15, '0', STR_PAD_LEFT);
-        $content .= str_pad(round($valores['valorDeducao']*100, 0), 15, '0', STR_PAD_LEFT);
+        $content .= str_pad(round($valores['valorFinal'] * 100, 0), 15, '0', STR_PAD_LEFT);
+        $content .= str_pad(round($valores['valorDeducao'] * 100, 0), 15, '0', STR_PAD_LEFT);
         $content .= str_pad($rps->codigoAtividade, 10, '0', STR_PAD_LEFT);
         $content .= str_pad($rps->cPFCNPJTomador, 14, '0', STR_PAD_LEFT);
         $signature = base64_encode(self::$certificate->sign($content, self::$algorithm));
         return $signature;
     }
-    
+
     private static function calcValor(Rps $rps)
     {
         $valorItens = 0;

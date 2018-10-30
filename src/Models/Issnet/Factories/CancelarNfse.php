@@ -2,9 +2,6 @@
 
 namespace NFePHP\NFSe\Models\Issnet\Factories;
 
-use NFePHP\NFSe\Models\Issnet\Factories\Header;
-use NFePHP\NFSe\Models\Issnet\Factories\Factory;
-
 class CancelarNfse extends Factory
 {
     public function render(
@@ -18,7 +15,7 @@ class CancelarNfse extends Factory
     ) {
         $method = "CancelarNfseEnvio";
         $xsd = 'servico_cancelar_nfse_envio';
-        
+
         $content = "<p1:" . $method . " "
             . "xmlns:p1=\"http://www.issnetonline.com.br/webserviceabrasf/vsd/$xsd.xsd\" "
             . "xmlns:tc=\"http://www.issnetonline.com.br/webserviceabrasf/vsd/tipos_complexos.xsd\" "
@@ -36,14 +33,14 @@ class CancelarNfse extends Factory
         $content .= "</tc:InfPedidoCancelamento>";
         $content .= "</Pedido>";
         $content .= "</p1:CancelarNfseEnvio>";
-        
+
         $body = Signer::sign(
             $this->certificate,
             $content,
             'InfPedidoCancelamento',
             'http://www.w3.org/TR/2000/REC-xhtml1-20000126/',
             $this->algorithm,
-            [false,false,null,null],
+            [false, false, null, null],
             'Pedido'
         );
         $body = $this->clear($body);
